@@ -1,0 +1,18 @@
+# my-php-containers task-readme-github-pages.yml
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: 1.7.1
+
+inputs:
+- name: my-php-containers
+
+outputs:
+- name: my-php-containers-updated
+
+run:
+  path: ./my-php-containers/ci/scripts/readme-github-pages.sh

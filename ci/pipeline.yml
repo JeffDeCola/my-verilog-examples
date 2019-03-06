@@ -1,0 +1,67 @@
+# my-php-containers pipeline.yml
+
+jobs:
+
+- name: job-readme-github-pages
+  plan:
+  - get: my-php-containers
+    trigger: true
+  - put: resource-slack-alert
+    params:
+      channel: '#jeff-builds'
+      text: "From my-php-containers: STARTED job-readme-github-pages in concourse ci."
+  - put: resource-repo-status
+    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-php-containers" }
+  - task: task-readme-github-pages
+    file: my-php-containers/ci/tasks/task-readme-github-pages.yml
+    on_success:
+      do:
+      - put: my-php-containers
+        params:
+          repository: my-php-containers-updated  
+      - put: resource-slack-alert
+        params:
+          channel: '#jeff-builds'
+          text: "From my-php-containers: PASSED job-readme-github-pages in concourse ci."
+      - put: resource-repo-status
+        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-php-containers" }
+    on_failure:
+      do:
+      - put: resource-slack-alert
+        params:
+          channel: '#jeff-builds'
+          text: "From my-php-containers: FAILED job-readme-github-pages in concourse ci."
+      - put: resource-repo-status
+        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-php-containers" }
+
+resource_types:
+
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+- name: github-status
+  type: docker-image
+  source:
+    repository: dpb587/github-status-resource
+    tag: master
+
+resources:
+
+- name: my-php-containers
+  type: git
+  source:
+    #uri: https://github.com/jeffdecola/my-php-containers
+    uri: git@github.com:jeffdecola/my-php-containers.git
+    branch: master
+    private_key: {{git_private_key}}
+- name: resource-slack-alert
+  type: slack-notification
+  source:
+    url: {{slack_url}} 
+- name: resource-repo-status 
+  type: github-status
+  source:
+    repository: jeffdecola/my-php-containers 
+    access_token: {{repo_github_token}}
