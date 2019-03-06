@@ -1,31 +1,27 @@
 
-# PYTHON EXAMPLES
+# SYSTEMVERILOG EXAMPLES
 
-* [read-file](https://github.com/JeffDeCola/my-python-examples/tree/master/read-file)
+_All sections in alphabetical order._
 
-  _Reading a file a few different ways._
+* [basic-example](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-example)
 
-## TESTED USING CONCOURSE
+   _To get you up and running._
 
-A Concourse Pipeline will automate unit testing and update the GitHub WebPage.
+## MY GITHUB WEBPAGE IS UPDATED USING CONCOURSE
 
-![IMAGE - my-python-examples concourse ci piepline - IMAGE](pics/my-python-examples-pipeline.jpg)
+For fun, I use concourse to update
+[my-systemverilog-examples GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+and alert me of the changes via repo status and slack.
 
-A _ci/.credentials.yml_ file needs to be created for your _slack_url_ and _repo_github_token_.
+The github webpage update is accomplished this by copying and editing
+this `README.md` file to `/docs/_includes/README.md`.
+You can see the concourse task (a shell script)
+[here](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/ci/scripts/readme-github-pages.sh).
 
-Use fly to upload the the pipeline file _ci/pipline.yml_ to Concourse:
+A pipeline file [pipeline.yml](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/ci/pipeline.yml)
+shows the entire ci flow. Visually, it looks like,
 
-```bash
-fly -t ci set-pipeline -p my-python-examples -c ci/pipeline.yml --load-vars-from ci/.credentials.yml
-```
+![IMAGE - my-systemverilog-examples concourse ci pipeline - IMAGE](pics/my-systemverilog-examples-pipeline.jpg)
 
-## CONCOURSE RESOURCES IN PIPELINE
-
-`my-python-examples` also contains a few extra concourse resources:
-
-* A resource (_resource-slack-alert_) uses a [docker image](https://hub.docker.com/r/cfcommunity/slack-notification-resource)
-  that will notify slack on your progress.
-* A resource (_resource-repo-status_) use a [docker image](https://hub.docker.com/r/dpb587/github-status-resource)
-  that will update your git status for that particular commit.
-
-The above resources can be removed from the pipeline.
+For more information on using concourse for continuous integration,
+refer to my cheat sheet on [concourse](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/continuous-integration-continuous-deployment/concourse-cheat-sheet).
