@@ -1,4 +1,4 @@
 #!/bin/bash
-# my-php-containers update_concourse.sh
+# my-systemverilog-examples update_concourse.sh
 
-fly -t ci set-pipeline -p my-php-containers -c ci/pipeline.yml --load-vars-from ../../.credentials.yml
+fly -t ci set-pipeline -p my-systemverilog-examples -c ci/pipeline.yml --load-vars-from ../../.credentials.yml

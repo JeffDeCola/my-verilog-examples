@@ -1,4 +1,4 @@
-# my-php-containers task-readme-github-pages.yml
+# my-systemverilog-examples task-readme-github-pages.yml
 
 platform: linux
 
@@ -9,10 +9,10 @@ image_resource:
     tag: 1.7.1
 
 inputs:
-- name: my-php-containers
+- name: my-systemverilog-examples
 
 outputs:
-- name: my-php-containers-updated
+- name: my-systemverilog-examples-updated
 
 run:
-  path: ./my-php-containers/ci/scripts/readme-github-pages.sh
+  path: ./my-systemverilog-examples/ci/scripts/readme-github-pages.sh
