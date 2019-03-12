@@ -9,8 +9,8 @@ and examples._
 
 These examples also contain info I gathered from other sources.
 
-View my entire list of systemverilog examples on
-[my-systemverilog-examples GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+View my entire list of SystemVerilog examples on
+[my GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## SYSTEMVERILOG EXAMPLES
 
