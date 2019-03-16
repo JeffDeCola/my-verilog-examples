@@ -16,3 +16,4 @@ outputs:
 
 run:
   path: ./my-systemverilog-examples/ci/scripts/readme-github-pages.sh
+  # args: [-debug]
