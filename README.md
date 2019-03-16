@@ -14,7 +14,7 @@ View my entire list of SystemVerilog examples on
 
 ## SYSTEMVERILOG EXAMPLES
 
-_All sections in alphabetical order._
+_All examples in alphabetical order._
 
 * [basic-example](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-example)
 
