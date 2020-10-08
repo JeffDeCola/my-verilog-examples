@@ -4,21 +4,109 @@
 [![Issue Count](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`my-systemverilog-examples` _is a place to keep my SystemVerilog code snippets
-and examples._
+*A place to keep my SystemVerilog code snippets and examples._
 
 These examples also contain info I gathered from other sources.
 
-View my entire list of SystemVerilog examples on
-[my GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+Table of Contents,
+
+* [SYSTEMVERILOG EXAMPLES](https://github.com/JeffDeCola//tree/masterm#systemverilog-examples)
+  * [BASIC VERILOG](https://github.com/JeffDeCola//tree/masterm#basic-verilog)
+
+[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+
+### INSTALL IVERILOG
+
+I installed `iverilog` for simulation and synthesis.
+
+#### Install from package
+
+This is easier,
+
+```bash
+sudo apt-get update
+sudo apt-get install verilog
+```
+
+#### Install from Source
+
+Go
+[github.com/steveicarus/iverilog](https://github.com/steveicarus/iverilog)
+for latest information.
+
+I compiled from source to /usr/local (default),
+
+```bash
+git clone git@github.com:steveicarus/iverilog.git
+```
+
+I needed a few things,
+
+```bash
+sudo apt-get install -y autoconf
+sudo apt-get install -y gperf
+sudo apt-get install -y flex
+```
+
+Build configuration files,
+
+```bash
+cd steveicarus/iverilog
+sh autoconf.sh
+```
+
+Now lets compile your source,
+
+```bash
+./configure
+make
+sudo su
+make install
+```
+
+#### Check Installation
+
+check,
+
+```bash
+iverilog -h
+```
+
+Create a verilog file `hello.v`,
+
+```verilog
+module main();
+
+initial
+  begin
+    $display("Hi there");
+    $finish ;
+  end
+
+endmodule
+```
+
+Compile,
+
+```bash
+iverilog -o hello hello.v
+```
+
+Execute,
+
+```bash
+./hello
+```
 
 ## SYSTEMVERILOG EXAMPLES
 
-_All examples in alphabetical order._
+_All sections in alphabetical order._
 
-* [basic-example](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-example)
+### BASIC VERILOG
 
-   _To get you up and running._
+* [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+
+   _A basic d-flip-flop._
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
