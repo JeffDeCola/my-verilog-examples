@@ -4,109 +4,37 @@
 [![Issue Count](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-*A place to keep my SystemVerilog code snippets and examples._
+_A place to keep my SystemVerilog code snippets and examples._
 
 These examples also contain info I gathered from other sources.
 
 Table of Contents,
 
 * [SYSTEMVERILOG EXAMPLES](https://github.com/JeffDeCola//tree/masterm#systemverilog-examples)
-  * [BASIC VERILOG](https://github.com/JeffDeCola//tree/masterm#basic-verilog)
+  * [BASIC](https://github.com/JeffDeCola//tree/masterm#basic)
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-### INSTALL IVERILOG
+Documentation and reference,
 
-I installed `iverilog` for simulation and synthesis.
-
-#### Install from package
-
-This is easier,
-
-```bash
-sudo apt-get update
-sudo apt-get install verilog
-```
-
-#### Install from Source
-
-Go
-[github.com/steveicarus/iverilog](https://github.com/steveicarus/iverilog)
-for latest information.
-
-I compiled from source to /usr/local (default),
-
-```bash
-git clone git@github.com:steveicarus/iverilog.git
-```
-
-I needed a few things,
-
-```bash
-sudo apt-get install -y autoconf
-sudo apt-get install -y gperf
-sudo apt-get install -y flex
-```
-
-Build configuration files,
-
-```bash
-cd steveicarus/iverilog
-sh autoconf.sh
-```
-
-Now lets compile your source,
-
-```bash
-./configure
-make
-sudo su
-make install
-```
-
-#### Check Installation
-
-check,
-
-```bash
-iverilog -h
-```
-
-Create a verilog file `hello.v`,
-
-```verilog
-module main();
-
-initial
-  begin
-    $display("Hi there");
-    $finish ;
-  end
-
-endmodule
-```
-
-Compile,
-
-```bash
-iverilog -o hello hello.v
-```
-
-Execute,
-
-```bash
-./hello
-```
+* [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+  is a free verilog simulator and synthesis tool.
+* [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+  is a free waveform viewer.
 
 ## SYSTEMVERILOG EXAMPLES
 
 _All sections in alphabetical order._
 
-### BASIC VERILOG
+### BASIC
 
 * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
 
    _A basic d-flip-flop._
+
+* [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+
+  _A basic d-flip-flop._
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
