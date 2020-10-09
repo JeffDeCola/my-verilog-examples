@@ -8,8 +8,7 @@ module d_ff (d, clk, q, q_bar);
 always @ (posedge clk)
 begin
   q <= d;
-  q_bar <= !d;;
+  q_bar <= !d;
 end
 
 endmodule
-
