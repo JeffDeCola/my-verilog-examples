@@ -28,13 +28,13 @@ _All sections in alphabetical order._
 
 ### BASIC
 
+* [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+
+   _A simple AND gate._
+
 * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
 
    _A basic d-flip-flop._
-
-* [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
-
-  _A basic d-flip-flop._
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
