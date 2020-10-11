@@ -27,7 +27,7 @@ _All sections in alphabetical order._
 
 ### BASIC
 
-* [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+* [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
 
    _A simple AND gate._
 

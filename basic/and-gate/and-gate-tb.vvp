@@ -7,43 +7,43 @@
 :vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
 :vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
 :vpi_module "/usr/local/lib/ivl/va_math.vpi";
-S_0x14be580 .scope module, "and_gate_tb" "and_gate_tb" 2 4;
+S_0x16cd580 .scope module, "and_gate_tb" "and_gate_tb" 2 4;
  .timescale -9 -9;
-v0x14cf320_0 .var "A", 0 0;
-v0x14cf3f0_0 .var "B", 0 0;
-v0x14cf4c0_0 .net "Y", 0 0, L_0x14cf5c0;  1 drivers
-S_0x14be710 .scope module, "uut" "and_gate" 2 9, 3 1 0, S_0x14be580;
+v0x16de320_0 .var "x", 0 0;
+v0x16de3f0_0 .net "xy", 0 0, L_0x16de5c0;  1 drivers
+v0x16de4c0_0 .var "y", 0 0;
+S_0x16cd710 .scope module, "uut" "and_gate" 2 9, 3 1 0, S_0x16cd580;
  .timescale -9 -9;
-    .port_info 0 /INPUT 1 "A";
-    .port_info 1 /INPUT 1 "B";
-    .port_info 2 /OUTPUT 1 "Y";
-L_0x14cf5c0 .functor AND 1, v0x14cf320_0, v0x14cf3f0_0, C4<1>, C4<1>;
-v0x14aace0_0 .net "A", 0 0, v0x14cf320_0;  1 drivers
-v0x14cf110_0 .net "B", 0 0, v0x14cf3f0_0;  1 drivers
-v0x14cf1d0_0 .net "Y", 0 0, L_0x14cf5c0;  alias, 1 drivers
-    .scope S_0x14be580;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /OUTPUT 1 "xy";
+L_0x16de5c0 .functor AND 1, v0x16de320_0, v0x16de4c0_0, C4<1>, C4<1>;
+v0x16b9ce0_0 .net "x", 0 0, v0x16de320_0;  1 drivers
+v0x16de110_0 .net "xy", 0 0, L_0x16de5c0;  alias, 1 drivers
+v0x16de1d0_0 .net "y", 0 0, v0x16de4c0_0;  1 drivers
+    .scope S_0x16cd580;
 T_0 ;
     %vpi_call 2 13 "$dumpfile", "and-gate-tb.vcd" {0 0 0};
-    %vpi_call 2 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x14be580 {0 0 0};
+    %vpi_call 2 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x16cd580 {0 0 0};
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x14cf320_0, 0, 1;
+    %store/vec4 v0x16de320_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x14cf3f0_0, 0, 1;
+    %store/vec4 v0x16de4c0_0, 0, 1;
     %delay 20, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x14cf320_0, 0, 1;
+    %store/vec4 v0x16de320_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x14cf3f0_0, 0, 1;
+    %store/vec4 v0x16de4c0_0, 0, 1;
     %delay 20, 0;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x14cf320_0, 0, 1;
+    %store/vec4 v0x16de320_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x14cf3f0_0, 0, 1;
+    %store/vec4 v0x16de4c0_0, 0, 1;
     %delay 20, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x14cf320_0, 0, 1;
+    %store/vec4 v0x16de320_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x14cf3f0_0, 0, 1;
+    %store/vec4 v0x16de4c0_0, 0, 1;
     %delay 20, 0;
     %vpi_call 2 32 "$display", "test complete" {0 0 0};
     %end;

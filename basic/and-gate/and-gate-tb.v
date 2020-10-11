@@ -3,30 +3,30 @@
 
 module and_gate_tb;
 
-reg A, B;
-wire Y;
+reg x, y;
+wire xy;
 
-and_gate uut(A, B, Y);
+and_gate uut(x, y, xy);
 
 initial begin
     
     $dumpfile("and-gate-tb.vcd");
     $dumpvars(0, and_gate_tb);
 
-    A = 0;
-    B = 0;
+    x = 0;
+    y = 0;
     #20;
 
-    A = 1;
-    B = 0;
+    x = 1;
+    y = 0;
     #20;
 
-    A = 0;
-    B = 1;
+    x = 0;
+    y = 1;
     #20;
 
-    A = 1;
-    B = 1;
+    x = 1;
+    y = 1;
     #20;
 
     $display("test complete");
