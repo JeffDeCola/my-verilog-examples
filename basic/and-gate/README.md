@@ -6,7 +6,9 @@ _A basic AND gate_
 
 ## OVERVIEW
 
-A figure,
+I generated this figure using LaTex in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/electrical-engineering/logic/and-gate)
+repo.
 
 <p align="center">
     <img src="svgs/and-gate.svg"

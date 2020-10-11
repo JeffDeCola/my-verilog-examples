@@ -1,12 +1,12 @@
 module and_gate(
-    A,
-    B,
-    Y
+    x,
+    y,
+    xy
 );
 
-    input A, B;
-    output Y;
+    input x, y;
+    output xy;
 
-    and(Y, A ,B);
+    and(xy, x, y);
 
 endmodule
