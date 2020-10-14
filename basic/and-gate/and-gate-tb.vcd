@@ -1,5 +1,5 @@
 $date
-	Sun Oct 11 02:32:29 2020
+	Wed Oct 14 01:21:04 2020
 $end
 $version
 	Icarus Verilog
@@ -8,9 +8,9 @@ $timescale
 	1ns
 $end
 $scope module and_gate_tb $end
-$var wire 1 ! xy $end
-$var reg 1 " x $end
-$var reg 1 # y $end
+$var wire 1 ! XY $end
+$var reg 1 " X $end
+$var reg 1 # Y $end
 $scope module uut $end
 $var wire 1 " x $end
 $var wire 1 ! xy $end
