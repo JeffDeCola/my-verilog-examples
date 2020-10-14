@@ -1,26 +1,39 @@
 # and-gate example
 
-_A basic AND gate_
+_A basic AND logic gate._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## VERILOG CODE
+## SCHEMATIC
 
-[and-gate.v](and-gate.v)
-verilog code.
+*I generated this figure using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/and-gate)
+repo.*
 
 <p align="center">
     <img src="svgs/and-gate.svg"
     align="middle"
 </p>
 
-*I generated this figure using LaTeX in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/electrical-engineering/logic/and-gate)
-repo.*
+## VERILOG CODE
 
-## RUN
+The main part of the code is,
 
-This will created a `.vcd` file.
+```verilog
+    input x, y;
+    output xy;
+
+    and(xy, x, y);
+```
+
+The entire code is
+[and-gate.v](and-gate.v)
+
+## RUN (SIMULATE)
+
+I used
+[iverilog](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/and-gate)
+to simulate and create a `.vcd` file.
 
 ```bash
 sh run-test.sh

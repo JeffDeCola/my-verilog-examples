@@ -1,26 +1,36 @@
 # d-flip-flop example
 
-_A basic d flip flop_
+_A basic d flip-flop logic gate._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## VERILOG CODE
+## SCHEMATIC
 
-[d-flip-flop.v](d-flip-flop.v)
-verilog code.
+*I generated this figure using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/d-flip-flop)
+repo.*
 
 <p align="center">
     <img src="svgs/d-flip-flop.svg"
     align="middle"
 </p>
 
-*I generated this figure using LaTeX in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/electrical-engineering/logic/d-flip-flop)
-repo.*
+## VERILOG CODE
 
-## RUN
+The main part of the code is,
 
-This will created a `.vcd` file.
+```verilog
+tbd
+```
+
+The entire code is
+[d-flip-flop.v](d-flip-flop.v)
+
+## RUN (SIMULATE)
+
+I used
+[iverilog](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/d-flip-flop)
+to simulate and create a `.vcd` file.
 
 ```bash
 sh run-test.sh
