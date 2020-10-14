@@ -3,34 +3,41 @@
 
 module and_gate_tb;
 
-reg x, y;
-wire xy;
+// DECLARE INPUT AND OUTPUTS
+reg X, Y;
+wire XY;
 
-and_gate uut(x, y, xy);
+// UUT
+and_gate uut(.x(X), .y(Y), .xy(XY));
 
+//INIT VALUES
 initial begin
-    
     $dumpfile("and-gate-tb.vcd");
     $dumpvars(0, and_gate_tb);
+end
 
-    x = 0;
-    y = 0;
+// SIMULATION
+initial begin
+    $display("test start");
+
+    X = 0;
+    Y = 0;
     #20;
 
-    x = 1;
-    y = 0;
+    X = 1;
+    Y = 0;
     #20;
 
-    x = 0;
-    y = 1;
+    X = 0;
+    Y = 1;
     #20;
 
-    x = 1;
-    y = 1;
+    X = 1;
+    Y = 1;
     #20;
 
     $display("test complete");
-
+    $finish;
 end
 
 endmodule

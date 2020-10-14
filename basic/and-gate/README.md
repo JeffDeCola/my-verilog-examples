@@ -6,9 +6,9 @@ _A basic AND logic gate._
 
 ## SCHEMATIC
 
-*I generated this figure using `LaTeX` in
+_This figure was created using `LaTeX` in
 [my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/and-gate)
-repo.*
+repo._
 
 <p align="center">
     <img src="svgs/and-gate.svg"
@@ -27,12 +27,13 @@ The main part of the code is,
 ```
 
 The entire code is
-[and-gate.v](and-gate.v)
+[and-gate.v](and-gate.v).
 
 ## RUN (SIMULATE)
 
-I used
-[iverilog](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/and-gate)
+I used my testbench
+[and-gate-tb.v](and-gate-tb.v) with
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
 ```bash
