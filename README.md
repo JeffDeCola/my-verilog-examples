@@ -10,7 +10,8 @@ These examples also contain info I gathered from other sources.
 
 Table of Contents,
 
-* [BASIC](https://github.com/JeffDeCola/my-systemverilog-examples#basic)
+* [BASIC](https://github.com/JeffDeCola//tree/masterm#basic)
+* [BASIC SYNCHRONOUS LOGIC](https://github.com/JeffDeCola//tree/masterm#basic-synchronous-logic)
 
 Documentation and reference,
 
