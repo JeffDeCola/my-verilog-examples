@@ -37,6 +37,13 @@ _All sections in alphabetical order._
 
    _A basic d-flip-flop._
 
+### BASIC SYNCHRONOUS LOGIC
+
+* [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+
+   _Allowing one device access to a shared resource (Taking in N device
+   requests, granting access to only one)._
+
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
 For fun, I use concourse to update
