@@ -1,12 +1,14 @@
+// AND gate
 module and_gate(
-    x,
-    y,
-    xy
+    x,      // in1
+    y,      // in2
+    xy      // out
 );
 
-    input x, y;
-    output xy;
+// PORT DECLARATION
+input x, y;
+output xy;
 
-    and(xy, x, y);
+and(xy, x, y);
 
 endmodule
