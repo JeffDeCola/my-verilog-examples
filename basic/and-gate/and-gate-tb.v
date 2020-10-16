@@ -3,14 +3,14 @@
 
 module and_gate_tb;
 
-// DECLARE INPUT AND OUTPUTS
+// DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg X, Y;
 wire XY;
 
 // UUT
 and_gate uut(.x(X), .y(Y), .xy(XY));
 
-//INIT VALUES
+// INIT VALUES
 initial begin
     $dumpfile("and-gate-tb.vcd");
     $dumpvars(0, and_gate_tb);

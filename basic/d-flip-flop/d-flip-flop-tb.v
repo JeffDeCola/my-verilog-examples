@@ -3,20 +3,20 @@
 
 module d_flip_flop_tb;
 
-// DECLARE INPUT AND OUTPUTS
+// DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg D, CLK;
 wire Q, Q_BAR;
 
 // UUT
 d_flip_flop uut(.d(D), .clk(CLK), .q(Q), .q_bar(Q_BARr));
 
-//INIT VALUES
+// INIT VALUES
 initial begin
     $dumpfile("d-flip-flop-tb.vcd");
     $dumpvars(0, d_flip_flop_tb);
 end
 
-//CLOCK
+// CLOCK
 initial begin
     CLK = 0;
     forever #10 CLK = ~CLK;

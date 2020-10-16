@@ -1,20 +1,24 @@
-// D flip-flop Code
+// D flip-flop
 module d_flip_flop (
-    d, 
-    clk, 
-    q, 
-    q_bar
+    d,      // d in
+    q,      // q out
+    q_bar   // q bar out
+    clk,    // Clock
 );
 
-    input d ,clk;
-    output q, q_bar;
-    wire d ,clk;
-    reg q, q_bar;
+// INPUT/OUTPUT
+input d;
+input clk;
+output q, q_bar;
+
+// DATA TYPES    
+wire d ,clk;
+reg q, q_bar;
   	 
-    always @ (posedge clk)
-    begin
-        q <= d;
-        q_bar <= !d;
-    end
+always @ (posedge clk)
+begin
+    q <= d;
+    q_bar <= !d;
+end
 
 endmodule
