@@ -47,9 +47,9 @@ then
     # macOS
     echo "macOS Detected"
     echo "Launching gtkWAVE in the background"
-    echo "Using command: open -a gtkwave -f ${name}-tb.gtkw"
-    echo ""
-    open -a gtkwave -f "${name}"-tb.gtkw 
+    echo "Using command: /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f ${name}-tb.gtkw"
+    exho ""
+    /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f "${name}"-tb.gtkw 
 elif [ ${machine} = "Linux" ]
 then
     # LINUX
