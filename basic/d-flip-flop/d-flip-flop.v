@@ -2,11 +2,11 @@
 module d_flip_flop (
     d,      // d in
     q,      // q out
-    q_bar   // q bar out
+    q_bar,   // q bar out
     clk,    // Clock
 );
 
-// INPUT/OUTPUT
+// PORT DECLARATION
 input d;
 input clk;
 output q, q_bar;
@@ -14,7 +14,8 @@ output q, q_bar;
 // DATA TYPES    
 wire d ,clk;
 reg q, q_bar;
-  	 
+
+// CODE STARTS HERE
 always @ (posedge clk)
 begin
     q <= d;

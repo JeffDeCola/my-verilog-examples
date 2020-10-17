@@ -8,7 +8,10 @@ reg D, CLK;
 wire Q, Q_BAR;
 
 // UUT
-d_flip_flop uut(.d(D), .clk(CLK), .q(Q), .q_bar(Q_BARr));
+d_flip_flop uut(
+    .d(D), .clk(CLK),
+    .q(Q), .q_bar(Q_BARr)
+);
 
 // INIT VALUES
 initial begin
@@ -26,31 +29,17 @@ end
 initial begin
     $display("test start");
 
-    D = 0;
-
-    #15;
-    D = 1;
-    
-    #10;
-    D = 0;
- 
-    #20;
-    D = 1;
-
-    #20;
-    D = 0;
-
-    #10
-    D = 1;
-
-    #5
-    D = 0;
-    #5
-    D = 1;
-
+    #0   D = 0;
+    #15; D = 1;
+    #10; D = 0;
+    #20; D = 1;
+    #20; D = 0;
+    #10  D = 1;
+    #5   D = 0;
+    #5   D = 1;
+    #20  D = 0;
     #20
-    D=0;
-
+    
     $display("test complete");
     $finish;
 end
