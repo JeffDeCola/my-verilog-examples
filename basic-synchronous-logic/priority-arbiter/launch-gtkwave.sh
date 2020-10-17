@@ -1,4 +1,4 @@
 #!/bin/sh -e
 # my-systemverilog-examples launch-gtkwave.sh
 
-gtkwave -f priority-arbiter-tb.gtkw &
+sh ../../launch-GTKWave-script/launch-gtkwave.sh priority-arbiter

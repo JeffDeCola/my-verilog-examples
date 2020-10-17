@@ -12,6 +12,7 @@ Table of Contents,
 
 * [BASIC](https://github.com/JeffDeCola/my-systemverilog-examples#basic)
 * [BASIC SYNCHRONOUS LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#basic-synchronous-logic)
+* [SCRIPT TO LAUNCH GTKWAVE](https://github.com/JeffDeCola/my-systemverilog-examples#script-to-launch-gtkwave)
 
 Documentation and reference,
 
@@ -44,6 +45,15 @@ _All sections in alphabetical order._
 
    _Allowing one device access to a shared resource (Taking in N device
    requests, granting access to only one)._
+
+## SCRIPT TO LAUNCH GTKWAVE
+
+To make things easier when viewing a waveform, I made a script that will launch
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet) with your saved `*.gtkw` file
+from Windows WSL, macOS or Linux (Whatever you use).
+
+The script is
+[launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh).
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
