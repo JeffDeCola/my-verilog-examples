@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Oct 17 02:33:45 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-synchronous-logic\priority-arbiter\priority-arbiter-tb.vcd"
+[dumpfile_mtime] "Fri Oct 16 18:26:23 2020"
+[dumpfile_size] 879
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-synchronous-logic\priority-arbiter\priority-arbiter-tb.gtkw"
+[timestart] 1
+[size] 1920 996
+[pos] -243 -243
+*-4.465757 37 155 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[markername] Areset
+[treeopen] priority_arbiter_tb.
+[sst_width] 197
+[signals_width] 209
+[sst_expanded] 1
+[sst_vpaned_height] 587
+@28
+[color] 2
+priority_arbiter_tb.CLK
+[color] 2
+priority_arbiter_tb.RST
+@800208
+-REQUESTS
+@800028
+[color] 4
+#{priority_arbiter_tb.REQ_[2:0]} priority_arbiter_tb.REQ_2 priority_arbiter_tb.REQ_1 priority_arbiter_tb.REQ_0
+@28
+[color] 3
+priority_arbiter_tb.REQ_2
+[color] 3
+priority_arbiter_tb.REQ_1
+[color] 3
+priority_arbiter_tb.REQ_0
+@1001200
+-group_end
+@1000208
+-REQUESTS
+@800200
+-GRANTS
+@800028
+#{priority_arbiter_tb.GNT_[2:0]} priority_arbiter_tb.GNT_2 priority_arbiter_tb.GNT_1 priority_arbiter_tb.GNT_0
+@28
+[color] 5
+priority_arbiter_tb.GNT_2
+[color] 5
+priority_arbiter_tb.GNT_1
+[color] 5
+priority_arbiter_tb.GNT_0
+@1001200
+-group_end
+@1000200
+-GRANTS
+[pattern_trace] 1
+[pattern_trace] 0

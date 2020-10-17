@@ -1,4 +1,4 @@
-//  A three level ROUND-ROBIN ARBITER
+//  A three level Priority Arbiter
 module priority_arbitor(
     req_0,      // Request 0
     req_1,      // Request 1
@@ -20,6 +20,7 @@ wire req_0, req_1, req_2;
 wire clk, rst;
 reg gnt_0, gnt_1, gnt_2;
 
+// CODE STARTS HERE
 always @ (posedge clk or posedge rst)
 begin
     if (rst) begin

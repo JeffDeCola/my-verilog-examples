@@ -8,7 +8,10 @@ reg X, Y;
 wire XY;
 
 // UUT
-and_gate uut(.x(X), .y(Y), .xy(XY));
+and_gate uut(
+    .x(X), .y(Y),
+    .xy(XY)
+);
 
 // INIT VALUES
 initial begin
@@ -20,22 +23,12 @@ end
 initial begin
     $display("test start");
 
-    X = 0;
-    Y = 0;
-    #20;
-
-    X = 1;
-    Y = 0;
-    #20;
-
-    X = 0;
-    Y = 1;
-    #20;
-
-    X = 1;
-    Y = 1;
-    #20;
-
+    #0  X = 0; Y = 0;
+    #10 X = 1; Y = 0;
+    #10 X = 0; Y = 1;
+    #10 X = 1; Y = 1;
+    #10
+    
     $display("test complete");
     $finish;
 end
