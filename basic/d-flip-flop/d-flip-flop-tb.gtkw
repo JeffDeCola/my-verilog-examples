@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Oct 17 05:50:40 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic\d-flip-flop\d-flip-flop-tb.vcd"
+[dumpfile_mtime] "Sat Oct 17 05:47:36 2020"
+[dumpfile_size] 576
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic\d-flip-flop\d-flip-flop.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] 544 131
+*-5.226674 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 153
+@29
+[color] 1
+d_flip_flop_tb.CLK
+@28
+d_flip_flop_tb.D
+[color] 5
+d_flip_flop_tb.Q
+[color] 5
+d_flip_flop_tb.Q_BARr
+[pattern_trace] 1
+[pattern_trace] 0
