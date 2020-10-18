@@ -17,6 +17,21 @@ repo._
 
 ## VERILOG CODE
 
+There are many ways to design an AND gate
+
+### METHOD 1
+
+Using a gate primate,
+```
+
+```
+
+### METHOD 2
+
+
+### METHOD 3
+
+
 The main part of the code is,
 
 ```verilog

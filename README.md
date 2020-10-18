@@ -10,9 +10,17 @@ These examples also contain info I gathered from other sources.
 
 Table of Contents,
 
-* [BASIC](https://github.com/JeffDeCola/my-systemverilog-examples#basic)
-* [BASIC SYNCHRONOUS LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#basic-synchronous-logic)
-* [SCRIPT TO LAUNCH GTKWAVE](https://github.com/JeffDeCola/my-systemverilog-examples#script-to-launch-gtkwave)
+* [BASIC CODE](https://github.com/JeffDeCola/my-systemverilog-examples#basic-code)
+  * COMBINATIONAL LOGIC
+  * SEQUENTIAL LOGIC
+* [COMBINATIONAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#combinational-logic)
+  * DATA OPERATORS
+  * DECODERS & ENCODERS
+  * MULTIPLEXERS & DEMULTIPLEXERS
+  * SHIFTERS
+* [SEQUENTIAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#sequential-logic)
+  * ARBITERS
+* [SYSTEMS](https://github.com/JeffDeCola/my-systemverilog-examples#systems)
 
 Documentation and reference,
 
@@ -27,29 +35,81 @@ Documentation and reference,
 
 ## SYSTEMVERILOG EXAMPLES
 
-_All sections in alphabetical order._
+_All sections in alphabetical order.
+Each example uses
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+to simulate and
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+to view the output._
 
-### BASIC
+### BASIC CODE
 
-* [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
+* COMBINATIONAL LOGIC
 
-   _A simple AND gate._
+  * [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
 
-* [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+    _A simple AND gate **designed many different ways**._
 
-   _A basic d-flip-flop._
+  * [simple-and-or-not-configuration](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
 
-### BASIC SYNCHRONOUS LOGIC
+    _Simple combinational logic **designed many different ways**._
 
-* [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+* SEQUENTIAL LOGIC
 
-   _Allowing one device access to a shared resource (Taking in N device
-   requests, granting access to only one)._
+  * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+
+     _A basic d-flip-flop._
+
+### COMBINATIONAL LOGIC
+
+* DATA OPERATORS
+
+  * [2-bit-half-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+
+    _A 2-bit half-adder._
+
+  * [2-bit-full-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+
+    _A 2-bit full adder._
+
+* DECODERS & ENCODERS
+
+  * [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+
+    _Coming soon._
+
+* MULTIPLEXERS & DEMULTIPLEXERS
+
+  * [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+
+    _Coming soon._
+
+* SHIFTERS
+
+  * [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+
+    _Coming soon._
+
+### SEQUENTIAL LOGIC
+
+* ARBITERS
+
+  * [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+
+     _Allowing one device access to a shared resource (Taking in N device
+     requests, granting access to only one)._
+
+### SYSTEMS
+
+* [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+
+    _Coming soon._
 
 ## SCRIPT TO LAUNCH GTKWAVE
 
-To make things easier when viewing a waveform, I made a script that will launch
-[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet) with your saved `*.gtkw` file
+To make things easier when viewing a waveform, I wrote a script that will launch
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+with your saved `*.gtkw` file
 from Windows WSL, macOS or Linux (Whatever you use).
 
 The script is

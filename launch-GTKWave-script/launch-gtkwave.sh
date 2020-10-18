@@ -48,7 +48,7 @@ then
     echo "macOS Detected"
     echo "Launching gtkWAVE in the background"
     echo "Using command: /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f ${name}-tb.gtkw &"
-    esho ""
+    echo ""
     /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f "${name}"-tb.gtkw &
 elif [ ${machine} = "Linux" ]
 then
