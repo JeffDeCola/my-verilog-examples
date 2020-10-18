@@ -1,6 +1,6 @@
 # simple-and-or-not-configuration example
 
-_Simple combinational logic designed many different ways._
+_A few different ways to model this simple combinational logic._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

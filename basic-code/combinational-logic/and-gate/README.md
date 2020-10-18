@@ -1,6 +1,6 @@
 # and-gate example
 
-_A simple AND gate designed many different ways._
+_A few different ways to model an AND gate._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
