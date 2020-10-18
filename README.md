@@ -106,7 +106,7 @@ to view the output._
 
   * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor)
 
-    _Coming soon._
+    _A programable 8-bit microprocessor._
 
 ## SCRIPT TO LAUNCH GTKWAVE
 
