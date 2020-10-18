@@ -21,6 +21,7 @@ Table of Contents,
 * [SEQUENTIAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#sequential-logic)
   * ARBITERS
 * [SYSTEMS](https://github.com/JeffDeCola/my-systemverilog-examples#systems)
+  * MICROPROCESSORS
 
 Documentation and reference,
 
@@ -101,7 +102,9 @@ to view the output._
 
 ### SYSTEMS
 
-* [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+* MICROPROCESSORS
+
+  * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
 
     _Coming soon._
 
