@@ -1,14 +1,14 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Sat Oct 17 05:49:00 2020
+[*] Sun Oct 18 19:38:14 2020
 [*]
-[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic\and-gate\and-gate-tb.vcd"
-[dumpfile_mtime] "Sat Oct 17 05:47:43 2020"
-[dumpfile_size] 375
-[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic\and-gate\and-gate.gtkw"
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\combinational-logic\and-gate\and-gate-tb.vcd"
+[dumpfile_mtime] "Sun Oct 18 19:37:40 2020"
+[dumpfile_size] 539
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\combinational-logic\and-gate\and-gate-tb.gtkw"
 [timestart] 0
 [size] 1920 996
-[pos] -757 -251
+[pos] -1 -1
 *-2.363878 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] and_gate_tb.
 [sst_width] 197
@@ -18,7 +18,9 @@
 @28
 and_gate_tb.X
 and_gate_tb.Y
-@29
-and_gate_tb.XY
+and_gate_tb.XY_1
+and_gate_tb.XY_2
+and_gate_tb.XY_3
+and_gate_tb.XY_4
 [pattern_trace] 1
 [pattern_trace] 0

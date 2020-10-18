@@ -59,7 +59,7 @@ to view the output._
 
   * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
-     _A basic d-flip-flop._
+     _A basic, asynchronous and synchronous d-flip-flop._
 
 ### COMBINATIONAL LOGIC
 
