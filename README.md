@@ -47,17 +47,17 @@ to view the output._
 
 * COMBINATIONAL LOGIC
 
-  * [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
+  * [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/and-gate)
 
     _A few different ways to model an AND gate._
 
-  * [simple-and-or-not-configuration](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
+  * [simple-and-or-not-configuration](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/simple-and-or-not-configuration)
 
     _A few different ways to model this simple combinational logic._
 
 * SEQUENTIAL LOGIC
 
-  * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/d-flip-flop)
+  * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
      _A basic d-flip-flop._
 
@@ -65,13 +65,13 @@ to view the output._
 
 * DATA OPERATORS
 
-  * [2-bit-half-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
-
-    _A 2-bit half-adder._
-
-  * [2-bit-full-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+  * [2-bit-full-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/data-operators/2-bit-full-adder)
 
     _A 2-bit full adder._
+
+  * [2-bit-half-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/data-operators/2-bit-half-adder)
+
+    _A 2-bit half-adder._
 
 * DECODERS & ENCODERS
 
@@ -95,7 +95,7 @@ to view the output._
 
 * ARBITERS
 
-  * [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+  * [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter)
 
      _Allowing one device access to a shared resource (Taking in N device
      requests, granting access to only one)._
@@ -104,7 +104,7 @@ to view the output._
 
 * MICROPROCESSORS
 
-  * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-synchronous-logic/priority-arbiter)
+  * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor)
 
     _Coming soon._
 
