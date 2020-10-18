@@ -49,11 +49,11 @@ to view the output._
 
   * [and-gate](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
 
-    _A simple AND gate **designed many different ways**._
+    _A few different ways to model an AND gate._
 
   * [simple-and-or-not-configuration](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/and-gate)
 
-    _Simple combinational logic **designed many different ways**._
+    _A few different ways to model this simple combinational logic._
 
 * SEQUENTIAL LOGIC
 

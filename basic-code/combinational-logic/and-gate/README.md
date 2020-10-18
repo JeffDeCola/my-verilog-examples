@@ -1,6 +1,6 @@
 # and-gate example
 
-_A basic AND logic gate._
+_A simple AND gate designed many different ways._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
