@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Mon Oct 19 22:18:33 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\multiplexers-and-demultiplexers\mux-to-demux\mux-to-demux-tb.vcd"
+[dumpfile_mtime] "Mon Oct 19 22:16:41 2020"
+[dumpfile_size] 2604
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\multiplexers-and-demultiplexers\mux-to-demux\mux-to-demux-tb.gtkw"
+[timestart] 0
+[size] 1920 996
+[pos] -1 -1
+*-6.330506 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+mux_to_demux_tb.SEL[1:0]
+@200
+-
+@800022
+#{IN} mux_to_demux_tb.D_IN mux_to_demux_tb.C_IN mux_to_demux_tb.B_IN mux_to_demux_tb.A_IN
+@28
+mux_to_demux_tb.D_IN
+mux_to_demux_tb.C_IN
+mux_to_demux_tb.B_IN
+mux_to_demux_tb.A_IN
+@1001200
+-group_end
+@200
+-
+@800022
+#{OUT} mux_to_demux_tb.D_OUT mux_to_demux_tb.C_OUT mux_to_demux_tb.B_OUT mux_to_demux_tb.A_OUT
+@28
+mux_to_demux_tb.D_OUT
+mux_to_demux_tb.C_OUT
+mux_to_demux_tb.B_OUT
+mux_to_demux_tb.A_OUT
+@1001200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

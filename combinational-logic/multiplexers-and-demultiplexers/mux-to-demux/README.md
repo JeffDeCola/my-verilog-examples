@@ -1,6 +1,10 @@
-# demux-1x4 example
+# mux-to-demux example
 
-_Demultiplexer - One input, Four outputs._
+_MCombining the
+[mux-4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
+to the
+[demux_1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
+to prove the input will equal the output (for the selected output)._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -9,33 +13,16 @@ _Demultiplexer - One input, Four outputs._
 The main part of the code is,
 
 ```verilog
-reg  a, b, c, d;
-
-always @ ( * ) begin
-    case(sel)
-        2'b00 : begin
-            a <= y; b <= 0; c <= 0; d <= 0;
-        end
-        2'b01 : begin
-            a <= 0; b <= y; c <= 0; d <= 0;
-        end
-        2'b10 : begin
-            a <= 0; b <= 0; c <= y; d <= 0;
-        end
-        2'b11 : begin
-            a <= 0; b <= 0; c <= 0; d <= y;
-        end
-    endcase
-end
+??????????????
 ```
 
 The entire code is
-[demux-1x4.v](demux-1x4.v).
+[mux-to-demux.v](mux-to-demux.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[demux-1x4-tb.v](demux-1x4-tb.v) with
+[mux-to-demux-tb.v](mux-to-demux-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
