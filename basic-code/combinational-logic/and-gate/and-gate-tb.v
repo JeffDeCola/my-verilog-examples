@@ -4,7 +4,7 @@
 module and_gate_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg X, Y;
+reg  X, Y;
 wire XY;
 
 // UUT
@@ -13,17 +13,17 @@ and_gate uut(
     .xy_1(XY_1), .xy_2(XY_2), .xy_3(XY_3), .xy_4(XY_4)
 );
 
-// INIT VALUES
+// FILES
 initial begin
     $dumpfile("and-gate-tb.vcd");
     $dumpvars(0, and_gate_tb);
 end
 
-// SIMULATION
+// TESTCASE
 initial begin
     $display("test start");
-
-    #0  X = 0; Y = 0;
+    X = 0; Y = 0;
+    
     #10 X = 1; Y = 0;
     #10 X = 0; Y = 1;
     #10 X = 1; Y = 1;

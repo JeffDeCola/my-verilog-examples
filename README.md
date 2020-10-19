@@ -51,15 +51,11 @@ to view the output._
 
     _A few different ways to model an AND gate._
 
-  * [simple-and-or-not-configuration](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/simple-and-or-not-configuration)
-
-    _A few different ways to model this simple combinational logic._
-
 * SEQUENTIAL LOGIC
 
   * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
-     _A basic, asynchronous and synchronous d-flip-flop._
+     _A basic, synchronous and asynchronous d-flip-flop._
 
 ### COMBINATIONAL LOGIC
 
