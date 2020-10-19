@@ -1,6 +1,6 @@
-# simple-memory-using-2d-array example
+# simple-memory-using-1d-array example
 
-_A simple memory modeled using a 2D array._
+_A simple memory modeled using a 1D array._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -29,12 +29,12 @@ end
 ```
 
 The entire code is
-[simple-memory-using-2d-array.v](simple-memory-using-2d-array.v).
+[simple-memory-using-1d-array.v](simple-memory-using-1d-array.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[simple-memory-using-2d-array-tb.v](simple-memory-using-2d-array-tb.v) with
+[simple-memory-using-1d-array-tb.v](simple-memory-using-1d-array-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 

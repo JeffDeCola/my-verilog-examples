@@ -1,5 +1,5 @@
 $date
-	Mon Oct 19 09:42:50 2020
+	Mon Oct 19 10:22:32 2020
 $end
 $version
 	Icarus Verilog
@@ -7,7 +7,7 @@ $end
 $timescale
 	1ns
 $end
-$scope module simple_memory_using_2d_array_tb $end
+$scope module simple_memory_using_1d_array_tb $end
 $var wire 8 ! RDATA [7:0] $end
 $var reg 4 " ADDR [3:0] $end
 $var reg 1 # CLK $end

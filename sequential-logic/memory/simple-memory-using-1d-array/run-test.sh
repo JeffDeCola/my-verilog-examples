@@ -9,15 +9,15 @@ echo " "
 echo "First we synthesis to our output *.vvp."
 echo " "
 
-echo "'iverilog -o simple-memory-using-2d-array-tb.vvp simple-memory-using-2d-array-tb.v'"
-iverilog -o simple-memory-using-2d-array-tb.vvp simple-memory-using-2d-array-tb.v 
+echo "'iverilog -o simple-memory-using-1d-array-tb.vvp simple-memory-using-1d-array-tb.v'"
+iverilog -o simple-memory-using-1d-array-tb.vvp simple-memory-using-1d-array-tb.v 
 echo " "
 
 echo "Now we run simulation to create the waveform file *.vcd."
 echo " "
 
-echo "'./simple-memory-using-2d-array-tb.vvp'"
-./simple-memory-using-2d-array-tb.vvp
+echo "'./simple-memory-using-1d-array-tb.vvp'"
+./simple-memory-using-1d-array-tb.vvp
 echo " "
 
 echo "Now you can open the waveform file *.vcd with GTKWave."
