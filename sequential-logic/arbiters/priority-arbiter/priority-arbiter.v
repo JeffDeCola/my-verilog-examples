@@ -1,5 +1,5 @@
 //  A three level Priority Arbiter with asynchronous reset
-module priority_arbitor(
+module priority_arbiter(
     input clk,          // Clock  
     input rst,          // Reset
     input req_0,        // Request 0
@@ -15,8 +15,7 @@ wire req_0, req_1, req_2;
 wire clk, rst;
 reg gnt_0, gnt_1, gnt_2;
 
-always @ (posedge clk or posedge rst)
-begin
+always @ (posedge clk or posedge rst) begin
     if (rst) begin
         gnt_0 <= 0;
         gnt_1 <= 0;

@@ -1,0 +1,120 @@
+$date
+	Mon Oct 19 09:42:50 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module simple_memory_using_2d_array_tb $end
+$var wire 8 ! RDATA [7:0] $end
+$var reg 4 " ADDR [3:0] $end
+$var reg 1 # CLK $end
+$var reg 1 $ RST $end
+$var reg 8 % WDATA [7:0] $end
+$var reg 1 & WRITE $end
+$scope module uut $end
+$var wire 4 ' addr [3:0] $end
+$var wire 1 # clk $end
+$var wire 8 ( rdata [7:0] $end
+$var wire 1 $ rst $end
+$var wire 8 ) wdata [7:0] $end
+$var wire 1 & write $end
+$var integer 32 * i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx *
+b0 )
+bx (
+b111 '
+0&
+b0 %
+0$
+0#
+b111 "
+bx !
+$end
+#10
+1#
+#15
+1$
+#20
+0#
+#30
+b0 !
+b0 (
+b1111 *
+1#
+#35
+0$
+#40
+0#
+#50
+1#
+#55
+b11 "
+b11 '
+b100010 %
+b100010 )
+1&
+#60
+0#
+#70
+b100010 !
+b100010 (
+1#
+#75
+b0 !
+b0 (
+b111 "
+b111 '
+b110011 %
+b110011 )
+#80
+0#
+#90
+b110011 !
+b110011 (
+1#
+#95
+b0 !
+b0 (
+b10 "
+b10 '
+0&
+#100
+0#
+#110
+1#
+#115
+b100010 !
+b100010 (
+b11 "
+b11 '
+#120
+0#
+#130
+b0 !
+b0 (
+b1111 *
+1#
+1$
+#140
+0#
+#150
+1#
+0$
+#160
+0#
+#170
+1#
+b111 "
+b111 '
+#180
+0#
+#190
+1#

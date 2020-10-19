@@ -96,6 +96,12 @@ to view the output._
      _Allowing one device access to a shared resource (Taking in N device
      requests, granting access to only one)._
 
+* MEMORY
+
+  * [simple-memory-using-2d-array](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/memory/simple-memory-using-2d-array)
+
+    _A simple memory modeled using a 2D array_
+
 ### SYSTEMS
 
 * MICROPROCESSORS
