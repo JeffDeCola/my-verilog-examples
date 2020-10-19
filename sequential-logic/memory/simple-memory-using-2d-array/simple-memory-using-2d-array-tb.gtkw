@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Mon Oct 19 16:43:11 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\memory\simple-memory-using-2d-array\simple-memory-using-2d-array-tb.vcd"
+[dumpfile_mtime] "Mon Oct 19 16:42:50 2020"
+[dumpfile_size] 1036
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\memory\simple-memory-using-2d-array\simple-memory-using-2d-array-tb.gtkw"
+[timestart] 0
+[size] 1920 1057
+[pos] 1911 -9
+*-4.613030 70 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] simple_memory_using_2d_array_tb.
+[sst_width] 197
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 314
+@28
+simple_memory_using_2d_array_tb.CLK
+simple_memory_using_2d_array_tb.RST
+@200
+-
+@28
+simple_memory_using_2d_array_tb.WRITE
+@22
+simple_memory_using_2d_array_tb.ADDR[3:0]
+@23
+simple_memory_using_2d_array_tb.WDATA[7:0]
+@200
+-
+@22
+simple_memory_using_2d_array_tb.RDATA[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
