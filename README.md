@@ -61,11 +61,11 @@ to view the output._
 
 * DATA OPERATORS
 
-  * [2-bit-full-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/data-operators/2-bit-full-adder)
+  * [full-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/data-operators/full-adder)
 
-    _A 2-bit full adder._
+    _A 2-bit full-adder._
 
-  * [2-bit-half-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/data-operators/2-bit-half-adder)
+  * [half-adder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/data-operators/half-adder)
 
     _A 2-bit half-adder._
 
