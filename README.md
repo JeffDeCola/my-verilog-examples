@@ -98,9 +98,9 @@ to view the output._
 
 * MEMORY
 
-  * [simple-memory-using-2d-array](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/memory/simple-memory-using-2d-array)
+  * [simple-memory-using-1d-array](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array)
 
-    _A simple memory modeled using a 2D array_
+    _A simple memory modeled using a 1D array_
 
 ### SYSTEMS
 

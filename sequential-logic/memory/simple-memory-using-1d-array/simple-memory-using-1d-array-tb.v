@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
-`include "simple-memory-using-2d-array.v"
+`include "simple-memory-using-1d-array.v"
 
-module simple_memory_using_2d_array_tb;
+module simple_memory_using_1d_array_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg  CLK, RST;
@@ -11,7 +11,7 @@ reg  [7:0] WDATA;
 wire [7:0] RDATA;
 
 // UUT
-simple_memory_using_2d_array uut(
+simple_memory_using_1d_array uut(
     .clk(CLK), .rst(RST),
     .write(WRITE),
     .addr(ADDR),
@@ -21,8 +21,8 @@ simple_memory_using_2d_array uut(
 
 // FILES
 initial begin
-    $dumpfile("simple-memory-using-2d-array-tb.vcd");
-    $dumpvars(0, simple_memory_using_2d_array_tb);
+    $dumpfile("simple-memory-using-1d-array-tb.vcd");
+    $dumpvars(0, simple_memory_using_1d_array_tb);
 end
 
 // CLOCK

@@ -1,5 +1,5 @@
-// Simple memory using 2D array. 16byte RAM
-module simple_memory_using_2d_array(
+// Simple memory using 1D array. 16byte RAM
+module simple_memory_using_1d_array(
     input  clk,             // Clock
     input  rst,             // Reset memory to 0
     input  write,           // Write data
