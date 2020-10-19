@@ -1,32 +1,33 @@
 // AND gate designed a few different ways
 module and_gate(
-    x,        // in x
-    y,        // in y
-    xy_1      // out 1 - ???
-    xy_2      // out 2 - ???
-    xy_3      // out 3 - ???
-    xy_4      // out 4 - ???
+    input  x,        // x
+    input  y,        // y
+    output xy_1,     // CONTINUOUS ASSIGNMENT STATEMENT
+    output xy_2,     // ALWAYS BLOCK with BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    output xy_3,     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    output xy_4      // GATE PRIMATIVES
 );
 
-// PORT DECLARATION
-input x, y;
-output xy_0, xy_1, xy_3, xy_4;
+// DATA TYPES
+reg xy_2;
+reg xy_3;
 
-// DATA TYPES (NOT NEEDED IN THIS EXAMPLE)   
-wire x, y;
-wire xy_0, xy_1, xy_3, xy_4;
+// METHOD 1 - CONTINUOUS ASSIGNMENT STATEMENT
+assign xy_1 = x & y;
 
-// CODE STARTS HERE
+// METHOD 2 - ALWAYS BLOCK with BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+always @ ( * )
+begin
+    xy_2 = x & y;
+end
 
-// METHOD 1 - BITWISE AND OPERATOR
+// METHOD 3 - ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+always @ ( * )
+begin
+    xy_3 <= x & y;
+end
 
-// METHOD 2 - ???
+// METHOD 4 - GATE PRIMATIVES
+and(xy_4, x, y);
 
-// METHOD 3 - ???
-
-// METHOD 4 - ???
-
-
-and(xy, x, y);
-xy <= x + y
 endmodule

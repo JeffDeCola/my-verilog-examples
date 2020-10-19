@@ -17,28 +17,26 @@ repo._
 
 ## VERILOG CODE
 
-There are many ways to design an AND gate
-
-### METHOD 1
-
-Using a gate primate,
-```
-
-```
-
-### METHOD 2
-
-
-### METHOD 3
-
-
-The main part of the code is,
+There are many ways to design an AND gate,
 
 ```verilog
-    input x, y;
-    output xy;
+    // METHOD 1 - CONTINUOUS ASSIGNMENT STATEMENT
+    assign xy_1 = x & y;
 
-    and(xy, x, y);
+    // METHOD 2 - ALWAYS BLOCK with BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @ ( * )
+    begin
+        xy_2 = x & y;
+    end
+
+    // METHOD 3 - ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @ ( * )
+    begin
+        xy_3 <= x & y;
+    end
+
+    // METHOD 4 - GATE PRIMATIVES
+    and(xy_4, x, y);
 ```
 
 The entire code is

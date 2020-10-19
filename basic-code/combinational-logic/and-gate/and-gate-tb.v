@@ -10,7 +10,7 @@ wire XY;
 // UUT
 and_gate uut(
     .x(X), .y(Y),
-    .xy(XY)
+    .xy_1(XY_1), .xy_2(XY_2), .xy_3(XY_3), .xy_4(XY_4)
 );
 
 // INIT VALUES

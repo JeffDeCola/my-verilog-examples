@@ -1,5 +1,5 @@
 $date
-	Fri Oct 16 22:47:43 2020
+	Sun Oct 18 12:37:40 2020
 $end
 $version
 	Icarus Verilog
@@ -8,28 +8,40 @@ $timescale
 	1ns
 $end
 $scope module and_gate_tb $end
-$var wire 1 ! XY $end
-$var reg 1 " X $end
-$var reg 1 # Y $end
+$var wire 1 ! XY_4 $end
+$var wire 1 " XY_3 $end
+$var wire 1 # XY_2 $end
+$var wire 1 $ XY_1 $end
+$var reg 1 % X $end
+$var reg 1 & Y $end
 $scope module uut $end
-$var wire 1 " x $end
-$var wire 1 ! xy $end
-$var wire 1 # y $end
+$var wire 1 % x $end
+$var wire 1 $ xy_1 $end
+$var wire 1 ! xy_4 $end
+$var wire 1 & y $end
+$var reg 1 # xy_2 $end
+$var reg 1 " xy_3 $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+0&
+0%
+0$
 0#
 0"
 0!
 $end
 #10
-1"
+1%
 #20
-1#
-0"
+1&
+0%
 #30
-1!
 1"
+1$
+1!
+1#
+1%
 #40
