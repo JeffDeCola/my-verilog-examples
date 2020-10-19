@@ -85,7 +85,7 @@ to view the output._
 
     _Multiplexer - Four inputs, one output._
 
-  * [mux-to-demux]  
+  * [mux-to-demux](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)  
 
     _Combining the `mux-4x1` to the `demux_1x4` to prove the input will equal
     the output (For the selected output)_

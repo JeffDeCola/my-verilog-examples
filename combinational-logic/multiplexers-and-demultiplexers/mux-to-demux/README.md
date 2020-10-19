@@ -13,7 +13,19 @@ to prove the input will equal the output (for the selected output)._
 The main part of the code is,
 
 ```verilog
-??????????????
+wire  y;
+
+mux_4x1 MUX_4X1 (
+    .a(a_in), .b(b_in), .c(c_in), .d(d_in),
+    .sel(sel),
+    .y(y)
+);
+
+demux_1x4 DEMUX_1X4 (
+    .y(y),
+    .sel(sel),
+    .a(a_out), .b(b_out), .c(c_out), .d(d_out)
+);
 ```
 
 The entire code is
