@@ -1,6 +1,6 @@
 # d-flip-flop example
 
-_A basic, asynchronous and synchronous d-flip-flop._
+_A basic, synchronous and asynchronous d-flip-flop._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -17,14 +17,36 @@ repo._
 
 ## VERILOG CODE
 
-The main part of the code is,
+A basic, synchronous and asynchronous d-flip-flop,
 
 ```verilog
-    always @ (posedge clk)
-    begin
-        q <= d;
-        q_bar <= !d;
+// D FLIP-FLOP
+always @ (posedge clk) begin
+    q_1 <= d;
+    q_bar_1 <= !d;
+end
+
+// D FLIP-FLOP WITH SYNCHRONOUS RESET
+always @ (posedge clk) begin
+    if (rst) begin
+        q_2 <= 1'b0;
+        q_bar_2 <= 1'b1;
+    end else begin
+        q_2 <= d;
+        q_bar_2 <= !d;
     end
+end
+
+// D FLIP-FLOP WITH ASYNCHRONOUS RESET
+always @ (posedge clk or posedge rst) begin
+    if (rst) begin
+        q_3 <= 1'b0;
+        q_bar_3 <= 1'b1;
+    end else begin
+        q_3 <= d;
+        q_bar_3 <= !d;
+    end
+end
 ```
 
 The entire code is
