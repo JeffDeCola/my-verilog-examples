@@ -77,9 +77,13 @@ to view the output._
 
 * MULTIPLEXERS & DEMULTIPLEXERS
 
-  * [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+  * [demux_1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
 
-    _Coming soon._
+    _Demultiplexer - One input, Four outputs_
+
+  * [mux_4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
+
+    _Multiplexer - Four inputs, one output._
 
 * SHIFTERS
 
