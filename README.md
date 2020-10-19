@@ -77,13 +77,18 @@ to view the output._
 
 * MULTIPLEXERS & DEMULTIPLEXERS
 
-  * [demux_1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
+  * [demux-1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
 
     _Demultiplexer - One input, Four outputs_
 
-  * [mux_4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
+  * [mux-4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 
     _Multiplexer - Four inputs, one output._
+
+  * [mux-to-demux]  
+
+    _Combining the `mux-4x1` to the `demux_1x4` to prove the input will equal
+    the output (For the selected output)_
 
 * SHIFTERS
 
