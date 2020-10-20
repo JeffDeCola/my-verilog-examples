@@ -17,9 +17,9 @@ Table of Contents,
   * DATA OPERATORS
   * DECODERS & ENCODERS
   * MULTIPLEXERS & DEMULTIPLEXERS
-  * SHIFTERS
 * [SEQUENTIAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#sequential-logic)
   * ARBITERS
+  * SHIFTERS
 * [SYSTEMS](https://github.com/JeffDeCola/my-systemverilog-examples#systems)
   * MICROPROCESSORS
 
