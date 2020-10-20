@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Tue Oct 20 08:34:27 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\decoders-and-encoders\decoder-to-encoder\decoder-to-encoder-tb.vcd"
+[dumpfile_mtime] "Tue Oct 20 08:33:13 2020"
+[dumpfile_size] 1102
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\decoders-and-encoders\decoder-to-encoder\decoder-to-encoder-tb.gtkw"
+[timestart] 0
+[size] 1920 996
+[pos] -1 -1
+*-3.360739 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] decoder_to_encoder_tb.
+[treeopen] decoder_to_encoder_tb.uut.
+[sst_width] 197
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+decoder_to_encoder_tb.IN[2:0]
+@200
+-
+@28
+decoder_to_encoder_tb.uut.DECODER_3_8.in[2:0]
+@22
+decoder_to_encoder_tb.uut.DECODER_3_8.out[7:0]
+@200
+-
+@22
+decoder_to_encoder_tb.uut.ENCODER_8_3.in[7:0]
+@29
+decoder_to_encoder_tb.uut.ENCODER_8_3.out[2:0]
+@200
+-
+@28
+decoder_to_encoder_tb.OUT[2:0]
+[pattern_trace] 1
+[pattern_trace] 0

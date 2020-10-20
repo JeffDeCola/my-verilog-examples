@@ -1,9 +1,9 @@
 # decoder-to-encoder example
 
 _Combining the
-[decoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-8-3)
+[decoder-3-8](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-3-8)
 to the
-[encoder-3-8](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-3-8)
+[encoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-8-3)
 to prove the input will equal the output._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)

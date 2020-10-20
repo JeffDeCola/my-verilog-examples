@@ -1,6 +1,6 @@
 # encoder-8-3 example
 
-_Multiplexer - Four inputs, one output._
+_Encoder - Eights inputs (1 hot) encodes to output._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

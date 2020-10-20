@@ -1,6 +1,6 @@
 # decoder-3-8 example
 
-_Demultiplexer - One input, Four outputs._
+_Decoder - Three inputs decodes to 1 of 8 outputs (hot)._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

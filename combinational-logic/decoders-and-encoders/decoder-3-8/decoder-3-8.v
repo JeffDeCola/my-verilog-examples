@@ -1,26 +1,21 @@
-// 1x4 Demultiplexer
+// 3 to 8 Decoder
 module decoder_3_8(
-    input  y,               // 1 Input
-    input  [1:0] sel,       // Select
-    output a, b, c, d       // 4 Outputs
+    input   [2:0] in,       // 3 Input
+    output  [7:0] out       // 7 Outputs
 );
 
-reg  a, b, c, d;
+reg  [7:0] out;
 
 always @ ( * ) begin
-    case(sel)
-        2'b00 : begin
-            a <= y; b <= 0; c <= 0; d <= 0;
-        end
-        2'b01 : begin
-            a <= 0; b <= y; c <= 0; d <= 0;
-        end
-        2'b10 : begin
-            a <= 0; b <= 0; c <= y; d <= 0;
-        end
-        2'b11 : begin
-            a <= 0; b <= 0; c <= 0; d <= y;
-        end
+    case (in)
+        3'b000 : out <= 8'b00000001;
+        3'b001 : out <= 8'b00000010;
+        3'b010 : out <= 8'b00000100;
+        3'b011 : out <= 8'b00001000;
+        3'b100 : out <= 8'b00010000;
+        3'b101 : out <= 8'b00100000;
+        3'b110 : out <= 8'b01000000;
+        3'b111 : out <= 8'b10000000;
     endcase
 end
 
