@@ -8,6 +8,7 @@ reg        CLK, RST;
 reg        D;
 wire [3:0] OUT;
 integer    i;
+integer    seed=1;
 
 // UUT
 left_shift_register uut(
@@ -38,11 +39,13 @@ initial begin
     #15
     RST = 1;
     #20
+    RST = 0;
+    #20
 
     // PUMP IN RANDOM NUMBERS
-    for (i = 0; i < 10; i = i + 1) begin
+    for (i = 0; i < 30; i = i + 1) begin
         @ (posedge CLK) begin
-            D <= $random;
+            D <= $random(seed);
         end
     end
     
