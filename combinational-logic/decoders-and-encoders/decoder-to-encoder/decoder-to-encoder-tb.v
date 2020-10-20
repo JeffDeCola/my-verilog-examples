@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
-`include "encoder-to-decoder.v"
+`include "decoder-to-encoder.v"
 
-module encoder_to_decoder_tb;
+module decoder_to_encoder_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg     A_IN, B_IN, C_IN, D_IN;
@@ -10,7 +10,7 @@ wire    A_OUT, B_OUT, C_OUT, D_OUT;
 integer i;
 
 // UUT
-encoder_to_decoder uut(
+decoder_to_encoder uut(
     .a_in(A_IN), .b_in(B_IN), .c_in(C_IN), .d_in(D_IN),
     .sel(SEL),
     .a_out(A_OUT), .b_out(B_OUT), .c_out(C_OUT), .d_out(D_OUT)
@@ -18,8 +18,8 @@ encoder_to_decoder uut(
 
 // FILES
 initial begin
-    $dumpfile("encoder-to-decoder-tb.vcd");
-    $dumpvars(0, encoder_to_decoder_tb);
+    $dumpfile("decoder-to-encoder-tb.vcd");
+    $dumpvars(0, decoder_to_encoder_tb);
 end
 
 // TESTCASE

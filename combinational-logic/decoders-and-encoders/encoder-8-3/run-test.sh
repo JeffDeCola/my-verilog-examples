@@ -9,15 +9,15 @@ echo " "
 echo "First we synthesis to our output *.vvp."
 echo " "
 
-echo "'iverilog -o decoder-8-3-tb.vvp decoder-8-3-tb.v'"
-iverilog -o decoder-8-3-tb.vvp decoder-8-3-tb.v 
+echo "'iverilog -o encoder-8-3-tb.vvp encoder-8-3-tb.v'"
+iverilog -o encoder-8-3-tb.vvp encoder-8-3-tb.v 
 echo " "
 
 echo "Now we run simulation to create the waveform file *.vcd."
 echo " "
 
-echo "'./decoder-8-3-tb.vvp'"
-./decoder-8-3-tb.vvp
+echo "'./encoder-8-3-tb.vvp'"
+./encoder-8-3-tb.vvp
 echo " "
 
 echo "Now you can open the waveform file *.vcd with GTKWave."

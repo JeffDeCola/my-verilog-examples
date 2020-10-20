@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
-`include "encoder-3-8.v"
+`include "decoder-3-8.v"
 
-module encoder_3_8_tb;
+module decoder_3_8_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg     Y;
@@ -10,7 +10,7 @@ wire    A, B, C, D;
 integer i;
 
 // UUT
-encoder_3_8 uut(
+decoder_3_8 uut(
     .y(Y),
     .sel(SEL),
     .a(A), .b(B), .c(C), .d(D)
@@ -18,8 +18,8 @@ encoder_3_8 uut(
 
 // FILES
 initial begin
-    $dumpfile("encoder-3-8-tb.vcd");
-    $dumpvars(0, encoder_3_8_tb);
+    $dumpfile("decoder-3-8-tb.vcd");
+    $dumpvars(0, decoder_3_8_tb);
 end
 
 // TESTCASE

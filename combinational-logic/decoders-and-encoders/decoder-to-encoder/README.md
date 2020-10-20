@@ -1,4 +1,4 @@
-# encoder-to-decoder example
+# decoder-to-encoder example
 
 _Combining the
 [decoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-8-3)
@@ -12,7 +12,7 @@ to prove the input will equal the output._
 
 This may help,
 
-![IMAGE - encoder-to-decoder.jpg - IMAGE](../../../docs/pics/encoder-to-decoder.jpg)
+![IMAGE - decoder-to-encoder.jpg - IMAGE](../../../docs/pics/decoder-to-encoder.jpg)
 
 ## VERILOG CODE
 
@@ -23,12 +23,12 @@ The main part of the code is,
 ```
 
 The entire code is
-[encoder-to-decoder.v](encoder-to-decoder.v).
+[decoder-to-encoder.v](decoder-to-encoder.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[encoder-to-decoder-tb.v](encoder-to-decoder-tb.v) with
+[decoder-to-encoder-tb.v](decoder-to-encoder-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
