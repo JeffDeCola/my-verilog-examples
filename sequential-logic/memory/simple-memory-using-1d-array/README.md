@@ -15,17 +15,17 @@ This may help,
 The main part of the code is,
 
 ```verilog
-// DATA TYPES
-reg [7:0] mem [0:15];
+    // DATA TYPES
+    reg [7:0] mem [0:15];
 
-assign rdata = mem[addr];
+    assign rdata = mem[addr];
 
-always @ (posedge clk) begin
-    if (write) begin
-        // WRITE DATA TO ADDR
-        mem[addr] <= wdata;
+    always @ (posedge clk) begin
+        if (write) begin
+            // WRITE DATA TO ADDR
+            mem[addr] <= wdata;
+        end
     end
-end
 ```
 
 The entire code is

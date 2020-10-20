@@ -39,29 +39,29 @@ Note how `req_0` gets priority, hence the name.
 The main part of the code is,
 
 ```verilog
-always @ (posedge clk or posedge rst) begin
-    if (rst) begin
-        gnt_0 <= 0;
-        gnt_1 <= 0;
-        gnt_2 <= 0;
-    end else if (req_0) begin
-        gnt_0 <= 1;
-        gnt_1 <= 0;
-        gnt_2 <= 0;
-    end else if (req_1) begin
-        gnt_0 <= 0;
-        gnt_1 <= 1;
-        gnt_2 <= 0;
-    end else if (req_2) begin
-        gnt_0 <= 0;
-        gnt_1 <= 0;
-        gnt_2 <= 1;
-    end else begin
-        gnt_0 <= 0;
-        gnt_1 <= 0;
-        gnt_2 <= 0;
+    always @ (posedge clk or posedge rst) begin
+        if (rst) begin
+            gnt_0 <= 0;
+            gnt_1 <= 0;
+            gnt_2 <= 0;
+        end else if (req_0) begin
+            gnt_0 <= 1;
+            gnt_1 <= 0;
+            gnt_2 <= 0;
+        end else if (req_1) begin
+            gnt_0 <= 0;
+            gnt_1 <= 1;
+            gnt_2 <= 0;
+        end else if (req_2) begin
+            gnt_0 <= 0;
+            gnt_1 <= 0;
+            gnt_2 <= 1;
+        end else begin
+            gnt_0 <= 0;
+            gnt_1 <= 0;
+            gnt_2 <= 0;
+        end
     end
-end
 ```
 
 The entire code is

@@ -1,0 +1,178 @@
+$date
+	Tue Oct 20 16:12:06 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module pattern_recognition_tb $end
+$var wire 1 ! FOUND $end
+$var reg 1 " CLK $end
+$var reg 1 # IN $end
+$var reg 1 $ RST $end
+$scope module uut $end
+$var wire 1 " clk $end
+$var wire 1 # in $end
+$var wire 1 $ rst $end
+$var wire 1 ! found $end
+$var reg 3 % current_state [2:0] $end
+$var reg 3 & next_state [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx &
+bx %
+0$
+0#
+0"
+x!
+$end
+#10
+1"
+#15
+1$
+#20
+0"
+#30
+b0 &
+0!
+b0 %
+1"
+#35
+0$
+#40
+0"
+#50
+1"
+#55
+b1 &
+1#
+#60
+0"
+#70
+b10 &
+b1 %
+1"
+#75
+b0 &
+0#
+#80
+0"
+#90
+b0 %
+1"
+#100
+0"
+#110
+1"
+#120
+0"
+#130
+1"
+#140
+0"
+#150
+1"
+#155
+b1 &
+1#
+#160
+0"
+#170
+b10 &
+b1 %
+1"
+#175
+b0 &
+0#
+#180
+0"
+#190
+b0 %
+1"
+#195
+b1 &
+1#
+#200
+0"
+#210
+b10 &
+b1 %
+1"
+#220
+0"
+#230
+b0 &
+b10 %
+1"
+#235
+b11 &
+0#
+#240
+0"
+#250
+b100 &
+b11 %
+1"
+#260
+0"
+#270
+b0 &
+1!
+b100 %
+1"
+#275
+b1 &
+1#
+#280
+0"
+#290
+b10 &
+0!
+b1 %
+1"
+#300
+0"
+#310
+b0 &
+b10 %
+1"
+#315
+b11 &
+0#
+#320
+0"
+#330
+b100 &
+b11 %
+1"
+#340
+0"
+#350
+b0 &
+1!
+b100 %
+1"
+#355
+b1 &
+1#
+#360
+0"
+#370
+b10 &
+0!
+b1 %
+1"
+#375
+b0 &
+0#
+#380
+0"
+#390
+b0 %
+1"
+#395

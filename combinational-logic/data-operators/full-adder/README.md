@@ -9,11 +9,11 @@ _A 2-bit full-adder._
 The main part of the code is,
 
 ```verilog
-reg sum, cout;
+    reg sum, cout;
 
-always @ ( a or b or cin) begin
-    {cout, sum} <= a + b + cin;
-end
+    always @ ( a or b or cin) begin
+        {cout, sum} <= a + b + cin;
+    end
 ```
 
 The entire code is

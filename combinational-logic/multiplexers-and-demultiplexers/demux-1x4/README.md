@@ -15,24 +15,24 @@ This may help,
 The main part of the code is,
 
 ```verilog
-reg  a, b, c, d;
+    reg  a, b, c, d;
 
-always @ ( * ) begin
-    case(sel)
-        2'b00 : begin
-            a <= y; b <= 0; c <= 0; d <= 0;
-        end
-        2'b01 : begin
-            a <= 0; b <= y; c <= 0; d <= 0;
-        end
-        2'b10 : begin
-            a <= 0; b <= 0; c <= y; d <= 0;
-        end
-        2'b11 : begin
-            a <= 0; b <= 0; c <= 0; d <= y;
-        end
-    endcase
-end
+    always @ ( * ) begin
+        case(sel)
+            2'b00 : begin
+                a <= y; b <= 0; c <= 0; d <= 0;
+            end
+            2'b01 : begin
+                a <= 0; b <= y; c <= 0; d <= 0;
+            end
+            2'b10 : begin
+                a <= 0; b <= 0; c <= y; d <= 0;
+            end
+            2'b11 : begin
+                a <= 0; b <= 0; c <= 0; d <= y;
+            end
+        endcase
+    end
 ```
 
 The entire code is
