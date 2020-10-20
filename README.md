@@ -19,6 +19,8 @@ Table of Contents,
   * MULTIPLEXERS & DEMULTIPLEXERS
 * [SEQUENTIAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#sequential-logic)
   * ARBITERS
+  * FINITE SATE MACHINES
+  * MEMORY
   * SHIFTERS
 * [SYSTEMS](https://github.com/JeffDeCola/my-systemverilog-examples#systems)
   * MICROPROCESSORS
@@ -107,6 +109,12 @@ to view the output._
 
     _A three level Priority Arbiter with asynchronous reset
     (Using if-then-else statements)._
+
+* FINITE STATE MACHINES
+
+  * [pattern-recognition](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition)
+
+    _Recognize the pattern `00110` in a serial stream._
 
 * MEMORY
 
