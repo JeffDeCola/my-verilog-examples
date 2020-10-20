@@ -99,12 +99,6 @@ to view the output._
     _Combining the `mux-4x1` to the `demux-1x4` to prove the input will equal
     the output (For the selected output)._
 
-* SHIFTERS
-
-  * [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
-
-    _Coming soon._
-
 ### SEQUENTIAL LOGIC
 
 * ARBITERS
@@ -118,7 +112,13 @@ to view the output._
 
   * [simple-memory-using-1d-array](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array)
 
-    __A simple 16 Byte memory modeled using a 1D array._
+    _A simple 16 Byte memory modeled using a 1D array._
+
+* SHIFTERS
+
+  * [left-shift-register](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/shifters/left-shift-register)
+
+    _A 4-bit left shift register._
 
 ### SYSTEMS
 
