@@ -4,16 +4,14 @@
 module decoder_3_8_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg     Y;
-reg     [1:0] SEL;
-wire    A, B, C, D;
+reg     [2:0] IN;
+wire    [7:0] OUT;
 integer i;
 
 // UUT
 decoder_3_8 uut(
-    .y(Y),
-    .sel(SEL),
-    .a(A), .b(B), .c(C), .d(D)
+    .in(IN),
+    .out(OUT)
 );
 
 // FILES
@@ -25,11 +23,10 @@ end
 // TESTCASE
 initial begin
     $display("test start");
-    Y = 0;
-    SEL = 2'b00;
+    IN = 3'b000;
 
     for (i = 0; i < 8; i = i + 1) begin
-        {SEL, Y} = i;
+        IN = i;
         #10;
     end
     

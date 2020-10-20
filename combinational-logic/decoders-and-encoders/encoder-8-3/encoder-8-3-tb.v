@@ -4,16 +4,14 @@
 module encoder_8_3_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg     A, B, C, D;
-reg     [1:0] SEL;
-wire    Y;
+reg  [7:0] IN;
+wire [2:0] OUT;
 integer i;
 
 // UUT
 encoder_8_3 uut(
-    .a(A), .b(B), .c(C), .d(D),
-    .sel(SEL),
-    .y(Y)
+    .in(IN), 
+    .out(OUT)
 );
 
 // FILES
@@ -25,14 +23,18 @@ end
 // TESTCASE
 initial begin
     $display("test start");
-    A = 0; B = 0; C = 0; D = 0;
-    SEL = 2'b00;
+    IN = 8'b00000000;
 
-    for (i = 0; i < 64; i = i + 1) begin
-        {SEL, D, C, B, A} = i;
+    for (i = 0; i < 8; i = i + 1) begin
+        IN = 8'b00000000;
+        IN[i] = 1'b1;
         #10;
     end
     
+    // WHAT IF YOU GET MORE THAN 1 HOT - should default to 0.
+    IN = 8'b00101000;
+    #10;
+
     $display("test complete");
     $finish;
 end

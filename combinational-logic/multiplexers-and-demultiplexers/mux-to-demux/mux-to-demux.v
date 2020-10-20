@@ -1,10 +1,10 @@
-// 4x1 multiplexer
+// multiplexer to demultiplexer
 `include "../mux-4x1/mux-4x1.v"
 `include "../demux-1x4/demux-1x4.v"
 module mux_to_demux(
     input  a_in, b_in, c_in, d_in,      // 4 Inputs
     input  [1:0] sel,                   // Select
-    output a_out, b_out, c_out, d_out   // 4 Output
+    output a_out, b_out, c_out, d_out   // 4 Outputs
 );
 
 wire  y;
