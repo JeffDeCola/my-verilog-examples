@@ -1,4 +1,4 @@
-# decoder-8-3 example
+# encoder-8-3 example
 
 _Multiplexer - Four inputs, one output._
 
@@ -8,7 +8,7 @@ _Multiplexer - Four inputs, one output._
 
 This may help,
 
-![IMAGE - decoder-8-3.jpg - IMAGE](../../../docs/pics/decoder-8-3.jpg)
+![IMAGE - encoder-8-3.jpg - IMAGE](../../../docs/pics/encoder-8-3.jpg)
 
 ## VERILOG CODE
 
@@ -19,12 +19,12 @@ The main part of the code is,
 ```
 
 The entire code is
-[decoder-8-3.v](decoder-8-3.v).
+[encoder-8-3.v](encoder-8-3.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[decoder-8-3-tb.v](decoder-8-3-tb.v) with
+[encoder-8-3-tb.v](encoder-8-3-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
