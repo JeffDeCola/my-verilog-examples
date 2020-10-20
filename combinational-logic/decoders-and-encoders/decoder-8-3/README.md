@@ -1,6 +1,6 @@
-# demux-1x4 example
+# decoder-8-3 example
 
-_Demultiplexer - One input, Four outputs._
+_Multiplexer - Four inputs, one output._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -8,40 +8,23 @@ _Demultiplexer - One input, Four outputs._
 
 This may help,
 
-![IMAGE - demux-1x4.jpg - IMAGE](../../../docs/pics/demux-1x4.jpg)
+![IMAGE - decoder-8-3.jpg - IMAGE](../../../docs/pics/decoder-8-3.jpg)
 
 ## VERILOG CODE
 
 The main part of the code is,
 
 ```verilog
-reg  a, b, c, d;
-
-always @ ( * ) begin
-    case(sel)
-        2'b00 : begin
-            a <= y; b <= 0; c <= 0; d <= 0;
-        end
-        2'b01 : begin
-            a <= 0; b <= y; c <= 0; d <= 0;
-        end
-        2'b10 : begin
-            a <= 0; b <= 0; c <= y; d <= 0;
-        end
-        2'b11 : begin
-            a <= 0; b <= 0; c <= 0; d <= y;
-        end
-    endcase
-end
+    TBD??????????????????????????
 ```
 
 The entire code is
-[demux-1x4.v](demux-1x4.v).
+[decoder-8-3.v](decoder-8-3.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[demux-1x4-tb.v](demux-1x4-tb.v) with
+[decoder-8-3-tb.v](decoder-8-3-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 

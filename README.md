@@ -71,24 +71,33 @@ to view the output._
 
 * DECODERS & ENCODERS
 
-  * [tbd](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic/half-adder)
+  * [decoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoder-and-encoders/decoder-8-3])
 
-    _Coming soon._
+    _Decoder - Eights inputs (1 hot) decodes to output._
+
+  * [encoder-3-8](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoder-and-encoders/encoder-3-8)
+
+    _Encoder - Three inputs encodes to 1 of 8 outputs (hot)._
+
+  * [encoder-to-decoder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoder-and-encoders/encoder-to-decoder)
+
+    _Combining the `encoder-3-8` to the `[decoder-8-3` to prove the input will equal
+    the output._
 
 * MULTIPLEXERS & DEMULTIPLEXERS
 
   * [demux-1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
 
-    _Demultiplexer - One input, Four outputs_
+    _Demultiplexer - One input, Four outputs (using a case statement)._
 
   * [mux-4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 
-    _Multiplexer - Four inputs, one output._
+    _Multiplexer - Four inputs, one output (using a case statement)._
 
   * [mux-to-demux](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)  
 
     _Combining the `mux-4x1` to the `demux_1x4` to prove the input will equal
-    the output (For the selected output)_
+    the output (For the selected output)._
 
 * SHIFTERS
 
@@ -103,7 +112,7 @@ to view the output._
   * [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter)
 
      _Allowing one device access to a shared resource (Taking in N device
-     requests, granting access to only one)._
+     requests, granting access to only one). Using if-then-else statements._
 
 * MEMORY
 
