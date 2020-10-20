@@ -71,15 +71,15 @@ to view the output._
 
 * DECODERS & ENCODERS
 
-  * [decoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoder-and-encoders/decoder-8-3])
+  * [decoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-8-3)
 
     _Decoder - Eights inputs (1 hot) decodes to output._
 
-  * [encoder-3-8](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoder-and-encoders/encoder-3-8)
+  * [encoder-3-8](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-3-8)
 
     _Encoder - Three inputs encodes to 1 of 8 outputs (hot)._
 
-  * [encoder-to-decoder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoder-and-encoders/encoder-to-decoder)
+  * [encoder-to-decoder](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-to-decoder)
 
     _Combining the `encoder-3-8` to the `[decoder-8-3` to prove the input will equal
     the output._

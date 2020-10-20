@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
-`include "mux-to-demux.v"
+`include "encoder-to-decoder.v"
 
-module mux_to_demux_tb;
+module encoder_to_decoder_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg     A_IN, B_IN, C_IN, D_IN;
@@ -10,7 +10,7 @@ wire    A_OUT, B_OUT, C_OUT, D_OUT;
 integer i;
 
 // UUT
-mux_to_demux uut(
+encoder_to_decoder uut(
     .a_in(A_IN), .b_in(B_IN), .c_in(C_IN), .d_in(D_IN),
     .sel(SEL),
     .a_out(A_OUT), .b_out(B_OUT), .c_out(C_OUT), .d_out(D_OUT)
@@ -18,8 +18,8 @@ mux_to_demux uut(
 
 // FILES
 initial begin
-    $dumpfile("mux-to-demux-tb.vcd");
-    $dumpvars(0, mux_to_demux_tb);
+    $dumpfile("encoder-to-decoder-tb.vcd");
+    $dumpvars(0, encoder_to_decoder_tb);
 end
 
 // TESTCASE

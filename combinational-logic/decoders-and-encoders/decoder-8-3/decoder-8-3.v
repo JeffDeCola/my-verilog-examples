@@ -1,5 +1,5 @@
 // 4x1 multiplexer
-module mux_4x1(
+module decoder_8_3(
     input  a, b, c, d,      // 4 Inputs
     input  [1:0] sel,       // Select
     output y                // 1 Output
