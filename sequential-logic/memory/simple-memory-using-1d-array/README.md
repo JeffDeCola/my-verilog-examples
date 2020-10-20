@@ -1,8 +1,14 @@
 # simple-memory-using-1d-array example
 
-_A simple memory modeled using a 1D array._
+_A simple 16 Byte memory modeled using a 1D array._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+
+## SCHEMATIC
+
+This may help,
+
+![IMAGE - simple-memory-using-1d-array.jpg - IMAGE](../../../docs/pics/simple-memory-using-1d-array.jpg)
 
 ## VERILOG CODE
 
@@ -11,17 +17,11 @@ The main part of the code is,
 ```verilog
 // DATA TYPES
 reg [7:0] mem [0:15];
-integer i;
 
 assign rdata = mem[addr];
 
 always @ (posedge clk) begin
-    if (rst) begin
-        // RESET MEMORY TO 0
-        for (i = 0; i < 15; i = i+1) begin
-            mem[i] <= 0;
-        end
-    end if (write) begin
+    if (write) begin
         // WRITE DATA TO ADDR
         mem[addr] <= wdata;
     end

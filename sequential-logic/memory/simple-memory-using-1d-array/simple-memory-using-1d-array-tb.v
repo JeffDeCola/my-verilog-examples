@@ -4,15 +4,16 @@
 module simple_memory_using_1d_array_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg  CLK, RST;
+reg  CLK;
 reg  WRITE;
-reg  [3:0]ADDR;
+reg  [3:0] ADDR;
 reg  [7:0] WDATA;
 wire [7:0] RDATA;
+integer i;
 
 // UUT
 simple_memory_using_1d_array uut(
-    .clk(CLK), .rst(RST),
+    .clk(CLK),
     .write(WRITE),
     .addr(ADDR),
     .wdata(WDATA),
@@ -34,16 +35,25 @@ end
 initial begin
     $display("test start");
     CLK = 0;
-    RST = 0;
     WRITE = 0;
-    ADDR = 4'h7;
+    ADDR = 4'h0;
     WDATA = 8'h00;
 
-    // Sync Reset
+    // REST ALL MEMORY TO 0
     #15;
-    RST = 1;
+    WRITE = 1;
+    for (i = 0; i < 16; i = i+1) begin
+        ADDR = i;
+        #20;
+    end
+
+    // STOP WRITING
+    WRITE = 0;
+    #20
+
+    // Check address 4 that is 0
     #20;
-    RST = 0;
+    ADDR = 4'h4;
 
     // Write data 22 hex to address 3
     #20;
@@ -66,12 +76,6 @@ initial begin
     #20;
     WRITE = 0;
     ADDR = 4'h3;
-
-    // Sync Reset
-    #15;
-    RST = 1;
-    #20;
-    RST = 0;
 
     // Read address 7
     #20;

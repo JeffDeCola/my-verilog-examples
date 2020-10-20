@@ -118,7 +118,7 @@ to view the output._
 
   * [simple-memory-using-1d-array](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array)
 
-    _A simple memory modeled using a 1D array_
+    __A simple 16 Byte memory modeled using a 1D array._
 
 ### SYSTEMS
 
