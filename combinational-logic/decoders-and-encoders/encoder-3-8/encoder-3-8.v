@@ -1,5 +1,5 @@
 // 1x4 Demultiplexer
-module demux_1x4(
+module encoder_3_8(
     input  y,               // 1 Input
     input  [1:0] sel,       // Select
     output a, b, c, d       // 4 Outputs

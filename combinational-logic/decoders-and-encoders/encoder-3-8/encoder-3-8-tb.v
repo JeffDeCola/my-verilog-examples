@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
-`include "demux-1x4.v"
+`include "encoder-3-8.v"
 
-module demux_1x4_tb;
+module encoder_3_8_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg     Y;
@@ -10,7 +10,7 @@ wire    A, B, C, D;
 integer i;
 
 // UUT
-demux_1x4 uut(
+encoder_3_8 uut(
     .y(Y),
     .sel(SEL),
     .a(A), .b(B), .c(C), .d(D)
@@ -18,8 +18,8 @@ demux_1x4 uut(
 
 // FILES
 initial begin
-    $dumpfile("demux-1x4-tb.vcd");
-    $dumpvars(0, demux_1x4_tb);
+    $dumpfile("encoder-3-8-tb.vcd");
+    $dumpvars(0, encoder_3_8_tb);
 end
 
 // TESTCASE

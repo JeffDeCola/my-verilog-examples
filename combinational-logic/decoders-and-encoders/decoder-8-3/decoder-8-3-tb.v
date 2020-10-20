@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
-`include "mux-4x1.v"
+`include "decoder-8-3.v"
 
-module mux_4x1_tb;
+module decoder_8_3_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg     A, B, C, D;
@@ -10,7 +10,7 @@ wire    Y;
 integer i;
 
 // UUT
-mux_4x1 uut(
+decoder_8_3 uut(
     .a(A), .b(B), .c(C), .d(D),
     .sel(SEL),
     .y(Y)
@@ -18,8 +18,8 @@ mux_4x1 uut(
 
 // FILES
 initial begin
-    $dumpfile("mux-4x1-tb.vcd");
-    $dumpvars(0, mux_4x1_tb);
+    $dumpfile("decoder-8-3-tb.vcd");
+    $dumpvars(0, decoder_8_3_tb);
 end
 
 // TESTCASE
