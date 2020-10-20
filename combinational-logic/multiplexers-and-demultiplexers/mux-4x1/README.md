@@ -4,6 +4,12 @@ _Multiplexer - Four inputs, one output._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
+## SCHEMATIC
+
+This may help,
+
+![IMAGE - mux-4x1.jpg - IMAGE](../../../docs/pics/mux-4x1.jpg)
+
 ## VERILOG CODE
 
 The main part of the code is,

@@ -1,6 +1,10 @@
-# demux-1x4 example
+# encoder-to-decoder example
 
-_Demultiplexer - One input, Four outputs._
+_Combining the
+[decoder-8-3](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-8-3)
+to the
+[encoder-3-8](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-3-8)
+to prove the input will equal the output._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -8,40 +12,23 @@ _Demultiplexer - One input, Four outputs._
 
 This may help,
 
-![IMAGE - demux-1x4.jpg - IMAGE](../../../docs/pics/demux-1x4.jpg)
+![IMAGE - encoder-to-decoder.jpg - IMAGE](../../../docs/pics/encoder-to-decoder.jpg)
 
 ## VERILOG CODE
 
 The main part of the code is,
 
 ```verilog
-reg  a, b, c, d;
-
-always @ ( * ) begin
-    case(sel)
-        2'b00 : begin
-            a <= y; b <= 0; c <= 0; d <= 0;
-        end
-        2'b01 : begin
-            a <= 0; b <= y; c <= 0; d <= 0;
-        end
-        2'b10 : begin
-            a <= 0; b <= 0; c <= y; d <= 0;
-        end
-        2'b11 : begin
-            a <= 0; b <= 0; c <= 0; d <= y;
-        end
-    endcase
-end
+    ??????????
 ```
 
 The entire code is
-[demux-1x4.v](demux-1x4.v).
+[encoder-to-decoder.v](encoder-to-decoder.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[demux-1x4-tb.v](demux-1x4-tb.v) with
+[encoder-to-decoder-tb.v](encoder-to-decoder-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
