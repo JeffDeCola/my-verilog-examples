@@ -1,4 +1,4 @@
-// 1x4 Demultiplexer
+// 1x4 demultiplexer
 module demux_1x4(
     input  y,               // 1 Input
     input  [1:0] sel,       // Select

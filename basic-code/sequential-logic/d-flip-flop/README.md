@@ -1,6 +1,6 @@
 # d-flip-flop example
 
-_A basic, synchronous and asynchronous d-flip-flop._
+_A basic, synchronous and asynchronous d flip-flop._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

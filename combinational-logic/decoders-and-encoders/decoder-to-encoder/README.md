@@ -19,7 +19,17 @@ This may help,
 The main part of the code is,
 
 ```verilog
-    ??????????
+wire  [7:0] connect;
+
+decoder_3_8 DECODER_3_8 (
+    .in(in),
+    .out(connect)
+);
+
+encoder_8_3 ENCODER_8_3 (
+    .in(connect),
+    .out(out)
+);
 ```
 
 The entire code is

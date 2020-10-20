@@ -1,6 +1,6 @@
 # demux-1x4 example
 
-_Demultiplexer - One input, Four outputs._
+_Demultiplexer - One input, four outputs (using a case statement)._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

@@ -1,4 +1,4 @@
-// encoder 8-3
+// 8 to 3 encoder
 module encoder_8_3(
     input  [7:0] in,    // 8 Inputs
     output [2:0] out    // 3 Output
