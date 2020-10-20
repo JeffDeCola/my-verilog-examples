@@ -1,0 +1,103 @@
+$date
+	Tue Oct 20 06:46:22 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module left_shift_register_tb $end
+$var wire 4 ! OUT [3:0] $end
+$var reg 1 " CLK $end
+$var reg 1 # D $end
+$var reg 1 $ RST $end
+$var integer 32 % i [31:0] $end
+$scope module uut $end
+$var wire 1 " clk $end
+$var wire 1 # d $end
+$var wire 1 $ rst $end
+$var reg 4 & out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx &
+bx %
+0$
+0#
+0"
+bx !
+$end
+#10
+bx0 !
+bx0 &
+1"
+#15
+1$
+#20
+0"
+#30
+b0 !
+b0 &
+1"
+#35
+b0 %
+#40
+0"
+#50
+b1 %
+1"
+#60
+0"
+#70
+1#
+b10 %
+1"
+#80
+0"
+#90
+b11 %
+1"
+#100
+0"
+#110
+b100 %
+1"
+#120
+0"
+#130
+b101 %
+1"
+#140
+0"
+#150
+b110 %
+1"
+#160
+0"
+#170
+b111 %
+1"
+#180
+0"
+#190
+0#
+b1000 %
+1"
+#200
+0"
+#210
+1#
+b1001 %
+1"
+#220
+0"
+#230
+b1010 %
+1"
+#240
+0"
+#250
+1"

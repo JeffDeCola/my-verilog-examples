@@ -1,0 +1,56 @@
+`timescale 1ns / 1ns
+`include "left-shift-register.v"
+
+module left_shift_register_tb;
+
+// DATA TYPES - DECLAIR INPUTS AND OUTPUTS
+reg        CLK, RST;
+reg        D;
+wire [3:0] OUT;
+integer    i;
+
+// UUT
+left_shift_register uut(
+    .clk(CLK), .rst(RST),
+    .d(D),
+    .out(OUT)
+);
+
+// FILES
+initial begin
+    $dumpfile("left-shift-register-tb.vcd");
+    $dumpvars(0, left_shift_register_tb);
+end
+
+// CLOCK
+always begin
+    #10 CLK = ~CLK;
+end
+
+// TESTCASE
+initial begin
+    $display("test start");
+    CLK = 0;
+    RST = 0;
+    D = 0;
+
+    // RESET
+    #15
+    RST = 1;
+    #20
+
+    // PUMP IN RANDOM NUMBERS
+    for (i = 0; i < 10; i = i + 1) begin
+        @ (posedge CLK) begin
+            D <= $random;
+        end
+    end
+    
+    // DONE
+    #20
+
+    $display("test complete");
+    $finish;
+end
+
+endmodule
