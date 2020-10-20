@@ -1,4 +1,4 @@
-// D flip-flop
+// d flip-flop
 module d_flip_flop (
     input   clk,        // Clock
     input   rst,        // Reset

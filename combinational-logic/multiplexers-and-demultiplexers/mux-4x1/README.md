@@ -1,6 +1,6 @@
 # mux-4x1 example
 
-_Multiplexer - Four inputs, one output._
+_Multiplexer - Four inputs, one output (using a case statement)._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

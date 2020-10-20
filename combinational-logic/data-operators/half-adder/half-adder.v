@@ -1,4 +1,4 @@
-// AND gate designed a few different ways
+// A 2-bit half-adder
 module half_adder(
     input  a,           // a
     input  b,           // b

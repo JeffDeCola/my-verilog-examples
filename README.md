@@ -55,7 +55,7 @@ to view the output._
 
   * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
-     _A basic, synchronous and asynchronous d-flip-flop._
+     _A basic, synchronous and asynchronous d flip-flop._
 
 ### COMBINATIONAL LOGIC
 
@@ -88,7 +88,7 @@ to view the output._
 
   * [demux-1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
 
-    _Demultiplexer - One input, Four outputs (using a case statement)._
+    _Demultiplexer - One input, four outputs (using a case statement)._
 
   * [mux-4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 
@@ -96,7 +96,7 @@ to view the output._
 
   * [mux-to-demux](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)  
 
-    _Combining the `mux-4x1` to the `demux_1x4` to prove the input will equal
+    _Combining the `mux-4x1` to the `demux-1x4` to prove the input will equal
     the output (For the selected output)._
 
 * SHIFTERS
@@ -111,8 +111,8 @@ to view the output._
 
   * [priority-arbiter](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter)
 
-     _Allowing one device access to a shared resource (Taking in N device
-     requests, granting access to only one). Using if-then-else statements._
+    _A three level Priority Arbiter with asynchronous reset
+    (Using if-then-else statements)._
 
 * MEMORY
 

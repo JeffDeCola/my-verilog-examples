@@ -1,4 +1,4 @@
-// 3 to 8 Decoder
+// 3 to 8 decoder
 module decoder_3_8(
     input   [2:0] in,       // 3 Input
     output  [7:0] out       // 7 Outputs

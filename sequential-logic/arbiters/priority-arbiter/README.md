@@ -1,7 +1,10 @@
 # priority-arbiter example
 
-_Allowing one device access to a shared resource (Taking in N device
-requests, granting access to only one)._
+_A three level Priority Arbiter with asynchronous reset
+(Using if-then-else statements)._
+
+An arbiter has one device access to a shared resource (Taking in N device
+requests, granting access to only one).
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
