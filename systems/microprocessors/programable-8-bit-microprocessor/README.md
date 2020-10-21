@@ -9,6 +9,7 @@ Table of Contents,
   * [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level)
   * [CONTROL_SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#controlsection)
   * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
+* [MICROWORD & OPCODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microword--opcode)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
@@ -22,7 +23,9 @@ The processor is broken up as follows,
 * **TOP**
   ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
   * **CONTROL_SECTION**
-    ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.vcontrol))
+    ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
+    * **COUNTER8**
+      (counter8)
     * **MUX8**
       (ta157_8)
     * **OPCODEDEC**
@@ -31,8 +34,6 @@ The processor is broken up as follows,
         (ta157_4)
         * TBD
           (ta157_ bar)
-    * **COUNTER8**
-      (counter8)
     * **COND_SELECT**
       (ta151_bar)
     * **XOR2**
@@ -92,6 +93,18 @@ The control section ?????
 The processor section ?????
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
+
+## MICROWORD & OPCODE
+
+The microword `MW` is broken up as,
+
+* [3:0] MICRO_AD_LOW
+* [7:4] MICRO_AD_HIGH
+* [8] COUNT
+* [12:9] BOP
+* [23:13] CONTROL_BITS
+
+The opcode is ????
 
 ## VERILOG CODE
 
