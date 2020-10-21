@@ -12,13 +12,13 @@ module processor(
 );
 
 assign STATUS_BITS = 4'h0;
-assign DATA_OUT = 8'h00;
+assign DATA_OUT = 8'h10;
 
 // wire [3:0]      STATUS_BITS;
 
 // REGISTER_A SECTION
 
-// REGISTER_A SECTION
+// REGISTER_B SECTION
 
 // MUX_A SECTION
 
@@ -26,7 +26,7 @@ assign DATA_OUT = 8'h00;
 
 // TEMP_REGISTER_A SECTION
 
-// TEMP_REGISTER_A SECTION
+// TEMP_REGISTER_B SECTION
 
 // ALU SECTION
 

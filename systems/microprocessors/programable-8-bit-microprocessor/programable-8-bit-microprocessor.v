@@ -20,7 +20,7 @@ wire [23:13]   CONTROL_BITS;
 wire           EIL_BAR;
 
 // CONTROL_SECTION
-control CONTROL (
+control CONTROL_SECTION (
     .OPCODE(OPCODE),
     .GO_BAR(GO_BAR),
     .RESET(RESET),
@@ -34,7 +34,7 @@ control CONTROL (
 );
 
 // PROCESSOR SECTION
-processor PROCESSOR (
+processor PROCESSOR_SECTION (
     .DATA_IN_A(DATA_IN_A),
     .DATA_IN_B(DATA_IN_B),
     .SYSTEM_CLK(SYSTEM_CLK),

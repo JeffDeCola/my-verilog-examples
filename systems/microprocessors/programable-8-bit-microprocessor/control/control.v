@@ -14,13 +14,25 @@ module control(
     output          EIL_BAR             // 
 );
 
-assign MICROADDRESS = 8'h00;
+assign MICROADDRESS = 8'h01;
 assign CONTROL_BITS = 11'b00000000000;
 assign EIL_BAR = 1'b0;
 
 // wire [3:0]      STATUS_BITS;
 
 // MUX8 SECTION
+control CONTROL_SECTION (
+    .OPCODE(OPCODE),
+    .GO_BAR(GO_BAR),
+    .RESET(RESET),
+    .JAM(JAM),
+    .SYSTEM_CLK(SYSTEM_CLK),
+    .STATUS_BITS(STATUS_BITS),
+    .MW(MW),
+    .MICROADDRESS(MICROADDRESS),
+    .CONTROL_BITS(CONTROL_BITS),
+    .EIL_BAR(EIL_BAR)
+);
 
 // OPCODEDEC SECTION
 
@@ -28,6 +40,6 @@ assign EIL_BAR = 1'b0;
 
 // COND_SELECT SECTION
 
-// XOR2
+// XOR2 SECTION
 
 endmodule
