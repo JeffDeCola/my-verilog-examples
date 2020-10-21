@@ -25,56 +25,57 @@ The processor is broken up as follows,
   * **CONTROL_SECTION**
     ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
     * **COUNTER8**
-      (counter8)
+      ([counter8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/counter8.v))
     * **MUX8**
-      (ta157_8)
+      ([ta157_8]())
     * **OPCODEDEC**
-      (opcodedec)
+      ([opcodedec]())
       * TBD
-        (ta157_4)
+        ([ta157_4]())
         * TBD
-          (ta157_ bar)
+          ([ta157_ bar]())
     * **COND_SELECT**
-      (ta151_bar)
+      ([ta151_bar]())
     * **XOR2**
-      (xor2)
+      ([xor2]())
       * TBD
-        (ta161 bar)
+        ([ta161 bar]())
   * **PROCESSOR_SECTION**
       ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
     * **REGISTER_A**
-      (register_ab8)
-          * ta377_bar
+      ([register_ab8]())
+      * TBD
+        ([ta377_bar]())
     * **REGISTER_B**
-      (register_ab8)
+      ([register_ab8]())
       * TBD
-        (ta377_bar)
+        ([ta377_bar]())
     * **MUX_A**
-      (ta157_8)
+      ([ta157_8]())
       * TBD
-        (ta157_bar)
+        ([ta157_bar]())
     * **MUX_B**
-      (ta157_8)
+      ([ta157_8]())
       * TBD
-        (ta157_bar)
+        ([ta157_bar]())
     * **TEMP_REGISTER_A**
-      (register_ab8)
+      ([register_ab8]())
       * TBD
-        (ta377_bar)
+        ([ta377_bar]())
     * **TEMP_REGISTER_B**
-      (register_ab8)
+      ([register_ab8]())
       * TBD
-        (ta377_bar)
+        ([ta377_bar]())
     * **ALU**
-      (alu)
+      ([alu]())
       * TBD
-        (ta18l_bar)
+        ([ta18l_bar]())
     * **REGISTER_F**
-      (register_ab8)
+      ([register_ab8]())
       * TBD
-        (ta377_bar)
+        ([ta377_bar]())
     * **ZP_BIT**
-      (zp_bit)
+      ([zp_bit]())
 
 ### TOP LEVEL
 
