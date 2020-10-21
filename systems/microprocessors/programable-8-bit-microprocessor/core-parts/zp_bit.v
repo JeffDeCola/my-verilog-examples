@@ -2,7 +2,7 @@
 // ZP status bit
 
 module zp_bit (
-    input           F8,                 // 
+    input  [7:0]    F8,                 // 
     output          ZP_BAR              // 
 );
 

@@ -10,11 +10,9 @@ module control(
     input  [3:0]    STATUS_BITS,        // 
     input  [23:0]   MW,                 //
     output [7:0]    MICROADDRESS,       //
-    output [23:13]  CONTROL_BITS,       //
+    output [23:13]  CONTROL_BITS,       // PASS THREW FOR MW[23:13]
     output          EIL_BAR             // 
 );
-
-assign CONTROL_BITS = 11'b00000000000;          // ERASE
 
 // WIRES
 wire [3:0]      MICRO_AD_LOW;

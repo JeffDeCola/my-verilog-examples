@@ -11,9 +11,6 @@ module processor(
     output [7:0]    DATA_OUT            // 
 );
 
-assign STATUS_BITS = 4'h0;          // ERASE
-assign DATA_OUT = 8'h10;            // ERASE
-
 // WIRES
 wire [7:0]      DATA_OUT_A;
 wire [7:0]      DATA_OUT_B;
@@ -114,7 +111,7 @@ register_ab8 F_REGISTER (
 // ZP_BIT1 SECTION
 zp_bit ZP_BIT1 (
     .F8(IN_ZP),
-    .ZP_BAR(STATUS_BITS[2])
+    .ZP_BAR(STATUS_BITS[3])
 );
 
 endmodule
