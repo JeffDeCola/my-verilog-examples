@@ -18,64 +18,14 @@ Table of Contents,
 
 ## HIERARCHY
 
-The processor is broken up as follows,
+The processor is broken up,
 
 * **TOP**
   ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
   * **CONTROL_SECTION**
     ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
-    * **COUNTER8**
-      ([counter8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/counter8.v))
-    * **MUX8**
-      ([ta157_8]())
-    * **OPCODEDEC**
-      ([opcodedec]())
-      * TBD
-        ([ta157_4]())
-        * TBD
-          ([ta157_ bar]())
-    * **COND_SELECT**
-      ([ta151_bar]())
-    * **XOR2**
-      ([xor2]())
-      * TBD
-        ([ta161 bar]())
   * **PROCESSOR_SECTION**
-      ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
-    * **REGISTER_A**
-      ([register_ab8]())
-      * TBD
-        ([ta377_bar]())
-    * **REGISTER_B**
-      ([register_ab8]())
-      * TBD
-        ([ta377_bar]())
-    * **MUX_A**
-      ([ta157_8]())
-      * TBD
-        ([ta157_bar]())
-    * **MUX_B**
-      ([ta157_8]())
-      * TBD
-        ([ta157_bar]())
-    * **TEMP_REGISTER_A**
-      ([register_ab8]())
-      * TBD
-        ([ta377_bar]())
-    * **TEMP_REGISTER_B**
-      ([register_ab8]())
-      * TBD
-        ([ta377_bar]())
-    * **ALU**
-      ([alu]())
-      * TBD
-        ([ta18l_bar]())
-    * **REGISTER_F**
-      ([register_ab8]())
-      * TBD
-        ([ta377_bar]())
-    * **ZP_BIT**
-      ([zp_bit]())
+    ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
 
 ### TOP LEVEL
 
@@ -85,13 +35,69 @@ The top level is as follow,
 
 ### CONTROL_SECTION
 
-The control section ?????
+The control section has five main parts,
+
+* **CONTROL_SECTION**
+  ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
+  * **COUNTER8**
+    ([counter8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/counter8.v))
+  * **MUX8**
+    ([ta157_8]())
+  * **OPCODEDEC**
+    ([opcodedec]())
+    * TBD
+      ([ta157_4]())
+    * TBD
+      ([ta157_ bar]())
+  * **COND_SELECT**
+    ([ta151_bar]())
+  * **XOR2**
+    ([xor2]())
+    * TBD
+      ([ta161 bar]())
 
 ![Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg)
 
 ### PROCESSOR SECTION
 
-The processor section ?????
+The processor is a collection of registers, muxes and an alu,
+
+* **PROCESSOR_SECTION**
+  ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
+  * **REGISTER_A**
+    ([register_ab8]())
+    * TBD
+      ([ta377_bar]())
+  * **REGISTER_B**
+    ([register_ab8]())
+    * TBD
+      ([ta377_bar]())
+  * **MUX_A**
+    ([ta157_8]())
+    * TBD
+      ([ta157_bar]())
+  * **MUX_B**
+      ([ta157_8]())
+    * TBD
+      ([ta157_bar]())
+  * **TEMP_REGISTER_A**
+    ([register_ab8]())
+    * TBD
+        ([ta377_bar]())
+  * **TEMP_REGISTER_B**
+    ([register_ab8]())
+    * TBD
+      ([ta377_bar]())
+  * **ALU**
+    ([alu]())
+    * TBD
+      ([ta18l_bar]())
+  * **REGISTER_F**
+    ([register_ab8]())
+    * TBD
+      ([ta377_bar]())
+  * **ZP_BIT**
+    ([zp_bit]())
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
