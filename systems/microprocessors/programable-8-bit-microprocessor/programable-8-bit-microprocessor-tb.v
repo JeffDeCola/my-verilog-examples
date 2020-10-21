@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
 `include "programable-8-bit-microprocessor.v"
+`include "control-store/control-store.v"
 
 module programable_8_bit_microprocessor_tb;
 
@@ -11,12 +12,12 @@ reg             GO_BAR;
 reg             RESET;
 reg             JAM;
 reg             SYSTEM_CLK;
-reg     [23:0]  MW;
+wire    [23:0]  MW;
 wire    [7:0]   MICROADDRESS;
 wire    [7:0]   DATA_OUT;
 
 // UUT
-programable_8_bit_microprocessor uut(
+programable_8_bit_microprocessor uut (
     .OPCODE(OPCODE),
     .DATA_IN_A(DATA_IN_A),
     .DATA_IN_B(DATA_IN_B),
@@ -27,6 +28,12 @@ programable_8_bit_microprocessor uut(
     .MW(MW),
     .MICROADDRESS(MICROADDRESS),
     .DATA_OUT(DATA_OUT)
+);
+
+// CONTROL_STORE
+control_store CS (
+    .microaddress(MICROADDRESS),
+    .microword(MW) 
 );
 
 // FILES
@@ -50,7 +57,6 @@ initial begin
     RESET = 0;
     JAM = 0;
     SYSTEM_CLK = 0;
-    MW = 23'b00000000000000000000000;
 
     // RESET
     #15; RESET = 1;
