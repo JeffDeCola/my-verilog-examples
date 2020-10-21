@@ -1,5 +1,5 @@
 // 8-bit microprocessor control section
-// `include "../conrol/control.v"
+`include "core-parts/counter8.v"
 
 module control(
     input  [3:0]    OPCODE,             //
@@ -14,32 +14,49 @@ module control(
     output          EIL_BAR             // 
 );
 
-assign MICROADDRESS = 8'h01;
-assign CONTROL_BITS = 11'b00000000000;
-assign EIL_BAR = 1'b0;
+assign MICROADDRESS = 8'h01;                    // ERASE
+assign CONTROL_BITS = 11'b00000000000;          // ERASE
+assign EIL_BAR = 1'b0;                          // ERASE
 
 // WIRES
 wire [3:0]      MICRO_AD_LOW;
 wire [7:4]      MICRO_AD_HIGH;
 wire            COUNT;
 wire [12:9]     BOP;
-wire [3:0]      CONTROL_BITS;
+wire [23:13]    CONTROL_BITS;                   // NOT IN THESIS
+wire [7:4]      COUNTER_IN_HIGH_SIG;
+wire [7:0]      BUFFER_IN;
+wire            MPC_LOAD_BAR;
+wire            COND_OUT;
+wire            HIGH;
+wire [7:0]      HIGH8;
+wire            LOW;
+wire            NOTHING;
 
 // BREAK UP THE MICROWORD
-assign MICRO_AD_LOW   = [3:0]MW
-assign MICRO_AD_HIGH  = [7:4]MW
-assign COUNT          = [8]MW
-assign BOP            = [12:9]MW
-assign CONTROL_BITS   = [23:13]MW
+assign MICRO_AD_LOW     = MW[3:0];
+assign MICRO_AD_HIGH    = MW[7:4];
+assign COUNT            = MW[8];
+assign BOP              = MW[12:9];
+assign CONTROL_BITS     = MW[23:13];
+
+// ASSIGN VALUES
+assign HIGH             = 1'b1;
+assign HIGH8            = 8'b11111111;
+assign LOW              = 1'b0;
 
 // COUNTER8 SECTION
 counter8 COUNTER_8 (
-    .TBD(TBD)
+    .COUNTER_IN_LOW(MICRO_AD_LOW),
+    .COUNTER_IN_HIGH(COUNTER_IN_HIGH_SIG),
+    .MPC_LOAD_BAR(MPC_LOAD_BAR),
+    .RESET(RESET),
+    .COUNT(COUNT),
+    .SYSTEM_CLK(SYSTEM_CLK),
+    .COUNTER_OUT(BUFFER_IN)
 );
 
 // MUX8 SECTION
- MUX8 (
-);
 
 // OPCODEDEC SECTION
 
