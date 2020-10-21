@@ -41,29 +41,82 @@ assign ALU_DEST     = CONTROL_BITS[23:21];
 
 // ASSIGN VALUES
 assign LOW              = 1'b0;
+//assign DATA_OUT         = IN_ZP;
 
-// REGISTER_A SECTION
-register_ab8 REGISTER_A (                   // NAMED REGISTERA IN THESIS    
+// REGISTERA SECTION
+register_ab8 REGISTERA (                   // NAMED REGISTERA IN THESIS    
     .DATA_IN(DATA_IN_A),
     .SYSTEM_CLK(SYSTEM_CLK),
     .ENABLE_CLK(EIL_BAR),
     .DATA_OUT(DATA_OUT_A)
 );
 
-// REGISTER_B SECTION
-
-// MUX_A SECTION
-
-// MUX_B SECTION
+// REGISTERB SECTION
+//register_ab8 REGISTERB (
+   // .DATA_IN(DATA_IN_B),
+   // .SYSTEM_CLK(SYSTEM_CLK),
+   // .ENABLE_CLK(EIL_BAR),
+   // .DATA_OUT(DATA_OUT_B)
+//);
 
 // TEMP_REGISTER_A SECTION
+//register_ab8 TEMP_REGISTER_A (
+   // .DATA_IN(ALU_OUT),
+   // .SYSTEM_CLK(SYSTEM_CLK),
+   // .ENABLE_CLK(ALU_DEST),
+   // .DATA_OUT(DATA_OUT_TA)    
+//);
 
 // TEMP_REGISTER_B SECTION
+//register_ab8 TEMP_REGISTER_B (
+   // .DATA_IN(ALU_OUT),
+   // .SYSTEM_CLK(SYSTEM_CLK),
+   // .ENABLE_CLK(ALU_DEST),
+   // .DATA_OUT(DATA_OUT_TB)
+//);
 
-// ALU SECTION
+// MUX_A SECTION
+//ta_157_8 MUX_A (
+    // .A8(DATA_OUT_TA),
+    // .B8(DATA_OUT_A),
+    // .S(A_SOURCE),
+    // .EN_BAR(LOW),
+    // .Y8(ALU_IN_A)
+//);
 
-// REGISTER_F SECTION
+// MUX_B SECTION
+//ta_157_8 MUX_B (
+    // .A8(DATA_OUT_TB),
+    // .B8(DATA_OUT_B),
+    // .S(B_SOURCE),
+    // .EN_BAR(LOW),
+    // .Y8(ALU_IN_B)
+//);
 
-// ZP_BIT SECTION
+// ALU1 SECTION
+//alu ALU1 (
+    //.IN_A(ALU_IN_A),
+    //.IN_B(ALU_IN_B),
+    //.CIN(CIN),
+    //.ALU_FUNC(ALU_FUNC),
+    //.OUT8(ALU_OUT),
+    //.C4(STATUS_BITS[0]),
+    //.C8(STATUS_BITS[1]),
+    //.Z(STATUS_BITS[2])
+//);
+
+// F_REGISTER SECTION
+//register_ab8 F_REGISTER (
+   // .DATA_IN(ALU_OUT),
+   // .SYSTEM_CLK(SYSTEM_CLK),
+   // .ENABLE_CLK(ALU_DEST(23)),
+   // .DATA_OUT(IN_ZP)
+//);
+
+// ZP_BIT1 SECTION
+//zp_bit ZP_BIT1 (
+    // .F8(IN_ZP),
+    // .ZP_BAR(STATUS_BITS[2])
+//);
 
 endmodule

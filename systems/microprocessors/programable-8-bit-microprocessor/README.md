@@ -39,19 +39,19 @@ The control section has five main parts,
 
 * **CONTROL_SECTION**
   ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
-  * **COUNTER8**
+  * **COUNTER_8**
     ([counter8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/counter8.v))
   * **MUX8**
-    ([ta157_8]())
-  * **OPCODEDEC**
+    ([ta157_8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157_8.v))
+  * **OPCODEDECO**
     ([opcodedec]())
     * TBD
       ([ta157_4]())
     * TBD
-      ([ta157_ bar]())
+      ([ta157_bar]())
   * **COND_SELECT**
     ([ta151_bar]())
-  * **XOR2**
+  * **XOR_2**
     ([xor2]())
     * TBD
       ([ta161 bar]())
@@ -64,39 +64,39 @@ The processor is a collection of registers, muxes and an alu,
 
 * **PROCESSOR_SECTION**
   ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
-  * **REGISTER_A**
-    ([register_ab8]())
+  * **REGISTERA**
+    ([register_ab8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register_ab8.v))
     * TBD
       ([ta377_bar]())
-  * **REGISTER_B**
-    ([register_ab8]())
+  * **REGISTERB**
+    ([register_ab8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register_ab8.v))
     * TBD
       ([ta377_bar]())
-  * **MUX_A**
-    ([ta157_8]())
-    * TBD
-      ([ta157_bar]())
-  * **MUX_B**
-      ([ta157_8]())
-    * TBD
-      ([ta157_bar]())
   * **TEMP_REGISTER_A**
-    ([register_ab8]())
+    ([register_ab8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register_ab8.v))
     * TBD
         ([ta377_bar]())
   * **TEMP_REGISTER_B**
-    ([register_ab8]())
+    ([register_ab8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register_ab8.v))
     * TBD
       ([ta377_bar]())
-  * **ALU**
+  * **MUX_A**
+    ([ta157_8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157_8.v))
+    * TBD
+      ([ta157_bar]())
+  * **MUX_B**
+      ([ta157_8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157_8.v))
+    * TBD
+      ([ta157_bar]())
+  * **ALU1**
     ([alu]())
     * TBD
       ([ta18l_bar]())
-  * **REGISTER_F**
-    ([register_ab8]())
+  * **F_REGISTER**
+    ([register_ab8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register_ab8.v))
     * TBD
       ([ta377_bar]())
-  * **ZP_BIT**
+  * **ZP_BIT1**
     ([zp_bit]())
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
