@@ -1,5 +1,5 @@
 $date
-	Wed Oct 21 07:28:29 2020
+	Wed Oct 21 11:41:32 2020
 $end
 $version
 	Icarus Verilog
@@ -62,26 +62,58 @@ $var wire 1 ; MPC_LOAD_BAR $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
+$scope module MUX8 $end
+$var wire 8 F A8 [7:0] $end
+$var wire 8 G B8 [7:0] $end
+$var wire 1 9 EN_BAR $end
+$var wire 1 & S $end
+$var wire 8 H Y8 [7:0] $end
+$upscope $end
 $upscope $end
 $scope module PROCESSOR_SECTION $end
-$var wire 11 F CONTROL_BITS [23:13] $end
-$var wire 8 G DATA_IN_A [7:0] $end
-$var wire 8 H DATA_IN_B [7:0] $end
-$var wire 8 I DATA_OUT [7:0] $end
+$var wire 11 I CONTROL_BITS [23:13] $end
+$var wire 8 J DATA_IN_A [7:0] $end
+$var wire 8 K DATA_IN_B [7:0] $end
+$var wire 8 L DATA_OUT [7:0] $end
+$var wire 8 M DATA_OUT_A [7:0] $end
 $var wire 1 / EIL_BAR $end
-$var wire 4 J STATUS_BITS [3:0] $end
+$var wire 1 N LOW $end
+$var wire 4 O STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
+$var wire 1 P CIN $end
+$var wire 1 Q B_SOURCE $end
+$var wire 1 R A_SOURCE $end
+$var wire 5 S ALU_FUNC [19:15] $end
+$var wire 3 T ALU_DEST [23:21] $end
+$scope module REGISTER_A $end
+$var wire 8 U DATA_IN [7:0] $end
+$var wire 8 V DATA_OUT [7:0] $end
+$var wire 1 / ENABLE_CLK $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
 $upscope $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+b11110000 V
+b0 U
+b0 T
+b0 S
+0R
+0Q
+0P
+b0 O
+0N
+b11110000 M
+b10000 L
+b0 K
 b0 J
-b10000 I
-b0 H
-b0 G
-b0 F
+b0 I
+b11111111 H
+b11111111 G
+b11110000 F
 b11110000 E
 b0 D
 bz C
@@ -93,7 +125,7 @@ b0 >
 b0 =
 b0 <
 z;
-b1 :
+b11111111 :
 09
 b11111111 8
 17
@@ -103,7 +135,7 @@ b11110000 4
 b0 3
 b0 2
 b0 1
-b1 0
+b11111111 0
 0/
 b10000 .
 b0 -
@@ -117,7 +149,7 @@ b0 '
 0%
 b0 $
 b0 #
-b1 "
+b11111111 "
 b10000 !
 $end
 #10

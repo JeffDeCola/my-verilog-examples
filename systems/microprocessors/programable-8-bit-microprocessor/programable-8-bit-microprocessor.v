@@ -1,4 +1,6 @@
-// 8-bit microprocessor
+// 8-bit microprocessor top
+// The top level of the design
+
 `include "control/control.v"
 `include "processor/processor.v"
 
@@ -15,6 +17,8 @@ module programable_8_bit_microprocessor(
     output [7:0]    DATA_OUT            // 
 );
 
+
+// WIRES
 wire [3:0]     STATUS_BITS;
 wire [23:13]   CONTROL_BITS;
 wire           EIL_BAR;
@@ -29,7 +33,7 @@ control CONTROL_SECTION (
     .STATUS_BITS(STATUS_BITS),
     .MW(MW),
     .MICROADDRESS(MICROADDRESS),
-    .CONTROL_BITS(CONTROL_BITS),
+    .CONTROL_BITS(CONTROL_BITS),        // ORDER DIFFERENT FROM THESIS
     .EIL_BAR(EIL_BAR)
 );
 
