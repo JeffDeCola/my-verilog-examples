@@ -10,7 +10,7 @@ Table of Contents,
   * [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level)
   * [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
   * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
-* [MICROWORD & OPCODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microword--opcode)
+* [CONTROL STORE (THE MICROCODE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-store-the-microcode)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
@@ -102,19 +102,31 @@ The processor is a collection of registers, muxes and an alu,
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
-## CONTROL STORE ( THE MICROCODE)
+## CONTROL STORE (THE MICROCODE)
 
-MICROWORD & OPCODE
+The microword (MW) fields are,
 
-The microword `MW` is broken up as,
+* **[3:0]** MICRO_AD_LOW
+* **[7:4]** MICRO_AD_HIGH
+* **[8]** COUNT
+* **[12:9]** BOP
+* **[23:13]** CONTROL_BITS (for processor)
+  * **[13]** A_SOURCE
+  * **[13]** B_SOURCE
+  * **[19:15]** ALU_FUNC
+  * **[20]** CIN
+  * **[23:21]** ALU_DEST
 
-* [3:0] MICRO_AD_LOW
-* [7:4] MICRO_AD_HIGH
-* [8] COUNT
-* [12:9] BOP
-* [23:13] CONTROL_BITS
+The microcode is located in
+[]().
 
-The opcode is ????
+## OPCODE  
+
+There are 16 opcodes,
+
+* 4'h0: ??
+* 4'h1: ??
+* 4'h1: ??
 
 ## VERILOG CODE
 
