@@ -1,15 +1,17 @@
 # programable-8-bit-microprocessor example
 
-_A programable 8-bit microprocessor I designed for my master's
-[thesis](https://github.com/JeffDeCola/my-masters-thesis)._
+_A programable 8-bit microprocessor I designed for my
+[Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
 Table of Contents,
 
-* [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor#top-level)
-* [HIERARCHY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor#hierarchy)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor#check-waveform)
+* [HIERARCHY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#hierarchy)
+  * [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level)
+  * [CONTROL_SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#controlsection)
+  * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -17,30 +19,79 @@ Table of Contents,
 
 The processor is broken up as follows,
 
-* **programable-8-bit-microprocessor (top)**
-  * **control**
-    * counter8
-      * ta161 bar
-    * ta157_8
-    * opcodedec
-      * ta157_4
-        * ta157_ bar
-    * ta151_bar
-    * xor2
-  * **processor**
-    * register_ab8 (x5)
-      * ta377_bar
-    * ta157_8 (x2)
-      * ta157_bar
-    * alu
-      * ta18l_bar
-    * zp_bit
+* **TOP**
+  ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
+  * **CONTROL_SECTION**
+    ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.vcontrol))
+    * **MUX8**
+      (ta157_8)
+    * **OPCODEDEC**
+      (opcodedec)
+      * TBD
+        (ta157_4)
+        * TBD
+          (ta157_ bar)
+    * **COUNTER8**
+      (counter8)
+    * **COND_SELECT**
+      (ta151_bar)
+    * **XOR2**
+      (xor2)
+      * TBD
+        (ta161 bar)
+  * **PROCESSOR_SECTION**
+      ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
+    * **REGISTER_A**
+      (register_ab8)
+          * ta377_bar
+    * **REGISTER_B**
+      (register_ab8)
+      * TBD
+        (ta377_bar)
+    * **MUX_A**
+      (ta157_8)
+      * TBD
+        (ta157_bar)
+    * **MUX_B**
+      (ta157_8)
+      * TBD
+        (ta157_bar)
+    * **TEMP_REGISTER_A**
+      (register_ab8)
+      * TBD
+        (ta377_bar)
+    * **TEMP_REGISTER_B**
+      (register_ab8)
+      * TBD
+        (ta377_bar)
+    * **ALU**
+      (alu)
+      * TBD
+        (ta18l_bar)
+    * **REGISTER_F**
+      (register_ab8)
+      * TBD
+        (ta377_bar)
+    * **ZP_BIT**
+      (zp_bit)
 
-## TOP LEVEL
+### TOP LEVEL
 
 The top level is as follow,
 
 ![Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
+
+### CONTROL_SECTION
+
+The control section ?????
+
+![Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg)
+
+### PROCESSOR SECTION
+
+The processor section ?????
+
+![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
 ## VERILOG CODE
 

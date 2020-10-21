@@ -1,5 +1,5 @@
 $date
-	Wed Oct 21 03:19:59 2020
+	Wed Oct 21 05:19:49 2020
 $end
 $version
 	Icarus Verilog
@@ -32,7 +32,7 @@ $var wire 4 2 OPCODE [3:0] $end
 $var wire 1 ) RESET $end
 $var wire 4 3 STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
-$scope module CONTROL $end
+$scope module CONTROL_SECTION $end
 $var wire 11 4 CONTROL_BITS [23:13] $end
 $var wire 1 / EIL_BAR $end
 $var wire 1 % GO_BAR $end
@@ -44,7 +44,7 @@ $var wire 1 ) RESET $end
 $var wire 4 8 STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
-$scope module PROCESSOR $end
+$scope module PROCESSOR_SECTION $end
 $var wire 11 9 CONTROL_BITS [23:13] $end
 $var wire 8 : DATA_IN_A [7:0] $end
 $var wire 8 ; DATA_IN_B [7:0] $end
@@ -59,21 +59,21 @@ $enddefinitions $end
 #0
 $dumpvars
 b0 =
-b0 <
+b10000 <
 b0 ;
 b0 :
 b0 9
 b0 8
 b0 7
 b0 6
-b0 5
+b1 5
 b0 4
 b0 3
 b0 2
 b0 1
-b0 0
+b1 0
 0/
-b0 .
+b10000 .
 b0 -
 b0 ,
 b0 +
@@ -85,8 +85,8 @@ b0 '
 0%
 b0 $
 b0 #
-b0 "
-b0 !
+b1 "
+b10000 !
 $end
 #10
 1*
