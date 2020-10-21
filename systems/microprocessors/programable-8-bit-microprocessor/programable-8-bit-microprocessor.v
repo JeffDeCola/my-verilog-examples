@@ -3,6 +3,14 @@
 
 `include "control/control.v"
 `include "processor/processor.v"
+`include "core-parts/counter8.v"
+`include "core-parts/ta157_8.v"
+`include "opcode/opcodedec.v"
+`include "core-parts/ta151_bar.v"
+`include "core-parts/xor2.v"
+`include "core-parts/register_ab8.v"
+`include "alu/alu.v"
+`include "core-parts/zp_bit.v"
 
 module programable_8_bit_microprocessor(
     input  [3:0]    OPCODE,             //

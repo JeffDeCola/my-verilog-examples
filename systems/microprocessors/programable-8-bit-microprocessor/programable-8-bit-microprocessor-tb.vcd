@@ -1,5 +1,5 @@
 $date
-	Wed Oct 21 13:47:06 2020
+	Wed Oct 21 14:18:16 2020
 $end
 $version
 	Icarus Verilog
@@ -101,24 +101,79 @@ $var wire 1 < Y $end
 $upscope $end
 $upscope $end
 $scope module PROCESSOR_SECTION $end
-$var wire 11 W CONTROL_BITS [23:13] $end
-$var wire 8 X DATA_IN_A [7:0] $end
-$var wire 8 Y DATA_IN_B [7:0] $end
-$var wire 8 Z DATA_OUT [7:0] $end
-$var wire 8 [ DATA_OUT_A [7:0] $end
+$var wire 8 W ALU_IN_A [7:0] $end
+$var wire 8 X ALU_IN_B [7:0] $end
+$var wire 8 Y ALU_OUT [7:0] $end
+$var wire 11 Z CONTROL_BITS [23:13] $end
+$var wire 8 [ DATA_IN_A [7:0] $end
+$var wire 8 \ DATA_IN_B [7:0] $end
+$var wire 8 ] DATA_OUT [7:0] $end
+$var wire 8 ^ DATA_OUT_A [7:0] $end
+$var wire 8 _ DATA_OUT_B [7:0] $end
+$var wire 8 ` DATA_OUT_TA [7:0] $end
+$var wire 8 a DATA_OUT_TB [7:0] $end
 $var wire 1 / EIL_BAR $end
-$var wire 1 \ LOW $end
-$var wire 4 ] STATUS_BITS [3:0] $end
+$var wire 8 b IN_ZP [7:0] $end
+$var wire 1 c LOW $end
+$var wire 4 d STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 1 ^ CIN $end
-$var wire 1 _ B_SOURCE $end
-$var wire 1 ` A_SOURCE $end
-$var wire 5 a ALU_FUNC [19:15] $end
-$var wire 3 b ALU_DEST [23:21] $end
+$var wire 1 e CIN $end
+$var wire 1 f B_SOURCE $end
+$var wire 1 g A_SOURCE $end
+$var wire 5 h ALU_FUNC [19:15] $end
+$var wire 3 i ALU_DEST [23:21] $end
+$scope module ALU1 $end
+$var wire 5 j ALU_FUNC [19:15] $end
+$var wire 1 k C4 $end
+$var wire 1 l C8 $end
+$var wire 1 e CIN $end
+$var wire 8 m IN_A [7:0] $end
+$var wire 8 n IN_B [7:0] $end
+$var wire 8 o OUT8 [7:0] $end
+$var wire 1 p Z $end
+$upscope $end
+$scope module F_REGISTER $end
+$var wire 8 q DATA_IN [7:0] $end
+$var wire 8 r DATA_OUT [7:0] $end
+$var wire 1 s ENABLE_CLK $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
+$scope module MUX_A $end
+$var wire 8 t A8 [7:0] $end
+$var wire 8 u B8 [7:0] $end
+$var wire 1 c EN_BAR $end
+$var wire 1 g S $end
+$var wire 8 v Y8 [7:0] $end
+$upscope $end
+$scope module MUX_B $end
+$var wire 8 w A8 [7:0] $end
+$var wire 8 x B8 [7:0] $end
+$var wire 1 c EN_BAR $end
+$var wire 1 f S $end
+$var wire 8 y Y8 [7:0] $end
+$upscope $end
 $scope module REGISTERA $end
-$var wire 8 c DATA_IN [7:0] $end
-$var wire 8 d DATA_OUT [7:0] $end
+$var wire 8 z DATA_IN [7:0] $end
+$var wire 8 { DATA_OUT [7:0] $end
 $var wire 1 / ENABLE_CLK $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
+$scope module REGISTERB $end
+$var wire 8 | DATA_IN [7:0] $end
+$var wire 8 } DATA_OUT [7:0] $end
+$var wire 1 / ENABLE_CLK $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
+$scope module TEMP_REGISTER_A $end
+$var wire 8 ~ DATA_IN [7:0] $end
+$var wire 8 !" DATA_OUT [7:0] $end
+$var wire 1 "" ENABLE_CLK $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
+$scope module TEMP_REGISTER_B $end
+$var wire 8 #" DATA_IN [7:0] $end
+$var wire 8 $" DATA_OUT [7:0] $end
+$var wire 1 %" ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $upscope $end
@@ -127,20 +182,51 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b11110000 d
-b0 c
-b0 b
-b0 a
-0`
-0_
-0^
-b0 ]
-0\
-b11110000 [
-b10000 Z
-b0 Y
-b0 X
-b0 W
+0%"
+b11110000 $"
+b11110000 #"
+0""
+b11110000 !"
+b11110000 ~
+b11110000 }
+b0 |
+b11110000 {
+b0 z
+b11111111 y
+b11110000 x
+b11110000 w
+b11111111 v
+b11110000 u
+b11110000 t
+0s
+b11110000 r
+b11110000 q
+1p
+b11110000 o
+b11111111 n
+b11111111 m
+1l
+1k
+b0 j
+b0 i
+b0 h
+0g
+0f
+0e
+b0xxx d
+0c
+b11110000 b
+b11110000 a
+b11110000 `
+b11110000 _
+b11110000 ^
+b10000 ]
+b0 \
+b0 [
+b0 Z
+b11110000 Y
+b11111111 X
+b11111111 W
 0V
 b11 U
 b0 T
@@ -153,9 +239,9 @@ b11110000 N
 b0 M
 b11 L
 0K
-0J
-0I
-0H
+xJ
+xI
+xH
 0G
 0F
 0E
@@ -163,7 +249,7 @@ b0 D
 0C
 b0 B
 b0 A
-b0 @
+b0xxx @
 b0 ?
 1>
 b0 =
@@ -176,7 +262,7 @@ b11 7
 b0 6
 15
 b11110000 4
-b0 3
+b0xxx 3
 b0 2
 b0 1
 b11111111 0
