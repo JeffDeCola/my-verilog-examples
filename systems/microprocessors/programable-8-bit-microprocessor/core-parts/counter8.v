@@ -1,4 +1,5 @@
 // 8-bit microprocessor counter8
+// 8-bit synchronous counter
 
 module counter8(
     input  [3:0]    COUNTER_IN_LOW,     // 
@@ -10,6 +11,6 @@ module counter8(
     output [7:0]    COUNTER_OUT         // 
 );
 
-assign COUNTER_OUT = 8'hf0;         // ERASE
+assign COUNTER_OUT = 8'hf0;             // ERASE
 
 endmodule

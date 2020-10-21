@@ -1,5 +1,8 @@
 // 8-bit microprocessor control section
+// Control section structural view
+
 `include "core-parts/counter8.v"
+`include "core-parts/ta157_8.v"
 
 module control(
     input  [3:0]    OPCODE,             //
@@ -14,7 +17,6 @@ module control(
     output          EIL_BAR             // 
 );
 
-assign MICROADDRESS = 8'h01;                    // ERASE
 assign CONTROL_BITS = 11'b00000000000;          // ERASE
 assign EIL_BAR = 1'b0;                          // ERASE
 
@@ -33,7 +35,7 @@ wire [7:0]      HIGH8;
 wire            LOW;
 wire            NOTHING;
 
-// BREAK UP THE MICROWORD
+// BREAK UP THE MICROWORD (MW) INTO FIELDS
 assign MICRO_AD_LOW     = MW[3:0];
 assign MICRO_AD_HIGH    = MW[7:4];
 assign COUNT            = MW[8];
@@ -57,11 +59,18 @@ counter8 COUNTER_8 (
 );
 
 // MUX8 SECTION
+ta157_8 MUX8 (
+    .A8(BUFFER_IN),
+    .B8(HIGH8),
+    .S(JAM),
+    .EN_BAR(LOW),
+    .Y8(MICROADDRESS)
+);
 
 // OPCODEDEC SECTION
 
 // COND_SELECT SECTION
 
-// XOR2 SECTION
+// XOR2 SECTION (THE XOR CODE IS NOT IN THESIS)
 
 endmodule
