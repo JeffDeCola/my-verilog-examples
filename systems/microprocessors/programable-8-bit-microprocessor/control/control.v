@@ -1,12 +1,6 @@
 // 8-bit microprocessor control section
 // Control section structural view
 
-`include "core-parts/counter8.v"
-`include "core-parts/ta157_8.v"
-`include "opcode/opcodedec.v"
-`include "core-parts/ta151_bar.v"
-`include "core-parts/xor2.v"
-
 module control(
     input  [3:0]    OPCODE,             //
     input           GO_BAR,             // 

@@ -44,15 +44,15 @@ The control section has five main parts,
   * **MUX8**
     ([ta157_8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157_8.v))
   * **OPCODEDECO**
-    ([opcodedec]())
+    ([opcodedec](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/opcode/opcodedec.v))
     * TBD
       ([ta157_4]())
     * TBD
       ([ta157_bar]())
   * **COND_SELECT**
-    ([ta151_bar]())
+    ([ta151_bar](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta151_bar.v))
   * **XOR_2**
-    ([xor2]())
+    ([xor2](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/xor2.v))
     * TBD
       ([ta161 bar]())
 
