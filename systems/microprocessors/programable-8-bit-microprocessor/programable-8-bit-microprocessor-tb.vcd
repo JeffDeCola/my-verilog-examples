@@ -1,5 +1,5 @@
 $date
-	Wed Oct 21 05:19:49 2020
+	Wed Oct 21 07:28:29 2020
 $end
 $version
 	Icarus Verilog
@@ -33,24 +33,43 @@ $var wire 1 ) RESET $end
 $var wire 4 3 STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
 $scope module CONTROL_SECTION $end
-$var wire 11 4 CONTROL_BITS [23:13] $end
+$var wire 8 4 BUFFER_IN [7:0] $end
+$var wire 11 5 CONTROL_BITS [23:13] $end
+$var wire 4 6 COUNTER_IN_HIGH_SIG [7:4] $end
 $var wire 1 / EIL_BAR $end
 $var wire 1 % GO_BAR $end
+$var wire 1 7 HIGH $end
+$var wire 8 8 HIGH8 [7:0] $end
 $var wire 1 & JAM $end
-$var wire 8 5 MICROADDRESS [7:0] $end
-$var wire 24 6 MW [23:0] $end
-$var wire 4 7 OPCODE [3:0] $end
+$var wire 1 9 LOW $end
+$var wire 8 : MICROADDRESS [7:0] $end
+$var wire 1 ; MPC_LOAD_BAR $end
+$var wire 24 < MW [23:0] $end
+$var wire 4 = OPCODE [3:0] $end
 $var wire 1 ) RESET $end
-$var wire 4 8 STATUS_BITS [3:0] $end
+$var wire 4 > STATUS_BITS [3:0] $end
+$var wire 1 * SYSTEM_CLK $end
+$var wire 4 ? MICRO_AD_LOW [3:0] $end
+$var wire 4 @ MICRO_AD_HIGH [7:4] $end
+$var wire 1 A COUNT $end
+$var wire 4 B BOP [12:9] $end
+$scope module COUNTER_8 $end
+$var wire 1 A COUNT $end
+$var wire 4 C COUNTER_IN_HIGH [7:4] $end
+$var wire 4 D COUNTER_IN_LOW [3:0] $end
+$var wire 8 E COUNTER_OUT [7:0] $end
+$var wire 1 ; MPC_LOAD_BAR $end
+$var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
+$upscope $end
 $scope module PROCESSOR_SECTION $end
-$var wire 11 9 CONTROL_BITS [23:13] $end
-$var wire 8 : DATA_IN_A [7:0] $end
-$var wire 8 ; DATA_IN_B [7:0] $end
-$var wire 8 < DATA_OUT [7:0] $end
+$var wire 11 F CONTROL_BITS [23:13] $end
+$var wire 8 G DATA_IN_A [7:0] $end
+$var wire 8 H DATA_IN_B [7:0] $end
+$var wire 8 I DATA_OUT [7:0] $end
 $var wire 1 / EIL_BAR $end
-$var wire 4 = STATUS_BITS [3:0] $end
+$var wire 4 J STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $upscope $end
@@ -58,16 +77,29 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+b0 J
+b10000 I
+b0 H
+b0 G
+b0 F
+b11110000 E
+b0 D
+bz C
+b0 B
+0A
+b0 @
+b0 ?
+b0 >
 b0 =
-b10000 <
-b0 ;
-b0 :
-b0 9
-b0 8
-b0 7
-b0 6
-b1 5
-b0 4
+b0 <
+z;
+b1 :
+09
+b11111111 8
+17
+bz 6
+b0 5
+b11110000 4
 b0 3
 b0 2
 b0 1

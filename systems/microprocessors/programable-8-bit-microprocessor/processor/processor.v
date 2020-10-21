@@ -11,8 +11,8 @@ module processor(
     output [7:0]    DATA_OUT            // 
 );
 
-assign STATUS_BITS = 4'h0;
-assign DATA_OUT = 8'h10;
+assign STATUS_BITS = 4'h0;          // ERASE
+assign DATA_OUT = 8'h10;            // ERASE
 
 // wire [3:0]      STATUS_BITS;
 
