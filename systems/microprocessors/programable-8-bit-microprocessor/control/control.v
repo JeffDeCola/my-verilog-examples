@@ -3,6 +3,9 @@
 
 `include "core-parts/counter8.v"
 `include "core-parts/ta157_8.v"
+`include "opcode/opcodedec.v"
+`include "core-parts/ta151_bar.v"
+`include "core-parts/xor2.v"
 
 module control(
     input  [3:0]    OPCODE,             //
@@ -18,7 +21,6 @@ module control(
 );
 
 assign CONTROL_BITS = 11'b00000000000;          // ERASE
-assign EIL_BAR = 1'b0;                          // ERASE
 
 // WIRES
 wire [3:0]      MICRO_AD_LOW;
@@ -68,9 +70,37 @@ ta157_8 MUX8 (
 );
 
 // OPCODEDEC SECTION
+opcodedec OPCODEDEC0 (
+    .OPCODE(OPCODE),
+    .MW_AD_HIGH(MICRO_AD_HIGH),
+    .MW_BOP(BOP),
+    .TO_COUNTER(COUNTER_IN_HIGH_SIG),
+    .EIL_BAR(EIL_BAR)
+);
 
 // COND_SELECT SECTION
+ta151_bar COND_SELECT (
+    .D0(STATUS_BITS[2]),
+    .D1(LOW),
+    .D2(STATUS_BITS[0]),
+    .D3(STATUS_BITS[1]),
+    .D4(GO_BAR),
+    .D5(STATUS_BITS[3]),
+    .D6(LOW),
+    .D7(LOW),
+    .A(BOP[9]),
+    .B(BOP[10]),
+    .C(BOP[11]),
+    .EN_BAR(LOW),
+    .Y(NOTHING),
+    .W(COND_OUT)
+);
 
 // XOR2 SECTION (THE XOR CODE IS NOT IN THESIS)
+xor2 XOR_2 (
+    .A(BOP[12]),
+    .B(COND_OUT),
+    .Y(MPC_LOAD_BAR)
+);
 
 endmodule

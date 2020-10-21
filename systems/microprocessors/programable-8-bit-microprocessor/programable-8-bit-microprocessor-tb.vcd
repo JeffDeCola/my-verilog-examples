@@ -1,5 +1,5 @@
 $date
-	Wed Oct 21 11:41:32 2020
+	Wed Oct 21 13:47:06 2020
 $end
 $version
 	Icarus Verilog
@@ -34,60 +34,90 @@ $var wire 4 3 STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
 $scope module CONTROL_SECTION $end
 $var wire 8 4 BUFFER_IN [7:0] $end
-$var wire 11 5 CONTROL_BITS [23:13] $end
-$var wire 4 6 COUNTER_IN_HIGH_SIG [7:4] $end
+$var wire 1 5 COND_OUT $end
+$var wire 11 6 CONTROL_BITS [23:13] $end
+$var wire 4 7 COUNTER_IN_HIGH_SIG [7:4] $end
 $var wire 1 / EIL_BAR $end
 $var wire 1 % GO_BAR $end
-$var wire 1 7 HIGH $end
-$var wire 8 8 HIGH8 [7:0] $end
+$var wire 1 8 HIGH $end
+$var wire 8 9 HIGH8 [7:0] $end
 $var wire 1 & JAM $end
-$var wire 1 9 LOW $end
-$var wire 8 : MICROADDRESS [7:0] $end
-$var wire 1 ; MPC_LOAD_BAR $end
-$var wire 24 < MW [23:0] $end
-$var wire 4 = OPCODE [3:0] $end
+$var wire 1 : LOW $end
+$var wire 8 ; MICROADDRESS [7:0] $end
+$var wire 1 < MPC_LOAD_BAR $end
+$var wire 24 = MW [23:0] $end
+$var wire 1 > NOTHING $end
+$var wire 4 ? OPCODE [3:0] $end
 $var wire 1 ) RESET $end
-$var wire 4 > STATUS_BITS [3:0] $end
+$var wire 4 @ STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 4 ? MICRO_AD_LOW [3:0] $end
-$var wire 4 @ MICRO_AD_HIGH [7:4] $end
-$var wire 1 A COUNT $end
-$var wire 4 B BOP [12:9] $end
+$var wire 4 A MICRO_AD_LOW [3:0] $end
+$var wire 4 B MICRO_AD_HIGH [7:4] $end
+$var wire 1 C COUNT $end
+$var wire 4 D BOP [12:9] $end
+$scope module COND_SELECT $end
+$var wire 1 E A $end
+$var wire 1 F B $end
+$var wire 1 G C $end
+$var wire 1 H D0 $end
+$var wire 1 : D1 $end
+$var wire 1 I D2 $end
+$var wire 1 J D3 $end
+$var wire 1 % D4 $end
+$var wire 1 K D5 $end
+$var wire 1 : D6 $end
+$var wire 1 : D7 $end
+$var wire 1 : EN_BAR $end
+$var wire 1 5 W $end
+$var wire 1 > Y $end
+$upscope $end
 $scope module COUNTER_8 $end
-$var wire 1 A COUNT $end
-$var wire 4 C COUNTER_IN_HIGH [7:4] $end
-$var wire 4 D COUNTER_IN_LOW [3:0] $end
-$var wire 8 E COUNTER_OUT [7:0] $end
-$var wire 1 ; MPC_LOAD_BAR $end
+$var wire 1 C COUNT $end
+$var wire 4 L COUNTER_IN_HIGH [7:4] $end
+$var wire 4 M COUNTER_IN_LOW [3:0] $end
+$var wire 8 N COUNTER_OUT [7:0] $end
+$var wire 1 < MPC_LOAD_BAR $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module MUX8 $end
-$var wire 8 F A8 [7:0] $end
-$var wire 8 G B8 [7:0] $end
-$var wire 1 9 EN_BAR $end
+$var wire 8 O A8 [7:0] $end
+$var wire 8 P B8 [7:0] $end
+$var wire 1 : EN_BAR $end
 $var wire 1 & S $end
-$var wire 8 H Y8 [7:0] $end
+$var wire 8 Q Y8 [7:0] $end
+$upscope $end
+$scope module OPCODEDEC0 $end
+$var wire 1 / EIL_BAR $end
+$var wire 4 R MW_AD_HIGH [7:4] $end
+$var wire 4 S MW_BOP [12:9] $end
+$var wire 4 T OPCODE [3:0] $end
+$var wire 4 U TO_COUNTER [7:4] $end
+$upscope $end
+$scope module XOR_2 $end
+$var wire 1 V A $end
+$var wire 1 5 B $end
+$var wire 1 < Y $end
 $upscope $end
 $upscope $end
 $scope module PROCESSOR_SECTION $end
-$var wire 11 I CONTROL_BITS [23:13] $end
-$var wire 8 J DATA_IN_A [7:0] $end
-$var wire 8 K DATA_IN_B [7:0] $end
-$var wire 8 L DATA_OUT [7:0] $end
-$var wire 8 M DATA_OUT_A [7:0] $end
+$var wire 11 W CONTROL_BITS [23:13] $end
+$var wire 8 X DATA_IN_A [7:0] $end
+$var wire 8 Y DATA_IN_B [7:0] $end
+$var wire 8 Z DATA_OUT [7:0] $end
+$var wire 8 [ DATA_OUT_A [7:0] $end
 $var wire 1 / EIL_BAR $end
-$var wire 1 N LOW $end
-$var wire 4 O STATUS_BITS [3:0] $end
+$var wire 1 \ LOW $end
+$var wire 4 ] STATUS_BITS [3:0] $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 1 P CIN $end
-$var wire 1 Q B_SOURCE $end
-$var wire 1 R A_SOURCE $end
-$var wire 5 S ALU_FUNC [19:15] $end
-$var wire 3 T ALU_DEST [23:21] $end
-$scope module REGISTER_A $end
-$var wire 8 U DATA_IN [7:0] $end
-$var wire 8 V DATA_OUT [7:0] $end
+$var wire 1 ^ CIN $end
+$var wire 1 _ B_SOURCE $end
+$var wire 1 ` A_SOURCE $end
+$var wire 5 a ALU_FUNC [19:15] $end
+$var wire 3 b ALU_DEST [23:21] $end
+$scope module REGISTERA $end
+$var wire 8 c DATA_IN [7:0] $end
+$var wire 8 d DATA_OUT [7:0] $end
 $var wire 1 / ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
@@ -97,46 +127,60 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b11110000 V
-b0 U
+b11110000 d
+b0 c
+b0 b
+b0 a
+0`
+0_
+0^
+b0 ]
+0\
+b11110000 [
+b10000 Z
+b0 Y
+b0 X
+b0 W
+0V
+b11 U
 b0 T
 b0 S
-0R
-0Q
-0P
-b0 O
-0N
-b11110000 M
-b10000 L
-b0 K
-b0 J
-b0 I
-b11111111 H
-b11111111 G
-b11110000 F
-b11110000 E
+b0 R
+b11111111 Q
+b11111111 P
+b11110000 O
+b11110000 N
+b0 M
+b11 L
+0K
+0J
+0I
+0H
+0G
+0F
+0E
 b0 D
-bz C
+0C
 b0 B
-0A
+b0 A
 b0 @
 b0 ?
-b0 >
+1>
 b0 =
-b0 <
-z;
-b11111111 :
-09
-b11111111 8
-17
-bz 6
-b0 5
+1<
+b11111111 ;
+0:
+b11111111 9
+18
+b11 7
+b0 6
+15
 b11110000 4
 b0 3
 b0 2
 b0 1
 b11111111 0
-0/
+1/
 b10000 .
 b0 -
 b0 ,
