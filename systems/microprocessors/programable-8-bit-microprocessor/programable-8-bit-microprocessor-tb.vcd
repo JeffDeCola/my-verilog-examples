@@ -1,0 +1,145 @@
+$date
+	Wed Oct 21 03:19:59 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module programable_8_bit_microprocessor_tb $end
+$var wire 8 ! DATA_OUT [7:0] $end
+$var wire 8 " MICROADDRESS [7:0] $end
+$var reg 8 # DATA_IN_A [7:0] $end
+$var reg 8 $ DATA_IN_B [7:0] $end
+$var reg 1 % GO_BAR $end
+$var reg 1 & JAM $end
+$var reg 24 ' MW [23:0] $end
+$var reg 4 ( OPCODE [3:0] $end
+$var reg 1 ) RESET $end
+$var reg 1 * SYSTEM_CLK $end
+$scope module uut $end
+$var wire 11 + CONTROL_BITS [23:13] $end
+$var wire 8 , DATA_IN_A [7:0] $end
+$var wire 8 - DATA_IN_B [7:0] $end
+$var wire 8 . DATA_OUT [7:0] $end
+$var wire 1 / EIL_BAR $end
+$var wire 1 % GO_BAR $end
+$var wire 1 & JAM $end
+$var wire 8 0 MICROADDRESS [7:0] $end
+$var wire 24 1 MW [23:0] $end
+$var wire 4 2 OPCODE [3:0] $end
+$var wire 1 ) RESET $end
+$var wire 4 3 STATUS_BITS [3:0] $end
+$var wire 1 * SYSTEM_CLK $end
+$scope module CONTROL $end
+$var wire 11 4 CONTROL_BITS [23:13] $end
+$var wire 1 / EIL_BAR $end
+$var wire 1 % GO_BAR $end
+$var wire 1 & JAM $end
+$var wire 8 5 MICROADDRESS [7:0] $end
+$var wire 24 6 MW [23:0] $end
+$var wire 4 7 OPCODE [3:0] $end
+$var wire 1 ) RESET $end
+$var wire 4 8 STATUS_BITS [3:0] $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
+$scope module PROCESSOR $end
+$var wire 11 9 CONTROL_BITS [23:13] $end
+$var wire 8 : DATA_IN_A [7:0] $end
+$var wire 8 ; DATA_IN_B [7:0] $end
+$var wire 8 < DATA_OUT [7:0] $end
+$var wire 1 / EIL_BAR $end
+$var wire 4 = STATUS_BITS [3:0] $end
+$var wire 1 * SYSTEM_CLK $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 =
+b0 <
+b0 ;
+b0 :
+b0 9
+b0 8
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+0/
+b0 .
+b0 -
+b0 ,
+b0 +
+0*
+0)
+b0 (
+b0 '
+0&
+0%
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10
+1*
+#15
+1)
+#20
+0*
+#30
+1*
+#35
+0)
+#40
+0*
+#50
+1*
+#60
+0*
+#70
+1*
+#80
+0*
+#90
+1*
+#100
+0*
+#110
+1*
+#120
+0*
+#130
+1*
+#140
+0*
+#150
+1*
+#160
+0*
+#170
+1*
+#180
+0*
+#190
+1*
+#200
+0*
+#210
+1*
+#220
+0*
+#230
+1*
+#240
+0*
+#250
+1*
+#255

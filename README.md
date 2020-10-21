@@ -132,7 +132,7 @@ to view the output._
 
 * MICROPROCESSORS
 
-  * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/programable-8-bit-microprocessor)
+  * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
     _A programable 8-bit microprocessor._
 
