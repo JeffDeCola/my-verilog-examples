@@ -32,7 +32,7 @@ processes that data and spits out the result. That's about it.
 
 This may help,
 
-![programable-8-bit-microprocessor.jpg](docs/pic/programable-8-bit-microprocessor.jpg)
+![programable-8-bit-microprocessor.jpg](../../../docs/pics/programable-8-bit-microprocessor.jpg)
 
 MAIN INPUTS,
 
@@ -95,7 +95,7 @@ sections equally divided.
 
 This may help,
 
-![control-store-structure.jpg](../../../docs/pic/control-store-structure.jpg)
+![control-store-structure.jpg](../../../docs/pics/control-store-structure.jpg)
 
 The 24-bit microword (MW) fields are as follows,
 
