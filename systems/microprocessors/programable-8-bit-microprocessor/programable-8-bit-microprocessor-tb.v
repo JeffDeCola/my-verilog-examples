@@ -61,9 +61,28 @@ initial begin
     // RESET
     #15; RESET = 1;
     #20; RESET = 0;
+    #40;
 
-    #200; 
+    // ******************************************************
+    // TEST 1 - ADD TWO NUMBERS
+    OPCODE = 4'h1;
+    DATA_IN_A = 8'h04;
+    DATA_IN_B = 8'h03;
+    GO_BAR = 1;
     
+    #20; GO_BAR = 0;
+    #100;
+
+    // ******************************************************
+    // TEST 2 - SUBTRACT TWO NUMBERS
+    OPCODE = 4'h2;
+    DATA_IN_A = 8'h07;
+    DATA_IN_B = 8'h02;
+    GO_BAR = 1;
+
+    #20; GO_BAR = 0;
+    #100;
+
     // DONE
     #20
 
