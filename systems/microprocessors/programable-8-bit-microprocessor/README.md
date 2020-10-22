@@ -21,9 +21,20 @@ Table of Contents,
 
 ## SOME STATS
 
-* Up to 16 opcodes
-* 24-bit microword
-* Up to 256 microcode storage
+* Up to 16 Opcodes
+* 8-bit data processing
+* Microcode
+  * 256 x 24-bit microcode storage
+  * 24-bit microword
+* Synthesizable verilog code
+* If using hardcoded internal microcode
+  * 56 pins
+    * 24 Input pins
+    * 8 Output pins
+* If using external microcode
+  * 64 pins
+    * 48 Input pins
+    * 16 Output pins
 
 ## TOP LEVEL (HOW IT WORKS)
 
@@ -60,7 +71,7 @@ To accomplish this the processor is broken up into two sections,
   * **PROCESSOR_SECTION**
     ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
 
-A little more detail from my
+A little more top level detail from my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis),
 
 ![Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
@@ -216,6 +227,30 @@ to simulate and create a `.vcd` file.
 
 ```bash
 sh run-test.sh
+```
+
+This simulation will send a few opcodes to the processor.
+
+```verilog
+    // ******************************************************
+    // TEST 1 - ADD TWO NUMBERS
+    OPCODE = 4'h1;
+    DATA_IN_A = 8'h04;
+    DATA_IN_B = 8'h03;
+    GO_BAR = 1;
+
+    #20; GO_BAR = 0;
+    #100;
+
+    // ******************************************************
+    // TEST 2 - SUBTRACT TWO NUMBERS
+    OPCODE = 4'h2;
+    DATA_IN_A = 8'h07;
+    DATA_IN_B = 8'h02;
+    GO_BAR = 1;
+
+    #20; GO_BAR = 0;
+    #100;
 ```
 
 ## CHECK WAVEFORM
