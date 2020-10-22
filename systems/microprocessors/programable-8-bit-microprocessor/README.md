@@ -10,8 +10,10 @@ Table of Contents,
   * [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level)
   * [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
   * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
-* [CONTROL STORE (THE MICROCODE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-store-the-microcode)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#verilog-code)
+* [OPCODE  ](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode--)
+* [MICROCODE (CONTROL_STORE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-controlstore)
+  * [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
+  * [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
 
@@ -102,6 +104,15 @@ The processor is a collection of registers, muxes and an alu,
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
+## OPCODE  
+
+There are 16 opcodes,
+
+* 4'h0: ??
+* 4'h1: ??
+* ...
+* 4'hF: ??
+
 ## MICROCODE (CONTROL_STORE)
 
 The `microcode` contains 256 `microwords` (MW).
@@ -122,47 +133,27 @@ The 24-bit microword (MW) fields are,
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
 
-### ADD MICROCODE
+### ADD
 
 The add microcode is,
 
-| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | B_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
 | 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
 | 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 | 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
 | 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 
-### SUBTRACT MICROCODE
+### SUBTRACT
 
 The subtract the microcode is,
 
-| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | B_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
 | 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
 | 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 | 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
 | 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
-
-## OPCODE  
-
-There are 16 opcodes,
-
-* 4'h0: ??
-* 4'h1: ??
-* ...
-* 4'hF: ??
-
-## VERILOG CODE
-
-The main part of the code is,
-
-```verilog
-    ????????????????????????????
-```
-
-The top level code is
-[programable-8-bit-microprocessor.v](programable-8-bit-microprocessor.v).
 
 ## RUN (SIMULATE)
 
