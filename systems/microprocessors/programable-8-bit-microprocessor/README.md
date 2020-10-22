@@ -20,16 +20,18 @@ Table of Contents,
 
 ## TOP LEVEL (HOW IT WORKS)
 
-This processor takes DATA in and does stuff like ADD and SUBTRACT and
-spits the data out.
+Based on an instruction (opcode) this processor takes in DATA,
+processes that data and spits out the result. That's about it.
 
-For example, to ADD, the User supplies the processor with
+Input,
 
 * [3:0] **OPCODE** _The instruction like ADD and SUBTRACT_
 * [7:0] **DATA_IN_A**
 * [7:0] **DATA_IN_B**
 
-In a few clock cycles the results is **[7:0] DATA_OUT** That's about it.
+Output,
+
+* [7:0] **DATA_OUT**
 
 Here are the other inputs,
 
@@ -55,16 +57,17 @@ This may help,
 
 The `opcode` (Operation Code) is the instruction giving to my processor to tell
 it what to do. In this design there can be up to 16 opcodes, two of which
-I have programed (in microcode - next section) so far,
+I have programed (in microcode - next section),
 
-* 4'b0: _TBD_
-* 4'h1: _TBD_
+* 4'h0:
+  _TBD_
+* 4'h1:
   [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
 * 4'h2:
   [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
-* 4'h3: _TBD_
 * etc...
-* 4'hF: _TBD_
+* 4'hF:
+  _TBD_
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
@@ -73,13 +76,13 @@ These are the internal instructions the processor uses
 to accomplish the users opcode instruction. For example,
 it takes a few internal instructions to accomplish ....???.
 
-The 24-bit microword (MW) fields are,
+The 24-bit microword (MW) fields are used in both the control and process sections,
 
 * [3:0] **MICRO_AD_LOW**
 * [7:4] **MICRO_AD_HIGH**
 * [8] **COUNT**
 * [12:9] **BOP**
-* [23:13] CONTROL_BITS (for processor)
+* [23:13] CONTROL_BITS (for the processor)
   * [13] **A_SOURCE**
   * [14] **B_SOURCE**
   * [19:15] **ALU_FUNC**
@@ -91,7 +94,7 @@ The microcode is located in
 
 ### ADD
 
-To accomplish an add opcode instruction, the microcode is,
+To accomplish an **ADD** opcode instruction, the microcode is,
 
 | # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
@@ -102,7 +105,7 @@ To accomplish an add opcode instruction, the microcode is,
 
 ### SUBTRACT
 
-To accomplish an subtract opcode instruction, the microcode is,
+To accomplish an **SUBTRACT** opcode instruction, the microcode is,
 
 | # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
