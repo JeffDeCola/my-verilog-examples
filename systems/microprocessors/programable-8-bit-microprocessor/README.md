@@ -6,22 +6,21 @@ I translated it from VHDL to verilog._
 
 Table of Contents,
 
-* [HIERARCHY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#hierarchy)
-  * [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level)
-  * [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
-  * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
-* [OPCODE  ](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode--)
-* [MICROCODE (CONTROL_STORE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-controlstore)
+* [TOP LEVEL](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level)
+* [OPCODE (THE USER INSTRUCTION)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction)
+* [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
   * [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
   * [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
+* [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
+* [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## HIERARCHY
+## TOP LEVEL
 
-The processor is broken up,
+The processor is broken up into two sections,
 
 * **TOP**
   ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
@@ -30,13 +29,70 @@ The processor is broken up,
   * **PROCESSOR_SECTION**
     ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
 
-### TOP LEVEL
-
-The top level is as follow,
+This may help,
 
 ![Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
 
-### CONTROL SECTION
+## OPCODE (THE USER INSTRUCTION)
+
+The `opcode` (Operation Code) is the instruction giving to my processor to tell
+it what to do.
+
+There are 16 opcodes,
+
+* 4'h0:
+  [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
+* 4'h1:
+  [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
+* 4'h2: TBD
+* ...
+* 4'hF: TBD
+
+## MICROCODE (THE INTERNAL INSTRUCTIONS)
+
+The `microcode` contains 256 `microwords` (MW).  These are the internal instructions
+the processor uses to accomplish the users opcode instruction. For example,
+it takes a few internal instructions to accomplish ....???.
+
+The 24-bit microword (MW) fields are,
+
+* [3:0] **MICRO_AD_LOW**
+* [7:4] **MICRO_AD_HIGH**
+* [8] **COUNT**
+* [12:9] **BOP**
+* [23:13] CONTROL_BITS (for processor)
+  * [13] **A_SOURCE**
+  * [14] **B_SOURCE**
+  * [19:15] **ALU_FUNC**
+  * [20] **CIN**
+  * [23:21] **ALU_DEST**
+
+The microcode is located in
+[control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
+
+### ADD
+
+To accomplish an add opcode instruction, the microcode is,
+
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
+| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
+| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
+| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+
+### SUBTRACT
+
+To accomplish an subtract opcode instruction, the microcode is,
+
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
+| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
+| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
+| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+
+## CONTROL SECTION
 
 The control section has five main parts,
 
@@ -61,7 +117,7 @@ The control section has five main parts,
 
 ![Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg)
 
-### PROCESSOR SECTION
+## PROCESSOR SECTION
 
 The processor is a collection of registers, muxes and an alu,
 
@@ -103,57 +159,6 @@ The processor is a collection of registers, muxes and an alu,
     ([zp_bit.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/zp_bit.v))
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
-
-## OPCODE  
-
-There are 16 opcodes,
-
-* 4'h0: ??
-* 4'h1: ??
-* ...
-* 4'hF: ??
-
-## MICROCODE (CONTROL_STORE)
-
-The `microcode` contains 256 `microwords` (MW).
-
-The 24-bit microword (MW) fields are,
-
-* [3:0] **MICRO_AD_LOW**
-* [7:4] **MICRO_AD_HIGH**
-* [8] **COUNT**
-* [12:9] **BOP**
-* [23:13] CONTROL_BITS (for processor)
-  * [13] **A_SOURCE**
-  * [14] **B_SOURCE**
-  * [19:15] **ALU_FUNC**
-  * [20] **CIN**
-  * [23:21] **ALU_DEST**
-
-The microcode is located in
-[control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
-
-### ADD
-
-The add microcode is,
-
-| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
-|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
-| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
-| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
-| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
-| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
-
-### SUBTRACT
-
-The subtract the microcode is,
-
-| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
-|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
-| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
-| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
-| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
-| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 
 ## RUN (SIMULATE)
 
