@@ -1,34 +1,31 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Wed Oct 21 10:19:33 2020
+[*] Thu Oct 22 14:12:36 2020
 [*]
-[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.vcd"
-[dumpfile_mtime] "Wed Oct 21 10:17:51 2020"
-[dumpfile_size] 1923
-[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.gtkw"
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.vcd"
+[dumpfile_mtime] "Thu Oct 22 14:08:31 2020"
+[dumpfile_size] 6891
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.gtkw"
 [timestart] 0
 [size] 1920 996
-[pos] -243 -243
-*-5.088308 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-5.480626 74 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] programable_8_bit_microprocessor_tb.
 [sst_width] 197
-[signals_width] 166
+[signals_width] 174
 [sst_expanded] 1
 [sst_vpaned_height] 292
 @28
 programable_8_bit_microprocessor_tb.SYSTEM_CLK
 programable_8_bit_microprocessor_tb.RESET
-programable_8_bit_microprocessor_tb.GO_BAR
-@29
 programable_8_bit_microprocessor_tb.JAM
 @200
 -
-@22
-programable_8_bit_microprocessor_tb.OPCODE[3:0]
-@200
 -
 @22
-programable_8_bit_microprocessor_tb.MICROADDRESS[7:0]
-programable_8_bit_microprocessor_tb.MW[23:0]
+programable_8_bit_microprocessor_tb.OPCODE[3:0]
+@28
+programable_8_bit_microprocessor_tb.GO_BAR
 @200
 -
 @22
@@ -36,6 +33,39 @@ programable_8_bit_microprocessor_tb.DATA_IN_A[7:0]
 programable_8_bit_microprocessor_tb.DATA_IN_B[7:0]
 programable_8_bit_microprocessor_tb.DATA_OUT[7:0]
 @200
+-
+-
+@22
+programable_8_bit_microprocessor_tb.MICROADDRESS[7:0]
+programable_8_bit_microprocessor_tb.MW[23:0]
+@28
+programable_8_bit_microprocessor_tb.CS.ALU_DEST[23:21]
+@200
+-
+@29
+[color] 5
+programable_8_bit_microprocessor_tb.CS.CIN
+@23
+[color] 5
+programable_8_bit_microprocessor_tb.CS.ALU_FUNC[19:15]
+@29
+[color] 5
+programable_8_bit_microprocessor_tb.CS.B_SOURCE
+[color] 5
+programable_8_bit_microprocessor_tb.CS.A_SOURCE
+@23
+[color] 5
+programable_8_bit_microprocessor_tb.CS.BOP[12:9]
+@29
+[color] 5
+programable_8_bit_microprocessor_tb.CS.COUNT
+@23
+[color] 5
+programable_8_bit_microprocessor_tb.CS.MICRO_AD_HIGH[7:4]
+[color] 5
+programable_8_bit_microprocessor_tb.CS.MICRO_AD_LOW[3:0]
+@200
+-
 -
 [pattern_trace] 1
 [pattern_trace] 0

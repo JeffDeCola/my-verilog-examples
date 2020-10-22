@@ -18,9 +18,27 @@ Table of Contents,
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## TOP LEVEL
+## TOP LEVEL (HOW IT WORKS)
 
-The processor is broken up into two sections,
+This processor takes DATA in and does stuff like ADD and SUBTRACT and
+spits the data out.
+
+For example, to ADD, the User supplies the processor with
+
+* [3:0] **OPCODE** _The instruction like ADD and SUBTRACT_
+* [7:0] **DATA_IN_A**
+* [7:0] **DATA_IN_B**
+
+In a few clock cycles the results is **[7:0] DATA_OUT** That's about it.
+
+Here are the other inputs,
+
+* **SYSTEM_CLK**  _Clock_
+* **GO_BAR** _Kicks it off_
+* **JAM** _tbd_
+* **RESET** _tbd_
+
+To accomplish this the processor is broken up into two sections,
 
 * **TOP**
   ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
@@ -36,22 +54,23 @@ This may help,
 ## OPCODE (THE USER INSTRUCTION)
 
 The `opcode` (Operation Code) is the instruction giving to my processor to tell
-it what to do.
+it what to do. In this design there can be up to 16 opcodes, two of which
+I have programed (in microcode - next section) so far,
 
-There are 16 opcodes,
-
-* 4'h0:
+* 4'b0: _TBD_
+* 4'h1: _TBD_
   [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
-* 4'h1:
+* 4'h2:
   [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
-* 4'h2: TBD
-* ...
-* 4'hF: TBD
+* 4'h3: _TBD_
+* etc...
+* 4'hF: _TBD_
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
-The `microcode` contains 256 `microwords` (MW).  These are the internal instructions
-the processor uses to accomplish the users opcode instruction. For example,
+The `microcode` contains up to 256 `microwords` (MW).
+These are the internal instructions the processor uses
+to accomplish the users opcode instruction. For example,
 it takes a few internal instructions to accomplish ....???.
 
 The 24-bit microword (MW) fields are,
