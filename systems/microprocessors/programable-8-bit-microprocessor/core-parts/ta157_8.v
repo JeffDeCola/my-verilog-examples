@@ -9,6 +9,6 @@ module ta157_8(
     output [7:0]    Y8                  // 
 );
 
-assign Y8 = 8'hff;             // ERASE
+assign Y8 = 8'h04;             // ERASE
 
 endmodule

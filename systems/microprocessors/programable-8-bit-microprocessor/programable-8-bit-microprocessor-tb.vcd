@@ -1,5 +1,5 @@
 $date
-	Wed Oct 21 15:48:03 2020
+	Thu Oct 22 03:25:06 2020
 $end
 $version
 	Icarus Verilog
@@ -20,169 +20,179 @@ $var reg 1 ) RESET $end
 $var reg 1 * SYSTEM_CLK $end
 $scope module CS $end
 $var wire 8 + microaddress [7:0] $end
-$var reg 24 , microword [23:0] $end
+$var wire 24 , microword [23:0] $end
+$var wire 13 - control_bits [23:11] $end
+$var reg 3 . ALU_DEST [23:21] $end
+$var reg 5 / ALU_FUNC [19:15] $end
+$var reg 1 0 A_SOURCE $end
+$var reg 4 1 BOP [12:9] $end
+$var reg 1 2 B_SOURCE $end
+$var reg 1 3 CIN $end
+$var reg 1 4 COUNT $end
+$var reg 4 5 MICRO_AD_HIGH [7:4] $end
+$var reg 4 6 MICRO_AD_LOW [3:0] $end
 $upscope $end
 $scope module uut $end
-$var wire 8 - DATA_IN_A [7:0] $end
-$var wire 8 . DATA_IN_B [7:0] $end
-$var wire 1 / EIL_BAR $end
+$var wire 8 7 DATA_IN_A [7:0] $end
+$var wire 8 8 DATA_IN_B [7:0] $end
+$var wire 1 9 EIL_BAR $end
 $var wire 1 & GO_BAR $end
 $var wire 1 ' JAM $end
-$var wire 8 0 MICROADDRESS [7:0] $end
-$var wire 24 1 MW [23:0] $end
-$var wire 4 2 OPCODE [3:0] $end
+$var wire 8 : MICROADDRESS [7:0] $end
+$var wire 24 ; MW [23:0] $end
+$var wire 4 < OPCODE [3:0] $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 4 3 STATUS_BITS [3:0] $end
-$var wire 8 4 DATA_OUT [7:0] $end
-$var wire 11 5 CONTROL_BITS [23:13] $end
+$var wire 4 = STATUS_BITS [3:0] $end
+$var wire 8 > DATA_OUT [7:0] $end
+$var wire 11 ? CONTROL_BITS [23:13] $end
 $scope module CONTROL_SECTION $end
-$var wire 8 6 BUFFER_IN [7:0] $end
-$var wire 1 7 COND_OUT $end
-$var wire 4 8 COUNTER_IN_HIGH_SIG [7:4] $end
-$var wire 1 / EIL_BAR $end
+$var wire 8 @ BUFFER_IN [7:0] $end
+$var wire 1 A COND_OUT $end
+$var wire 4 B COUNTER_IN_HIGH_SIG [7:4] $end
+$var wire 1 9 EIL_BAR $end
 $var wire 1 & GO_BAR $end
-$var wire 1 9 HIGH $end
-$var wire 8 : HIGH8 [7:0] $end
+$var wire 1 C HIGH $end
+$var wire 8 D HIGH8 [7:0] $end
 $var wire 1 ' JAM $end
-$var wire 1 ; LOW $end
-$var wire 8 < MICROADDRESS [7:0] $end
-$var wire 1 = MPC_LOAD_BAR $end
-$var wire 24 > MW [23:0] $end
-$var wire 1 ? NOTHING $end
-$var wire 4 @ OPCODE [3:0] $end
+$var wire 1 E LOW $end
+$var wire 8 F MICROADDRESS [7:0] $end
+$var wire 1 G MPC_LOAD_BAR $end
+$var wire 24 H MW [23:0] $end
+$var wire 1 I NOTHING $end
+$var wire 4 J OPCODE [3:0] $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 4 A STATUS_BITS [3:0] $end
-$var wire 4 B MICRO_AD_LOW [3:0] $end
-$var wire 4 C MICRO_AD_HIGH [7:4] $end
-$var wire 1 D COUNT $end
-$var wire 11 E CONTROL_BITS [23:13] $end
-$var wire 4 F BOP [12:9] $end
+$var wire 4 K STATUS_BITS [3:0] $end
+$var wire 4 L MICRO_AD_LOW [3:0] $end
+$var wire 4 M MICRO_AD_HIGH [7:4] $end
+$var wire 1 N COUNT $end
+$var wire 11 O CONTROL_BITS [23:13] $end
+$var wire 4 P BOP [12:9] $end
 $scope module COND_SELECT $end
-$var wire 1 G A $end
-$var wire 1 H B $end
-$var wire 1 I C $end
-$var wire 1 J D0 $end
-$var wire 1 ; D1 $end
-$var wire 1 K D2 $end
-$var wire 1 L D3 $end
+$var wire 1 Q A $end
+$var wire 1 R B $end
+$var wire 1 S C $end
+$var wire 1 T D0 $end
+$var wire 1 E D1 $end
+$var wire 1 U D2 $end
+$var wire 1 V D3 $end
 $var wire 1 & D4 $end
-$var wire 1 M D5 $end
-$var wire 1 ; D6 $end
-$var wire 1 ; D7 $end
-$var wire 1 ; EN_BAR $end
-$var wire 1 7 W $end
-$var wire 1 ? Y $end
+$var wire 1 W D5 $end
+$var wire 1 E D6 $end
+$var wire 1 E D7 $end
+$var wire 1 E EN_BAR $end
+$var wire 1 A W $end
+$var wire 1 I Y $end
 $upscope $end
 $scope module COUNTER_8 $end
-$var wire 1 D COUNT $end
-$var wire 4 N COUNTER_IN_HIGH [7:4] $end
-$var wire 4 O COUNTER_IN_LOW [3:0] $end
-$var wire 8 P COUNTER_OUT [7:0] $end
-$var wire 1 = MPC_LOAD_BAR $end
+$var wire 1 N COUNT $end
+$var wire 4 X COUNTER_IN_HIGH [7:4] $end
+$var wire 4 Y COUNTER_IN_LOW [3:0] $end
+$var wire 8 Z COUNTER_OUT [7:0] $end
+$var wire 1 G MPC_LOAD_BAR $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module MUX8 $end
-$var wire 8 Q A8 [7:0] $end
-$var wire 8 R B8 [7:0] $end
-$var wire 1 ; EN_BAR $end
+$var wire 8 [ A8 [7:0] $end
+$var wire 8 \ B8 [7:0] $end
+$var wire 1 E EN_BAR $end
 $var wire 1 ' S $end
-$var wire 8 S Y8 [7:0] $end
+$var wire 8 ] Y8 [7:0] $end
 $upscope $end
 $scope module OPCODEDEC0 $end
-$var wire 1 / EIL_BAR $end
-$var wire 4 T MW_AD_HIGH [7:4] $end
-$var wire 4 U MW_BOP [12:9] $end
-$var wire 4 V OPCODE [3:0] $end
-$var wire 4 W TO_COUNTER [7:4] $end
+$var wire 1 9 EIL_BAR $end
+$var wire 4 ^ MW_AD_HIGH [7:4] $end
+$var wire 4 _ MW_BOP [12:9] $end
+$var wire 4 ` OPCODE [3:0] $end
+$var wire 4 a TO_COUNTER [7:4] $end
 $upscope $end
 $scope module XOR_2 $end
-$var wire 1 X A $end
-$var wire 1 7 B $end
-$var wire 1 = Y $end
+$var wire 1 b A $end
+$var wire 1 A B $end
+$var wire 1 G Y $end
 $upscope $end
 $upscope $end
 $scope module PROCESSOR_SECTION $end
-$var wire 8 Y ALU_IN_A [7:0] $end
-$var wire 8 Z ALU_IN_B [7:0] $end
-$var wire 8 [ ALU_OUT [7:0] $end
-$var wire 11 \ CONTROL_BITS [23:13] $end
-$var wire 8 ] DATA_IN_A [7:0] $end
-$var wire 8 ^ DATA_IN_B [7:0] $end
-$var wire 8 _ DATA_OUT [7:0] $end
-$var wire 8 ` DATA_OUT_A [7:0] $end
-$var wire 8 a DATA_OUT_B [7:0] $end
-$var wire 8 b DATA_OUT_TA [7:0] $end
-$var wire 8 c DATA_OUT_TB [7:0] $end
-$var wire 1 / EIL_BAR $end
-$var wire 8 d IN_ZP [7:0] $end
-$var wire 1 e LOW $end
+$var wire 8 c ALU_IN_A [7:0] $end
+$var wire 8 d ALU_IN_B [7:0] $end
+$var wire 8 e ALU_OUT [7:0] $end
+$var wire 11 f CONTROL_BITS [23:13] $end
+$var wire 8 g DATA_IN_A [7:0] $end
+$var wire 8 h DATA_IN_B [7:0] $end
+$var wire 8 i DATA_OUT [7:0] $end
+$var wire 8 j DATA_OUT_A [7:0] $end
+$var wire 8 k DATA_OUT_B [7:0] $end
+$var wire 8 l DATA_OUT_TA [7:0] $end
+$var wire 8 m DATA_OUT_TB [7:0] $end
+$var wire 1 9 EIL_BAR $end
+$var wire 8 n IN_ZP [7:0] $end
+$var wire 1 o LOW $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 4 f STATUS_BITS [3:0] $end
-$var wire 1 g CIN $end
-$var wire 1 h B_SOURCE $end
-$var wire 1 i A_SOURCE $end
-$var wire 5 j ALU_FUNC [19:15] $end
-$var wire 3 k ALU_DEST [23:21] $end
+$var wire 4 p STATUS_BITS [3:0] $end
+$var wire 1 q CIN $end
+$var wire 1 r B_SOURCE $end
+$var wire 1 s A_SOURCE $end
+$var wire 5 t ALU_FUNC [19:15] $end
+$var wire 3 u ALU_DEST [23:21] $end
 $scope module ALU1 $end
-$var wire 5 l ALU_FUNC [19:15] $end
-$var wire 1 m C4 $end
-$var wire 1 n C8 $end
-$var wire 1 g CIN $end
-$var wire 8 o IN_A [7:0] $end
-$var wire 8 p IN_B [7:0] $end
-$var wire 8 q OUT8 [7:0] $end
-$var wire 1 r Z $end
+$var wire 5 v ALU_FUNC [19:15] $end
+$var wire 1 w C4 $end
+$var wire 1 x C8 $end
+$var wire 1 q CIN $end
+$var wire 8 y IN_A [7:0] $end
+$var wire 8 z IN_B [7:0] $end
+$var wire 8 { OUT8 [7:0] $end
+$var wire 1 | Z $end
 $upscope $end
 $scope module F_REGISTER $end
-$var wire 8 s DATA_IN [7:0] $end
-$var wire 8 t DATA_OUT [7:0] $end
-$var wire 1 u ENABLE_CLK $end
+$var wire 8 } DATA_IN [7:0] $end
+$var wire 8 ~ DATA_OUT [7:0] $end
+$var wire 1 !" ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module MUX_A $end
-$var wire 8 v A8 [7:0] $end
-$var wire 8 w B8 [7:0] $end
-$var wire 1 e EN_BAR $end
-$var wire 1 i S $end
-$var wire 8 x Y8 [7:0] $end
+$var wire 8 "" A8 [7:0] $end
+$var wire 8 #" B8 [7:0] $end
+$var wire 1 o EN_BAR $end
+$var wire 1 s S $end
+$var wire 8 $" Y8 [7:0] $end
 $upscope $end
 $scope module MUX_B $end
-$var wire 8 y A8 [7:0] $end
-$var wire 8 z B8 [7:0] $end
-$var wire 1 e EN_BAR $end
-$var wire 1 h S $end
-$var wire 8 { Y8 [7:0] $end
+$var wire 8 %" A8 [7:0] $end
+$var wire 8 &" B8 [7:0] $end
+$var wire 1 o EN_BAR $end
+$var wire 1 r S $end
+$var wire 8 '" Y8 [7:0] $end
 $upscope $end
 $scope module REGISTERA $end
-$var wire 8 | DATA_IN [7:0] $end
-$var wire 8 } DATA_OUT [7:0] $end
-$var wire 1 / ENABLE_CLK $end
+$var wire 8 (" DATA_IN [7:0] $end
+$var wire 8 )" DATA_OUT [7:0] $end
+$var wire 1 9 ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module REGISTERB $end
-$var wire 8 ~ DATA_IN [7:0] $end
-$var wire 8 !" DATA_OUT [7:0] $end
-$var wire 1 / ENABLE_CLK $end
+$var wire 8 *" DATA_IN [7:0] $end
+$var wire 8 +" DATA_OUT [7:0] $end
+$var wire 1 9 ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module TEMP_REGISTER_A $end
-$var wire 8 "" DATA_IN [7:0] $end
-$var wire 8 #" DATA_OUT [7:0] $end
-$var wire 1 $" ENABLE_CLK $end
+$var wire 8 ," DATA_IN [7:0] $end
+$var wire 8 -" DATA_OUT [7:0] $end
+$var wire 1 ." ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module TEMP_REGISTER_B $end
-$var wire 8 %" DATA_IN [7:0] $end
-$var wire 8 &" DATA_OUT [7:0] $end
-$var wire 1 '" ENABLE_CLK $end
+$var wire 8 /" DATA_IN [7:0] $end
+$var wire 8 0" DATA_OUT [7:0] $end
+$var wire 1 1" ENABLE_CLK $end
 $var wire 1 * SYSTEM_CLK $end
 $upscope $end
 $scope module ZP_BIT1 $end
-$var wire 8 (" F8 [7:0] $end
-$var wire 1 )" ZP_BAR $end
+$var wire 8 2" F8 [7:0] $end
+$var wire 1 3" ZP_BAR $end
 $upscope $end
 $upscope $end
 $upscope $end
@@ -190,99 +200,109 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-1)"
-b11110000 ("
-0'"
+13"
+b11110000 2"
+11"
+b11110000 0"
+b11110000 /"
+1."
+b11110000 -"
+b11110000 ,"
+b11110000 +"
+b0 *"
+b11110000 )"
+b0 ("
+b100 '"
 b11110000 &"
 b11110000 %"
-0$"
+b100 $"
 b11110000 #"
 b11110000 ""
-b11110000 !"
-b0 ~
+1!"
+b11110000 ~
 b11110000 }
-b0 |
-b11111111 {
-b11110000 z
-b11110000 y
-b11111111 x
-b11110000 w
-b11110000 v
-0u
-b11110000 t
-b11110000 s
+1|
+b11110000 {
+b100 z
+b100 y
+1x
+1w
+b11111 v
+b111 u
+b11111 t
+1s
 1r
-b11110000 q
-b11111111 p
-b11111111 o
-1n
-1m
-b0 l
-b0 k
-b0 j
-0i
-0h
-0g
-b1111 f
-0e
-b11110000 d
-b11110000 c
-b11110000 b
-b11110000 a
-b11110000 `
-b11110000 _
-b0 ^
-b0 ]
-b0 \
+1q
+b1111 p
+0o
+b11110000 n
+b11110000 m
+b11110000 l
+b11110000 k
+b11110000 j
+b11110000 i
+b0 h
+b0 g
+b11111111111 f
+b11110000 e
+b100 d
+b100 c
+1b
+b11 a
+b0 `
+b1111 _
+b11 ^
+b100 ]
+b11111111 \
 b11110000 [
-b11111111 Z
-b11111111 Y
-0X
-b11 W
-b0 V
-b1 U
-b0 T
-b11111111 S
-b11111111 R
-b11110000 Q
-b11110000 P
-b1111 O
-b11 N
-1M
-1L
-1K
-1J
-0I
-0H
+b11110000 Z
+b111 Y
+b11 X
+1W
+1V
+1U
+1T
+1S
+1R
+1Q
+b1111 P
+b11111111111 O
+1N
+b11 M
+b111 L
+b1111 K
+b0 J
+1I
+b111111111111111100110111 H
 1G
-b1 F
-b0 E
-1D
-b0 C
-b1111 B
-b1111 A
-b0 @
-1?
-b1100001111 >
-1=
-b11111111 <
-0;
-b11111111 :
+b100 F
+0E
+b11111111 D
+1C
+b11 B
+1A
+b11110000 @
+b11111111111 ?
+b11110000 >
+b1111 =
+b0 <
+b111111111111111100110111 ;
+b100 :
 19
-b11 8
-17
-b11110000 6
-b0 5
-b11110000 4
-b1111 3
-b0 2
-b1100001111 1
-b11111111 0
-1/
-b0 .
-b0 -
-b1100001111 ,
-b11111111 +
+b0 8
+b0 7
+b111 6
+b11 5
+14
+13
+12
+b1111 1
+10
+b11111 /
+b111 .
+b11111111111 -
+b111111111111111100110111 ,
+b100 +
 0*
 0)
 b0 (
@@ -291,8 +311,8 @@ b0 (
 b0 %
 b0 $
 b11110000 #
-b1100001111 "
-b11111111 !
+b111111111111111100110111 "
+b100 !
 $end
 #10
 1*
