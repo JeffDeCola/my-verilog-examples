@@ -102,23 +102,47 @@ The processor is a collection of registers, muxes and an alu,
 
 ![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
-## CONTROL STORE (THE MICROCODE)
+## MICROCODE (CONTROL_STORE)
 
-The microword (MW) fields are,
+The `microcode` contains 256 `microwords` (MW).
 
-* **[3:0]** MICRO_AD_LOW
-* **[7:4]** MICRO_AD_HIGH
-* **[8]** COUNT
-* **[12:9]** BOP
-* **[23:13]** CONTROL_BITS (for processor)
-  * **[13]** A_SOURCE
-  * **[13]** B_SOURCE
-  * **[19:15]** ALU_FUNC
-  * **[20]** CIN
-  * **[23:21]** ALU_DEST
+The 24-bit microword (MW) fields are,
+
+* [3:0] **MICRO_AD_LOW**
+* [7:4] **MICRO_AD_HIGH**
+* [8] **COUNT**
+* [12:9] **BOP**
+* [23:13] CONTROL_BITS (for processor)
+  * [13] **A_SOURCE**
+  * [14] **B_SOURCE**
+  * [19:15] **ALU_FUNC**
+  * [20] **CIN**
+  * [23:21] **ALU_DEST**
 
 The microcode is located in
-[]().
+[control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
+
+### ADD MICROCODE
+
+The add microcode is,
+
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | B_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
+| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
+| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
+| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+
+### SUBTRACT MICROCODE
+
+The subtract the microcode is,
+
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | B_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
+| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
+| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
+| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 
 ## OPCODE  
 
@@ -126,7 +150,8 @@ There are 16 opcodes,
 
 * 4'h0: ??
 * 4'h1: ??
-* 4'h1: ??
+* ...
+* 4'hF: ??
 
 ## VERILOG CODE
 
