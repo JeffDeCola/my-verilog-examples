@@ -164,8 +164,8 @@ The control section has five main parts,
     ([opcodedec.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/opcode/opcodedec.v))
     * TBD
       ([ta157_4]())
-    * TBD
-      ([ta157_bar]())
+        * TBD
+        ([ta157_bar]())
   * **COND_SELECT**
     ([ta151_bar.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta151_bar.v))
   * **XOR_2**

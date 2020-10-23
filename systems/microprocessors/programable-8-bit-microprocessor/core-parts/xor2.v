@@ -7,6 +7,6 @@ module xor2(
     output          Y                  // 
 );
 
-assign Y = 1'b1;            // ERASE
+assign Y = A ^ B;
 
 endmodule

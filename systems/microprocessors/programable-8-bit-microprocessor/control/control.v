@@ -52,7 +52,7 @@ counter8 COUNTER_8 (
     .COUNTER_OUT(BUFFER_IN)
 );
 
-// MUX8 SECTION
+// MUX8 SECTION - Eight (2x1) multiplexers
 ta157_8 MUX8 (
     .A8(BUFFER_IN),
     .B8(HIGH8),
