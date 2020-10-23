@@ -5,6 +5,7 @@
 `include "processor/processor.v"
 `include "core-parts/counter8.v"
 `include "core-parts/ta157_8.v"
+`include "core-parts/ta157_4.v"
 `include "opcode/opcodedec.v"
 `include "core-parts/ta151_bar.v"
 `include "core-parts/xor2.v"
