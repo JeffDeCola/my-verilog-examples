@@ -224,7 +224,6 @@ The processor is a collection of registers, muxes and an alu,
     ([ta18l_bar.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta18l_bar.v))
     * AND1
     ([and2.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/and2.v))
-
   * **F_REGISTER**
     ([register_ab8](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register_ab8.v))
     _See above_
