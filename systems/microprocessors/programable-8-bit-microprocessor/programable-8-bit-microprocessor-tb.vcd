@@ -1,5 +1,5 @@
 $date
-	Thu Oct 22 07:59:05 2020
+	Thu Oct 22 14:42:38 2020
 $end
 $version
 	Icarus Verilog
@@ -57,13 +57,13 @@ $var wire 8 D HIGH8 [7:0] $end
 $var wire 1 ' JAM $end
 $var wire 1 E LOW $end
 $var wire 8 F MICROADDRESS [7:0] $end
-$var wire 1 G MPC_LOAD_BAR $end
-$var wire 24 H MW [23:0] $end
-$var wire 1 I NOTHING $end
-$var wire 4 J OPCODE [3:0] $end
+$var wire 24 G MW [23:0] $end
+$var wire 1 H NOTHING $end
+$var wire 4 I OPCODE [3:0] $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 4 K STATUS_BITS [3:0] $end
+$var wire 4 J STATUS_BITS [3:0] $end
+$var wire 1 K MPC_LOAD_BAR $end
 $var wire 4 L MICRO_AD_LOW [3:0] $end
 $var wire 4 M MICRO_AD_HIGH [7:4] $end
 $var wire 1 N COUNT $end
@@ -83,16 +83,16 @@ $var wire 1 E D6 $end
 $var wire 1 E D7 $end
 $var wire 1 E EN_BAR $end
 $var wire 1 A W $end
-$var wire 1 I Y $end
+$var wire 1 H Y $end
 $upscope $end
 $scope module COUNTER_8 $end
 $var wire 1 N COUNT $end
 $var wire 4 X COUNTER_IN_HIGH [7:4] $end
 $var wire 4 Y COUNTER_IN_LOW [3:0] $end
 $var wire 8 Z COUNTER_OUT [7:0] $end
-$var wire 1 G MPC_LOAD_BAR $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
+$var wire 1 K MPC_LOAD_BAR $end
 $upscope $end
 $scope module MUX8 $end
 $var wire 8 [ A8 [7:0] $end
@@ -111,7 +111,7 @@ $upscope $end
 $scope module XOR_2 $end
 $var wire 1 b A $end
 $var wire 1 A B $end
-$var wire 1 G Y $end
+$var wire 1 K Y $end
 $upscope $end
 $upscope $end
 $scope module PROCESSOR_SECTION $end
@@ -270,11 +270,11 @@ b11111111111 O
 1N
 b11 M
 b111 L
-b1111 K
-b0 J
-1I
-b111111111111111100110111 H
-1G
+0K
+b1111 J
+b0 I
+1H
+b111111111111111100110111 G
 b100 F
 0E
 b11111111 D
@@ -344,7 +344,7 @@ b100 g
 b100 ("
 b1 (
 b1 <
-b1 J
+b1 I
 b1 `
 #80
 0*
@@ -384,7 +384,7 @@ b111 g
 b111 ("
 b10 (
 b10 <
-b10 J
+b10 I
 b10 `
 #200
 0*
