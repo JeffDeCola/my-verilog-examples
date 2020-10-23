@@ -63,14 +63,18 @@ OTHER INPUTS,
 * **JAM** _tbd_
 * **RESET** _tbd_
 
-To accomplish this the processor is broken up into two sections,
+## THE CONTROL AND PROCESSOR SECTION
+
+This design is broken into two main sections,
 
 * **TOP**
   ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
   * **CONTROL_SECTION**
     ([control.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
+    * The brains. Handles the opcode, microcode and control the process section
   * **PROCESSOR_SECTION**
     ([processor.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
+    * Crunches the data controlled by the control section
 
 A little more top level detail from my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis),
