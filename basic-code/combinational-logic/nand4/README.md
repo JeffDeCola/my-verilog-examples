@@ -4,18 +4,12 @@ _4-input NAND gate._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## STATE DIAGRAM
-
-This may help,
-
-![IMAGE - nand4.jpg - IMAGE](../../../docs/pics/nand4.jpg)
-
 ## VERILOG CODE
 
 The main part of the code is,
 
 ```verilog
-    ?????
+    assign y = ~(a & b & c & d);
 ```
 
 The entire code is

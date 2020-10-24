@@ -1,6 +1,6 @@
-# or2 example
+# jeff-74x151 example
 
-_2-input OR gate._
+_8-line to 1-line data selector/multiplexer._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -9,16 +9,16 @@ _2-input OR gate._
 The main part of the code is,
 
 ```verilog
-    assign y = a | b;
+    ?????
 ```
 
 The entire code is
-[or2.v](or2.v).
+[jeff-74x151.v](jeff-74x151.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[or2-tb.v](or2-tb.v) with
+[jeff-74x151-tb.v](jeff-74x151-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 

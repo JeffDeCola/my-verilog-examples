@@ -15,7 +15,7 @@ This may help,
 The main part of the code is,
 
 ```verilog
-    ?????
+    assign y = a & b;
 ```
 
 The entire code is
