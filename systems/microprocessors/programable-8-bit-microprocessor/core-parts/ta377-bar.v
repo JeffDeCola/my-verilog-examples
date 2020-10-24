@@ -8,7 +8,7 @@ module ta377_bar(
     input           EN_BAR,             //
     input           CLK,                //
     input  [7:0]    D,                  // 
-    output [7:0]    Q,                  // 
+    output [7:0]    Q                   // 
 );
 
 assign EN = ~EN_BAR;
@@ -33,7 +33,7 @@ jeff_74x377 U1 (
     .q4(Q[4]),
     .q5(Q[5]),
     .q6(Q[6]),
-    .q7(Q[7]),
+    .q7(Q[7])
 );
 
 endmodule
