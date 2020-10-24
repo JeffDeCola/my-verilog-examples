@@ -4,17 +4,17 @@
 // CONTROL SECTION
 `include "control/control.v"
 `include "core-parts/counter8.v"
-`include "core-parts/ta161_bar.v"
+`include "core-parts/ta161-bar.v"
 // Replaced ta161 in Thesis with jeff_74x161
 `include "../../../sequential-logic/counters/jeff-74x161/jeff-74x161.v"     
-`include "core-parts/ta157_8.v"
+`include "core-parts/ta157-8.v"
 // Replaced ta157_bar and ta157 in Thesis with jeff_74x157
 `include "../../../combinational-logic/multiplexers-and-demultiplexers/jeff-74x157/jeff-74x157.v"     
 `include "opcode/opcodedec.v"
-`include "core-parts/ta157_4.v"
+`include "core-parts/ta157-4.v"
 // Replaced nand4 in Thesis with Jeff's nand4
 `include "../../../basic-code/combinational-logic/nand4/nand4.v"            
-`include "core-parts/ta151_bar.v"
+`include "core-parts/ta151-bar.v"
 // Replaced ta151 in Thesis with jeff_74x151
 `include "../../../combinational-logic/multiplexers-and-demultiplexers/jeff-74x151/jeff-74x151.v"     
 // Replaced xor2 in Thesis with Jeff's xor2
@@ -22,13 +22,16 @@
 
 // PROCESSOR SECTION
 `include "processor/processor.v"
-`include "core-parts/register_ab8.v"
-//`include "core-parts/or2.v"
-//`include "core-parts/ta377_bar.v"
+`include "core-parts/register-ab8.v"
+// Replaced or2 in Thesis with Jeff's or2
+`include "../../../basic-code/combinational-logic/or2/or2.v"
+`include "core-parts/ta377-bar.v"
+// Replaced ta377 in Thesis with jeff_74x377
+`include "../../../sequential-logic/registers/jeff-74x377/jeff-74x377.v"  
 `include "alu/alu.v"
-//`include "core-parts/ta181_bar.v"
+//`include "core-parts/ta181-bar.v"
 //`include "core-parts/and2.v"
-`include "core-parts/zp_bit.v"
+`include "core-parts/zp-bit.v"
 
 module programable_8_bit_microprocessor (
     input  [3:0]    OPCODE,             //
