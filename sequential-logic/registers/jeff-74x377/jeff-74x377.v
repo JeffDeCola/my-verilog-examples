@@ -10,14 +10,14 @@ module jeff_74x377(
     input           d5,                 // 
     input           d6,                 // 
     input           d7,                 // 
-    input           q0,                 // 
-    input           q1,                 // 
-    input           q2,                 // 
-    input           q3,                 // 
-    input           q4,                 // 
-    input           q5,                 // 
-    input           q6,                 // 
-    input           q7                  //  
+    output          q0,                 // 
+    output          q1,                 // 
+    output          q2,                 // 
+    output          q3,                 // 
+    output          q4,                 // 
+    output          q5,                 // 
+    output          q6,                 // 
+    output          q7                  //  
 );
 
 assign q0 = 1'b1;              // ERASE

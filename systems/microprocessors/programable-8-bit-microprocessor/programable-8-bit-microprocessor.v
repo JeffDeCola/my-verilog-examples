@@ -1,7 +1,7 @@
 // 8-bit microprocessor top
 // The top level of the design
 
-// CONTROL SECTION
+// CONTROL SECTION - IN ORDER WHEN FIRST USED
 `include "control/control.v"
 `include "core-parts/counter8.v"
 `include "core-parts/ta161-bar.v"
@@ -20,7 +20,7 @@
 // Replaced xor2 in Thesis with Jeff's xor2
 `include "../../../basic-code/combinational-logic/xor2/xor2.v"              
 
-// PROCESSOR SECTION
+// PROCESSOR SECTION - IN ORDER WHEN FIRST USED
 `include "processor/processor.v"
 `include "core-parts/register-ab8.v"
 // Replaced or2 in Thesis with Jeff's or2
@@ -29,9 +29,14 @@
 // Replaced ta377 in Thesis with jeff_74x377
 `include "../../../sequential-logic/registers/jeff-74x377/jeff-74x377.v"  
 `include "alu/alu.v"
-//`include "core-parts/ta181-bar.v"
-//`include "core-parts/and2.v"
+`include "core-parts/ta181-bar.v"
+// Replaced ta181 in Thesis with jeff_74x181
+`include "../../../combinational-logic/alus/jeff-74x181/jeff-74x181.v"  
+// Replaced and2 in Thesis with Jeff's and2
+`include "../../../basic-code/combinational-logic/and2/and2.v"
 `include "core-parts/zp-bit.v"
+// Replaced nor2 in Thesis with Jeff's nor2
+`include "../../../basic-code/combinational-logic/nor2/nor2.v"
 
 module programable_8_bit_microprocessor (
     input  [3:0]    OPCODE,             //
