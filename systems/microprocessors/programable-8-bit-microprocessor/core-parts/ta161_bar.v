@@ -9,25 +9,26 @@ module ta161_bar (
     input           CLK,                 // CLK 
     input           A, B, C, D,          // DATA IN
     output          QA, QB, QC, QD,      // DATA OUT
-    output          RC0                  // RIPPLE CARRY OUTPUT
+    output          RCO                  // RIPPLE CARRY OUTPUT
 );
 
 // 4-bit synchronous counter
-ta161 U1 (
-    .CLR(CLR_BAR),
-    .LD(LD_BAR),
-    .ENT(ENT),
-    .ENP(ENP),
-    .CLK(SYSTEM_CLK),
-    .A(A),
-    .B(B),
-    .C(C),
-    .D(D),
-    .QA(QA),
-    .QB(QB),
-    .QC(QC),
-    .QD(QD),
-    .RC0(RC0)
+// REPLACED ta161 in THESIS with jeff-74x161
+jeff-74x161 U1 (
+    .clr(CLR_BAR),
+    .ld(LD_BAR),
+    .ent(ENT),
+    .enp(ENP),
+    .clk(SYSTEM_CLK),
+    .a(A),
+    .b(B),
+    .c(C),
+    .d(D),
+    .qa(QA),
+    .qb(QB),
+    .qc(QC),
+    .qd(QD),
+    .rco(RCO)
 );
 
 endmodule
