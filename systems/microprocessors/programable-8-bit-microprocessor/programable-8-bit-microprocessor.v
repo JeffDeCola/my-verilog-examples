@@ -5,15 +5,20 @@
 `include "control/control.v"
 `include "core-parts/counter8.v"
 `include "core-parts/ta161_bar.v"
-`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x161.v"     // Replaced ta161 in Thesis with jeff-74x161
+// Replaced ta161 in Thesis with jeff_74x161
+`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x161.v"     
 `include "core-parts/ta157_8.v"
-`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x157.v"     // Replaced ta157_bar and ta157 in Thesis with jeff-74x157
+// Replaced ta157_bar and ta157 in Thesis with jeff_74x157
+`include "../../../combinational-logic/multiplexers-and-demultiplexers/jeff-74x157/jeff-74x157.v"     
 `include "opcode/opcodedec.v"
 `include "core-parts/ta157_4.v"
-`include "../../../basic-code/combinational-logic/nand4/nand4.v"            // Replaced nand4 in Thesis with Jeff's nand4
+// Replaced nand4 in Thesis with Jeff's nand4
+`include "../../../basic-code/combinational-logic/nand4/nand4.v"            
 `include "core-parts/ta151_bar.v"
-`include "../../../sequential-logic/counters/jeff-74x151/jeff-74x151.v"     // Replaced ta151 in Thesis with jeff-74x151
-`include "../../../basic-code/combinational-logic/xor2/xor2.v"              // Replaced xor2 in Thesis with Jeff's xor2
+// Replaced ta151 in Thesis with jeff_74x151
+`include "../../../combinational-logic/multiplexers-and-demultiplexers/jeff-74x151/jeff-74x151.v"     
+// Replaced xor2 in Thesis with Jeff's xor2
+`include "../../../basic-code/combinational-logic/xor2/xor2.v"              
 
 // PROCESSOR SECTION
 `include "processor/processor.v"

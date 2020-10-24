@@ -1,7 +1,7 @@
 // 8-bit microprocessor ta151_bar
 // 8 to 1 multiplexer - Written above SOFT MACRO (text in thesis)
 // UPDATE FROM THESIS
-//   Replaced ta151 in THESIS with jeff-74x151
+//   Replaced ta151 in THESIS with jeff_74x151
 //   8-line to 1-line data selector/multiplexer
 
 module ta151_bar(
@@ -24,8 +24,8 @@ module ta151_bar(
 assign EN = ~EN_BAR;
 
 // 8-line to 1-line data selector/multiplexer
-// Replaced ta151 in THESIS with jeff-74x151
-jeff-74x151 U1 (
+// Replaced ta151 in THESIS with jeff_74x151
+jeff_74x151 U1 (
     .d0(D0),
     .d1(D1),
     .d2(D2),
