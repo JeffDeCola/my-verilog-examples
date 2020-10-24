@@ -5,7 +5,7 @@
 `include "control/control.v"
 `include "core-parts/counter8.v"
 `include "core-parts/ta161_bar.v"
-`include "core-parts/ta161.v"
+`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x161.v"     // Jeff's 74x161 Standard Part
 `include "core-parts/ta157_8.v"
 `include "core-parts/ta157_bar.v"
 `include "core-parts/ta157.v"

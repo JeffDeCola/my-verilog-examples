@@ -33,7 +33,7 @@ ta161_bar COUNTER1 (
     .QB(COUNTER_OUT[1]),
     .QC(COUNTER_OUT[2]),
     .QD(COUNTER_OUT[3]),
-    .RC0(CARRY)
+    .RCO(CARRY)
 );
 
 // COUNTER2 - 4-bit synchronous counter
@@ -51,7 +51,7 @@ ta161_bar COUNTER2 (
     .QB(COUNTER_OUT[5]),
     .QC(COUNTER_OUT[6]),
     .QD(COUNTER_OUT[7]),
-    .RC0(NOTHING)
+    .RCO(NOTHING)
 );
 
 endmodule
