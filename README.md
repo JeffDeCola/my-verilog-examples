@@ -92,6 +92,14 @@ to view the output._
 
     _Demultiplexer - One input, four outputs (using a case statement)._
 
+  * [jeff-74x157](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157)
+
+    _Based on the 7400-series integrated circuits.
+    Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
+    Used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
+
   * [mux-4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 
     _Multiplexer - Four inputs, one output (using a case statement)._
@@ -109,6 +117,16 @@ to view the output._
 
     _A three level Priority Arbiter with asynchronous reset
     (Using if-then-else statements)._
+
+* COUNTERS
+
+  * [jeff-74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
+
+    _Based on the 7400-series integrated circuits.
+     Synchronous presettable 4-bit binary counter, asynchronous clear.
+     Used in my
+     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+     below._
 
 * FINITE STATE MACHINES
 

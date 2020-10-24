@@ -2,7 +2,7 @@
 // Where the microcode is kept.
 // 256 microwords (24-bits wide).
 
-module control_store(
+module control_store (
     input  [7:0]    microaddress,    // ADDRESS
     output [23:0]   microword        // WORD
 );
@@ -41,7 +41,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b111; CIN <= 1'b1; ALU_FUNC <= 5'b11111; B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;
         end
         8'h04: begin
-            BOP <= 4'b1111; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'b0011; MICRO_AD_LOW <= 4'b0111;
+            BOP <= 4'b0000; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'b0011; MICRO_AD_LOW <= 4'b0111;
             ALU_DEST <= 3'b111; CIN <= 1'b1; ALU_FUNC <= 5'b11111; B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;
         end
         default: begin

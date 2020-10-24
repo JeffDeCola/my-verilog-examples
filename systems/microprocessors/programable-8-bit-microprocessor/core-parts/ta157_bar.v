@@ -1,14 +1,21 @@
-// 8-bit microprocessor ta157_8
-// Eight (2x1) multiplexers
+// 8-bit microprocessor ta157_bar
+// 2x1 multiplexer
 
-module ta157_8(
-    input  [7:0]    A8,                 // 
-    input  [7:0]    B8,                 // 
+module ta157_bar(
+    input           A,                  // 
+    input           B,                  // 
     input           S,                  //
     input           EN_BAR,             //
-    output [7:0]    Y8                  // 
+    output          Y                   // 
 );
 
-assign Y8 = 8'h04;             // ERASE
+// 2x1 multiplexer
+ta157 U1 (
+    .A(A),
+    .B(B),
+    .S(S),
+    .EN(EN_BAR),
+    .Y(Y)
+);
 
 endmodule

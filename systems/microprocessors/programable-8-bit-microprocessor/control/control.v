@@ -1,7 +1,7 @@
 // 8-bit microprocessor control section
 // Control section structural view
 
-module control(
+module control (
     input  [3:0]    OPCODE,             //
     input           GO_BAR,             // 
     input           RESET,              // 

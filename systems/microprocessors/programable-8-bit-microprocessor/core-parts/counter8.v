@@ -11,6 +11,47 @@ module counter8(
     output [7:0]    COUNTER_OUT         // 
 );
 
-assign COUNTER_OUT = 8'hf0;             // ERASE
+// WIRES
+wire            CARRY;
+wire            NOTHING;
+
+// ASSIGN VALUES
+assign HIGH             = 1'b1;
+
+// COUNTER1 - 4-bit synchronous counter
+ta161_bar COUNTER1 (
+    .CLR_BAR(RESET),
+    .LD_BAR(MPC_LOAD_BAR),
+    .ENT(HIGH),
+    .ENP(COUNT),
+    .CLK(SYSTEM_CLK),
+    .A(COUNTER_IN_LOW[0]),
+    .B(COUNTER_IN_LOW[1]),
+    .C(COUNTER_IN_LOW[2]),
+    .D(COUNTER_IN_LOW[3]),
+    .QA(COUNTER_OUT[0]),
+    .QB(COUNTER_OUT[1]),
+    .QC(COUNTER_OUT[2]),
+    .QD(COUNTER_OUT[3]),
+    .RC0(CARRY)
+);
+
+// COUNTER2 - 4-bit synchronous counter
+ta161_bar COUNTER2 (
+    .CLR_BAR(RESET),
+    .LD_BAR(MPC_LOAD_BAR),
+    .ENT(CARRY),
+    .ENP(COUNT),
+    .CLK(SYSTEM_CLK),
+    .A(COUNTER_IN_LOW[4]),
+    .B(COUNTER_IN_LOW[5]),
+    .C(COUNTER_IN_LOW[6]),
+    .D(COUNTER_IN_LOW[7]),
+    .QA(COUNTER_OUT[4]),
+    .QB(COUNTER_OUT[5]),
+    .QC(COUNTER_OUT[6]),
+    .QD(COUNTER_OUT[7]),
+    .RC0(NOTHING)
+);
 
 endmodule

@@ -1,7 +1,7 @@
 // 8-bit microprocessor opcodedec
 // Opcode decoding
 
-module opcodedec(
+module opcodedec (
     input  [3:0]    OPCODE,             // 
     input  [7:4]    MW_AD_HIGH,         // 
     input  [12:9]   MW_BOP,             //
