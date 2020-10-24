@@ -12,7 +12,7 @@ module jeff_74x151(
     input                b,                  // 
     input                c,                  // 
     input                en,                 //
-    output               y                   // 
+    output               y,                   // 
     output               w                   // 
 );
 
