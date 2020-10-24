@@ -1,10 +1,10 @@
 // 4-input NAND gate
-module and2(
-    input           A, B,          //
-    output          Y              //
+module nand4(
+    input           a, b, c, d,     //
+    output          y              //
 );
 
 // CONTINUOUS ASSIGNMENT STATEMENT
-assign Y = A & B;
+assign y = ~(a & b & c & d);
 
 endmodule

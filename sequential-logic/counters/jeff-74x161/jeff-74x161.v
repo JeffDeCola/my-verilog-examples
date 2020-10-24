@@ -1,19 +1,19 @@
 // Synchronous presettable 4-bit binary counter, asynchronous clear
 module jeff_74x161(
-    input           CLR,                 // ASYYNC CLEAR
-    input           LD,                  // LOAD
-    input           ENT,                 // ENABLE T
-    input           ENP,                 // ENABLE P
-    input           CLK,                 // CLK
-    input           A, B, C, D,          // DATA IN
-    output          QA, QB, QC, QD,      // DATA OUT
-    output          RC0                  // RIPPLE CARRY OUTPUT
+    input           clr,                 // ASYYNC CLEAR
+    input           ld,                  // LOAD
+    input           ent,                 // ENABLE T
+    input           enp,                 // ENABLE P
+    input           clk,                 // CLK
+    input           a, b, c, d,          // DATA IN
+    output          qa, qb, qc, qd,      // DATA OUT
+    output          rco                  // RIPPLE CARRY OUTPUT
 );
 
-assign QA = 1'b1;              // ERASE
-assign QB = 1'b1;              // ERASE
-assign QC = 1'b1;              // ERASE
-assign QD = 1'b1;              // ERASE
-assign RCO = 1'b1;             // ERASE
+assign qa = 1'b1;              // ERASE
+assign qb = 1'b1;              // ERASE
+assign qc = 1'b1;              // ERASE
+assign qd = 1'b1;              // ERASE
+assign rco = 1'b1;             // ERASE
 
 endmodule
