@@ -5,10 +5,9 @@
 `include "control/control.v"
 `include "core-parts/counter8.v"
 `include "core-parts/ta161_bar.v"
-`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x161.v"     // Jeff's 74x161 Standard Part
+`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x161.v"     // Replaced ta161 in Thesis with jeff-74x161
 `include "core-parts/ta157_8.v"
-`include "core-parts/ta157_bar.v"
-`include "core-parts/ta157.v"
+`include "../../../sequential-logic/counters/jeff-74x161/jeff-74x157.v"     // Replaced ta157_bar and ta157 in Thesis with jeff-74x157
 `include "opcode/opcodedec.v"
 `include "core-parts/ta157_4.v"
 `include "core-parts/nand4.v"

@@ -1,7 +1,5 @@
-// 8-bit microprocessor ta161
-// 4-bit synchronous counter
-
-module ta161 (
+// 2-input XOR gate
+module xor2(
     input           CLR,                 // ASYYNC CLEAR
     input           LD,                  // LOAD
     input           ENT,                 // ENABLE T
@@ -12,22 +10,10 @@ module ta161 (
     output          RC0                  // RIPPLE CARRY OUTPUT
 );
 
-// WIRES
-reg QA, QB, QC, QD;
-
-always @ (posedge CLK or posedge CLR) begin
-    if (CLR) begin
-        QA <= 1'b0;
-        QB <= 1'b0;
-        QC <= 1'b0;
-        QD <= 1'b0;
-    end else if (ENT or ENP) begin
-        if (LD)
-
-    end 
-
-
-    end
-end
+assign QA = 1'b1;              // ERASE
+assign QB = 1'b1;              // ERASE
+assign QC = 1'b1;              // ERASE
+assign QD = 1'b1;              // ERASE
+assign RCO = 1'b1;             // ERASE
 
 endmodule

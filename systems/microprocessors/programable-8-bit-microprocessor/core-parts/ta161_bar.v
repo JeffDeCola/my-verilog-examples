@@ -1,5 +1,8 @@
 // 8-bit microprocessor ta161_bar
 // 4-bit synchronous counter
+// UPDATE FROM THESIS
+//   Replaced ta161 in THESIS with jeff-74x161
+//   4-bit synchronous counter
 
 module ta161_bar (
     input           CLR_BAR,             // CLEAR
@@ -13,7 +16,7 @@ module ta161_bar (
 );
 
 // 4-bit synchronous counter
-// REPLACED ta161 in THESIS with jeff-74x161
+// Replaced ta161 in THESIS with jeff-74x161
 jeff-74x161 U1 (
     .clr(CLR_BAR),
     .ld(LD_BAR),
