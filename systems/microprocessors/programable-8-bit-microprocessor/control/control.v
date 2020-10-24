@@ -1,5 +1,7 @@
 // 8-bit microprocessor control section
 // Control section structural view
+// UPDATE FROM THESIS
+//   Replaced xor2 in THESIS with jeff's xor2
 
 module control (
     input  [3:0]    OPCODE,             //
@@ -88,11 +90,11 @@ ta151_bar COND_SELECT (
     .W(COND_OUT)
 );
 
-// XOR2 SECTION (THE XOR CODE IS NOT IN THESIS)
+//   Replaced xor2 in THESIS with jeff's xor2
 xor2 XOR_2 (
-    .A(BOP[12]),
-    .B(COND_OUT),
-    .Y(MPC_LOAD_BAR)
+    .a(BOP[12]),
+    .b(COND_OUT),
+    .y(MPC_LOAD_BAR)
 );
 
 endmodule

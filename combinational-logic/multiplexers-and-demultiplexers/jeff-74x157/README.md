@@ -4,12 +4,6 @@ _Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## STATE DIAGRAM
-
-This may help,
-
-![IMAGE - jeff-74x157.jpg - IMAGE](../../../docs/pics/jeff-74x157.jpg)
-
 ## VERILOG CODE
 
 The main part of the code is,

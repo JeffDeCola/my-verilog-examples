@@ -9,7 +9,7 @@ _2-input XOR gate._
 The main part of the code is,
 
 ```verilog
-    ?????
+    assign y = ~(a | b);
 ```
 
 The entire code is

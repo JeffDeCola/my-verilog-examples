@@ -116,6 +116,14 @@ to view the output._
 
     _Demultiplexer - One input, four outputs (using a case statement)._
 
+  * [jeff-74x151](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x151)
+
+    _Based on the 7400-series integrated circuits.
+    8-line to 1-line data selector/multiplexer.
+    Used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
+
   * [jeff-74x157](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157)
 
     _Based on the 7400-series integrated circuits.

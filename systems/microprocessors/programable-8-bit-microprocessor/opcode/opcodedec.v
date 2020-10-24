@@ -1,5 +1,7 @@
 // 8-bit microprocessor opcodedec
 // Opcode decoding
+// UPDATE FROM THESIS
+//   Replaced nand4 in THESIS with jeff's nand4
 
 module opcodedec (
     input  [3:0]    OPCODE,             // 
@@ -28,12 +30,13 @@ ta157_4 U1 (
 );
 
 // FOUR INPUT NAND GATE
+// Replaced nand4 in THESIS with jeff's nand4
 nand4 U2 (
-    .A(MW_BOP[9]),
-    .B(MW_BOP[10]),
-    .C(MW_BOP[11]),
-    .D(MW_BOP[12]),
-    .Y(W1)
+    .a(MW_BOP[9]),
+    .b(MW_BOP[10]),
+    .c(MW_BOP[11]),
+    .d(MW_BOP[12]),
+    .y(W1)
 );
 
 endmodule
