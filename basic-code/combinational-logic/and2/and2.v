@@ -1,7 +1,7 @@
 // 2-input AND gate
 module and2(
-    input           A, B,          //
-    output          Y              //
+    input           a, b,          //
+    output          y              //
 );
 
 // CONTINUOUS ASSIGNMENT STATEMENT

@@ -4,15 +4,13 @@
 module nand4_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg        CLK, RST;
-reg        IN;
-wire       OUT;
+reg        A, B, C, D;
+wire       Y;
 
 // UUT
 nand4 uut(
-    .clk(CLK), .rst(RST),
-    .in(IN),
-    .out(OUT)
+    .a(A), .b(B), .c(C), .d(D),
+    .y(Y)
 );
 
 // FILES
@@ -21,27 +19,30 @@ initial begin
     $dumpvars(0, nand4_tb);
 end
 
-// CLOCK
-always begin
-    #10 CLK = ~CLK;
-end
-
 // TESTCASE
 initial begin
     $display("test start");
-    CLK = 0;
-    RST = 0;
-    IN = 0;
+    D = 0; C = 0; B = 0; A = 0;
 
-    #15; RST = 1;
-    #20; RST = 0;
+    #15; D = 0; C = 0; B = 0; A = 0;
+    #20; D = 0; C = 0; B = 0; A = 1;
+    #20; D = 0; C = 0; B = 1; A = 0;
+    #20; D = 0; C = 0; B = 1; A = 1;
+    #20; D = 0; C = 1; B = 0; A = 0;
+    #20; D = 0; C = 1; B = 0; A = 1;
+    #20; D = 0; C = 1; B = 1; A = 0;
+    #20; D = 0; C = 1; B = 1; A = 1;
+    #20; D = 1; C = 0; B = 0; A = 0;
+    #20; D = 1; C = 0; B = 0; A = 1;
+    #20; D = 1; C = 0; B = 1; A = 0;
+    #20; D = 1; C = 0; B = 1; A = 1;
+    #20; D = 1; C = 1; B = 0; A = 0;
+    #20; D = 1; C = 1; B = 0; A = 1;
+    #20; D = 1; C = 1; B = 1; A = 0;
+    #20; D = 1; C = 1; B = 1; A = 1;
 
-    #20; IN = 1;
-    #20; IN = 0;
-    #20; IN = 1;
-    #20; IN = 0;
-    #20; IN = 0;
-    
+    #20; D = 0; C = 0; B = 0; A = 0;
+
     // DONE
     #20
 

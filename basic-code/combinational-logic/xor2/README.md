@@ -4,12 +4,6 @@ _2-input XOR gate._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## STATE DIAGRAM
-
-This may help,
-
-![IMAGE - xor2.jpg - IMAGE](../../../docs/pics/xor2.jpg)
-
 ## VERILOG CODE
 
 The main part of the code is,
