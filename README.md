@@ -118,17 +118,15 @@ to view the output._
 
   * [jeff-74x151](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x151)
 
-    _Based on the 7400-series integrated circuits.
-    8-line to 1-line data selector/multiplexer.
-    Used in my
+    _8-line to 1-line data selector/multiplexer.
+    Based on the 7400-series integrated circuits used in my
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._
 
   * [jeff-74x157](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157)
 
-    _Based on the 7400-series integrated circuits.
-    Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
-    Used in my
+    _Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
+    Based on the 7400-series integrated circuits used in my
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._
 
@@ -154,11 +152,10 @@ to view the output._
 
   * [jeff-74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
 
-    _Based on the 7400-series integrated circuits.
-     Synchronous presettable 4-bit binary counter, asynchronous clear.
-     Used in my
-     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-     below._
+    _Synchronous presettable 4-bit binary counter, asynchronous clear.
+    Based on the 7400-series integrated circuits used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
 
 * FINITE STATE MACHINES
 
