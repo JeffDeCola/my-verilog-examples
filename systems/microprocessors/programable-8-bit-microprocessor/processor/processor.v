@@ -1,7 +1,7 @@
 // 8-bit microprocessor processor section
 // Processor section structural view
 
-module processor(
+module processor (
     input  [7:0]    DATA_IN_A,          // 
     input  [7:0]    DATA_IN_B,          // 
     input           SYSTEM_CLK,         //

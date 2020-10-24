@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Oct 24 12:32:30 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\counters\jeff_74x161\jeff-74x161-tb.vcd"
+[dumpfile_mtime] "Sat Oct 24 12:30:34 2020"
+[dumpfile_size] 555
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\counters\jeff_74x161\jeff-74x161-tb.gtkw"
+[timestart] 0
+[size] 1920 996
+[pos] -139 -139
+*-4.291728 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+jeff_74x161_tb.CLK
+jeff_74x161_tb.RST
+jeff_74x161_tb.IN
+@29
+jeff_74x161_tb.OUT
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,77 @@
+$date
+	Sat Oct 24 05:43:23 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module jeff_74x161_tb $end
+$var wire 1 ! OUT $end
+$var reg 1 " CLK $end
+$var reg 1 # IN $end
+$var reg 1 $ RST $end
+$scope module uut $end
+$var wire 1 " clk $end
+$var wire 1 # in $end
+$var wire 1 $ rst $end
+$var reg 1 ! out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0$
+0#
+0"
+x!
+$end
+#10
+0!
+1"
+#15
+1$
+#20
+0"
+#30
+1"
+#35
+0$
+#40
+0"
+#50
+1"
+#55
+1#
+#60
+0"
+#70
+1!
+1"
+#75
+0#
+#80
+0"
+#90
+0!
+1"
+#95
+1#
+#100
+0"
+#110
+1!
+1"
+#115
+0#
+#120
+0"
+#130
+0!
+1"
+#140
+0"
+#150
+1"
+#155
