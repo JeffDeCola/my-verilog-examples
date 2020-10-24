@@ -1,5 +1,8 @@
 // 8-bit microprocessor ta157_4
 // Four (2x1) multiplexers
+// UPDATE FROM THESIS
+//   Replaced ta157bar and ta157 in THESIS with jeff-74x157
+//   Quad 2x1 multiplexers
 
 module ta157_4(
     input  [3:0]    A4,                 // 
@@ -9,41 +12,16 @@ module ta157_4(
     output [3:0]    Y4                  // 
 );
 
+// Replaced ta157_bar and ta157 in THESIS with jeff-74x157
+assign EN = ~EN_BAR;
 
-// BIT 0 - 2x1 multiplexers
-ta157_bar MUX0 (
-    .A(A4[0]),
-    .B(B4[0]),
-    .S(S),
-    .EN_BAR(EN_BAR),
-    .Y(Y4[0])
-);
-
-// BIT 1 - 2x1 multiplexers
-ta157_bar MUX1 (
-    .A(A4[1]),
-    .B(B4[1]),
-    .S(S),
-    .EN_BAR(EN_BAR),
-    .Y(Y4[1])
-);
-
-// BIT 2 - 2x1 multiplexers
-ta157_bar MUX2 (
-    .A(A4[2]),
-    .B(B4[2]),
-    .S(S),
-    .EN_BAR(EN_BAR),
-    .Y(Y4[2])
-);
-
-// BIT 3 - 2x1 multiplexers
-ta157_bar MUX3 (
-    .A(A4[3]),
-    .B(B4[3]),
-    .S(S),
-    .EN_BAR(EN_BAR),
-    .Y(Y4[3])
+// Quad 2x1 multiplexers
+jeff-74x157 MUX0 (
+    .a(A4),
+    .b(B4),
+    .d(S),
+    .en(EN),
+    .y(Y8)
 );
 
 endmodule
