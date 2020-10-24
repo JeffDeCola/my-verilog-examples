@@ -19,8 +19,10 @@ Table of Contents,
   * MULTIPLEXERS & DEMULTIPLEXERS
 * [SEQUENTIAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#sequential-logic)
   * ARBITERS
+  * COUNTERS
   * FINITE SATE MACHINES
   * MEMORY
+  * REGISTERS
   * SHIFTERS
 * [SYSTEMS](https://github.com/JeffDeCola/my-systemverilog-examples#systems)
   * MICROPROCESSORS
@@ -153,6 +155,15 @@ to view the output._
   * [jeff-74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
 
     _Synchronous presettable 4-bit binary counter, asynchronous clear.
+    Based on the 7400-series integrated circuits used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
+
+* REGISTERS
+
+  * [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registerss/jeff-74x377)
+
+    _8-bit register, clock enable.
     Based on the 7400-series integrated circuits used in my
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._
