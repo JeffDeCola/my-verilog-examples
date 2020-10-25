@@ -18,7 +18,7 @@ module jeff_74x181(
     output               f1,                  // 
     output               f2,                  // 
     output               f3,                  // 
-    output               c0,                  // 
+    output               co,                  // 
     output               aeqb,                // 
     output               p,                   // 
     output               g                   // 

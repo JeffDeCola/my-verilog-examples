@@ -58,9 +58,9 @@ not1 INV5 (.a(B3_BAR), .y(B3_SIG));
 not1 INV6 (.a(B2_BAR), .y(B2_SIG));
 not1 INV7 (.a(B1_BAR), .y(B1_SIG));
 not1 INV8 (.a(B0_BAR), .y(B0_SIG));
-not1 INV9 (.a(F3_BAR), .y(F3_SIG));
-not1 INV10 (.a(F2_BAR), .y(F2_SIG));
-not1 INV11 (.a(F1_BAR), .y(F1_SIG));
-not1 INV12 (.a(F0_BAR), .y(F0_SIG));
+not1 INV9 (.a(F3_SIG), .y(F3_BAR));
+not1 INV10 (.a(F2_SIG), .y(F2_BAR));
+not1 INV11 (.a(F1_SIG), .y(F1_BAR));
+not1 INV12 (.a(F0_SIG), .y(F0_BAR));
 
 endmodule

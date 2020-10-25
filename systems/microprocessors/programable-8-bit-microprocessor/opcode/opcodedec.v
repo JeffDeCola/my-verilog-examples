@@ -11,9 +11,6 @@ module opcodedec (
     output          EIL_BAR             //
 );
 
-assign TO_COUNTER = 4'h3;         // ERASE
-assign EIL_BAR = 1'b1;             // ERASE
-
 // WIRES
 wire          W1;
 
