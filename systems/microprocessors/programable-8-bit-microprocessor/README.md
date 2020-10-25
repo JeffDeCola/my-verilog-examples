@@ -23,25 +23,31 @@ Table of Contents,
 
 ## STATS
 
-* Up to 16 Opcodes
+* Build around the
+  [74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
+  ALU
+  * 16 binary arithmetic operations
+  * 16 logic operations
+  * 4-bit words
 * 8-bit data processing
+* Up to 16 Opcodes
+  * Programable via microcode
 * Microcode
   * 256 x 24-bit microcode storage
   * 24-bit microword
-* Synthesizable verilog code
-* If using hardcoded internal microcode
-  * 56 pins
+* Pin count
+  * 56 pins if using hardcoded internal microcode
     * 24 Input pins
     * 8 Output pins
-* If using external microcode
-  * 64 pins
+  * 64 if using external microcode
     * 48 Input pins
     * 16 Output pins
+* Synthesizable verilog code
 
 ## TOP LEVEL (HOW IT WORKS)
 
 Based on an instruction (opcode) this processor takes in data,
-processes that data and spits out the result. That's about it.
+processes that data via the alu and spits out the result. That's about it.
 
 This may help,
 

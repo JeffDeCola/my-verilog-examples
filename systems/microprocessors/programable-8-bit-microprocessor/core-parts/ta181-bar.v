@@ -9,7 +9,7 @@ module ta181_bar(
     input           A3_BAR, A2_BAR, A1_BAR, A0_BAR,     // WORD 1
     input           B3_BAR, B2_BAR, B1_BAR, B0_BAR,     // WORD 2
     input           S3, S2, S1, S0,                     // FUNCTION SELECT
-    input           M,                                  // LOW VOLTAGE MODE
+    input           M,                                  // MODE: 0 is arithmetic, 1 is logic
     input           CI,                                 // CARRY IN
     output          F3_BAR, F2_BAR, F1_BAR, F0_BAR,     // OUTPUT
     output          CO,                                 // CARRY OUT

@@ -105,6 +105,8 @@ to view the output._
   * [jeff-74x181](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
 
     _4-bit arithmetic logic unit and function generator.
+    Provides 16 binary logic operations and 16 arithmetic operations
+    on two 4-bit words.
     Based on the 7400-series integrated circuits used in my
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._

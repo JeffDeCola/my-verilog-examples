@@ -1,15 +1,17 @@
 # jeff-74x181 example
 
 _4-bit arithmetic logic unit and function generator.
-Performs one of 16 binary arithmetic operations on two 4-bit words.
+Provides 16 binary logic operations and
+16 arithmetic operations on two 4-bit words.
 This simple processor was designed in late 60's and the early 70s._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## ARITHMETIC OPERATIONS
 
-There are 16 binary arithmetic operations as follows,
+There are 16 binary arithmetic and 16 logic operations as follows,
 
+// ????????????????????????
 
 ## SCHEMATIC
 

@@ -1,5 +1,7 @@
 // 4-bit arithmetic logic unit and function generator
-// 16 binary arithmic operations on two 4-bit words.
+// Provides 16 binary logic operations and
+// 16 arithmetic operations on two 4-bit words.
+
 module jeff_74x181(
     input                a0,                  // WORD 1
     input                a1,                  // 
@@ -13,7 +15,7 @@ module jeff_74x181(
     input                s1,                  // 
     input                s2,                  // 
     input                s3,                  //
-    input                m,                   // LOW VOLTAGE MODE
+    input                m,                   // MODE: 0 is arithmetic, 1 is logic
     input                ci,                  // CARRY IN
     output               f0,                  // OUTPUT
     output               f1,                  // 

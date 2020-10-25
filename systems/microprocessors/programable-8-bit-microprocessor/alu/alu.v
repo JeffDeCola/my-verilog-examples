@@ -5,7 +5,7 @@ module alu (
     input  [7:0]    IN_A,               // WORD 1
     input  [7:0]    IN_B,               // WORD 2
     input           CIN,                // CARRY IN
-    input  [19:15]  ALU_FUNC,           // FUNCTION SELECT (19 is LOW VOLTAGE MODE)
+    input  [19:15]  ALU_FUNC,           // FUNCTION SELECT (19 is MODE: 0 is arithmetic, 1 is logic)
     output [7:0]    OUT8,               // OUTPUT
     output          C4,                 // CARRY OUT
     output          C8,                 // CARRY OUT
