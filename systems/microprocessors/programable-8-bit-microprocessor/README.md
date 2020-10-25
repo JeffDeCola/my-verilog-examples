@@ -237,10 +237,14 @@ The processor is a collection of registers, muxes and an alu,
       * [ta181_bar](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta181-bar.v)
         ([jeff_74x181](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/combinational-logic/alus/jeff-74x181/jeff-74x181.v))
         _Replaced ta181 in Thesis with jeff_74x181_
+      * [not](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta377-bar.v)
+        _Replaced inv in Thesis with not_
     * U2
       * [ta181_bar](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta377-bar.v)
         ([jeff_74x181](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/combinational-logic/alus/jeff-74x181/jeff-74x181.v))
         _Replaced ta181 in Thesis with jeff_74x181_
+      * [not](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta377-bar.v)
+        _Replaced inv in Thesis with not_
     * AND1
       * [and2](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/basic-code/combinational-logic/and2/and2.v)
         _Replaced and2 in Thesis with Jeff's and2_

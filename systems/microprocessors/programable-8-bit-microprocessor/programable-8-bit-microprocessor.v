@@ -32,6 +32,8 @@
 `include "core-parts/ta181-bar.v"
 // Replaced ta181 in Thesis with jeff_74x181
 `include "../../../combinational-logic/alus/jeff-74x181/jeff-74x181.v"  
+// Replaced inv in Thesis with Jeff's not1
+`include "../../../basic-code/combinational-logic/not1/not1.v"
 // Replaced and2 in Thesis with Jeff's and2
 `include "../../../basic-code/combinational-logic/and2/and2.v"
 `include "core-parts/zp-bit.v"
