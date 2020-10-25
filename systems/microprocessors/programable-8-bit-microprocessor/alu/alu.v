@@ -2,14 +2,14 @@
 // 8-bit alu
 
 module alu (
-    input  [7:0]    IN_A,               // 
-    input  [7:0]    IN_B,               // 
-    input           CIN,                //
-    input  [19:15]  ALU_FUNC,           //
-    output [7:0]    OUT8,               //
-    output          C4,                 // 
-    output          C8,                 // 
-    output          Z                   // 
+    input  [7:0]    IN_A,               // WORD 1
+    input  [7:0]    IN_B,               // WORD 2
+    input           CIN,                // CARRY IN
+    input  [19:15]  ALU_FUNC,           // FUNCTION SELECT (19 is LOW VOLTAGE MODE)
+    output [7:0]    OUT8,               // OUTPUT
+    output          C4,                 // CARRY OUT
+    output          C8,                 // CARRY OUT
+    output          Z                   // WHEN A = B
 );
 
 //WIRES
