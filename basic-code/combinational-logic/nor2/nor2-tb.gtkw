@@ -1,0 +1,23 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sun Oct 25 00:34:16 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\combinational-logic\nor2\nor2-tb.vcd"
+[dumpfile_mtime] "Sun Oct 25 00:33:30 2020"
+[dumpfile_size] 383
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\combinational-logic\nor2\nor2-tb.gtkw"
+[timestart] 0
+[size] 1920 996
+[pos] -61 -61
+*-3.864307 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+nor2_tb.A
+nor2_tb.B
+@29
+nor2_tb.Y
+[pattern_trace] 1
+[pattern_trace] 0
