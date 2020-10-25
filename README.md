@@ -183,7 +183,7 @@ to view the output._
 
 * REGISTERS
 
-  * [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registerss/jeff-74x377)
+  * [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
 
     _8-bit register, clock enable.
     Based on the 7400-series integrated circuits used in my

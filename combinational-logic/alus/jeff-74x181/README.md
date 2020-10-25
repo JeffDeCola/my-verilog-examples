@@ -1,12 +1,24 @@
 # jeff-74x181 example
 
-_4-bit arithmetic logic unit and function generator._
+_4-bit arithmetic logic unit and function generator.
+Performs one of 16 binary arithmetic operations on two 4-bit words.
+This simple processor was designed in late 60's and the early 70s._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## VERILOG CODE
+## ARITHMETIC OPERATIONS
 
-The main part of the code is,
+There are 16 binary arithmetic operations as follows,
+
+
+## SCHEMATIC
+
+I designed this processor form the 1972 Texas Instruments spec sheet.
+I love the care and thought put into this.
+
+![IMAGE - ti-74x181-schematic.jpg - IMAGE](../../../docs/pics/ti-74x181-schematic.jpg)
+
+## VERILOG CODE
 
 ```verilog
     ?????

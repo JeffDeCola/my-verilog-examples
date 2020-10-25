@@ -1,36 +1,32 @@
 // 4-bit arithmetic logic unit and function generator
+// 16 binary arithmic operations on two 4-bit words.
 module jeff_74x181(
-    input                a0,                  // 
+    input                a0,                  // WORD 1
     input                a1,                  // 
     input                a2,                  // 
     input                a3,                  // 
-    input                b0,                  // 
+    input                b0,                  // WORD 2
     input                b1,                  // 
     input                b2,                  // 
     input                b3,                  // 
-    input                s0,                  // 
+    input                s0,                  // FUNCTION SELECT
     input                s1,                  // 
     input                s2,                  // 
     input                s3,                  //
-    input                m,                   // 
-    input                ci,                  // 
-    output               f0,                  // 
+    input                m,                   // LOW VOLTAGE MODE
+    input                ci,                  // CARRY IN
+    output               f0,                  // OUTPUT
     output               f1,                  // 
     output               f2,                  // 
     output               f3,                  // 
-    output               co,                  // 
-    output               aeqb,                // 
-    output               p,                   // 
-    output               g                   // 
+    output               co,                  // CARRY OUT
+    output               aeqb,                // WHEN A = B
+    output               p,                   // PROPAGATE
+    output               g                    // GENERATE
 );
 
-assign f0 = 1'b1;              // ERASE
-assign f1 = 1'b1;              // ERASE
-assign f2 = 1'b1;              // ERASE
-assign f3 = 1'b1;              // ERASE
-assign co = 1'b1;              // ERASE
-assign aeqb = 1'b1;            // ERASE
-assign p = 1'b1;               // ERASE
-assign g = 1'b1;               // ERASE
+
+// I DESIGNED THIS FRO THE 1972 TI SPEC SHEET
+
 
 endmodule

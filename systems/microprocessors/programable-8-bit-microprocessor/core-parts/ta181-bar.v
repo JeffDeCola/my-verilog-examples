@@ -6,16 +6,16 @@
 //   4-bit arithmetic logic unit and function generator
 
 module ta181_bar(
-    input           A3_BAR, A2_BAR, A1_BAR, A0_BAR,     // 
-    input           B3_BAR, B2_BAR, B1_BAR, B0_BAR,     // 
-    input           S3, S2, S1, S0,                     // 
-    input           M,                                  // 
-    input           CI,                                 // 
-    output          F3_BAR, F2_BAR, F1_BAR, F0_BAR,     // 
-    output          CO,                                 // 
-    output          AEQB,                               // 
-    output          P_BAR,                              //
-    output          G_BAR                               // 
+    input           A3_BAR, A2_BAR, A1_BAR, A0_BAR,     // WORD 1
+    input           B3_BAR, B2_BAR, B1_BAR, B0_BAR,     // WORD 2
+    input           S3, S2, S1, S0,                     // FUNCTION SELECT
+    input           M,                                  // LOW VOLTAGE MODE
+    input           CI,                                 // CARRY IN
+    output          F3_BAR, F2_BAR, F1_BAR, F0_BAR,     // OUTPUT
+    output          CO,                                 // CARRY OUT
+    output          AEQB,                               // WHEN A = B
+    output          P_BAR,                              // PROPAGATE - I don't use this
+    output          G_BAR                               // GENERATE - I don't use this
 );
 
 // WIRES
