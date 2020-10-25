@@ -14,6 +14,7 @@ Table of Contents,
   * COMBINATIONAL LOGIC
   * SEQUENTIAL LOGIC
 * [COMBINATIONAL LOGIC](https://github.com/JeffDeCola/my-systemverilog-examples#combinational-logic)
+  * ALUs
   * DATA OPERATORS
   * DECODERS & ENCODERS
   * MULTIPLEXERS & DEMULTIPLEXERS
@@ -73,6 +74,12 @@ to view the output._
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._
 
+  * [not1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/not1)
+
+    _NOT gate used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
+
   * [or2](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/or2)
 
     _2-input OR gate used in my
@@ -92,6 +99,15 @@ to view the output._
      _A basic, synchronous and asynchronous d flip-flop._
 
 ### COMBINATIONAL LOGIC
+
+* ALUs
+
+  * [jeff-74x181](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
+
+    _4-bit arithmetic logic unit and function generator.
+    Based on the 7400-series integrated circuits used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
 
 * DATA OPERATORS
 
