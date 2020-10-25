@@ -6,7 +6,7 @@
 `include "sections/out-section-f3.v"
 `include "sections/out-section-f2.v"
 `include "sections/out-section-f1.v"
-`include "sections/out-section-f2.v"
+`include "sections/out-section-f0.v"
 `include "sections/g-p-carry-section.v"
 `include "sections/aeqb-section.v"
 
@@ -56,6 +56,10 @@ input_section INPUT3(
 input_section INPUT2(
     .a(a2),
     .b(b2),
+    .s3(s3),
+    .s2(s2),
+    .s1(s1),
+    .s0(s0),   
     .out1(input2_out1),
     .out2(input2_out2)
 );
@@ -63,6 +67,10 @@ input_section INPUT2(
 input_section INPUT1(
     .a(a1),
     .b(b1),
+    .s3(s3),
+    .s2(s2),
+    .s1(s1),
+    .s0(s0),   
     .out1(input1_out1),
     .out2(input1_out2)
 );
@@ -70,6 +78,10 @@ input_section INPUT1(
 input_section INPUT0(
     .a(a0),
     .b(b0),
+    .s3(s3),
+    .s2(s2),
+    .s1(s1),
+    .s0(s0),
     .out1(input0_out1),
     .out2(input0_out2)
 );
