@@ -3,6 +3,7 @@
 // 16 arithmetic operations on two 4-bit words.
 
 `include "sections/input-section.v"
+`include "sections/invert-m.v"
 `include "sections/out-section-f3.v"
 `include "sections/out-section-f2.v"
 `include "sections/out-section-f1.v"
@@ -24,23 +25,23 @@ module jeff_74x181(
     input                s2,                  // 
     input                s3,                  //
     input                m,                   // MODE: 0 is arithmetic, 1 is logic
-    input                ci,                  // CARRY IN
+    input                ci_bar,              // CARRY IN
     output               f0,                  // OUTPUT
     output               f1,                  // 
     output               f2,                  // 
     output               f3,                  // 
-    output               co,                  // CARRY OUT
+    output               co_bar,                  // CARRY OUT
     output               aeqb,                // WHEN A = B
-    output               p,                   // PROPAGATE
-    output               g                    // GENERATE
+    output               x,                   // ALSO PROPAGATE
+    output               y                    // ALSO GENERATE
 );
-
 
 // I DESIGNED THIS FRO THE 1972 TI SPEC SHEET
 wire input3_out1, input3_out2;
 wire input2_out1, input2_out2;
 wire input1_out1, input1_out2;
 wire input0_out1, input0_out2;
+wire m_bar;
 
 input_section INPUT3(
     .a(a3),
@@ -86,9 +87,14 @@ input_section INPUT0(
     .out2(input0_out2)
 );
 
+invert_m M_BAR(
+    .a(m),
+    .y(m_bar)
+);
+
 out_section_f3 OUT_F3(
-    .m(m),
-    .ci(ci),
+    .m_bar(m_bar),
+    .ci_bar(ci_bar),
     .input3_out1(input3_out1),
     .input3_out2(input3_out2),
     .input2_out1(input2_out1),
@@ -101,8 +107,8 @@ out_section_f3 OUT_F3(
 );
 
 out_section_f2 OUT_F2(
-    .m(m),
-    .ci(ci),
+    .m_bar(m_bar),
+    .ci_bar(ci_bar),
     .input2_out1(input2_out1),
     .input2_out2(input2_out2),
     .input1_out1(input1_out1),
@@ -113,8 +119,8 @@ out_section_f2 OUT_F2(
 );
 
 out_section_f1 OUT_F1(
-    .m(m),
-    .ci(ci),
+    .m_bar(m_bar),
+    .ci_bar(ci_bar),
     .input1_out1(input1_out1),
     .input1_out2(input1_out2),
     .input0_out1(input0_out1),
@@ -123,8 +129,8 @@ out_section_f1 OUT_F1(
 );
 
 out_section_f0 OUT_F0(
-    .m(m),
-    .ci(ci),
+    .m_bar(m_bar),
+    .ci_bar(ci_bar),
     .input0_out1(input0_out1),
     .input0_out2(input0_out2),
     .f0(f0)
@@ -139,10 +145,10 @@ g_p_carry_section GPC (
     .input1_out2(input1_out2),
     .input0_out1(input0_out1),
     .input0_out2(input0_out2),
-    .ci(ci),
-    .co(co),
-    .p(p),
-    .g(g)
+    .ci_bar(ci_bar),
+    .co_bar(c0_bar),
+    .x(x),
+    .y(y)
 );
 
 aeqb AEQB (

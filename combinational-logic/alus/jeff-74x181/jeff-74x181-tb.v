@@ -5,18 +5,18 @@ module jeff_74x181_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg  [3:0]  A, B, S;
-reg         M, CI;
+reg         M, CI_BAR;
 wire [3:0]  F;
-wire        CO, AEQB, P, G;
+wire        CO_BAR, AEQB, X, Y;
 
 // UUT
 jeff_74x181 uut(
     .a3(A[3]), .a2(A[2]), .a1(A[1]), .a0(A[0]),
     .b3(B[3]), .b2(B[2]), .b1(B[1]), .b0(B[0]),
     .s3(S[3]), .s2(S[2]), .s1(S[1]), .s0(S[0]),
-    .m(M), .ci(CI),
+    .m(M), .ci_bar(CI_BAR),
     .f3(F[3]), .f2(F[2]), .f1(F[1]), .f0(F[0]),
-    .co(CO), .aeqb(AEQB), .p(P), .g(G)
+    .co_bar(CO_BAR), .aeqb(AEQB), .x(X), .y(Y)
 );
 
 // FILES
@@ -29,12 +29,13 @@ end
 initial begin
     $display("test start");
     S = 4'b0000; A = 4'b0000; B= 4'b0000;
-    M = 0; CI = 0;
+    M = 0; CI_BAR = 0;
 
-    // MODE = 1, CI = 0
-    #15;  M = 1'b1; CI = 1'b0;
-    #20;  S = 4'b0000; A = 4'b0000; B= 4'b0000; // F = ????
-    #20;  S = 4'b0001; A = 4'b0000; B= 4'b0000; // F = ????
+    // LOGIC MODE 
+    // MODE = 1, CI_BAR = X 
+    #15;  M = 1'b1; CI_BAR = 1'b0;
+    #20;  S = 4'b0000; A = 4'b1011; B= 4'b0000; // F = 0100 !A
+    #20;  S = 4'b0001; A = 4'b1110; B= 4'b0110; // F = 0001 !(A + B)
     #20;  S = 4'b0010; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b0011; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b0100; A = 4'b0000; B= 4'b0000; // F = ????
@@ -50,8 +51,9 @@ initial begin
     #20;  S = 4'b1110; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b1111; A = 4'b0000; B= 4'b0000; // F = ????
     
-    // MODE = 0, CI = 0
-    #20;  M = 1'b0; CI = 1'b0;
+    // ARITHMETIC MODE - NO CARRY 
+    // MODE = 0, CI_BAR = 1
+    #20;  M = 1'b0; CI_BAR = 1'b1;
     #20;  S = 4'b0000; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b0001; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b0010; A = 4'b0000; B= 4'b0000; // F = ????
@@ -69,8 +71,9 @@ initial begin
     #20;  S = 4'b1110; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b1111; A = 4'b0000; B= 4'b0000; // F = ????
 
-    // MODE = 0, CI = 1
-    #20;  M = 1'b0; CI = 1'b1;
+    // ARITHMETIC MODE - WITH CARRY 
+    // MODE = 0, CI_BAR = 0
+    #20;  M = 1'b0; CI_BAR = 1'b0;
     #20;  S = 4'b0000; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b0001; A = 4'b0000; B= 4'b0000; // F = ????
     #20;  S = 4'b0010; A = 4'b0000; B= 4'b0000; // F = ????

@@ -1,11 +1,11 @@
 module out_section_f0 (
-    input   m,
-    input   ci,
+    input   m_bar,
+    input   ci_bar,
     input   input0_out1,
     input   input0_out2,
     output  f0
 );
 
-assign f0 = ((input0_out1 ^ input0_out2) ^ ~(ci & m));
+assign f0 = ((input0_out1 ^ input0_out2) ^ ~(ci_bar & m_bar));
 
 endmodule

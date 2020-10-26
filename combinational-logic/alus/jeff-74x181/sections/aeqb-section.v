@@ -1,8 +1,8 @@
 module aeqb (   
     input   f3,
-    input  f2,
-    input  f1,
-    input  f0,
+    input   f2,
+    input   f1,
+    input   f0,
     output  aeqb
 );
 
