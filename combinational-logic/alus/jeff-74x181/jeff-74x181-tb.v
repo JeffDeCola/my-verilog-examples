@@ -1,6 +1,16 @@
 `timescale 1ns / 1ns
 `include "jeff-74x181.v"
 
+// MUST ADD THIS HERE SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
+`include "sections/input-section.v"
+`include "sections/invert-m.v"
+`include "sections/out-section-f3.v"
+`include "sections/out-section-f2.v"
+`include "sections/out-section-f1.v"
+`include "sections/out-section-f0.v"
+`include "sections/g-p-carry-section.v"
+`include "sections/aeqb-section.v"
+
 module jeff_74x181_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS

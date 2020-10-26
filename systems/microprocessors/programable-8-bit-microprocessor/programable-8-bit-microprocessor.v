@@ -31,7 +31,15 @@
 `include "alu/alu.v"
 `include "core-parts/ta181-bar.v"
 // Replaced ta181 in Thesis with jeff_74x181
-`include "../../../combinational-logic/alus/jeff-74x181/jeff-74x181.v"  
+`include "../../../combinational-logic/alus/jeff-74x181/jeff-74x181.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/input-section.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/invert-m.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/out-section-f3.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/out-section-f2.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/out-section-f1.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/out-section-f0.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/g-p-carry-section.v"
+`include "../../../combinational-logic/alus/jeff-74x181/sections/aeqb-section.v"
 // Replaced inv in Thesis with Jeff's not1
 `include "../../../basic-code/combinational-logic/not1/not1.v"
 // Replaced and2 in Thesis with Jeff's and2

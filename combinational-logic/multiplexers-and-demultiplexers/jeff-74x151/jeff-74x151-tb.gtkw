@@ -1,0 +1,43 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Mon Oct 26 21:28:58 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\multiplexers-and-demultiplexers\jeff-74x151\jeff-74x151-tb.vcd"
+[dumpfile_mtime] "Mon Oct 26 21:26:41 2020"
+[dumpfile_size] 1095
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\multiplexers-and-demultiplexers\jeff-74x151\jeff-74x151-tb.gtkw"
+[timestart] 0
+[size] 1920 996
+[pos] -243 -243
+*-4.506172 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+jeff_74x151_tb.C
+jeff_74x151_tb.B
+@29
+jeff_74x151_tb.A
+@200
+-
+@28
+jeff_74x151_tb.EN
+@200
+-
+@28
+jeff_74x151_tb.D0
+jeff_74x151_tb.D1
+jeff_74x151_tb.D2
+jeff_74x151_tb.D3
+jeff_74x151_tb.D4
+jeff_74x151_tb.D5
+jeff_74x151_tb.D6
+jeff_74x151_tb.D7
+@200
+-
+@28
+jeff_74x151_tb.Y
+jeff_74x151_tb.W
+[pattern_trace] 1
+[pattern_trace] 0
