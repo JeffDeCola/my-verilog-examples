@@ -1,5 +1,5 @@
 $date
-	Sat Oct 24 05:42:50 2020
+	Mon Oct 26 15:00:08 2020
 $end
 $version
 	Icarus Verilog
@@ -8,70 +8,73 @@ $timescale
 	1ns
 $end
 $scope module jeff_74x157_tb $end
-$var wire 1 ! OUT $end
-$var reg 1 " CLK $end
-$var reg 1 # IN $end
-$var reg 1 $ RST $end
+$var wire 4 ! Y [3:0] $end
+$var reg 4 " A [3:0] $end
+$var reg 4 # B [3:0] $end
+$var reg 1 $ EN $end
+$var reg 1 % S $end
 $scope module uut $end
-$var wire 1 " clk $end
-$var wire 1 # in $end
-$var wire 1 $ rst $end
-$var reg 1 ! out $end
+$var wire 4 & a [3:0] $end
+$var wire 4 ' b [3:0] $end
+$var wire 1 $ en $end
+$var wire 1 % s $end
+$var reg 4 ( y [3:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+b0 (
+b1 '
+b0 &
+0%
 0$
-0#
-0"
-x!
+b1 #
+b0 "
+b0 !
 $end
-#10
-0!
-1"
-#15
-1$
 #20
-0"
+b1010 !
+b1010 (
+b101 #
+b101 '
+b1010 "
+b1010 &
 #30
-1"
-#35
-0$
+b101 !
+b101 (
+1%
 #40
-0"
+b111 !
+b111 (
+b111 #
+b111 '
+b11 "
+b11 &
 #50
-1"
-#55
-1#
+b11 !
+b11 (
+0%
 #60
-0"
+b10 !
+b10 (
+b1000 #
+b1000 '
+b10 "
+b10 &
 #70
-1!
-1"
-#75
-0#
+b1000 !
+b1000 (
+1%
 #80
-0"
+b100 !
+b100 (
+b100 #
+b100 '
+b1001 "
+b1001 &
 #90
-0!
-1"
-#95
-1#
-#100
-0"
-#110
-1!
-1"
-#115
-0#
+b0 !
+b0 (
+1$
 #120
-0"
-#130
-0!
-1"
-#140
-0"
-#150
-1"
-#155
