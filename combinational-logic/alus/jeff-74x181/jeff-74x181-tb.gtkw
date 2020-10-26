@@ -1,75 +1,49 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Mon Oct 26 15:42:40 2020
+[*] Mon Oct 26 19:43:11 2020
 [*]
 [dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\alus\jeff-74x181\jeff-74x181-tb.vcd"
-[dumpfile_mtime] "Mon Oct 26 15:15:21 2020"
-[dumpfile_size] 6146
+[dumpfile_mtime] "Mon Oct 26 19:42:58 2020"
+[dumpfile_size] 7325
 [savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\combinational-logic\alus\jeff-74x181\jeff-74x181-tb.gtkw"
 [timestart] 0
 [size] 1920 1057
-[pos] 1911 -9
-*-5.023134 182 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-6.914718 384 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] jeff_74x181_tb.
 [sst_width] 197
 [signals_width] 78
 [sst_expanded] 1
 [sst_vpaned_height] 314
-@800022
-jeff_74x181_tb.A[3:0]
-@28
-[color] 5
-(0)jeff_74x181_tb.A[3:0]
-[color] 5
-(1)jeff_74x181_tb.A[3:0]
-[color] 5
-(2)jeff_74x181_tb.A[3:0]
-[color] 5
-(3)jeff_74x181_tb.A[3:0]
-@1001200
--group_end
-@800022
-jeff_74x181_tb.B[3:0]
-@28
-[color] 5
-(0)jeff_74x181_tb.B[3:0]
-[color] 5
-(1)jeff_74x181_tb.B[3:0]
-[color] 5
-(2)jeff_74x181_tb.B[3:0]
-[color] 5
-(3)jeff_74x181_tb.B[3:0]
-@1001200
--group_end
 @22
 jeff_74x181_tb.S[3:0]
-@200
--
 @28
 jeff_74x181_tb.M
 jeff_74x181_tb.CI_BAR
 @200
 -
 @800022
+jeff_74x181_tb.A[3:0]
+@1001200
+-group_end
+@800022
+jeff_74x181_tb.B[3:0]
+@1001200
+-group_end
+@200
+-
+@800022
 jeff_74x181_tb.F[3:0]
-@28
-[color] 1
-(0)jeff_74x181_tb.F[3:0]
-[color] 1
-(1)jeff_74x181_tb.F[3:0]
-[color] 1
-(2)jeff_74x181_tb.F[3:0]
-[color] 1
-(3)jeff_74x181_tb.F[3:0]
 @1001200
 -group_end
 @200
 -
 @28
-jeff_74x181_tb.AEQB
 jeff_74x181_tb.CO_BAR
-jeff_74x181_tb.X
 @29
+jeff_74x181_tb.AEQB
+@28
+jeff_74x181_tb.X
 jeff_74x181_tb.Y
 [pattern_trace] 1
 [pattern_trace] 0
