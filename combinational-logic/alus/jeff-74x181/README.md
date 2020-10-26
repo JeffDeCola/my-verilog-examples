@@ -5,6 +5,12 @@ Provides 16 binary logic operations and
 16 arithmetic operations on two 4-bit words.
 This simple processor was designed in late 60's and the early 70s._
 
+Documentation and reference,
+
+* This verilog code used in my [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+* I really like this
+  [explanation](http://www.righto.com/2017/03/inside-vintage-74181-alu-chip-how-it.html)
+
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## FUNCTION TABLE
@@ -13,22 +19,22 @@ This is when the inputs/outputs are treated as active high.
 
 | SELECT | M=1 LOGIC    | M=0 ARITHMETIC NO CARRY | M=0 ARITHMETIC WITH CARRY |
 |:------:|--------------|-------------------------|---------------------------|
-|  0000  | !A           |                         |                           |
-|  0001  | !(A+B)       |                         |                           |
-|  0010  |              |                         |                           |
-|  0011  |              |                         |                           |
-|  0100  |              |                         |                           |
-|  0101  |              |                         |                           |
-|  0110  |              |                         |                           |
-|  0111  |              |                         |                           |
-|  1000  |              |                         |                           |
-|  1001  |              |                         |                           |
-|  1010  |              |                         |                           |
-|  1011  |              |                         |                           |
-|  1100  |              |                         |                           |
-|  1101  |              |                         |                           |
-|  1110  |              |                         |                           |
-|  1111  |              |                         |                           |
+|  0000  | !A           | A                       | A PLUS 1                  |
+|  0001  | !(A+B)       | A+B                     | A+B PLUS 1                |
+|  0010  | (!A)B        | A+!B                    | A+!B PLUS 1               |
+|  0011  | 0            | MINUS 1 (2's compliment)| ZERO                      |
+|  0100  | !(AB)        | A PLUS A(!B)            | A PLUS A(!B) PLUS 1       |
+|  0101  | !B           | (A+B) PLUS A(!B)        | (A+B) PLUS A(!B) PLUS 1   |
+|  0110  | A^B          | A MINUS B MINUS 1       | A MINUS B                 |
+|  0111  | A(!B)        | A(!B) MINUS 1           | A(!B)                     |
+|  1000  | !A+B         | A PLUS AB               | A PLUS AB PLUS 1          |
+|  1001  | !(A^B)       | A PLUS B                | A PLUS B PLUS 1           |
+|  1010  | B            | (A+!B) PLUS AB          | (A+!B) PLUS AB PLUS 1     |
+|  1011  | AB           | AB MINUS 1              | AB                        |
+|  1100  | 1            | A PLUS A (bit shifted)  | A PLUS A PLUS 1 (shifted) |
+|  1101  | A+!B         | (A+B) PLUS A            | (A+B) PLUS A PLUS 1       |
+|  1110  | A+B          | (A+!B) PLUS A           | (A+!B) PLUS A PLUS 1      |
+|  1111  | A            | A MINUS 1               | A                         |
 
 ## SCHEMATIC
 
@@ -52,62 +58,6 @@ to simulate and create a `.vcd` file.
 ```bash
 sh run-test.sh
 ```
-
-The simulation shall have the following results,
-
-| SELECT | M | CI_BAR | FUNCTION                          |   A  |   B  |   F  |
-|:------:|:-:|:------:|-----------------------------------|:----:|:----:|:----:|
-|        |   |        | **LOGIC MODE**                    |
-|  0000  | 1 |  x     | !A                                | 1101 | xxxx | 0010 |
-|  0001  | 1 |  x     | !(A + B)                          | 0000 | 0000 | 0000 |
-|  0010  | 1 |  x     |                                   |      |      |      |
-|  0011  | 1 |  x     |                                   |      |      |      |
-|  0100  | 1 |  x     |                                   |      |      |      |
-|  0101  | 1 |  x     |                                   |      |      |      |
-|  0110  | 1 |  x     |                                   |      |      |      |
-|  0111  | 1 |  x     |                                   |      |      |      |
-|  1000  | 1 |  x     |                                   |      |      |      |
-|  1001  | 1 |  x     |                                   |      |      |      |
-|  1010  | 1 |  x     |                                   |      |      |      |
-|  1011  | 1 |  x     |                                   |      |      |      |
-|  1100  | 1 |  x     |                                   |      |      |      |
-|  1101  | 1 |  x     |                                   |      |      |      |
-|  1110  | 1 |  x     |                                   |      |      |      |
-|  1111  | 1 |  x     |                                   |      |      |      |
-|        |   |        | **ARITHMETIC MODE - NO CARRY**    |
-|  0000  | 0 |  1     |                                   |      |      |      |
-|  0001  | 0 |  1     |                                   |      |      |      |
-|  0010  | 0 |  1     |                                   |      |      |      |
-|  0011  | 0 |  1     |                                   |      |      |      |
-|  0100  | 0 |  1     |                                   |      |      |      |
-|  0101  | 0 |  1     |                                   |      |      |      |
-|  0110  | 0 |  1     |                                   |      |      |      |
-|  0111  | 0 |  1     |                                   |      |      |      |
-|  1000  | 0 |  1     |                                   |      |      |      |
-|  1001  | 0 |  1     |                                   |      |      |      |
-|  1010  | 0 |  1     |                                   |      |      |      |
-|  1011  | 0 |  1     |                                   |      |      |      |
-|  1100  | 0 |  1     |                                   |      |      |      |
-|  1101  | 0 |  1     |                                   |      |      |      |
-|  1110  | 0 |  1     |                                   |      |      |      |
-|  1111  | 0 |  1     |                                   |      |      |      |
-|        |   |        | **ARITHMETIC MODE - WITH CARRY**  |
-|  0000  | 0 |  0     |                                   |      |      |      |
-|  0001  | 0 |  0     |                                   |      |      |      |
-|  0010  | 0 |  0     |                                   |      |      |      |
-|  0011  | 0 |  0     |                                   |      |      |      |
-|  0100  | 0 |  0     |                                   |      |      |      |
-|  0101  | 0 |  0     |                                   |      |      |      |
-|  0110  | 0 |  0     |                                   |      |      |      |
-|  0111  | 0 |  0     |                                   |      |      |      |
-|  1000  | 0 |  0     |                                   |      |      |      |
-|  1001  | 0 |  0     |                                   |      |      |      |
-|  1010  | 0 |  0     |                                   |      |      |      |
-|  1011  | 0 |  0     |                                   |      |      |      |
-|  1100  | 0 |  0     |                                   |      |      |      |
-|  1101  | 0 |  0     |                                   |      |      |      |
-|  1110  | 0 |  0     |                                   |      |      |      |
-|  1111  | 0 |  0     |                                   |      |      |      |
 
 ## CHECK WAVEFORM
 

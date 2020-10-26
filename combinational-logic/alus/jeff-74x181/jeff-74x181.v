@@ -30,7 +30,7 @@ module jeff_74x181(
     output               f1,                  // 
     output               f2,                  // 
     output               f3,                  // 
-    output               co_bar,                  // CARRY OUT
+    output               co_bar,              // CARRY OUT
     output               aeqb,                // WHEN A = B
     output               x,                   // ALSO PROPAGATE
     output               y                    // ALSO GENERATE
@@ -146,7 +146,7 @@ g_p_carry_section GPC (
     .input0_out1(input0_out1),
     .input0_out2(input0_out2),
     .ci_bar(ci_bar),
-    .co_bar(c0_bar),
+    .co_bar(co_bar),
     .x(x),
     .y(y)
 );
