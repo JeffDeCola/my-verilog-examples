@@ -13,7 +13,19 @@ Documentation and reference,
 The main part of the code is,
 
 ```verilog
-    ?????
+    reg [3:0] y;
+
+    // 2x1 multiplexer
+    always @ ( * ) begin
+        if (en) begin
+            y <= 4'h0;
+        end else begin
+            case(s)
+                1'b0 : y <= a;
+                1'b1 : y <= b;
+            endcase
+        end
+    end
 ```
 
 The entire code is

@@ -1,5 +1,5 @@
 $date
-	Mon Oct 26 14:03:30 2020
+	Mon Oct 26 15:01:04 2020
 $end
 $version
 	Icarus Verilog
@@ -47,26 +47,26 @@ $var wire 8 = MICROADDRESS [7:0] $end
 $var wire 8 > DATA_OUT [7:0] $end
 $var wire 11 ? CONTROL_BITS [23:13] $end
 $scope module CONTROL_SECTION $end
-$var wire 1 @ COND_OUT $end
 $var wire 1 9 EIL_BAR $end
 $var wire 1 & GO_BAR $end
-$var wire 1 A HIGH $end
-$var wire 8 B HIGH8 [7:0] $end
+$var wire 1 @ HIGH $end
+$var wire 8 A HIGH8 [7:0] $end
 $var wire 1 ' JAM $end
-$var wire 1 C LOW $end
-$var wire 24 D MW [23:0] $end
-$var wire 1 E NOTHING $end
-$var wire 4 F OPCODE [3:0] $end
+$var wire 1 B LOW $end
+$var wire 24 C MW [23:0] $end
+$var wire 4 D OPCODE [3:0] $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 4 G STATUS_BITS [3:0] $end
-$var wire 1 H MPC_LOAD_BAR $end
-$var wire 4 I MICRO_AD_LOW [3:0] $end
-$var wire 4 J MICRO_AD_HIGH [7:4] $end
-$var wire 8 K MICROADDRESS [7:0] $end
-$var wire 4 L COUNTER_IN_HIGH_SIG [7:4] $end
-$var wire 1 M COUNT $end
-$var wire 11 N CONTROL_BITS [23:13] $end
+$var wire 4 E STATUS_BITS [3:0] $end
+$var wire 1 F NOTHING $end
+$var wire 1 G MPC_LOAD_BAR $end
+$var wire 4 H MICRO_AD_LOW [3:0] $end
+$var wire 4 I MICRO_AD_HIGH [7:4] $end
+$var wire 8 J MICROADDRESS [7:0] $end
+$var wire 4 K COUNTER_IN_HIGH_SIG [7:4] $end
+$var wire 1 L COUNT $end
+$var wire 11 M CONTROL_BITS [23:13] $end
+$var wire 1 N COND_OUT $end
 $var wire 8 O BUFFER_IN [7:0] $end
 $var wire 4 P BOP [12:9] $end
 $scope module COND_SELECT $end
@@ -74,43 +74,43 @@ $var wire 1 Q A $end
 $var wire 1 R B $end
 $var wire 1 S C $end
 $var wire 1 T D0 $end
-$var wire 1 C D1 $end
+$var wire 1 B D1 $end
 $var wire 1 U D2 $end
 $var wire 1 V D3 $end
 $var wire 1 & D4 $end
 $var wire 1 W D5 $end
-$var wire 1 C D6 $end
-$var wire 1 C D7 $end
+$var wire 1 B D6 $end
+$var wire 1 B D7 $end
 $var wire 1 X EN $end
-$var wire 1 C EN_BAR $end
-$var wire 1 @ W $end
-$var wire 1 E Y $end
+$var wire 1 B EN_BAR $end
+$var wire 1 F Y $end
+$var wire 1 N W $end
 $scope module U1 $end
 $var wire 1 Q a $end
 $var wire 1 R b $end
 $var wire 1 S c $end
 $var wire 1 T d0 $end
-$var wire 1 C d1 $end
+$var wire 1 B d1 $end
 $var wire 1 U d2 $end
 $var wire 1 V d3 $end
 $var wire 1 & d4 $end
 $var wire 1 W d5 $end
-$var wire 1 C d6 $end
-$var wire 1 C d7 $end
+$var wire 1 B d6 $end
+$var wire 1 B d7 $end
 $var wire 1 X en $end
-$var wire 1 @ w $end
-$var wire 1 E y $end
+$var wire 1 N w $end
+$var reg 1 F y $end
 $upscope $end
 $upscope $end
 $scope module COUNTER_8 $end
 $var wire 1 Y CARRY $end
-$var wire 1 M COUNT $end
+$var wire 1 L COUNT $end
 $var wire 4 Z COUNTER_IN_LOW [3:0] $end
 $var wire 1 [ HIGH $end
 $var wire 1 \ NOTHING $end
 $var wire 1 ) RESET $end
 $var wire 1 * SYSTEM_CLK $end
-$var wire 1 H MPC_LOAD_BAR $end
+$var wire 1 G MPC_LOAD_BAR $end
 $var wire 8 ] COUNTER_OUT [7:0] $end
 $var wire 4 ^ COUNTER_IN_HIGH [7:4] $end
 $scope module COUNTER1 $end
@@ -120,7 +120,7 @@ $var wire 1 a C $end
 $var wire 1 * CLK $end
 $var wire 1 ) CLR_BAR $end
 $var wire 1 b D $end
-$var wire 1 M ENP $end
+$var wire 1 L ENP $end
 $var wire 1 [ ENT $end
 $var wire 1 c QA $end
 $var wire 1 d QB $end
@@ -128,7 +128,7 @@ $var wire 1 e QC $end
 $var wire 1 f QD $end
 $var wire 1 Y RCO $end
 $var wire 1 g SYSTEM_CLK $end
-$var wire 1 H LD_BAR $end
+$var wire 1 G LD_BAR $end
 $scope module U1 $end
 $var wire 1 _ a $end
 $var wire 1 ` b $end
@@ -136,14 +136,14 @@ $var wire 1 a c $end
 $var wire 1 g clk $end
 $var wire 1 ) clr $end
 $var wire 1 b d $end
-$var wire 1 M enp $end
+$var wire 1 L enp $end
 $var wire 1 [ ent $end
 $var wire 1 c qa $end
 $var wire 1 d qb $end
 $var wire 1 e qc $end
 $var wire 1 f qd $end
 $var wire 1 Y rco $end
-$var wire 1 H ld $end
+$var wire 1 G ld $end
 $upscope $end
 $upscope $end
 $scope module COUNTER2 $end
@@ -153,7 +153,7 @@ $var wire 1 j C $end
 $var wire 1 * CLK $end
 $var wire 1 ) CLR_BAR $end
 $var wire 1 k D $end
-$var wire 1 M ENP $end
+$var wire 1 L ENP $end
 $var wire 1 Y ENT $end
 $var wire 1 l QA $end
 $var wire 1 m QB $end
@@ -161,7 +161,7 @@ $var wire 1 n QC $end
 $var wire 1 o QD $end
 $var wire 1 \ RCO $end
 $var wire 1 p SYSTEM_CLK $end
-$var wire 1 H LD_BAR $end
+$var wire 1 G LD_BAR $end
 $scope module U1 $end
 $var wire 1 h a $end
 $var wire 1 i b $end
@@ -169,14 +169,14 @@ $var wire 1 j c $end
 $var wire 1 p clk $end
 $var wire 1 ) clr $end
 $var wire 1 k d $end
-$var wire 1 M enp $end
+$var wire 1 L enp $end
 $var wire 1 Y ent $end
 $var wire 1 l qa $end
 $var wire 1 m qb $end
 $var wire 1 n qc $end
 $var wire 1 o qd $end
 $var wire 1 \ rco $end
-$var wire 1 H ld $end
+$var wire 1 G ld $end
 $upscope $end
 $upscope $end
 $upscope $end
@@ -184,7 +184,7 @@ $scope module MUX8 $end
 $var wire 8 q A8 [7:0] $end
 $var wire 8 r B8 [7:0] $end
 $var wire 1 s EN $end
-$var wire 1 C EN_BAR $end
+$var wire 1 B EN_BAR $end
 $var wire 1 ' S $end
 $var wire 8 t Y8 [7:0] $end
 $scope module MUX0 $end
@@ -235,8 +235,8 @@ $upscope $end
 $upscope $end
 $scope module XOR_2 $end
 $var wire 1 ." a $end
-$var wire 1 @ b $end
-$var wire 1 H y $end
+$var wire 1 N b $end
+$var wire 1 G y $end
 $upscope $end
 $upscope $end
 $scope module PROCESSOR_SECTION $end
@@ -1130,25 +1130,25 @@ b11111111 u#
 xt#
 0s#
 b0 r#
-b1111 q#
+b0 q#
 b1111 p#
 b1111 o#
-b1111 n#
+b0 n#
 b1111 m#
 b1111 l#
 b11111111 k#
 b11111111 j#
-b11111111 i#
+b0 i#
 1h#
-b1111 g#
+b0 g#
 b1111 f#
 b1111 e#
-b1111 d#
+b0 d#
 b1111 c#
 b1111 b#
 b11111111 a#
 b11111111 `#
-b11111111 _#
+b0 _#
 1^#
 1]#
 1\#
@@ -1174,23 +1174,23 @@ b11111111 J#
 0H#
 1G#
 bx F#
-1E#
-xD#
-1C#
-xB#
-1A#
-x@#
-1?#
-x>#
+xE#
+0D#
+xC#
+0B#
+xA#
+0@#
+x?#
+0>#
 0=#
-0<#
-0;#
-0:#
-09#
-08#
-07#
-06#
-05#
+1<#
+1;#
+1:#
+19#
+18#
+17#
+16#
+15#
 x4#
 x3#
 x2#
@@ -1208,31 +1208,31 @@ z(#
 z&#
 1%#
 1$#
-1##
-1"#
-1!#
-1~"
-1}"
-1|"
-1{"
-1z"
-1y"
-xx"
-1w"
-xv"
-1u"
-xt"
-1s"
-xr"
+0##
+0"#
+0!#
+0~"
+0}"
+0|"
+0{"
+0z"
+xy"
+0x"
+xw"
+0v"
+xu"
+0t"
+xs"
+0r"
 0q"
-0p"
-0o"
-0n"
-0m"
-0l"
-0k"
-0j"
-0i"
+1p"
+1o"
+1n"
+1m"
+1l"
+1k"
+1j"
+1i"
 xh"
 xg"
 xf"
@@ -1250,32 +1250,32 @@ z\"
 zZ"
 1Y"
 1X"
-1W"
-1V"
-1U"
-1T"
-1S"
-1R"
-1Q"
-1P"
+0W"
+0V"
+0U"
+0T"
+0S"
+0R"
+0Q"
+0P"
 xO"
 xN"
-1M"
-1L"
-b11111111 K"
-b11111111 J"
-0I"
-xH"
-0G"
-xF"
+xM"
+xL"
+b0 K"
+b0 J"
+xI"
+1H"
+xG"
+1F"
 bx E"
 xD"
-1C"
+xC"
 b11111 B"
 b111 A"
 b11111 @"
-b11111111 ?"
-b11111111 >"
+b0 ?"
+b0 >"
 bx ="
 1<"
 1;"
@@ -1285,7 +1285,7 @@ b11111111 8"
 b11111111 7"
 b11111111 6"
 b11111111 5"
-b1x11 4"
+b1xxx 4"
 03"
 b11111111 2"
 b0 1"
@@ -1296,26 +1296,26 @@ b11111111111 /"
 1,"
 1+"
 1*"
-b1111 )"
+b0 )"
 b1111 ("
 b0 '"
-b1111 &"
+b0 &"
 1%"
 b1111 $"
 b0 #"
-b1111 ""
+b0 ""
 0!"
 b0 ~
 b1111 }
 b1111 |
 0{
-b1111 z
+b0 z
 b1111 y
 b1111 x
-b1111 w
+b0 w
 b1111 v
 b1111 u
-b11111111 t
+b0 t
 1s
 b11111111 r
 b11111111 q
@@ -1337,7 +1337,7 @@ zg
 1a
 1`
 1_
-b1111 ^
+b0 ^
 b11111111 ]
 1\
 1[
@@ -1345,33 +1345,33 @@ b111 Z
 1Y
 1X
 1W
-1V
-1U
+xV
+xU
 xT
 1S
 1R
 1Q
 b1111 P
 b11111111 O
-b11111111111 N
-1M
-b1111 L
-b11111111 K
-b1111 J
-b111 I
-0H
-b1x11 G
-b0 F
-1E
-b111111111111111111110111 D
-0C
-b11111111 B
-1A
+0N
+b11111111111 M
+1L
+b0 K
+b0 J
+b1111 I
+b111 H
+0G
+1F
+b1xxx E
+b0 D
+b111111111111111111110111 C
+0B
+b11111111 A
 1@
 b11111111111 ?
 b11111111 >
-b11111111 =
-b1x11 <
+b0 =
+b1xxx <
 b0 ;
 b111111111111111111110111 :
 z9
@@ -1387,7 +1387,7 @@ b1111 1
 b11111 /
 b111 .
 b11111111111 -
-b11111111 ,
+b0 ,
 b111111111111111111110111 +
 0*
 0)
@@ -1397,7 +1397,7 @@ b0 (
 b0 %
 b0 $
 b11111111 #
-b11111111 "
+b0 "
 b111111111111111111110111 !
 $end
 #10
@@ -1449,7 +1449,7 @@ b100 r#
 b100 v#
 b1 (
 b1 ;
-b1 F
+b1 D
 b1 ~
 b1 #"
 b1 '"
@@ -1520,7 +1520,7 @@ b111 r#
 b111 v#
 b10 (
 b10 ;
-b10 F
+b10 D
 b10 ~
 b10 #"
 b10 '"

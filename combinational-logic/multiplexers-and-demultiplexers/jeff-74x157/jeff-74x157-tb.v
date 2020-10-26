@@ -4,15 +4,18 @@
 module jeff_74x157_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg        CLK, RST;
-reg        IN;
-wire       OUT;
+reg [3:0]  A, B;
+reg        S;
+reg        EN;
+wire [3:0] Y;
 
 // UUT
 jeff_74x157 uut(
-    .clk(CLK), .rst(RST),
-    .in(IN),
-    .out(OUT)
+    .a(A),
+    .b(B),
+    .s(S),
+    .en(EN),
+    .y(Y)
 );
 
 // FILES
@@ -21,26 +24,25 @@ initial begin
     $dumpvars(0, jeff_74x157_tb);
 end
 
-// CLOCK
-always begin
-    #10 CLK = ~CLK;
-end
-
 // TESTCASE
 initial begin
     $display("test start");
-    CLK = 0;
-    RST = 0;
-    IN = 0;
+    A = 4'h0; B = 4'h1;
+    S = 0;
+    EN = 0;
 
-    #15; RST = 1;
-    #20; RST = 0;
+    #10; S = 0;
+    #10;  A = 4'ha; B = 4'h5;
+    #10; S = 1;
+    #10;  A = 4'h3; B = 4'h7;
+    #10; S = 0;
+    #10;  A = 4'h2; B = 4'h8;
+    #10; S = 1;
+    #10;  A = 4'h9; B = 4'h4;
+    #10
 
-    #20; IN = 1;
-    #20; IN = 0;
-    #20; IN = 1;
-    #20; IN = 0;
-    #20; IN = 0;
+    EN = 1;
+    #10;
     
     // DONE
     #20

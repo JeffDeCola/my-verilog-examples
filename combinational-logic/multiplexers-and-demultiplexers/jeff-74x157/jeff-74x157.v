@@ -12,7 +12,7 @@ reg [3:0] y;
 // 2x1 multiplexer
 always @ ( * ) begin
     if (en) begin
-        y <= 4'hf;
+        y <= 4'h0;
     end else begin
         case(s)
             1'b0 : y <= a;
