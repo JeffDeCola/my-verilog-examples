@@ -39,15 +39,15 @@ jeff_74x181 U1 (
     .s1(S1_SIG),
     .s0(S0_SIG),
     .m(M),
-    .ci(CI),
+    .ci_bar(CI),
     .f3(F3_SIG),
     .f2(F2_SIG),
     .f1(F1_SIG),
     .f0(F0_SIG),
-    .co(CO),
+    .co_bar(CO),
     .aeqb(AEQB),
-    .p(P_BAR),
-    .g(G_BAR)
+    .x(P_BAR),
+    .y(G_BAR)
 );
 
 not1 INV1 (.a(A3_BAR), .y(A3_SIG));

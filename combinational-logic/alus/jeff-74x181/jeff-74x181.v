@@ -2,14 +2,15 @@
 // Provides 16 binary logic operations and
 // 16 arithmetic operations on two 4-bit words.
 
-`include "sections/input-section.v"
-`include "sections/invert-m.v"
-`include "sections/out-section-f3.v"
-`include "sections/out-section-f2.v"
-`include "sections/out-section-f1.v"
-`include "sections/out-section-f0.v"
-`include "sections/g-p-carry-section.v"
-`include "sections/aeqb-section.v"
+// MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
+//`include "sections/input-section.v"
+//`include "sections/invert-m.v"
+//`include "sections/out-section-f3.v"
+//`include "sections/out-section-f2.v"
+//`include "sections/out-section-f1.v"
+//`include "sections/out-section-f0.v"
+//`include "sections/g-p-carry-section.v"
+//`include "sections/aeqb-section.v"
 
 module jeff_74x181(
     input                a0,                  // WORD 1
