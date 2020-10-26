@@ -1,5 +1,5 @@
 $date
-	Sun Oct 25 15:59:01 2020
+	Mon Oct 26 08:15:21 2020
 $end
 $version
 	Icarus Verilog
@@ -8,14 +8,14 @@ $timescale
 	1ns
 $end
 $scope module jeff_74x181_tb $end
-$var wire 1 ! P $end
-$var wire 1 " G $end
-$var wire 4 # F [3:0] $end
-$var wire 1 $ CO $end
+$var wire 1 ! CO_BAR $end
+$var wire 1 " Y $end
+$var wire 1 # X $end
+$var wire 4 $ F [3:0] $end
 $var wire 1 % AEQB $end
 $var reg 4 & A [3:0] $end
 $var reg 4 ' B [3:0] $end
-$var reg 1 ( CI $end
+$var reg 1 ( CI_BAR $end
 $var reg 1 ) M $end
 $var reg 4 * S [3:0] $end
 $scope module uut $end
@@ -27,54 +27,56 @@ $var wire 1 / b0 $end
 $var wire 1 0 b1 $end
 $var wire 1 1 b2 $end
 $var wire 1 2 b3 $end
-$var wire 1 ( ci $end
+$var wire 1 ( ci_bar $end
+$var wire 1 ! co_bar $end
 $var wire 1 ) m $end
 $var wire 1 3 s0 $end
 $var wire 1 4 s1 $end
 $var wire 1 5 s2 $end
 $var wire 1 6 s3 $end
-$var wire 1 ! p $end
-$var wire 1 7 input3_out2 $end
-$var wire 1 8 input3_out1 $end
-$var wire 1 9 input2_out2 $end
-$var wire 1 : input2_out1 $end
-$var wire 1 ; input1_out2 $end
-$var wire 1 < input1_out1 $end
-$var wire 1 = input0_out2 $end
-$var wire 1 > input0_out1 $end
-$var wire 1 " g $end
-$var wire 1 ? f3 $end
-$var wire 1 @ f2 $end
-$var wire 1 A f1 $end
-$var wire 1 B f0 $end
-$var wire 1 $ co $end
+$var wire 1 " y $end
+$var wire 1 # x $end
+$var wire 1 7 m_bar $end
+$var wire 1 8 input3_out2 $end
+$var wire 1 9 input3_out1 $end
+$var wire 1 : input2_out2 $end
+$var wire 1 ; input2_out1 $end
+$var wire 1 < input1_out2 $end
+$var wire 1 = input1_out1 $end
+$var wire 1 > input0_out2 $end
+$var wire 1 ? input0_out1 $end
+$var wire 1 @ f3 $end
+$var wire 1 A f2 $end
+$var wire 1 B f1 $end
+$var wire 1 C f0 $end
+$var wire 1 D c0_bar $end
 $var wire 1 % aeqb $end
 $scope module AEQB $end
 $var wire 1 % aeqb $end
-$var wire 1 ? f3 $end
-$var wire 1 @ f2 $end
-$var wire 1 A f1 $end
-$var wire 1 B f0 $end
+$var wire 1 @ f3 $end
+$var wire 1 A f2 $end
+$var wire 1 B f1 $end
+$var wire 1 C f0 $end
 $upscope $end
 $scope module GPC $end
-$var wire 1 ( ci $end
-$var wire 1 $ co $end
-$var wire 1 " g $end
-$var wire 1 ! p $end
-$var wire 1 7 input3_out2 $end
-$var wire 1 8 input3_out1 $end
-$var wire 1 9 input2_out2 $end
-$var wire 1 : input2_out1 $end
-$var wire 1 ; input1_out2 $end
-$var wire 1 < input1_out1 $end
-$var wire 1 = input0_out2 $end
-$var wire 1 > input0_out1 $end
+$var wire 1 ( ci_bar $end
+$var wire 1 D co_bar $end
+$var wire 1 # x $end
+$var wire 1 " y $end
+$var wire 1 8 input3_out2 $end
+$var wire 1 9 input3_out1 $end
+$var wire 1 : input2_out2 $end
+$var wire 1 ; input2_out1 $end
+$var wire 1 < input1_out2 $end
+$var wire 1 = input1_out1 $end
+$var wire 1 > input0_out2 $end
+$var wire 1 ? input0_out1 $end
 $upscope $end
 $scope module INPUT0 $end
 $var wire 1 + a $end
 $var wire 1 / b $end
-$var wire 1 > out1 $end
-$var wire 1 = out2 $end
+$var wire 1 ? out1 $end
+$var wire 1 > out2 $end
 $var wire 1 3 s0 $end
 $var wire 1 4 s1 $end
 $var wire 1 5 s2 $end
@@ -83,8 +85,8 @@ $upscope $end
 $scope module INPUT1 $end
 $var wire 1 , a $end
 $var wire 1 0 b $end
-$var wire 1 < out1 $end
-$var wire 1 ; out2 $end
+$var wire 1 = out1 $end
+$var wire 1 < out2 $end
 $var wire 1 3 s0 $end
 $var wire 1 4 s1 $end
 $var wire 1 5 s2 $end
@@ -93,8 +95,8 @@ $upscope $end
 $scope module INPUT2 $end
 $var wire 1 - a $end
 $var wire 1 1 b $end
-$var wire 1 : out1 $end
-$var wire 1 9 out2 $end
+$var wire 1 ; out1 $end
+$var wire 1 : out2 $end
 $var wire 1 3 s0 $end
 $var wire 1 4 s1 $end
 $var wire 1 5 s2 $end
@@ -103,61 +105,67 @@ $upscope $end
 $scope module INPUT3 $end
 $var wire 1 . a $end
 $var wire 1 2 b $end
-$var wire 1 8 out1 $end
-$var wire 1 7 out2 $end
+$var wire 1 9 out1 $end
+$var wire 1 8 out2 $end
 $var wire 1 3 s0 $end
 $var wire 1 4 s1 $end
 $var wire 1 5 s2 $end
 $var wire 1 6 s3 $end
 $upscope $end
+$scope module M_BAR $end
+$var wire 1 ) a $end
+$var wire 1 7 y $end
+$upscope $end
 $scope module OUT_F0 $end
-$var wire 1 ( ci $end
-$var wire 1 B f0 $end
-$var wire 1 > input0_out1 $end
-$var wire 1 = input0_out2 $end
-$var wire 1 ) m $end
+$var wire 1 ( ci_bar $end
+$var wire 1 C f0 $end
+$var wire 1 ? input0_out1 $end
+$var wire 1 > input0_out2 $end
+$var wire 1 7 m_bar $end
 $upscope $end
 $scope module OUT_F1 $end
-$var wire 1 ( ci $end
-$var wire 1 A f1 $end
-$var wire 1 > input0_out1 $end
-$var wire 1 = input0_out2 $end
-$var wire 1 < input1_out1 $end
-$var wire 1 ; input1_out2 $end
-$var wire 1 ) m $end
+$var wire 1 ( ci_bar $end
+$var wire 1 B f1 $end
+$var wire 1 ? input0_out1 $end
+$var wire 1 > input0_out2 $end
+$var wire 1 = input1_out1 $end
+$var wire 1 < input1_out2 $end
+$var wire 1 7 m_bar $end
 $upscope $end
 $scope module OUT_F2 $end
-$var wire 1 ( ci $end
-$var wire 1 @ f2 $end
-$var wire 1 > input0_out1 $end
-$var wire 1 = input0_out2 $end
-$var wire 1 < input1_out1 $end
-$var wire 1 ; input1_out2 $end
-$var wire 1 : input2_out1 $end
-$var wire 1 9 input2_out2 $end
-$var wire 1 ) m $end
+$var wire 1 ( ci_bar $end
+$var wire 1 A f2 $end
+$var wire 1 ? input0_out1 $end
+$var wire 1 > input0_out2 $end
+$var wire 1 = input1_out1 $end
+$var wire 1 < input1_out2 $end
+$var wire 1 ; input2_out1 $end
+$var wire 1 : input2_out2 $end
+$var wire 1 7 m_bar $end
 $upscope $end
 $scope module OUT_F3 $end
-$var wire 1 ( ci $end
-$var wire 1 ? f3 $end
-$var wire 1 > input0_out1 $end
-$var wire 1 = input0_out2 $end
-$var wire 1 < input1_out1 $end
-$var wire 1 ; input1_out2 $end
-$var wire 1 : input2_out1 $end
-$var wire 1 9 input2_out2 $end
-$var wire 1 8 input3_out1 $end
-$var wire 1 7 input3_out2 $end
-$var wire 1 ) m $end
+$var wire 1 ( ci_bar $end
+$var wire 1 @ f3 $end
+$var wire 1 ? input0_out1 $end
+$var wire 1 > input0_out2 $end
+$var wire 1 = input1_out1 $end
+$var wire 1 < input1_out2 $end
+$var wire 1 ; input2_out1 $end
+$var wire 1 : input2_out2 $end
+$var wire 1 9 input3_out1 $end
+$var wire 1 8 input3_out2 $end
+$var wire 1 7 m_bar $end
 $upscope $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-1B
-1A
-1@
+1D
+1C
+0B
+0A
+0@
 1?
 1>
 1=
@@ -184,306 +192,591 @@ b0 *
 0(
 b0 '
 b0 &
-1%
-1$
-b1111 #
-0"
-0!
-$end
-#55
-13
-b1 *
-#75
-0$
 0%
+b1 $
+0#
+0"
+z!
+$end
+#15
+1%
+1@
+1A
+b1111 $
+1B
+07
+1)
+#35
+0%
+0C
+0B
+b100 $
+0@
+0>
+0<
+08
+1+
+1,
+1.
+b1011 &
+#55
+1B
+b1110 $
+1@
+1<
+18
+12
+0,
+0.
+b1000 '
+b1 &
+#75
+0A
+b10 $
+0@
+17
+0)
+#95
+0%
+0B
+1C
+1A
+b1101 $
+1@
+1>
+0:
+08
+10
+02
+0+
+1-
+1.
+b10 '
+b1100 &
+#115
+0@
+0A
+0D
 1"
+0C
+b0 $
+0B
+0>
+0<
+00
+11
+1+
+1,
+b100 '
+b1111 &
+#135
+1%
+1@
+1A
+1B
+b1111 $
+1C
+1D
+1(
+#155
+0%
+0"
+0C
+b1100 $
+0B
+1>
+1<
+10
+01
+0+
+0,
+b10 '
+b1100 &
+#175
+1%
+1"
+1C
+b1111 $
+1B
+0>
+0<
+00
+11
+1+
+1,
+b100 '
+b1111 &
+#195
+0%
+0"
+0C
 0B
 0A
+b0 $
 0@
-b0 #
-0?
-0=
-0;
-09
-07
+1>
+1<
+1:
+18
+01
+0+
+0,
+0-
+0.
+13
+b0 '
+b0 &
+b1 *
+#215
+1%
+1"
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
 03
 14
 b10 *
-#95
+#235
 13
 b11 *
-#115
-1$
-1%
+#255
+0%
 0"
-1B
-1A
-1@
-b1111 #
-1?
-1=
-1;
-19
-17
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
 03
 04
 15
 b100 *
-#135
+#275
 13
 b101 *
-#155
-0$
-0%
+#295
+1%
 1"
-0B
-0A
-0@
-b0 #
-0?
-0=
-0;
-09
-07
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
 03
 14
 b110 *
-#175
+#315
 13
 b111 *
-#195
-1$
-1%
+#335
+0%
 0"
-1B
-1A
-1@
-b1111 #
-1?
-1=
-1;
-19
-17
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
 03
 04
 05
 16
 b1000 *
-#215
+#355
 13
 b1001 *
-#235
-0$
-0%
+#375
+1%
 1"
-0B
-0A
-0@
-b0 #
-0?
-0=
-0;
-09
-07
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
 03
 14
 b1010 *
-#255
+#395
 13
 b1011 *
-#275
-1$
-1%
+#415
+0%
 0"
-1B
-1A
-1@
-b1111 #
-1?
-1=
-1;
-19
-17
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
 03
 04
 15
 b1100 *
-#295
+#435
 13
 b1101 *
-#315
-0$
-0%
+#455
+1%
 1"
-0B
-0A
-0@
-b0 #
-0?
-0=
-0;
-09
-07
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
 03
 14
 b1110 *
-#335
+#475
 13
 b1111 *
-#355
-1)
-#375
-1$
+#495
+0@
+0A
+0B
+0%
+b0 $
+0C
+0D
+0(
+#515
+1D
 0%
 0"
-1B
+1C
+0B
 0A
+b1 $
 0@
-b1 #
-0?
-1=
-1;
-19
-17
+1>
+1<
+1:
+18
 03
 04
 05
 06
 b0 *
-#395
+#535
 13
 b1 *
-#415
-0$
+#555
+0D
 1"
+0C
 0B
 0A
+b0 $
 0@
-b0 #
-0?
-0=
-0;
-09
-07
+0>
+0<
+0:
+08
 03
 14
 b10 *
-#435
+#575
 13
 b11 *
-#455
-1$
+#595
+1D
 0%
 0"
-1B
+1C
+0B
 0A
+b1 $
 0@
-b1 #
-0?
-1=
-1;
-19
-17
+1>
+1<
+1:
+18
 03
 04
 15
 b100 *
-#475
+#615
 13
 b101 *
-#495
-0$
+#635
+0D
 1"
+0C
 0B
 0A
+b0 $
 0@
-b0 #
-0?
-0=
-0;
-09
-07
+0>
+0<
+0:
+08
 03
 14
 b110 *
-#515
+#655
 13
 b111 *
-#535
-1$
+#675
+1D
 0%
 0"
-1B
+1C
+0B
 0A
+b1 $
 0@
-b1 #
-0?
-1=
-1;
-19
-17
+1>
+1<
+1:
+18
 03
 04
 05
 16
 b1000 *
-#555
+#695
 13
 b1001 *
-#575
-0$
+#715
+0D
 1"
+0C
 0B
 0A
+b0 $
 0@
-b0 #
-0?
-0=
-0;
-09
-07
+0>
+0<
+0:
+08
 03
 14
 b1010 *
-#595
+#735
 13
 b1011 *
-#615
-1$
+#755
+1D
 0%
 0"
-1B
+1C
+0B
 0A
+b1 $
 0@
-b1 #
-0?
-1=
-1;
-19
-17
+1>
+1<
+1:
+18
 03
 04
 15
 b1100 *
-#635
+#775
 13
 b1101 *
-#655
-0$
+#795
+0D
 1"
+0C
 0B
 0A
+b0 $
 0@
-b0 #
-0?
-0=
-0;
-09
-07
+0>
+0<
+0:
+08
 03
 14
 b1110 *
-#675
+#815
 13
 b1111 *
-#695
+#835
+1%
+1@
+1A
+1B
+b1111 $
+1C
+1D
+1(
+#855
+0%
+0"
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
+03
+04
+05
+06
+b0 *
+#875
+13
+b1 *
+#895
+1%
+1"
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
+03
+14
+b10 *
+#915
+13
+b11 *
+#935
+0%
+0"
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
+03
+04
+15
+b100 *
+#955
+13
+b101 *
+#975
+1%
+1"
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
+03
+14
+b110 *
+#995
+13
+b111 *
+#1015
+0%
+0"
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
+03
+04
+05
+16
+b1000 *
+#1035
+13
+b1001 *
+#1055
+1%
+1"
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
+03
+14
+b1010 *
+#1075
+13
+b1011 *
+#1095
+0%
+0"
+0C
+0B
+0A
+b0 $
+0@
+1>
+1<
+1:
+18
+03
+04
+15
+b1100 *
+#1115
+13
+b1101 *
+#1135
+1%
+1"
+1C
+1B
+1A
+b1111 $
+1@
+0>
+0<
+0:
+08
+03
+14
+b1110 *
+#1155
+13
+b1111 *
+#1175

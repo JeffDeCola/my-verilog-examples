@@ -7,16 +7,16 @@ module g_p_carry_section (
     input   input1_out2,
     input   input0_out1,
     input   input0_out2,
-    input   ci,
-    output  co,
-    output  p,
-    output  g
+    input   ci_bar,
+    output  co_bar,
+    output  x,
+    output  y
 );
 
-assign g = ~((input3_out2) | (input3_out1 & input2_out2) | (input3_out1 & input2_out1 & input1_out2) | (input3_out1 & input2_out1 & input1_out1 & input0_out2));
+assign y = ~((input3_out2) | (input3_out1 & input2_out2) | (input3_out1 & input2_out1 & input1_out2) | (input3_out1 & input2_out1 & input1_out1 & input0_out2));
 
-assign co = (~(g) | (input3_out1 & input2_out1 & input1_out1 & input0_out1 & ci));
+assign co_bar = (~(y) | (input3_out1 & input2_out1 & input1_out1 & input0_out1 & ci_bar));
 
-assign p = ~(input3_out1 & input2_out1 & input1_out1 & input0_out1);
+assign x = ~(input3_out1 & input2_out1 & input1_out1 & input0_out1);
 
 endmodule
