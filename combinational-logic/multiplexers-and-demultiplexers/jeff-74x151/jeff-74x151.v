@@ -1,6 +1,6 @@
 // 8-line to 1-line data selector/multiplexer
 module jeff_74x151(
-    input                d0,                  // 
+    input                d0,                  // DATA IN
     input                d1,                  // 
     input                d2,                  // 
     input                d3,                  // 
@@ -8,12 +8,12 @@ module jeff_74x151(
     input                d5,                  // 
     input                d6,                  // 
     input                d7,                  // 
-    input                a,                   // 
+    input                a,                   // SELECT
     input                b,                   // 
     input                c,                   // 
-    input                en,                  //
-    output               y,                   // 
-    output               w                    // 
+    input                en,                  // ENABLE
+    output               y,                   // DATA OUT
+    output               w                    // INVERTED OUTPUT
 );
 
 reg  y;

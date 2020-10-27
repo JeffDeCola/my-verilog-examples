@@ -1,28 +1,35 @@
-# jeff-74x161 example
+# jk-flip-flop example
 
-_Synchronous presettable 4-bit binary counter, asynchronous clear._
-
-Documentation and reference,
-
-* This verilog code used in my [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+_A jk flip-flop with asynchronous clear._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## VERILOG CODE
 
-The main part of the code is,
+The main code,
 
 ```verilog
-    ?????
+always @ (posedge clk or negedge clr) begin
+    if (~clr) begin
+        q <= 1'b0;
+    end else begin
+        case({j,k})
+            2'b0_0 : q <= q;
+            2'b0_1 : q <= 1'b0;
+            2'b1_0 : q <= 1'b1;
+            2'b1_1 : q <= ~q;
+        endcase
+    end
+end
 ```
 
 The entire code is
-[jeff-74x161.v](jeff-74x161.v).
+[jk-flip-flop.v](jk-flip-flop.v).
 
 ## RUN (SIMULATE)
 
 I used my testbench
-[jeff-74x161-tb.v](jeff-74x161-tb.v) with
+[jk-flip-flop-tb.v](jk-flip-flop-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
