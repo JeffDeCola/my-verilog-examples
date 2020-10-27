@@ -4,15 +4,21 @@
 module jeff_74x161_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg        CLK, RST;
-reg        IN;
-wire       OUT;
+reg        CLR_BAR, LD_BAR;
+reg        ENT, ENP;
+reg        CLK,
+reg        A, B, C, D;
+wire       QA, QB, QC, QD;       
+wire       RCO;
 
 // UUT
 jeff_74x161 uut(
-    .clk(CLK), .rst(RST),
-    .in(IN),
-    .out(OUT)
+    .clr_bar(CLR_BAR), .ld_bar(LD_BAR),
+    .ent(ENT), .enp(ENP),
+    .clk(CLK),
+    .a(A), .b(B), .c(C), .d(D),
+    .qa(QA), .qb(QB), .qc(QC), .qd(QD),
+    .rco(RCO)
 );
 
 // FILES
@@ -29,21 +35,13 @@ end
 // TESTCASE
 initial begin
     $display("test start");
+    CLR_BAR = 0; LD_BAR = 0;
+    ENT = 0; ENP = 0;
     CLK = 0;
-    RST = 0;
-    IN = 0;
+    A = 0; B =0; C = 0; D = 0;
 
-    #15; RST = 1;
-    #20; RST = 0;
-
-    #20; IN = 1;
-    #20; IN = 0;
-    #20; IN = 1;
-    #20; IN = 0;
-    #20; IN = 0;
-    
-    // DONE
-    #20
+    // LOAD
+    #15; 
 
     $display("test complete");
     $finish;
