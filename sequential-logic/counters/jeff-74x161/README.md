@@ -19,12 +19,6 @@ I designed this processor form the 1976 Texas Instruments spec sheet.
 
 ## VERILOG CODE
 
-The main part of the code is,
-
-```verilog
-    ?????
-```
-
 The entire code is
 [jeff-74x161.v](jeff-74x161.v).
 
