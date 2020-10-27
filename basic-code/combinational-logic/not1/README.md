@@ -1,6 +1,6 @@
 # not1 example
 
-_not gate._
+_NOT gate._
 
 Documentation and reference,
 
