@@ -85,3 +85,5 @@ Check you waveform using your `.vcd` file with a waveform viewer.
 I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
+
+![priority-arbiter-waveform.jpg](../../../docs/pics/priority-arbiter-waveform.jpg)
