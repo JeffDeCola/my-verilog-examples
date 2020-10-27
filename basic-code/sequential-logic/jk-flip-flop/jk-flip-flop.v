@@ -1,4 +1,4 @@
-// A jk flip-flop with asynchronous clear
+// A positive edge jk flip-flop with asynchronous clear
 module jk_flip_flop (
     input   clk,        // Clock
     input   clr_bar,    // Clear
@@ -15,7 +15,7 @@ assign q_bar = ~q;
 
 // JK FLIP-FLOP WITH ASYNCHRONOUS CLEAR
 always @ (posedge clk or negedge clr_bar) begin
-    if (clr_bar) begin
+    if (!clr_bar) begin
         q <= 1'b0;
     end else begin
         case({j,k})

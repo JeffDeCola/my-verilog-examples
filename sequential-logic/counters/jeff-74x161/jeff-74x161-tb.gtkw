@@ -1,24 +1,45 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Sat Oct 24 12:32:30 2020
+[*] Tue Oct 27 20:14:17 2020
 [*]
-[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\counters\jeff_74x161\jeff-74x161-tb.vcd"
-[dumpfile_mtime] "Sat Oct 24 12:30:34 2020"
-[dumpfile_size] 555
-[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\counters\jeff_74x161\jeff-74x161-tb.gtkw"
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\counters\jeff-74x161\jeff-74x161-tb.vcd"
+[dumpfile_mtime] "Tue Oct 27 20:14:11 2020"
+[dumpfile_size] 3748
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\sequential-logic\counters\jeff-74x161\jeff-74x161-tb.gtkw"
 [timestart] 0
 [size] 1920 996
-[pos] -139 -139
-*-4.291728 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-5.830573 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 197
-[signals_width] 78
+[signals_width] 86
 [sst_expanded] 1
 [sst_vpaned_height] 292
 @28
+jeff_74x161_tb.CLR_BAR
+jeff_74x161_tb.LD_BAR
+@200
+-
+@28
+jeff_74x161_tb.A
+jeff_74x161_tb.B
+jeff_74x161_tb.C
+jeff_74x161_tb.D
+@200
+-
+@28
 jeff_74x161_tb.CLK
-jeff_74x161_tb.RST
-jeff_74x161_tb.IN
-@29
-jeff_74x161_tb.OUT
+jeff_74x161_tb.ENT
+jeff_74x161_tb.ENP
+@200
+-
+@28
+jeff_74x161_tb.QA
+jeff_74x161_tb.QB
+jeff_74x161_tb.QC
+jeff_74x161_tb.QD
+@200
+-
+@28
+jeff_74x161_tb.RCO
 [pattern_trace] 1
 [pattern_trace] 0

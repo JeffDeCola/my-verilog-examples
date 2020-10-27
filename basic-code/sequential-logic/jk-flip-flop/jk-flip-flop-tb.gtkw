@@ -1,26 +1,28 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Tue Oct 27 00:06:47 2020
+[*] Tue Oct 27 20:32:27 2020
 [*]
 [dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\sequential-logic\jk-flip-flop\jk-flip-flop-tb.vcd"
-[dumpfile_mtime] "Tue Oct 27 00:04:54 2020"
-[dumpfile_size] 693
+[dumpfile_mtime] "Tue Oct 27 20:32:00 2020"
+[dumpfile_size] 727
 [savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\sequential-logic\jk-flip-flop\jk-flip-flop-tb.gtkw"
 [timestart] 0
 [size] 1920 996
 [pos] -1 -1
-*-4.465757 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-4.768476 44 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 197
-[signals_width] 78
+[signals_width] 86
 [sst_expanded] 1
 [sst_vpaned_height] 292
 @28
 jk_flip_flop_tb.CLK
-jk_flip_flop_tb.CLR
+jk_flip_flop_tb.CLR_BAR
 jk_flip_flop_tb.J
+@201
+-
+@28
 jk_flip_flop_tb.K
 jk_flip_flop_tb.Q
-@29
 jk_flip_flop_tb.Q_BAR
 [pattern_trace] 1
 [pattern_trace] 0
