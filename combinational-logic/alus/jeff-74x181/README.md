@@ -1,6 +1,6 @@
 # jeff-74x181 example
 
-_4-bit arithmetic logic unit and function generator.
+_4-bit alu (arithmetic logic unit) and function generator.
 Provides 16 binary logic operations and
 16 arithmetic operations on two 4-bit words.
 This simple processor was designed in late 60's and the early 70s._

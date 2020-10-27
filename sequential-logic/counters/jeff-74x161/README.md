@@ -4,7 +4,10 @@ _Synchronous presettable 4-bit binary counter, asynchronous clear._
 
 Documentation and reference,
 
-* This verilog code used in my [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+* I'm using my
+  [jk-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
+* This verilog code used in my
+  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
