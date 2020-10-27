@@ -1,4 +1,8 @@
 // Synchronous presettable 4-bit binary counter, asynchronous clear
+
+// MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
+//`include "sections/output-section.v"
+
 module jeff_74x161(
     input           clr_bar,             // ASYNC CLEAR
     input           ld_bar,              // LOAD
@@ -10,8 +14,8 @@ module jeff_74x161(
     output          rco                  // RIPPLE CARRY OUTPUT
 );
 
-reg  qa, qb, qc, qd;
-reg  rco;
+// reg  qa, qb, qc, qd;
+// reg  rco;
 wire ld_or_clr;
 wire ent_and_enp;
 

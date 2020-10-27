@@ -1,6 +1,6 @@
 # jk-flip-flop example
 
-_A jk flip-flop with asynchronous clear._
+_A positive edge jk flip-flop with asynchronous clear._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 

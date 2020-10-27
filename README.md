@@ -100,7 +100,7 @@ to view the output._
 
   * [jk-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
 
-     _A jk flip-flop with asynchronous clear.
+     _A positive edge jk flip-flop with asynchronous clear.
     Used in my
     [jeff-74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
     below._

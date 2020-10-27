@@ -1,5 +1,5 @@
 $date
-	Tue Oct 27 09:23:40 2020
+	Tue Oct 27 13:40:27 2020
 $end
 $version
 	Icarus Verilog
@@ -11,7 +11,7 @@ $scope module jk_flip_flop_tb $end
 $var wire 1 ! Q_BAR $end
 $var wire 1 " Q $end
 $var reg 1 # CLK $end
-$var reg 1 $ CLR $end
+$var reg 1 $ CLR_BAR $end
 $var reg 1 % J $end
 $var reg 1 & K $end
 $scope module uut $end
@@ -34,10 +34,10 @@ x"
 x!
 $end
 #10
-1!
-0"
 1#
 #15
+1!
+0"
 0$
 #20
 0#
@@ -54,38 +54,51 @@ $end
 #70
 1#
 #75
-1&
+1%
 #80
 0#
 #90
+0!
+1"
 1#
 #95
-0&
-1%
+1&
 #100
 0#
 #110
-1#
-#115
-1&
-#120
-0#
-#130
-1#
-#135
-0!
-1"
-0$
-#140
-0#
-#150
 1!
 0"
 1#
-#155
-1$
+#120
+0#
+#130
+0!
+1"
+1#
+#135
+0&
+0%
+#140
+0#
+#150
+1#
 #160
 0#
 #170
 1#
 #175
+1&
+1%
+#180
+0#
+#190
+1!
+0"
+1#
+#200
+0#
+#210
+0!
+1"
+1#
+#215
