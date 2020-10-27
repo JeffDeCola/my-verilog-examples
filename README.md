@@ -98,6 +98,10 @@ to view the output._
 
      _A basic, synchronous and asynchronous d flip-flop._
 
+  * [jk-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
+
+     _A jk flip-flop with asynchronous clear._
+
 ### COMBINATIONAL LOGIC
 
 * ALUs

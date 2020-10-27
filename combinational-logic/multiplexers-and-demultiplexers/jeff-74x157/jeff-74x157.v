@@ -1,10 +1,10 @@
 // Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs
 module jeff_74x157(
-    input [3:0]          a,                  // 
-    input [3:0]          b,                  // 
-    input                s,                  //
-    input                en,                 //
-    output [3:0]         y                   // 
+    input [3:0]          a,                  // INPUT DATA A
+    input [3:0]          b,                  // INPUT DATA B
+    input                s,                  // SELECT
+    input                en,                 // ENABLE
+    output [3:0]         y                   // OUTPUT DATA
 );
 
 reg [3:0] y;
