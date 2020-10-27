@@ -100,7 +100,10 @@ to view the output._
 
   * [jk-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
 
-     _A jk flip-flop with asynchronous clear._
+     _A jk flip-flop with asynchronous clear.
+    Used in my
+    [jeff-74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
+    below._
 
 ### COMBINATIONAL LOGIC
 
@@ -108,7 +111,7 @@ to view the output._
 
   * [jeff-74x181](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
 
-    _4-bit arithmetic logic unit and function generator.
+    _4-bit alu (arithmetic logic unit) and function generator.
     Provides 16 binary logic operations and 16 arithmetic operations
     on two 4-bit words.
     Based on the 7400-series integrated circuits used in my
@@ -187,15 +190,6 @@ to view the output._
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._
 
-* REGISTERS
-
-  * [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
-
-    _8-bit register, clock enable.
-    Based on the 7400-series integrated circuits used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
-
 * FINITE STATE MACHINES
 
   * [pattern-recognition](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition)
@@ -207,6 +201,15 @@ to view the output._
   * [simple-memory-using-1d-array](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array)
 
     _A simple 16 Byte memory modeled using a 1D array._
+
+* REGISTERS
+
+  * [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
+
+    _8-bit register, clock enable.
+    Based on the 7400-series integrated circuits used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+    below._
 
 * SHIFTERS
 

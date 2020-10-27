@@ -1,6 +1,11 @@
 # not1 example
 
-_not1 gate._
+_not gate._
+
+Documentation and reference,
+
+* This verilog code used in my
+  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
