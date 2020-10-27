@@ -53,3 +53,5 @@ Check you waveform using your `.vcd` file with a waveform viewer.
 I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
+
+![decoder-to-encoder-waveform.jpg](../../../docs/pics/decoder-to-encoder-waveform.jpg)
