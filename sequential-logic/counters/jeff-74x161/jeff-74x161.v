@@ -1,7 +1,7 @@
 // Synchronous presettable 4-bit binary counter, asynchronous clear
 module jeff_74x161(
-    input           clr,                 // ASYNC CLEAR
-    input           ld,                  // LOAD
+    input           clr_bar,             // ASYNC CLEAR
+    input           ld_bar,              // LOAD
     input           ent,                 // ENABLE T
     input           enp,                 // ENABLE P
     input           clk,                 // CLK
@@ -9,5 +9,10 @@ module jeff_74x161(
     output          qa, qb, qc, qd,      // DATA OUT
     output          rco                  // RIPPLE CARRY OUTPUT
 );
+
+
+
+
+
 
 endmodule

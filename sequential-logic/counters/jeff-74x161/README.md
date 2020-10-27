@@ -8,6 +8,12 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
+## SCHEMATIC
+
+I designed this processor form the 1976 Texas Instruments spec sheet.
+
+![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/ti-74x161-schematic.jpg)
+
 ## VERILOG CODE
 
 The main part of the code is,
