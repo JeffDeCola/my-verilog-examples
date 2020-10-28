@@ -18,8 +18,8 @@ module ta161_bar (
 // 4-bit synchronous counter
 // Replaced ta161 in THESIS with jeff_74x161
 jeff_74x161 U1 (
-    .clr(CLR_BAR),
-    .ld(LD_BAR),
+    .clr_bar(CLR_BAR),
+    .ld_bar(LD_BAR),
     .ent(ENT),
     .enp(ENP),
     .clk(SYSTEM_CLK),
