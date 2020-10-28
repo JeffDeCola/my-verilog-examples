@@ -12,10 +12,11 @@ module opcodedec (
 );
 
 // WIRES
-wire          W1;
+wire W1;
 
 // ASSIGN VALUES
-assign LOW              = 1'b0;
+assign LOW = 1'b0;
+assign EIL_BAR = W1;
 
 // Four (2x1) multiplexers
 ta157_4 U1 (

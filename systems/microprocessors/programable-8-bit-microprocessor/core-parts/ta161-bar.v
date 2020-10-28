@@ -22,7 +22,7 @@ jeff_74x161 U1 (
     .ld_bar(LD_BAR),
     .ent(ENT),
     .enp(ENP),
-    .clk(SYSTEM_CLK),
+    .clk(CLK),
     .a(A),
     .b(B),
     .c(C),

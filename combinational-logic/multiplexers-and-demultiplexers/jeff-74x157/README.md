@@ -18,7 +18,7 @@ The main part of the code is,
 
     // 2x1 multiplexer
     always @ ( * ) begin
-        if (en) begin
+        if (~en) begin
             y <= 4'h0;
         end else begin
             case(s)

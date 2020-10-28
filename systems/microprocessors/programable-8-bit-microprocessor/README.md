@@ -19,7 +19,7 @@ Table of Contents,
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
 
-Logic used,
+Logic parts used,
 
 * [and2](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/and2)
   2-input AND gate
@@ -65,7 +65,7 @@ Logic used,
   * 256 x 24-bit microcode storage
   * 24-bit microword
 * Pin count
-  * 56 pins if using hardcoded internal microcode
+  * 32 pins if using hardcoded internal microcode
     * 24 Input pins
     * 8 Output pins
   * 64 if using external microcode
@@ -76,7 +76,7 @@ Logic used,
 ## TOP LEVEL (HOW IT WORKS)
 
 Based on an instruction (opcode) this processor takes in data,
-processes that data via the alu and spits out the result. That's about it.
+processes that data (via the alu) and spits out the result. That's about it.
 
 This may help,
 
@@ -96,8 +96,8 @@ OTHER INPUTS,
 
 * **SYSTEM_CLK**  _Clock_
 * **GO_BAR** _Kicks it off_
-* **JAM** _tbd_
-* **RESET** _tbd_
+* **JAM** _Will cause Microaddress to be 8'hff_
+* **RESET** _Reset the Counter_
 
 ### THE CONTROL AND PROCESSOR SECTION
 
@@ -139,8 +139,8 @@ I have programed (in microcode - next section),
 The `microcode`are the internal instructions the processor uses
 to accomplish the users opcode instruction.
 
-The control section gets the microword **[23:0]MW** using the
-**[7:0]MICROADDRESS**. Hence there can be up to 256 x 24-bit microwords.
+The control section gets the microword **[23:0] MW** using the
+**[7:0] MICROADDRESS**. Hence there can be up to 256 x 24-bit microwords.
 
 Each opcode accesses a section of this memory.  Hence, there are 16
 sections equally divided.
@@ -193,7 +193,7 @@ To accomplish an **SUBTRACT** opcode instruction, the microcode is,
 
 ## MORE DETAIL (UNDER THE HOOD)
 
-Here is a little more detail about the control and processor section.
+Here is a little more detail of the control and processor sections.
 
 ### CONTROL SECTION
 
