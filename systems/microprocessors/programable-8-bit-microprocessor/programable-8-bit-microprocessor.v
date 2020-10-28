@@ -30,6 +30,7 @@
 `include "core-parts/ta377-bar.v"
 // Replaced ta377 in Thesis with jeff_74x377
 `include "../../../sequential-logic/registers/jeff-74x377/jeff-74x377.v"
+`include "../../../basic-code/sequential-logic/d-flip-flop/d-flip-flop.v"
 `include "alu/alu.v"
 `include "core-parts/ta181-bar.v"
 // Replaced ta181 in Thesis with jeff_74x181
