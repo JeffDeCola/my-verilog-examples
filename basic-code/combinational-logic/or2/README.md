@@ -9,6 +9,15 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
+## TRUTH TABLE
+
+| a     | b     | y     |
+|:-----:|:-----:|:-----:|
+| 0     | 0     | 0     |
+| 0     | 1     | 1     |
+| 1     | 0     | 1     |
+| 1     | 1     | 1     |
+
 ## VERILOG CODE
 
 The main part of the code is,
