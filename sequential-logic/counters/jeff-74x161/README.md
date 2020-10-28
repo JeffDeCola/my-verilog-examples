@@ -14,6 +14,7 @@ Documentation and reference,
 ## SCHEMATIC
 
 I designed this processor form the 1976 Texas Instruments spec sheet.
+The `clr_bar` is connected directly to the JK flip-flops.
 
 ![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/ti-74x161-schematic.jpg)
 

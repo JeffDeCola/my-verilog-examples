@@ -50,18 +50,22 @@ initial begin
     // LOAD - PRESET TO 12
     #20; CLR_BAR = 1; LD_BAR = 0;
          D = 1; C = 1; B = 0; A = 0;
-    #20 LD_BAR = 1;
+    #20 LD_BAR = 1;     
 
     // WAIT
     #100
 
-    // COUNT - 13,14,15,0,1,2,3,4....
+    // COUNT - 13, 14, 15, 0, 1, 2, 3, 4....
     ENT = 1; ENP = 1;
-    #200
+    #1000
 
-    // INHIBIT
+    // STOP IT INHIBIT
     ENT = 0; ENP = 0;
     #100
+
+    // LET IT CONTINUE
+    ENT = 1; ENP = 1;
+    #1000
 
     $display("test complete");
     $finish;
