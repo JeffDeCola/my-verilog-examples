@@ -54,13 +54,13 @@ initial begin
     DATA_IN_A = 8'h00;
     DATA_IN_B = 8'h00;
     GO_BAR = 0;
-    RESET = 0;
-    JAM = 0;
+    RESET = 1;
+    JAM = 1;
     SYSTEM_CLK = 0;
 
     // RESET
-    #15; RESET = 1;
-    #20; RESET = 0;
+    #15; RESET = 0;
+    #20; RESET = 1;
     #40;
 
     // ******************************************************

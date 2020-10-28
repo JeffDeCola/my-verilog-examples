@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Thu Oct 22 14:12:36 2020
+[*] Wed Oct 28 20:32:05 2020
 [*]
 [dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.vcd"
-[dumpfile_mtime] "Thu Oct 22 14:08:31 2020"
-[dumpfile_size] 6891
+[dumpfile_mtime] "Wed Oct 28 20:31:11 2020"
+[dumpfile_size] 39228
 [savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.gtkw"
 [timestart] 0
 [size] 1920 996
 [pos] -1 -1
-*-5.480626 74 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-5.480626 83 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] programable_8_bit_microprocessor_tb.
 [sst_width] 197
 [signals_width] 174
@@ -19,13 +19,12 @@
 programable_8_bit_microprocessor_tb.SYSTEM_CLK
 programable_8_bit_microprocessor_tb.RESET
 programable_8_bit_microprocessor_tb.JAM
+@29
+programable_8_bit_microprocessor_tb.GO_BAR
 @200
--
 -
 @22
 programable_8_bit_microprocessor_tb.OPCODE[3:0]
-@28
-programable_8_bit_microprocessor_tb.GO_BAR
 @200
 -
 @22
@@ -42,24 +41,24 @@ programable_8_bit_microprocessor_tb.MW[23:0]
 programable_8_bit_microprocessor_tb.CS.ALU_DEST[23:21]
 @200
 -
-@29
+@28
 [color] 5
 programable_8_bit_microprocessor_tb.CS.CIN
-@23
+@22
 [color] 5
 programable_8_bit_microprocessor_tb.CS.ALU_FUNC[19:15]
-@29
+@28
 [color] 5
 programable_8_bit_microprocessor_tb.CS.B_SOURCE
 [color] 5
 programable_8_bit_microprocessor_tb.CS.A_SOURCE
-@23
+@22
 [color] 5
 programable_8_bit_microprocessor_tb.CS.BOP[12:9]
-@29
+@28
 [color] 5
 programable_8_bit_microprocessor_tb.CS.COUNT
-@23
+@22
 [color] 5
 programable_8_bit_microprocessor_tb.CS.MICRO_AD_HIGH[7:4]
 [color] 5

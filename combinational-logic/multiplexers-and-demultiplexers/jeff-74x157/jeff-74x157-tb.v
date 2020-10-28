@@ -29,7 +29,7 @@ initial begin
     $display("test start");
     A = 4'h0; B = 4'h1;
     S = 0;
-    EN = 0;
+    EN = 1;
 
     #10; S = 0;
     #10;  A = 4'ha; B = 4'h5;
@@ -41,7 +41,7 @@ initial begin
     #10;  A = 4'h9; B = 4'h4;
     #10
 
-    EN = 1;
+    EN = 0;
     #10;
     
     // DONE

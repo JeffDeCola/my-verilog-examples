@@ -96,7 +96,7 @@ to view the output._
 
   * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
-     _A positive edge d flip-flop with asynchronous enable._
+     _A positive edge d flip-flop with asynchronous enable.
     Used in my
     [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
     below._
