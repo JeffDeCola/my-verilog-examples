@@ -3,7 +3,7 @@
 
 module output_section (
     input  clr_bar,
-    input  ld_or_clr,
+    input  ld,
     input  feedback,
     input  clk,
     input  data,
@@ -13,10 +13,10 @@ module output_section (
 // reg q;
 wire NOTHING;
 
-assign to_j_and_k = (feedback | ld_or_clr);
+assign to_j_and_k = (feedback | ld);
 
-assign to_j = (ld_or_clr & to_k);
-assign to_k = (data & clr_bar & ld_or_clr);
+assign to_j = ~(ld & to_k);
+assign to_k = ~(data & ld);
  
 assign j = (to_j & to_j_and_k);
 assign k = (to_k & to_j_and_k);
