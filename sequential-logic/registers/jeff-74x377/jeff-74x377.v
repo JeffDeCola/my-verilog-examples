@@ -1,4 +1,4 @@
-// 8-bit register, clock enable
+-// 8-bit register, clock enable
 module jeff_74x377(
     input           en,                 // 
     input           clk,                //

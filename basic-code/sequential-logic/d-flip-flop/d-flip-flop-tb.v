@@ -4,17 +4,17 @@
 module d_flip_flop_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg  CLK, RST;
+reg  CLK;
+reg  EN;
 reg  D;
-wire Q_1, Q_BAR_1, Q_2, Q_BAR_2, Q_3, Q_BAR_3;
+wire Q, Q_BAR;
 
 // UUT
 d_flip_flop uut(
-    .clk(CLK), .rst(RST),
+    .clk(CLK),
+    .en(EN),
     .d(D),
-    .q_1(Q_1), .q_bar_1(Q_BAR_1),
-    .q_2(Q_2), .q_bar_2(Q_BAR_2),
-    .q_3(Q_3), .q_bar_3(Q_BAR_3)
+    .q(Q), .q_bar(Q_BAR)
 );
 
 // FILES
@@ -32,21 +32,23 @@ end
 initial begin
     $display("test start");
     CLK = 0;
-    RST = 0;
+    EN = 0;
     D = 0;
     
-    #15; D = 1;
-    #10; D = 0;
+    // ENABLE
+    #15; EN = 1;
+    #20  D = 1;
+    #20; D = 0;
     #20; D = 1;
     #20; D = 0;
-    #10; D = 1;
-    #5;  D = 0;
-    #5;  D = 1;
+    #10; D = 0;
 
-    // NOW LETS DO THE RESET
-    #20; D = 1; RST = 1;
-    #20; RST = 0;
-    #20;
+    // STOP ENABLE - KEEPS STATE REGARDLESS OF INPUT
+    #20; EN = 0;
+    #10  D = 1;
+    #20; D = 0;
+    #10; D = 1;
+    #20
 
     $display("test complete");
     $finish;

@@ -1,6 +1,7 @@
 # d-flip-flop example
 
-_A basic, synchronous and asynchronous d flip-flop._
+_A positive edge d flip-flop with asynchronous enable.
+This selectively captures a digital value._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -15,38 +16,21 @@ repo._
     align="middle"
 </p>
 
+## TRUTH TABLE
+
+| q_prev  | en     | d     | q      |
+|:-------:|:------:|:-----:|:------:|
+| 0       |  0     |  X    | 0      |
+| 0       |  0     |  X    | 1      |
+| X       |  1     |  0    | 0      |
+| X       |  1     |  1    | 1      |
+
 ## VERILOG CODE
 
-A basic, synchronous and asynchronous d-flip-flop,
+The main verilog code is,
 
 ```verilog
-    // D FLIP-FLOP
-    always @ (posedge clk) begin
-        q_1 <= d;
-        q_bar_1 <= !d;
-    end
-
-    // D FLIP-FLOP WITH SYNCHRONOUS RESET
-    always @ (posedge clk) begin
-        if (rst) begin
-            q_2 <= 1'b0;
-            q_bar_2 <= 1'b1;
-        end else begin
-            q_2 <= d;
-            q_bar_2 <= !d;
-        end
-    end
-
-    // D FLIP-FLOP WITH ASYNCHRONOUS RESET
-    always @ (posedge clk or posedge rst) begin
-        if (rst) begin
-            q_3 <= 1'b0;
-            q_bar_3 <= 1'b1;
-        end else begin
-            q_3 <= d;
-            q_bar_3 <= !d;
-        end
-    end
+????????????????
 ```
 
 The entire code is

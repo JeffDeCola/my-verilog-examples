@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Mon Oct 19 09:22:59 2020
+[*] Wed Oct 28 03:02:58 2020
 [*]
 [dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\sequential-logic\d-flip-flop\d-flip-flop-tb.vcd"
-[dumpfile_mtime] "Mon Oct 19 09:21:57 2020"
-[dumpfile_size] 947
+[dumpfile_mtime] "Wed Oct 28 03:01:21 2020"
+[dumpfile_size] 673
 [savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\basic-code\sequential-logic\d-flip-flop\d-flip-flop-tb.gtkw"
-[timestart] 3
+[timestart] 7
 [size] 1920 996
 [pos] -1 -1
-*-4.417125 13 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-4.581244 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 197
 [signals_width] 117
 [sst_expanded] 1
@@ -17,28 +17,15 @@
 @28
 [color] 1
 d_flip_flop_tb.CLK
+@200
+-
+@28
 d_flip_flop_tb.D
-d_flip_flop_tb.RST
+d_flip_flop_tb.EN
 @200
 -
 @28
-[color] 4
-d_flip_flop_tb.Q_1
-[color] 4
-d_flip_flop_tb.Q_BAR_1
-@201
--
-@28
-[color] 5
-d_flip_flop_tb.Q_2
-[color] 5
-d_flip_flop_tb.Q_BAR_2
-@200
--
-@28
-[color] 2
-d_flip_flop_tb.Q_3
-[color] 2
-d_flip_flop_tb.Q_BAR_3
+d_flip_flop_tb.Q
+d_flip_flop_tb.Q_BAR
 [pattern_trace] 1
 [pattern_trace] 0
