@@ -33,8 +33,10 @@ Logic used,
   2-input OR gate
 * [xor2](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/xor2)
   2-input XOR gate
+* [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
+  A positive edge d flip-flop with asynchronous enable (Used in jeff-74x377)
 * [jk-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
-  A jk flip-flop with asynchronous clear (Used in jeff-74x161)
+  A positive edge jk flip-flop with asynchronous clear (Used in jeff-74x161)
 * [jeff-74x181](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
   4-bit alu (arithmetic logic unit) and function generator
 * [jeff-74x151](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x151)
@@ -249,6 +251,7 @@ The processor is a collection of registers, muxes and an alu,
       ([ta377-bar.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta377-bar.v))
       * [jeff_74x377](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/sequential-logic/registers/jeff-74x377/jeff-74x377.v)
         _replaced ta377_
+        * [d_flip_flop](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/basic-code/sequential-logic/d-flip-flop/d-flip-flop.v)
   * **REGISTERB**
     ([register-ab8.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register-ab8.v))
     _See above_

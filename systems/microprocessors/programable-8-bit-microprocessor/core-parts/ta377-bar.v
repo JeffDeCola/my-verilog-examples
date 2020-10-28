@@ -16,7 +16,7 @@ assign EN = ~EN_BAR;
 // 8-bit register, clock enable
 // Replaced ta377 in THESIS with jeff_74x377
 jeff_74x377 U1 (
-    .en(EN_BAR),
+    .en_bar(EN_BAR),
     .clk(CLK),
     .d0(D[0]),
     .d1(D[1]),
