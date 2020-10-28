@@ -4,6 +4,16 @@ _A positive edge jk flip-flop with asynchronous clear._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
+## TRUTH TABLE
+
+| clr_bar | j      | k     | q         |
+|:-------:|:------:|:-----:|:---------:|
+| 0       |  X     |  X    | 0         |
+| 1       |  0     |  0    | q         |
+| 1       |  1     |  0    | 1         |
+| 1       |  0     |  1    | 0         |
+| 1       |  1     |  1    | q_bar     |
+
 ## VERILOG CODE
 
 The main code,

@@ -17,6 +17,14 @@ I designed this processor form the 1976 Texas Instruments spec sheet.
 
 ![IMAGE - ti-74x377-schematic.jpg - IMAGE](../../../docs/pics/ti-74x377-schematic.jpg)
 
+## TRUTH TABLE
+
+| clk     | en_bar | d     | q      |
+|:-------:|:------:|:-----:|:------:|
+| x       |  1     |  X    | q      |
+| tick    |  0     |  1    | 1      |
+| tick    |  0     |  0    | 0      |
+
 ## VERILOG CODE
 
 The entire code is
