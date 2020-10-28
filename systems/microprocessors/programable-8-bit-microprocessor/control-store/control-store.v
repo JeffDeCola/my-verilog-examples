@@ -26,8 +26,8 @@ always @ (microaddress) begin
     case (microaddress)
         // OPCODE 0000
         8'h00: begin
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
-            ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
+            BOP <= 4'b1010; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b1010; MICRO_AD_LOW <= 4'b0101;
+            ALU_DEST <= 3'b001; CIN <= 1'b1; ALU_FUNC <= 5'b01111; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
         end
         // OPCODE 0001 - ADD
         8'h10: begin

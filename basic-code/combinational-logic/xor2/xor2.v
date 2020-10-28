@@ -5,6 +5,6 @@ module xor2(
 );
 
 // CONTINUOUS ASSIGNMENT STATEMENT
-assign y = ~(a | b);
+assign y = a ^ b;
 
 endmodule

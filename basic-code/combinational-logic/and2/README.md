@@ -9,11 +9,14 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## STATE DIAGRAM
+## TRUTH TABLE
 
-This may help,
-
-![IMAGE - and2.jpg - IMAGE](../../../docs/pics/and2.jpg)
+| a     | b     | y     |
+|:-----:|:-----:|:-----:|
+| 0     | 0     | 0     |
+| 0     | 1     | 0     |
+| 1     | 0     | 0     |
+| 1     | 1     | 1     |
 
 ## VERILOG CODE
 

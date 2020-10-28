@@ -95,9 +95,9 @@ OUTPUT,
 OTHER INPUTS,
 
 * **SYSTEM_CLK**  _Clock_
-* **GO_BAR** _Kicks it off_
-* **JAM** _Will cause Microaddress to be 8'hff_
-* **RESET** _Reset the Counter_
+* **GO_BAR** _Active Low kicks it off_
+* **JAM** _Active High will cause Microaddress to be 8'hff_
+* **RESET** _Reset (active low) the Counter_
 
 ### THE CONTROL AND PROCESSOR SECTION
 
