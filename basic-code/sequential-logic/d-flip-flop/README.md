@@ -21,7 +21,7 @@ repo._
 | q_prev  | en     | d     | q      |
 |:-------:|:------:|:-----:|:------:|
 | 0       |  0     |  X    | 0      |
-| 0       |  0     |  X    | 1      |
+| 1       |  0     |  X    | 1      |
 | X       |  1     |  0    | 0      |
 | X       |  1     |  1    | 1      |
 
@@ -30,7 +30,18 @@ repo._
 The main verilog code is,
 
 ```verilog
-????????????????
+    reg  q;
+
+    assign q_bar = ~q;
+
+    // D FLIP-FLOP WITH ASYNC ENABLE
+    always @ (posedge clk or posedge en) begin
+        if (en) begin
+            q <= d;
+        end else begin
+            q <= q;
+        end
+    end
 ```
 
 The entire code is

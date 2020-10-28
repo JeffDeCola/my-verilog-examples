@@ -20,13 +20,8 @@ module jeff_74x377(
     output          q7                  //  
 );
 
-assign q0 = 1'b1;              // ERASE
-assign q1 = 1'b1;              // ERASE
-assign q2 = 1'b1;              // ERASE
-assign q3 = 1'b1;              // ERASE
-assign q4 = 1'b1;              // ERASE
-assign q5 = 1'b1;              // ERASE
-assign q6 = 1'b1;              // ERASE
-assign q7 = 1'b1;              // ERASE
+
+
+
 
 endmodule
