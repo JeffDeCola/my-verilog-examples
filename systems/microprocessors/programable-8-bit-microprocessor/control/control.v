@@ -24,7 +24,8 @@ wire [12:9]     BOP;
 wire [23:13]    CONTROL_BITS;                   // NOT IN THESIS
 wire [7:4]      COUNTER_IN_HIGH_SIG;
 wire [7:0]      BUFFER_IN;
-wire            MPC_LOAD_BAR;
+wire            MPC_LOAD_BAR;                   // I UPDATED THIS FROM THESIS
+wire            MPC_LOAD;                       // I UPDATED THIS FROM THESIS
 wire            COND_OUT;
 wire            HIGH;
 wire [7:0]      HIGH8;
@@ -42,6 +43,7 @@ assign CONTROL_BITS     = MW[23:13];
 assign HIGH             = 1'b1;
 assign HIGH8            = 8'b11111111;
 assign LOW              = 1'b0;
+assign MPC_LOAD_BAR     = ~MPC_LOAD;
 
 // COUNTER8 SECTION
 counter8 COUNTER_8 (
@@ -94,7 +96,7 @@ ta151_bar COND_SELECT (
 xor2 XOR_2 (
     .a(BOP[12]),
     .b(COND_OUT),
-    .y(MPC_LOAD_BAR)
+    .y(MPC_LOAD)  // I UPDATED THIS FROM THESIS
 );
 
 endmodule

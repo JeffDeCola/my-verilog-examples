@@ -1,5 +1,5 @@
 $date
-	Tue Oct 27 09:40:21 2020
+	Thu Oct 29 12:25:47 2020
 $end
 $version
 	Icarus Verilog
@@ -42,7 +42,7 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-0.
+1.
 0-
 0,
 0+
@@ -129,5 +129,5 @@ $end
 0,
 1-
 #170
-1.
+0.
 #180
