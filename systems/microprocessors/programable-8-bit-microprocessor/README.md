@@ -119,11 +119,13 @@ A little more top level detail from my
 
 ![Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
 
-## OPCODE (THE USER INSTRUCTION)
+## OPCODE (THE USER INSTRUCTION SET)
 
-The `opcode` (Operation Code) is the instruction giving to my processor to tell
-it what to do. In this design there can be up to 16 opcodes, two of which
-I have programed (in microcode - next section),
+The `opcode` (Operation Code) is the instruction set telling the processor
+it what to do. Instructions are implemented in microroutines (i.e. microcode).
+In this design there can be up to 16 opcodes.
+
+This is what I have coded so far,
 
 * [3:0] **OPCODE**
   * 0000:
@@ -156,10 +158,10 @@ This may help,
 The 24-bit microword (MW) fields are as follows,
 
 * [23:0] **MW**
-  * [3:0] **MICRO_AD_LOW**
+  * [3:0] **MICRO_AD_LOW** - Input into counter
   * [7:4] **MICRO_AD_HIGH**
-  * [8] **COUNT**
-  * [12:9] **BOP**
+  * [8] **COUNT** Counter counts
+  * [12:9] **BOP** Branch Operation for counter - Controls counter load
   * [23:13] CONTROL_BITS
     * [13] **A_SOURCE**
     * [14] **B_SOURCE**
@@ -170,6 +172,79 @@ The 24-bit microword (MW) fields are as follows,
 The first 13 bits are used in the control sections and the top 13 bits
 **CONTROL_BITS** are used in the process section.
 
+The bits do the following actions,
+
+| FIELD         | BITS     |  MEANING                                        |
+|--------------:|---------:|:------------------------------------------------|
+| **COUNT**     | **0**    | **Counter incr if not loaded (DEFAULT)**        |
+|               | 1        |                                                 |
+|               |          |                                                 |
+| **BOP**       | 0 000    | COND_SELECT = STATUS_BITS[0]                    |
+|               | 0 001    | COND_SELECT = low                               |
+|               | 0 010    | COND_SELECT = STATUS_BITS[1]                    |
+|               | 0 011    | COND_SELECT = STATUS_BITS[2]                    |
+|               | 0 100    | COND_SELECT = GO_BAR - Branch if G0             |
+|               | 0 101    | COND_SELECT = STATUS_BITS[3]                    |
+|               | 0 110    | COND_SELECT = low - Branch always               |
+|               | 0 111    | COND_SELECT = low - Branch Always, **Enable OP**|
+|               | 1 000    | COND_SELECT = STATUS_BITS[0]                    |
+|               | 1 001    | COND_SELECT = low                               |
+|               | 1 010    | COND_SELECT = STATUS_BITS[1]                    |
+|               | 1 011    | COND_SELECT = STATUS_BITS[2]                    |
+|               | 1 100    | COND_SELECT = GO_BAR - Branch if G0             |
+|               | 1 101    | COND_SELECT = STATUS_BITS[3]                    |
+|               | 1 110    | COND_SELECT = low - **Branch Never (DEFAULT)**  |
+|               | 1 111    | COND_SELECT = low                               |
+
+
+|               | 1 000       |                                        |
+|               | 0 000       |                                        |
+|               | 0 001       |                                        |
+|               | 1 001       |                                        |
+|               | 1 010       |                                        |
+|               | 0 010       |                                        |
+|               | 1 011       |                                        |
+|               | 0 011       |                                        |
+|               | 0 100       |                                        |
+|               | 1 100       | Branch if GO                           |
+|               | 0 101       |                                        |
+|               | 1 101       |                                        |
+|               | 0 111       | Branch always, **enable OP bits.**     |
+|               |            |                                         |
+|               |            |                                         |
+| **A_SOURCE**  | **0**      | **Temp reg drives ALU (DEFAULT)**       |
+|               | 1          | Input reg drives ALU                    |
+|               |            |                                         |
+| **B_SOURCE**  | **0**      | **Temp reg drives ALU (DEFAULT)**       |
+|               | 1          | Input reg drives ALU                    |
+|               |            |                                         |
+| **ALU_FUNC**  | 11111      | LOGIC - Pass A bus                      |
+|               | 10000      | LOGIC - Invert A bus                    |
+|               | 11010      | LOGIC -                                 |
+|               | 10101      | LOGIC -                                 |
+|               | 11110      | LOGIC -                                 |
+|               | 11011      | LOGIC -                                 |
+|               | 11001      | LOGIC -                                 |
+|               | 11100      | LOGIC -                                 |
+|               | **10011**  | **LOGIC - Output all ones (DEFAULT)**   | - I think this is 11100
+|               | 01111      | ARITH -                                 |
+|               | 01001      | ARITH -                                 |
+|               | 00110      | ARITH -                                 |
+|               | 00000      | ARITH -                                 |
+|               | 01100      | ARITH -                                 |
+|               |            |                                         |
+| **CIN**       | 1          | Carry input                             |
+|               | 0          | No Carry (DEFAULT)                      |
+|               |            |                                         |
+| **ALU_DEST**  | 110        |                                         |
+|               | 100        |                                         |
+|               | 010        |                                         |
+|               | 000        |                                         |
+|               | 101        |                                         |
+|               | 001        |                                         |
+|               | 011        | ??                                        |
+|               | **111**    | **Result not stored (Default)**         |
+
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
 
@@ -177,6 +252,8 @@ The microcode is located in
 
 This will put the processor into a known state and wait for go.
 We use opcode 0000 since the counter is reset to 0000.
+For some indication it's working correctly it also write 8'b10101010 (8'hAA) DATA_OUT
+(i.e. the F register) to show it's in a wait state.
 
 | # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|

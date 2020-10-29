@@ -28,7 +28,7 @@ initial begin
     $display("test start");
     D7 = 0; D6 = 0; D5 = 0; D4 = 0; D3 = 0; D2 = 0; D1 = 0; D0 = 0;
     C = 0; B = 0; A = 0;
-    EN = 0;
+    EN = 1;
 
     #10; C = 0; B = 0; A = 0;
     #10; D7 = 0; D6 = 0; D5 = 0; D4 = 0; D3 = 0; D2 = 0; D1 = 0; D0 = 1;
@@ -48,7 +48,7 @@ initial begin
     #10; D7 = 1; D6 = 0; D5 = 0; D4 = 0; D3 = 0; D2 = 0; D1 = 0; D0 = 0;
     #10
 
-    EN = 1;
+    EN = 0;
     #10
 
     $display("test complete");

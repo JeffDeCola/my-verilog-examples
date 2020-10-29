@@ -21,7 +21,7 @@ reg  y;
 assign w = ~y;
 
 always @ ( * ) begin
-    if (!en) begin
+    if (en) begin
         case({c,b,a})
             3'b000 : y <= d0;
             3'b001 : y <= d1;

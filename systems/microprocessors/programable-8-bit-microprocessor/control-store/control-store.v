@@ -24,90 +24,126 @@ assign microword = {control_bits, BOP, COUNT, MICRO_AD_HIGH, MICRO_AD_LOW};
 
 always @ (microaddress) begin
     case (microaddress)
-        // OPCODE 0000 - RESET - WAIT FOR GO
-        8'h00: begin
-            ALU_DEST <= 3'b001; CIN <= 1'b1; ALU_FUNC <= 5'b01111; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b1111; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'b1010; MICRO_AD_LOW <= 4'b0101;
+
+        // RESET - WAIT FOR GO ************************************************************************
+        8'h00: begin // Branch to address OE
+            ALU_DEST <= 3'b011; CIN <= 1'b0; ALU_FUNC <= 5'b10011; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
+            BOP <= 4'b1110; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hE;
         end
-        // OPCODE 0001
-        8'h10: begin
+        8'h0E: begin // ???????????
+            ALU_DEST <= 3'b100; CIN <= 1'b0; ALU_FUNC <= 5'b11100; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
+            BOP <= 4'b0110; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
+        end
+        8'h0F: begin // ???????????
+            ALU_DEST <= 3'b111; CIN <= 1'b0; ALU_FUNC <= 5'b10011; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
+            BOP <= 4'b0100; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hF;
+        end
+        8'h10: begin // ???????????
+            ALU_DEST <= 3'b111; CIN <= 1'b0; ALU_FUNC <= 5'b10011; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
+            BOP <= 4'b1111; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h1;
+        end
+
+        // OPCODE 0000 *********************************************************************************
+        8'h01: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b01011; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 0010
-        8'h20: begin
+
+        // OPCODE 0001 *********************************************************************************
+        8'h11: begin
+            ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b01011; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
+        end
+
+        // OPCODE 0010 *********************************************************************************
+        8'h21: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 0011 - ADD
-        8'h30: begin
+
+        // OPCODE 0011 - ADD **************************************************************************
+        8'h31: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 0100
-        8'h40: begin
+
+        // OPCODE 0100 *********************************************************************************
+        8'h41: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 0101
-        8'h50: begin
+
+        // OPCODE 0101 *********************************************************************************
+        8'h51: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 0110
-        8'h60: begin
+
+        // OPCODE 0110 *********************************************************************************
+        8'h61: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 0111 - SUBTRACT
-        8'h70: begin
+
+        // OPCODE 0111 - SUBTRACT **********************************************************************
+        8'h71: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1000
-        8'h80: begin
+
+        // OPCODE 1000 *********************************************************************************
+        8'h81: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1001
-        8'h90: begin
+
+        // OPCODE 1001 *********************************************************************************
+        8'h91: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1010
-        8'hA0: begin
+
+        // OPCODE 1010 *********************************************************************************
+        8'hA1: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1011
-        8'hB0: begin
+
+        // OPCODE 1011 *********************************************************************************
+        8'hB1: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1100
-        8'hC0: begin
+
+        // OPCODE 1100 *********************************************************************************
+        8'hC1: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1101
-        8'hD0: begin
+
+        // OPCODE 1101 *********************************************************************************
+        8'hD1: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1110
-        8'hE0: begin
+
+        // OPCODE 1110 *********************************************************************************
+        8'hE1: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
-        // OPCODE 1111
-        8'hF0: begin
+
+        // OPCODE 1111 *********************************************************************************
+        8'hF1: begin
             ALU_DEST <= 3'b000; CIN <= 1'b0; ALU_FUNC <= 5'b00000; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'b0000; MICRO_AD_LOW <= 4'b0000;
+            BOP <= 4'b0000; COUNT <= 1'b0; MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
         end
+
         default: begin
             ALU_DEST <= 3'b001; CIN <= 1'b1; ALU_FUNC <= 5'b01111; B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
             BOP <= 4'b1111; COUNT <= 1'b1; MICRO_AD_HIGH <= 4'b1010; MICRO_AD_LOW <= 4'b0101;
         end
+
     endcase
 end
 

@@ -53,24 +53,24 @@ initial begin
     OPCODE = 4'h0;
     DATA_IN_A = 8'h00;
     DATA_IN_B = 8'h00;
-    GO_BAR = 0;             // ACTIVE LOW
+    GO_BAR = 1;             // ACTIVE LOW
     RESET = 1;              // ACTIVE LOW
     JAM = 0;                // ACTIVE HIGH CAUSE MICROADDRESS TO BE 8'h11
     SYSTEM_CLK = 0;
 
-    // RESET THE COUNTER
+    // RESET THE COUNTER - WILL SET MICROADDRESS TO 0
     #15; RESET = 0;
     #20; RESET = 1;
-    #40;
+    #400;
 
     // ******************************************************
     // TEST 1 - ADD TWO NUMBERS
     OPCODE = 4'h1;
-    GO_BAR = 1;
+    GO_BAR = 0;
     DATA_IN_A = 8'h04;
     DATA_IN_B = 8'h03;
     
-    #20; GO_BAR = 0;
+    #20; GO_BAR = 1;
     #100;
 
     // ******************************************************
