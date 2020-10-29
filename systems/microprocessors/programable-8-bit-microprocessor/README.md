@@ -2,7 +2,7 @@
 
 _A programable 8-bit microprocessor I designed in VHDL for my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-I translated it from VHDL to verilog._
+I translated it here from VHDL to verilog._
 
 Table of Contents,
 
@@ -11,6 +11,7 @@ Table of Contents,
   * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
 * [OPCODE (THE USER INSTRUCTION)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction)
 * [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
+  * [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset)
   * [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
   * [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
 * [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#more-detail-under-the-hood)
@@ -75,8 +76,9 @@ Logic parts used,
 
 ## TOP LEVEL (HOW IT WORKS)
 
-Based on an instruction (opcode) this processor takes in data,
-processes that data (via the alu) and spits out the result. That's about it.
+**Based on an instruction (opcode) this processor takes in data,
+processes that data (via the alu and microcode instructions)
+and spits out the result. That's about it.**
 
 This may help,
 
@@ -95,9 +97,9 @@ OUTPUT,
 OTHER INPUTS,
 
 * **SYSTEM_CLK**  _Clock_
-* **GO_BAR** _Active Low kicks it off_
-* **JAM** _Active High will cause Microaddress to be 8'hff_
-* **RESET** _Reset (active low) the Counter_
+* **GO_BAR** _Active low kicks it off opcode_
+* **JAM** _Active high will cause Microaddress to be 8'hff_
+* **RESET** _Reset (active low) the counter (opcode 0000)_
 
 ### THE CONTROL AND PROCESSOR SECTION
 
@@ -124,15 +126,17 @@ it what to do. In this design there can be up to 16 opcodes, two of which
 I have programed (in microcode - next section),
 
 * [3:0] **OPCODE**
-  * 4'h0:
-    _TBD_
-  * 4'h1:
+  * 0000:
+    [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset)
+  * ...
+  * 0011:
     [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
-  * 4'h2:
+  * ...
+  * 0111:
     [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
-  * etc...
-  * 4'hF:
-    _TBD_
+  * ...
+  * 1111:
+    _tbd_
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
@@ -169,9 +173,21 @@ The first 13 bits are used in the control sections and the top 13 bits
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
 
+### RESET
+
+This will put the processor into a known state and wait for go.
+We use opcode 0000 since the counter is reset to 0000.
+
+| # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
+|--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
+| 1 |    000   |  0  |   00000  |     0    |     0    | 0000 |   0   |      0000     |     0000     |
+| 2 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+| 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
+| 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
+
 ### ADD
 
-To accomplish an **ADD** opcode instruction, the microcode is,
+To accomplish an **ADD** opcode instruction (0011), the microcode is,
 
 | # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
@@ -182,7 +198,7 @@ To accomplish an **ADD** opcode instruction, the microcode is,
 
 ### SUBTRACT
 
-To accomplish an **SUBTRACT** opcode instruction, the microcode is,
+To accomplish an **SUBTRACT** opcode instruction(0111), the microcode is,
 
 | # | ALU_DEST | CIN | ALU_FUNC | B_SOURCE | A_SOURCE |  BOP | COUNT | MICRO_AD_HIGH | MICRO_AD_LOW |
 |--:|:--------:|:---:|:--------:|:--------:|:--------:|:----:|:-----:|:-------------:|:------------:|
