@@ -57,7 +57,7 @@ initial begin
 
     // COUNT - 13, 14, 15, 0, 1, 2, 3, 4....
     ENT = 1; ENP = 1;
-    #1000
+    #300
 
     // STOP IT INHIBIT
     ENT = 0; ENP = 0;
@@ -65,7 +65,15 @@ initial begin
 
     // LET IT CONTINUE
     ENT = 1; ENP = 1;
-    #1000
+    #300
+
+    // LOAD - PRESET TO 05
+    #20; CLR_BAR = 1; LD_BAR = 0;
+         D = 0; C = 1; B = 0; A = 1;
+    #20 LD_BAR = 1;     
+
+    // COUNT
+    #100
 
     $display("test complete");
     $finish;

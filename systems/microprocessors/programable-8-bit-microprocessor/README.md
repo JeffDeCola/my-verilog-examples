@@ -176,25 +176,26 @@ The bits do the following actions,
 
 | FIELD         | BITS     |  MEANING                                        |
 |--------------:|---------:|:------------------------------------------------|
-| **COUNT**     | **0**    | **Counter incr if not loaded (DEFAULT)**        |
-|               | 1        |                                                 |
+| **COUNT**     | **1**    | **Counter will count if not loaded (DEFAULT)**  |
+|               | 0        | Counter will not count                          |
 |               |          |                                                 |
-| **BOP**       | 0 000    | COND_SELECT = STATUS_BITS[0]                    |
-|               | 0 001    | COND_SELECT = low                               |
-|               | 0 010    | COND_SELECT = STATUS_BITS[1]                    |
-|               | 0 011    | COND_SELECT = STATUS_BITS[2]                    |
-|               | 0 100    | COND_SELECT = GO_BAR - Branch if G0             |
-|               | 0 101    | COND_SELECT = STATUS_BITS[3]                    |
-|               | 0 110    | COND_SELECT = low - Branch always               |
-|               | 0 111    | COND_SELECT = low - Branch Always, **Enable OP**|
-|               | 1 000    | COND_SELECT = STATUS_BITS[0]                    |
-|               | 1 001    | COND_SELECT = low                               |
-|               | 1 010    | COND_SELECT = STATUS_BITS[1]                    |
-|               | 1 011    | COND_SELECT = STATUS_BITS[2]                    |
-|               | 1 100    | COND_SELECT = GO_BAR - Branch if G0             |
-|               | 1 101    | COND_SELECT = STATUS_BITS[3]                    |
-|               | 1 110    | COND_SELECT = low - **Branch Never (DEFAULT)**  |
-|               | 1 111    | COND_SELECT = low                               |
+| **BOP**       | 0 000    | COND_SELECT = STATUS_BITS[0] - ???              |
+|               | 0 001    | COND_SELECT = low - ???                         |
+|               | 0 010    | COND_SELECT = STATUS_BITS[1] - ???              |
+|               | 0 011    | COND_SELECT = STATUS_BITS[2] - ???              |
+|               | 0 100    | COND_SELECT = GO_BAR - Branch if G0_BAR         |
+|               | 0 101    | COND_SELECT = STATUS_BITS[3] - ???              |
+|               | 0 110    | COND_SELECT = low - **Count (DEFAULT)**         |
+|               | 0 111    | COND_SELECT = low - ???                         |
+|               | 1 000    | COND_SELECT = STATUS_BITS[0] - ???              |
+|               | 1 001    | COND_SELECT = low - ???                         |
+|               | 1 010    | COND_SELECT = STATUS_BITS[1]  - ???             |
+|               | 1 011    | COND_SELECT = STATUS_BITS[2]  - ???             |
+|               | 1 100    | COND_SELECT = GO_BAR - Branch if !G0_BAR        |
+|               | 1 101    | COND_SELECT = STATUS_BITS[3] - ???              |
+|               | 1 110    | COND_SELECT = low - Branch Always               |
+|               | 1 111    | COND_SELECT = low - Branch Always, **Enable OP**|
+|               |          | **This Also loads REG A amd REG B**             |
 |               |          |                                                 |
 | **A_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               |
 |               | 1        | Input reg drives ALU                            |
@@ -202,32 +203,50 @@ The bits do the following actions,
 | **B_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               |
 |               | 1        | Input reg drives ALU                            |
 |               |          |                                                 |
-| **ALU_FUNC**  | 11111    | LOGIC - Pass A bus                              |
-|               | 10000    | LOGIC - Invert A bus                            |
-|               | 11010    | LOGIC -                                         |
-|               | 10101    | LOGIC -                                         |
-|               | 11110    | LOGIC -                                         |
-|               | 11011    | LOGIC -                                         |
-|               | 11001    | LOGIC -                                         |
-|               | 11100    | LOGIC -                                         |
-|               | **10011**| **LOGIC - Output all ones (DEFAULT)**           | - I think this is 11100
-|               | 01111    | ARITH -                                         |
-|               | 01001    | ARITH -                                         |
-|               | 00110    | ARITH -                                         |
-|               | 00000    | ARITH -                                         |
-|               | 01100    | ARITH -                                         |
+| **ALU_FUNC**  | 0 0000   | M=0 ARITH -                                     |
+|               | 0 0001   | M=0 ARITH -                                     |
+|               | 0 0010   | M=0 ARITH -                                     |
+|               | 0 0011   | M=0 ARITH -                                     |
+|               | 0 0100   | M=0 ARITH -                                     |
+|               | 0 0101   | M=0 ARITH -                                     |
+|               | 0 0110   | M=0 ARITH -                                     |
+|               | 0 0111   | M=0 ARITH -                                     |
+|               | 0 1000   | M=0 ARITH -                                     |
+|               | 0 1001   | M=0 ARITH -                                     |
+|               | 0 1010   | M=0 ARITH -                                     |
+|               | 0 1011   | M=0 ARITH -                                     |
+|               | 0 1100   | M=0 ARITH -                                     |
+|               | 0 1101   | M=0 ARITH -                                     |
+|               | 0 1110   | M=0 ARITH -                                     |
+|               | 0 1111   | M=1 ARITH -                                     |
+|               | 1 0000   | M=1 LOGIC -                                     |
+|               | 1 0001   | M=1 LOGIC -                                     |
+|               | 1 0010   | M=1 LOGIC -                                     |
+|               | 1 0011   | M=1 LOGIC - O                                   |
+|               | 1 0100   | M=1 LOGIC -                                     |
+|               | 1 0101   | M=1 LOGIC -                                     |
+|               | 1 0110   | M=1 LOGIC -                                     |
+|               | 1 0111   | M=1 LOGIC -                                     |
+|               | 1 1000   | M=1 LOGIC -                                     |
+|               | 1 1001   | M=1 LOGIC -                                     |
+|               | 1 1010   | M=1 LOGIC -                                     |
+|               | 1 1011   | M=1 LOGIC -                                     |
+|               | 1 1100   | M=1 LOGIC - **1 (DEFAULT)**                     |
+|               | 1 1101   | M=1 LOGIC -                                     |
+|               | 1 1110   | M=1 LOGIC -                                     |
+|               | 1 1111   | M=1 LOGIC -                                     |
 |               |          |                                                 |
 | **CIN**       | 1        | Carry input                                     |
-|               | 0        | No Carry (DEFAULT)                              |
+|               | 0        | **No Carry (DEFAULT)**                          |
 |               |          |                                                 |
-| **ALU_DEST**  | 110      |                                                 |
-|               | 100      |                                                 |
-|               | 010      |                                                 |
-|               | 000      |                                                 |
-|               | 101      |                                                 |
-|               | 001      |                                                 |
-|               | 011      | ??                                              |
-|               | **111**  | **Result not stored (Default)**                 |
+| **ALU_DEST**  | 000      | F, TempB, TempA                                 |
+|               | 001      | F, TempB                                        |
+|               | 010      | F, TempA                                        |
+|               | 011      | F                                               |
+|               | 100      | TempB, TempA                                    |
+|               | 101      | TempB,                                          |
+|               | 110      | TempA                                           |
+|               | **111**  | **Result Not Stored (Default)**                 |
 
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
