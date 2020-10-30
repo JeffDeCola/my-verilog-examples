@@ -50,7 +50,7 @@ end
 // TESTCASE
 initial begin
     $display("test start");
-    OPCODE = 4'h0;
+    OPCODE = 4'b0000;
     DATA_IN_A = 8'h00;
     DATA_IN_B = 8'h00;
     GO_BAR = 1;             // ACTIVE LOW
@@ -61,11 +61,11 @@ initial begin
     // RESET THE COUNTER - WILL SET MICROADDRESS TO 0
     #15; RESET = 0;
     #20; RESET = 1;
-    #400;
+    #100;
 
     // ******************************************************
     // TEST 1 - ADD TWO NUMBERS
-    OPCODE = 4'h1;
+    OPCODE = 4'b0011;
     GO_BAR = 0;
     DATA_IN_A = 8'h04;
     DATA_IN_B = 8'h03;
@@ -75,7 +75,7 @@ initial begin
 
     // ******************************************************
     // TEST 2 - SUBTRACT TWO NUMBERS
-    OPCODE = 4'h2;
+    OPCODE = 4'b0011;
     GO_BAR = 1;
     DATA_IN_A = 8'h07;
     DATA_IN_B = 8'h02;
