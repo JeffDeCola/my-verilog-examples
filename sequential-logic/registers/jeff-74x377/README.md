@@ -24,6 +24,7 @@ I designed this processor form the 1976 Texas Instruments spec sheet.
 | x       |  1     |  X    | q      |
 | tick    |  0     |  1    | 1      |
 | tick    |  0     |  0    | 0      |
+| 0       |  X     |  X    | q      |
 
 ## VERILOG CODE
 

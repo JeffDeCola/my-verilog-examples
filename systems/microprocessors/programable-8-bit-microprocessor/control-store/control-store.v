@@ -27,37 +27,37 @@ always @ (microaddress) begin
 
         // RESET - WAIT FOR GO ************************************************************************
         8'h00: begin                                            // START RESET
-            ALU_DEST <= 3'b011;                                 // F Register
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b1110;                                     // Branch Always
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hC;        //
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hC;        // Branch to 8'h0C
         end
         8'h0C: begin                                            // COUNT - MICRO_AD DOESN'T MATTER
-            ALU_DEST <= 3'b100;                                 // ?????
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b0110;                                     // Count (DEFAULT)
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        //
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
-        8'h0D: begin                                            // WAIT - LOOP WAITING FO GO_BAR   
-            ALU_DEST <= 3'b000;                                 // ????
+        8'h0D: begin                                            // WAIT - LOOP WAITING FO GO_BAR - Output is F's  
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b0100;                                     // Branch if G0_BAR 
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        //
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // Branch to 8'h0D - Loop
         end
-        8'h0E: begin                                            // GET OPCODE
-            ALU_DEST <= 3'b000;                                 // ????
+        8'h0E: begin                                            // GET OPCODE ??????????????????????????????
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b1111;                                     // Branch always, Enable OP
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
             MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h1;        // The opcode will be the high

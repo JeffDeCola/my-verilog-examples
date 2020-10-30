@@ -35,7 +35,7 @@ end
 initial begin
     $display("test start");
     CLK = 0;
-    EN_BAR = 0;
+    EN_BAR = 1;
     D7 = 0; D6 = 0; D5 = 0; D4 = 0; D3 = 0; D2 = 0; D1 = 0; D0 = 0;
 
     // NOT ENABLE
