@@ -214,7 +214,7 @@ The bits do the following actions,
 |               | 0 0110   | M=0 ARITH -                                     |
 |               | 0 0111   | M=0 ARITH -                                     |
 |               | 0 1000   | M=0 ARITH -                                     |
-|               | 0 1001   | M=0 ARITH -                                     |
+|               | 0 1001   | M=0 ARITH -  A PLUS B (plus carry)              |
 |               | 0 1010   | M=0 ARITH -                                     |
 |               | 0 1011   | M=0 ARITH -                                     |
 |               | 0 1100   | M=0 ARITH -                                     |

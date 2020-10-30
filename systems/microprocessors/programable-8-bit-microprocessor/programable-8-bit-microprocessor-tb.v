@@ -67,24 +67,23 @@ initial begin
     // TEST 1 - ADD TWO NUMBERS
     OPCODE = 4'b0011;
     GO_BAR = 0;
-    DATA_IN_A = 8'h04;
-    DATA_IN_B = 8'h03;
+    DATA_IN_A = 8'h14;
+    DATA_IN_B = 8'h13;
     
+    #100
     #20; GO_BAR = 1;
-    #100;
+    #120;
 
     // ******************************************************
-    // TEST 2 - SUBTRACT TWO NUMBERS
+    // TEST 2 - ADD TWO NUMBERS
     OPCODE = 4'b0011;
-    GO_BAR = 1;
-    DATA_IN_A = 8'h07;
-    DATA_IN_B = 8'h02;
+    GO_BAR = 0;
+    DATA_IN_A = 8'h22;
+    DATA_IN_B = 8'h41;
 
-    #20; GO_BAR = 0;
-    #100;
-
-    // DONE
-    #20
+    #100
+    #20; GO_BAR = 1;
+    #120;
 
     $display("test complete");
     $finish;

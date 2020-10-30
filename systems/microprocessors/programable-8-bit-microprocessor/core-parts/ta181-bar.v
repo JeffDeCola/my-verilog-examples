@@ -23,6 +23,9 @@ module ta181_bar(
 // wire B0_SIG, B1_SIG, B2_SIG, B3_SIG;
 // wire F0_SIG, F1_SIG, F2_SIG, F3_SIG;
 
+assign CO = ~CO_BAR; // NOT IN THESIS
+assign CI_BAR = ~CI; // NOT IN THESIS
+
 // 4-bit arithmetic logic unit and function generator
 // Replaced ta181 in THESIS with jeff_74x181
 jeff_74x181 U1 (
@@ -34,17 +37,17 @@ jeff_74x181 U1 (
     .b2(B2_BAR),
     .b1(B1_BAR),
     .b0(B0_BAR),
-    .s3(3),
+    .s3(S3),
     .s2(S2),
     .s1(S1),
     .s0(S0),
     .m(M),
-    .ci_bar(CI),
+    .ci_bar(CI_BAR),
     .f3(F3_BAR),
     .f2(F2_BAR),
     .f1(F1_BAR),
     .f0(F0_BAR),
-    .co_bar(CO),
+    .co_bar(CO_BAR),
     .aeqb(AEQB),
     .x(P_BAR),
     .y(G_BAR)
