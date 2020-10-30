@@ -25,229 +25,121 @@ assign microword = {control_bits, BOP, COUNT, MICRO_AD_HIGH, MICRO_AD_LOW};
 always @ (microaddress) begin
     case (microaddress)
 
-        // RESET - WAIT FOR GO ************************************************************************
-        8'h00: begin                                            // START RESET
-            ALU_DEST <= 3'b011;                                 // F Register
+        // 8'h00 - RESET - WAIT FOR GO ************************************************************************
+        8'h00: begin                                            // START RESET - Flash 11 output
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b1110;                                     // Branch Always
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hC;        //
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hC;        // OC - Branch to 8'h0C
         end
-        8'h0C: begin                                            // COUNT - MICRO_AD DOESN'T MATTER
-            ALU_DEST <= 3'b100;                                 // ?????
+        8'h0C: begin                                            // COUNT - Flash 00 output
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // M=1 LOGIC - O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b0110;                                     // Count (DEFAULT)
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        //
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
-        8'h0D: begin                                            // WAIT - LOOP WAITING FO GO_BAR   
-            ALU_DEST <= 3'b000;                                 // ????
+        8'h0D: begin                                            // WAIT FOR GO_BAR - Output is F's  
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
-            BOP <= 4'b0100;                                     // Branch if G0_BAR 
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
+            BOP <= 4'b0100;                                     // Branch if G0_BAR (Will increment to next address)
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        //
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD - Branch to 8'h0D (Loop)
         end
         8'h0E: begin                                            // GET OPCODE
-            ALU_DEST <= 3'b000;                                 // ????
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b1111;                                     // Branch always, Enable OP
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h1;        // The opcode will be the high
+            MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h1;        // X1 - The opcode will be the high
         end
 
-        // OPCODE 0000 *********************************************************************************
-        8'h01: begin
-            ALU_DEST <= 3'b000;                                 //
-            CIN <= 1'b0;                                        //
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  //
-            BOP <= 4'b0000;                                     //
-            COUNT <= 1'b0;                                      //
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        //
-        end
+        // 8'h01 - OPCODE 0000 *********************************************************************************
 
-        // OPCODE 0001 *********************************************************************************
-        8'h11: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'h11 - OPCODE 0001 *********************************************************************************
 
-        // OPCODE 0010 *********************************************************************************
-        8'h21: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'h21 - OPCODE 0010 ********************************************************************************
 
-        // OPCODE 0011 - ADD **************************************************************************
-        8'h31: begin                                            // 
-            ALU_DEST <= 3'b000;                                 // ??????
+        // 8'h31 - OPCODE 0011 - ADD **************************************************************************
+        8'h31: begin                                            // ADD AND WAIT FOR GO TO RELEASE - THEN RESET
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            ALU_FUNC <= 5'b01001;                               // M=0 ARITH -  A PLUS B (plus carry)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
+            BOP <= 4'b0110;                                     // Count (DEFAULT)
+            COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'h32: begin                                            // WAIT FOR GO TO BE RELEASED
+            ALU_DEST <= 3'b111;                                 // Result Not Stored (Default) 
+            CIN <= 1'b0;                                        // No Carry (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
+            BOP <= 4'b1100;                                     // Branch if !G0_BAR (Will increment to next address)
+            COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
+            MICRO_AD_HIGH <= 4'h3; MICRO_AD_LOW <= 4'h2;        // 32 - Branch to 8'h32 (Loop)
+        end
+        8'h33: begin                                            // GOTO RESET
+            ALU_DEST <= 3'b111;                                 // Result Not Stored (Default) 
+            CIN <= 1'b0;                                        // No Carry (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b1110;                                     // Branch Always
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD - Branch to 8'h00 (TO RESET AGAIN)
         end
 
-        // OPCODE 0100 *********************************************************************************
-        8'h41: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
+        // 8'h41 - OPCODE 0100 *********************************************************************************
+
+        // 8'h51 - OPCODE 0101 *********************************************************************************
+
+        // 8'h61 - OPCODE 0110 *********************************************************************************
+
+        // 8'h71 - OPCODE 0111 - SUBTRACT **********************************************************************
+        8'h71: begin                                            // 
+            ALU_DEST <= 3'b011;                                 // F 
+            CIN <= 1'b0;                                        // No Carry (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
+            BOP <= 4'b1110;                                     // Branch Always
+            COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 00 - Branch to 8'h00
         end
 
-        // OPCODE 0101 *********************************************************************************
-        8'h51: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'h81 - OPCODE 1000 *********************************************************************************
 
-        // OPCODE 0110 *********************************************************************************
-        8'h61: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'h91 - OPCODE 1001 *********************************************************************************
 
-        // OPCODE 0111 - SUBTRACT **********************************************************************
-        8'h71: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'hA1 - OPCODE 1010 *********************************************************************************
 
-        // OPCODE 1000 *********************************************************************************
-        8'h81: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'hB1 - OPCODE 1011 *********************************************************************************
 
-        // OPCODE 1001 *********************************************************************************
-        8'h91: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'hC1 - OPCODE 1100 *********************************************************************************
 
-        // OPCODE 1010 *********************************************************************************
-        8'hA1: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'hD1 - OPCODE 1101 *********************************************************************************
 
-        // OPCODE 1011 *********************************************************************************
-        8'hB1: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'hE1 - OPCODE 1110 *********************************************************************************
 
-        // OPCODE 1100 *********************************************************************************
-        8'hC1: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
-
-        // OPCODE 1101 *********************************************************************************
-        8'hD1: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
-
-        // OPCODE 1110 *********************************************************************************
-        8'hE1: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
-
-        // OPCODE 1111 *********************************************************************************
-        8'hF1: begin
-            ALU_DEST <= 3'b000;
-            CIN <= 1'b0;
-            ALU_FUNC <= 5'b01011;
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;
-            BOP <= 4'b0000;
-            COUNT <= 1'b0;
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;
-        end
+        // 8'hF1 - OPCODE 1111 *********************************************************************************
 
         // DEFAULT **************************************************************************************
         default: begin                                          // KICK BACK TO RESET
-            ALU_DEST <= 3'b000;                                 // ??????
+            ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // No Carry (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // Temp reg drives ALU (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // Input reg drives ALU (TO GET SOME DATA TO ALU) 
             BOP <= 4'b1110;                                     // Branch Always
             COUNT <= 1'b1;                                      // Counter will count if not loaded (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 00 - Branch to 8'h00
         end
 
     endcase

@@ -2,18 +2,19 @@
 
 _A programable 8-bit microprocessor I designed in VHDL for my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-I translated it here from VHDL to verilog._
+As I translated it into verilog I wanted to change a few things,
+but I kept it pure because of my thesis, so here it is._
 
 Table of Contents,
 
 * [STATS](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
 * [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
   * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
-* [OPCODE (THE USER INSTRUCTION)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction)
+* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)
 * [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
-  * [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset)
-  * [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add)
-  * [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract)
+  * [RESET (opcode 0000)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
+  * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
+  * [SUBTRACT (opcode 0111)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
 * [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#more-detail-under-the-hood)
   * [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
   * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
@@ -158,19 +159,20 @@ This may help,
 The 24-bit microword (MW) fields are as follows,
 
 * [23:0] **MW**
-  * [3:0] **MICRO_AD_LOW** - Input into counter
+  * [3:0] **MICRO_AD_LOW** _Input address into counter_
   * [7:4] **MICRO_AD_HIGH**
-  * [8] **COUNT** Counter counts
-  * [12:9] **BOP** Branch Operation for counter - Controls counter load
+  * [8] **COUNT** _Enable Counter to count_
+  * [12:9] **BOP** _Branch OPeration for counter that controls counter load_
   * [23:13] CONTROL_BITS
-    * [13] **A_SOURCE**
+    * [13] **A_SOURCE** _Input to alu (input reg or temp reg)_
     * [14] **B_SOURCE**
-    * [19:15] **ALU_FUNC**
-    * [20] **CIN**
-    * [23:21] **ALU_DEST**
+    * [19:15] **ALU_FUNC** _The alu functions (refer to
+      [jeff-74x181](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181))_
+    * [20] **CIN** _Carry input for alu_
+    * [23:21] **ALU_DEST** _Output from alu (temp or f reg)_
 
 The first 13 bits are used in the control sections and the top 13 bits
-**CONTROL_BITS** are used in the process section.
+are used in the process section.
 
 The bits do the following actions,
 
@@ -212,7 +214,7 @@ The bits do the following actions,
 |               | 0 0110   | M=0 ARITH -                                     |
 |               | 0 0111   | M=0 ARITH -                                     |
 |               | 0 1000   | M=0 ARITH -                                     |
-|               | 0 1001   | M=0 ARITH -                                     |
+|               | 0 1001   | M=0 ARITH -  A PLUS B (plus carry)              |
 |               | 0 1010   | M=0 ARITH -                                     |
 |               | 0 1011   | M=0 ARITH -                                     |
 |               | 0 1100   | M=0 ARITH -                                     |
@@ -251,7 +253,7 @@ The bits do the following actions,
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
 
-### RESET
+### RESET (opcode 0000)
 
 This will put the processor into a known state and wait for go.
 We use opcode 0000 since the counter is reset to 0000.
@@ -265,7 +267,7 @@ For some indication it's working correctly it also write 8'b10101010 (8'hAA) DAT
 | 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
 | 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 
-### ADD
+### ADD (opcode 0011)
 
 To accomplish an **ADD** opcode instruction (0011), the microcode is,
 
@@ -276,7 +278,7 @@ To accomplish an **ADD** opcode instruction (0011), the microcode is,
 | 3 |    000   |  0  |   00000  |     1    |     0    | 0000 |   0   |      0000     |     0000     |
 | 4 |    000   |  1  |   00000  |     0    |     1    | 0000 |   0   |      0000     |     0000     |
 
-### SUBTRACT
+### SUBTRACT (opcode 0111)
 
 To accomplish an **SUBTRACT** opcode instruction(0111), the microcode is,
 

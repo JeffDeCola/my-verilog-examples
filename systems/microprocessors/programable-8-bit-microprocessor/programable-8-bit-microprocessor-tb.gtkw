@@ -1,23 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Fri Oct 30 02:14:53 2020
+[*] Fri Oct 30 18:52:02 2020
 [*]
 [dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.vcd"
-[dumpfile_mtime] "Fri Oct 30 02:11:48 2020"
-[dumpfile_size] 45627
+[dumpfile_mtime] "Fri Oct 30 18:51:35 2020"
+[dumpfile_size] 49254
 [savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.gtkw"
 [timestart] 0
 [size] 1920 968
 [pos] -1 -1
-*-5.772371 59 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-6.531264 489 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] programable_8_bit_microprocessor_tb.
 [treeopen] programable_8_bit_microprocessor_tb.uut.
-[treeopen] programable_8_bit_microprocessor_tb.uut.CONTROL_SECTION.
 [treeopen] programable_8_bit_microprocessor_tb.uut.CONTROL_SECTION.COUNTER_8.
-[sst_width] 197
+[sst_width] 314
 [signals_width] 222
 [sst_expanded] 1
-[sst_vpaned_height] 281
+[sst_vpaned_height] 452
 @28
 programable_8_bit_microprocessor_tb.SYSTEM_CLK
 programable_8_bit_microprocessor_tb.RESET
