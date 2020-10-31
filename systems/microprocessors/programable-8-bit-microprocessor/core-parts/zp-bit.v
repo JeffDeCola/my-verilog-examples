@@ -8,7 +8,7 @@ module zp_bit (
     output          ZP_BAR              // 
 );
 
-wire [4:0] W;
+wire [3:0] W;
 
 // Replaced nor2 in THESIS with Jeff's nor2
 nor2 U1 (

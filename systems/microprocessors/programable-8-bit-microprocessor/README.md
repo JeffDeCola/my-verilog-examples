@@ -9,8 +9,8 @@ Table of Contents,
 
 * [STATS](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
 * [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
-  * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
-* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)
+  * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)    
+* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)        
 * [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
   * [RESET (opcode 0000)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
   * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
@@ -120,7 +120,7 @@ This design is broken into two main sections,
 A little more top level detail from my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis),
 
-![Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.1-Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
+![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
 
 ## OPCODE (THE USER INSTRUCTION SET)
 
@@ -169,12 +169,12 @@ The 24-bit microword (MW) fields are as follows,
   * [8] **COUNT** _Enable Counter to count_
   * [12:9] **BOP** _Branch OPeration for counter that controls counter load_
   * [23:13] CONTROL_BITS
-    * [13] **A_SOURCE** _Input to alu (input reg or temp reg)_
+    * [13] **A_SOURCE** _Input to alu (Input reg or Temp reg)_
     * [14] **B_SOURCE**
     * [19:15] **ALU_FUNC** _The alu functions (refer to
       [jeff-74x181](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/alus/jeff-74x181))_
     * [20] **CIN** _Carry input for alu_
-    * [23:21] **ALU_DEST** _Output from alu (temp or f reg)_
+    * [23:21] **ALU_DEST** *Output from alu (TEMP_A TEMP_B or F registers)*
 
 The first 13 bits are used in the control sections and the top 13 bits
 are used in the process section.
@@ -247,7 +247,7 @@ The bits do the following actions,
 |               | 1 010    | COND_SELECT = STATUS_BITS[0] - **Branch if !C4**| !C4                 |
 |               | 1 011    | COND_SELECT = STATUS_BITS[1] - **Branch if !C8**| !C8                 |
 |               | 1 100    | COND_SELECT = GO_BAR - **Branch if !G0_BAR**    | !GO_BAR             |
-|               | 1 101    | COND_SELECT = STATUS_BITS[3] - ???              | !ZP (all 0s from F) |
+|               | 1 101    | COND_SELECT = STATUS_BITS[3] -**Branch if !ZP** | !ZP (all 0s from F) |
 |               | 1 110    | COND_SELECT = low - **Branch Always**           | BRANCH              |
 |               | 1 111    | COND_SELECT = low - **Branch on OP**            | OPCODE (LOAD A,B)   |
 |               |          | **This Also loads REG A amd REG B**             |                     |
@@ -303,8 +303,8 @@ The microcode is,
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
 | C1   | TB       |  0  | 0           | TEMP_B   | TEMP_A   | COUNT   |   1   | XX   |
 | C2   | TA       |  0  | B           | INPUT_B  | TEMP_A   | Z       |   1   | C5   |
-| C3   | TB       |  0  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
-| C4   | TA       |  0  | A_MINUS_1   | TEMP_B   | TEMP_A   | !Z      |   1   | C3   |
+| C3   | TB       |  1  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
+| C4   | TA       |  1  | A_MINUS_1   | TEMP_B   | TEMP_A   | !Z      |   1   | C3   |
 | C5   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   0   | C5   |
 | C6   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
 
@@ -359,7 +359,7 @@ The control section has five main parts,
     ([xor2.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.v))
     _replaced xor2_
 
-![Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.2-Control-Block-of-the-8-bit-Microprocessor.jpg)
+![Control-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Control-Block-of-the-8-bit-Microprocessor.jpg)
 
 ### PROCESSOR SECTION
 
@@ -421,7 +421,7 @@ The processor is a collection of registers, muxes and an alu,
     * U5 ([nand4.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/basic-code/combinational-logic/nand4/nand4.v))
       _Replaced nand4_
 
-![Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Figure-L.3-Processor-Block-of-the-8-bit-Microprocessor.jpg)
+![Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
 ## RUN (SIMULATE)
 
