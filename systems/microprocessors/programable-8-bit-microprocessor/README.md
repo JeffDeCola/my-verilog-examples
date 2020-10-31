@@ -213,10 +213,10 @@ The bits do the following actions,
 |               | 0 0011   | M=0 ARITH -                                     |
 |               | 0 0100   | M=0 ARITH -                                     |
 |               | 0 0101   | M=0 ARITH -                                     |
-|               | 0 0110   | M=0 ARITH -                                     |
+|               | 0 0110   | M=0 ARITH - A MINUS B                           | A_MINUS_B         |
 |               | 0 0111   | M=0 ARITH -                                     |
 |               | 0 1000   | M=0 ARITH -                                     |
-|               | 0 1001   | M=0 ARITH -  A PLUS B (plus carry)              | A_PLUS_B          |
+|               | 0 1001   | M=0 ARITH -  A PLUS B                           | A_PLUS_B          |
 |               | 0 1010   | M=0 ARITH -                                     |
 |               | 0 1011   | M=0 ARITH -                                     |
 |               | 0 1100   | M=0 ARITH -                                     |
@@ -283,7 +283,11 @@ To accomplish an **ADD** opcode instruction (0011), the microcode is,
 
 To accomplish an **SUBTRACT** opcode instruction(0111), the microcode is,
 
-**tbd**
+| ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
+|-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
+| 71   | F        |  1  | A_MINUS_B   | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| 72   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | !GO_BAR |   1   | 72   |
+| 73   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
 
 ### DEFAULT
 

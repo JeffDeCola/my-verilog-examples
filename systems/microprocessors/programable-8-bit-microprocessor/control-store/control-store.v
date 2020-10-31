@@ -105,14 +105,32 @@ always @ (microaddress) begin
         // 8'h61 - OPCODE 0110 *********************************************************************************
 
         // 8'h71 - OPCODE 0111 - SUBTRACT **********************************************************************
-        8'h71: begin // 
+        8'h71: begin // ADD AND WAIT FOR GO TO RELEASE - THEN RESET
             ALU_DEST <= 3'b011;                                 // F 
+            CIN <= 1'b1;                                        // CARRY
+            ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_A, INPUT_B 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'h72: begin // WAIT FOR GO TO BE RELEASED
+            ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
-            ALU_FUNC <= 5'b11100;                               // M=1 LOGIC - 1 (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_A, INPUT_B
+            BOP <= 4'b1100;                                     // !GO_BAR (Will increment to next address)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h7; MICRO_AD_LOW <= 4'h2;        // 72 - Branch to 8'h72 (Loop)
+        end
+        8'h73: begin // GOTO RESET
+            ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
             B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_A, INPUT_B 
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 00 - Branch to 8'h00
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD - Branch to 8'h00 (TO RESET AGAIN)
         end
 
         // 8'h81 - OPCODE 1000 *********************************************************************************
