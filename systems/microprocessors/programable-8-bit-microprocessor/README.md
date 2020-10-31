@@ -300,13 +300,12 @@ The microcode is,
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| C1   | TB_TA    |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| C2   | TB       |  0  | 0           | TEMP_B   | TEMP_A   | COUNT   |   1   | XX   |
-| C3   | TA       |  0  | B           | INPUT_B  | TEMP_A   | Z       |   1   | C6   |
-| C4   | TB       |  0  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
-| C5   | TA       |  0  | A_MINUS_1   | TEMP_B   | TEMP_A   | !Z      |   1   | C4   |
-| C6   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   0   | C6   |
-| C7   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+| C1   | TB       |  0  | 0           | TEMP_B   | TEMP_A   | COUNT   |   1   | XX   |
+| C2   | TA       |  0  | B           | INPUT_B  | TEMP_A   | Z       |   1   | C5   |
+| C3   | TB       |  0  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
+| C4   | TA       |  0  | A_MINUS_1   | TEMP_B   | TEMP_A   | !Z      |   1   | C3   |
+| C5   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   0   | C5   |
+| C6   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
 
 ### DEFAULT
 

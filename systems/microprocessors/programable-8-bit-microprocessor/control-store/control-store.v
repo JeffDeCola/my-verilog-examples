@@ -33,7 +33,16 @@ always @ (microaddress) begin
             B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_A, INPUT_B 
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD (DEFAULT)
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hC;        // OC
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hC;        // OB
+        end
+        8'h0B: begin // LOAD TEMP REGSITERS WITH 1s - Just so they don't have unknown output going into alu
+            ALU_DEST <= 3'b100;                                 // TB_TA 
+            CIN <= 1'b0;                                        // NO_CARRY
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_A, INPUT_B 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
         8'h0C: begin // COUNT - Flash 00 output
             ALU_DEST <= 3'b011;                                 // F 
@@ -142,16 +151,7 @@ always @ (microaddress) begin
         // 8'hB1 - OPCODE 1011 *********************************************************************************
 
         // 8'hC1 - OPCODE 1100 - MULTIPLY **********************************************************************
-        8'hC1: begin // LOAD TEMPS WITH ANYTHING - Just so they don't have unknown output going into alu
-            ALU_DEST <= 3'b100;                                 // TB_TA 
-            CIN <= 1'b0;                                        // NO_CARRY
-            ALU_FUNC <= 5'b10011;                               // 0
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_A, INPUT_B 
-            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
-            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
-        end
-        8'hC2: begin // ?????
+        8'hC1: begin // ?????
             ALU_DEST <= 3'b101;                                 // TB 
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b10011;                               // 0
@@ -160,16 +160,16 @@ always @ (microaddress) begin
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
-        8'hC3: begin // ??????
+        8'hC2: begin // ??????
             ALU_DEST <= 3'b110;                                 // TA
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11010;                               // B
             B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_A, TEMP_A 
             BOP <= 4'b0000;                                     // Z
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h6;        // C6
+            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h5;        // C5
         end
-        8'hC4: begin // ??????
+        8'hC3: begin // ??????
             ALU_DEST <= 3'b101;                                 // TB
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
@@ -178,25 +178,25 @@ always @ (microaddress) begin
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
-        8'hC5: begin // ??????
+        8'hC4: begin // ??????
             ALU_DEST <= 3'b110;                                 // TA 
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b01111;                               // A_MINUS_1 (MUST HAVE CARRY)
             B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
             BOP <= 4'b1000;                                     // !Z
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h4;        // C4
+            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h5;        // C3
         end
-        8'hC6: begin // WAIT FOR GO TO BE RELEASED
+        8'hC5: begin // WAIT FOR GO TO BE RELEASED
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11010;                               // B
             B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
             BOP <= 4'b1100;                                     // !GO_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h6;        // C6 (LOOP)
+            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h5;        // C5 (LOOP)
         end
-        8'hC7: begin // GOTO RESET - FLASH 00
+        8'hC6: begin // GOTO RESET - FLASH 00
             ALU_DEST <= 3'b011;                                 // F
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b00011;                               // 0
