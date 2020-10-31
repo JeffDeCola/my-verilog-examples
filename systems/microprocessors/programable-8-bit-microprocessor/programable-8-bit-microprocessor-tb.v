@@ -64,7 +64,7 @@ initial begin
     #100;
 
     // ******************************************************
-    // TEST 1 - ADD TWO NUMBERS
+    // TEST 1 - ADD - A PLUS B
     OPCODE = 4'b0011;
     GO_BAR = 0;
     DATA_IN_A = 8'h14;
@@ -75,13 +75,24 @@ initial begin
     #120;
 
     // ******************************************************
-    // TEST 2 - ADD TWO NUMBERS
-    OPCODE = 4'b0011;
+    // TEST 2 - SUBTRACT - A MINUS B
+    OPCODE = 4'b0111;
     GO_BAR = 0;
-    DATA_IN_A = 8'h22;
+    DATA_IN_A = 8'h81;
     DATA_IN_B = 8'h41;
 
     #100
+    #20; GO_BAR = 1;
+    #120;
+
+    // ******************************************************
+    // TEST 3 - MULTIPLICATION - A x B
+    OPCODE = 4'b1100;
+    GO_BAR = 0;
+    DATA_IN_A = 8'h02;
+    DATA_IN_B = 8'h02;
+
+    #300
     #20; GO_BAR = 1;
     #120;
 

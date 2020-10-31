@@ -177,80 +177,79 @@ are used in the process section.
 
 The bits do the following actions,
 
-| FIELD         | BITS     |  MEANING                                        | PNEUMONIC         |
-|--------------:|---------:|:------------------------------------------------|-------------------|
-| **COUNT**     | **1**    | **Counter will count if not loaded (DEFAULT)**  | COUNT_IF_NO_LD (D)|
-|               | 0        | Counter will not count                          | NO_COUNT          |
-|               |          |                                                 |                   |
-| **BOP**       | 0 000    | COND_SELECT = STATUS_BITS[0] - ???              | 1                 |
-|               | 0 001    | COND_SELECT = low - ???                         |
-|               | 0 010    | COND_SELECT = STATUS_BITS[1] - ???              |
-|               | 0 011    | COND_SELECT = STATUS_BITS[2] - ???              |
-|               | 0 100    | COND_SELECT = GO_BAR - Branch if G0_BAR         | GO_BAR            |
-|               | 0 101    | COND_SELECT = STATUS_BITS[3] - ???              |
-|               | 0 110    | COND_SELECT = low - **Count (DEFAULT)**         | COUNT (DEFAULT)   |
-|               | 0 111    | COND_SELECT = low - ???                         |
-|               | 1 000    | COND_SELECT = STATUS_BITS[0] - ???              |
-|               | 1 001    | COND_SELECT = low - ???                         |
-|               | 1 010    | COND_SELECT = STATUS_BITS[1]  - ???             |
-|               | 1 011    | COND_SELECT = STATUS_BITS[2]  - ???             |
-|               | 1 100    | COND_SELECT = GO_BAR - Branch if !G0_BAR        | !GO_BAR           |
-|               | 0 101    | COND_SELECT = STATUS_BITS[3] - ???              |
-|               | 1 101    | COND_SELECT = STATUS_BITS[3] - ???              |
-|               | 1 110    | COND_SELECT = low - Branch Always               | BRANCH
-|               | 1 111    | COND_SELECT = low - Branch on OP                | OPCODE            |
-|               |          | **This Also loads REG A amd REG B**             |                   |
-|               |          |                                                 |                   |
-| **A_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               | TEMP_A (DEFAULT)  |
-|               | 1        | Input reg drives ALU                            | INPUT_A           |
-|               |          |                                                 |                   |
-| **B_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               | TEMP_B (DEFAULT)  |
-|               | 1        | Input reg drives ALU                            | INPUT_B           |
-|               |          |                                                 |                   |
+| FIELD         | BITS     |  MEANING                                        | PNEUMONIC           |
+|--------------:|---------:|:------------------------------------------------|---------------------|
+| **ALU_DEST**  | 000      | F, TempB, TempA                                 | F_TB_TA             |
+|               | 001      | F, TempB                                        | F_TB                |
+|               | 010      | F, TempA                                        | F_TA                |
+|               | 011      | F                                               | F                   |
+|               | 100      | TempB, TempA                                    | TB_TA               |
+|               | 101      | TempB                                           | TB                  |
+|               | 110      | TempA                                           | TA                  |
+|               | **111**  | **Result Not Stored (Default)**                 | NONE (DEFAULT)      |
+|               |          |                                                 |                     |
+| **CIN**       | 1        | Carry input                                     | NO_CARRY (DEFAULT)  |
+|               | 0        | **No Carry (DEFAULT)**                          |                     |
+|               |          |                                                 |                     |
 | **ALU_FUNC**  | 0 0000   | M=0 ARITH -                                     |
 |               | 0 0001   | M=0 ARITH -                                     |
 |               | 0 0010   | M=0 ARITH -                                     |
 |               | 0 0011   | M=0 ARITH -                                     |
 |               | 0 0100   | M=0 ARITH -                                     |
 |               | 0 0101   | M=0 ARITH -                                     |
-|               | 0 0110   | M=0 ARITH -                                     |
+|               | 0 0110   | M=0 ARITH - A MINUS B                           | A_MINUS_B           |
 |               | 0 0111   | M=0 ARITH -                                     |
 |               | 0 1000   | M=0 ARITH -                                     |
-|               | 0 1001   | M=0 ARITH -  A PLUS B (plus carry)              | A_PLUS_B          |
+|               | 0 1001   | M=0 ARITH - A PLUS B                            | A_PLUS_B            |
 |               | 0 1010   | M=0 ARITH -                                     |
 |               | 0 1011   | M=0 ARITH -                                     |
 |               | 0 1100   | M=0 ARITH -                                     |
 |               | 0 1101   | M=0 ARITH -                                     |
 |               | 0 1110   | M=0 ARITH -                                     |
-|               | 0 1111   | M=1 ARITH -                                     |
+|               | 0 1111   | M=1 ARITH - A MINUS 1                           | A_MINUS_1           |
 |               | 1 0000   | M=1 LOGIC -                                     |
 |               | 1 0001   | M=1 LOGIC -                                     |
 |               | 1 0010   | M=1 LOGIC -                                     |
-|               | 1 0011   | M=1 LOGIC - O                                   | 0                 |
+|               | 1 0011   | M=1 LOGIC - O                                   | 0                   |
 |               | 1 0100   | M=1 LOGIC -                                     |
 |               | 1 0101   | M=1 LOGIC -                                     |
 |               | 1 0110   | M=1 LOGIC -                                     |
 |               | 1 0111   | M=1 LOGIC -                                     |
 |               | 1 1000   | M=1 LOGIC -                                     |
 |               | 1 1001   | M=1 LOGIC -                                     |
-|               | 1 1010   | M=1 LOGIC -                                     |
+|               | 1 1010   | M=1 LOGIC - B                                   | B                   |
 |               | 1 1011   | M=1 LOGIC -                                     |
-|               | 1 1100   | M=1 LOGIC - **1 (DEFAULT)**                     | 1 (DEFAULT)       |
+|               | 1 1100   | M=1 LOGIC - **1 (DEFAULT)**                     | 1 (DEFAULT)         |
 |               | 1 1101   | M=1 LOGIC -                                     |
 |               | 1 1110   | M=1 LOGIC -                                     |
-|               | 1 1111   | M=1 LOGIC -                                     |                   |
-|               |          |                                                 | CARRY             |
-| **CIN**       | 1        | Carry input                                     | NO_CARRY (DEFAULT)|
-|               | 0        | **No Carry (DEFAULT)**                          |                   |
-|               |          |                                                 |                   |
-| **ALU_DEST**  | 000      | F, TempB, TempA                                 | F_TB_TA           |
-|               | 001      | F, TempB                                        | F_TB              |
-|               | 010      | F, TempA                                        | F_TA              |
-|               | 011      | F                                               | F                 |
-|               | 100      | TempB, TempA                                    | TB_TA             |
-|               | 101      | TempB,                                          | TB                |
-|               | 110      | TempA                                           | TA                |
-|               | **111**  | **Result Not Stored (Default)**                 | NONE (DEFAULT)    |
+|               | 1 1111   | M=1 LOGIC -                                     |                     |
+|               |          |                                                 |                     |
+| **B_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               | TEMP_B (DEFAULT)    |
+|               | 1        | Input reg drives ALU                            | INPUT_B             |
+|               |          |                                                 |                     |
+| **A_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               | TEMP_A (DEFAULT)    |
+|               | 1        | Input reg drives ALU                            | INPUT_A             |
+|               |          |                                                 |                     |
+| **BOP**       | 0 000    | COND_SELECT = STATUS_BITS[2] - **Branch on Z**  | Z (all 1s from alu) |
+|               | 0 001    | COND_SELECT = low - ???                         |
+|               | 0 010    | COND_SELECT = STATUS_BITS[0] - **Branch if C4** | C4                  |
+|               | 0 011    | COND_SELECT = STATUS_BITS[1] - **Branch if C8** | C8                  |
+|               | 0 100    | COND_SELECT = GO_BAR - **Branch if G0_BAR**     | GO_BAR              |
+|               | 0 101    | COND_SELECT = STATUS_BITS[3] - **Branch if ZP** | ZP (all 0s from F)  |
+|               | 0 110    | COND_SELECT = low - **Count (DEFAULT)**         | COUNT (DEFAULT)     |
+|               | 0 111    | COND_SELECT = low - ???                         |
+|               | 1 000    | COND_SELECT = STATUS_BITS[2] - **Branch if !Z** | !Z (all 1s from alu)|
+|               | 1 001    | COND_SELECT = low - ???                         |
+|               | 1 010    | COND_SELECT = STATUS_BITS[0] - **Branch if !C4**| !C4                 |
+|               | 1 011    | COND_SELECT = STATUS_BITS[1] - **Branch if !C8**| !C8                 |
+|               | 1 100    | COND_SELECT = GO_BAR - **Branch if !G0_BAR**    | !GO_BAR             |
+|               | 1 101    | COND_SELECT = STATUS_BITS[3] - ???              | !ZP (all 0s from F) |
+|               | 1 110    | COND_SELECT = low - **Branch Always**           | BRANCH              |
+|               | 1 111    | COND_SELECT = low - **Branch on OP**            | OPCODE (LOAD A,B)   |
+|               |          | **This Also loads REG A amd REG B**             |                     |
+|               |          |                                                 |                     |
+| **COUNT**     | **1**    | **Counter will count if not loaded (DEFAULT)**  | COUNT_IF_NO_LD (D)  |
+|               | 0        | Counter will not count                          | NO_COUNT            |
 
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
@@ -259,7 +258,7 @@ The microcode is located in
 
 This will put the processor into a known state and wait for go.
 We use opcode 0000 since the counter is reset to 0000.
-For some indication it's working correctly it also write 8'b10101010 (8'hAA) DATA_OUT
+For some indication it's working correctly it also outputs 8'h11 to DATA_OUT
 (i.e. the F register) to show it's in a wait state.
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
@@ -271,19 +270,45 @@ For some indication it's working correctly it also write 8'b10101010 (8'hAA) DAT
 
 ### ADD (opcode 0011)
 
-To accomplish an **ADD** opcode instruction (0011), the microcode is,
+This will add A PLUS B. T The microcode is,
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
 | 31   | F        |  0  | A_PLUS_B    | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
 | 32   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | !GO_BAR |   1   | 32   |
-| 33   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+| 33   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
 
 ### SUBTRACT (opcode 0111)
 
-To accomplish an **SUBTRACT** opcode instruction(0111), the microcode is,
+This will subtract A MINUS B. The microcode is,
 
-**tbd**
+| ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
+|-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
+| 71   | F        |  1  | A_MINUS_B   | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| 72   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | !GO_BAR |   1   | 72   |
+| 73   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+
+### MULTIPLICATION (opcode 1100)
+
+This will multiply A TIMES B. Keep the numbers small to fit into 8-bits.
+The steps are,
+
+*  71 - CLEAR B TEMP REGISTERS
+* LOAD A TEMP 
+* MULTIPLY BY 0?  Yes GOTO, NO GOTO
+*
+
+The microcode is,
+
+| ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
+|-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
+| C1   | TB_TA    |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| C2   | TB       |  0  | 0           | TEMP_B   | TEMP_A   | COUNT   |   1   | XX   |
+| C3   | TA       |  0  | B           | INPUT_B  | TEMP_A   | Z       |   1   | C6   |
+| C4   | TB       |  0  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
+| C5   | TA       |  0  | A_MINUS_1   | TEMP_B   | TEMP_A   | !Z      |   1   | C4   |
+| C6   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   0   | C6   |
+| C7   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
 
 ### DEFAULT
 
