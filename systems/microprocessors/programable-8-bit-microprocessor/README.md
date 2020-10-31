@@ -9,8 +9,8 @@ Table of Contents,
 
 * [STATS](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
 * [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
-  * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)    
-* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)        
+  * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
+* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)
 * [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
   * [RESET (opcode 0000)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
   * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
@@ -120,7 +120,7 @@ This design is broken into two main sections,
 A little more top level detail from my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis),
 
-![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
+![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
 
 ## OPCODE (THE USER INSTRUCTION SET)
 
@@ -359,7 +359,7 @@ The control section has five main parts,
     ([xor2.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.v))
     _replaced xor2_
 
-![Control-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Control-Block-of-the-8-bit-Microprocessor.jpg)
+![Control-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/Control-Block-of-the-8-bit-Microprocessor.jpg)
 
 ### PROCESSOR SECTION
 
@@ -421,7 +421,7 @@ The processor is a collection of registers, muxes and an alu,
     * U5 ([nand4.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/basic-code/combinational-logic/nand4/nand4.v))
       _Replaced nand4_
 
-![Processor-Block-of-the-8-bit-Microprocessor.jpg](https://github.com/JeffDeCola/my-masters-thesis/blob/master/appendices/appendix-l/figures/Processor-Block-of-the-8-bit-Microprocessor.jpg)
+![Processor-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/Processor-Block-of-the-8-bit-Microprocessor.jpg)
 
 ## RUN (SIMULATE)
 
