@@ -86,13 +86,13 @@ initial begin
     #120;
 
     // ******************************************************
-    // TEST 3 - MULTIPLICATION - A x B
+    // TEST 3 - MULTIPLY - A x B
     OPCODE = 4'b1100;
     GO_BAR = 0;
-    DATA_IN_A = 8'h02;
+    DATA_IN_A = 8'h03;
     DATA_IN_B = 8'h02;
 
-    #300
+    #500
     #20; GO_BAR = 1;
     #120;
 
