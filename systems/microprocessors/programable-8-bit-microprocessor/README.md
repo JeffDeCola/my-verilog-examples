@@ -267,7 +267,8 @@ For some indication it's working correctly it also outputs 8'h11 to DATA_OUT
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| 00   | F        |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | OC   |
+| 00   | F        |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | OB   |
+| 0B   | TB_TA    |  0  | 1           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
 | 0C   | F        |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
 | OD   | F        |  0  | 1           | INPUT_B  | INPUT_A  | G0_BAR  |   1   | OD   |
 | OE   | F        |  0  | 1           | INPUT_B  | INPUT_A  | OPCODE  |   1   | X1   |
