@@ -34,9 +34,11 @@ Documentation and reference,
   is a free verilog simulator and synthesis tool
 * [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
   is a free waveform viewer
-* My cheat sheet on
-  [SystemVerilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/languages/systemverilog-cheat-sheet)
-  
+* [SystemVerilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/languages/systemverilog-cheat-sheet)
+  cheat sheet
+* [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+  cheat sheet for synthesis and burning an FPGA
+
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## SYSTEMVERILOG EXAMPLES
@@ -46,7 +48,9 @@ Each example uses
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-to view the output._
+to view the output. I also used
+[xilinx vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+on some designs to synthesize and program an FPGA on a development board._
 
 ### BASIC CODE
 
