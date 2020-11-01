@@ -444,7 +444,7 @@ This simulation will send a few opcodes to the processor.
     #100;
 
     // ******************************************************
-    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35  =  55)
+    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35 = 55)
     OPCODE = 4'b0011;
     GO_BAR = 0;
     DATA_IN_A = 8'h14;
@@ -455,7 +455,7 @@ This simulation will send a few opcodes to the processor.
     #120;
 
     // ******************************************************
-    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64) 
+    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64)
     OPCODE = 4'b0111;
     GO_BAR = 0;
     DATA_IN_A = 8'h81;
