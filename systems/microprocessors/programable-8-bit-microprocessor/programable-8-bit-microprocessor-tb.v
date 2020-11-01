@@ -64,18 +64,18 @@ initial begin
     #100;
 
     // ******************************************************
-    // TEST 1 - ADD - A PLUS B
+    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35  =  55)
     OPCODE = 4'b0011;
     GO_BAR = 0;
     DATA_IN_A = 8'h14;
-    DATA_IN_B = 8'h13;
-    
+    DATA_IN_B = 8'h23;
+
     #100
     #20; GO_BAR = 1;
     #120;
 
     // ******************************************************
-    // TEST 2 - SUBTRACT - A MINUS B
+    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64) 
     OPCODE = 4'b0111;
     GO_BAR = 0;
     DATA_IN_A = 8'h81;
@@ -86,11 +86,11 @@ initial begin
     #120;
 
     // ******************************************************
-    // TEST 3 - MULTIPLY - A x B
+    // TEST 3 - MULTIPLY - 8'h05 x 8'h07 = 8'h23 (5 x 7 = 35)
     OPCODE = 4'b1100;
     GO_BAR = 0;
-    DATA_IN_A = 8'h03;
-    DATA_IN_B = 8'h03;
+    DATA_IN_A = 8'h05;
+    DATA_IN_B = 8'h07;
 
     #500
     #20; GO_BAR = 1;

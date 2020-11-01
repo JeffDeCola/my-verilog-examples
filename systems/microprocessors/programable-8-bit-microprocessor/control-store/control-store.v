@@ -151,6 +151,8 @@ always @ (microaddress) begin
         // 8'hB1 - OPCODE 1011 *********************************************************************************
 
         // 8'hC1 - OPCODE 1100 - MULTIPLY **********************************************************************
+        // THE CONCEPT IT TEMP_REGISTER_A WILL START WITH DATA_IN_B AND COUNT DOWN TO 0
+        // AND TEMP_REGISTER_B WILL JUST ADD DATA_IN_A TO ITSELF UNTIL THE COUNT DOWN IS 0
         8'hC1: begin // LOAD 0 (CLEAR) TO TEMP_REGISTER_B
             ALU_DEST <= 3'b101;                                 // TB
             CIN <= 1'b0;                                        // NO_CARRY
@@ -177,40 +179,51 @@ always @ (microaddress) begin
             B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A
             BOP <= 4'b1101;                                     // !ZP (all O's from F)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h6;        // C6
+            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h7;        // C7
         end
-        // OK - LETS KEEP ADDING A        
-        8'hC4: begin // ADD INPUT A TO SUM AND DECREMENT
-            ALU_DEST <= 3'b101;                                 // TB
-            CIN <= 1'b1;                                        // CARRY
-            ALU_FUNC <= 5'b00110;                               // A_PLUS_B (MUST HAVE CARRY)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b1;                  // TEMP_B, INPUT_A 
+        8'hC4: begin // TEMP_REGISTER_A -1 => TEMP_REGISTER_A (WE NEED TO SET UP THE COUNTER WITH 1 LESS - TRUST ME)
+            ALU_DEST <= 3'b010;                                 // F_TA 
+            CIN <= 1'b0;                                        // NO_CARRY
+            ALU_FUNC <= 5'b01111;                               // A_MINUS_1
+            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // X, TEMP_A
             BOP <= 4'b0110;                                     // COUNT (DEFAULT)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
-        8'hC5: begin // DECREMENT A UNTIL 0
-            ALU_DEST <= 3'b110;                                 // TA 
-            CIN <= 1'b1;                                        // CARRY
-            ALU_FUNC <= 5'b01111;                               // A_MINUS_1 (MUST HAVE CARRY)
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
-            BOP <= 4'b1000;                                     // !Z (all 1s from alu)
-            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h4;        // C4
-        end
-        8'hC6: begin // WAIT FOR GO TO BE RELEASED
-            ALU_DEST <= 3'b011;                                 // F 
+        // -------------------------------------------------------------------------------------
+        // OK - LETS KEEP ADDING A FOR HOW MANY TIMES OF B  
+                8'hC5: begin // REGISTER_A + TEMP_REGISTER_B => TEMP_REGISTER_B
+                    ALU_DEST <= 3'b101;                                 // TB
+                    CIN <= 1'b0;                                        // NO_CARRY
+                    ALU_FUNC <= 5'b01001;                               // A_PLUS_B
+                    B_SOURCE <= 1'b0; A_SOURCE<= 1'b1;                  // TEMP_B, INPUT_A
+                    BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                    COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                    MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+                end
+                8'hC6: begin // DECREMENT TEMP_REGISTER_A AND CHECK FOR 0 IN REGISTER_F
+                    ALU_DEST <= 3'b010;                                 // F_TA 
+                    CIN <= 1'b0;                                        // NO_CARRY
+                    ALU_FUNC <= 5'b01111;                               // A_MINUS_1
+                    B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
+                    BOP <= 4'b0101;                                     // ZP (all O's from F)
+                    COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                    MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h5;        // C5
+                end
+        // --------------------------------------------------------------------------------------        
+        8'hC7: begin // WAIT FOR GO TO BE RELEASED
+            ALU_DEST <= 3'b011;                                 // F
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11010;                               // B
             B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
             BOP <= 4'b1100;                                     // !GO_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h6;        // C6 (LOOP)
+            MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h7;        // C7 (LOOP)
         end
-        8'hC7: begin // GOTO RESET - FLASH 00
+        8'hC8: begin // GOTO RESET - FLASH 00
             ALU_DEST <= 3'b011;                                 // F
             CIN <= 1'b0;                                        // NO_CARRY
-            ALU_FUNC <= 5'b00011;                               // 0
+            ALU_FUNC <= 5'b10011;                               // O
             B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
