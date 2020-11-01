@@ -485,4 +485,11 @@ I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardw
 and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
 
+Focus on DATA_IN_A, DATA_IN_B and DATA_OUT. You can see the RESET where the
+output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
+
 ![programable-8-bit-microprocessor-waveform.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform.jpg)
+
+A little more detail,
+
+![programable-8-bit-microprocessor-waveform-more-detail.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform-more-detail.jpg)
