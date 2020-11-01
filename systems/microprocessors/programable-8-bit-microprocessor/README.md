@@ -192,8 +192,8 @@ The bits do the following actions,
 |               | 110      | TempA                                           | TA                  |
 |               | **111**  | **Result Not Stored (Default)**                 | NONE (DEFAULT)      |
 |               |          |                                                 |                     |
-| **CIN**       | 1        | Carry input                                     | NO_CARRY (DEFAULT)  |
-|               | 0        | **No Carry (DEFAULT)**                          |                     |
+| **CIN**       | 1        | Carry input                                     | CARRY               |
+|               | 0        | **No Carry (DEFAULT)**                          | NO_CARRY (DEFAULT)  |
 |               |          |                                                 |                     |
 | **ALU_FUNC**  | 0 0000   | M=0 ARITH -                                     |
 |               | 0 0001   | M=0 ARITH -                                     |
@@ -234,23 +234,22 @@ The bits do the following actions,
 | **A_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               | TEMP_A (DEFAULT)    |
 |               | 1        | Input reg drives ALU                            | INPUT_A             |
 |               |          |                                                 |                     |
-| **BOP**       | 0 000    | COND_SELECT = STATUS_BITS[2] - **Branch on Z**  | Z (all 1s from alu) |
-|               | 0 001    | COND_SELECT = low - ???                         |
-|               | 0 010    | COND_SELECT = STATUS_BITS[0] - **Branch if C4** | C4                  |
-|               | 0 011    | COND_SELECT = STATUS_BITS[1] - **Branch if C8** | C8                  |
-|               | 0 100    | COND_SELECT = GO_BAR - **Branch if G0_BAR**     | GO_BAR              |
-|               | 0 101    | COND_SELECT = STATUS_BITS[3] - **Branch if ZP** | ZP (all 0s from F)  |
-|               | 0 110    | COND_SELECT = low - **Count (DEFAULT)**         | COUNT (DEFAULT)     |
-|               | 0 111    | COND_SELECT = low - ???                         |
-|               | 1 000    | COND_SELECT = STATUS_BITS[2] - **Branch if !Z** | !Z (all 1s from alu)|
-|               | 1 001    | COND_SELECT = low - ???                         |
-|               | 1 010    | COND_SELECT = STATUS_BITS[0] - **Branch if !C4**| !C4                 |
-|               | 1 011    | COND_SELECT = STATUS_BITS[1] - **Branch if !C8**| !C8                 |
-|               | 1 100    | COND_SELECT = GO_BAR - **Branch if !G0_BAR**    | !GO_BAR             |
-|               | 1 101    | COND_SELECT = STATUS_BITS[3] -**Branch if !ZP** | !ZP (all 0s from F) |
-|               | 1 110    | COND_SELECT = low - **Branch Always**           | BRANCH              |
-|               | 1 111    | COND_SELECT = low - **Branch on OP**            | OPCODE (LOAD A,B)   |
-|               |          | **This Also loads REG A amd REG B**             |                     |
+| **BOP**       | 0 000    | Branch on Z (all 1's from ALU)                  | Z (all 1's from alu)|
+|               | 0 001    | COUNT - low                                     | COUNT               |
+|               | 0 010    | Branch if C4                                    | C4                  |
+|               | 0 011    | Branch if C8                                    | C8                  |
+|               | 0 100    | Branch if G0_BAR                                | GO_BAR              |
+|               | 0 101    | Branch if ZP | ZP (all 0's from F)              | ZP (all O's from F) |
+|               | 0 110    | COUNT - low - **(DEFAULT)**                     | COUNT (DEFAULT)     |
+|               | 0 111    | COUNT - low                                     | COUNT               |
+|               | 1 000    | Branch if !Z (all 1's from ALU)                 | !Z (all 1s from alu)|
+|               | 1 001    | Branch Always - low                             | BRANCH              |
+|               | 1 010    | Branch if !C4                                   | !C4                 |
+|               | 1 011    | Branch if !C8                                   | !C8                 |
+|               | 1 100    | Branch if !G0_BAR                               | !GO_BAR             |
+|               | 1 101    | Branch if !ZP | !ZP (all 0's from F)            | !ZP (all O's from F)|
+|               | 1 110    | Branch Always - low                             | BRANCH              |
+|               | 1 111    | Branch on OPCODE (This also loads input Reg)    | OPCODE (LOADS A,B)  |
 |               |          |                                                 |                     |
 | **COUNT**     | **1**    | **Counter will count if not loaded (DEFAULT)**  | COUNT_IF_NO_LD (D)  |
 |               | 0        | Counter will not count                          | NO_COUNT            |
@@ -314,7 +313,7 @@ If system runs into trouble, it will default to this and send back to RESET.
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| deflt| F        |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | O0   |
+| deflt| F        |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 00   |
 
 ## MORE DETAIL (UNDER THE HOOD)
 
