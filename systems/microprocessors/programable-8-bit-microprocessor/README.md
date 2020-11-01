@@ -485,4 +485,4 @@ I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardw
 and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
 
-![programable-8-bit-microprocessor.jpg](../../../docs/pics/programable-8-bit-microprocessor.jpg)
+![programable-8-bit-microprocessor-waveform.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform.jpg)
