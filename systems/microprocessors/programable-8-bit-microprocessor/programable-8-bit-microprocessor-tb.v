@@ -90,7 +90,7 @@ initial begin
     OPCODE = 4'b1100;
     GO_BAR = 0;
     DATA_IN_A = 8'h03;
-    DATA_IN_B = 8'h05;
+    DATA_IN_B = 8'h03;
 
     #500
     #20; GO_BAR = 1;
