@@ -195,38 +195,38 @@ The bits do the following actions,
 | **CIN**       | 1        | Carry input                                     | CARRY               |
 |               | 0        | **No Carry (DEFAULT)**                          | NO_CARRY (DEFAULT)  |
 |               |          |                                                 |                     |
-| **ALU_FUNC**  | 0 0000   | M=0 ARITH -                                     |
-|               | 0 0001   | M=0 ARITH -                                     |
-|               | 0 0010   | M=0 ARITH -                                     |
-|               | 0 0011   | M=0 ARITH -                                     |
-|               | 0 0100   | M=0 ARITH -                                     |
-|               | 0 0101   | M=0 ARITH -                                     |
-|               | 0 0110   | M=0 ARITH - A MINUS B                           | A_MINUS_B           |
-|               | 0 0111   | M=0 ARITH -                                     |
-|               | 0 1000   | M=0 ARITH -                                     |
+| **ALU_FUNC**  | 0 0000   | M=0 ARITH -  A                                  | A                   | 
+|               | 0 0001   | M=0 ARITH - A+B                                 | A+B                 |
+|               | 0 0010   | M=0 ARITH - A+!B                                | A+!B                |
+|               | 0 0011   | M=0 ARITH - MINUS 1 (2's compliment)            | MINUS 1             |
+|               | 0 0100   | M=0 ARITH - A PLUS A(!B)                        | A PLUS A(!B)        |
+|               | 0 0101   | M=0 ARITH - (A+B) PLUS A(!B)                    | (A+B) PLUS A(!B)    |
+|               | 0 0110   | M=0 ARITH - A MINUS B MINUS 1                   | A MINUS B MINUS 1   |
+|               | 0 0111   | M=0 ARITH - A(!B) MINUS 1                       | A(!B) MINUS 1       |
+|               | 0 1000   | M=0 ARITH - A PLUS AB                           | A PLUS AB           |
 |               | 0 1001   | M=0 ARITH - A PLUS B                            | A_PLUS_B            |
-|               | 0 1010   | M=0 ARITH -                                     |
-|               | 0 1011   | M=0 ARITH -                                     |
-|               | 0 1100   | M=0 ARITH -                                     |
-|               | 0 1101   | M=0 ARITH -                                     |
-|               | 0 1110   | M=0 ARITH -                                     |
+|               | 0 1010   | M=0 ARITH - (A+!B) PLUS AB                      | (A+!B) PLUS AB      |
+|               | 0 1011   | M=0 ARITH - AB MINUS 1                          | AB MINUS 1          |
+|               | 0 1100   | M=0 ARITH - A PLUS A (bit shifted)              | A PLUS A (bit shift)|
+|               | 0 1101   | M=0 ARITH - (A+B) PLUS A                        | (A+B) PLUS A        |
+|               | 0 1110   | M=0 ARITH - (A+!B) PLUS A                       | (A+!B) PLUS A       |
 |               | 0 1111   | M=1 ARITH - A MINUS 1                           | A_MINUS_1           |
-|               | 1 0000   | M=1 LOGIC -                                     |
-|               | 1 0001   | M=1 LOGIC -                                     |
-|               | 1 0010   | M=1 LOGIC -                                     |
+|               | 1 0000   | M=1 LOGIC - !A                                  | !A                  |
+|               | 1 0001   | M=1 LOGIC - !(A+B)                              | !(A+B)              |
+|               | 1 0010   | M=1 LOGIC - (!A)B                               | (!A)B               |
 |               | 1 0011   | M=1 LOGIC - O                                   | 0                   |
-|               | 1 0100   | M=1 LOGIC -                                     |
-|               | 1 0101   | M=1 LOGIC -                                     |
-|               | 1 0110   | M=1 LOGIC -                                     |
-|               | 1 0111   | M=1 LOGIC -                                     |
-|               | 1 1000   | M=1 LOGIC -                                     |
-|               | 1 1001   | M=1 LOGIC -                                     |
+|               | 1 0100   | M=1 LOGIC - !(AB)                               | !(AB)               |
+|               | 1 0101   | M=1 LOGIC - !B                                  | !B                  |
+|               | 1 0110   | M=1 LOGIC - A^B                                 | A^B                 |
+|               | 1 0111   | M=1 LOGIC - A(!B)                               | A(!B)               |
+|               | 1 1000   | M=1 LOGIC - !A+B                                | !A+B                |
+|               | 1 1001   | M=1 LOGIC - !(A^B)                              | !(A^B)              |
 |               | 1 1010   | M=1 LOGIC - B                                   | B                   |
-|               | 1 1011   | M=1 LOGIC -                                     |
+|               | 1 1011   | M=1 LOGIC - AB                                  | AB                  |
 |               | 1 1100   | M=1 LOGIC - **1 (DEFAULT)**                     | 1 (DEFAULT)         |
-|               | 1 1101   | M=1 LOGIC -                                     |
-|               | 1 1110   | M=1 LOGIC -                                     |
-|               | 1 1111   | M=1 LOGIC -                                     |                     |
+|               | 1 1101   | M=1 LOGIC - A+!B                                | A+!B                |
+|               | 1 1110   | M=1 LOGIC - A+B                                 | A+B                 |
+|               | 1 1111   | M=1 LOGIC - A                                   | A                   |
 |               |          |                                                 |                     |
 | **B_SOURCE**  | **0**    | **Temp reg drives ALU (DEFAULT)**               | TEMP_B (DEFAULT)    |
 |               | 1        | Input reg drives ALU                            | INPUT_B             |
@@ -300,12 +300,14 @@ The microcode is,
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| C1   | TB       |  0  | 0           | TEMP_B   | TEMP_A   | COUNT   |   1   | XX   |
-| C2   | TA       |  0  | B           | INPUT_B  | TEMP_A   | Z       |   1   | C5   |
-| C3   | TB       |  1  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
-| C4   | TA       |  1  | A_MINUS_1   | TEMP_B   | TEMP_A   | !Z      |   1   | C3   |
-| C5   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   0   | C5   |
-| C6   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+| C1   | TB       |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| C2   | F        |  0  | B           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| C3   | TA       |  0  | B           | INPUT_B  | INPUT_A  | !ZP     |   1   | C7   |
+| C4   | F_TA     |  0  | A_MINUS_1   | X        | TEMP_A   | COUNT   |   1   | XX   |
+| C5   | TB       |  0  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
+| C6   | F_TA     |  0  | A_MINUS_1   | TEMP_B   | TEMP_A   | ZP      |   1   | C5   |
+| C7   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   1   | C7   |
+| C8   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
 
 ### DEFAULT
 
@@ -436,25 +438,43 @@ sh run-test.sh
 This simulation will send a few opcodes to the processor.
 
 ```verilog
-    // ******************************************************
-    // TEST 1 - ADD TWO NUMBERS
-    OPCODE = 4'h1;
-    DATA_IN_A = 8'h04;
-    DATA_IN_B = 8'h03;
-    GO_BAR = 1;
-
-    #20; GO_BAR = 0;
+    // RESET THE COUNTER - WILL SET MICROADDRESS TO 0
+    #15; RESET = 0;
+    #20; RESET = 1;
     #100;
 
     // ******************************************************
-    // TEST 2 - SUBTRACT TWO NUMBERS
-    OPCODE = 4'h2;
-    DATA_IN_A = 8'h07;
-    DATA_IN_B = 8'h02;
-    GO_BAR = 1;
+    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35  =  55)
+    OPCODE = 4'b0011;
+    GO_BAR = 0;
+    DATA_IN_A = 8'h14;
+    DATA_IN_B = 8'h23;
 
-    #20; GO_BAR = 0;
-    #100;
+    #100
+    #20; GO_BAR = 1;
+    #120;
+
+    // ******************************************************
+    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64) 
+    OPCODE = 4'b0111;
+    GO_BAR = 0;
+    DATA_IN_A = 8'h81;
+    DATA_IN_B = 8'h41;
+
+    #100
+    #20; GO_BAR = 1;
+    #120;
+
+    // ******************************************************
+    // TEST 3 - MULTIPLY - 8'h05 x 8'h07 = 8'h23 (5 x 7 = 35)
+    OPCODE = 4'b1100;
+    GO_BAR = 0;
+    DATA_IN_A = 8'h05;
+    DATA_IN_B = 8'h07;
+
+    #500
+    #20; GO_BAR = 1;
+    #120;
 ```
 
 ## CHECK WAVEFORM
@@ -464,3 +484,5 @@ Check you waveform using your `.vcd` file with a waveform viewer.
 I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
+
+![programable-8-bit-microprocessor.jpg](../../../docs/pics/programable-8-bit-microprocessor.jpg)
