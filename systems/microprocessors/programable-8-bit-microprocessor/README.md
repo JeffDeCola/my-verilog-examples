@@ -444,7 +444,7 @@ This simulation will send a few opcodes to the processor.
     #100;
 
     // ******************************************************
-    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35  =  55)
+    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35 = 55)
     OPCODE = 4'b0011;
     GO_BAR = 0;
     DATA_IN_A = 8'h14;
@@ -455,7 +455,7 @@ This simulation will send a few opcodes to the processor.
     #120;
 
     // ******************************************************
-    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64) 
+    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64)
     OPCODE = 4'b0111;
     GO_BAR = 0;
     DATA_IN_A = 8'h81;
@@ -485,4 +485,11 @@ I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardw
 and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
 
+Focus on DATA_IN_A, DATA_IN_B and DATA_OUT. You can see the RESET where the
+output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
+
 ![programable-8-bit-microprocessor-waveform.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform.jpg)
+
+A little more detail,
+
+![programable-8-bit-microprocessor-waveform-more-detail.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform-more-detail.jpg)
