@@ -23,8 +23,10 @@ Documentation and reference,
 The main part of the code is,
 
 ```verilog
-    assign y = a ~| b;
+    assign y = ~(a | b);
 ```
+
+I tried `assign y = a ~| b` but this does not synthesize.
 
 The entire code is
 [nor2.v](nor2.v).

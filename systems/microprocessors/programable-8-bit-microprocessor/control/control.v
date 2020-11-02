@@ -21,7 +21,6 @@ wire [3:0]      MICRO_AD_LOW;
 wire [7:4]      MICRO_AD_HIGH;
 wire            COUNT;
 wire [12:9]     BOP;
-wire [23:13]    CONTROL_BITS;           // NOT IN THESIS
 wire [7:4]      COUNTER_IN_HIGH_SIG;
 wire [7:0]      BUFFER_IN;
 wire            MPC_LOAD_BAR;

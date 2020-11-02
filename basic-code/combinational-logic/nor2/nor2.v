@@ -5,6 +5,7 @@ module nor2(
 );
 
 // CONTINUOUS ASSIGNMENT STATEMENT
-assign y = a ~| b;
+//assign y = a ~| b;                // Can't synthesize this
+assign y = ~(a | b);
 
 endmodule

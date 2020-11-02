@@ -3,7 +3,7 @@
 [![Issue Count](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-_A place to keep my SystemVerilog code snippets and examples._
+_A place to keep my **synthesizable** SystemVerilog code snippets and examples._
 
 These examples also contain info I gathered from other sources.
 
@@ -39,6 +39,19 @@ Documentation and reference,
   cheat sheet for synthesis and burning an FPGA
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+
+## A QUICK NOTE ON SYNTHESIS
+
+I declare my ports as follows because that's what synthesis tools want.
+Who am I to argue,
+
+```verilog
+    module NAME (
+        input            a,     // Input A
+        input      [7:0] b,     // Input B
+        output reg [3:0] y      // Output Y
+    );
+```
 
 ## SYSTEMVERILOG EXAMPLES
 
