@@ -12,11 +12,9 @@ module jeff_74x151(
     input                b,                   // 
     input                c,                   // 
     input                en,                  // ENABLE
-    output               y,                   // DATA OUT
+    output reg           y,                   // DATA OUT
     output               w                    // INVERTED OUTPUT
 );
-
-reg  y;
 
 assign w = ~y;
 
