@@ -1,6 +1,5 @@
 # my-systemverilog-examples
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/7b6a0473affbce8049ee/maintainability)](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/maintainability)
 [![Issue Count](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-systemverilog-examples/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
