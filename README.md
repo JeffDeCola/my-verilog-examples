@@ -42,14 +42,14 @@ Documentation and reference,
 
 ## A QUICK NOTE ON SYNTHESIS
 
-I declare my ports as follows because that's what synthesis tools want.
+I declare my ports as follows because that's what the synthesis tools want.
 Who am I to argue,
 
 ```verilog
     module NAME (
-        input            a,     // Input A
-        input      [7:0] b,     // Input B
-        output reg [3:0] y      // Output Y
+        input             a,     // Input A
+        input       [7:0] b,     // Input B
+        output reg  [3:0] y      // Output Y
     );
 ```
 
@@ -61,7 +61,7 @@ Each example uses
 to simulate and
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 to view the output. I also used
-[xilinx vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 on some designs to synthesize and program an FPGA on a development board._
 
 ### BASIC CODE
