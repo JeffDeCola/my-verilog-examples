@@ -1,15 +1,12 @@
 // A positive edge jk flip-flop with asynchronous clear
 module jk_flip_flop (
-    input   clk,        // Clock
-    input   clr_bar,    // Clear
-    input   j,          // Inputs
-    input   k,          // 
-    output  q,          // Outputs
-    output  q_bar       //
+    input       clk,        // Clock
+    input       clr_bar,    // Clear
+    input       j,          // Inputs
+    input       k,          // 
+    output reg  q,          // Outputs
+    output      q_bar       //
 );
-
-// DATA TYPES    
-reg  q;
 
 assign q_bar = ~q;
 

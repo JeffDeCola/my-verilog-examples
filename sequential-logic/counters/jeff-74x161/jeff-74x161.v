@@ -14,8 +14,6 @@ module jeff_74x161(
     output          rco                  // RIPPLE CARRY OUTPUT
 );
 
-// reg  qa, qb, qc, qd;
-// reg  rco;
 wire ld;
 wire ent_and_enp;
 
