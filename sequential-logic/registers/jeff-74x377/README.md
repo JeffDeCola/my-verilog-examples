@@ -51,3 +51,9 @@ and launch it using
 [launch-gtkwave.sh](launch-gtkwave.sh).
 
 ![jeff-74x377-waveform.jpg](../../../docs/pics/jeff-74x377-waveform.jpg)
+
+## TESTED IN HARDWARE - BURNED TO A FPGA
+
+To test my design in real hardware, the above code was synthesized using the
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+IDE software suite and burned to a FPGA development board.

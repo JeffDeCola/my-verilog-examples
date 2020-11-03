@@ -14,7 +14,6 @@ module programable_8_bit_microprocessor (
     output [7:0]    DATA_OUT            // 
 );
 
-
 // WIRES
 wire [3:0]     STATUS_BITS;
 wire [23:13]   CONTROL_BITS;
