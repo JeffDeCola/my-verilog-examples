@@ -501,8 +501,8 @@ To test my design in real hardware, the above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 IDE software suite and burned to a FPGA development board.
 
-I burned it to an Xilinx XC7S50-CSGA324 FPGA with 52,160 logic cells and 250 pins.
-
-I used about 7% of the real estate,
+I burned it to an Xilinx Spartan-7 FPGA (XC7S50) that has
+52,160 logic cells and 250 pins. I used about 7% of the total real estate,
+that light blue area at the bottom of the die,
 
 ![programable-8-bit-microprocessor-fpga_layout.jpg](../../../docs/pics/programable-8-bit-microprocessor-fpga_layout.jpg)
