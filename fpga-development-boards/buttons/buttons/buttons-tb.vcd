@@ -1,0 +1,94 @@
+$date
+	Tue Nov  3 00:01:36 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module buttons_tb $end
+$var wire 1 ! BUTTON_CLOCK_PULSE_OUT $end
+$var reg 1 " BUTTON_CLOCK_PULSE_PRESSED $end
+$var reg 1 # CLK $end
+$scope module uut $end
+$var wire 1 # clk $end
+$var wire 1 " pressed $end
+$var reg 1 $ button_pressed $end
+$var reg 1 ! out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0$
+0#
+0"
+0!
+$end
+#10
+1#
+#20
+0#
+#30
+1#
+#40
+0#
+#50
+1#
+#60
+0#
+#70
+1#
+#80
+0#
+#90
+1#
+#100
+0#
+1"
+#110
+1!
+1$
+1#
+#120
+0#
+#130
+0!
+1#
+#140
+0#
+#150
+1#
+#160
+0#
+#170
+1#
+#180
+0#
+#190
+1#
+#200
+0#
+0"
+#210
+0$
+1#
+#220
+0#
+#230
+1#
+#240
+0#
+#250
+1#
+#260
+0#
+#270
+1#
+#280
+0#
+#290
+1#
+#300
+0#
