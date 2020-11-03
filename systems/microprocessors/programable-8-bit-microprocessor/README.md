@@ -500,3 +500,9 @@ A little more detail,
 To test my design in real hardware, the above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 IDE software suite and burned to a FPGA development board.
+
+I burned it to an Xilinx XC7S50-CSGA324 FPGA with 52,160 logic cells and 250 pins.
+
+I used about 7% of the real estate,
+
+![programable-8-bit-microprocessor-fpga_layout.jpg](../../../docs/pics/programable-8-bit-microprocessor-fpga_layout.jpg)
