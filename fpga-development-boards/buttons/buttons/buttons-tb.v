@@ -5,14 +5,20 @@ module buttons_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg        CLK;
-reg        BUTTON_CLOCK_PULSE_PRESSED;
+reg        PRESSED;
 wire       BUTTON_CLOCK_PULSE_OUT;
+wire       BUTTON_TWO_PRESSES_OUT;
 
-// UUT buttons_clock_pulse
-button_clock_pulse uut(
+button_clock_pulse BUTTON_CLOCK_PULSE (
     .clk(CLK),
-    .pressed(BUTTON_CLOCK_PULSE_PRESSED),
+    .pressed(PRESSED),
     .out(BUTTON_CLOCK_PULSE_OUT)
+);
+
+button_two_presses BUTTON_TWO_PRESSES (
+    .clk(CLK),
+    .pressed(PRESSED),
+    .out(BUTTON_TWO_PRESSES_OUT)
 );
 
 // FILES
@@ -30,18 +36,33 @@ end
 initial begin
     $display("test start");
     CLK = 0;
-    BUTTON_CLOCK_PULSE_PRESSED = 0;
-
+    PRESSED = 0;
     #100
 
     // PRESS AND HOLD BUTTON
-    BUTTON_CLOCK_PULSE_PRESSED = 1;
+    PRESSED = 1;
     #100
-    BUTTON_CLOCK_PULSE_PRESSED = 0;
-
-    // DONE
+    PRESSED = 0;
     #100
 
+    // PRESS AND HOLD BUTTON
+    PRESSED = 1;
+    #100
+    PRESSED = 0;
+    #100
+
+    // PRESS AND HOLD BUTTON
+    PRESSED = 1;
+    #100
+    PRESSED = 0;
+    #100
+
+   // PRESS AND HOLD BUTTON
+    PRESSED = 1;
+    #100
+    PRESSED = 0;
+    #100
+    
     $display("test complete");
     $finish;
 end
