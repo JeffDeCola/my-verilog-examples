@@ -5,7 +5,7 @@ _A few different ways to use buttons on a FPGA development board._
 Documentation and reference,
 
 * [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-  on some designs to synthesize and program an FPGA on a development board.
+  used to synthesize and program an FPGA on a development board.
 * These buttons used in a FPGA with my
   [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 

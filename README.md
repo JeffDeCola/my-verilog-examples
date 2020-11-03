@@ -39,6 +39,8 @@ Documentation and reference,
   cheat sheet
 * [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
   cheat sheet for synthesis and burning an FPGA
+* [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
+  has an explanation of HDLs and how they fit into frameworks
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -64,7 +66,7 @@ to simulate and
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 to view the output. I also used
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-on some designs to synthesize and program an FPGA on a development board._
+on some designs to synthesize and program an FPGA on a development board.
 
 ### BASIC CODE
 
