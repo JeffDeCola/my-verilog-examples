@@ -22,8 +22,9 @@ Table of Contents,
   * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO AN FPGA](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#tested-in-hardware---burned-to-an-fpga)
 
-Logic parts used,
+Logic parts used. All can be synthesized,
 
 * [and2](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/combinational-logic/and2)
   2-input AND gate
@@ -493,3 +494,9 @@ output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
 A little more detail,
 
 ![programable-8-bit-microprocessor-waveform-more-detail.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform-more-detail.jpg)
+
+## TESTED IN HARDWARE - BURNED TO A FPGA
+
+To test my design in real hardware, the above code was synthesized using the
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+IDE software suite and burned to a FPGA development board.
