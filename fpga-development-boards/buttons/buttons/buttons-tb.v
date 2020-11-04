@@ -6,19 +6,33 @@ module buttons_tb;
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
 reg        CLK;
 reg        PRESSED;
-wire       BUTTON_CLOCK_PULSE_OUT;
-wire       BUTTON_TWO_PRESSES_OUT;
+wire       BUTTON_SYNC_CLOCK_PULSE_OUT;
+wire       BUTTON_ASYNC_CLOCK_PULSE_OUT;
+wire       BUTTON_SYNC_TWO_PRESSES_OUT;
+wire       BUTTON_ASYNC_TWO_PRESSES_OUT;
 
-button_clock_pulse BUTTON_CLOCK_PULSE (
+button_sync_clock_pulse SYNC_CLOCK_PULSE (
     .clk(CLK),
     .pressed(PRESSED),
-    .out(BUTTON_CLOCK_PULSE_OUT)
+    .out(BUTTON_SYNC_CLOCK_PULSE_OUT)
 );
 
-button_two_presses BUTTON_TWO_PRESSES (
+button_async_clock_pulse ASYNC_CLOCK_PULSE (
     .clk(CLK),
     .pressed(PRESSED),
-    .out(BUTTON_TWO_PRESSES_OUT)
+    .out(BUTTON_ASYNC_CLOCK_PULSE_OUT)
+);
+
+button_sync_two_presses SYNC_TWO_PRESSES (
+    .clk(CLK),
+    .pressed(PRESSED),
+    .out(BUTTON_SYNC_TWO_PRESSES_OUT)
+);
+
+button_async_two_presses ASYNC_TWO_PRESSES (
+    .clk(CLK),
+    .pressed(PRESSED),
+    .out(BUTTON_ASYNC_TWO_PRESSES_OUT)
 );
 
 // FILES
@@ -63,6 +77,19 @@ initial begin
     PRESSED = 0;
     #100
     
+    // PRESS AND HOLD BUTTON - QUICK PUSH NOT ON CLOCK
+    PRESSED = 1;
+    #5
+    PRESSED = 0;
+    #15
+    #100
+
+   // PRESS AND HOLD BUTTON
+    PRESSED = 1;
+    #100
+    PRESSED = 0;
+    #100
+
     $display("test complete");
     $finish;
 end
