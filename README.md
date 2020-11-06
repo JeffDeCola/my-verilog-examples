@@ -57,6 +57,21 @@ Who am I to argue,
     );
 ```
 
+Also, I would stay away from asynchronous design.  It can have problems
+when you synthesize to an FPGA.
+
+```verilog
+
+    // DO THIS
+    always @ (posedge clk) begin
+        if (~reset) begin
+            ...
+
+    // NOT THIS
+    always @ (posedge clk or negedge reset) begin
+
+```
+
 ## SYSTEMVERILOG EXAMPLES
 
 _All sections in alphabetical order.
