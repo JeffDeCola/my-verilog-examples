@@ -1,5 +1,5 @@
 $date
-	Tue Nov  3 17:36:39 2020
+	Tue Nov  3 22:47:04 2020
 $end
 $version
 	Icarus Verilog
@@ -16,35 +16,39 @@ $var reg 1 % CLK $end
 $var reg 1 & PRESSED $end
 $scope module ASYNC_CLOCK_PULSE $end
 $var wire 1 % clk $end
+$var wire 1 $ out $end
 $var wire 1 & pressed $end
 $var reg 1 ' lock $end
-$var reg 1 $ out $end
-$var reg 1 ( was_pressed $end
+$var reg 1 ( pre_out $end
+$var reg 1 ) was_pressed $end
 $upscope $end
 $scope module ASYNC_TWO_PRESSES $end
 $var wire 1 % clk $end
+$var wire 1 # out $end
 $var wire 1 & pressed $end
-$var reg 1 ) lock $end
-$var reg 1 # out $end
-$var reg 1 * was_pressed $end
+$var reg 1 * lock $end
+$var reg 1 + toggle $end
+$var reg 1 , was_pressed $end
 $upscope $end
 $scope module SYNC_CLOCK_PULSE $end
 $var wire 1 % clk $end
 $var wire 1 & pressed $end
-$var reg 1 + lock $end
+$var reg 1 - lock $end
 $var reg 1 " out $end
 $upscope $end
 $scope module SYNC_TWO_PRESSES $end
 $var wire 1 % clk $end
 $var wire 1 ! out $end
 $var wire 1 & pressed $end
-$var reg 1 , lock $end
-$var reg 1 - toggle $end
+$var reg 1 . lock $end
+$var reg 1 / toggle $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+0/
+0.
 0-
 0,
 0+
@@ -54,14 +58,12 @@ $dumpvars
 0'
 0&
 0%
-x$
-x#
+0$
+0#
 x"
 0!
 $end
 #10
-0$
-0#
 0"
 1%
 #20
@@ -81,28 +83,30 @@ $end
 #90
 1%
 #100
-1*
-1(
+1,
+1)
 0%
 1&
 #110
 1$
-0(
+1(
+0)
 1'
+1*
+0,
 1#
-0*
-1)
-1!
-1-
-1,
-1"
 1+
+1!
+1/
+1.
+1"
+1-
 1%
 #120
 0%
 #130
-0#
 0$
+0(
 0"
 1%
 #140
@@ -121,10 +125,10 @@ $end
 0%
 0&
 #210
-0)
+0*
 0'
-0+
-0,
+0-
+0.
 1%
 #220
 0%
@@ -143,28 +147,30 @@ $end
 #290
 1%
 #300
-1(
-1*
+1)
+1,
 0%
 1&
 #310
-1#
-0*
-1)
+1*
+0,
+0#
+0+
 1$
-0(
+1(
+0)
 1'
 0!
-0-
-1,
+0/
+1.
 1"
-1+
+1-
 1%
 #320
 0%
 #330
 0$
-0#
+0(
 0"
 1%
 #340
@@ -184,9 +190,9 @@ $end
 0&
 #410
 0'
-0)
-0+
-0,
+0*
+0-
+0.
 1%
 #420
 0%
@@ -205,28 +211,30 @@ $end
 #490
 1%
 #500
-1*
-1(
+1,
+1)
 0%
 1&
 #510
 1$
-0(
+1(
+0)
 1'
+1*
+0,
 1#
-0*
-1)
-1!
-1-
-1,
-1"
 1+
+1!
+1/
+1.
+1"
+1-
 1%
 #520
 0%
 #530
-0#
 0$
+0(
 0"
 1%
 #540
@@ -245,10 +253,10 @@ $end
 0%
 0&
 #610
-0)
+0*
 0'
-0+
-0,
+0-
+0.
 1%
 #620
 0%
@@ -267,28 +275,30 @@ $end
 #690
 1%
 #700
-1(
-1*
+1)
+1,
 0%
 1&
 #710
-1#
-0*
-1)
+1*
+0,
+0#
+0+
 1$
-0(
+1(
+0)
 1'
 0!
-0-
-1,
+0/
+1.
 1"
-1+
+1-
 1%
 #720
 0%
 #730
 0$
-0#
+0(
 0"
 1%
 #740
@@ -308,9 +318,9 @@ $end
 0&
 #810
 0'
-0)
-0+
-0,
+0*
+0-
+0.
 1%
 #820
 0%
@@ -329,31 +339,33 @@ $end
 #890
 1%
 #900
-1*
-1(
+1,
+1)
 0%
 1&
 #905
 0&
 #910
 1$
-0(
+1(
+0)
 1'
+1*
+0,
 1#
-0*
-1)
+1+
 1%
 #920
 0%
 #930
-0#
+0*
 0$
+0(
 1%
 #940
 0%
 #950
 0'
-0)
 1%
 #960
 0%
@@ -368,28 +380,30 @@ $end
 #1010
 1%
 #1020
-1(
-1*
+1)
+1,
 0%
 1&
 #1030
-1#
-0*
-1)
+1*
+0,
+0#
+0+
 1$
-0(
+1(
+0)
 1'
 1!
-1-
-1,
+1/
+1.
 1"
-1+
+1-
 1%
 #1040
 0%
 #1050
 0$
-0#
+0(
 0"
 1%
 #1060
@@ -409,9 +423,9 @@ $end
 0&
 #1130
 0'
-0)
-0+
-0,
+0*
+0-
+0.
 1%
 #1140
 0%
