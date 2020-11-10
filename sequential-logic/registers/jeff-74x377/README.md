@@ -1,6 +1,6 @@
 # jeff-74x377 example
 
-_8-bit register, clock enable. A register is a bunch of flip-flops.
+_8-bit register, clock enable.
 Based on the 7400-series integrated circuits._
 
 Documentation and reference,
