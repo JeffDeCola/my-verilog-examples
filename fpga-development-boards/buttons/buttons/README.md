@@ -11,20 +11,46 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
-## PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED
+## PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (SYNCHRONOUS PRESS)
+
+```verilog
+    reg lock = 0;
+
+    always @ (posedge clk) begin
+            if (pressed & ~lock) begin              // BUTTON PRESSED
+                lock <= 1'b1;                       // - Lock
+                out <= 1'b1;                        // - Pulse
+            end else if (~pressed & lock) begin     // BUTTON RELEASED
+                lock <= 1'b0;                       // - Release Lock
+            end else begin
+                out <= 1'b0;
+            end
+    end
+```
 
 I designed a few buttons. The entire code is
 [buttons.v](buttons.v).
 
-```verilog
-    tbd
-```
-
-## TWO PRESSES - FIRST PRESS HIGH, SECOND PRESS LOW
+## TWO PRESSES - FIRST PRESS HIGH, SECOND PRESS LOW (SYNCHRONOUS PRESSES)
 
 ```verilog
-    tbd
+    reg lock = 0;
+    reg toggle = 0;
+
+    assign out = toggle;
+
+    always @ (posedge clk) begin
+        if (pressed & ~lock) begin              // BUTTON PRESSED
+            lock <= 1'b1;                       // - Lock
+            toggle <= ~toggle;                  // - Toggle
+        end else if (~pressed & lock) begin     // WAIT TILL BUTTON RELEASED
+            lock <= 1'b0;                       // - Release Lock
+        end
+    end
 ```
+
+I designed a few buttons. The entire code is
+[buttons.v](buttons.v).
 
 ## RUN (SIMULATE)
 
