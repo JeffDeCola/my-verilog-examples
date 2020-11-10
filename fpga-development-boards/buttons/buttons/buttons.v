@@ -37,7 +37,7 @@ assign out = toggle;
 always @ (posedge clk) begin
     if (pressed & ~lock) begin              // BUTTON PRESSED
         lock <= 1'b1;                       // - Lock
-        toggle <= ~toggle;                  // - toggle
+        toggle <= ~toggle;                  // - Toggle
     end else if (~pressed & lock) begin     // WAIT TILL BUTTON RELEASED
         lock <= 1'b0;                       // - Release Lock
     end

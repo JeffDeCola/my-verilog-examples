@@ -28,6 +28,7 @@ Table of Contents,
   * SHIFTERS
 * [SYSTEMS](https://github.com/JeffDeCola/my-systemverilog-examples#systems)
   * MICROPROCESSORS
+  * PIPELINES
 
 Documentation and reference,
 
@@ -261,7 +262,7 @@ on some designs to synthesize and program an FPGA on a development board._
 
   * [simple-8-bit-register](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register)
 
-    _A simple 8-bit register with synchronous load and clear_
+    _A simple 8-bit register with synchronous load and clear._
 
 * SHIFTERS
 
@@ -276,6 +277,12 @@ on some designs to synthesize and program an FPGA on a development board._
   * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
     _A programable 8-bit microprocessor._
+
+* PIPELINES
+
+  * [simple-pipeline](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/pipelines/simple-pipeline)
+
+    _A simple pipeline._
 
 ## SCRIPT TO LAUNCH GTKWAVE
 
