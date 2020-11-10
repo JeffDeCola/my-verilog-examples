@@ -250,9 +250,11 @@ on some designs to synthesize and program an FPGA on a development board.
 
 * REGISTERS
 
+    _A bunch of flip-flops_
+
   * [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
 
-    _8-bit register, clock enable.
+    _8-bit register, clock enable. A register is a bunch of flip-flops.
     Based on the 7400-series integrated circuits used in my
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
     below._

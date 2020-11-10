@@ -1,6 +1,7 @@
 # jeff-74x377 example
 
-_8-bit register, clock enable._
+_8-bit register, clock enable. A register is a bunch of flip-flops.
+Based on the 7400-series integrated circuits._
 
 Documentation and reference,
 
@@ -13,7 +14,8 @@ Documentation and reference,
 
 ## SCHEMATIC
 
-I designed this processor form the 1976 Texas Instruments spec sheet.
+I designed this register form the 1976 Texas Instruments spec sheet.
+I kind of wish it had it clear but this is ok.
 
 ![IMAGE - ti-74x377-schematic.jpg - IMAGE](../../../docs/pics/ti-74x377-schematic.jpg)
 
