@@ -13,8 +13,9 @@ always @ (posedge clk) begin
         if (pressed & ~lock) begin              // BUTTON PRESSED
             lock <= 1'b1;                       // - Lock
             out <= 1'b1;                        // - Pulse
-        end else if (~pressed & lock) begin     // BUTTON RELEASED
-            lock <= 1'b0;                       // - Release Lock
+        end else if (~pressed & lock) begin     // RELEASE LOCK  
+            lock <= 1'b0;            
+            out <= 1'b0;
         end else begin
             out <= 1'b0;
         end

@@ -55,13 +55,13 @@ initial begin
 
     // PRESS AND HOLD BUTTON
     PRESSED = 1;
-    #100
+    #20
     PRESSED = 0;
     #100
 
     // PRESS AND HOLD BUTTON
     PRESSED = 1;
-    #100
+    #20
     PRESSED = 0;
     #100
 
