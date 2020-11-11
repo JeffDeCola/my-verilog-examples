@@ -1,4 +1,4 @@
-// A positive edge d flip-flop with asynchronous enable.
+// A positive edge d flip-flop with synchronous enable
 
 module d_flip_flop (
     input       clk,        // Clock
@@ -10,8 +10,8 @@ module d_flip_flop (
 
 assign q_bar = ~q;
 
-// D FLIP-FLOP WITH ASYNC ENABLE
-always @ (posedge clk or posedge en) begin
+// D FLIP-FLOP WITH SYNC ENABLE
+always @ (posedge clk) begin
     if (en) begin
         q <= d;
     end else begin

@@ -15,7 +15,7 @@ module programable_8_bit_microprocessor (
 );
 
 // WIRES
-wire [3:0]     STATUS_BITS;
+wire [3:0]     STATUS_BITS; 
 wire [23:13]   CONTROL_BITS;
 wire           EIL_BAR;
 
