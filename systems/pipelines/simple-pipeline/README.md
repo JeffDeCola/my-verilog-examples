@@ -6,6 +6,22 @@ _A simple pipeline._
 
 ## SCHEMATIC
 
+Pipeline the following into 3 stages,
+
+```txt
+    F = ((A+B) + (C-D)) * D
+```
+
+Hence,
+
+```txt
+    STAGE 1 Y1 = A + B, Y2 = C - D, D1 = D
+
+    STAGE 2 Y3 = Y1 + Y2, D2 = D1
+
+    STAGE 3 F = Y3 * D2
+```
+
 This may help,
 
 ![IMAGE - simple-pipeline.jpg - IMAGE](../../../docs/pics/simple-pipeline.jpg)
@@ -15,7 +31,23 @@ This may help,
 The main part of the code is,
 
 ```verilog
-    tbd
+    // STAGE 1
+    always @ (posedge clk) begin
+        y1 <= a + b;
+        y2 <= c - d;
+        d1 <= d;
+    end
+
+    // STAGE 2
+    always @ (posedge clk) begin
+        y3 <= y1 + y2;
+        d2 <=  d1;
+    end
+
+    // STAGE 3
+    always @ (posedge clk) begin
+        f = y3 * d2;
+    end
 ```
 
 The entire code is

@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Nov 11 03:35:42 2020
+[*]
+[dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\pipelines\simple-pipeline\simple-pipeline-tb.vcd"
+[dumpfile_mtime] "Wed Nov 11 03:35:15 2020"
+[dumpfile_size] 1248
+[savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\pipelines\simple-pipeline\simple-pipeline-tb.gtkw"
+[timestart] 0
+[size] 1920 996
+[pos] 1922 12
+*-4.298991 53 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] simple_pipeline_tb.
+[sst_width] 197
+[signals_width] 86
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+simple_pipeline_tb.CLK
+@200
+-
+@22
+simple_pipeline_tb.A[7:0]
+simple_pipeline_tb.B[7:0]
+simple_pipeline_tb.C[7:0]
+simple_pipeline_tb.D[7:0]
+@200
+-
+@22
+simple_pipeline_tb.F[7:0]
+@200
+-
+-
+@22
+simple_pipeline_tb.uut.y1[7:0]
+simple_pipeline_tb.uut.y2[7:0]
+simple_pipeline_tb.uut.y3[7:0]
+simple_pipeline_tb.uut.d1[7:0]
+@23
+simple_pipeline_tb.uut.d2[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
