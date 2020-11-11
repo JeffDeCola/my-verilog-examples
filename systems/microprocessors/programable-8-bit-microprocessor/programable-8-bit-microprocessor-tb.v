@@ -114,33 +114,33 @@ initial begin
     #100;
 
     // ******************************************************
-    // TEST 1 - ADD - 8'h14 PLUS 8'h23 = 8'h37 (20 + 35 = 55)
+    // TEST 1 - ADD - 8'h31 PLUS 8'h05 = 8'h36 (49 + 5 = 54)
     OPCODE = 4'b0011;
     GO_BAR = 0;
-    DATA_IN_A = 8'h14;
-    DATA_IN_B = 8'h23;
+    DATA_IN_A = 8'h31;
+    DATA_IN_B = 8'h05;
 
     #100
     #20; GO_BAR = 1;
     #120;
 
     // ******************************************************
-    // TEST 2 - SUBTRACT - 8'h81 MINUS 8'h41 = 8'h40 (129 - 65 = 64)
+    // TEST 2 - SUBTRACT - 8'h31 MINUS 8'h05 = 8'h2C (49 - 5 = 44)
     OPCODE = 4'b0111;
     GO_BAR = 0;
-    DATA_IN_A = 8'h81;
-    DATA_IN_B = 8'h41;
+    DATA_IN_A = 8'h31;
+    DATA_IN_B = 8'h05;
 
     #100
     #20; GO_BAR = 1;
     #120;
 
     // ******************************************************
-    // TEST 3 - MULTIPLY - 8'h05 x 8'h07 = 8'h23 (5 x 7 = 35)
+    // TEST 3 - MULTIPLY - 8'h31 x 8'h05 = 8'hF5 (49 x 5 = 245)
     OPCODE = 4'b1100;
     GO_BAR = 0;
-    DATA_IN_A = 8'h05;
-    DATA_IN_B = 8'h07;
+    DATA_IN_A = 8'h31;
+    DATA_IN_B = 8'h05;
 
     #500
     #20; GO_BAR = 1;

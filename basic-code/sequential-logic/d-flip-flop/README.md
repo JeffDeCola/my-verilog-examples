@@ -1,6 +1,6 @@
 # d-flip-flop example
 
-_A positive edge d flip-flop with asynchronous enable.
+_A positive edge d flip-flop with synchronous enable.
 This selectively captures a digital value._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
@@ -30,12 +30,10 @@ repo._
 The main verilog code is,
 
 ```verilog
-    reg  q;
-
     assign q_bar = ~q;
 
-    // D FLIP-FLOP WITH ASYNC ENABLE
-    always @ (posedge clk or posedge en) begin
+    // D FLIP-FLOP WITH SYNC ENABLE
+    always @ (posedge clk) begin
         if (en) begin
             q <= d;
         end else begin

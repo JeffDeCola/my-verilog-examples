@@ -1,6 +1,6 @@
 # jk-flip-flop example
 
-_A positive edge jk flip-flop with asynchronous clear._
+_A positive edge jk flip-flop with synchronous clear._
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
@@ -21,8 +21,8 @@ The main code,
 ```verilog
     assign q_bar = ~q;
 
-    // JK FLIP-FLOP WITH ASYNCHRONOUS CLEAR
-    always @ (posedge clk or negedge clr_bar) begin
+    // JK FLIP-FLOP WITH SYNC CLEAR
+    always @ (posedge clk) begin
         if (!clr_bar) begin
             q <= 1'b0;
         end else begin

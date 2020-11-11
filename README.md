@@ -132,14 +132,14 @@ on some designs to synthesize and program an FPGA on a development board._
 
   * [d-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
-     _A positive edge d flip-flop with asynchronous enable.
+     _A positive edge d flip-flop with synchronous enable.
     Used in my
     [jeff-74x377](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
     below._
 
   * [jk-flip-flop](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
 
-     _A positive edge jk flip-flop with asynchronous clear.
+     _A positive edge jk flip-flop with synchronous clear.
     Used in my
     [jeff-74x161](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
     below._
