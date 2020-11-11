@@ -6,20 +6,21 @@
 
 module simple_pipeline_tb;
 
+parameter N = 8;
+
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg  [7:0] DATA_IN;
-reg        CLK;
-reg        LD_BAR;
-reg        CLR_BAR;
-wire [7:0] DATA_OUT;
+reg  [N-1:0]    A, B, C, D;
+reg             CLK;
+wire [N-1:0]    F;
 
 // UUT
 simple_pipeline uut(
-    .data_in (DATA_IN),
     .clk(CLK),
-    .ld_bar(LD_BAR),
-    .clr_bar(CLR_BAR),
-    .data_out(DATA_OUT)
+    .a (A),
+    .b (B),
+    .c (C),
+    .d (D),
+    .f (F)
 );
 
 // FILES
@@ -37,25 +38,13 @@ end
 initial begin
     $display("test start");
     CLK = 0;
-    LD_BAR = 1;
-    CLR_BAR = 1;
-    DATA_IN = 8'h00;
+    A = 8'h00; B = 8'h00; C = 8'h00; D = 8'h00; 
 
-    // CLEAR
-    #15 CLR_BAR = 0;
-    #20 CLR_BAR = 1;
-    #40
-
-    // LOAD IT UP
-    #20; DATA_IN = 8'hF0;
-    #20 LD_BAR = 0;
-    #20 LD_BAR = 1;
-    #40
-
-    // CLEAR
-    #20 CLR_BAR = 0;
-    #20 CLR_BAR = 1;
-    #40
+    // F = ((A+B) + (C-D)) * D
+    #15 A = 8'h01; B = 8'h02; C = 8'h05; D = 8'h04; // F = ((1+2) + (5-4)) * 4 = 16 (8'h10)
+    #20 A = 8'h16; B = 8'h16; C = 8'h62; D = 8'h01; // F = ((22+22) + (98-1)) * 1 = 141 (8'h8D)
+    #20 A = 8'h03; B = 8'h03; C = 8'h09; D = 8'h08; // F = ((3+3) + (9-8)) * 8 = 56 (8'h38) 
+    #100
 
     $display("test complete");
     $finish;
