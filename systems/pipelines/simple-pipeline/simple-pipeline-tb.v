@@ -1,8 +1,8 @@
 `timescale 1ns / 1ns
-`include "simple-pipeline.v"
 
-// MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
-`include "../../../basic-code/sequential-logic/d-flip-flop/d-flip-flop.v"
+// Can't have this here if you are using this file in vivado simulation
+// Put in simple-pipeline-headerfile.vh
+// `include "simple-pipeline.v"
 
 module simple_pipeline_tb;
 

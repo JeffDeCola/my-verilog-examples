@@ -1,5 +1,8 @@
 `timescale 1ns / 1ns
-`include "and2.v"
+
+// Can't have this here if you are using this file in vivado simulation
+// Put in and2-headerfile.vh
+// `include "and2.v"
 
 module and2_tb;
 
