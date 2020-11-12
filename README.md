@@ -45,6 +45,16 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
+## SCRIPT TO LAUNCH GTKWAVE
+
+To make things easier when viewing a waveform, I wrote a script that will launch
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+with your saved `*.gtkw` file
+from Windows WSL, macOS or Linux (Whatever you use).
+
+The script is
+[launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh).
+
 ## A QUICK NOTE ON SYNTHESIS
 
 I declare my ports as follows because that's what the synthesis tools want.
@@ -276,23 +286,14 @@ on some designs to synthesize and program an FPGA on a development board._
 
   * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
-    _A programable 8-bit microprocessor._
+    _A programable 8-bit microprocessor. Originally designed in VHDL for
+    [my Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
 * PIPELINES
 
   * [simple-pipeline](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/pipelines/simple-pipeline)
 
     _A simple pipeline._
-
-## SCRIPT TO LAUNCH GTKWAVE
-
-To make things easier when viewing a waveform, I wrote a script that will launch
-[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-with your saved `*.gtkw` file
-from Windows WSL, macOS or Linux (Whatever you use).
-
-The script is
-[launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh).
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
