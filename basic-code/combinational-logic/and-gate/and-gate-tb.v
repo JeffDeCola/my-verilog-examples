@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "and-gate.v"
+
+// include files in and-gate-headerfiles.vh
 
 module and_gate_tb;
 

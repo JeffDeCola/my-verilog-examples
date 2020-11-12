@@ -1,0 +1,10 @@
+`include "jeff-74x181.v"
+
+`include "sections/input-section.v"
+`include "sections/invert-m.v"
+`include "sections/out-section-f3.v"
+`include "sections/out-section-f2.v"
+`include "sections/out-section-f1.v"
+`include "sections/out-section-f0.v"
+`include "sections/g-p-carry-section.v"
+`include "sections/aeqb-section.v"

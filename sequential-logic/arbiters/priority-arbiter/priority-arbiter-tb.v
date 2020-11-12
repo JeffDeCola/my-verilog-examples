@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "priority-arbiter.v"
+
+// include files in priority-arbiter-headerfiles.vh
 
 module priority_arbiter_tb;
 

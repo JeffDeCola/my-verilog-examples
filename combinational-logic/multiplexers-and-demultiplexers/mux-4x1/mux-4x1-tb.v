@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "mux-4x1.v"
+
+// include files in mux-4x1-headerfiles.vh
 
 module mux_4x1_tb;
 

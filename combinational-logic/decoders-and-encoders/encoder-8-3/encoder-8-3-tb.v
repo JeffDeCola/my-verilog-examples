@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "encoder-8-3.v"
+
+// include files in encoder-8-3-headerfiles.vh
 
 module encoder_8_3_tb;
 

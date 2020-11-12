@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "decoder-to-encoder.v"
+
+// include files in decoder-to-encoder-headerfiles.vh
 
 module decoder_to_encoder_tb;
 

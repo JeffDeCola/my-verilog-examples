@@ -1,8 +1,6 @@
 `timescale 1ns / 1ns
 
-// Can't have this here if you are using this file in vivado simulation
-// Put in simple-pipeline-headerfile.vh
-// `include "simple-pipeline.v"
+// include files in simple-pipeline-headerfiles.vh
 
 module simple_pipeline_tb;
 

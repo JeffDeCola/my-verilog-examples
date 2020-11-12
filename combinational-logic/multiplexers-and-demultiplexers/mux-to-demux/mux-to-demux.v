@@ -1,6 +1,5 @@
 // multiplexer to demultiplexer
-`include "../mux-4x1/mux-4x1.v"
-`include "../demux-1x4/demux-1x4.v"
+
 module mux_to_demux(
     input  a_in, b_in, c_in, d_in,      // 4 Inputs
     input  [1:0] sel,                   // Select

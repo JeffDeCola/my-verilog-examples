@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "buttons.v"
+
+// include files in buttons-headerfiles.vh
 
 module buttons_tb;
 

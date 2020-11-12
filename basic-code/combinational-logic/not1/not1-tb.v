@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "not1.v"
+
+// include files in not1-headerfiles.vh
 
 module not1_tb;
 

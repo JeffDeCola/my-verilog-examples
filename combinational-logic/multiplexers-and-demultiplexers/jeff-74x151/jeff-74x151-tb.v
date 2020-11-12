@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "jeff-74x151.v"
+
+// include files in jeff-74x151-headerfiles.vh
 
 module jeff_74x151_tb;
 

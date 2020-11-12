@@ -1,8 +1,6 @@
 `timescale 1ns / 1ns
-`include "jeff-74x377.v"
 
-// MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
-`include "../../../basic-code/sequential-logic/d-flip-flop/d-flip-flop.v"
+// include files in jeff-74x377-headerfiles.vh
 
 module jeff_74x377_tb;
 

@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "mux-to-demux.v"
+
+// include files in mux-to-demux-headerfiles.vh
 
 module mux_to_demux_tb;
 

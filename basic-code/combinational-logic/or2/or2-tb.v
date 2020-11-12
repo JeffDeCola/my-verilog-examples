@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "or2.v"
+
+// include files in or2-headerfiles.vh
 
 module or2_tb;
 
