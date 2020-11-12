@@ -4,12 +4,10 @@
 
 module simple_pipeline_tb;
 
-parameter N = 8;
-
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg  [N-1:0]    A, B, C, D;
-reg             CLK;
-wire [N-1:0]    F;
+reg  [7:0]    A, B, C, D;
+reg           CLK;
+wire [7:0]    F;
 
 // UUT
 simple_pipeline uut(
