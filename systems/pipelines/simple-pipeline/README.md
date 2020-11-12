@@ -46,7 +46,7 @@ The main part of the code is,
 
     // STAGE 3
     always @ (posedge clk) begin
-        f = y3 * d2;
+        f <= y3 * d2;
     end
 ```
 

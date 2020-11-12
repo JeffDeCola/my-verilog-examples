@@ -1,14 +1,12 @@
 // A simple 8-bit register with synchronous load and clear
 
 module simple_pipeline (
-    input                   clk,
-    input       [N-1:0]     a, b, c, d,
-    output      [N-1:0]     f
+    input                 clk,
+    input       [7:0]     a, b, c, d,
+    output reg  [7:0]     f
 );
 
-parameter N = 8;
-
-reg [N-1:0] y1, y2, y3, f, d1, d2;
+reg [7:0] y1, y2, y3, d1, d2;
 
 // STAGE 1
 always @ (posedge clk) begin
@@ -25,7 +23,7 @@ end
 
 // STAGE 3
 always @ (posedge clk) begin
-    f = y3 * d2;
+    f <= y3 * d2;
 end
 
 endmodule
