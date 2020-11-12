@@ -42,7 +42,10 @@ Documentation and reference,
   cheat sheet for synthesis and burning an FPGA
 * [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
   has an explanation of HDLs and how they fit into frameworks
-
+* [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
+  also has my design of a
+  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+  
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## SCRIPT TO LAUNCH GTKWAVE
