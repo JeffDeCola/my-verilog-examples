@@ -1,9 +1,8 @@
 # programable-8-bit-microprocessor example
 
-_A programable 8-bit microprocessor I designed in VHDL for my
+_I designed this processor in VHDL for my part of my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-As I translated it into verilog I wanted to change a few things,
-but I kept it pure because of my thesis, so here it is._
+I translated it into verilog here._
 
 Table of Contents,
 
