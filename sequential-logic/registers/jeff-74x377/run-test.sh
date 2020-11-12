@@ -9,8 +9,8 @@ echo " "
 echo "First we synthesis to our output *.vvp."
 echo " "
 
-echo "'iverilog -o jeff-74x377-tb.vvp jeff-74x377-tb.v'"
-iverilog -o jeff-74x377-tb.vvp jeff-74x377-tb.v 
+echo "'iverilog -o jeff-74x377-tb.vvp jeff-74x377-tb.v jeff-74x377-headerfiles.vh'"
+iverilog -o jeff-74x377-tb.vvp jeff-74x377-tb.v jeff-74x377-headerfiles.vh
 echo " "
 
 echo "Now we run simulation to create the waveform file *.vcd."

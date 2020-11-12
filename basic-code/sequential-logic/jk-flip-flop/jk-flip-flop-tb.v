@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "jk-flip-flop.v"
+
+// include files in jk-flip-flop-headerfiles.vh
 
 module jk_flip_flop_tb;
 

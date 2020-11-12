@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "simple-memory-using-1d-array.v"
+
+// include files in simple-memory-using-1d-array-headerfiles.vh
 
 module simple_memory_using_1d_array_tb;
 

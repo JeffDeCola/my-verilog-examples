@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "xor2.v"
+
+// include files in xor2-headerfiles.vh
 
 module xor2_tb;
 

@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "demux-1x4.v"
+
+// include files in demux-1x4-headerfiles.vh
 
 module demux_1x4_tb;
 

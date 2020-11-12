@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "simple-8-bit-register.v"
+
+// include files in simple-8-bit-register-headerfiles.vh
 
 // MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
 `include "../../../basic-code/sequential-logic/d-flip-flop/d-flip-flop.v"

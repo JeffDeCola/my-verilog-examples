@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "nand4.v"
+
+// include files in nand4-headerfiles.vh
 
 module nand4_tb;
 

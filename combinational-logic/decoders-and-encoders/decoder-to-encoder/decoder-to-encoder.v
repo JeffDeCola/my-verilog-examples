@@ -1,9 +1,8 @@
 // decoder to encoder
-`include "../decoder-3-8/decoder-3-8.v"
-`include "../encoder-8-3/encoder-8-3.v"
+
 module decoder_to_encoder(
     input  [2:0] in,      // 3 Inputs
-    input  [2:0] out      // 3 Outputs
+    output  [2:0] out      // 3 Outputs
 );
 
 wire  [7:0] connect;

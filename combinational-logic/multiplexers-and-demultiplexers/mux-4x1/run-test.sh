@@ -9,8 +9,8 @@ echo " "
 echo "First we synthesis to our output *.vvp."
 echo " "
 
-echo "'iverilog -o mux-4x1-tb.vvp mux-4x1-tb.v'"
-iverilog -o mux-4x1-tb.vvp mux-4x1-tb.v 
+echo "'iverilog -o mux-4x1-tb.vvp mux-4x1-tb.v mux-4x1-headerfiles.vh'"
+iverilog -o mux-4x1-tb.vvp mux-4x1-tb.v mux-4x1-headerfiles.vh
 echo " "
 
 echo "Now we run simulation to create the waveform file *.vcd."

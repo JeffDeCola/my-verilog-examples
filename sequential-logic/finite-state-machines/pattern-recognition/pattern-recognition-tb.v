@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "pattern-recognition.v"
+
+// include files in pattern-recognition-headerfiles.vh
 
 module pattern_recognition_tb;
 

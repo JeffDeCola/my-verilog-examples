@@ -9,8 +9,8 @@ echo " "
 echo "First we synthesis to our output *.vvp."
 echo " "
 
-echo "'iverilog -o pattern-recognition-tb.vvp pattern-recognition-tb.v'"
-iverilog -o pattern-recognition-tb.vvp pattern-recognition-tb.v 
+echo "'iverilog -o pattern-recognition-tb.vvp pattern-recognition-tb.v pattern-recognition-headerfiles.vh'"
+iverilog -o pattern-recognition-tb.vvp pattern-recognition-tb.v pattern-recognition-headerfiles.vh
 echo " "
 
 echo "Now we run simulation to create the waveform file *.vcd."

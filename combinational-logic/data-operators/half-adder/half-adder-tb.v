@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "half-adder.v"
+
+// include files in half-adder-headerfiles.vh
 
 module half_adder_tb;
 

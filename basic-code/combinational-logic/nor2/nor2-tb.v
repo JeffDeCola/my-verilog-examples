@@ -1,5 +1,6 @@
 `timescale 1ns / 1ns
-`include "nor2.v"
+
+// include files in nor2-headerfiles.vh
 
 module nor2_tb;
 
