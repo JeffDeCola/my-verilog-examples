@@ -15,6 +15,7 @@ Table of Contents,
   * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
   * [SUBTRACT (opcode 0111)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
   * [MULTIPLY (opcode 1100)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
+  * [DIVIDE (opcode 1110)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
   * [DEFAULT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#default)
 * [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#more-detail-under-the-hood)
   * [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
@@ -65,6 +66,12 @@ Logic parts used. All can be synthesized,
 * 8-bit data processing
 * Up to 16 Opcodes
   * Programable via microcode
+  * [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000),
+    [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011),
+    [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111),
+    [MULTIPLY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
+    &
+    [DIVIDE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
 * Microcode
   * 256 x 24-bit microcode storage
   * 24-bit microword
@@ -143,6 +150,9 @@ This is what I have coded so far,
   * 1100:
     [MULTIPLY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
   * ...  
+  * 1110:
+    [DIVIDE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
+  * ...
   * 1111:
     _tbd_
 
@@ -266,11 +276,11 @@ For some indication it's working correctly it also outputs 8'h11 to DATA_OUT
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| 00   | F        |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | OB   |
-| 0B   | TB_TA    |  0  | 1           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| 0C   | F        |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| OD   | F        |  0  | 1           | INPUT_B  | INPUT_A  | G0_BAR  |   1   | OD   |
-| OE   | F        |  0  | 1           | INPUT_B  | INPUT_A  | OPCODE  |   1   | X1   |
+| 00   | F        |  0  | 1           |  X        | X       | BRANCH  |   1   | OB   |
+| 0B   | TB_TA    |  0  | 1           |  X        | X       | COUNT   |   1   | XX   |
+| 0C   | F        |  0  | 0           |  X        | X       | COUNT   |   1   | XX   |
+| OD   | F        |  0  | 1           |  X        | X       | G0_BAR  |   1   | OD   |
+| OE   | F        |  0  | 1           |  X        | X       | OPCODE  |   1   | X1   |
 
 ### ADD (opcode 0011)
 
@@ -279,8 +289,8 @@ This will add A PLUS B. T The microcode is,
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
 | 31   | F        |  0  | A_PLUS_B    | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| 32   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | !GO_BAR |   1   | 32   |
-| 33   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+| 32   | NONE     |  0  | 1           | X        | X        | !GO_BAR |   1   | 32   |
+| 33   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 0D   |
 
 ### SUBTRACT (opcode 0111)
 
@@ -289,8 +299,8 @@ This will subtract A MINUS B. The microcode is,
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
 | 71   | F        |  1  | A_MINUS_B   | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| 72   | NONE     |  0  | 1           | INPUT_B  | INPUT_A  | !GO_BAR |   1   | 72   |
-| 73   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+| 72   | NONE     |  0  | 1           | X        | X        | !GO_BAR |   1   | 72   |
+| 73   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 0D   |
 
 ### MULTIPLY (opcode 1100)
 
@@ -300,7 +310,7 @@ The microcode is,
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| C1   | TB       |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| C1   | TB       |  0  | 0           | X        | X        | COUNT   |   1   | XX   |
 | C2   | F        |  0  | B           | INPUT_B  | X        | COUNT   |   1   | XX   |
 | C3   | TA       |  0  | B           | INPUT_B  | X        | !ZP     |   1   | C7   |
 | C4   | F_TA     |  0  | A_MINUS_1   | X        | TEMP_A   | COUNT   |   1   | XX   |
@@ -313,13 +323,30 @@ This may help,
 
 ![multiply-opcode-1100.jpg](../../../docs/pics/multiply-opcode-1100.jpg)
 
+### DIVIDE (opcode 1110)
+
+This will divide A from B. The resulting value will be held. When go is 
+released and pressed again the remainder will output.
+
+The microcode is,
+
+| ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
+|-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
+| E1   | F        |  1  | A_MINUS_B   | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| E2   | NONE     |  0  | 1           | X        | X        | !GO_BAR |   1   | 72   |
+| E3   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 0D   |
+
+This may help,
+
+![divide-opcode-1110.jpg](../../../docs/pics/multiply-opcode-1100.jpg)
+
 ### DEFAULT
 
 If system runs into trouble, it will default to this and send back to RESET.
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| deflt| F        |  0  | 1           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 00   |
+| deflt| F        |  0  | 1           | X        | X        | BRANCH  |   1   | 00   |
 
 ## MORE DETAIL (UNDER THE HOOD)
 
