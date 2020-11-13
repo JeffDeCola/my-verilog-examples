@@ -166,7 +166,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11010;                               // B
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A  
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, X  
             BOP <= 4'b0110;                                     // COUNT (DEFAULT)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
@@ -176,7 +176,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b110;                                 // TA
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11010;                               // B
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, X
             BOP <= 4'b1101;                                     // !ZP (all O's from F)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h7;        // C7
@@ -205,7 +205,7 @@ always @ (microaddress) begin
                     ALU_DEST <= 3'b010;                                 // F_TA 
                     CIN <= 1'b0;                                        // NO_CARRY
                     ALU_FUNC <= 5'b01111;                               // A_MINUS_1
-                    B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
+                    B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // X, TEMP_A 
                     BOP <= 4'b0101;                                     // ZP (all O's from F)
                     COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
                     MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h5;        // C5
@@ -215,7 +215,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11010;                               // B
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, TEMP_A 
+            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // TEMP_B, X 
             BOP <= 4'b1100;                                     // !GO_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'hC; MICRO_AD_LOW <= 4'h7;        // C7 (LOOP)
@@ -224,7 +224,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b10011;                               // O
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD (TO RESET)

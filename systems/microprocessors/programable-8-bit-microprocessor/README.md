@@ -301,13 +301,17 @@ The microcode is,
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
 | C1   | TB       |  0  | 0           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| C2   | F        |  0  | B           | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
-| C3   | TA       |  0  | B           | INPUT_B  | INPUT_A  | !ZP     |   1   | C7   |
+| C2   | F        |  0  | B           | INPUT_B  | X        | COUNT   |   1   | XX   |
+| C3   | TA       |  0  | B           | INPUT_B  | X        | !ZP     |   1   | C7   |
 | C4   | F_TA     |  0  | A_MINUS_1   | X        | TEMP_A   | COUNT   |   1   | XX   |
 | C5   | TB       |  0  | A_PLUS_B    | TEMP_B   | INPUT_A  | COUNT   |   1   | XX   |
-| C6   | F_TA     |  0  | A_MINUS_1   | TEMP_B   | TEMP_A   | ZP      |   1   | C5   |
-| C7   | F        |  0  | B           | TEMP_B   | TEMP_A   | !GO_BAR |   1   | C7   |
-| C8   | F        |  0  | 0           | INPUT_B  | INPUT_A  | BRANCH  |   1   | 0D   |
+| C6   | F_TA     |  0  | A_MINUS_1   | X        | TEMP_A   | ZP      |   1   | C5   |
+| C7   | F        |  0  | B           | TEMP_B   | X        | !GO_BAR |   1   | C7   |
+| C8   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 0D   |
+
+This may help,
+
+![multiply-opcode-1100.jpg](../../../docs/pics/multiply-opcode-1100.jpg)
 
 ### DEFAULT
 
