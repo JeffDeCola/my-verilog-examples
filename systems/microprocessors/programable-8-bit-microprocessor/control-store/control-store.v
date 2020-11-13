@@ -30,7 +30,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD (DEFAULT)
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hB;        // OB
@@ -39,7 +39,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b100;                                 // TB_TA
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b0110;                                     // COUNT (DEFAULT)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
@@ -48,7 +48,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b10011;                               // O
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b0110;                                     // COUNT (DEFAULT)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD (DEFAULT)
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
@@ -57,7 +57,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b0100;                                     // G0_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD (DEFAULT)
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD (LOOP)
@@ -66,7 +66,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b1111;                                     // OPCODE (ALSO LOADS INPUT REG)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD (DEFAULT)
             MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h1;        // X1 - The opcode will be the high
@@ -92,7 +92,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
             BOP <= 4'b1100;                                     // !GO_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h3; MICRO_AD_LOW <= 4'h2;        // 32 (LOOP)
@@ -101,7 +101,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b10011;                               // O
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD (TO RESET)
@@ -114,7 +114,7 @@ always @ (microaddress) begin
         // 8'h61 - OPCODE 0110 *********************************************************************************
 
         // 8'h71 - OPCODE 0111 - SUBTRACT **********************************************************************
-        8'h71: begin // ADD AND WAIT FOR GO TO RELEASE - THEN RESET
+        8'h71: begin // SUBTRACT AND WAIT FOR GO TO RELEASE - THEN RESET
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b1;                                        // CARRY
             ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
@@ -127,7 +127,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
             BOP <= 4'b1100;                                     // !GO_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h7; MICRO_AD_LOW <= 4'h2;        // 72 (LOOP)
@@ -136,7 +136,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b10011;                               // O
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD (TO RESET)
@@ -151,13 +151,13 @@ always @ (microaddress) begin
         // 8'hB1 - OPCODE 1011 *********************************************************************************
 
         // 8'hC1 - OPCODE 1100 - MULTIPLY **********************************************************************
-        // THE CONCEPT IT TEMP_REGISTER_A WILL START WITH DATA_IN_B AND COUNT DOWN TO 0
+        // THE CONCEPT IS TEMP_REGISTER_A WILL START WITH DATA_IN_B AND COUNT DOWN TO 0
         // AND TEMP_REGISTER_B WILL JUST ADD DATA_IN_A TO ITSELF UNTIL THE COUNT DOWN IS 0
         8'hC1: begin // LOAD 0 (CLEAR) TO TEMP_REGISTER_B
             ALU_DEST <= 3'b101;                                 // TB
             CIN <= 1'b0;                                        // NO_CARRY
             ALU_FUNC <= 5'b10011;                               // 0
-            B_SOURCE <= 1'b0; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A  
+            B_SOURCE <= 1'b0; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b0110;                                     // COUNT (DEFAULT)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
@@ -232,7 +232,34 @@ always @ (microaddress) begin
 
         // 8'hD1 - OPCODE 1101 *********************************************************************************
 
-        // 8'hE1 - OPCODE 1110 *********************************************************************************
+        // 8'hE1 - OPCODE 1110 - DIVIDE ************************************************************************
+        8'hE1: begin // SUBTRACT AND WAIT FOR GO TO RELEASE - THEN RESET
+            ALU_DEST <= 3'b011;                                 // F 
+            CIN <= 1'b1;                                        // CARRY
+            ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hE2: begin // WAIT FOR GO TO BE RELEASED
+            ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
+            BOP <= 4'b1100;                                     // !GO_BAR
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'hE; MICRO_AD_LOW <= 4'h2;        // E2 (LOOP)
+        end
+        8'hE3: begin // GOTO RESET - FLASH 00
+            ALU_DEST <= 3'b011;                                 // F 
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b1110;                                     // BRANCH
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'hD;        // OD (TO RESET)
+        end
 
         // 8'hF1 - OPCODE 1111 *********************************************************************************
 
@@ -241,7 +268,7 @@ always @ (microaddress) begin
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
             BOP <= 4'b1110;                                     // BRANCH
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 00 (TO START OF RESET)
