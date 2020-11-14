@@ -325,20 +325,34 @@ This may help,
 
 ### DIVIDE (opcode 1110)
 
-This will divide A from B. The resulting value will be held. When go is 
-released and pressed again the remainder will output.
+This will divide a 7-bit **dividend** B from a 4-bit **divisor** A.
+The **quotient** will be the lower 3 bits and the **remainder**
+will be the upper 5 bits.
+
+Some limits & rules:
+
+* Divisor can be between decimal 1-15 (8'b0001-8'b1111)
+* Dividend can be between decimal 1-127 (8'b0000000-8'b01111111)
+* Overflow occurs when quotient is greater than 16
+* Overflow will output all 1's (8'hFF).
 
 The microcode is,
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| E1   | F        |  1  | A_MINUS_B   | INPUT_B  | INPUT_A  | COUNT   |   1   | XX   |
+| E1   | TA       |  0  | A           | X        | X        | COUNT   |   1   | XX   |
+|      |          |     |             |          |          |         |       |      |
+|      |          |     |             |          |          |         |       |      |
+|      |          |     |             |          |          |         |       |      |
+|      |          |     |             |          |          |         |       |      |
 | E2   | NONE     |  0  | 1           | X        | X        | !GO_BAR |   1   | 72   |
 | E3   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 0D   |
 
-This may help,
+These diagrams may help,
 
-![divide-opcode-1110.jpg](../../../docs/pics/multiply-opcode-1100.jpg)
+![how-to-divide-using-logic.jpg](../../../docs/pics/how-to-divide-using-logic.jpg)
+
+![divide-opcode-1110.jpg](../../../docs/pics/divde-opcode-1110.jpg)
 
 ### DEFAULT
 
