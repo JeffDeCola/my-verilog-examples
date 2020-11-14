@@ -8,7 +8,9 @@ Documentation and reference,
   used to synthesize and program an FPGA on a development board.
 * These buttons used in a FPGA with my
   [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-
+* [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+  FPGA development board
+  
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
 ## PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (SYNCHRONOUS PRESS)

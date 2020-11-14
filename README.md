@@ -40,6 +40,8 @@ Documentation and reference,
   cheat sheet
 * [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
   cheat sheet for synthesis and burning an FPGA
+* [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+  FPGA development board
 * [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
   has an explanation of HDLs and how they fit into frameworks
 * [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
@@ -95,7 +97,9 @@ to simulate and
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 to view the output. I also used
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-on some designs to synthesize and program an FPGA on a development board._
+to synthesize and program these verilog examples on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
 
 ### BASIC CODE
 

@@ -2,8 +2,12 @@
 
 _I designed this processor in VHDL for my part of my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-I translated it into verilog here. As of today I have programmed it to
-add, subtract, multiply and divide._
+I translated it into verilog here. As of today I have programmed this
+microprocessor to add, subtract, multiply and divide. I also used
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+to synthesize and program these verilog examples on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
 
 Table of Contents,
 
@@ -585,9 +589,11 @@ A little more detail,
 
 To test my design in real hardware, the above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-IDE software suite and burned to a FPGA development board.
+IDE software suite and burned to a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board.
 
-I burned it to an Xilinx Spartan-7 FPGA (XC7S50) that has
+The ARTY-S7 uses the Xilinx Spartan-7 FPGA (XC7S50) that has
 52,160 logic cells and 250 pins. I used about 7% of the total real estate,
 that light blue area at the bottom of the die,
 
