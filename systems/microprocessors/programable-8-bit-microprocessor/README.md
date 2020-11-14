@@ -2,7 +2,8 @@
 
 _I designed this processor in VHDL for my part of my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-I translated it into verilog here._
+I translated it into verilog here. At of today I have programmed it to
+add, subtract, multiply and divide._
 
 Table of Contents,
 
@@ -140,21 +141,14 @@ This is what I have coded so far,
 * [3:0] **OPCODE**
   * 0000:
     [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
-  * ...
   * 0011:
     [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
-  * ...
   * 0111:
     [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
-  * ...
   * 1100:
     [MULTIPLY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
-  * ...  
   * 1110:
     [DIVIDE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
-  * ...
-  * 1111:
-    _tbd_
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
@@ -325,16 +319,36 @@ This may help,
 
 ### DIVIDE (opcode 1110)
 
-This will divide a 7-bit **dividend** B from a 4-bit **divisor** A.
+This will divide a 7-bit **dividend** A from a 4-bit **divisor** B.
 The **quotient** will be the lower 3 bits and the **remainder**
-will be the upper 5 bits.
+will be the upper 5 bits of the output.
 
 Some limits & rules:
 
-* Divisor can be between decimal 1-15 (8'b0001-8'b1111)
-* Dividend can be between decimal 1-127 (8'b0000000-8'b01111111)
-* Overflow occurs when quotient is greater than 16
-* Overflow will output all 1's (8'hFF).
+* DIVIDEND
+  * 7-bits
+  * Use DATA_IN_A[6:0]
+  * Can be between decimal 1-127 (8'b0000000-8'b01111111)
+* DIVISOR
+  * 4-bits
+  * Use DATA_IN_B[6:3] (Add 3 zeros to bottom bits)
+  * Can be between decimal 1-15 (8'b0001-8'b1111)
+* QUOTIENT
+  * DATA_OUT[2:0]
+* REMAINDER
+  * DATA_OUT[7:3]
+* OVERFLOW
+  * Occurs when quotient is greater than 16
+  * DATA_OUT will be 8'hFF.
+
+As an example, if you want to divide 80 (7'b1010000) by 13 (4'b1101).
+The answer is quotient 6 with a remainder of 2,
+
+* DATA_IN_A = 8'b01010000 (DIVIDEND)
+* DATA_IN_B = 8'b01101000 (DIVISOR)
+* DATA_OUT
+  * DATA_OUT[7:3] = 00010 (REMAINDER) 2
+  * DATA_OUT[2:0] = 110 (QUOTIENT) 6
 
 The microcode is,
 
