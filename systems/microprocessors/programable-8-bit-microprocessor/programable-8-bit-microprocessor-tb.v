@@ -97,7 +97,7 @@ initial begin
     #120;
 
     // ******************************************************
-    // TEST 4 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02 (80 / 13 = 6 with 2 remainder)
+    // TEST 4 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02 (49 / 13 = 6 with 2 remainder)
     // THE OUTPUT WILL BE 8'b00010 110 or 8'h16
     OPCODE = 4'b1110;
     GO_BAR = 0;
