@@ -411,6 +411,7 @@ always @ (microaddress) begin
         end
 
         // 8'hF1 - OPCODE 1111 *********************************************************************************
+        // NOT USABLE - THIS IS PART OF DIVIDE
 
         // DEFAULT **************************************************************************************
         default: begin // KICK BACK TO START OF RESET

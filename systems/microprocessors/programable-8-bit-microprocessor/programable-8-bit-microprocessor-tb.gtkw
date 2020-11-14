@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Sat Nov 14 04:46:45 2020
+[*] Sat Nov 14 07:43:26 2020
 [*]
 [dumpfile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.vcd"
-[dumpfile_mtime] "Sat Nov 14 04:46:38 2020"
-[dumpfile_size] 48184
+[dumpfile_mtime] "Sat Nov 14 07:43:18 2020"
+[dumpfile_size] 89810
 [savefile] "C:\Users\Jeff\home\jeff\systemverilog\my-systemverilog-examples\systems\microprocessors\programable-8-bit-microprocessor\programable-8-bit-microprocessor-tb.gtkw"
 [timestart] 0
 [size] 1920 968
 [pos] -1 -1
-*-6.864391 489 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-7.992398 489 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] programable_8_bit_microprocessor_tb.
 [treeopen] programable_8_bit_microprocessor_tb.uut.
 [treeopen] programable_8_bit_microprocessor_tb.uut.CONTROL_SECTION.COUNTER_8.
