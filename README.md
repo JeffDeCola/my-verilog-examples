@@ -293,7 +293,7 @@ FPGA development board._
 
   * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
-    _A programable 8-bit microprocessor. Originally designed in VHDL for
+    _A programable 8-bit microprocessor. Originally designed in VHDL for part of
     [my Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
 * PIPELINES
