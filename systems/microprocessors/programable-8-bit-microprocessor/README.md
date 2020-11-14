@@ -156,7 +156,7 @@ This is what I have microcoded so far,
   * 1110:
     [DIVIDE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
   * 1111:
-    [JAM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#jam-opcode-1111)
+    [JAM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#jam)
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
