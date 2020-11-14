@@ -14,13 +14,15 @@ Table of Contents,
 * [STATS](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
 * [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
   * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
-* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)
+* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)    
 * [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
+  * [MICROWORD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microword)
   * [RESET (opcode 0000)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
   * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
   * [SUBTRACT (opcode 0111)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
   * [MULTIPLY (opcode 1100)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
   * [DIVIDE (opcode 1110)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
+  * [JAM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#jam)
   * [DEFAULT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#default)
 * [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#more-detail-under-the-hood)
   * [CONTROL SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
@@ -140,7 +142,7 @@ The `opcode` (Operation Code) is the instruction set telling the processor
 it what to do. Instructions are implemented in microroutines (i.e. microcode).
 In this design there can be up to 16 opcodes.
 
-This is what I have coded so far,
+This is what I have microcoded so far,
 
 * [3:0] **OPCODE**
   * 0000:
@@ -153,6 +155,8 @@ This is what I have coded so far,
     [MULTIPLY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
   * 1110:
     [DIVIDE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
+  * 1111:
+    [JAM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#jam-opcode-1111)
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
@@ -162,12 +166,14 @@ to accomplish the users opcode instruction.
 The control section gets the microword **[23:0] MW** using the
 **[7:0] MICROADDRESS**. Hence there can be up to 256 x 24-bit microwords.
 
-Each opcode accesses a section of this memory.  Hence, there are 16
-sections equally divided.
+Each opcode accesses a section of this memory starting at address `8'hX1`.
+Hence, there are 16 sections equally divided.
 
 This may help,
 
 ![control-store-structure.jpg](../../../docs/pics/control-store-structure.jpg)
+
+### MICROWORD
 
 The 24-bit microword (MW) fields are as follows,
 
@@ -387,6 +393,25 @@ These diagrams may help,
 ![how-to-divide-using-logic.jpg](../../../docs/pics/how-to-divide-using-logic.jpg)
 
 ![divide-opcode-1110.jpg](../../../docs/pics/divide-opcode-1110.jpg)
+
+### JAM
+
+This microword address is accessed when the JAM input signal is enabled.
+It will hold 8'hFF as long as JAM is enabled.  When released
+it will flash a few times and heads back to the start of RESET.
+
+| ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
+|-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
+| FF   | F        |  0  | 1           | X        | X        | BRANCH  |   1   | F6   |
+| F6   | F        |  0  | 0           | X        | X        | COUNT   |   1   | XX   |
+| F7   | F        |  0  | 1           | X        | X        | COUNT   |   1   | XX   |
+| F8   | F        |  0  | 0           | X        | X        | COUNT   |   1   | XX   |
+| F9   | F        |  0  | 1           | X        | X        | COUNT   |   1   | XX   |
+| FA   | F        |  0  | 0           | X        | X        | COUNT   |   1   | XX   |
+| FB   | F        |  0  | 1           | X        | X        | COUNT   |   1   | XX   |
+| FC   | F        |  0  | 0           | X        | X        | COUNT   |   1   | XX   |
+| FD   | F        |  0  | 1           | X        | X        | COUNT   |   1   | XX   |
+| FE   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 00   |
 
 ### DEFAULT
 
