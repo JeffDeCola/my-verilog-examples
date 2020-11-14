@@ -354,13 +354,29 @@ The microcode is,
 
 | ADDR | ALU_DEST | CIN | ALU_FUNC    | B_SOURCE | A_SOURCE |  BOP    | COUNT | ADDR |
 |-----:|:--------:|:---:|:-----------:|:--------:|:--------:|:-------:|:-----:|:----:|
-| E1   | TA       |  0  | A           | X        | X        | COUNT   |   1   | XX   |
+| E1   | TA       | 0   | A           | X        | INPUT_A  | COUNT   | 1     | XX   |
+| E2   | NONE     | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | C8      | 1     | F0   |
 |      |          |     |             |          |          |         |       |      |
+| E3   | TA       | 0   | A PLUS A sh | X        | TEMP_A   | COUNT   | 1     | XX   |
+| E4   | NONE     | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | !C8     | 1     | E7   |
+| E5   | TA       | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | COUNT   | 1     | XX   |
+| E6   | TA       | 1   | A           | X        | TEMP_A   | COUNT   | 1     | XX   |
 |      |          |     |             |          |          |         |       |      |
+| E7   | TA       | 0   | A PLUS A sh | X        | TEMP_A   | COUNT   | 1     | XX   |
+| E8   | NONE     | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | !C8     | 1     | EB   |
+| E9   | TA       | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | COUNT   | 1     | XX   |
+| EA   | TA       | 1   | A           | X        | TEMP_A   | COUNT   | 1     | XX   |
 |      |          |     |             |          |          |         |       |      |
+| EB   | TA       | 0   | A PLUS A sh | X        | TEMP_A   | COUNT   | 1     | XX   |
+| EC   | NONE     | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | !C8     | 1     | EF   |
+| ED   | TA       | 1   | A_MINUS_B_1 | INPUT_B  | TEMP_A   | COUNT   | 1     | XX   |
+| EE   | TA       | 1   | A           | X        | TEMP_A   | COUNT   | 1     | XX   |
 |      |          |     |             |          |          |         |       |      |
-| E2   | NONE     |  0  | 1           | X        | X        | !GO_BAR |   1   | 72   |
-| E3   | F        |  0  | 0           | X        | X        | BRANCH  |   1   | 0D   |
+| EF   | F        | 0   | A           | X        | TEMP_A   | BRANCH  | 1     | F1   |
+|      |          |     |             |          |          |         |       |      |
+| F0   | F        | 0   | 1           | X        | X        | COUNT   | 1     | XX   |
+| F1   | NONE     | 0   | A           | X        | X        | !GO_BAR | 1     | F1   |
+| F2   | F        | 0   | 0           | X        | X        | BRANCH  | 1     | 0D   |
 
 These diagrams may help,
 
