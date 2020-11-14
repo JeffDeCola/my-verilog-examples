@@ -3,7 +3,7 @@
 _I designed this processor in VHDL for my part of my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
 I translated it into verilog here. As of today I have programmed this
-microprocessor to add, subtract, multiply and divide. I also used
+microprocessor to ADD, SUBTRACT, MULTIPLY and DIVIDE. I also used
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 to synthesize and program these verilog examples on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
@@ -14,10 +14,10 @@ Table of Contents,
 * [STATS](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
 * [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
   * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
-* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)    
+* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)
 * [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
   * [MICROWORD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microword)
-  * [RESET (opcode 0000)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
+  * [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset)
   * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
   * [SUBTRACT (opcode 0111)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
   * [MULTIPLY (opcode 1100)](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
@@ -73,7 +73,6 @@ Logic parts used. All can be synthesized,
 * 8-bit data processing
 * Up to 16 Opcodes
   * Programable via microcode
-  * [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000),
     [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011),
     [SUBTRACT](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111),
     [MULTIPLY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
@@ -145,8 +144,6 @@ In this design there can be up to 16 opcodes.
 This is what I have microcoded so far,
 
 * [3:0] **OPCODE**
-  * 0000:
-    [RESET](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset-opcode-0000)
   * 0011:
     [ADD](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
   * 0111:
@@ -155,8 +152,6 @@ This is what I have microcoded so far,
     [MULTIPLY](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
   * 1110:
     [DIVIDE](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
-  * 1111:
-    [JAM](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#jam)
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
@@ -271,10 +266,11 @@ The bits do the following actions,
 The microcode is located in
 [control-store.v](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
 
-### RESET (opcode 0000)
+### RESET
 
-This will put the processor into a known state and wait for go.
-We use opcode 0000 since the counter is reset to 0000.
+When RESET is pressed the processor will be put into a known
+state and wait for go.
+We use address 0000 since the counter is reset to 0000.
 For some indication it's working correctly it also outputs 8'h11 to DATA_OUT
 (i.e. the F register) to show it's in a wait state.
 
