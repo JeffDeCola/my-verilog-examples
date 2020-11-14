@@ -233,25 +233,174 @@ always @ (microaddress) begin
         // 8'hD1 - OPCODE 1101 *********************************************************************************
 
         // 8'hE1 - OPCODE 1110 - DIVIDE ************************************************************************
-        8'hE1: begin // SUBTRACT AND WAIT FOR GO TO RELEASE - THEN RESET
-            ALU_DEST <= 3'b011;                                 // F 
-            CIN <= 1'b1;                                        // CARRY
-            ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // INPUT_B, INPUT_A 
+        8'hE1: begin // LOAD DIVIDEND INTO TEMP_REGISTER_A
+            ALU_DEST <= 3'b110;                                 // TA 
+            CIN <= 1'b0;                                        // 0
+            ALU_FUNC <= 5'b00000;                               // A
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, INPUT_A
             BOP <= 4'b0110;                                     // COUNT (DEFAULT)
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
             MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
         end
-        8'hE2: begin // WAIT FOR GO TO BE RELEASED
+        8'hE2: begin // CHECK FOR OVERFLOW - is DIVIDEND EQUAL TOO OR HIGHER THAN DIVISOR - HENCE, SUBTRACT AND LOOK AT C8 (COOL TRICK)
             ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
+            CIN <= 1'b1;                                        // 1 (We need this for the equal too)
+            ALU_FUNC <= 5'b00110;                               // A_MINUS_B_MINUS_1
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+            BOP <= 4'b0011;                                     // C8 (If it's 1 ABORT - ELSE CONTINUE)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h0;        // F0 (ABORT)
+        end
+        // --------------------------------------------------------------------------------------  
+        // NOW LETS DO THE LOOP 4 TIMES - WE DON'T HAVE A COUNT SO WE JUST COPY/PASTE
+
+        // FIRST LOOP
+            8'hE3: begin // SHIFT DIVIDEND TEMP_REGISTER_A LEFT
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b0;                                        // 0
+                ALU_FUNC <= 5'b01100;                               // A PLUS A (bit shift)
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end
+            8'hE4: begin // CHECK is DIVIDEND EQUAL TOO OR HIGHER THAN DIVISOR - HENCE, SUBTRACT AND LOOK AT C8 (COOL TRICK)
+                ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
+                CIN <= 1'b1;                                        // 1 (We need this for the equal too)
+                ALU_FUNC <= 5'b00110;                               // A_MINUS_B_MINUS_1
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+                BOP <= 4'b1011;                                     // !C8 (If it's 0 THEN JUMP TO 2nd LOOP - ELSE CONTINUE)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'hE; MICRO_AD_LOW <= 4'h7;        // JUMP TO SECOND LOOP
+            end
+            8'hE5: begin // DIVIDEND = DIVIDEND - DIVISOR
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b1;                                        // CARRY
+                ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end        
+            8'hE6: begin // ADD ONE TO DIVIDEND
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b1;                                        // 1 
+                ALU_FUNC <= 5'b00000;                               // A
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end
+
+        // SECOND LOOP
+            8'hE7: begin // SHIFT DIVIDEND TEMP_REGISTER_A LEFT
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b0;                                        // 0
+                ALU_FUNC <= 5'b01100;                               // A PLUS A (bit shift)
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end
+            8'hE8: begin // CHECK is DIVIDEND EQUAL TOO OR HIGHER THAN DIVISOR - HENCE, SUBTRACT AND LOOK AT C8 (COOL TRICK)
+                ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
+                CIN <= 1'b1;                                        // 1 (We need this for the equal too)
+                ALU_FUNC <= 5'b00110;                               // A_MINUS_B_MINUS_1
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+                BOP <= 4'b1011;                                     // !C8 (If it's 0 THEN JUMP TO 3rd LOOP - ELSE CONTINUE)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'hE; MICRO_AD_LOW <= 4'hB;        // JUMP TO THIRD LOOP
+            end
+            8'hE9: begin // DIVIDEND = DIVIDEND - DIVISOR
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b1;                                        // CARRY
+                ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end        
+            8'hEA: begin // ADD ONE TO DIVIDEND
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b1;                                        // 1 
+                ALU_FUNC <= 5'b00000;                               // A
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end
+
+        // THRID LOOP
+            8'hEB: begin // SHIFT DIVIDEND TEMP_REGISTER_A LEFT
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b0;                                        // 0
+                ALU_FUNC <= 5'b01100;                               // A PLUS A (bit shift)
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end
+            8'hEC: begin // CHECK is DIVIDEND EQUAL TOO OR HIGHER THAN DIVISOR - HENCE, SUBTRACT AND LOOK AT C8 (COOL TRICK)
+                ALU_DEST <= 3'b111;                                 // NONE (DEFAULT) 
+                CIN <= 1'b1;                                        // 1 (We need this for the equal too)
+                ALU_FUNC <= 5'b00110;                               // A_MINUS_B_MINUS_1
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+                BOP <= 4'b1011;                                     // !C8 (If it's 0 THEN JUMP TO END - ELSE CONTINUE)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'hE; MICRO_AD_LOW <= 4'hF;        // JUMP TO END
+            end
+            8'hED: begin // DIVIDEND = DIVIDEND - DIVISOR
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b1;                                        // CARRY
+                ALU_FUNC <= 5'b00110;                               // A_MINUS_B (MUST HAVE CARRY)
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // INPUT_B, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end        
+            8'hEE: begin // ADD ONE TO DIVIDEND
+                ALU_DEST <= 3'b110;                                 // TA
+                CIN <= 1'b1;                                        // CARRY 
+                ALU_FUNC <= 5'b00000;                               // A
+                B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+            end    
+
+        // LOOP DONE JUMP TO END
+            8'hEF: begin // WRITE TEMP_REGISTER_A to F AND JUMP TO END
+                ALU_DEST <= 3'b011;                                 // F
+                CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+                ALU_FUNC <= 5'b00000;                               // A
+                B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // X, TEMP_A
+                BOP <= 4'b1001;                                     // BRANCH ALWAYS
+                COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+                MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h1;        // F1
+            end
+
+        // --------------------------------------------------------------------------------------  
+        8'hF0: begin // PART OF ABORT - WRIE ALL 1's to F
+            ALU_DEST <= 3'b011;                                 // F
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
-            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b0;                  // X, X
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+
+        // --------------------------------------------------------------------------------------  
+        8'hF1: begin // WAIT FOR GO TO BE RELEASED
+            ALU_DEST <= 3'b111;                                 // NONE (DEFAULT)
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b00000;                               // A
+            B_SOURCE <= 1'b0; A_SOURCE<= 1'b0;                  // X, X
             BOP <= 4'b1100;                                     // !GO_BAR
             COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
-            MICRO_AD_HIGH <= 4'hE; MICRO_AD_LOW <= 4'h2;        // E2 (LOOP)
+            MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h1;        // F1 (LOOP)
         end
-        8'hE3: begin // GOTO RESET - FLASH 00
+        8'hF2: begin // GOTO RESET - FLASH 00
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
             ALU_FUNC <= 5'b10011;                               // O

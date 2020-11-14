@@ -62,7 +62,8 @@ initial begin
     #15; RESET = 0;
     #20; RESET = 1;
     #100;
-
+    
+    /*
     // ******************************************************
     // TEST 1 - ADD - 8'h31 PLUS 8'h05 = 8'h36 (49 + 5 = 54)
     OPCODE = 4'b0011;
@@ -95,18 +96,29 @@ initial begin
     #500
     #20; GO_BAR = 1;
     #120;
+    */
 
     // ******************************************************
-    // TEST 4 - DIVIDE - 8'h31 / 8'h05 = 8'h2D with remainder 8'h04 (49 / 5 = 45 with 4 remainder)
+    // TEST 4 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02 (80 / 13 = 6 with 2 remainder)
+    // THE OUTPUT WILL BE 8'b00010110 or 8'h16
     OPCODE = 4'b1110;
     GO_BAR = 0;
-    DATA_IN_A = 8'h31;
-    DATA_IN_B = 8'h05;
+    DATA_IN_A = 8'h50;      // DIVIDEND (MUST BE LOWER THAN DIVIDEND)
+    DATA_IN_B = 8'h68;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 00001101 becomes 0110 1000
 
-    #500
-    #20; GO_BAR = 1;    // NOW GET REMAINDER
-    #20; GO_BAR = 0;
-    #120
+    #300
+    #20; GO_BAR = 1;
+    #120;
+
+    // ******************************************************
+    // TEST 6 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02 (80 / 13 = 6 with 2 remainder)
+    // THE OUTPUT WILL BE 8'b00010110 or 8'h16
+    OPCODE = 4'b1110;
+    GO_BAR = 0;
+    DATA_IN_A = 8'h68;      // DIVIDEND (MUST BE LOWER THAN DIVIDEND)
+    DATA_IN_B = 8'h68;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 00001101 becomes 0110 1000
+
+    #300
     #20; GO_BAR = 1;
     #120;
 
