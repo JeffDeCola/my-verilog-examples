@@ -2,7 +2,7 @@
 
 _I designed this processor in VHDL for my part of my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-I translated it into verilog here. At of today I have programmed it to
+I translated it into verilog here. As of today I have programmed it to
 add, subtract, multiply and divide._
 
 Table of Contents,
@@ -366,7 +366,7 @@ These diagrams may help,
 
 ![how-to-divide-using-logic.jpg](../../../docs/pics/how-to-divide-using-logic.jpg)
 
-![divide-opcode-1110.jpg](../../../docs/pics/divde-opcode-1110.jpg)
+![divide-opcode-1110.jpg](../../../docs/pics/divide-opcode-1110.jpg)
 
 ### DEFAULT
 
