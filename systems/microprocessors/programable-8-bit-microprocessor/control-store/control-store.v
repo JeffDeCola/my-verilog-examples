@@ -411,9 +411,102 @@ always @ (microaddress) begin
         end
 
         // 8'hF1 - OPCODE 1111 *********************************************************************************
-        // NOT USABLE - THIS IS PART OF DIVIDE
+        // NOT USABLE - THIS IS PART OF DIVIDE AND JAM
 
-        // DEFAULT **************************************************************************************
+        // 8'hFF - JAM *****************************************************************************************
+        // WHEN JAM INPUT ENABLED - JUST FLASH FF A FEW TIMES, WHY?  FUN FUN
+        8'hFF:  begin // FLASH 1 - WILL HOLD HERE AS LONG AS JAM IS ENABLED
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b1110;                                     // BRANCH
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'hF; MICRO_AD_LOW <= 4'h6;        // F6
+        end
+        8'hF6: begin // FLASH 0
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hF7: begin // FLASH 1
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hF8: begin // FLASH 0
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hF9: begin // FLASH 1
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hFA: begin // FLASH 0
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hFB: begin // FLASH 1
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hFC: begin // FLASH 0
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hFD: begin // FLASH 1
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b11100;                               // 1 (DEFAULT)
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b0110;                                     // COUNT (DEFAULT)
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // XX
+        end
+        8'hFE: begin // FLASH 0
+            ALU_DEST <= 3'b011;                                 // F
+            CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
+            ALU_FUNC <= 5'b10011;                               // O
+            B_SOURCE <= 1'b1; A_SOURCE<= 1'b1;                  // X, X 
+            BOP <= 4'b1110;                                     // BRANCH
+            COUNT <= 1'b1;                                      // COUNT_IF_NO_LD
+            MICRO_AD_HIGH <= 4'h0; MICRO_AD_LOW <= 4'h0;        // 00 (TO START OF RESET)
+        end
+
+        // DEFAULT *********************************************************************************************
         default: begin // KICK BACK TO START OF RESET
             ALU_DEST <= 3'b011;                                 // F 
             CIN <= 1'b0;                                        // NO_CARRY (DEFAULT)
