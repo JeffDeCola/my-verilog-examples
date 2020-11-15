@@ -1,5 +1,22 @@
 // a few buttons
 
+// PRESS AND RELEASE OF THE BUTTON SYNCHRONOUSLY (SYNCHRONOUS PRESS AND RELEASE)
+module button_sync_push_release (
+    input           clk,            // CLOCK
+    input           pressed,        // BUTTON IN
+    output reg      out             // PULSE FOR 1 CLOCK CYCLE
+);
+
+always @ (posedge clk) begin
+        if (pressed) begin          // BUTTON PRESSED
+            out <= 1'b1;                      
+        end else begin              //  BUTTON NOT PRESSED
+            out <= 1'b0;
+        end
+end
+
+endmodule
+
 // PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (SYNCHRONOUS PRESS)
 module button_sync_clock_pulse (
     input           clk,            // CLOCK

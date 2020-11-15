@@ -13,6 +13,21 @@ Documentation and reference,
   
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 
+## PRESS AND RELEASE OF THE BUTTON SYNCHRONOUSLY (SYNCHRONOUS PRESS AND RELEASE)
+
+```verilog
+    always @ (posedge clk) begin
+            if (pressed) begin          // BUTTON PRESSED
+                out <= 1'b1;                      
+            end else begin              //  BUTTON NOT PRESSED
+                out <= 1'b0;
+            end
+    end
+```
+
+I designed a few buttons. The entire code is
+[buttons.v](buttons.v).
+
 ## PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (SYNCHRONOUS PRESS)
 
 ```verilog
