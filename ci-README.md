@@ -1,11 +1,10 @@
 # CONCOURSE CONTINUOUS INTEGRATION
 
-For fun, I use concourse ci to,
+I use concourse ci to,
 
-* Updates the
+* Copy and edit `README.md` to `/docs/_includes/README.md` for
   [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
-* Copies, edits and updates the `README.md` file to `/docs/_includes/README.md`
-* Alerts me of the progress via repo status and slack
+* Alert me of the progress via repo status and slack
 
 ## PIPELINE
 
