@@ -5,7 +5,7 @@
 
 _A place to keep my **synthesizable** SystemVerilog code snippets and examples._
 
-**Table of Contents**
+**TABLE OF CONTENTS**
 
 * [BASIC CODE](https://github.com/JeffDeCola/my-systemverilog-examples#basic-code)
   * COMBINATIONAL LOGIC
@@ -28,7 +28,7 @@ _A place to keep my **synthesizable** SystemVerilog code snippets and examples._
   * MICROPROCESSORS
   * PIPELINES
 
-**Documentation and reference**
+**DOCUMENTATION AND REFERENCE**
 
 * [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
   is a free verilog simulator and synthesis tool
