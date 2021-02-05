@@ -5,9 +5,7 @@
 
 _A place to keep my **synthesizable** SystemVerilog code snippets and examples._
 
-These examples also contain info I gathered from other sources.
-
-Table of Contents,
+**Table of Contents**
 
 * [BASIC CODE](https://github.com/JeffDeCola/my-systemverilog-examples#basic-code)
   * COMBINATIONAL LOGIC
@@ -30,7 +28,7 @@ Table of Contents,
   * MICROPROCESSORS
   * PIPELINES
 
-Documentation and reference,
+**Documentation and reference**
 
 * [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
   is a free verilog simulator and synthesis tool
@@ -47,7 +45,7 @@ Documentation and reference,
 * [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
   also has my design of a
   [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-  
+
 [GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
 _built with
 [concourse ci](https://github.com/JeffDeCola/my-systemverilog-examples/blob/master/ci-README.md)_
@@ -101,7 +99,8 @@ to view the output. I also used
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 to synthesize and program these verilog examples on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
-FPGA development board._
+FPGA development board.
+These examples also contain info I gathered from other sources._
 
 ### BASIC CODE
 
