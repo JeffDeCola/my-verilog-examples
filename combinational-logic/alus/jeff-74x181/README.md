@@ -8,11 +8,11 @@ This simple processor was designed in late 60's and the early 70s._
 Documentation and reference,
 
 * This verilog code used in my
-  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 * I really like this
   [explanation](http://www.righto.com/2017/03/inside-vintage-74181-alu-chip-how-it.html)
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## FUNCTION TABLE
 

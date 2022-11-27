@@ -2,7 +2,7 @@
 
 _A simple 16 Byte memory modeled using a 1D array._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

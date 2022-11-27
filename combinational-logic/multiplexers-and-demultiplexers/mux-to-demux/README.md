@@ -1,12 +1,12 @@
 # mux-to-demux example
 
 _Combining the
-[mux-4x1](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
+[mux-4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 to the
-[demux_1x4](https://github.com/JeffDeCola/my-systemverilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
+[demux_1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
 to prove the input will equal the output (for the selected output)._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

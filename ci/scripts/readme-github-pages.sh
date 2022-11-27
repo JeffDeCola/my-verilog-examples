@@ -1,5 +1,5 @@
 #!/bin/sh
-# my-systemverilog-examples readme-github-pages.sh
+# my-verilog-examples readme-github-pages.sh
 
 echo " "
 
@@ -17,14 +17,14 @@ else
     echo " "
 fi
 
-echo "The goal is to git clone /my-systemverilog-examples to /my-systemverilog-examples-updated"
+echo "The goal is to git clone /my-verilog-examples to /my-verilog-examples-updated"
 echo "Then script will edit the /docs/_includes/README.md for GITHUB WEBPAGES"
 echo "Finally push the changes in /docs/_includes/README.md to github"
 echo " "
 
 echo "At start, you should be in a /tmp/build/xxxxx directory with two folders:"
-echo "   /my-systemverilog-examples"
-echo "   /my-systemverilog-examples-updated (created in task-build-push.yml task file)"
+echo "   /my-verilog-examples"
+echo "   /my-verilog-examples-updated (created in task-build-push.yml task file)"
 echo " "
 
 echo "pwd is: $PWD"
@@ -34,12 +34,12 @@ echo "List whats in the current directory"
 ls -la
 echo " "
 
-echo "git clone my-systemverilog-examples to my-systemverilog-examples-updated"
-git clone my-systemverilog-examples my-systemverilog-examples-updated
+echo "git clone my-verilog-examples to my-verilog-examples-updated"
+git clone my-verilog-examples my-verilog-examples-updated
 echo " "
 
-echo "cd my-systemverilog-examples-updated"
-cd my-systemverilog-examples-updated
+echo "cd my-verilog-examples-updated"
+cd my-verilog-examples-updated
 echo " "
 
 echo "List whats in the current directory"

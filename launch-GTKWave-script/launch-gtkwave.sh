@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# my-systemverilog-examples launch-gtkwave.sh
+# my-verilog-examples launch-gtkwave.sh
 
 #######################
 # PART I - GET FILENAME

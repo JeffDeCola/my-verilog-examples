@@ -6,7 +6,7 @@ _A three level Priority Arbiter with asynchronous reset
 An arbiter has one device access to a shared resource (Taking in N device
 requests, granting access to only one).
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

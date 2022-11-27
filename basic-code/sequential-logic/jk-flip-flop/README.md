@@ -2,7 +2,7 @@
 
 _A positive edge jk flip-flop with synchronous clear._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## TRUTH TABLE
 

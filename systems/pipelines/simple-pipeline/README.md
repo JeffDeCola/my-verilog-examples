@@ -2,7 +2,7 @@
 
 _A simple pipeline._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

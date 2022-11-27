@@ -2,7 +2,7 @@
 
 _A 4-bit left shift register._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## VERILOG CODE
 

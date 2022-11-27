@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# my-systemverilog-examples run-test.sh
+# my-verilog-examples run-test.sh
 
 echo "**********************************************************************"
 echo "* run-test.sh (START) ************************************************"

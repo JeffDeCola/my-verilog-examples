@@ -2,7 +2,7 @@
 
 _Demultiplexer - One input, four outputs (using a case statement)._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

@@ -1,4 +1,4 @@
 #!/bin/bash
-# my-systemverilog-examples destroy-pipeline.sh
+# my-verilog-examples destroy-pipeline.sh
 
-fly -t ci destroy-pipeline --pipeline my-systemverilog-examples
+fly -t ci destroy-pipeline --pipeline my-verilog-examples
