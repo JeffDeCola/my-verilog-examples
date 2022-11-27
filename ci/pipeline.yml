@@ -1,38 +1,38 @@
-# my-systemverilog-examples pipeline.yml
+# my-verilog-examples pipeline.yml
 
 jobs:
 
 - name: job-readme-github-pages
   plan:
-  - get: my-systemverilog-examples
+  - get: my-verilog-examples
     trigger: true
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
-      text: "From my-systemverilog-examples: STARTED job-readme-github-pages in concourse ci."
+      text: "From my-verilog-examples: STARTED job-readme-github-pages in concourse ci."
   - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-systemverilog-examples" }
+    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-verilog-examples" }
   - task: task-readme-github-pages
-    file: my-systemverilog-examples/ci/tasks/task-readme-github-pages.yml
+    file: my-verilog-examples/ci/tasks/task-readme-github-pages.yml
     on_success:
       do:
-      - put: my-systemverilog-examples
+      - put: my-verilog-examples
         params:
-          repository: my-systemverilog-examples-updated  
+          repository: my-verilog-examples-updated  
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From my-systemverilog-examples: PASSED job-readme-github-pages in concourse ci."
+          text: "From my-verilog-examples: PASSED job-readme-github-pages in concourse ci."
       - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-systemverilog-examples" }
+        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-verilog-examples" }
     on_failure:
       do:
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From my-systemverilog-examples: FAILED job-readme-github-pages in concourse ci."
+          text: "From my-verilog-examples: FAILED job-readme-github-pages in concourse ci."
       - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-systemverilog-examples" }
+        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-verilog-examples" }
 
 resource_types:
 
@@ -49,11 +49,11 @@ resource_types:
 
 resources:
 
-- name: my-systemverilog-examples
+- name: my-verilog-examples
   type: git
   source:
-    #uri: https://github.com/jeffdecola/my-systemverilog-examples
-    uri: git@github.com:jeffdecola/my-systemverilog-examples.git
+    #uri: https://github.com/jeffdecola/my-verilog-examples
+    uri: git@github.com:jeffdecola/my-verilog-examples.git
     branch: master
     private_key: {{git_private_key}}
 - name: resource-slack-alert
@@ -63,5 +63,5 @@ resources:
 - name: resource-repo-status 
   type: github-status
   source:
-    repository: jeffdecola/my-systemverilog-examples 
+    repository: jeffdecola/my-verilog-examples 
     access_token: {{repo_github_token}}

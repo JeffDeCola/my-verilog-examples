@@ -2,7 +2,7 @@
 
 _Multiplexer - Four inputs, one output (using a case statement)._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

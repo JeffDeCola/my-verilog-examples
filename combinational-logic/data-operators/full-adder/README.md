@@ -2,7 +2,7 @@
 
 _A 2-bit full-adder._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## VERILOG CODE
 

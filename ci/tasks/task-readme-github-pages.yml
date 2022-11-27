@@ -1,4 +1,4 @@
-# my-systemverilog-examples task-readme-github-pages.yml
+# my-verilog-examples task-readme-github-pages.yml
 
 platform: linux
 
@@ -9,11 +9,11 @@ image_resource:
     tag: 1.7.1
 
 inputs:
-- name: my-systemverilog-examples
+- name: my-verilog-examples
 
 outputs:
-- name: my-systemverilog-examples-updated
+- name: my-verilog-examples-updated
 
 run:
-  path: ./my-systemverilog-examples/ci/scripts/readme-github-pages.sh
+  path: ./my-verilog-examples/ci/scripts/readme-github-pages.sh
   # args: [-debug]

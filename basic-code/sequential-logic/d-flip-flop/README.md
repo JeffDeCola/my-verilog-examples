@@ -3,7 +3,7 @@
 _A positive edge d flip-flop with synchronous enable.
 This selectively captures a digital value._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

@@ -2,7 +2,7 @@
 
 _Decoder - Three inputs decodes to 1 of 8 outputs (hot)._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

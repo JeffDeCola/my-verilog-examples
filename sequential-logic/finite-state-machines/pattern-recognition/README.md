@@ -2,7 +2,7 @@
 
 _Recognize the pattern `00110` in a serial stream._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-systemverilog-examples/)
+[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## STATE DIAGRAM
 
