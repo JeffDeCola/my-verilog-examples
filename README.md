@@ -1,11 +1,12 @@
-# my-verilog-examples
+# MY VERILOG EXAMPLES
 
-[![Issue Count](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/issues)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![codeclimate Issue Count](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/issues)
+[![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
-_A place to keep my **synthesizable** SystemVerilog code snippets and examples._
+_A place to keep my **synthesizable** verilog examples._
 
-Table of Contents,
+Table of Contents
 
 * [BASIC CODE](https://github.com/JeffDeCola/my-verilog-examples#basic-code)
   * COMBINATIONAL LOGIC
@@ -28,34 +29,36 @@ Table of Contents,
   * MICROPROCESSORS
   * PIPELINES
 
-Documentation and reference,
+Documentation and Reference
 
-* [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-  is a free verilog simulator and synthesis tool
-* [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-  is a free waveform viewer
-* [SystemVerilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/languages/verilog-cheat-sheet)
+* [verilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/languages/verilog-cheat-sheet)
   cheat sheet
-* [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-  cheat sheet for synthesis and burning an FPGA
-* [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
-  FPGA development board
-* [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
+* [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+  is a free tool for simulation and synthesis
+* [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+  is a free HDL waveform viewer
+* [xilinx vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+  is a complete IDE for synthesis and analysis of HDL designs
+* [digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+  is a FPGA development board
+* My
+  [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
   has an explanation of HDLs and how they fit into frameworks
-* [My Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
+* My
+  [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
   also has my design of a
   [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
-_built with
-[concourse ci](https://github.com/JeffDeCola/my-verilog-examples/blob/master/ci-README.md)_
+* This repos
+  [github webpage](https://jeffdecola.github.io/my-verilog-examples/)
+  _built with
+  [concourse](https://github.com/JeffDeCola/my-verilog-examples/blob/master/ci-README.md)_
 
 ## SCRIPT TO LAUNCH GTKWAVE
 
 To make things easier when viewing a waveform, I wrote a script that will launch
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 with your saved `*.gtkw` file
-from Windows WSL, macOS or Linux (Whatever you use).
+from Windows WSL, macOS or Linux (Whatever OS you like to use).
 
 The script is
 [launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh).
@@ -63,7 +66,7 @@ The script is
 ## A QUICK NOTE ON SYNTHESIS
 
 I declare my ports as follows because that's what the synthesis tools want.
-Who am I to argue,
+Who am I to argue.
 
 ```verilog
     module NAME (
@@ -224,7 +227,7 @@ These examples also contain info I gathered from other sources._
 
     _Multiplexer - Four inputs, one output (using a case statement)._
 
-  * [mux-to-demux](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)  
+  * [mux-to-demux](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)
 
     _Combining the `mux-4x1` to the `demux-1x4` to prove the input will equal
     the output (For the selected output)._

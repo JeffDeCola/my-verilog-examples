@@ -10,7 +10,7 @@ Documentation and reference,
   [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 * [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
   FPGA development board
-  
+
 [GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## PRESS AND RELEASE OF THE BUTTON SYNCHRONOUSLY (SYNCHRONOUS PRESS AND RELEASE)
@@ -18,7 +18,7 @@ Documentation and reference,
 ```verilog
     always @ (posedge clk) begin
             if (pressed) begin          // BUTTON PRESSED
-                out <= 1'b1;                      
+                out <= 1'b1;
             end else begin              //  BUTTON NOT PRESSED
                 out <= 1'b0;
             end
@@ -37,8 +37,8 @@ I designed a few buttons. The entire code is
             if (pressed & ~lock) begin              // BUTTON PRESSED
                 lock <= 1'b1;                       // - Lock
                 out <= 1'b1;                        // - Pulse
-            end else if (~pressed & lock) begin     // RELEASE LOCK  
-                lock <= 1'b0;            
+            end else if (~pressed & lock) begin     // RELEASE LOCK
+                lock <= 1'b0;
                 out <= 1'b0;
             end else begin
                 out <= 1'b0;

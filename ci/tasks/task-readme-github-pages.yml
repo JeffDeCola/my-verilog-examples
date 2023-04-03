@@ -6,13 +6,13 @@ image_resource:
   type: docker-image
   source:
     repository: golang
-    tag: 1.7.1
+    tag: 1.20.1
 
 inputs:
-- name: my-verilog-examples
+  - name: my-verilog-examples
 
 outputs:
-- name: my-verilog-examples-updated
+  - name: my-verilog-examples-updated
 
 run:
   path: ./my-verilog-examples/ci/scripts/readme-github-pages.sh
