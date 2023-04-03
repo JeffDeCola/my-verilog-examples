@@ -1,67 +1,94 @@
 # my-verilog-examples pipeline.yml
 
+#------------------------------------------------------------------------------------------
 jobs:
 
+#**********************************************
 - name: job-readme-github-pages
+#**********************************************
   plan:
-  - get: my-verilog-examples
-    trigger: true
-  - put: resource-slack-alert
-    params:
-      channel: '#jeff-builds'
-      text: "From my-verilog-examples: STARTED job-readme-github-pages in concourse ci."
-  - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-verilog-examples" }
-  - task: task-readme-github-pages
-    file: my-verilog-examples/ci/tasks/task-readme-github-pages.yml
-    on_success:
-      do:
-      - put: my-verilog-examples
-        params:
-          repository: my-verilog-examples-updated  
-      - put: resource-slack-alert
-        params:
-          channel: '#jeff-builds'
-          text: "From my-verilog-examples: PASSED job-readme-github-pages in concourse ci."
-      - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-verilog-examples" }
-    on_failure:
-      do:
-      - put: resource-slack-alert
-        params:
-          channel: '#jeff-builds'
-          text: "From my-verilog-examples: FAILED job-readme-github-pages in concourse ci."
-      - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-verilog-examples" }
 
+    # GET REPO FROM GITHUB
+    - get: my-verilog-examples
+      trigger: true
+    # SEND SLACK ALERT  
+    - put: resource-slack-alert
+      params:
+        channel: '#jeff-builds'
+        text: "From my-verilog-examples: STARTED job-readme-github-pages in concourse ci."
+    # SEND GITHUB STATUS
+    - put: resource-repo-status
+      params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-verilog-examples" }    
+    
+    # RUN TASK IN REPO USING ALPINE DOCKER IMAGE
+    - task: task-readme-github-pages
+      file: my-verilog-examples/ci/tasks/task-readme-github-pages.yml
+      
+      # TASK SUCCESS
+      on_success:
+        do:
+          # PUSH NEW REPO TO GITHUB
+          - put: my-verilog-examples
+            params:
+              repository: my-verilog-examples-updated  
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From my-verilog-examples: PASSED job-readme-github-pages in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-verilog-examples" }
+      
+      # TASK FAILURE   
+      on_failure:
+        do:
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From my-verilog-examples: FAILED job-readme-github-pages in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-verilog-examples" }
+
+#------------------------------------------------------------------------------------------
 resource_types:
 
-- name: slack-notification
-  type: docker-image
-  source:
-    repository: cfcommunity/slack-notification-resource
-    tag: latest
-- name: github-status
-  type: docker-image
-  source:
-    repository: dpb587/github-status-resource
-    tag: master
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+      tag: latest
 
+  - name: github-status
+    type: docker-image
+    source:
+      repository: jeffdecola/github-status-resource-clone
+      tag: v0.0.2
+
+#------------------------------------------------------------------------------------------
 resources:
 
-- name: my-verilog-examples
-  type: git
-  source:
-    #uri: https://github.com/jeffdecola/my-verilog-examples
-    uri: git@github.com:jeffdecola/my-verilog-examples.git
-    branch: master
-    private_key: {{git_private_key}}
-- name: resource-slack-alert
-  type: slack-notification
-  source:
-    url: {{slack_url}} 
-- name: resource-repo-status 
-  type: github-status
-  source:
-    repository: jeffdecola/my-verilog-examples 
-    access_token: {{repo_github_token}}
+  - name: my-verilog-examples
+    type: git
+    icon: github
+    source:
+      #uri: https://github.com/jeffdecola/my-verilog-examples
+      uri: git@github.com:jeffdecola/my-verilog-examples.git
+      branch: master
+      private_key: ((git_private_key))
+
+  - name: resource-slack-alert
+    type: slack-notification
+    icon: slack
+    source:
+      url: ((slack_url)) 
+
+  - name: resource-repo-status
+    type: github-status
+    icon: github
+    source:
+      repository: jeffdecola/my-verilog-examples 
+      access_token: ((repo_github_token))
+      branch: master
