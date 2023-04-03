@@ -1,12 +1,12 @@
-_built with
-[concourse ci](https://github.com/JeffDeCola/my-verilog-examples/blob/master/ci-README.md)_
+  _built with
+  [concourse](https://github.com/JeffDeCola/my-verilog-examples/blob/master/ci-README.md)_
 
 # SCRIPT TO LAUNCH GTKWAVE
 
 To make things easier when viewing a waveform, I wrote a script that will launch
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 with your saved `*.gtkw` file
-from Windows WSL, macOS or Linux (Whatever you use).
+from Windows WSL, macOS or Linux (Whatever OS you like to use).
 
 The script is
 [launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh).
@@ -14,7 +14,7 @@ The script is
 ## A QUICK NOTE ON SYNTHESIS
 
 I declare my ports as follows because that's what the synthesis tools want.
-Who am I to argue,
+Who am I to argue.
 
 ```verilog
     module NAME (
@@ -50,7 +50,8 @@ to view the output. I also used
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 to synthesize and program these verilog examples on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
-FPGA development board._
+FPGA development board.
+These examples also contain info I gathered from other sources._
 
 ### BASIC CODE
 
@@ -174,7 +175,7 @@ FPGA development board._
 
     _Multiplexer - Four inputs, one output (using a case statement)._
 
-  * [mux-to-demux](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)  
+  * [mux-to-demux](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)
 
     _Combining the `mux-4x1` to the `demux-1x4` to prove the input will equal
     the output (For the selected output)._
