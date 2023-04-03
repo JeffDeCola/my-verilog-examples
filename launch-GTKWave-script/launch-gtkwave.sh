@@ -21,13 +21,13 @@ case "${unameOut}" in
 esac
 
 # Refine if Linux is Windows WSL
-if [ "${machine}" = "Linux" ]
-then
-    if grep -q Microsoft /proc/version
-    then
-        machine=Windows
-    fi
-fi
+#if [ "${machine}" = "Linux" ]; then
+#    checkforWSL="WSL2"
+#    unameOut="$(uname -a)"
+#    if echo "$unameOut" | grep "$checkforWSL"; then
+#        machine=Windows
+#    fi
+#fi
 
 #############################
 # PART III - KICK OFF GTKWAVE
@@ -37,11 +37,11 @@ echo ""
 if [ ${machine} = "Windows" ]
 then
     # WINDOWS WSL
-    echo "Windows 10 Bash Detected"
+    echo "Windows WSL2 Detected - USE WINDOWS GTKWAVE"
     echo "Launching gtkWAVE in the background"
-    echo 'Using command: cmd.exe /K "C:/Program Files/gtkwave-3.3.100-bin-win32/gtkwave/bin/gtkwave.exe" -f' "${name}"'-tb.gtkw &' 
+    echo 'Using command: cmd.exe /K "C:/Program Files/gtkwave64/bin/gtkwave.exe" -f' "${name}"'-tb.gtkw &' 
     echo ""
-    cmd.exe /K "C:/Program Files/gtkwave-3.3.100-bin-win32/gtkwave/bin/gtkwave.exe" -f "${name}"-tb.gtkw &
+    al -f "${name}"-tb.gtkw &
 elif  [ ${machine} = "macOS" ]
 then
     # macOS
@@ -63,3 +63,8 @@ else
     echo "This is a" ${machine} "machine which I don't have GTKWave on"
 fi
 echo ""
+
+echo "If you are having trouble launching GTKWave"
+echo "export DISPLAY=:0"
+echo "Run an Xserver with WSL2 - Google it - This is a little bit of work"
+echo " "
