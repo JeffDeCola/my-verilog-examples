@@ -1,5 +1,6 @@
 # MY VERILOG EXAMPLES
 
+[![Tag Latest](https://img.shields.io/github/v/tag/jeffdecola/my-verilog-examples)](https://github.com/JeffDeCola/my-verilog-examples/tags)
 [![codeclimate Issue Count](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/issues)
 [![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
