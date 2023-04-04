@@ -64,7 +64,9 @@ else
 fi
 echo ""
 
-echo "If you are having trouble launching GTKWave"
+echo "If you're having trouble launching GTKWave"
 echo "export DISPLAY=:0"
-echo "Run an Xserver with WSL2 - Google it - This is a little bit of work"
+echo "If using WSL2, make sure you have a xserver (vcxsrv) running:"
+echo "Check out my cheat sheet"
+echo "https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/development/operating-systems/windows/wls2-with-xserver-cheat-sheet"
 echo " "
