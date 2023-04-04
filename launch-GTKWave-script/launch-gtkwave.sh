@@ -34,7 +34,7 @@ esac
 #############################
 
 echo ""
-if [ ${machine} = "Windows" ]
+if [ "${machine}" = "Windows" ]
 then
     # WINDOWS WSL
     echo "Windows WSL2 Detected - USE WINDOWS GTKWAVE"
@@ -42,7 +42,7 @@ then
     echo 'Using command: cmd.exe /K "C:/Program Files/gtkwave64/bin/gtkwave.exe" -f' "${name}"'-tb.gtkw &' 
     echo ""
     al -f "${name}"-tb.gtkw &
-elif  [ ${machine} = "macOS" ]
+elif  [ "${machine}" = "macOS" ]
 then
     # macOS
     echo "macOS Detected"
@@ -50,7 +50,7 @@ then
     echo "Using command: /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f ${name}-tb.gtkw &"
     echo ""
     /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f "${name}"-tb.gtkw &
-elif [ ${machine} = "Linux" ]
+elif [ "${machine}" = "Linux" ]
 then
     # LINUX
     echo "Linux Detected"
