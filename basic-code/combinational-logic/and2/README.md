@@ -20,33 +20,46 @@ _2-input AND gate used in my
 
 ## VERILOG CODE
 
-The main part of the code is,
+The
+[and2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and2/and2.v)
+main code is,
 
 ```verilog
     assign y = a & b;
 ```
 
-The entire code is
-[and2.v](and2.v).
-
 ## RUN (SIMULATE)
 
-I used my testbench
-[and2-tb.v](and2-tb.v) with
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and create a `.vcd` file.
+I created a testbench
+[and2-tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and2/and2-tb.v)
+and header file
+[and2.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and2/and2.vh).
+
+To [run-test.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and2/run-test.sh),
 
 ```bash
-sh run-test.sh
+iverilog -o and2.vvp and2-tb.v and2.vh
+./and2.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Check you waveform using your `.vcd` file with a waveform viewer.
+First launch
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+using your value change dump (.vcd) file,
 
-I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-and launch it using
-[launch-gtkwave.sh](launch-gtkwave.sh).
+```bash
+gtkwave -f and2.vcd &
+```
+
+Configure and save your waveform to a .gtkw file.
+
+Now
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh),
+
+```bash
+gtkwave -f and2.gtkw &
+```
 
 ![and2-waveform.jpg](../../../docs/pics/and2-waveform.jpg)
 
