@@ -16,7 +16,7 @@ and2 uut(
 
 // FILES
 initial begin
-    $dumpfile("and2-tb.vcd");
+    $dumpfile("and2.vcd");
     $dumpvars(0, and2_tb);
 end
 

@@ -289,7 +289,7 @@ on wsl2, macOS or linux.
   * [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
 
     _A programable 8-bit microprocessor. Originally designed in VHDL for part of
-    [my Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
+    [my master's thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
 * PIPELINES
 
