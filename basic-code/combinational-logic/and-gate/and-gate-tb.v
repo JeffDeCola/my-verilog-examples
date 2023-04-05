@@ -5,13 +5,13 @@
 module and_gate_tb;
 
 // DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg  X, Y;
-wire XY;
+reg  A, B;
+wire Y_1, Y_2, Y_3, Y_4;
 
 // UUT
 and_gate uut(
-    .x(X), .y(Y),
-    .xy_1(XY_1), .xy_2(XY_2), .xy_3(XY_3), .xy_4(XY_4)
+    .a(A), .b(B),
+    .y_1(Y_1), .y_2(Y_2), .y_3(Y_3), .y_4(Y_4)
 );
 
 // FILES
@@ -23,11 +23,11 @@ end
 // TESTCASE
 initial begin
     $display("test start");
-    X = 0; Y = 0;
+    A = 0; B = 0;
     
-    #10 X = 1; Y = 0;
-    #10 X = 0; Y = 1;
-    #10 X = 1; Y = 1;
+    #10 A = 1; B = 0;
+    #10 A = 0; B = 1;
+    #10 A = 1; B = 1;
     #10
     
     $display("test complete");

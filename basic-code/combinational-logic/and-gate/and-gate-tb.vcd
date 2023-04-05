@@ -1,5 +1,5 @@
 $date
-	Mon Apr  3 04:18:32 2023
+	Tue Apr  4 03:48:09 2023
 $end
 $version
 	Icarus Verilog
@@ -8,22 +8,25 @@ $timescale
 	1ns
 $end
 $scope module and_gate_tb $end
-$var wire 1 ! XY_4 $end
-$var wire 1 " XY_3 $end
-$var wire 1 # XY_2 $end
-$var wire 1 $ XY_1 $end
-$var reg 1 % X $end
-$var reg 1 & Y $end
+$var wire 1 ! Y_4 $end
+$var wire 1 " Y_3 $end
+$var wire 1 # Y_2 $end
+$var wire 1 $ Y_1 $end
+$var reg 1 % A $end
+$var reg 1 & B $end
 $scope module uut $end
-$var wire 1 % x $end
-$var wire 1 $ xy_1 $end
-$var wire 1 ! xy_4 $end
-$var wire 1 & y $end
-$var reg 1 # xy_2 $end
-$var reg 1 " xy_3 $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 $ y_1 $end
+$var wire 1 ! y_4 $end
+$var reg 1 # y_2 $end
+$var reg 1 " y_3 $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
 #0
 $dumpvars
 0&

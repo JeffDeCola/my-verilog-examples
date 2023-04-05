@@ -1,8 +1,12 @@
-# half-adder example
+# HALF ADDER EXAMPLE
 
-_A 2-bit half-adder._
+_A 2-bit half adder._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/half-adder#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/half-adder#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/half-adder#check-waveform)
 
 ## VERILOG CODE
 

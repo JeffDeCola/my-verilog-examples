@@ -1,8 +1,12 @@
-# full-adder example
+# FULL ADDER EXAMPLE
 
-_A 2-bit full-adder._
+_A 2-bit full adder._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/full-adder#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/full-adder#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/full-adder#check-waveform)
 
 ## VERILOG CODE
 

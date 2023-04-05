@@ -1,4 +1,5 @@
-// A 2-bit left-shift-register
+// A 4-bit left shift register.
+
 module left_shift_register(
     input        clk,           // clk
     input        rst,           // Reset

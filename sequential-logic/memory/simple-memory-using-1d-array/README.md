@@ -1,8 +1,13 @@
-# simple-memory-using-1d-array example
+# SIMPLE MEMORY USING 1D ARRAY EXAMPLE
 
 _A simple 16 Byte memory modeled using a 1D array._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#check-waveform)
 
 ## SCHEMATIC
 

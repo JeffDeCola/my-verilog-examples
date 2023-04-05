@@ -1,4 +1,4 @@
-// A simple 8-bit register with synchronous load and clear
+// A simple 8-bit register with synchronous load and clear.
 
 module simple_8_bit_register (
     input       [7:0]   data_in,

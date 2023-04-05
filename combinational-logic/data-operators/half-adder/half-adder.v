@@ -1,4 +1,5 @@
-// A 2-bit half-adder
+// A 2-bit half adder
+
 module half_adder(
     input  a,           // a
     input  b,           // b

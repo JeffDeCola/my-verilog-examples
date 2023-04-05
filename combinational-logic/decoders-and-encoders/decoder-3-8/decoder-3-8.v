@@ -1,4 +1,5 @@
-// 3 to 8 decoder
+// Decoder - Three inputs decodes to 1 of 8 outputs (hot).
+
 module decoder_3_8(
     input   [2:0] in,       // 3 Input
     output  [7:0] out       // 7 Outputs

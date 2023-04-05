@@ -1,4 +1,5 @@
-// 1x4 demultiplexer
+// Demultiplexer - One input, four outputs (using a case statement).
+
 module demux_1x4(
     input  y,               // 1 Input
     input  [1:0] sel,       // Select

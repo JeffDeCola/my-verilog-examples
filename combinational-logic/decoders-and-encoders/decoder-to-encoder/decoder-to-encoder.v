@@ -1,4 +1,4 @@
-// decoder to encoder
+// Combining the decoder-3-8 to the encoder-8-3 to prove the input will equal the output.
 
 module decoder_to_encoder(
     input  [2:0] in,      // 3 Inputs

@@ -60,7 +60,7 @@ then
     gtkwave -f "${name}"-tb.gtkw & 
 else
     # OTHER
-    echo "This is a" ${machine} "machine which I don't have GTKWave on"
+    echo "This is a $machine machine which I don't have GTKWave on"
 fi
 echo ""
 

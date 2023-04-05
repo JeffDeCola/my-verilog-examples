@@ -1,4 +1,5 @@
-// Recognize the pattern `00110` in a serial stream
+// Recognize the pattern 00110 in a serial stream.
+
 module pattern_recognition(
     input        clk,           // clk
     input        rst,           // Reset

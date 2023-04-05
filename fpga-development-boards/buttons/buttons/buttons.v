@@ -1,4 +1,4 @@
-// a few buttons
+// A few different ways to use buttons on a FPGA development board.
 
 // PRESS AND RELEASE OF THE BUTTON SYNCHRONOUSLY (SYNCHRONOUS PRESS AND RELEASE)
 module button_sync_push_release (

@@ -1,5 +1,8 @@
-// Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs
-module jeff_74x157(
+// Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
+// Based on the 7400-series integrated circuits used in my
+// programable-8-bit-microprocessor.
+    
+    module jeff_74x157(
     input       [3:0] a,                  // INPUT DATA A
     input       [3:0] b,                  // INPUT DATA B
     input             s,                  // SELECT

@@ -1,8 +1,13 @@
-# pattern-recognition example
+# PATTERN RECOGNITION EXAMPLE
 
-_Recognize the pattern `00110` in a serial stream._
+_Recognize the pattern 00110 in a serial stream._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [STATE DIAGRAM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition#state-diagram)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition#check-waveform)
 
 ## STATE DIAGRAM
 

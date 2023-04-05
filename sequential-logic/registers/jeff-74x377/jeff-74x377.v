@@ -1,4 +1,5 @@
-// 8-bit register, clock enable
+// 8-bit register, clock enable.
+// Based on the 7400-series integrated circuits used in my programable-8-bit-microprocessor.
 
 // MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
 // `include "../../../basic-code/sequential-logic/d-flip-flop/d-flip-flop.v"

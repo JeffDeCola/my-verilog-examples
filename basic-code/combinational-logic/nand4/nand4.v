@@ -1,6 +1,7 @@
-// 4-input NAND gate
+// 4-input NAND gate used in my programable-8-bit-microprocessor
+
 module nand4(
-    input           a, b, c, d,     //
+    input           a, b, c, d,    //
     output          y              //
 );
 
