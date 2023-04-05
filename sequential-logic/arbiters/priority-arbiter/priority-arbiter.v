@@ -1,4 +1,5 @@
-//  A three level Priority Arbiter with asynchronous reset
+// A three level Priority Arbiter with asynchronous reset (using if-then-else statements).
+
 module priority_arbiter(
     input clk,          // Clock  
     input rst,          // Reset

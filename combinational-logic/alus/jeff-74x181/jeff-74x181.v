@@ -1,6 +1,7 @@
-// 4-bit arithmetic logic unit and function generator
-// Provides 16 binary logic operations and
-// 16 arithmetic operations on two 4-bit words.
+// 4-bit alu (arithmetic logic unit) and function generator.
+// Provides 16 binary logic operations and 16 arithmetic operations on two 4-bit words.
+// Based on the 7400-series integrated circuits used in my
+// programable-8-bit-microprocessor
 
 // MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
 //`include "sections/input-section.v"

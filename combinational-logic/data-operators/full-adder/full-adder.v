@@ -1,4 +1,5 @@
-// A 2-bit full-adder
+// A 2-bit full adder
+
 module full_adder(
     input  a,           // a
     input  b,           // b

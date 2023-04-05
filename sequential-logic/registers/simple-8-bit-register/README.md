@@ -1,8 +1,15 @@
-# simple-8-bit-register example
+# SIMPLE 8-BIT REGISTER EXAMPLE
 
 _A simple 8-bit register with synchronous load and clear._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#tested-in-hardware---burned-to-a-fpga)
 
 ## SCHEMATIC
 

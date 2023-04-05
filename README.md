@@ -5,10 +5,11 @@
 [![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
-_A place to keep my **synthesizable** verilog examples._
+_A place to keep my synthesizable verilog examples._
 
 Table of Contents
 
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples#overview)
 * [BASIC CODE](https://github.com/JeffDeCola/my-verilog-examples#basic-code)
   * COMBINATIONAL LOGIC
   * SEQUENTIAL LOGIC
@@ -54,17 +55,17 @@ Documentation and Reference
   _built with
   [concourse](https://github.com/JeffDeCola/my-verilog-examples/blob/master/ci-README.md)_
 
-## SCRIPT TO LAUNCH GTKWAVE
+## OVERVIEW
 
-To make things easier when viewing a waveform, I wrote a script that will launch
+_Each example uses
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+to simulate and
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-with your saved `*.gtkw` file
-from Windows WSL, macOS or Linux (Whatever OS you like to use).
-
-The script is
-[launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh).
-
-## A QUICK NOTE ON SYNTHESIS
+to view the output. I also used
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+to synthesize and program these verilog examples on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
 
 I declare my ports as follows because that's what the synthesis tools want.
 Who am I to argue.
@@ -92,81 +93,67 @@ when you synthesize to an FPGA.
 
 ```
 
-## SYSTEMVERILOG EXAMPLES
-
-_All sections in alphabetical order.
-Each example uses
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and
+To make things easier,
+[launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh)
+will launch the
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-to view the output. I also used
-[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-to synthesize and program these verilog examples on a
-[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
-FPGA development board.
-These examples also contain info I gathered from other sources._
+waveform viewer
+from a `*.gtkw` file
+on wsl2, macOS or linux.
 
-### BASIC CODE
+## BASIC CODE
 
 * COMBINATIONAL LOGIC
-
-  * [and2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and2)
-
-    _2-input AND gate used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
 
   * [and-gate](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and-gate)
 
     _A few different ways to model an AND gate._
 
+  * [and2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and2)
+
+    _2-input AND gate used in my
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
+
   * [nand4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/nand4)
 
     _4-input NAND gate used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [nor2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/nor2)
 
     _2-input NOR gate used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [not1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1)
 
     _NOT gate used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [or2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/or2)
 
     _2-input OR gate used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [xor2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2)
 
     _2-input XOR gate used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
 * SEQUENTIAL LOGIC
 
   * [d-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
 
-     _A positive edge d flip-flop with synchronous enable.
-    Used in my
-    [jeff-74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
-    below._
+     _A positive edge d flip-flop with synchronous enable
+    used in my
+    [jeff-74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff-74x377)._
 
   * [jk-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
 
-     _A positive edge jk flip-flop with synchronous clear.
-    Used in my
-    [jeff-74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
-    below._
+     _A positive edge jk flip-flop with synchronous clear
+    used in my
+    [jeff-74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff-74x161)._
 
-### COMBINATIONAL LOGIC
+## COMBINATIONAL LOGIC
 
 * ALUs
 
@@ -176,8 +163,7 @@ These examples also contain info I gathered from other sources._
     Provides 16 binary logic operations and 16 arithmetic operations
     on two 4-bit words.
     Based on the 7400-series integrated circuits used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
 * DATA OPERATORS
 
@@ -197,7 +183,11 @@ These examples also contain info I gathered from other sources._
 
   * [decoder-to-encoder](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-to-encoder)
 
-    _Combining the `decoder-3-8` to the `encoder-8-3` to prove the input will equal
+    _Combining the
+    [decoder-3-8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-3-8)
+    to the
+    [encoder-8-3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-8-3)
+    to prove the input will equal
     the output._
 
   * [encoder-8-3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-8-3)
@@ -214,15 +204,13 @@ These examples also contain info I gathered from other sources._
 
     _8-line to 1-line data selector/multiplexer.
     Based on the 7400-series integrated circuits used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [jeff-74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157)
 
     _Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
     Based on the 7400-series integrated circuits used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [mux-4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 
@@ -230,10 +218,14 @@ These examples also contain info I gathered from other sources._
 
   * [mux-to-demux](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux)
 
-    _Combining the `mux-4x1` to the `demux-1x4` to prove the input will equal
-    the output (For the selected output)._
+    _Combining the
+    [mux-4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
+    to the
+    [demux-1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
+    to prove the input will equal
+    the output (for the selected output)._
 
-### FPGA DEVELOPMENT BOARDS
+## FPGA DEVELOPMENT BOARDS
 
 * BUTTONS
 
@@ -241,14 +233,14 @@ These examples also contain info I gathered from other sources._
 
     _A few different ways to use buttons on a FPGA development board._
 
-### SEQUENTIAL LOGIC
+## SEQUENTIAL LOGIC
 
 * ARBITERS
 
   * [priority-arbiter](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter)
 
     _A three level Priority Arbiter with asynchronous reset
-    (Using if-then-else statements)._
+    (using if-then-else statements)._
 
 * COUNTERS
 
@@ -256,14 +248,13 @@ These examples also contain info I gathered from other sources._
 
     _Synchronous presettable 4-bit binary counter, asynchronous clear.
     Based on the 7400-series integrated circuits used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
 * FINITE STATE MACHINES
 
   * [pattern-recognition](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/pattern-recognition)
 
-    _Recognize the pattern `00110` in a serial stream._
+    _Recognize the pattern 00110 in a serial stream._
 
 * MEMORY
 
@@ -279,8 +270,7 @@ These examples also contain info I gathered from other sources._
 
     _8-bit register, clock enable.
     Based on the 7400-series integrated circuits used in my
-    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-    below._
+    [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
   * [simple-8-bit-register](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register)
 
@@ -292,7 +282,7 @@ These examples also contain info I gathered from other sources._
 
     _A 4-bit left shift register._
 
-### SYSTEMS
+## SYSTEMS
 
 * MICROPROCESSORS
 

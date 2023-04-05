@@ -1,18 +1,31 @@
-# jeff-74x181 example
+# JEFF 74x181 EXAMPLE
 
 _4-bit alu (arithmetic logic unit) and function generator.
-Provides 16 binary logic operations and
-16 arithmetic operations on two 4-bit words.
-This simple processor was designed in late 60's and the early 70s._
+Provides 16 binary logic operations and 16 arithmetic operations
+on two 4-bit words.
+Based on the 7400-series integrated circuits used in my
+[programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
-Documentation and reference,
+Table of Contents
 
-* This verilog code used in my
-  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181#schematic)
+* [FUNCTION TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181#function-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO AN FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181#tested-in-hardware---burned-to-an-fpga)
+
+Documentation and Reference
+
 * I really like this
   [explanation](http://www.righto.com/2017/03/inside-vintage-74181-alu-chip-how-it.html)
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+## SCHEMATIC
+
+I designed this processor form the 1972 Texas Instruments spec sheet.
+I love the care and thought put into this.
+
+![IMAGE - ti-74x181-schematic.jpg - IMAGE](../../../docs/pics/ti-74x181-schematic.jpg)
 
 ## FUNCTION TABLE
 
@@ -36,13 +49,6 @@ This is when the inputs/outputs are treated as active high.
 |  1101  | A+!B         | (A+B) PLUS A            | (A+B) PLUS A PLUS 1       |
 |  1110  | A+B          | (A+!B) PLUS A           | (A+!B) PLUS A PLUS 1      |
 |  1111  | A            | A MINUS 1               | A                         |
-
-## SCHEMATIC
-
-I designed this processor form the 1972 Texas Instruments spec sheet.
-I love the care and thought put into this.
-
-![IMAGE - ti-74x181-schematic.jpg - IMAGE](../../../docs/pics/ti-74x181-schematic.jpg)
 
 ## VERILOG CODE
 

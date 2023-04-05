@@ -1,12 +1,18 @@
-# decoder-to-encoder example
+# DECODER TO ENCODER EXAMPLE
 
 _Combining the
 [decoder-3-8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-3-8)
 to the
 [encoder-8-3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-8-3)
-to prove the input will equal the output._
+to prove the input will equal
+the output._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-to-encoder#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-to-encoder#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-to-encoder#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-to-encoder#check-waveform)
 
 ## SCHEMATIC
 

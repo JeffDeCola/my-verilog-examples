@@ -1,4 +1,5 @@
-// 2-input XOR gate
+// 2-input XOR gate used in my programable-8-bit-microprocessor
+
 module xor2(
     input           a, b,          //
     output          y              //

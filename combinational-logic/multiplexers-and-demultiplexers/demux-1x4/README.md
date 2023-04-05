@@ -1,8 +1,13 @@
-# demux-1x4 example
+# DEMUX 1x4 EXAMPLE
 
 _Demultiplexer - One input, four outputs (using a case statement)._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4#check-waveform)
 
 ## SCHEMATIC
 

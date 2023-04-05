@@ -1,8 +1,14 @@
-# simple-pipeline example
+# SIMPLE PIPELINE EXAMPLE
 
 _A simple pipeline._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#tested-in-hardware---burned-to-a-fpga)
 
 ## SCHEMATIC
 

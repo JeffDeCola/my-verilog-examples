@@ -1,12 +1,18 @@
-# mux-to-demux example
+# MUX TO DEMUX EXAMPLE
 
 _Combining the
 [mux-4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
 to the
-[demux_1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
-to prove the input will equal the output (for the selected output)._
+[demux-1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
+to prove the input will equal
+the output (for the selected output)._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+Table of Contents
+
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-to-demux#check-waveform)
 
 ## SCHEMATIC
 

@@ -1,4 +1,4 @@
-// A positive edge jk flip-flop with synchronous clear
+// A positive edge jk flip-flop with synchronous clear used in my jeff-74x161
 
 module jk_flip_flop (
     input       clk,        // Clock

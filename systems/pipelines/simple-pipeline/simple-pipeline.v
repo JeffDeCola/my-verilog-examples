@@ -1,4 +1,4 @@
-// A simple 8-bit register with synchronous load and clear
+// A simple pipeline.
 
 module simple_pipeline (
     input                 clk,

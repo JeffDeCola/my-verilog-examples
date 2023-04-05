@@ -1,12 +1,21 @@
-# priority-arbiter example
+# PRIORITY ARBITER EXAMPLE
 
 _A three level Priority Arbiter with asynchronous reset
-(Using if-then-else statements)._
+(using if-then-else statements)._
+
+Table of Contents
+
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#check-waveform)
+
+## OVERVIEW
 
 An arbiter has one device access to a shared resource (Taking in N device
 requests, granting access to only one).
-
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## SCHEMATIC
 

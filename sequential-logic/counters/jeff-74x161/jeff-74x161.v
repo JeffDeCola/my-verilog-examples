@@ -1,5 +1,6 @@
-// Synchronous presettable 4-bit binary counter, asynchronous clear
-
+// Synchronous presettable 4-bit binary counter, asynchronous clear.
+// Based on the 7400-series integrated circuits used in my programable-8-bit-microprocessor.
+//
 // MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
 //`include "sections/output-section.v"
 

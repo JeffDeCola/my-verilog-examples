@@ -1,4 +1,5 @@
-// 8-bit microprocessor top
+// A programable 8-bit microprocessor. Originally designed in VHDL for part of my Master's Thesis  
+
 // The top level of the design
 
 module programable_8_bit_microprocessor (

@@ -1,4 +1,5 @@
-// Simple memory using 1D array. 16byte RAM
+// A simple 16 Byte memory modeled using a 1D array.
+
 module simple_memory_using_1d_array(
     input  clk,             // Clock
     input  write,           // Write data

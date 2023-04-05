@@ -1,4 +1,7 @@
-# programable-8-bit-microprocessor example
+# PROGRAMABLE 8-BIT MICROPROCESSOR EXAMPLE
+
+_A programable 8-bit microprocessor. Originally designed in VHDL for part of
+[my Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
 _I designed this processor in VHDL for my part of my
 [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
@@ -9,7 +12,7 @@ to synthesize and program these verilog examples on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
 FPGA development board._
 
-Table of Contents,
+Table of Contents
 
 * [STATS](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
 * [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
@@ -59,8 +62,6 @@ Logic parts used. All can be synthesized,
   Synchronous presettable 4-bit binary counter, asynchronous clear
 * [jeff-74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
   8-bit register, clock enable
-
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
 
 ## STATS
 
@@ -183,7 +184,7 @@ The 24-bit microword (MW) fields are as follows,
     * [19:15] **ALU_FUNC** _The alu functions (refer to
       [jeff-74x181](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181))_
     * [20] **CIN** _Carry input for alu_
-    * [23:21] **ALU_DEST** *Output from alu (TEMP_A TEMP_B or F registers)*
+    * [23:21] **ALU_DEST** _Output from alu (TEMP_A TEMP_B or F registers)_
 
 The first 13 bits are used in the control sections and the top 13 bits
 are used in the process section.
@@ -204,7 +205,7 @@ The bits do the following actions,
 | **CIN**       | 1        | Carry input                                     | CARRY               |
 |               | 0        | **No Carry (DEFAULT)**                          | NO_CARRY (DEFAULT)  |
 |               |          |                                                 |                     |
-| **ALU_FUNC**  | 0 0000   | M=0 ARITH -  A                                  | A                   | 
+| **ALU_FUNC**  | 0 0000   | M=0 ARITH -  A                                  | A                   |
 |               | 0 0001   | M=0 ARITH - A+B                                 | A+B                 |
 |               | 0 0010   | M=0 ARITH - A+!B                                | A+!B                |
 |               | 0 0011   | M=0 ARITH - MINUS 1 (2's compliment)            | MINUS 1             |

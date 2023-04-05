@@ -1,4 +1,5 @@
-// 8 to 3 encoder
+// Encoder - Eights inputs (1 hot) encodes to output.
+
 module encoder_8_3(
     input  [7:0] in,    // 8 Inputs
     output [2:0] out    // 3 Output

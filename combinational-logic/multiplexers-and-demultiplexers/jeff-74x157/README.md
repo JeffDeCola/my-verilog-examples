@@ -1,13 +1,15 @@
-# jeff-74x157 example
+# JEFF 74x157 EXAMPLE
 
-_Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs._
+_Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
+Based on the 7400-series integrated circuits used in my
+[programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
 
-Documentation and reference,
+Table of Contents
 
-* This verilog code used in my
-  [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)
-
-[GitHub Webpage](https://jeffdecola.github.io/my-verilog-examples/)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO AN FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157#tested-in-hardware---burned-to-an-fpga)
 
 ## VERILOG CODE
 
