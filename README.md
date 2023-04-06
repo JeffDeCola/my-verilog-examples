@@ -61,7 +61,7 @@ _Each example uses
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and
 [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-to view the output. I also used
+to view the waveform. I also used
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 to synthesize and program these verilog examples on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
@@ -92,6 +92,15 @@ when you synthesize to an FPGA.
     always @ (posedge clk or negedge reset) begin
 
 ```
+
+Each example has the following 6 file types,
+
+* `*.v` - The verilog code files(s)
+* `*.vh` - A header file listing the included verilog files
+* `*-tb.v` - The verilog testbench code
+* `*.vvp` - The verilog compiled code to be used by the simulator
+* `*.vcd` - The dump of the waveform data
+* `*.gtkw` - The GTKWave saved waveform
 
 To make things easier,
 [launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh)
