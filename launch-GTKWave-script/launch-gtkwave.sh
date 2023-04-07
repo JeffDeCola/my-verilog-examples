@@ -39,25 +39,25 @@ then
     # WINDOWS WSL
     echo "Windows WSL2 Detected - USE WINDOWS GTKWAVE"
     echo "Launching gtkWAVE in the background"
-    echo 'Using command: cmd.exe /K "C:/Program Files/gtkwave64/bin/gtkwave.exe" -f' "${name}"'.gtkw &' 
+    echo 'Using command: cmd.exe /K "C:/Program Files/gtkwave64/bin/gtkwave.exe" -f' "${name}"'_tb.gtkw &' 
     echo ""
-    gtkwave -f "${name}".gtkw &
+    gtkwave -f "${name}"_tb.gtkw &
 elif  [ "${machine}" = "macOS" ]
 then
     # macOS
     echo "macOS Detected"
     echo "Launching gtkWAVE in the background"
-    echo "Using command: /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f ${name}.gtkw &"
+    echo "Using command: /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f ${name}_tb.gtkw &"
     echo ""
-    /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f "${name}".gtkw &
+    /Applications/gtkwave.app/Contents/Resources/bin/gtkwave -f "${name}"_tb.gtkw &
 elif [ "${machine}" = "Linux" ]
 then
     # LINUX
     echo "Linux Detected"
     echo "Launching gtkWAVE in the background"
-    echo "Using command: gtkwave -f ${name}.gtkw &"
+    echo "Using command: gtkwave -f ${name}_tb.gtkw &"
     echo ""
-    gtkwave -f "${name}".gtkw & 
+    gtkwave -f "${name}"_tb.gtkw & 
 else
     # OTHER
     echo "This is a $machine machine which I don't have GTKWave on"

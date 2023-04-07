@@ -1,29 +1,31 @@
 #!/bin/sh -e
-# my-verilog-examples run-test.sh
+# my-verilog-examples run-simulation.sh
 
 echo "**********************************************************************"
-echo "* run-test.sh (START) ************************************************"
+echo "* run-simulation.sh (START) ******************************************"
 echo "**********************************************************************"
 echo " "
 
-echo "First we synthesize to our output *.vvp."
+echo "STEP 1 - COMPILE THE VERILOG CODE TO VVP FORMAT"
+echo "Use icarus iverilog to compile your verilog to *.vvp format."
 echo " "
 
-echo "'iverilog -o and2.vvp and2-tb.v and2.vh'"
-iverilog -o and2.vvp and2-tb.v and2.vh
+echo "'iverilog -o and2_tb.vvp and2_tb.v and2.vh'"
+iverilog -o and2_tb.vvp and2_tb.v and2.vh
 echo " "
 
-echo "Now we run simulation to create the waveform dump file *.vcd."
+echo "STEP 2 - RUN THE SIMULATION USING VVP"
+echo "Use vpp, the icarus runtime simulation engine, to create the waveform dump file *.vcd."
 echo " "
 
-echo "'./and2.vvp'"
-./and2.vvp
+echo "'vpp and2_tb.vvp'"
+vvp and2_tb.vvp
 echo " "
 
-echo "Now you can open the waveform file *.vcd with GTKWave."
+echo "Now you can open the waveform file and2_tb.vcd with GTKWave."
 echo " "
 
 echo "**********************************************************************"
-echo "* run-test.sh (END) **************************************************"
+echo "* run-simulation.sh (END) ********************************************"
 echo "**********************************************************************"
 echo " "
