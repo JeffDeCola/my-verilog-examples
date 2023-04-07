@@ -43,10 +43,10 @@ Each example has the following 6 file types,
 
 * `*.v` - The verilog code files(s)
 * `*.vh` - A header file listing the included verilog files
-* `*-tb.v` - The verilog testbench code
-* `*.vvp` - The verilog compiled code to be used by the simulator
-* `*.vcd` - The dump of the waveform data
-* `*.gtkw` - The GTKWave saved waveform
+* `*_tb.v` - The verilog testbench code
+* `*_tb.vvp` - The verilog compiled code to be used by the simulator
+* `*_tb.vcd` - The dump of the waveform data
+* `*_tb.gtkw` - The GTKWave saved waveform
 
 To make things easier,
 [launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh)
