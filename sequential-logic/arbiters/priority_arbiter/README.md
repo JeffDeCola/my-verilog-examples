@@ -5,12 +5,13 @@ _A three level Priority Arbiter with asynchronous reset
 
 Table of Contents
 
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority-arbiter#check-waveform)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -56,7 +57,7 @@ Note how `req_0` gets priority, hence the name.
 ## VERILOG CODE
 
 The
-[and_gates.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.v)
+[priority_arbiter.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter.v)
 uses behavioral modeling,
 
 ```verilog
@@ -89,32 +90,32 @@ uses behavioral modeling,
 
 I created,
 
-* [and_gates_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates_tb.v)
+* [priority_arbiter_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter_tb.v)
 the testbench
-* [and_gates.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.vh)
+* [priority_arbiter.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter.vh)
 the header file listing the verilog code
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/run-simulation.sh)
 a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+iverilog -o priority_arbiter_tb.vvp priority_arbiter_tb.v priority_arbiter.vh
 ```
 
 Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
 
 ```bash
-vvp and_gates_tb.vvp
+vvp priority_arbiter_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Open the waveform file and_gates_tb.vcd file with GTKWave,
+Open the waveform file priority_arbiter_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f and_gates_tb.vcd &
+gtkwave -f priority_arbiter_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -124,10 +125,10 @@ Now you can
 anytime you want,
 
 ```bash
-gtkwave -f and_gates_tb.gtkw &
+gtkwave -f priority_arbiter_tb.gtkw &
 ```
 
-![and_gates-waveform.jpg](../../../docs/pics/and_gates-waveform.jpg)
+![priority_arbiter-waveform.jpg](../../../docs/pics/priority_arbiter-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

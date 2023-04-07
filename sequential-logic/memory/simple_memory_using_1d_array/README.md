@@ -4,10 +4,12 @@ _A simple 16 Byte memory modeled using a 1D array._
 
 Table of Contents
 
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#schematic)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple-memory-using-1d-array#check-waveform)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -30,7 +32,7 @@ This may help,
 ## VERILOG CODE
 
 The
-[and_gates.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.v)
+[simple_memory_using_1d_array.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/simple_memory_using_1d_array/simple_memory_using_1d_array.v)
 uses behavioral modeling,
 
 ```verilog
@@ -51,32 +53,32 @@ uses behavioral modeling,
 
 I created,
 
-* [and_gates_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates_tb.v)
+* [simple_memory_using_1d_array_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/simple_memory_using_1d_array/simple_memory_using_1d_array_tb.v)
 the testbench
-* [and_gates.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.vh)
+* [simple_memory_using_1d_array.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/simple_memory_using_1d_array/simple_memory_using_1d_array.vh)
 the header file listing the verilog code
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/simple_memory_using_1d_array/run-simulation.sh)
 a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+iverilog -o simple_memory_using_1d_array_tb.vvp simple_memory_using_1d_array_tb.v simple_memory_using_1d_array.vh
 ```
 
 Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
 
 ```bash
-vvp and_gates_tb.vvp
+vvp simple_memory_using_1d_array_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Open the waveform file and_gates_tb.vcd file with GTKWave,
+Open the waveform file simple_memory_using_1d_array_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f and_gates_tb.vcd &
+gtkwave -f simple_memory_using_1d_array_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -86,10 +88,10 @@ Now you can
 anytime you want,
 
 ```bash
-gtkwave -f and_gates_tb.gtkw &
+gtkwave -f simple_memory_using_1d_array_tb.gtkw &
 ```
 
-![and_gates-waveform.jpg](../../../docs/pics/and_gates-waveform.jpg)
+![simple_memory_using_1d_array-waveform.jpg](../../../docs/pics/simple_memory_using_1d_array-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

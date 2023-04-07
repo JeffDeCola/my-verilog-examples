@@ -4,12 +4,13 @@ _A simple 8-bit register with synchronous load and clear._
 
 Table of Contents
 
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#check-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple-8-bit-register#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -41,7 +42,7 @@ This may help,
 ## VERILOG CODE
 
 The
-[and_gates.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.v)
+[simple_8_bit_register.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register.v)
 uses behavioral modeling,
 
 ```verilog
@@ -58,32 +59,32 @@ uses behavioral modeling,
 
 I created,
 
-* [and_gates_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates_tb.v)
+* [simple_8_bit_register_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register_tb.v)
 the testbench
-* [and_gates.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.vh)
+* [simple_8_bit_register.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register.vh)
 the header file listing the verilog code
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/run-simulation.sh)
 a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+iverilog -o simple_8_bit_register_tb.vvp simple_8_bit_register_tb.v simple_8_bit_register.vh
 ```
 
 Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
 
 ```bash
-vvp and_gates_tb.vvp
+vvp simple_8_bit_register_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Open the waveform file and_gates_tb.vcd file with GTKWave,
+Open the waveform file simple_8_bit_register_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f and_gates_tb.vcd &
+gtkwave -f simple_8_bit_register_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -93,10 +94,10 @@ Now you can
 anytime you want,
 
 ```bash
-gtkwave -f and_gates_tb.gtkw &
+gtkwave -f simple_8_bit_register_tb.gtkw &
 ```
 
-![and_gates-waveform.jpg](../../../docs/pics/and_gates-waveform.jpg)
+![simple_8_bit_register-waveform.jpg](../../../docs/pics/simple_8_bit_register-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

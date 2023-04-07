@@ -4,11 +4,12 @@ _A simple pipeline._
 
 Table of Contents
 
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#schematic)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#check-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple_pipeline#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple_pipeline#schematic)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple_pipeline#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple_pipeline#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple_pipeline#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple_pipeline#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -47,7 +48,7 @@ This may help,
 ## VERILOG CODE
 
 The
-[and_gates.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.v)
+[simple_pipeline.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/simple_pipeline.v)
 uses behavioral modeling,
 
 ```verilog
@@ -74,32 +75,32 @@ uses behavioral modeling,
 
 I created,
 
-* [and_gates_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates_tb.v)
+* [simple_pipeline_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/simple_pipeline_tb.v)
 the testbench
-* [and_gates.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.vh)
+* [simple_pipeline.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/simple_pipeline.vh)
 the header file listing the verilog code
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/run-simulation.sh)
 a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+iverilog -o simple_pipeline_tb.vvp simple_pipeline_tb.v simple_pipeline.vh
 ```
 
 Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
 
 ```bash
-vvp and_gates_tb.vvp
+vvp simple_pipeline_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Open the waveform file and_gates_tb.vcd file with GTKWave,
+Open the waveform file simple_pipeline_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f and_gates_tb.vcd &
+gtkwave -f simple_pipeline_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -109,10 +110,10 @@ Now you can
 anytime you want,
 
 ```bash
-gtkwave -f and_gates_tb.gtkw &
+gtkwave -f simple_pipeline_tb.gtkw &
 ```
 
-![and_gates-waveform.jpg](../../../docs/pics/and_gates-waveform.jpg)
+![simple_pipeline-waveform.jpg](../../../docs/pics/simple_pipeline-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

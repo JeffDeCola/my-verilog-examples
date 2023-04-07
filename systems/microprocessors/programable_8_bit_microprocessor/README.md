@@ -14,25 +14,28 @@ FPGA development board._
 
 Table of Contents
 
-* [STATS](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#stats)
-* [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#top-level-how-it-works)
-  * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#the-control-and-processor-section)
-* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#opcode-the-user-instruction-set)
-* [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microcode-the-internal-instructions)
-  * [MICROWORD](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#microword)
-  * [RESET](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#reset)
-  * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
-  * [SUBTRACT (opcode 0111)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
-  * [MULTIPLY (opcode 1100)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
-  * [DIVIDE (opcode 1110)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
-  * [JAM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#jam)
-  * [DEFAULT](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#default)
-* [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#more-detail-under-the-hood)
-  * [CONTROL SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#control-section)
-  * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#processor-section)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#check-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#tested-in-hardware---burned-to-a-fpga)
+Table of Contents
+
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#overview)
+* [STATS](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#stats)
+* [TOP LEVEL (HOW IT WORKS)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#top-level-how-it-works)
+  * [THE CONTROL AND PROCESSOR SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#the-control-and-processor-section)
+* [OPCODE (THE USER INSTRUCTION SET)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#opcode-the-user-instruction-set)
+* [MICROCODE (THE INTERNAL INSTRUCTIONS)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#microcode-the-internal-instructions)
+  * [MICROWORD](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#microword)
+  * [RESET](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#reset)
+  * [ADD (opcode 0011)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#add-opcode-0011)
+  * [SUBTRACT (opcode 0111)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#subtract-opcode-0111)
+  * [MULTIPLY (opcode 1100)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#multiply-opcode-1100)
+  * [DIVIDE (opcode 1110)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#divide-opcode-1110)
+  * [JAM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#jam)
+  * [DEFAULT](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#default)
+* [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#more-detail-under-the-hood)
+  * [CONTROL SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#control-section)
+  * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#processor-section)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#tested-in-hardware---burned-to-a-fpga)
 
 Logic parts used. All can be synthesized,
 
@@ -48,19 +51,19 @@ Logic parts used. All can be synthesized,
   2-input OR gate
 * [xor2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2)
   2-input XOR gate
-* [d-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
-  A positive edge d flip-flop with synchronous enable (Used in jeff-74x377)
-* [jk-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk-flip-flop)
-  A positive edge jk flip-flop with synchronous clear (Used in jeff-74x161)
-* [jeff-74x181](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
+* [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
+  A positive edge d flip-flop with synchronous enable (Used in jeff_74x377)
+* [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop)
+  A positive edge jk flip-flop with synchronous clear (Used in jeff_74x161)
+* [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181)
   4-bit alu (arithmetic logic unit) and function generator
-* [jeff-74x151](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x151)
+* [jeff_74x151](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151)
   8-line to 1-line data selector/multiplexer
-* [jeff-74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157)
+* [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157)
   Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs
-* [jeff-74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff-74x161)
+* [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161)
   Synchronous presettable 4-bit binary counter, asynchronous clear
-* [jeff-74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff-74x377)
+* [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)
   8-bit register, clock enable
 
 ## OVERVIEW
@@ -78,7 +81,7 @@ FPGA development board._
 ## STATS
 
 * Build around the
-  [74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181)
+  [74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181)
   ALU
   * 16 binary arithmetic operations
   * 16 logic operations
@@ -86,11 +89,11 @@ FPGA development board._
 * 8-bit data processing
 * Up to 16 Opcodes
   * Programable via microcode
-    [ADD](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011),
-    [SUBTRACT](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111),
-    [MULTIPLY](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
+    [ADD](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#add-opcode-0011),
+    [SUBTRACT](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#subtract-opcode-0111),
+    [MULTIPLY](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#multiply-opcode-1100)
     &
-    [DIVIDE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
+    [DIVIDE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#divide-opcode-1110)
 * Microcode
   * 256 x 24-bit microcode storage
   * 24-bit microword
@@ -111,7 +114,7 @@ and spits out the result. That's about it.**
 
 This may help,
 
-![programable-8-bit-microprocessor.jpg](../../../docs/pics/programable-8-bit-microprocessor.jpg)
+![programable_8_bit_microprocessor.jpg](../../../docs/pics/programable_8_bit_microprocessor.jpg)
 
 MAIN INPUTS,
 
@@ -135,12 +138,12 @@ OTHER INPUTS,
 This design is broken into two main sections,
 
 * **TOP**
-  ([programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v))
+  ([programable_8_bit_microprocessor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor.v))
   * **CONTROL_SECTION**
-    ([control.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
+    ([control.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/control/control.v))
     * The brains. Handles the opcode, microcode and control the process section
   * **PROCESSOR_SECTION**
-    ([processor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
+    ([processor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/processor/processor.v))
     * Crunches the data controlled by the control section
 
 A little more top level detail from my
@@ -158,13 +161,13 @@ This is what I have microcoded so far,
 
 * [3:0] **OPCODE**
   * 0011:
-    [ADD](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#add-opcode-0011)
+    [ADD](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#add-opcode-0011)
   * 0111:
-    [SUBTRACT](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#subtract-opcode-0111)
+    [SUBTRACT](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#subtract-opcode-0111)
   * 1100:
-    [MULTIPLY](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#multiply-opcode-1100)
+    [MULTIPLY](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#multiply-opcode-1100)
   * 1110:
-    [DIVIDE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor#divide-opcode-1110)
+    [DIVIDE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#divide-opcode-1110)
 
 ## MICROCODE (THE INTERNAL INSTRUCTIONS)
 
@@ -194,7 +197,7 @@ The 24-bit microword (MW) fields are as follows,
     * [13] **A_SOURCE** _Input to alu (Input reg or Temp reg)_
     * [14] **B_SOURCE**
     * [19:15] **ALU_FUNC** _The alu functions (refer to
-      [jeff-74x181](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff-74x181))_
+      [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181))_
     * [20] **CIN** _Carry input for alu_
     * [23:21] **ALU_DEST** _Output from alu (TEMP_A TEMP_B or F registers)_
 
@@ -277,7 +280,7 @@ The bits do the following actions,
 |               | 0        | Counter will not count                          | NO_COUNT            |
 
 The microcode is located in
-[control-store.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control-store/control-store.v).
+[control-store.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/control-store/control-store.v).
 
 ### RESET
 
@@ -439,35 +442,35 @@ Here is a little more detail of the control and processor sections.
 The control section has five main parts,
 
 * **CONTROL_SECTION**
-  ([control.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/control/control.v))
+  ([control.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/control/control.v))
   * **COUNTER_8**
-    ([counter8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/counter8.v))
+    ([counter8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/counter8.v))
     * COUNTER1
-      ([ta161-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta161-bar.v))
-      * [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff-74x161/jeff-74x161.v)
+      ([ta161-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta161-bar.v))
+      * [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161.v)
         _replaced ta161_
-        * [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/jk-flip-flop/jk-flip-flop.v)
+        * [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/jk_flip_flop/jk_flip_flop.v)
     * COUNTER2
-      ([ta161-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta161-bar.v))
-      * [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff-74x161/jeff-74x161.v)
+      ([ta161-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta161-bar.v))
+      * [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161.v)
         _replaced ta161_
-        * [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/jk-flip-flop/jk-flip-flop.v)
+        * [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/jk_flip_flop/jk_flip_flop.v)
   * **MUX8**
-    ([ta157-8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157-8.v))
-    * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157/jeff-74x157.v)
+    ([ta157-8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta157-8.v))
+    * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.v)
       _replaced ta157_bar & ta157_
   * **OPCODEDECO**
-    ([opcodedec.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/opcode/opcodedec.v))
+    ([opcodedec.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/opcode/opcodedec.v))
     * U1
-      ([ta157-4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157-4.v))
-      * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157/jeff-74x157.v)
+      ([ta157-4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta157-4.v))
+      * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.v)
         _replaced ta157_bar_
     * U2
       ([nand4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nand4/nand4.v))
       _replaced nand4_
   * **COND_SELECT**
-    ([ta151-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta151-bar.v))
-    * [jeff_74x151](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x151/jeff-74x151.v)
+    ([ta151-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta151-bar.v))
+    * [jeff_74x151](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151/jeff_74x151.v)
       _replaced ta151_
   * **XOR_2**
     ([xor2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.v))
@@ -480,45 +483,45 @@ The control section has five main parts,
 The processor is a collection of registers, muxes and an alu,
 
 * **PROCESSOR_SECTION**
-  ([processor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/processor/processor.v))
+  ([processor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/processor/processor.v))
   * **REGISTERA**
-    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register-ab8.v))
+    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/register-ab8.v))
     * OR1
       ([or2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/or2/or2.v))
       _replaced or2_
     * DFFS
-      ([ta377-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta377-bar.v))
-      * [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/jeff-74x377/jeff-74x377.v)
+      ([ta377-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta377-bar.v))
+      * [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/jeff_74x377/jeff_74x377.v)
         _replaced ta377_
-        * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d-flip-flop/d-flip-flop.v)
+        * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop.v)
   * **REGISTERB**
-    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register-ab8.v))
+    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/register-ab8.v))
     _See above_
   * **TEMP_REGISTER_A**
-    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register-ab8.v))
+    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/register-ab8.v))
     _See above_
   * **TEMP_REGISTER_B**
-    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register-ab8.v))
+    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/register-ab8.v))
     _See above_
   * **MUX_A**
-    ([ta157-8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157-8.v))
-    * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157/jeff-74x157.v)
+    ([ta157-8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta157-8.v))
+    * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.v)
       _replaced ta157_bar_
   * **MUX_B**
-    ([ta157-8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta157-8.v))
-    * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff-74x157/jeff-74x157.v)
+    ([ta157-8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta157-8.v))
+    * [jeff_74x157](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.v)
       _replaced ta157_bar_
   * **ALU1**
-    ([alu.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/alu/alu.v))
+    ([alu.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/alu/alu.v))
     * U1
-      ([ta181-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta181-bar.v))
-      * [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff-74x181/jeff-74x181.v)
+      ([ta181-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta181-bar.v))
+      * [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff_74x181/jeff_74x181.v)
         _replaced ta181_
       * [not1](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1.v)
         _replaced inv_
     * U2
-      ([ta181-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/ta181-bar.v))
-      * [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff-74x181/jeff-74x181.v)
+      ([ta181-bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta181-bar.v))
+      * [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff_74x181/jeff_74x181.v)
         _replaced ta181_
       * [not1](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1.v)
         _replaced inv_
@@ -526,10 +529,10 @@ The processor is a collection of registers, muxes and an alu,
       ([and2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and2/and2.v))
       _replaced and2_
   * **F_REGISTER**
-    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/register-ab8.v))
+    ([register-ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/register-ab8.v))
     _See above_
   * **ZP_BIT1**
-    ([zp-bit.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable-8-bit-microprocessor/core-parts/zp-bit.v))
+    ([zp-bit.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/zp-bit.v))
     * U1, U2, U3, U4 ([nor2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nor2/nor2.v))
       _Replaced nor2_
     * U5 ([nand4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nand4/nand4.v))
@@ -540,7 +543,7 @@ The processor is a collection of registers, muxes and an alu,
 ## RUN (SIMULATE)
 
 I used my testbench
-[programable-8-bit-microprocessor-tb.v](programable-8-bit-microprocessor-tb.v) with
+[programable_8_bit_microprocessor-tb.v](programable_8_bit_microprocessor-tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
@@ -613,11 +616,11 @@ and launch it using
 Focus on DATA_IN_A, DATA_IN_B and DATA_OUT. You can see the RESET where the
 output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
 
-![programable-8-bit-microprocessor-waveform.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform.jpg)
+![programable_8_bit_microprocessor-waveform.jpg](../../../docs/pics/programable_8_bit_microprocessor-waveform.jpg)
 
 A little more detail,
 
-![programable-8-bit-microprocessor-waveform-more-detail.jpg](../../../docs/pics/programable-8-bit-microprocessor-waveform-more-detail.jpg)
+![programable_8_bit_microprocessor-waveform-more-detail.jpg](../../../docs/pics/programable_8_bit_microprocessor-waveform-more-detail.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

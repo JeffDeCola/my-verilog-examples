@@ -10,20 +10,20 @@ echo "STEP 1 - COMPILE THE VERILOG CODE TO VVP FORMAT"
 echo "Use icarus iverilog to compile your verilog to *.vvp format."
 echo " "
 
-echo "'iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh'"
-iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+echo "'iverilog -o encoder_8_3_tb.vvp encoder_8_3_tb.v encoder_8_3.vh'"
+iverilog -o encoder_8_3_tb.vvp encoder_8_3_tb.v encoder_8_3.vh
 echo " "
 
 echo "STEP 2 - RUN THE SIMULATION USING VVP"
 echo "Use vpp, the icarus runtime simulation engine, to create the waveform dump file *.vcd."
 echo " "
 
-echo "'vpp and_gates_tb.vvp'"
-vvp and_gates_tb.vvp
+echo "'vpp encoder_8_3_tb.vvp'"
+vvp encoder_8_3_tb.vvp
 echo " "
 
-echo "Now you can open the waveform file and_gates_tb.vcd with GTKWave."
-echo "gtkwave -f and_gates_tb.vcd &"
+echo "Now you can open the waveform file encoder_8_3_tb.vcd with GTKWave."
+echo "gtkwave -f encoder_8_3_tb.vcd &"
 echo " "
 
 echo "**********************************************************************"
