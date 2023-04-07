@@ -10,6 +10,18 @@ Table of Contents
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#check-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/pipelines/simple-pipeline#tested-in-hardware---burned-to-a-fpga)
 
+## OVERVIEW
+
+_I used
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+to simulate and
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+to view the waveform. I also used
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+to synthesize and program this example on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
+
 ## SCHEMATIC
 
 Pipeline the following into 3 stages,
@@ -34,7 +46,9 @@ This may help,
 
 ## VERILOG CODE
 
-The main part of the code is,
+The
+[and_gates.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.v)
+uses behavioral modeling,
 
 ```verilog
     // STAGE 1
@@ -56,32 +70,52 @@ The main part of the code is,
     end
 ```
 
-The entire code is
-[simple-pipeline.v](simple-pipeline.v).
-
 ## RUN (SIMULATE)
 
-I used my testbench
-[simple-pipeline-tb.v](simple-pipeline-tb.v) with
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and create a `.vcd` file.
+I created,
+
+* [and_gates_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates_tb.v)
+the testbench
+* [and_gates.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.vh)
+the header file listing the verilog code
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/run-simulation.sh)
+a script containing the commands below
+
+Use **iverilog** to compile the verilog to a vvp format
+which is used by the vvp runtime simulation engine,
 
 ```bash
-sh run-test.sh
+iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+```
+
+Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+
+```bash
+vvp and_gates_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Check you waveform using your `.vcd` file with a waveform viewer.
+Open the waveform file and_gates_tb.vcd file with GTKWave,
 
-I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-and launch it using
-[launch-gtkwave.sh](launch-gtkwave.sh).
+```bash
+gtkwave -f and_gates_tb.vcd &
+```
 
-![simple-pipeline-waveform.jpg](../../../docs/pics/simple-pipeline-waveform.jpg)
+Save your waveform to a .gtkw file.
+
+Now you can
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
+anytime you want,
+
+```bash
+gtkwave -f and_gates_tb.gtkw &
+```
+
+![and_gates-waveform.jpg](../../../docs/pics/and_gates-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
-To test my design in real hardware, the above code was synthesized using the
+The above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 IDE software suite and burned to a FPGA development board.
