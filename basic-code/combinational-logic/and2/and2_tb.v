@@ -4,7 +4,7 @@
 
 module and2_tb;
 
-    // DATA TYPES - DECLAIR REGISTERS AND WIRES (PROBES)
+    // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg        A, B;
     wire       Y;
 

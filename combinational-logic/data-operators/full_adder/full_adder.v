@@ -1,17 +1,16 @@
 // A 2-bit full adder
 
 module full_adder(
-    input  a,           // a
-    input  b,           // b
-    input  cin,         // Carry in
-    output sum,         // sum of a + b
-    output cout         // Carry out
+    input       a,           // Data
+    input       b,           // Data
+    input       cin,         // Carry in
+    output reg  sum,         // Sum of a + b
+    output reg  cout         // Carry out
 );
 
-reg sum, cout;
-
-always @ ( a or b or cin) begin
-    {cout, sum} <= a + b + cin;
-end
+    // ADDER
+    always @ ( a or b or cin) begin
+        {cout, sum} <= a + b + cin;
+    end
 
 endmodule

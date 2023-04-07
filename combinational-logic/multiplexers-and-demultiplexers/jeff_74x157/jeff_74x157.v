@@ -2,24 +2,24 @@
 // Based on the 7400-series integrated circuits used in my
 // programable-8-bit-microprocessor.
     
-    module jeff_74x157(
-    input       [3:0] a,                  // INPUT DATA A
-    input       [3:0] b,                  // INPUT DATA B
-    input             s,                  // SELECT
-    input             en,                 // ENABLE
-    output reg  [3:0] y                   // OUTPUT DATA
+module jeff_74x157(
+    input       [3:0] a,            // INPUT DATA A
+    input       [3:0] b,            // INPUT DATA B
+    input             s,            // SELECT
+    input             en,           // ENABLE
+    output reg  [3:0] y             // OUTPUT DATA
 );
 
-// 2x1 multiplexer
-always @ ( * ) begin
-    if (~en) begin
-        y <= 4'h0;
-    end else begin
-        case(s)
-            1'b0 : y <= a;
-            1'b1 : y <= b;
-        endcase
+    // 2x1 MULTIPLEXER
+    always @ ( * ) begin
+        if (~en) begin
+            y <= 4'h0;
+        end else begin
+            case(s)
+                1'b0 : y <= a;
+                1'b1 : y <= b;
+            endcase
+        end
     end
-end
 
 endmodule

@@ -1,11 +1,11 @@
 // 4-input NAND gate used in my programable-8-bit-microprocessor
 
 module nand4(
-    input           a, b, c, d,    //
-    output          y              //
+    input       a, b, c, d,    // 4-Input
+    output      y              // Output
 );
 
-// CONTINUOUS ASSIGNMENT STATEMENT
-assign y = ~(a & b & c & d);
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = ~(a & b & c & d);
 
 endmodule

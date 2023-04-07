@@ -7,13 +7,13 @@ module button_sync_push_release (
     output reg      out             // PULSE FOR 1 CLOCK CYCLE
 );
 
-always @ (posedge clk) begin
-        if (pressed) begin          // BUTTON PRESSED
-            out <= 1'b1;                      
-        end else begin              //  BUTTON NOT PRESSED
-            out <= 1'b0;
-        end
-end
+    always @ (posedge clk) begin
+            if (pressed) begin          // BUTTON PRESSED
+                out <= 1'b1;                      
+            end else begin              //  BUTTON NOT PRESSED
+                out <= 1'b0;
+            end
+    end
 
 endmodule
 
@@ -24,19 +24,19 @@ module button_sync_clock_pulse (
     output reg      out             // PULSE FOR 1 CLOCK CYCLE
 );
 
-reg lock = 0;
+    reg lock = 0;
 
-always @ (posedge clk) begin
-        if (pressed & ~lock) begin              // BUTTON PRESSED
-            lock <= 1'b1;                       // - Lock
-            out <= 1'b1;                        // - Pulse
-        end else if (~pressed & lock) begin     // RELEASE LOCK  
-            lock <= 1'b0;            
-            out <= 1'b0;
-        end else begin
-            out <= 1'b0;
-        end
-end
+    always @ (posedge clk) begin
+            if (pressed & ~lock) begin              // BUTTON PRESSED
+                lock <= 1'b1;                       // - Lock
+                out <= 1'b1;                        // - Pulse
+            end else if (~pressed & lock) begin     // RELEASE LOCK  
+                lock <= 1'b0;            
+                out <= 1'b0;
+            end else begin
+                out <= 1'b0;
+            end
+    end
 
 endmodule
 
@@ -47,19 +47,19 @@ module button_sync_two_presses (
     output          out             // TWO PRESSES
 );
 
-reg lock = 0;
-reg toggle = 0;
+    reg lock = 0;
+    reg toggle = 0;
 
-assign out = toggle;
+    assign out = toggle;
 
-always @ (posedge clk) begin
-    if (pressed & ~lock) begin              // BUTTON PRESSED
-        lock <= 1'b1;                       // - Lock
-        toggle <= ~toggle;                  // - Toggle
-    end else if (~pressed & lock) begin     // WAIT TILL BUTTON RELEASED
-        lock <= 1'b0;                       // - Release Lock
+    always @ (posedge clk) begin
+        if (pressed & ~lock) begin              // BUTTON PRESSED
+            lock <= 1'b1;                       // - Lock
+            toggle <= ~toggle;                  // - Toggle
+        end else if (~pressed & lock) begin     // WAIT TILL BUTTON RELEASED
+            lock <= 1'b0;                       // - Release Lock
+        end
     end
-end
 
 endmodule
 
@@ -74,25 +74,25 @@ module button_async_clock_pulse (
     output          out             // PULSE FOR 1 CLOCK CYCLE
 );
 
-reg was_pressed = 0;
-reg lock = 0;
-reg pre_out = 0;
+    reg was_pressed = 0;
+    reg lock = 0;
+    reg pre_out = 0;
 
-assign out = pre_out;
+    assign out = pre_out;
 
-always @ (posedge clk or posedge pressed) begin
-    if (pressed & ~was_pressed & ~lock) begin       // BUTTON PRESSED - Then forget about it until later
-        was_pressed <= 1'b1;
-    end else if (was_pressed & ~lock) begin         // OUT HIGH
-        lock <= 1;
-        was_pressed <= 0;
-        pre_out <= 1'b1;
-    end else if (lock & out) begin                  // OUT LOW
-        pre_out <= 1'b0;
-    end else if (~pressed & lock) begin             // WAIT TILL BUTTON RELEASED
-        lock <= 1'b0;
-    end 
-end
+    always @ (posedge clk or posedge pressed) begin
+        if (pressed & ~was_pressed & ~lock) begin       // BUTTON PRESSED - Then forget about it until later
+            was_pressed <= 1'b1;
+        end else if (was_pressed & ~lock) begin         // OUT HIGH
+            lock <= 1;
+            was_pressed <= 0;
+            pre_out <= 1'b1;
+        end else if (lock & out) begin                  // OUT LOW
+            pre_out <= 1'b0;
+        end else if (~pressed & lock) begin             // WAIT TILL BUTTON RELEASED
+            lock <= 1'b0;
+        end 
+    end
 
 endmodule
 
@@ -104,22 +104,22 @@ module button_async_two_presses (
     output          out             // PULSE FOR 1 CLOCK CYCLE
 );
 
-reg was_pressed = 0;
-reg lock = 0;
-reg toggle = 0;
+    reg was_pressed = 0;
+    reg lock = 0;
+    reg toggle = 0;
 
-assign out = toggle;
+    assign out = toggle;
 
-always @ (posedge clk or posedge pressed) begin
-    if (pressed & ~was_pressed & ~lock) begin       // BUTTON PRESSED - Then forget about it for now
-        was_pressed <= 1'b1;
-    end else if (was_pressed & ~lock) begin         // OUT HIGH
-        toggle <= ~toggle;                          // - toggle
-        was_pressed <= 1'b0;
-        lock <= 1;
-    end else if (~pressed & lock) begin             // WAIT TILL BUTTON RELEASED
-        lock <= 1'b0;
+    always @ (posedge clk or posedge pressed) begin
+        if (pressed & ~was_pressed & ~lock) begin       // BUTTON PRESSED - Then forget about it for now
+            was_pressed <= 1'b1;
+        end else if (was_pressed & ~lock) begin         // OUT HIGH
+            toggle <= ~toggle;                          // - toggle
+            was_pressed <= 1'b0;
+            lock <= 1;
+        end else if (~pressed & lock) begin             // WAIT TILL BUTTON RELEASED
+            lock <= 1'b0;
+        end
     end
-end
 
 endmodule

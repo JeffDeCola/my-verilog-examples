@@ -64,7 +64,8 @@ Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o simple_memory_using_1d_array_tb.vvp simple_memory_using_1d_array_tb.v simple_memory_using_1d_array.vh
+iverilog -o simple_memory_using_1d_array_tb.vvp \
+         simple_memory_using_1d_array_tb.v simple_memory_using_1d_array.vh
 ```
 
 Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.

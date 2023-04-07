@@ -15,56 +15,56 @@ module jeff_74x161(
     output          rco                  // RIPPLE CARRY OUTPUT
 );
 
-wire ld;
-wire ent_and_enp;
+    wire ld;
+    wire ent_and_enp;
 
-assign rco = ent & qd & qc & qb & qa;
+    assign rco = ent & qd & qc & qb & qa;
 
-assign ld = ~ld_bar;
-assign ent_and_enp = ent & enp;
+    assign ld = ~ld_bar;
+    assign ent_and_enp = ent & enp;
 
-assign feedback_qd = ent_and_enp & qc & qb & qa;
+    assign feedback_qd = ent_and_enp & qc & qb & qa;
 
-output_section OUTPUT_QD (
-    .clr_bar(clr_bar),
-    .ld(ld),
-    .feedback(feedback_qd),
-    .clk(clk),
-    .data(d),
-    .q(qd)
-);
+    output_section OUTPUT_QD (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qd),
+        .clk(clk),
+        .data(d),
+        .q(qd)
+    );
 
-assign feedback_qc =  ent_and_enp & qb & qa;
+    assign feedback_qc =  ent_and_enp & qb & qa;
 
-output_section OUTPUT_QC (
-    .clr_bar(clr_bar),
-    .ld(ld),
-    .feedback(feedback_qc),
-    .clk(clk),
-    .data(c),
-    .q(qc)
-);
+    output_section OUTPUT_QC (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qc),
+        .clk(clk),
+        .data(c),
+        .q(qc)
+    );
 
-assign feedback_qb = ent_and_enp & qa;
+    assign feedback_qb = ent_and_enp & qa;
 
-output_section OUTPUT_QB (
-    .clr_bar(clr_bar),
-    .ld(ld),
-    .feedback(feedback_qb),
-    .clk(clk),
-    .data(b),
-    .q(qb)
-);
+    output_section OUTPUT_QB (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qb),
+        .clk(clk),
+        .data(b),
+        .q(qb)
+    );
 
-assign feedback_qa = ent_and_enp;
+    assign feedback_qa = ent_and_enp;
 
-output_section OUTPUT_QA (
-    .clr_bar(clr_bar),
-    .ld(ld),
-    .feedback(feedback_qa),
-    .clk(clk),
-    .data(a),
-    .q(qa)
-);
+    output_section OUTPUT_QA (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qa),
+        .clk(clk),
+        .data(a),
+        .q(qa)
+    );
 
 endmodule
