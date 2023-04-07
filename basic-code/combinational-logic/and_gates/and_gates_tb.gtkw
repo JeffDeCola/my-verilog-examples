@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri Apr  7 00:54:17 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/basic-code/combinational-logic/and_gates/and_gates_tb.vcd"
+[dumpfile_mtime] "Fri Apr  7 00:51:22 2023"
+[dumpfile_size] 579
+[savefile] "/home/jeff/verilog/my-verilog-examples/basic-code/combinational-logic/and_gates/and_gates_tb.gtkw"
+[timestart] 0
+[size] 2560 1354
+[pos] -165 -165
+*-1.881170 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] and_gates_tb.
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 418
+@28
+and_gates_tb.A
+and_gates_tb.B
+and_gates_tb.Y1
+and_gates_tb.Y2
+and_gates_tb.Y3
+@29
+and_gates_tb.Y4
+[pattern_trace] 1
+[pattern_trace] 0

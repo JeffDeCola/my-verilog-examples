@@ -1,5 +1,5 @@
 $date
-	Tue Apr  4 03:48:09 2023
+	Thu Apr  6 20:51:22 2023
 $end
 $version
 	Icarus Verilog
@@ -7,20 +7,20 @@ $end
 $timescale
 	1ns
 $end
-$scope module and_gate_tb $end
-$var wire 1 ! Y_4 $end
-$var wire 1 " Y_3 $end
-$var wire 1 # Y_2 $end
-$var wire 1 $ Y_1 $end
+$scope module and_gates_tb $end
+$var wire 1 ! Y4 $end
+$var wire 1 " Y3 $end
+$var wire 1 # Y2 $end
+$var wire 1 $ Y1 $end
 $var reg 1 % A $end
 $var reg 1 & B $end
 $scope module uut $end
 $var wire 1 % a $end
 $var wire 1 & b $end
-$var wire 1 $ y_1 $end
-$var wire 1 ! y_4 $end
-$var reg 1 # y_2 $end
-$var reg 1 " y_3 $end
+$var wire 1 $ y1 $end
+$var wire 1 ! y4 $end
+$var reg 1 # y2 $end
+$var reg 1 " y3 $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
