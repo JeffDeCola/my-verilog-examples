@@ -8,16 +8,17 @@ module simple_memory_using_1d_array(
     output [7:0] rdata      // Read Data
 );
 
-// DATA TYPES
-reg [7:0] mem [0:15];
+    // DATA TYPES
+    reg [7:0] mem [0:15];
 
-assign rdata = mem[addr];
+    assign rdata = mem[addr];
 
-always @ (posedge clk) begin
-    if (write) begin
-        // WRITE DATA TO ADDR
-        mem[addr] <= wdata;
+    // MEMORY
+    always @ (posedge clk) begin
+        if (write) begin
+            // WRITE DATA TO ADDR
+            mem[addr] <= wdata;
+        end
     end
-end
 
 endmodule

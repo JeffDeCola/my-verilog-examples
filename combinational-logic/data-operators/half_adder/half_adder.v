@@ -1,16 +1,15 @@
 // A 2-bit half adder
 
 module half_adder(
-    input  a,           // a
-    input  b,           // b
-    output sum,         // sum of a + b
-    output cout         // Carry out
+    input       a,           // Data
+    input       b,           // Data
+    output reg  sum,         // Sum of a + b
+    output reg  cout         // Carry out
 );
 
-reg sum, cout;
-
-always @ ( a or b ) begin
-    {cout, sum} <= a + b;
-end
+    // ADDER
+    always @ ( a or b ) begin
+        {cout, sum} <= a + b;
+    end
 
 endmodule

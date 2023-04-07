@@ -38,127 +38,127 @@ module jeff_74x181(
     output               y                    // ALSO GENERATE
 );
 
-// I DESIGNED THIS FRO THE 1972 TI SPEC SHEET
-wire input3_out1, input3_out2;
-wire input2_out1, input2_out2;
-wire input1_out1, input1_out2;
-wire input0_out1, input0_out2;
-wire m_bar;
+    // I DESIGNED THIS FRO THE 1972 TI SPEC SHEET
+    wire input3_out1, input3_out2;
+    wire input2_out1, input2_out2;
+    wire input1_out1, input1_out2;
+    wire input0_out1, input0_out2;
+    wire m_bar;
 
-input_section INPUT3(
-    .a(a3),
-    .b(b3),
-    .s3(s3),
-    .s2(s2),
-    .s1(s1),
-    .s0(s0),    
-    .out1(input3_out1),
-    .out2(input3_out2)
-);
+    input_section INPUT3(
+        .a(a3),
+        .b(b3),
+        .s3(s3),
+        .s2(s2),
+        .s1(s1),
+        .s0(s0),    
+        .out1(input3_out1),
+        .out2(input3_out2)
+    );
 
-input_section INPUT2(
-    .a(a2),
-    .b(b2),
-    .s3(s3),
-    .s2(s2),
-    .s1(s1),
-    .s0(s0),   
-    .out1(input2_out1),
-    .out2(input2_out2)
-);
+    input_section INPUT2(
+        .a(a2),
+        .b(b2),
+        .s3(s3),
+        .s2(s2),
+        .s1(s1),
+        .s0(s0),   
+        .out1(input2_out1),
+        .out2(input2_out2)
+    );
 
-input_section INPUT1(
-    .a(a1),
-    .b(b1),
-    .s3(s3),
-    .s2(s2),
-    .s1(s1),
-    .s0(s0),   
-    .out1(input1_out1),
-    .out2(input1_out2)
-);
+    input_section INPUT1(
+        .a(a1),
+        .b(b1),
+        .s3(s3),
+        .s2(s2),
+        .s1(s1),
+        .s0(s0),   
+        .out1(input1_out1),
+        .out2(input1_out2)
+    );
 
-input_section INPUT0(
-    .a(a0),
-    .b(b0),
-    .s3(s3),
-    .s2(s2),
-    .s1(s1),
-    .s0(s0),
-    .out1(input0_out1),
-    .out2(input0_out2)
-);
+    input_section INPUT0(
+        .a(a0),
+        .b(b0),
+        .s3(s3),
+        .s2(s2),
+        .s1(s1),
+        .s0(s0),
+        .out1(input0_out1),
+        .out2(input0_out2)
+    );
 
-invert_m M_BAR(
-    .a(m),
-    .y(m_bar)
-);
+    invert_m M_BAR(
+        .a(m),
+        .y(m_bar)
+    );
 
-out_section_f3 OUT_F3(
-    .m_bar(m_bar),
-    .ci_bar(ci_bar),
-    .input3_out1(input3_out1),
-    .input3_out2(input3_out2),
-    .input2_out1(input2_out1),
-    .input2_out2(input2_out2),
-    .input1_out1(input1_out1),
-    .input1_out2(input1_out2),
-    .input0_out1(input0_out1),
-    .input0_out2(input0_out2),
-    .f3(f3)
-);
+    out_section_f3 OUT_F3(
+        .m_bar(m_bar),
+        .ci_bar(ci_bar),
+        .input3_out1(input3_out1),
+        .input3_out2(input3_out2),
+        .input2_out1(input2_out1),
+        .input2_out2(input2_out2),
+        .input1_out1(input1_out1),
+        .input1_out2(input1_out2),
+        .input0_out1(input0_out1),
+        .input0_out2(input0_out2),
+        .f3(f3)
+    );
 
-out_section_f2 OUT_F2(
-    .m_bar(m_bar),
-    .ci_bar(ci_bar),
-    .input2_out1(input2_out1),
-    .input2_out2(input2_out2),
-    .input1_out1(input1_out1),
-    .input1_out2(input1_out2),
-    .input0_out1(input0_out1),
-    .input0_out2(input0_out2),
-    .f2(f2)
-);
+    out_section_f2 OUT_F2(
+        .m_bar(m_bar),
+        .ci_bar(ci_bar),
+        .input2_out1(input2_out1),
+        .input2_out2(input2_out2),
+        .input1_out1(input1_out1),
+        .input1_out2(input1_out2),
+        .input0_out1(input0_out1),
+        .input0_out2(input0_out2),
+        .f2(f2)
+    );
 
-out_section_f1 OUT_F1(
-    .m_bar(m_bar),
-    .ci_bar(ci_bar),
-    .input1_out1(input1_out1),
-    .input1_out2(input1_out2),
-    .input0_out1(input0_out1),
-    .input0_out2(input0_out2),
-    .f1(f1)
-);
+    out_section_f1 OUT_F1(
+        .m_bar(m_bar),
+        .ci_bar(ci_bar),
+        .input1_out1(input1_out1),
+        .input1_out2(input1_out2),
+        .input0_out1(input0_out1),
+        .input0_out2(input0_out2),
+        .f1(f1)
+    );
 
-out_section_f0 OUT_F0(
-    .m_bar(m_bar),
-    .ci_bar(ci_bar),
-    .input0_out1(input0_out1),
-    .input0_out2(input0_out2),
-    .f0(f0)
-);
+    out_section_f0 OUT_F0(
+        .m_bar(m_bar),
+        .ci_bar(ci_bar),
+        .input0_out1(input0_out1),
+        .input0_out2(input0_out2),
+        .f0(f0)
+    );
 
-g_p_carry_section GPC (
-    .input3_out1(input3_out1),
-    .input3_out2(input3_out2),
-    .input2_out1(input2_out1),
-    .input2_out2(input2_out2),
-    .input1_out1(input1_out1),
-    .input1_out2(input1_out2),
-    .input0_out1(input0_out1),
-    .input0_out2(input0_out2),
-    .ci_bar(ci_bar),
-    .co_bar(co_bar),
-    .x(x),
-    .y(y)
-);
+    g_p_carry_section GPC (
+        .input3_out1(input3_out1),
+        .input3_out2(input3_out2),
+        .input2_out1(input2_out1),
+        .input2_out2(input2_out2),
+        .input1_out1(input1_out1),
+        .input1_out2(input1_out2),
+        .input0_out1(input0_out1),
+        .input0_out2(input0_out2),
+        .ci_bar(ci_bar),
+        .co_bar(co_bar),
+        .x(x),
+        .y(y)
+    );
 
-aeqb AEQB (
-    .f3(f3),
-    .f2(f2),
-    .f1(f1),
-    .f0(f0),
-    .aeqb(aeqb)
-);
+    aeqb AEQB (
+        .f3(f3),
+        .f2(f2),
+        .f1(f1),
+        .f0(f0),
+        .aeqb(aeqb)
+    );
 
 endmodule

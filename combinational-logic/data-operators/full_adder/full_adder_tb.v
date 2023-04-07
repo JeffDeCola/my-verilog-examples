@@ -1,40 +1,40 @@
 `timescale 1ns / 1ns
 
-// include files in full-adder-headerfiles.vh
+// include files in full-adder.vh
 
 module full_adder_tb;
 
-// DATA TYPES - DECLAIR INPUTS AND OUTPUTS
-reg     A, B, CIN;
-wire    SUM, COUT;
-integer i;
+    // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
+    reg     A, B, CIN;
+    wire    SUM, COUT;
+    integer i;
 
-// UUT
-full_adder uut(
-    .a(A), .b(B), .cin(CIN),
-    .sum(SUM), .cout(COUT)
-);
+    // UNIT UNDER TEST
+    full_adder uut(
+        .a(A), .b(B), .cin(CIN),
+        .sum(SUM), .cout(COUT)
+    );
 
-// FILES
-initial begin
-    $dumpfile("full-adder-tb.vcd");
-    $dumpvars(0, full_adder_tb);
-end
-
-// TESTCASE
-initial begin
-    $display("test start");
-    A = 0;
-    B = 0;
-    CIN = 0;
-
-    for (i = 0; i < 8; i = i + 1) begin
-        {A, B, CIN} = i;
-        #10;
+    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    initial begin
+        $dumpfile("full_adder_tb.vcd");
+        $dumpvars(0, full_adder_tb);
     end
-    
-    $display("test complete");
-    $finish;
-end
+
+    // TESTCASE - CHANGE REG VALUES
+    initial begin
+        $display("test start");
+        A = 0;
+        B = 0;
+        CIN = 0;
+
+        for (i = 0; i < 8; i = i + 1) begin
+            {A, B, CIN} = i;
+            #10;
+        end
+        
+        $display("test complete");
+        $finish;
+    end
 
 endmodule

@@ -3,20 +3,20 @@
 module d_flip_flop (
     input       clk,        // Clock
     input       en,         // Enable
-    input       d,          // Input
+    input       d,          // Data
     output reg  q,          // Output
     output      q_bar       //
 );
 
-assign q_bar = ~q;
+    assign q_bar = ~q;
 
-// D FLIP-FLOP WITH SYNC ENABLE
-always @ (posedge clk) begin
-    if (en) begin
-        q <= d;
-    end else begin
-        q <= q;
+    // D FLIP-FLOP WITH SYNC ENABLE
+    always @ (posedge clk) begin
+        if (en) begin
+            q <= d;
+        end else begin
+            q <= q;
+        end
     end
-end
 
 endmodule

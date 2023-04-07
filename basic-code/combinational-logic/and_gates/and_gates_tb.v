@@ -4,7 +4,7 @@
 
 module and_gates_tb;
 
-    // DATA TYPES - DECLAIR REGISTERS AND WIRES (PROBES)
+    // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg  A, B;
     wire Y1, Y2, Y3, Y4;
 
