@@ -20,6 +20,18 @@ Documentation and Reference
 * I really like this
   [explanation](http://www.righto.com/2017/03/inside-vintage-74181-alu-chip-how-it.html)
 
+## OVERVIEW
+
+_I used
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+to simulate and
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+to view the waveform. I also used
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+to synthesize and program this example on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
+
 ## SCHEMATIC
 
 I designed this processor form the 1972 Texas Instruments spec sheet.
@@ -52,32 +64,56 @@ This is when the inputs/outputs are treated as active high.
 
 ## VERILOG CODE
 
-The entire code is
-[jeff-74x181.v](jeff-74x181.v).
+The
+[and_gates.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.v)
+uses behavioral modeling.
 
 ## RUN (SIMULATE)
 
-I used my testbench
-[jeff-74x181-tb.v](jeff-74x181-tb.v) with
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and create a `.vcd` file.
+I created,
+
+* [and_gates_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates_tb.v)
+the testbench
+* [and_gates.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/and_gates.vh)
+the header file listing the verilog code
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and_gates/run-simulation.sh)
+a script containing the commands below
+
+Use **iverilog** to compile the verilog to a vvp format
+which is used by the vvp runtime simulation engine,
 
 ```bash
-sh run-test.sh
+iverilog -o and_gates_tb.vvp and_gates_tb.v and_gates.vh
+```
+
+Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+
+```bash
+vvp and_gates_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Check you waveform using your `.vcd` file with a waveform viewer.
+Open the waveform file and_gates_tb.vcd file with GTKWave,
 
-I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-and launch it using
-[launch-gtkwave.sh](launch-gtkwave.sh).
+```bash
+gtkwave -f and_gates_tb.vcd &
+```
 
-![jeff-74x181-waveform.jpg](../../../docs/pics/jeff-74x181-waveform.jpg)
+Save your waveform to a .gtkw file.
 
-## TESTED IN HARDWARE - BURNED TO AN FPGA
+Now you can
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
+anytime you want,
 
-To test my design in real hardware, the above code was synthesized using the
+```bash
+gtkwave -f and_gates_tb.gtkw &
+```
+
+![and_gates-waveform.jpg](../../../docs/pics/and_gates-waveform.jpg)
+
+## TESTED IN HARDWARE - BURNED TO A FPGA
+
+The above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 IDE software suite and burned to a FPGA development board.

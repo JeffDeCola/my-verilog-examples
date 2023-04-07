@@ -2,16 +2,29 @@
 
 _A positive edge d flip-flop with synchronous enable
 used in my
-[jeff-74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff-74x377)._
+[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
 
 Table of Contents
 
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop#check-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#tested-in-hardware---burned-to-a-fpga)
+
+## OVERVIEW
+
+_I used
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+to simulate and
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+to view the waveform. I also used
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+to synthesize and program this example on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
 
 ## SCHEMATIC
 
@@ -35,7 +48,9 @@ repo._
 
 ## VERILOG CODE
 
-The main verilog code is,
+The
+[d_flip_flop.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop.v)
+uses behavioral modeling,
 
 ```verilog
     assign q_bar = ~q;
@@ -50,32 +65,52 @@ The main verilog code is,
     end
 ```
 
-The entire code is
-[d-flip-flop.v](d-flip-flop.v).
-
 ## RUN (SIMULATE)
 
-I used my testbench
-[d-flip-flop-tb.v](d-flip-flop-tb.v) with
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and create a `.vcd` file.
+I created,
+
+* [d_flip_flop_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop_tb.v)
+the testbench
+* [d_flip_flop.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop.vh)
+the header file listing the verilog code
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/run-simulation.sh)
+a script containing the commands below
+
+Use **iverilog** to compile the verilog to a vvp format
+which is used by the vvp runtime simulation engine,
 
 ```bash
-sh run-test.sh
+iverilog -o d_flip_flop_tb.vvp d_flip_flop_tb.v d_flip_flop.vh
+```
+
+Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+
+```bash
+vvp d_flip_flop_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Check you waveform using your `.vcd` file with a waveform viewer.
+Open the waveform file d_flip_flop_tb.vcd file with GTKWave,
 
-I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-and launch it using
-[launch-gtkwave.sh](launch-gtkwave.sh).
+```bash
+gtkwave -f d_flip_flop_tb.vcd &
+```
 
-![d-flip-flop-waveform.jpg](../../../docs/pics/d-flip-flop-waveform.jpg)
+Save your waveform to a .gtkw file.
+
+Now you can
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
+anytime you want,
+
+```bash
+gtkwave -f d_flip_flop_tb.gtkw &
+```
+
+![d_flip_flop-waveform.jpg](../../../docs/pics/d_flip_flop-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
-To test my design in real hardware, the above code was synthesized using the
+The above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 IDE software suite and burned to a FPGA development board.

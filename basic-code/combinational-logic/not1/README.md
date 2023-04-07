@@ -5,11 +5,24 @@ _NOT gate used in my
 
 Table of Contents
 
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#overview)
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#run-simulate)
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#check-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#tested-in-hardware---burned-to-a-fpga)
+
+## OVERVIEW
+
+_I used
+[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
+to simulate and
+[GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
+to view the waveform. I also used
+[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
+to synthesize and program this example on a
+[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
+FPGA development board._
 
 ## TRUTH TABLE
 
@@ -20,38 +33,60 @@ Table of Contents
 
 ## VERILOG CODE
 
-The main part of the code is,
+The
+[not1.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1.v)
+uses dataflow modeling,
 
 ```verilog
     assign y = ~a;
 ```
 
-The entire code is
-[not1.v](not1.v).
-
 ## RUN (SIMULATE)
 
-I used my testbench
-[not1-tb.v](not1-tb.v) with
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and create a `.vcd` file.
+I created,
+
+* [not1_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1_tb.v)
+the testbench
+* [not1.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1.vh)
+the header file listing the verilog code
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/run-simulation.sh)
+a script containing the commands below
+
+Use **iverilog** to compile the verilog to a vvp format
+which is used by the vvp runtime simulation engine,
 
 ```bash
-sh run-test.sh
+iverilog -o not1_tb.vvp not1_tb.v not1.vh
+```
+
+Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+
+```bash
+vvp not1_tb.vvp
 ```
 
 ## CHECK WAVEFORM
 
-Check you waveform using your `.vcd` file with a waveform viewer.
+Open the waveform file not1_tb.vcd file with GTKWave,
 
-I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-and launch it using
-[launch-gtkwave.sh](launch-gtkwave.sh).
+```bash
+gtkwave -f not1_tb.vcd &
+```
+
+Save your waveform to a .gtkw file.
+
+Now you can
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
+anytime you want,
+
+```bash
+gtkwave -f not1_tb.gtkw &
+```
 
 ![not1-waveform.jpg](../../../docs/pics/not1-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
-To test my design in real hardware, the above code was synthesized using the
+The above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
 IDE software suite and burned to a FPGA development board.
