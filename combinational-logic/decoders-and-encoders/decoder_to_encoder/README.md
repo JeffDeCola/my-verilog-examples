@@ -59,11 +59,11 @@ structure is,
 I created,
 
 * [decoder_to_encoder_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/decoder_to_encoder/decoder_to_encoder_tb.v)
-the testbench
+  the testbench
 * [decoder_to_encoder.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/decoder_to_encoder/decoder_to_encoder.vh)
-the header file listing the verilog code
+  the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/decoder_to_encoder/run-simulation.sh)
-a script containing the commands below
+  a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,

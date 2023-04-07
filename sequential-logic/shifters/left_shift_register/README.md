@@ -45,11 +45,11 @@ end
 I created,
 
 * [left_shift_register_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register_tb.v)
-the testbench
+  the testbench
 * [left_shift_register.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register.vh)
-the header file listing the verilog code
+  the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/run-simulation.sh)
-a script containing the commands below
+  a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,

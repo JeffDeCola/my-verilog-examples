@@ -50,11 +50,11 @@ I tried `assign y = a ~| b` but this does not synthesize.
 I created,
 
 * [nor2_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nor2/nor2_tb.v)
-the testbench
+  the testbench
 * [nor2.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nor2/nor2.vh)
-the header file listing the verilog code
+  the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nor2/run-simulation.sh)
-a script containing the commands below
+  a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,

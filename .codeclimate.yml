@@ -31,4 +31,4 @@ plugins:
 # - <pattern>
 exclude_patterns:
 - "docs/"
-- "/systems/microprocessors/programable-8-bit-microprocessor/README.md"
+- "/systems/microprocessors/programable_8_bit_microprocessor/README.md"

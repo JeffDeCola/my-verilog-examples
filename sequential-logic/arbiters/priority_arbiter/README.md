@@ -91,11 +91,11 @@ uses behavioral modeling,
 I created,
 
 * [priority_arbiter_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter_tb.v)
-the testbench
+  the testbench
 * [priority_arbiter.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter.vh)
-the header file listing the verilog code
+  the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/run-simulation.sh)
-a script containing the commands below
+  a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,

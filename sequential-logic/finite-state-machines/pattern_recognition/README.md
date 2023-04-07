@@ -68,11 +68,11 @@ uses behavioral modeling,
 I created,
 
 * [pattern_recognition_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/finite-state-machines/pattern_recognition/pattern_recognition_tb.v)
-the testbench
+  the testbench
 * [pattern_recognition.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/finite-state-machines/pattern_recognition/pattern_recognition.vh)
-the header file listing the verilog code
+  the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/finite-state-machines/pattern_recognition/run-simulation.sh)
-a script containing the commands below
+  a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,

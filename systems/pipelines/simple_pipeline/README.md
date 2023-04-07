@@ -76,11 +76,11 @@ uses behavioral modeling,
 I created,
 
 * [simple_pipeline_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/simple_pipeline_tb.v)
-the testbench
+  the testbench
 * [simple_pipeline.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/simple_pipeline.vh)
-the header file listing the verilog code
+  the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/simple_pipeline/run-simulation.sh)
-a script containing the commands below
+  a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
