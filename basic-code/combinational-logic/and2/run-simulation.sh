@@ -23,6 +23,7 @@ vvp and2_tb.vvp
 echo " "
 
 echo "Now you can open the waveform file and2_tb.vcd with GTKWave."
+echo "gtkwave -f and2_tb.vcd &"
 echo " "
 
 echo "**********************************************************************"
