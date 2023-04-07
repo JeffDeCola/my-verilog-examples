@@ -75,9 +75,6 @@ Other methods,
     and(y4, a, b);
 ```
 
-The entire code is
-[and-gate.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and-gate/and-gate.v).
-
 ## RUN (SIMULATE)
 
 I created,
