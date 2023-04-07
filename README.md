@@ -44,10 +44,10 @@ Documentation and Reference
 * [digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
   is a FPGA development board
 * My
-  [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
+  [master's thesis](https://github.com/JeffDeCola/my-masters-thesis)
   has an explanation of HDLs and how they fit into frameworks
 * My
-  [Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)
+  [master's thesis](https://github.com/JeffDeCola/my-masters-thesis)
   also has my design of a
   [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)
 * This repos
