@@ -1,4 +1,4 @@
 #!/bin/sh -e
 # my-verilog-examples launch-gtkwave.sh
 
-sh ../../../launch-GTKWave-script/launch-gtkwave.sh pattern-recognition 
+sh ../../../launch-GTKWave-script/launch-gtkwave.sh pattern_recognition 
