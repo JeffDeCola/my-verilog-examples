@@ -60,7 +60,7 @@ on wsl2, macOS or linux.
 
 * COMBINATIONAL LOGIC
 
-  * [and-gate](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and-gate)
+  * [and_gates](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and_gates)
 
     _A few different ways to model an AND gate._
 
@@ -68,6 +68,17 @@ on wsl2, macOS or linux.
 
     _2-input AND gate used in my
     [programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
+
+
+
+
+
+
+
+
+
+
+    
 
   * [nand4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/nand4)
 
