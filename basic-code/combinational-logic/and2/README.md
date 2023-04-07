@@ -37,7 +37,7 @@ FPGA development board._
 
 The
 [and2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/and2/and2.v)
-main code is,
+uses dataflow modeling,
 
 ```verilog
     // CONTINUOUS ASSIGNMENT STATEMENT
@@ -70,7 +70,7 @@ vvp and2_tb.vvp
 
 ## CHECK WAVEFORM
 
-Open the waveform file and2_tb.vcd file with GTKWave.
+Open the waveform file and2_tb.vcd file with GTKWave,
 
 ```bash
 gtkwave -f and2_tb.vcd &
@@ -80,7 +80,7 @@ Save your waveform to a .gtkw file.
 
 Now you can
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
-your saved waveform anytime you want,
+anytime you want,
 
 ```bash
 gtkwave -f and2_tb.gtkw &
