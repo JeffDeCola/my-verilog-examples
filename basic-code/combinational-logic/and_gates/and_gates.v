@@ -24,6 +24,6 @@ module and_gates(
     end
 
     // METHOD 4 - GATE PRIMITIVES
-    and(y4, a, b);
+    and (y4, a, b);
 
 endmodule

@@ -24,6 +24,17 @@ to synthesize and program this example on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
 FPGA development board._
 
+## SCHEMATIC
+
+_This figure was created using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/and-gate)
+repo._
+
+<p align="center">
+    <img src="svgs/and-gate.svg"
+    align="middle"
+</p>
+
 ## TRUTH TABLE
 
 | a     | b     | y     |
