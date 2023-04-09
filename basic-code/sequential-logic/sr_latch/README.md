@@ -1,4 +1,4 @@
-# D FLIP-FLOP EXAMPLE
+# SR LATCH EXAMPLE
 
 _A positive edge d flip-flop with synchronous enable
 used in my
