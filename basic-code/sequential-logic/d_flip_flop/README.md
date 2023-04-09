@@ -1,20 +1,14 @@
-# D FLIP-FLOP EXAMPLE
+# D FLIP-FLOPS EXAMPLE
 
-_A positive edge d flip-flop with synchronous enable
-used in my
-[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
+_A few different ways to model a positive edge d flip-flop._
 
 Table of Contents
 
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#check-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#tested-in-hardware---burned-to-a-fpga)
+* tbd
 
 ## OVERVIEW
+
+ A d flip-flop simply stores data.
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -37,14 +31,30 @@ repo._
     align="middle"
 </p>
 
+A d flip-flop is built using a latch. A latch stores data but the output will change
+not based on clock edge, but based on the input.
+
+![latch-schematic.png](../../../docs/pics/latch-schematic.png)
+
+By combining two latches together we can make a d flip-flop in which the output
+changes on the **positive edge of the clock**,
+
+![d-flip-flop-schematic.png](../../../docs/pics/d-flip-flop-schematic.png)
+
 ## TRUTH TABLE
 
-| q_prev  | en     | d     | q      |
-|:-------:|:------:|:-----:|:------:|
-| 0       |  0     |  X    | 0      |
-| 1       |  0     |  X    | 1      |
-| X       |  1     |  0    | 0      |
-| X       |  1     |  1    | 1      |
+| clk     | d     | q      |             |
+|:-------:|:-----:|:------:|:-----------:|
+| 0       |  X    | q      | No change   |
+| 1       |  0    | 0      | Stores 0    |
+| 1       |  1    | 1      | Stores 1    |
+## TRUTH TABLE
+
+| clk     | d     | q      |             |
+|:-------:|:-----:|:------:|:-----------:|
+| 0       |  X    | q      | No change   |
+| 1       |  0    | 0      | Stores 0    |
+| 1       |  1    | 1      | Stores 1    |
 
 ## VERILOG CODE
 
@@ -53,16 +63,7 @@ The
 uses behavioral modeling,
 
 ```verilog
-    assign q_bar = ~q;
-
-    // D FLIP-FLOP WITH SYNC ENABLE
-    always @ (posedge clk) begin
-        if (en) begin
-            q <= d;
-        end else begin
-            q <= q;
-        end
-    end
+???
 ```
 
 ## RUN (SIMULATE)

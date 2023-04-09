@@ -102,11 +102,6 @@ Each example has the following 6 file types,
 * `*_tb.vcd` - The dump of the waveform data
 * `*_tb.gtkw` - The GTKWave saved waveform
 
-To make things easier,
-[launch-gtkwave.sh](launch-GTKWave-script/launch-gtkwave.sh)
-will launch GTKWave from a saved waveform `*.gtkw` file
-on wsl2, macOS or linux.
-
 ## BASIC CODE
 
 * COMBINATIONAL LOGIC
@@ -147,17 +142,45 @@ on wsl2, macOS or linux.
 
 * SEQUENTIAL LOGIC
 
-  * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
+  * [sr_latch](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch)
 
-     _A positive edge d flip-flop with synchronous enable
-    used in my
-    [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
+     _A sr (set ready) latch stores data but output changes on input._
+
+  * [sr_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_flip_flop)
+
+     _A sr (set ready) flip-flop stores data on level of clock
+     but can have an unknown output._
 
   * [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop)
+
+     _A jk (Jack Kilby (set clear)) flip-flop is a sr flip-flop with added
+     feedback to prevent an unknown output._
+
+  * [jk_flip_flop_sync_clear](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop_sync_clear)
 
      _A positive edge jk flip-flop with synchronous clear
     used in my
     [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161)._
+
+  * [t_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop)
+
+     _A t (toggle) flip-flop is a single input jk flip flop
+     which toggles output according to input._
+
+  * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
+
+     _A d (data) flip-flop which stores data on clock level._
+
+  * [d_flip_flop_pos_edge](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge)
+
+     _A d (data) flip-flop which stores data on posedge of clock
+     (Used to be called master-slave d flip-flop)._
+
+  * [d_flip_flop_pos_edge_sync_en](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en)
+
+     _A positive edge d flip-flop with synchronous enable
+    used in my
+    [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
 
 ## COMBINATIONAL LOGIC
 
