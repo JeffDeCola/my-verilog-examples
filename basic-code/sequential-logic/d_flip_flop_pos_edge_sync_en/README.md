@@ -29,11 +29,11 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/d-flip-flop)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/d-flip-flop-post-edge-sync-en)
 repo._
 
 <p align="center">
-    <img src="svgs/d-flip-flop.svg"
+    <img src="svgs/d-flip-flop-pos-edge-sync-en.svg"
     align="middle"
 </p>
 
@@ -80,7 +80,8 @@ Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o d_flip_flop_pos_edge_sync_en_tb.vvp d_flip_flop_pos_edge_sync_en_tb.v d_flip_flop_pos_edge_sync_en.vh
+iverilog -o d_flip_flop_pos_edge_sync_en_tb.vvp \
+            d_flip_flop_pos_edge_sync_en_tb.v d_flip_flop_pos_edge_sync_en.vh
 ```
 
 Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
