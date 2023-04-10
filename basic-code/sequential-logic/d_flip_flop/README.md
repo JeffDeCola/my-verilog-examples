@@ -4,7 +4,13 @@ _A few different ways to model a positive edge d flip-flop._
 
 Table of Contents
 
-* tbd
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#run-simulate)
+* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#check-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -23,7 +29,7 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/d-flip-flop)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/d-flip-flop)
 repo._
 
 <p align="center">
@@ -41,13 +47,6 @@ changes on the **positive edge of the clock**,
 
 ![d-flip-flop-schematic.png](../../../docs/pics/d-flip-flop-schematic.png)
 
-## TRUTH TABLE
-
-| clk     | d     | q      |             |
-|:-------:|:-----:|:------:|:-----------:|
-| 0       |  X    | q      | No change   |
-| 1       |  0    | 0      | Stores 0    |
-| 1       |  1    | 1      | Stores 1    |
 ## TRUTH TABLE
 
 | clk     | d     | q      |             |

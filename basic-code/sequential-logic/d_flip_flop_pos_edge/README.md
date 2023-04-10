@@ -29,11 +29,11 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/d-flip-flop)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/d-flip-flop-post-edge)
 repo._
 
 <p align="center">
-    <img src="svgs/d-flip-flop.svg"
+    <img src="svgs/d-flip-flop-pos-edge.svg"
     align="middle"
 </p>
 
