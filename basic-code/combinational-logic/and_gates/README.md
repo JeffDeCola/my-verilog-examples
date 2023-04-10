@@ -27,11 +27,11 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and-gate)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
 repo._
 
 <p align="center">
-    <img src="svgs/and-gate.svg"
+    <img src="svgs/and.svg"
     align="middle"
 </p>
 
