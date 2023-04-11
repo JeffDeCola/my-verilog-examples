@@ -52,10 +52,6 @@ Each example has the following 6 file types,
 
 * COMBINATIONAL LOGIC
 
-  * [and_gates](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and_gates)
-
-    _A few different ways to model an AND gate._
-
   * [and2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and2)
 
     _2-input AND gate used in my
