@@ -1,15 +1,16 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in not1.vh
+// include files are in not1.vh
 
-module not1_tb;
+module NOT1_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg        A;
     wire       Y;
+    integer    i;
 
     // UNIT UNDER TEST
-    not1 uut(
+    not1 UUT_not1(
         .a(A),
         .y(Y)
     );
@@ -17,26 +18,29 @@ module not1_tb;
     // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
     initial begin
         $dumpfile("not1_tb.vcd");
-        $dumpvars(0, not1_tb);
+        $dumpvars(0, NOT1_TB);
     end
 
     // TESTCASE - CHANGE REG VALUES
     initial begin
-        $display("test start");
-        A = 0;
+        $display("TEST START");
+        $write("| TIME(ns) | A | Y |"); // header
+        $display;
 
-        #15; A = 0;
-        #20; A = 1;
-        #20; A = 0;
-        #20; A = 1;
+        // INCREMENT IN BINARY
+        for (i=0; i<2; i=i+1) begin
+            {A} = i;
+            #20;
+        end
 
-        #20; A = 0;
-
-        // DONE
-        #20
-
-        $display("test complete");
+        $display("TEST END");
         $finish;
+    end
+
+    // OUTPUT ON SCREEN FOR ANY CHANGE
+    always @(*)
+    begin
+        $strobe("| %8d | %1d | %1d |", $time, A, Y);
     end
 
 endmodule

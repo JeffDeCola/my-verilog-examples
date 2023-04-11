@@ -1,4 +1,5 @@
-// A positive edge d flip-flop with synchronous enable used in my jeff-74x377.
+// A d (data) flip-flop which stores data on posedge of clock
+// (Used to be called master-slave d flip-flop).
 
 module d_flip_flop_pos_edge (
     input       clk,        // Clock

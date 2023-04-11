@@ -1,4 +1,4 @@
-# D FLIP-FLOP EXAMPLE
+# D FLIP-FLOP POS EDGE SYNC CLEAR EXAMPLE
 
 _A positive edge d flip-flop with synchronous enable
 used in my
@@ -108,7 +108,7 @@ anytime you want,
 gtkwave -f d_flip_flop_pos_edge_sync_en_tb.gtkw &
 ```
 
-![d_flip_flop_pos_edge_sync_en-waveform.jpg](../../../docs/pics/d_flip_flop_pos_edge_sync_en-waveform.jpg)
+![d_flip_flop_pos_edge_sync_en-waveform.jpg](../../../docs/pics/basic-code/d_flip_flop_pos_edge_sync_en-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

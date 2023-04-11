@@ -1,16 +1,17 @@
 $date
-	Fri Apr  7 05:48:06 2023
+	Mon Apr 10 20:39:29 2023
 $end
 $version
 	Icarus Verilog
 $end
 $timescale
-	1ns
+	100ps
 $end
-$scope module not1_tb $end
+$scope module NOT1_TB $end
 $var wire 1 ! Y $end
 $var reg 1 " A $end
-$scope module uut $end
+$var integer 32 # i [31:0] $end
+$scope module UUT_not1 $end
 $var wire 1 " a $end
 $var wire 1 ! y $end
 $upscope $end
@@ -21,19 +22,13 @@ $dumpall
 $end
 #0
 $dumpvars
+b0 #
 0"
 1!
 $end
-#35
+#200
 0!
 1"
-#55
-1!
-0"
-#75
-0!
-1"
-#95
-1!
-0"
-#115
+b1 #
+#400
+b10 #

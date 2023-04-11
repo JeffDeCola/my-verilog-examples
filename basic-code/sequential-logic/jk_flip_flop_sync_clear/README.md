@@ -1,4 +1,4 @@
-# JK FLIP-FLOP EXAMPLE
+# JK FLIP-FLOP SYNC CLEAR EXAMPLE
 
 _A positive edge jk flip-flop with synchronous clear
 used in my
@@ -113,7 +113,7 @@ anytime you want,
 gtkwave -f jk_flip_flop_sync_clear_tb.gtkw &
 ```
 
-![jk_flip_flop_sync_clear-waveform.jpg](../../../docs/pics/jk_flip_flop_sync_clear-waveform.jpg)
+![jk_flip_flop_sync_clear-waveform.jpg](../../../docs/pics/basic-code/jk_flip_flop_sync_clear-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

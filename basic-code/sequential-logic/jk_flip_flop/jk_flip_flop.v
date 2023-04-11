@@ -1,4 +1,5 @@
-// A positive edge jk flip-flop with synchronous clear used in my jeff-74x161
+// A sr (set ready) flip-flop stores data on level of clock
+// but can have an unknown output.
 
 module jk_flip_flop (
     input       clk,        // Clock

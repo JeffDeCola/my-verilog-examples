@@ -1,6 +1,6 @@
-# D FLIP-FLOPS EXAMPLE
+# D FLIP-FLOP EXAMPLE
 
-_A few different ways to model a positive edge d flip-flop._
+_A d (data) flip-flop which stores data on clock level._
 
 Table of Contents
 

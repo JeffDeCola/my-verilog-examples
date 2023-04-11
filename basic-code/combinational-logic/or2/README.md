@@ -97,7 +97,7 @@ anytime you want,
 gtkwave -f or2_tb.gtkw &
 ```
 
-![or2-waveform.jpg](../../../docs/pics/or2-waveform.jpg)
+![or2-waveform.jpg](../../../docs/pics/basic-code/or2-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
