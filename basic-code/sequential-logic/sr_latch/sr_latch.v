@@ -1,22 +1,16 @@
-// A positive edge d flip-flop with synchronous enable used in my jeff-74x377.
+// A sr (set ready) latch stores data but output changes on input.
 
 module sr_latch (
-    input       clk,        // Clock
-    input       en,         // Enable
-    input       d,          // Data
-    output reg  q,          // Output
-    output      q_bar       //
+    input       s,          // Set
+    input       r,          // Reset
+    input       q,          // Data Out
+    output reg  qbar       // 
 );
 
-    assign q_bar = ~q;
+    // NAND1
+    assign q = ~(s & qbar);
 
-    // D FLIP-FLOP WITH SYNC ENABLE
-    always @ (posedge clk) begin
-        if (en) begin
-            q <= d;
-        end else begin
-            q <= q;
-        end
-    end
+    // NAND2
+    assign qbar = ~(r & q);
 
 endmodule

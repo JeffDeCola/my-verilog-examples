@@ -1,19 +1,20 @@
 $date
-	Fri Apr  7 05:38:02 2023
+	Mon Apr 10 20:32:07 2023
 $end
 $version
 	Icarus Verilog
 $end
 $timescale
-	1ns
+	100ps
 $end
-$scope module nand4_tb $end
+$scope module NAND4_TB $end
 $var wire 1 ! Y $end
 $var reg 1 " A $end
 $var reg 1 # B $end
 $var reg 1 $ C $end
 $var reg 1 % D $end
-$scope module uut $end
+$var integer 32 & i [31:0] $end
+$scope module UUT_nand4 $end
 $var wire 1 " a $end
 $var wire 1 # b $end
 $var wire 1 $ c $end
@@ -27,60 +28,69 @@ $dumpall
 $end
 #0
 $dumpvars
+b0 &
 0%
 0$
 0#
 0"
 1!
 $end
-#35
-1"
-#55
-0"
-1#
-#75
-1"
-#95
-0"
-0#
-1$
-#115
-1"
-#135
-0"
-1#
-#155
-1"
-#175
-1!
-0"
-0#
-0$
+#200
 1%
-#195
-1"
-#215
-0"
-1#
-#235
-1"
-#255
-1!
-0"
-0#
+b1 &
+#400
 1$
-#275
-1"
-#295
-0"
+0%
+b10 &
+#600
+1%
+b11 &
+#800
 1#
-#315
-0!
+0$
+0%
+b100 &
+#1000
+1%
+b101 &
+#1200
+1$
+0%
+b110 &
+#1400
+1%
+b111 &
+#1600
 1"
-#335
-1!
-0"
 0#
 0$
 0%
-#355
+b1000 &
+#1800
+1%
+b1001 &
+#2000
+1$
+0%
+b1010 &
+#2200
+1%
+b1011 &
+#2400
+1#
+0$
+0%
+b1100 &
+#2600
+1%
+b1101 &
+#2800
+1$
+0%
+b1110 &
+#3000
+0!
+1%
+b1111 &
+#3200
+b10000 &

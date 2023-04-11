@@ -1,8 +1,7 @@
-# D FLIP-FLOP EXAMPLE
+# SR FLIP-FLOP EXAMPLE
 
-_A positive edge d flip-flop with synchronous enable
-used in my
-[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
+_A sr (set ready) flip-flop stores data on level of clock
+but can have an unknown output._
 
 Table of Contents
 
@@ -107,7 +106,7 @@ anytime you want,
 gtkwave -f sr_flip_flop_tb.gtkw &
 ```
 
-![sr_flip_flop-waveform.jpg](../../../docs/pics/sr_flip_flop-waveform.jpg)
+![sr_flip_flop-waveform.jpg](../../../docs/pics/basic-code/sr_flip_flop-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

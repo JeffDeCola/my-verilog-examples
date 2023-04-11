@@ -1,15 +1,16 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in xor2.vh
+// include files are in xor2.vh
 
-module xor2_tb;
+module XOR2_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg        A, B;
     wire       Y;
+    integer    i;
 
     // UNIT UNDER TEST
-    xor2 uut(
+    xor2 UUT_xor2(
         .a(A), .b(B),
         .y(Y)
     );
@@ -17,26 +18,29 @@ module xor2_tb;
     // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
     initial begin
         $dumpfile("xor2_tb.vcd");
-        $dumpvars(0, xor2_tb);
+        $dumpvars(0, XOR2_TB);
     end
 
     // TESTCASE - CHANGE REG VALUES
     initial begin
-        $display("test start");
-        B = 0; A = 0;
+        $display("TEST START");
+        $write("| TIME(ns) | A | B | Y |"); // header
+        $display;
 
-        #15; B = 0; A = 0;
-        #20; B = 0; A = 1;
-        #20; B = 1; A = 0;
-        #20; B = 1; A = 1;
+        // INCREMENT IN BINARY
+        for (i=0; i<4; i=i+1) begin
+            {A, B} = i;
+            #20;
+        end
 
-        #20; B = 0; A = 0;
-
-        // DONE
-        #20
-
-        $display("test complete");
+        $display("TEST END");
         $finish;
+    end
+
+    // OUTPUT ON SCREEN FOR ANY CHANGE
+    always @(*)
+    begin
+        $strobe("| %8d | %1d | %1d | %1d |", $time, A, B, Y);
     end
 
 endmodule

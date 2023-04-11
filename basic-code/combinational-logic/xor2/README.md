@@ -28,7 +28,7 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/or2)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/xor)
 repo._
 
 <p align="center">
@@ -97,7 +97,7 @@ anytime you want,
 gtkwave -f xor2_tb.gtkw &
 ```
 
-![xor2-waveform.jpg](../../../docs/pics/xor2-waveform.jpg)
+![xor2-waveform.jpg](../../../docs/pics/basic-code/xor2-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

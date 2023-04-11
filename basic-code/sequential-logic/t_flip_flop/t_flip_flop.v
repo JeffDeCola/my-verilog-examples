@@ -1,4 +1,5 @@
-// A positive edge d flip-flop with synchronous enable used in my jeff-74x377.
+// A t (toggle) flip-flop is a single input jk flip flop
+// which toggles output according to input.
 
 module t_flip_flop (
     input       clk,        // Clock

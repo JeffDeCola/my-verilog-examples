@@ -1,8 +1,7 @@
-# D FLIP-FLOP EXAMPLE
+# T FLIP-FLOP EXAMPLE
 
-_A positive edge d flip-flop with synchronous enable
-used in my
-[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
+_A t (toggle) flip-flop is a single input jk flip flop
+which toggles output according to input._
 
 Table of Contents
 
@@ -107,7 +106,7 @@ anytime you want,
 gtkwave -f t_flip_flop_tb.gtkw &
 ```
 
-![t_flip_flop-waveform.jpg](../../../docs/pics/t_flip_flop-waveform.jpg)
+![t_flip_flop-waveform.jpg](../../../docs/pics/basic-code/t_flip_flop-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

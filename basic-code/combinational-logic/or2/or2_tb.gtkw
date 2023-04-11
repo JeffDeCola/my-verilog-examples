@@ -1,23 +1,23 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Fri Apr  7 09:54:37 2023
+[*] Tue Apr 11 00:46:04 2023
 [*]
 [dumpfile] "/home/jeff/verilog/my-verilog-examples/basic-code/combinational-logic/or2/or2_tb.vcd"
-[dumpfile_mtime] "Fri Apr  7 09:52:58 2023"
-[dumpfile_size] 437
+[dumpfile_mtime] "Tue Apr 11 00:44:27 2023"
+[dumpfile_size] 494
 [savefile] "/home/jeff/verilog/my-verilog-examples/basic-code/combinational-logic/or2/or2_tb.gtkw"
 [timestart] 0
-[size] 1099 600
+[size] 1000 600
 [pos] -1 -1
-*-5.122459 115 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.552208 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 204
 [signals_width] 78
 [sst_expanded] 1
 [sst_vpaned_height] 152
 @28
-or2_tb.A
-or2_tb.B
+OR2_TB.A
+OR2_TB.B
 @29
-or2_tb.Y
+OR2_TB.Y
 [pattern_trace] 1
 [pattern_trace] 0

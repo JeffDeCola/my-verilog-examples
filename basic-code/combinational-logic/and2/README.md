@@ -98,7 +98,7 @@ anytime you want,
 gtkwave -f and2_tb.gtkw &
 ```
 
-![and2-waveform.jpg](../../../docs/pics/and2-waveform.jpg)
+![and2-waveform.jpg](../../../docs/pics/basic-code/and2-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

@@ -1,22 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Fri Apr  7 09:49:18 2023
+[*] Tue Apr 11 00:43:43 2023
 [*]
 [dumpfile] "/home/jeff/verilog/my-verilog-examples/basic-code/combinational-logic/not1/not1_tb.vcd"
-[dumpfile_mtime] "Fri Apr  7 09:48:06 2023"
-[dumpfile_size] 394
+[dumpfile_mtime] "Tue Apr 11 00:39:29 2023"
+[dumpfile_size] 420
 [savefile] "/home/jeff/verilog/my-verilog-examples/basic-code/combinational-logic/not1/not1_tb.gtkw"
 [timestart] 0
-[size] 1035 600
-[pos] 526 278
-*-5.122459 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1000 600
+[pos] -1 -1
+*-13.552226 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 204
 [signals_width] 78
 [sst_expanded] 1
 [sst_vpaned_height] 152
 @28
-not1_tb.A
+NOT1_TB.A
 @29
-not1_tb.Y
+NOT1_TB.Y
 [pattern_trace] 1
 [pattern_trace] 0

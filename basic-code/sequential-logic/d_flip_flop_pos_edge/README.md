@@ -1,8 +1,7 @@
-# D FLIP-FLOP EXAMPLE
+# D FLIP-FLOP POS EDGE EXAMPLE
 
-_A positive edge d flip-flop with synchronous enable
-used in my
-[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
+_A d (data) flip-flop which stores data on posedge of clock
+(Used to be called master-slave d flip-flop)._
 
 Table of Contents
 
@@ -107,7 +106,7 @@ anytime you want,
 gtkwave -f d_flip_flop_pos_edge_tb.gtkw &
 ```
 
-![d_flip_flop_pos_edge-waveform.jpg](../../../docs/pics/d_flip_flop_pos_edge-waveform.jpg)
+![d_flip_flop_pos_edge-waveform.jpg](../../../docs/pics/basic-code/d_flip_flop_pos_edge-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

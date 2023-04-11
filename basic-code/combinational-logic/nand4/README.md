@@ -109,7 +109,7 @@ anytime you want,
 gtkwave -f nand4_tb.gtkw &
 ```
 
-![nand4-waveform.jpg](../../../docs/pics/nand4-waveform.jpg)
+![nand4-waveform.jpg](../../../docs/pics/basic-code/nand4-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

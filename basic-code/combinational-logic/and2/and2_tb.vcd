@@ -1,17 +1,18 @@
 $date
-	Mon Apr 10 02:48:38 2023
+	Mon Apr 10 20:07:52 2023
 $end
 $version
 	Icarus Verilog
 $end
 $timescale
-	1ns
+	100ps
 $end
-$scope module and2_tb $end
+$scope module AND2_TB $end
 $var wire 1 ! Y $end
 $var reg 1 " A $end
 $var reg 1 # B $end
-$scope module uut $end
+$var integer 32 $ i [31:0] $end
+$scope module UUT_and2 $end
 $var wire 1 " a $end
 $var wire 1 # b $end
 $var wire 1 ! y $end
@@ -23,20 +24,21 @@ $dumpall
 $end
 #0
 $dumpvars
+b0 $
 0#
 0"
 0!
 $end
-#35
-1"
-#55
-0"
+#200
 1#
-#75
-1!
+b1 $
+#400
 1"
-#95
-0!
-0"
 0#
-#115
+b10 $
+#600
+1!
+1#
+b11 $
+#800
+b100 $

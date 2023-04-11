@@ -1,8 +1,7 @@
 # JK FLIP-FLOP EXAMPLE
 
-_A positive edge jk flip-flop with synchronous clear
-used in my
-[jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161)._
+_A sr (set ready) flip-flop stores data on level of clock
+but can have an unknown output._
 
 Table of Contents
 
@@ -113,7 +112,7 @@ anytime you want,
 gtkwave -f jk_flip_flop_tb.gtkw &
 ```
 
-![jk_flip_flop-waveform.jpg](../../../docs/pics/jk_flip_flop-waveform.jpg)
+![jk_flip_flop-waveform.jpg](../../../docs/pics/basic-code/jk_flip_flop-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

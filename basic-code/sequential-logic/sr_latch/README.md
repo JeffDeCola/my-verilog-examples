@@ -1,8 +1,6 @@
 # SR LATCH EXAMPLE
 
-_A positive edge d flip-flop with synchronous enable
-used in my
-[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
+_A sr (set ready) latch stores data but output changes on input._
 
 Table of Contents
 
@@ -107,7 +105,7 @@ anytime you want,
 gtkwave -f sr_latch_tb.gtkw &
 ```
 
-![sr_latch-waveform.jpg](../../../docs/pics/sr_latch-waveform.jpg)
+![sr_latch-waveform.jpg](../../../docs/pics/basic-code/sr_latch-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

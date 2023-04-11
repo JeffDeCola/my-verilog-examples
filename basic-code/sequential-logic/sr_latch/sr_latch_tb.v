@@ -1,59 +1,46 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in d-flip-flop.vh
+// include files are in sr_latch.vh
 
-module sr_latch_tb;
+module SR_LATCH_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg  CLK;
-    reg  EN;
-    reg  D;
-    wire Q, Q_BAR;
+    reg        A, B;
+    wire       Y;
+    integer    i;
 
     // UNIT UNDER TEST
-    sr_latch uut(
-        .clk(CLK),
-        .en(EN),
-        .d(D),
-        .q(Q), .q_bar(Q_BAR)
+    sr_latch UUT_sr_latch(
+        .a(A), .b(B),
+        .y(Y)
     );
 
     // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
     initial begin
         $dumpfile("sr_latch_tb.vcd");
-        $dumpvars(0, sr_latch_tb);
-    end
-
-    // CLOCK
-    always begin
-        #10 CLK = ~CLK;
+        $dumpvars(0, SR_LATCH_TB);
     end
 
     // TESTCASE - CHANGE REG VALUES
     initial begin
-        $display("test start");
-        CLK = 0;
-        EN = 0;
-        D = 0;
-        
-        // ENABLE
-        #15;
-        EN = 1; #20
-        D = 1; #20;
-        D = 0; #20;
-        D = 1; #20;
-        D = 0; #10;
-        D = 0;
+        $display("TEST START");
+        $write("| TIME(ns) | A | B | Y |"); // header
+        $display;
 
-        // STOP ENABLE - KEEPS STATE REGARDLESS OF INPUT
-        #20; EN = 0;
-        #10  D = 1;
-        #20; D = 0;
-        #10; D = 1;
-        #20
+        // INCREMENT IN BINARY
+        for (i=0; i<4; i=i+1) begin
+            {A, B} = i;
+            #20;
+        end
 
-        $display("test complete");
+        $display("TEST END");
         $finish;
+    end
+
+    // OUTPUT ON SCREEN FOR ANY CHANGE
+    always @(*)
+    begin
+        $strobe("| %8d | %1d | %1d | %1d |", $time, A, B, Y);
     end
 
 endmodule

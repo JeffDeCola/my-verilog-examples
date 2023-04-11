@@ -99,7 +99,7 @@ anytime you want,
 gtkwave -f nor2_tb.gtkw &
 ```
 
-![nor2-waveform.jpg](../../../docs/pics/nor2-waveform.jpg)
+![nor2-waveform.jpg](../../../docs/pics/basic-code/nor2-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

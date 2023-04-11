@@ -95,7 +95,7 @@ anytime you want,
 gtkwave -f not1_tb.gtkw &
 ```
 
-![not1-waveform.jpg](../../../docs/pics/not1-waveform.jpg)
+![not1-waveform.jpg](../../../docs/pics/basic-code/not1-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
