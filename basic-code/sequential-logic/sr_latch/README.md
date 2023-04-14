@@ -14,6 +14,81 @@ Table of Contents
 
 ## OVERVIEW
 
+Latches are,
+
+* 1-bit storage
+* **No clock** (part of an asynchronous system)
+* Outputs **level-triggered** from inputs (asynchronous)
+
+Flip-flops are,
+
+* A Latch that is controlled by a clock
+* **Clock** (part of synchronous system)
+* Outputs **edge-triggered** from a clock (synchronous)
+* Outputs can also be **level-triggered** from an input (asynchronous)
+
+### sr_latch
+
+_A sr latch
+is a level-triggered latch with a s (set) and a r (reset)._
+
+The input s sets the output to 1, while the input r resets the output to 0.
+When both s and r are at 1, the latch is in an “undefined” state.
+The sr latch forms the basic building blocks of all other types of flip-flops.
+
+|  s  |  r   | q   | comment     |
+|:---:|:----:|:---:|:-----------:|
+| 0   |  0   |  X  | INVALID     |
+| 0  |   1   |  1  | 1 (SET)     |
+| 1   |  0   |  0  | 0 (RESET)   |
+| 1   |  1   |  q  | NO CHANGE   |
+
+### sr_flip_flop
+
+A sr flip-flop
+is a level-triggered latch with a s (set) and a r (reset)._
+
+The input s sets the output to 1, while the input r resets the output to 0.
+When both s and r are at 1, the latch is in an “undefined” state.
+
+|  s  |  r   | q   | comment     |
+|:---:|:----:|:---:|:-----------:|
+| 0   |  0   |  X  | INVALID     |
+| 0  |   1   |  1  | 1 (SET)     |
+| 1   |  0   |  0  | 0 (RESET)   |
+| 1   |  1   |  q  | NO CHANGE   |
+
+### jk_flip_flop
+
+A jk flip-flop
+is ???
+
+### jk_flip_flop_sync_clear
+
+A jk flip-flop with synchronous clear
+is ?????
+
+### t_flip_flop
+
+A t flip-flop
+is ?????
+
+### d_flip_flop
+
+A d flip-flop
+is edge-triggered from input.
+D (Data) Latches: D latches are also known as transparent latches and are implemented using two inputs: D (Data) and a clock signal. The output of the latch follows the input at the D terminal as long as the clock signal is high. When the clock signal goes low, the output of the latch is stored and held until the next rising edge of the clock.
+
+### d_flip_flop_pos_edge
+
+A d flip-flop with synchronous clear
+is a ?????
+
+### d_flip_flop_pos_edge_sync_en
+
+A d flip-flop with asynchronous clear
+is edge-triggered from input.
+
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and
@@ -37,12 +112,12 @@ repo._
 
 ## TRUTH TABLE
 
-| q_prev  | en     | d     | q      |
-|:-------:|:------:|:-----:|:------:|
-| 0       |  0     |  X    | 0      |
-| 1       |  0     |  X    | 1      |
-| X       |  1     |  0    | 0      |
-| X       |  1     |  1    | 1      |
+|  s  |  r   | q   | comment     |
+|:---:|:----:|:---:|:-----------:|
+| 0   |  0   |  X  | INVALID     |
+| 0  |   1   |  1  | 1 (SET)     |
+| 1   |  0   |  0  | 0 (RESET)   |
+| 1   |  1   |  q  | NO CHANGE   |
 
 ## VERILOG CODE
 
@@ -51,16 +126,7 @@ The
 uses behavioral modeling,
 
 ```verilog
-    assign q_bar = ~q;
-
-    // D FLIP-FLOP WITH SYNC ENABLE
-    always @ (posedge clk) begin
-        if (en) begin
-            q <= d;
-        end else begin
-            q <= q;
-        end
-    end
+tbd
 ```
 
 ## RUN (SIMULATE)

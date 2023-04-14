@@ -5,14 +5,13 @@
 module SR_LATCH_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg        A, B;
-    wire       Y;
-    integer    i;
+    reg        S, R;
+    wire       Q, QBAR;
 
     // UNIT UNDER TEST
     sr_latch UUT_sr_latch(
-        .a(A), .b(B),
-        .y(Y)
+        .s(S), .r(R),
+        .q(Q), .qbar(QBAR)
     );
 
     // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
@@ -24,14 +23,28 @@ module SR_LATCH_TB;
     // TESTCASE - CHANGE REG VALUES
     initial begin
         $display("TEST START");
-        $write("| TIME(ns) | A | B | Y |"); // header
+        $write("| TIME(ns) | S | R | Q |");
         $display;
 
-        // INCREMENT IN BINARY
-        for (i=0; i<4; i=i+1) begin
-            {A, B} = i;
-            #20;
-        end
+        // SET
+        S = 1; R = 0;
+        #10;
+
+        // NO CHANGE
+        S = 1; R = 1;
+        #10;
+
+        // RESET
+        S = 0; R = 1;
+        #10;
+
+        // NO CHANGE  
+        S = 1; R = 1;
+        #10;
+
+        // INVALID  
+        S = 0; R = 0;
+        #10;
 
         $display("TEST END");
         $finish;
@@ -40,7 +53,7 @@ module SR_LATCH_TB;
     // OUTPUT ON SCREEN FOR ANY CHANGE
     always @(*)
     begin
-        $strobe("| %8d | %1d | %1d | %1d |", $time, A, B, Y);
+        $strobe("| %8d | %1d | %1d | %1d |", $time, S, R, Q);
     end
 
 endmodule

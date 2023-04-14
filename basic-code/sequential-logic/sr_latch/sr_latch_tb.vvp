@@ -1,0 +1,80 @@
+#! /usr/local/bin/vvp
+:ivl_version "13.0 (devel)" "(a049abb)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 10;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+S_0x555d770cc060 .scope module, "SR_LATCH_TB" "SR_LATCH_TB" 2 5;
+ .timescale -9 -10;
+v0x555d770de850_0 .net "Q", 0 0, L_0x555d770debb0;  1 drivers
+v0x555d770de910_0 .net "QBAR", 0 0, L_0x555d770ded10;  1 drivers
+v0x555d770de9e0_0 .var "R", 0 0;
+v0x555d770deae0_0 .var "S", 0 0;
+E_0x555d77091640 .event anyedge, v0x555d770de6e0_0, v0x555d770de640_0, v0x555d77090d40_0;
+S_0x555d770cc210 .scope module, "UUT_sr_latch" "sr_latch" 2 12, 3 3 0, S_0x555d770cc060;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "s";
+    .port_info 1 /INPUT 1 "r";
+    .port_info 2 /INPUT 1 "q";
+    .port_info 3 /OUTPUT 1 "qbar";
+L_0x555d770debb0 .functor NAND 1, v0x555d770deae0_0, L_0x555d770ded10, C4<1>, C4<1>;
+L_0x555d770ded10 .functor NAND 1, v0x555d770de9e0_0, L_0x555d770debb0, C4<1>, C4<1>;
+v0x555d77090d40_0 .net "q", 0 0, L_0x555d770debb0;  alias, 1 drivers
+v0x555d770de580_0 .net "qbar", 0 0, L_0x555d770ded10;  alias, 1 drivers
+v0x555d770de640_0 .net "r", 0 0, v0x555d770de9e0_0;  1 drivers
+v0x555d770de6e0_0 .net "s", 0 0, v0x555d770deae0_0;  1 drivers
+    .scope S_0x555d770cc060;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "sr_latch_tb.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x555d770cc060 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x555d770cc060;
+T_1 ;
+    %vpi_call 2 25 "$display", "TEST START" {0 0 0};
+    %vpi_call 2 26 "$write", "| TIME(ns) | S | R | Q |" {0 0 0};
+    %vpi_call 2 27 "$display" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555d770deae0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555d770de9e0_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555d770deae0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555d770de9e0_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555d770deae0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555d770de9e0_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555d770deae0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555d770de9e0_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555d770deae0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555d770de9e0_0, 0, 1;
+    %delay 100, 0;
+    %vpi_call 2 49 "$display", "TEST END" {0 0 0};
+    %vpi_call 2 50 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x555d770cc060;
+T_2 ;
+    %wait E_0x555d77091640;
+    %vpi_call 2 56 "$strobe", "| %8d | %1d | %1d | %1d |", $time, v0x555d770deae0_0, v0x555d770de9e0_0, v0x555d770de850_0 {0 0 0};
+    %jmp T_2;
+    .thread T_2, $push;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "sr_latch_tb.v";
+    "./sr_latch.v";

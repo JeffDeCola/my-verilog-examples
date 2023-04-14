@@ -4,13 +4,21 @@ module sr_latch (
     input       s,          // Set
     input       r,          // Reset
     input       q,          // Data Out
-    output reg  qbar       // 
+    output      qbar        // 
 );
 
+    // GATE LEVEL MODELING
     // NAND1
-    assign q = ~(s & qbar);
+    nand (q, s, qbar);
 
     // NAND2
-    assign qbar = ~(r & q);
+    nand (qbar, r, q);
+
+    // DATA-FLOW MODELING
+    // NAND1
+    // assign q = ~(s & qbar);
+
+    // NAND2
+    // assign qbar = ~(r & q);
 
 endmodule
