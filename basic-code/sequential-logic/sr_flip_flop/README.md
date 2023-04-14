@@ -38,12 +38,7 @@ repo._
 
 ## TRUTH TABLE
 
-| q_prev  | en     | d     | q      |
-|:-------:|:------:|:-----:|:------:|
-| 0       |  0     |  X    | 0      |
-| 1       |  0     |  X    | 1      |
-| X       |  1     |  0    | 0      |
-| X       |  1     |  1    | 1      |
+tbd
 
 ## VERILOG CODE
 
@@ -52,16 +47,7 @@ The
 uses behavioral modeling,
 
 ```verilog
-    assign q_bar = ~q;
-
-    // D FLIP-FLOP WITH SYNC ENABLE
-    always @ (posedge clk) begin
-        if (en) begin
-            q <= d;
-        end else begin
-            q <= q;
-        end
-    end
+tbd
 ```
 
 ## RUN (SIMULATE)

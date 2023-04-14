@@ -3,21 +3,24 @@
 
 module sr_flip_flop (
     input       clk,        // Clock
-    input       en,         // Enable
-    input       d,          // Data
-    output reg  q,          // Output
-    output      q_bar       //
+    input       s,          // Set
+    input       r,          // Reset
+    input       q,          // Data Out
+    output      qbar        // 
 );
 
-    assign q_bar = ~q;
+    // GATE LEVEL MODELING
 
-    // D FLIP-FLOP WITH SYNC ENABLE
-    always @ (posedge clk) begin
-        if (en) begin
-            q <= d;
-        end else begin
-            q <= q;
-        end
-    end
+    // NAND1
+    nand (q, s, qbar);
+
+    // NAND2
+    nand (qbar, r, q);
+
+    // NAND3
+    nand (s, s, qbar);
+
+    // NAND4
+    nand (r, r, q);
 
 endmodule

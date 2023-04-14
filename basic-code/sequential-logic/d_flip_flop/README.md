@@ -14,7 +14,14 @@ Table of Contents
 
 ## OVERVIEW
 
- A d flip-flop simply stores data.
+I like to separate latches and flip-flops by using a clock.
+Other people separate them by purely level or edge sensitive devices.
+
+* Flip-flops are basic storage elements
+* **Flip-flops are latches but controlled by a clock**
+* Flip-flops are mostly **edge-triggered**
+  but can be **level-triggered**
+* Flip-flops are useful for the design of the synchronous sequential circuits
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)

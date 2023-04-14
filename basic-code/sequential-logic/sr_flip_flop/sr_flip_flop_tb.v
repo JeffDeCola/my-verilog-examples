@@ -1,59 +1,60 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in d-flip-flop.vh
+// include files are in sr_latch.vh
 
-module sr_flip_flop_tb;
+module SR_LATCH_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg  CLK;
-    reg  EN;
-    reg  D;
-    wire Q, Q_BAR;
+    reg        S, R;
+    wire       Q, QBAR;
+    integer    i;
 
     // UNIT UNDER TEST
-    sr_flip_flop uut(
-        .clk(CLK),
-        .en(EN),
-        .d(D),
-        .q(Q), .q_bar(Q_BAR)
+    sr_flip_flop UUT_sr_flip_flop(
+        .s(S), .r(R),
+        .q(Q), .qbar(QBAR)
     );
 
     // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("sr_flip_flop_tb.vcd");
-        $dumpvars(0, sr_flip_flop_tb);
-    end
-
-    // CLOCK
-    always begin
-        #10 CLK = ~CLK;
+        $dumpfile("sr_latch_tb.vcd");
+        $dumpvars(0, SR_LATCH_TB);
     end
 
     // TESTCASE - CHANGE REG VALUES
     initial begin
-        $display("test start");
-        CLK = 0;
-        EN = 0;
-        D = 0;
-        
-        // ENABLE
-        #15;
-        EN = 1; #20
-        D = 1; #20;
-        D = 0; #20;
-        D = 1; #20;
-        D = 0; #10;
-        D = 0;
+        $display("TEST START");
+        $write("| TIME(ns) | CLK | S | R | Q |");
+        $display;
 
-        // STOP ENABLE - KEEPS STATE REGARDLESS OF INPUT
-        #20; EN = 0;
-        #10  D = 1;
-        #20; D = 0;
-        #10; D = 1;
-        #20
+        // SET
+        S = 1; R = 0;
+        #10;
 
-        $display("test complete");
+        // NO CHANGE
+        S = 1; R = 1;
+        #10;
+
+        // RESET
+        S = 0; R = 1;
+        #10;
+
+        // NO CHANGE  
+        S = 1; R = 1;
+        #10;
+
+        // INVALID  
+        S = 0; R = 0;
+        #10;
+
+        $display("TEST END");
         $finish;
+    end
+
+    // OUTPUT ON SCREEN FOR ANY CHANGE
+    always @(*)
+    begin
+        $strobe("| %8d | %1d | %1d | %1d | %1d |", $time, CLK, S, R, Q);
     end
 
 endmodule
