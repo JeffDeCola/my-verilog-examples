@@ -1,0 +1,10 @@
+            S_R_QEXPECTED
+INIT        0 0            
+SET         1 0 1
+NO_CHANGE   0 0 1
+RESET       0 1 0
+NO_CHANGE   0 0 0
+SET         1 0 1
+NO_CHANGE   0 0 1
+RESET       0 1 0
+NO_CHANGE   0 0 0

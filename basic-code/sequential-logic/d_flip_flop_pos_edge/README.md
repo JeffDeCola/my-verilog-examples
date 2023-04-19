@@ -70,6 +70,8 @@ I created,
 
 * [d_flip_flop_pos_edge_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/d_flip_flop_pos_edge_tb.v)
   the testbench
+* [d_flip_flop_pos_edge_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/d_flip_flop_pos_edge_tb.tv)
+  the test vectors and expected results
 * [d_flip_flop_pos_edge.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/d_flip_flop_pos_edge.vh)
   the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/run-simulation.sh)
@@ -82,7 +84,8 @@ which is used by the vvp runtime simulation engine,
 iverilog -o d_flip_flop_pos_edge_tb.vvp d_flip_flop_pos_edge_tb.v d_flip_flop_pos_edge.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp d_flip_flop_pos_edge_tb.vvp

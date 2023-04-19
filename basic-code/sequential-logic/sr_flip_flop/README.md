@@ -44,7 +44,7 @@ tbd
 
 The
 [sr_flip_flop.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_flip_flop/sr_flip_flop.v)
-uses behavioral modeling,
+uses gate modeling using nand gates,
 
 ```verilog
 tbd
@@ -56,6 +56,8 @@ I created,
 
 * [sr_flip_flop_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_flip_flop/sr_flip_flop_tb.v)
   the testbench
+* [sr_flip_flop_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_flip_flop_tb.tv)
+  the test vectors and expected results
 * [sr_flip_flop.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_flip_flop/sr_flip_flop.vh)
   the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_flip_flop/run-simulation.sh)
@@ -68,7 +70,8 @@ which is used by the vvp runtime simulation engine,
 iverilog -o sr_flip_flop_tb.vvp sr_flip_flop_tb.v sr_flip_flop.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp sr_flip_flop_tb.vvp

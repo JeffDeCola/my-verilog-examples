@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Tue Apr 18 21:33:24 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/basic-code/sequential-logic/sr_latch/sr_latch_tb.vcd"
+[dumpfile_mtime] "Tue Apr 18 21:31:12 2023"
+[dumpfile_size] 1583
+[savefile] "/home/jeff/verilog/my-verilog-examples/basic-code/sequential-logic/sr_latch/sr_latch.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-15.681481 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] SR_LATCH_TB.
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+SR_LATCH_TB.UUT_sr_latch.s
+SR_LATCH_TB.UUT_sr_latch.r
+@29
+SR_LATCH_TB.UUT_sr_latch.q
+[pattern_trace] 1
+[pattern_trace] 0
