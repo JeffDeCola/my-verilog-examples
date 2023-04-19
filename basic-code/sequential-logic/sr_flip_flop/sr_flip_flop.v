@@ -5,22 +5,27 @@ module sr_flip_flop (
     input       clk,        // Clock
     input       s,          // Set
     input       r,          // Reset
-    input       q,          // Data Out
+    output      q,          // Data Out
     output      qbar        // 
 );
 
-    // GATE LEVEL MODELING
+    // INTERNAL WIRES
+    wire        s1, r1;
 
-    // NAND1
-    nand (q, s, qbar);
-
-    // NAND2
-    nand (qbar, r, q);
-
+    // SR FLIP-FLOP ----------------------------------
+  
     // NAND3
-    nand (s, s, qbar);
+    nand (s1, s, clk);
 
     // NAND4
-    nand (r, r, q);
+    nand (r1, r, clk);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s1, qbar);
+
+    // NAND2
+    nand (qbar, r1, q);
 
 endmodule

@@ -14,80 +14,110 @@ Table of Contents
 
 ## OVERVIEW
 
-Latches are,
+Latches an flip flops are part os a sequential logic,
+a system that stores data and outputs changes on input.
+
+LATCHES
 
 * 1-bit storage
 * **No clock** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A Latch that is controlled by a clock
 * **Clock** (part of synchronous system)
 * Outputs **edge-triggered** from a clock (synchronous)
 * Outputs can also be **level-triggered** from an input (asynchronous)
 
-### sr_latch
+SR LATCH
 
-_A sr latch
-is a level-triggered latch with a s (set) and a r (reset)._
+_A sr (set ready) latch is level-triggered and
+is the basic building block of all flip-=flops._
 
-The input s sets the output to 1, while the input r resets the output to 0.
-When both s and r are at 1, the latch is in an “undefined” state.
-The sr latch forms the basic building blocks of all other types of flip-flops.
+* It is **level-triggered**
+* The input s sets the output to 1
+* The input r resets the output to 0
+* Forms the basic building blocks of all other types of flip-flops
 
-|  s  |  r   | q   | comment     |
-|:---:|:----:|:---:|:-----------:|
-| 0   |  0   |  X  | INVALID     |
-| 0  |   1   |  1  | 1 (SET)     |
-| 1   |  0   |  0  | 0 (RESET)   |
-| 1   |  1   |  q  | NO CHANGE   |
+|  s  |  r  |  q  | comment     |
+|:---:|:---:|:---:|:-----------:|
+|  0  |  0  |  X  | INVALID     |
+|  0  |  1  |  1  | SET         |
+|  1  |  0  |  0  | RESET       |
+|  1  |  1  |  q  | NO CHANGE   |
 
-### sr_flip_flop
+SR FLIP-FLOP
 
-A sr flip-flop
-is a level-triggered latch with a s (set) and a r (reset)._
+_A sr (set ready) flip-flop is level-triggered and
+operational when clk/en is high._
 
-The input s sets the output to 1, while the input r resets the output to 0.
-When both s and r are at 1, the latch is in an “undefined” state.
+* Controlled by clk is a sr flip-flop
+* Controlled by en is a sr latch with enable
+* It is **level-triggered**
+* Operational when clk/en is high
+* Built with sr-latch
+* The input s sets the output to 1
+* The input r resets the output to 0
 
-|  s  |  r   | q   | comment     |
-|:---:|:----:|:---:|:-----------:|
-| 0   |  0   |  X  | INVALID     |
-| 0  |   1   |  1  | 1 (SET)     |
-| 1   |  0   |  0  | 0 (RESET)   |
-| 1   |  1   |  q  | NO CHANGE   |
+| clk |  s  |  r  |  q  | comment     |
+|:---:|:---:|:---:|:---:|:-----------:|
+|  0  |  X  |  X  |  q  | NO CHANGE   |
+|  1  |  0  |  0  |  q  | NO CHANGE   |
+|  1  |  0  |  1  |  0  | SET         |
+|  1  |  1  |  0  |  1  | RESET       |
+|  1  |  1  |  1  |  X  | INVALID     |
 
-### jk_flip_flop
+JK FLIP-FLOP
 
-A jk flip-flop
-is ???
+_A jk (????) flip-flop is edge-triggered._
 
-### jk_flip_flop_sync_clear
+* Controlled by clock
+* If en was used instead of clk it would be a jk latch
+* A sr (set ready) flip-flop is **edge-triggered**
+* The input j sets the output to 1
+* The input k resets the output to 0
+* When s and r are 1, the latch is in an “undefined” state
 
-A jk flip-flop with synchronous clear
-is ?????
+JK FLIP-FLOP SYNC CLEAR
 
-### t_flip_flop
+_A jk (????) flip-flop is edge-triggered with synchronous clear._
 
-A t flip-flop
-is ?????
+* Controlled by clock
+* tbd
 
-### d_flip_flop
+T FLIP-FLOP
 
-A d flip-flop
-is edge-triggered from input.
-D (Data) Latches: D latches are also known as transparent latches and are implemented using two inputs: D (Data) and a clock signal. The output of the latch follows the input at the D terminal as long as the clock signal is high. When the clock signal goes low, the output of the latch is stored and held until the next rising edge of the clock.
+_A t (????) flip-flop is edge-triggered._
 
-### d_flip_flop_pos_edge
+* Controlled by clock
+* If en was used instead of clk it would be a t latch
+* tbd
 
-A d flip-flop with synchronous clear
-is a ?????
+D FLIP-FLOP
 
-### d_flip_flop_pos_edge_sync_en
+_A d (data) flip-flop is edge-triggered._
 
-A d flip-flop with asynchronous clear
-is edge-triggered from input.
+* Controlled by clock
+* If en was used instead of clk it would be a d latch
+* tbd
+
+D FLIP-FLOP POS EDGE
+
+_A d flip-flop which is pos edge-triggered._
+
+* Controlled by clock
+* Comprised of connecting two d flip-flops together
+* Used to be called a master sl*ve flip flop
+* tbd
+
+D FLIP-FLOP POS EDGE SYNC ENABLE
+
+_A d flip-flop which is pos edge-triggered with synchronous enable._
+
+* Controlled by clock
+* Comprised of connecting two d flip-flops together
+* Adding an enable to a d flip-flop with a pos edge
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -123,10 +153,14 @@ repo._
 
 The
 [sr_latch.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch.v)
-uses behavioral modeling,
+uses gate modeling using nand gates,
 
 ```verilog
-tbd
+    // NAND1
+    nand (q, s, qbar);
+
+    // NAND2
+    nand (qbar, r, q);
 ```
 
 ## RUN (SIMULATE)
@@ -135,6 +169,8 @@ I created,
 
 * [sr_latch_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch_tb.v)
   the testbench
+* [sr_latch_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch_tb.tv)
+  the test vectors and expected results
 * [sr_latch.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch.vh)
   the header file listing the verilog code
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/run-simulation.sh)
@@ -147,7 +183,8 @@ which is used by the vvp runtime simulation engine,
 iverilog -o sr_latch_tb.vvp sr_latch_tb.v sr_latch.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp sr_latch_tb.vvp
