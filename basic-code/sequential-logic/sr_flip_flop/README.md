@@ -47,7 +47,21 @@ The
 uses gate modeling using nand gates,
 
 ```verilog
-tbd
+    // SR FLIP-FLOP ----------------------------------
+  
+    // NAND3
+    nand (s1, s, clk);
+
+    // NAND4
+    nand (r1, r, clk);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s1, qbar);
+
+    // NAND2
+    nand (qbar, r1, q);
 ```
 
 ## RUN (SIMULATE)
