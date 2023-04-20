@@ -5,20 +5,20 @@
 module SR_FLIP_FLOP_TB ();
 
     // INPUT PROBES
-    reg        S, R;
+    reg             CLK;
+    reg             S, R;
 
     // OUTPUT PROBES
-    wire       Q, QBAR;
+    wire            Q, QBAR;
 
     // FOR TESTING  
-    reg            CLK;
-    reg [31:0]     VECTORCOUNT, ERRORS;
-    reg            QEXPECTED;
-    integer        FD, COUNT;
-    reg [8*32-1:0] COMMENT;
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg             QEXPECTED;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST
-    sr_flip_flop UUT_sr_flip_flop(
+    // UNIT UNDER TEST (_gate, _dataflow, _behavioral)
+    sr_flip_flop_gate UUT_sr_flip_flop(
         .clk(CLK), 
         .s(S), .r(R),
         .q(Q), .qbar(QBAR)
@@ -55,18 +55,18 @@ module SR_FLIP_FLOP_TB ();
 
         // DISPAY OUTPUT AND MONITOR
         $display();
-        $display("TEST START ---------------------------");
+        $display("TEST START ------------------------------");
         $display();
-        $display("           | TIME(ns) | S | R | Q |");
-        $display("           ------------------------");
-        $monitor("%10s | %8d | %1d | %1d | %1d |", COMMENT, $time, S, R, Q);
+        $display("                 | TIME(ns) | S | R | Q |");
+        $display("                 ------------------------");
+        $monitor("%4d  %10s | %8d | %1d | %1d | %1d |", VECTORCOUNT, COMMENT, $time, S, R, Q);
 
     end
 
-    // APPLY TEST VECTORS ON POS EDGE CLK (ADD DELAY)
-    always @(posedge CLK) begin
+    // APPLY TEST VECTORS ON NEG EDGE CLK (ADD DELAY)
+    always @(negedge CLK) begin
 
-        // WAIT A BIT
+        // WAIT A BIT (AFTER CHECK)
         #5;
 
         // GET VECTORS FROM TB FILE
@@ -79,7 +79,7 @@ module SR_FLIP_FLOP_TB ();
             $display(" VECTORS: %4d", VECTORCOUNT);
             $display("  ERRORS: %4d", ERRORS);
             $display();
-            $display("TEST END ---------------------------");
+            $display("TEST END --------------------------------");
             $display();
             $finish;
         end
@@ -89,11 +89,8 @@ module SR_FLIP_FLOP_TB ();
 
     end
 
-    // CHECK TEST VECTORS ON NEG EGDE CLK (ADD DELAY)
+    // CHECK TEST VECTORS ON NEG EGDE CLK
     always @(negedge CLK) begin
-        
-        // WAIT A BIT
-        #5;
 
         // CHECK EACH VECTOR RESULT
         if (Q !== QEXPECTED) begin

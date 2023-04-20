@@ -20,28 +20,28 @@ a system that stores data and outputs changes on input.
 LATCHES
 
 * 1-bit storage
-* **No clock** (part of an asynchronous system)
+* **No clk** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
 FLIP-FLOPS
 
-* A Latch that is controlled by a clock
-* **Clock** (part of synchronous system)
-* Outputs **edge-triggered** from a clock (synchronous)
-* Outputs can also be **level-triggered** from an input (asynchronous)
+* A latch that is controlled by a clock
+* **Uses clk** (part of synchronous system)
+* Outputs are **edge-triggered** from a clk
+* Outputs can also be **level-triggered** from an input
 
 SR LATCH
 
 _A sr (set ready) latch is level-triggered and
-is the basic building block of all flip-=flops._
+is the basic building block of all flip-flops.
 
-* It is **level-triggered**
-* The input s sets the output to 1
-* The input r resets the output to 0
+* **level-triggered**
+* The input s=0 sets the output to 1
+* The input r=0 resets the output to 0
 * Forms the basic building blocks of all other types of flip-flops
 
 |  s  |  r  |  q  | comment     |
-|:---:|:---:|:---:|:-----------:|
+|:---:|:---:|:---:|:------------|
 |  0  |  0  |  X  | INVALID     |
 |  0  |  1  |  1  | SET         |
 |  1  |  0  |  0  | RESET       |
@@ -49,46 +49,61 @@ is the basic building block of all flip-=flops._
 
 SR FLIP-FLOP
 
-_A sr (set ready) flip-flop is level-triggered and
-operational when clk/en is high._
+_A sr (set ready) flip-flop is edge-triggered and
+operational when clk/en is 1.
+It sets q to 1 when s is 1 and
+resets q to 0 when r is 1._
 
-* Controlled by clk is a sr flip-flop
-* Controlled by en is a sr latch with enable
-* It is **level-triggered**
-* Operational when clk/en is high
-* Built with sr-latch
-* The input s sets the output to 1
-* The input r resets the output to 0
+* A **sr flip-flop** controlled by clk is **edge-triggered**
+* A **sr latch with enable** controlled by en is **level-triggered**
+* Operational when clk/en is 1
+* Built with a sr-latch
+* The input s=1 sets the output to 1
+* The input r=1 resets the output to 0
 
-| clk |  s  |  r  |  q  | comment     |
-|:---:|:---:|:---:|:---:|:-----------:|
-|  0  |  X  |  X  |  q  | NO CHANGE   |
-|  1  |  0  |  0  |  q  | NO CHANGE   |
-|  1  |  0  |  1  |  0  | SET         |
-|  1  |  1  |  0  |  1  | RESET       |
-|  1  |  1  |  1  |  X  | INVALID     |
+| clk/en |  s  |  r  |  q  | comment     |
+|:------:|:---:|:---:|:---:|:------------|
+|  0     |  X  |  X  |  q  | NO CHANGE   |
+|  1     |  0  |  0  |  q  | NO CHANGE   |
+|  1     |  0  |  1  |  0  | RESET       |
+|  1     |  1  |  0  |  1  | SET         |
+|  1     |  1  |  1  |  X  | INVALID     |
 
 JK FLIP-FLOP
 
-_A jk (????) flip-flop is edge-triggered._
+_A jk flip-flop is edge-triggered and
+operational when clk/en is 1._
+It operates like a sr flip-flop with an additional
+toggle when both j and k are 1._
 
-* Controlled by clock
-* If en was used instead of clk it would be a jk latch
-* A sr (set ready) flip-flop is **edge-triggered**
-* The input j sets the output to 1
-* The input k resets the output to 0
-* When s and r are 1, the latch is in an “undefined” state
+* A **jk flip-flop** controlled by clk is **edge-triggered**
+* A **jk latch with enable** controlled by en is **level-triggered**
+* Operational when clk/en is 1
+* Built with a sr-latch
+* The input j=1 sets the output to 1
+* The input k=1 resets the output to 0
+* An enhanced sr flip-flop that can use the 1 1 state as a toggle
+
+| clk/en |  j  |  k  |  q  | comment     |
+|:------:|:---:|:---:|:---:|:------------|
+|  0     |  X  |  X  |  q  | NO CHANGE   |
+|  1     |  0  |  0  |  q  | NO CHANGE   |
+|  1     |  0  |  1  |  0  | RESET       |
+|  1     |  1  |  0  |  1  | SET         |
+|  1     |  1  |  1  | ~q  | TOGGLE (Updated sr flip-flop) |
 
 JK FLIP-FLOP SYNC CLEAR
 
-_A jk (????) flip-flop is edge-triggered with synchronous clear._
+_A jk flip-flop is edge-triggered with synchronous clear._
 
 * Controlled by clock
 * tbd
 
 T FLIP-FLOP
 
-_A t (????) flip-flop is edge-triggered._
+_A t (toggle) flip-flop is edge-triggered and
+operational when clk/en is 1.
+It toggles the output._
 
 * Controlled by clock
 * If en was used instead of clk it would be a t latch
@@ -96,7 +111,9 @@ _A t (????) flip-flop is edge-triggered._
 
 D FLIP-FLOP
 
-_A d (data) flip-flop is edge-triggered._
+_A d (data) flip-flop is edge-triggered and
+operational when clk/en is 1.
+It sets q to d.
 
 * Controlled by clock
 * If en was used instead of clk it would be a d latch
