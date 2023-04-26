@@ -2,7 +2,7 @@
 
 _8-line to 1-line data selector/multiplexer.
 Based on the 7400-series integrated circuits used in my
-[programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
+[programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
 Table of Contents
 

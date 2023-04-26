@@ -31,7 +31,7 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/logic/priority-arbiter)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-renders/tree/master/mathematics/applied/electrical-engineering/sequential-logic/priority-arbiter)
 repo._
 
 <p align="center">

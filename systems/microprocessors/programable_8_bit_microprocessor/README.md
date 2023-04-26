@@ -543,7 +543,7 @@ The processor is a collection of registers, muxes and an alu,
 ## RUN (SIMULATE)
 
 I used my testbench
-[programable_8_bit_microprocessor-tb.v](programable_8_bit_microprocessor-tb.v) with
+[programable_8_bit_microprocessor_tb.v](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor_tb.v) with
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and create a `.vcd` file.
 
@@ -611,7 +611,7 @@ Check you waveform using your `.vcd` file with a waveform viewer.
 
 I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
 and launch it using
-[launch-gtkwave.sh](launch-gtkwave.sh).
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh).
 
 Focus on DATA_IN_A, DATA_IN_B and DATA_OUT. You can see the RESET where the
 output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
@@ -634,4 +634,4 @@ The ARTY-S7 uses the Xilinx Spartan-7 FPGA (XC7S50) that has
 52,160 logic cells and 250 pins. I used about 7% of the total real estate,
 that light blue area at the bottom of the die,
 
-![programable-8-bit-microprocessor-fpga_layout.jpg](../../../docs/pics/programable-8-bit-microprocessor-fpga_layout.jpg)
+![programable_8_bit_microprocessor-fpga_layout.jpg](../../../docs/pics/programable_8_bit_microprocessor-fpga_layout.jpg)
