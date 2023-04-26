@@ -2,7 +2,7 @@
 
 _8-bit register, clock enable.
 Based on the 7400-series integrated circuits used in my
-[programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
+[programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
 Table of Contents
 
@@ -17,7 +17,7 @@ Table of Contents
 Documentation and Reference
 
 * I'm using my
-  [d-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d-flip-flop)
+  [d-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
 
 ## OVERVIEW
 

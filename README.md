@@ -2,7 +2,7 @@
 
 [![Tag Latest](https://img.shields.io/github/v/tag/jeffdecola/my-verilog-examples)](https://github.com/JeffDeCola/my-verilog-examples/tags)
 [![codeclimate Issue Count](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/issues)
-[![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
 _A place to keep my synthesizable verilog examples._
@@ -84,20 +84,24 @@ when you synthesize to an FPGA.
 ```verilog
 
     // DO THIS
-    always @ (posedge clk) begin
+    always @(posedge clk) begin
         if (~reset) begin
             ...
 
     // NOT THIS
-    always @ (posedge clk or negedge reset) begin
+    always @(posedge clk or negedge reset) begin
 
 ```
 
-Each example has the following 6 file types,
+Each example has the following 4 files,
 
 * `*.v` - The verilog code files(s)
 * `*.vh` - A header file listing the included verilog files
 * `*_tb.v` - The verilog testbench code
+* `*_tb.tv` - Test vectors used with the testbench
+
+The artifacts created are,
+
 * `*_tb.vvp` - The verilog compiled code to be used by the simulator
 * `*_tb.vcd` - The dump of the waveform data
 * `*_tb.gtkw` - The GTKWave saved waveform

@@ -1,7 +1,7 @@
 # NOR2 EXAMPLE
 
 _2-input NOR gate used in my
-[programable-8-bit-microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable-8-bit-microprocessor)._
+[programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
 Table of Contents
 
