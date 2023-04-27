@@ -353,12 +353,12 @@ FLIP-FLOPS
 SR LATCH
 
 _A sr (set ready) latch is level-triggered and
-is the basic building block of all flip-flops.
+is the basic building block of other flip-flops._
 
 * **level-triggered**
 * The input s=0 sets the output to 1
 * The input r=0 resets the output to 0
-* Forms the basic building blocks of all other types of flip-flops
+* Forms the basic building blocks of other types of flip-flops
 
 |  s  |  r  |  q  | comment     |
 |:---:|:---:|:---:|:------------|
