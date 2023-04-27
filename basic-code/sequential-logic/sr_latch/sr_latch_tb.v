@@ -8,7 +8,9 @@ module SR_FLIP_FLOP_TB ();
     reg             S, R;
 
     // OUTPUT PROBES
-    wire            Q, QBAR;
+    wire            Q_gate, QBAR_gate;
+    wire            Q_data, QBAR_data;
+    wire            Q_beh, QBAR_beh;
 
     // FOR TESTING  
     reg             TICK;
@@ -17,10 +19,22 @@ module SR_FLIP_FLOP_TB ();
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (_gate, _dataflow, _behavioral)
-    sr_latch_gate UUT_sr_latch(
+    // UNIT UNDER TEST (gate)
+    sr_latch_gate UUT_sr_latch_gate(
         .s(S), .r(R),
-        .q(Q), .qbar(QBAR)
+        .q(Q_gate), .qbar(QBAR_gate)
+    );
+
+    // UNIT UNDER TEST (dataflow)
+    sr_latch_dataflow UUT_sr_latch_dataflow(
+        .s(S), .r(R),
+        .q(Q_data), .qbar(QBAR_data)
+    );
+
+        // UNIT UNDER TEST (behavioral)
+    sr_latch_behavioral UUT_sr_latch_behavioral(
+        .s(S), .r(R),
+        .q(Q_beh), .qbar(QBAR_beh)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
@@ -54,11 +68,12 @@ module SR_FLIP_FLOP_TB ();
 
         // DISPAY OUTPUT AND MONITOR
         $display();
-        $display("TEST START ------------------------------");
+        $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | S | R | Q |");
-        $display("                 ------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d | %1d |", VECTORCOUNT, COMMENT, $time, S, R, Q);
+        $display("                                     GATE  DATA   BEH");
+        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
+        $display("                 --------------------------------------");
+        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
 
     end
 
@@ -78,7 +93,7 @@ module SR_FLIP_FLOP_TB ();
             $display(" VECTORS: %4d", VECTORCOUNT);
             $display("  ERRORS: %4d", ERRORS);
             $display();
-            $display("TEST END --------------------------------");
+            $display("TEST END ----------------------------------");
             $display();
             $finish;
         end
@@ -92,8 +107,16 @@ module SR_FLIP_FLOP_TB ();
     always @(negedge TICK) begin
 
         // CHECK EACH VECTOR RESULT
-        if (Q !== QEXPECTED) begin
-            $display("***ERROR - Expected Q = %b", QEXPECTED);
+        if (Q_gate !== QEXPECTED) begin
+            $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Q_data !== QEXPECTED) begin
+            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Q_beh !== QEXPECTED) begin
+            $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
             ERRORS = ERRORS + 1;
         end
 
