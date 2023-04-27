@@ -1,7 +1,7 @@
 # SR LATCH EXAMPLE
 
 _A sr (set ready) latch is level-triggered and
-is the basic building block of all flip-flops._
+is the basic building block of other flip-flops._
 
 Table of Contents
 
@@ -36,7 +36,7 @@ SR LATCH
 * **level-triggered**
 * The input s=0 sets the output to 1
 * The input r=0 resets the output to 0
-* Forms the basic building blocks of all other types of flip-flops
+* Forms the basic building blocks of other types of flip-flops
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -72,7 +72,7 @@ repo._
 
 The
 [sr_latch.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch.v)
-Gate model,
+gate model,
 
 ```verilog
     // NAND1
@@ -107,16 +107,19 @@ Behavioral model,
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [sr_latch_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch_tb.v)
   the testbench
 * [sr_latch_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch_tb.tv)
   the test vectors and expected results
+
+where,
+
 * [sr_latch.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -132,7 +135,7 @@ and creates a waveform dump file *.vcd.
 vvp sr_latch_tb.vvp
 ```
 
-The output,
+The output of the test,
 
 ```text
 TEST START --------------------------------
@@ -156,7 +159,7 @@ TEST START --------------------------------
 TEST END --------------------------------
 ```
 
-## CHECK WAVEFORM
+## VIEW WAVEFORM
 
 Open the waveform file sr_latch_tb.vcd file with GTKWave,
 
@@ -166,7 +169,7 @@ gtkwave -f sr_latch_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
