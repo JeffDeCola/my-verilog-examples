@@ -1,6 +1,7 @@
 # SR LATCH EXAMPLE
 
-_A sr (set ready) latch stores data but output changes on input._
+_A sr (set ready) latch is level-triggered and
+is the basic building block of all flip-flops._
 
 Table of Contents
 
@@ -14,8 +15,8 @@ Table of Contents
 
 ## OVERVIEW
 
-Latches an flip flops are part os a sequential logic,
-a system that stores data and outputs changes on input.
+Latches and flip flops are part of sequential logic,
+a digital system that stores data and outputs changes on input.
 
 LATCHES
 
@@ -32,109 +33,10 @@ FLIP-FLOPS
 
 SR LATCH
 
-_A sr (set ready) latch is level-triggered and
-is the basic building block of all flip-flops.
-
 * **level-triggered**
 * The input s=0 sets the output to 1
 * The input r=0 resets the output to 0
 * Forms the basic building blocks of all other types of flip-flops
-
-|  s  |  r  |  q  | comment     |
-|:---:|:---:|:---:|:------------|
-|  0  |  0  |  X  | INVALID     |
-|  0  |  1  |  1  | SET         |
-|  1  |  0  |  0  | RESET       |
-|  1  |  1  |  q  | NO CHANGE   |
-
-SR FLIP-FLOP
-
-_A sr (set ready) flip-flop is edge-triggered and
-operational when clk/en is 1.
-It sets q to 1 when s is 1 and
-resets q to 0 when r is 1._
-
-* A **sr flip-flop** controlled by clk is **edge-triggered**
-* A **sr latch with enable** controlled by en is **level-triggered**
-* Operational when clk/en is 1
-* Built with a sr-latch
-* The input s=1 sets the output to 1
-* The input r=1 resets the output to 0
-
-| clk/en |  s  |  r  |  q  | comment     |
-|:------:|:---:|:---:|:---:|:------------|
-|  0     |  X  |  X  |  q  | NO CHANGE   |
-|  1     |  0  |  0  |  q  | NO CHANGE   |
-|  1     |  0  |  1  |  0  | RESET       |
-|  1     |  1  |  0  |  1  | SET         |
-|  1     |  1  |  1  |  X  | INVALID     |
-
-JK FLIP-FLOP
-
-_A jk flip-flop is edge-triggered and
-operational when clk/en is 1._
-It operates like a sr flip-flop with an additional
-toggle when both j and k are 1._
-
-* A **jk flip-flop** controlled by clk is **edge-triggered**
-* A **jk latch with enable** controlled by en is **level-triggered**
-* Operational when clk/en is 1
-* Built with a sr-latch
-* The input j=1 sets the output to 1
-* The input k=1 resets the output to 0
-* An enhanced sr flip-flop that can use the 1 1 state as a toggle
-
-| clk/en |  j  |  k  |  q  | comment     |
-|:------:|:---:|:---:|:---:|:------------|
-|  0     |  X  |  X  |  q  | NO CHANGE   |
-|  1     |  0  |  0  |  q  | NO CHANGE   |
-|  1     |  0  |  1  |  0  | RESET       |
-|  1     |  1  |  0  |  1  | SET         |
-|  1     |  1  |  1  | ~q  | TOGGLE (Updated sr flip-flop) |
-
-JK FLIP-FLOP SYNC CLEAR
-
-_A jk flip-flop is edge-triggered with synchronous clear._
-
-* Controlled by clock
-* tbd
-
-T FLIP-FLOP
-
-_A t (toggle) flip-flop is edge-triggered and
-operational when clk/en is 1.
-It toggles the output._
-
-* Controlled by clock
-* If en was used instead of clk it would be a t latch
-* tbd
-
-D FLIP-FLOP
-
-_A d (data) flip-flop is edge-triggered and
-operational when clk/en is 1.
-It sets q to d.
-
-* Controlled by clock
-* If en was used instead of clk it would be a d latch
-* tbd
-
-D FLIP-FLOP POS EDGE
-
-_A d flip-flop which is pos edge-triggered._
-
-* Controlled by clock
-* Comprised of connecting two d flip-flops together
-* Used to be called a master sl*ve flip flop
-* tbd
-
-D FLIP-FLOP POS EDGE SYNC ENABLE
-
-_A d flip-flop which is pos edge-triggered with synchronous enable._
-
-* Controlled by clock
-* Comprised of connecting two d flip-flops together
-* Adding an enable to a d flip-flop with a pos edge
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -159,18 +61,18 @@ repo._
 
 ## TRUTH TABLE
 
-|  s  |  r   | q   | comment     |
-|:---:|:----:|:---:|:-----------:|
-| 0   |  0   |  X  | INVALID     |
-| 0  |   1   |  1  | 1 (SET)     |
-| 1   |  0   |  0  | 0 (RESET)   |
-| 1   |  1   |  q  | NO CHANGE   |
+|  s  |  r  |  q  | comment     |
+|:---:|:---:|:---:|:------------|
+|  0  |  0  |  X  | INVALID     |
+|  0  |  1  |  1  | SET         |
+|  1  |  0  |  0  | RESET       |
+|  1  |  1  |  q  | NO CHANGE   |
 
 ## VERILOG CODE
 
 The
 [sr_latch.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch.v)
-uses gate modeling using nand gates,
+Gate model,
 
 ```verilog
     // NAND1
@@ -178,6 +80,29 @@ uses gate modeling using nand gates,
 
     // NAND2
     nand (qbar, r, q);
+```
+
+Dataflow model,
+
+```verilog
+    // NAND1
+    assign q = ~(s & qbar);
+
+    // NAND2
+    assign qbar = ~(r & q);
+```
+
+Behavioral model,
+
+```verilog
+    always @(*) begin
+        case({s,r})
+            2'b0_0 : q <= 1'bx;
+            2'b0_1 : q <= 1'b1;
+            2'b1_0 : q <= 1'b0;
+            2'b1_1 : q <= q;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -205,6 +130,30 @@ and creates a waveform dump file *.vcd.
 
 ```bash
 vvp sr_latch_tb.vvp
+```
+
+The output,
+
+```text
+TEST START --------------------------------
+
+                                     GATE  DATA   BEH
+                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |
+                 --------------------------------------
+   0             |        0 | 1 | 1 |  x  |  x  |  x  |
+   1         SET |       25 | 0 | 1 |  1  |  1  |  1  |
+   2   NO_CHANGE |       45 | 1 | 1 |  1  |  1  |  1  |
+   3       RESET |       65 | 1 | 0 |  0  |  0  |  0  |
+   4   NO_CHANGE |       85 | 1 | 1 |  0  |  0  |  0  |
+   5         SET |      105 | 0 | 1 |  1  |  1  |  1  |
+   6   NO_CHANGE |      125 | 1 | 1 |  1  |  1  |  1  |
+   7       RESET |      145 | 1 | 0 |  0  |  0  |  0  |
+   8   NO_CHANGE |      165 | 1 | 1 |  0  |  0  |  0  |
+
+ VECTORS:    8
+  ERRORS:    0
+
+TEST END --------------------------------
 ```
 
 ## CHECK WAVEFORM
