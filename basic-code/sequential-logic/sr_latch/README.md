@@ -10,28 +10,28 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/sr_latch#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
-Latches and flip flops are part of sequential logic,
-a digital system that stores data and outputs changes on input.
+Latches and flip-flops are part of sequential logic
+digital system that stores data and outputs changes on input.
 
-LATCHES
+Latches are,
 
 * 1-bit storage
 * **No clk** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-FLIP-FLOPS
+Flip-flops are,
 
 * A latch that is controlled by a clock
 * **Uses clk** (part of synchronous system)
 * Outputs are **edge-triggered** from a clk
 * Outputs can also be **level-triggered** from an input
 
-SR LATCH
+A sr latch is,
 
 * **level-triggered**
 * The input s=0 sets the output to 1
@@ -114,7 +114,7 @@ The testbench uses two files,
 * [sr_latch_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch_tb.tv)
   the test vectors and expected results
 
-where,
+with,
 
 * [sr_latch.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/sr_latch.vh)
   is the header file listing the verilog models

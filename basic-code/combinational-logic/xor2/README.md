@@ -3,6 +3,8 @@
 _2-input XOR gate used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
+
+
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#overview)
@@ -10,7 +12,7 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -49,22 +51,39 @@ repo._
 
 The
 [xor2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.v)
-uses dataflow modeling,
+gate model,
 
 ```verilog
-    assign y = a ^ b;
+    ???
+```
+
+Dataflow model,
+
+```verilog
+    ???
+```
+
+Behavioral model,
+
+```verilog
+    ???
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [xor2_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2_tb.v)
   the testbench
+* [xor2_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [xor2.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -73,13 +92,24 @@ which is used by the vvp runtime simulation engine,
 iverilog -o xor2_tb.vvp xor2_tb.v xor2.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp xor2_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+TEST START --------------------------------
+
+    ???
+
+TEST END --------------------------------
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file xor2_tb.vcd file with GTKWave,
 
@@ -89,7 +119,7 @@ gtkwave -f xor2_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 

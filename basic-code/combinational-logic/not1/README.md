@@ -3,6 +3,8 @@
 _NOT gate used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
+
+
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#overview)
@@ -10,7 +12,7 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -47,22 +49,39 @@ repo._
 
 The
 [not1.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1.v)
-uses dataflow modeling,
+gate model,
 
 ```verilog
-    assign y = ~a;
+    ???
+```
+
+Dataflow model,
+
+```verilog
+    ???
+```
+
+Behavioral model,
+
+```verilog
+    ???
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [not1_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1_tb.v)
   the testbench
+* [not1_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [not1.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/not1.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/not1/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -71,13 +90,24 @@ which is used by the vvp runtime simulation engine,
 iverilog -o not1_tb.vvp not1_tb.v not1.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp not1_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+TEST START --------------------------------
+
+    ???
+
+TEST END --------------------------------
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file not1_tb.vcd file with GTKWave,
 
@@ -87,7 +117,7 @@ gtkwave -f not1_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 

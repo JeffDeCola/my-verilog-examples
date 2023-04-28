@@ -5,42 +5,121 @@
 module NOR2_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg        A, B;
-    wire       Y;
-    integer    i;
+    reg             A, B;
+    wire            Y_gate, Y_data, Y_beh;
+    integer         i;
 
-    // UNIT UNDER TEST
-    nor2 UUT_nor2(
+    // FOR TESTING  
+    reg             TICK;
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg             YEXPECTED;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
+
+    // UNIT UNDER TEST (gate)
+    nor2_gate UUT_nor2_gate(
         .a(A), .b(B),
-        .y(Y)
+        .y(Y_gate)
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // UNIT UNDER TEST (dataflow)
+    nor2_dataflow UUT_nor2_dataflow(
+        .a(A), .b(B),
+        .y(Y_data)
+    );
+
+    // UNIT UNDER TEST (behavioral)
+    nor2_behavioral UUT_nor2_behavioral(
+        .a(A), .b(B),
+        .y(Y_beh)
+    );
+
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("nor2_tb.vcd");
         $dumpvars(0, NOR2_TB);
     end
 
-    // TESTCASE - CHANGE REG VALUES
-    initial begin
-        $display("TEST START");
-        $write("| TIME(ns) | A | B | Y |"); // header
-        $display;
+    // TICK PERIOD
+    localparam TICKPERIOD = 20;
 
-        // INCREMENT IN BINARY
-        for (i=0; i<4; i=i+1) begin
-            {A, B} = i;
-            #20;
+    // TICK
+    always begin
+        #(TICKPERIOD/2) TICK = ~TICK;
+    end
+
+    // INITIALIZE TESTBENCH
+    initial begin
+
+        // OPEN VECTOR FILE - THROW AWAY FIRST LINE
+        FD=$fopen("nor2_tb.tv","r");
+        COUNT = $fscanf(FD, "%s", COMMENT);
+        // $display ("FIRST LINE IS: %s", COMMENT);
+
+        // INIT TESTBENCH
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
+        TICK = 0;
+        VECTORCOUNT = 0;
+        ERRORS = 0;
+        COMMENT ="";
+
+        // DISPAY OUTPUT AND MONITOR
+        $display();
+        $display("TEST START --------------------------------");
+        $display();
+        $display("                                     GATE  DATA   BEH");
+        $display("                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |");
+        $display("                 --------------------------------------");
+        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
+
+    end
+
+    // APPLY TEST VECTORS ON NEG EDGE TICK (ADD DELAY)
+    always @(negedge TICK) begin
+
+        // WAIT A BIT (AFTER CHECK)
+        #5;
+
+        // GET VECTORS FROM TB FILE
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
+
+        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+        if (COUNT == -1) begin
+            $fclose(FD);
+            $display();
+            $display(" VECTORS: %4d", VECTORCOUNT);
+            $display("  ERRORS: %4d", ERRORS);
+            $display();
+            $display("TEST END ----------------------------------");
+            $display();
+            $finish;
         end
 
-        $display("TEST END");
-        $finish;
+        // GET ANOTHER VECTOR
+        VECTORCOUNT = VECTORCOUNT + 1;
+
     end
 
-    // OUTPUT ON SCREEN FOR ANY CHANGE
-    always @(*)
-    begin
-        $strobe("| %8d | %1d | %1d | %1d |", $time, A, B, Y);
-    end
+    // CHECK TEST VECTORS ON NEG EGDE TICK
+    always @(posedge TICK) begin
+
+        // WAIT A BIT
+        #5;
+
+        // CHECK EACH VECTOR RESULT
+        if (Y_gate !== YEXPECTED) begin
+            $display("***ERROR (gate) - Expected Y = %b", YEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Y_data !== YEXPECTED) begin
+            $display("***ERROR (dataflow) - Expected Y = %b", YEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Y_beh !== YEXPECTED) begin
+            $display("***ERROR (behavioral) - Expected Y = %b", YEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+
+    end   
 
 endmodule

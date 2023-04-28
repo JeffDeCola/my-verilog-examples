@@ -1,7 +1,6 @@
 # T FLIP-FLOP EXAMPLE
 
-_A t (toggle) flip-flop is a single input jk flip flop
-which toggles output according to input._
+_???._
 
 Table of Contents
 
@@ -10,10 +9,30 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
+
+Latches and flip-flops are part of sequential logic
+digital system that stores data and outputs changes on input.
+
+Latches are,
+
+* 1-bit storage
+* **No clk** (part of an asynchronous system)
+* Outputs **level-triggered** from inputs (asynchronous)
+
+Flip-flops are,
+
+* A latch that is controlled by a clock
+* **Uses clk** (part of synchronous system)
+* Outputs are **edge-triggered** from a clk
+* Outputs can also be **level-triggered** from an input
+
+A t flip-flop is,
+
+* ???
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -38,44 +57,45 @@ repo._
 
 ## TRUTH TABLE
 
-| q_prev  | en     | d     | q      |
-|:-------:|:------:|:-----:|:------:|
-| 0       |  0     |  X    | 0      |
-| 1       |  0     |  X    | 1      |
-| X       |  1     |  0    | 0      |
-| X       |  1     |  1    | 1      |
+???
 
 ## VERILOG CODE
 
 The
 [t_flip_flop.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/t_flip_flop/t_flip_flop.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-    assign q_bar = ~q;
+    ???
+```
 
-    // D FLIP-FLOP WITH SYNC ENABLE
-    always @ (posedge clk) begin
-        if (en) begin
-            q <= d;
-        end else begin
-            q <= q;
-        end
-    end
+Dataflow model,
+
+```verilog
+    ???
+```
+
+Behavioral model,
+
+```verilog
+    ???
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [t_flip_flop_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/t_flip_flop/t_flip_flop_tb.v)
   the testbench
-* [t_flip_flop_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/t_flip_flop_tb.tv)
+* [t_flip_flop_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/t_flip_flop/t_flip_flop_tb.tv)
   the test vectors and expected results
+
+with,
+
 * [t_flip_flop.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/t_flip_flop/t_flip_flop.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/t_flip_flop/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -91,7 +111,17 @@ and creates a waveform dump file *.vcd.
 vvp t_flip_flop_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+TEST START --------------------------------
+
+    ???
+
+TEST END --------------------------------
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file t_flip_flop_tb.vcd file with GTKWave,
 
@@ -101,7 +131,7 @@ gtkwave -f t_flip_flop_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 

@@ -2,7 +2,7 @@
 
 // include files are in sr_latch.vh
 
-module SR_FLIP_FLOP_TB ();
+module SR_LATCH_TB ();
 
     // INPUT PROBES
     reg             S, R;
@@ -40,7 +40,7 @@ module SR_FLIP_FLOP_TB ();
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("sr_latch_tb.vcd");
-        $dumpvars(0, SR_FLIP_FLOP_TB);
+        $dumpvars(0, SR_LATCH_TB);
     end
 
     // TICK PERIOD
@@ -60,7 +60,7 @@ module SR_FLIP_FLOP_TB ();
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b", COMMENT, S, R);
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
         TICK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -104,7 +104,10 @@ module SR_FLIP_FLOP_TB ();
     end
 
     // CHECK TEST VECTORS ON NEG EGDE TICK
-    always @(negedge TICK) begin
+    always @(posedge TICK) begin
+
+        // WAIT A BIT
+        #5;
 
         // CHECK EACH VECTOR RESULT
         if (Q_gate !== QEXPECTED) begin
