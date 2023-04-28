@@ -3,8 +3,6 @@
 _NOT gate used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
-
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/not1#overview)
@@ -52,19 +50,24 @@ The
 gate model,
 
 ```verilog
-    ???
+    // GATE PRIMITIVE
+    not (y, a);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = ~a;
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a) begin
+        y <= ~a;
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -102,9 +105,18 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                     GATE  DATA   BEH
+                 | TIME(ns) | A |  Y  |  Y  |  Y  |
+                 ----------------------------------
+   0             |        0 | 0 |  1  |  1  |  1  |
+   1           - |       25 | 1 |  0  |  0  |  0  |
+   2           - |       45 | 0 |  1  |  1  |  1  |
+   3           - |       65 | 1 |  0  |  0  |  0  |
 
-TEST END --------------------------------
+ VECTORS:    3
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

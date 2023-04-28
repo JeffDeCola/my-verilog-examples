@@ -1,5 +1,5 @@
 $date
-	Mon Apr 10 20:32:07 2023
+	Fri Apr 28 02:27:33 2023
 $end
 $version
 	Icarus Verilog
@@ -8,89 +8,195 @@ $timescale
 	100ps
 $end
 $scope module NAND4_TB $end
-$var wire 1 ! Y $end
-$var reg 1 " A $end
-$var reg 1 # B $end
-$var reg 1 $ C $end
-$var reg 1 % D $end
-$var integer 32 & i [31:0] $end
-$scope module UUT_nand4 $end
-$var wire 1 " a $end
-$var wire 1 # b $end
-$var wire 1 $ c $end
-$var wire 1 % d $end
+$var wire 1 ! Y_gate $end
+$var wire 1 " Y_data $end
+$var wire 1 # Y_beh $end
+$var parameter 32 $ TICKPERIOD $end
+$var reg 1 % A $end
+$var reg 1 & B $end
+$var reg 1 ' C $end
+$var reg 256 ( COMMENT [255:0] $end
+$var reg 1 ) D $end
+$var reg 32 * ERRORS [31:0] $end
+$var reg 1 + TICK $end
+$var reg 32 , VECTORCOUNT [31:0] $end
+$var reg 1 - YEXPECTED $end
+$var integer 32 . COUNT [31:0] $end
+$var integer 32 / FD [31:0] $end
+$scope module UUT_nand4_behavioral $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 ' c $end
+$var wire 1 ) d $end
+$var reg 1 # y $end
+$upscope $end
+$scope module UUT_nand4_dataflow $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 ' c $end
+$var wire 1 ) d $end
+$var wire 1 " y $end
+$upscope $end
+$scope module UUT_nand4_gate $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 ' c $end
+$var wire 1 ) d $end
 $var wire 1 ! y $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
 $dumpall
+b10100 $
 $end
 #0
 $dumpvars
-b0 &
+b10000000000000000000000000000011 /
+b110 .
+1-
+b0 ,
+0+
+b0 *
+0)
+b0 (
+0'
+0&
 0%
-0$
-0#
-0"
+1#
+1"
 1!
 $end
+#100
+1+
 #200
-1%
-b1 &
+0+
+#250
+b1 ,
+b101101 (
+#300
+1+
 #400
-1$
-0%
-b10 &
+0+
+#450
+b10 ,
+1)
+#500
+1+
 #600
-1%
-b11 &
+0+
+#650
+b11 ,
+0)
+1'
+#700
+1+
 #800
-1#
-0$
-0%
-b100 &
+0+
+#850
+b100 ,
+1)
+#900
+1+
 #1000
-1%
-b101 &
+0+
+#1050
+b101 ,
+0)
+0'
+1&
+#1100
+1+
 #1200
-1$
-0%
-b110 &
+0+
+#1250
+b110 ,
+1)
+#1300
+1+
 #1400
-1%
-b111 &
+0+
+#1450
+b111 ,
+0)
+1'
+#1500
+1+
 #1600
-1"
-0#
-0$
-0%
-b1000 &
+0+
+#1650
+b1000 ,
+1)
+#1700
+1+
 #1800
+0+
+#1850
+b1001 ,
+0)
+0'
+0&
 1%
-b1001 &
+#1900
+1+
 #2000
-1$
-0%
-b1010 &
+0+
+#2050
+b1010 ,
+1)
+#2100
+1+
 #2200
-1%
-b1011 &
+0+
+#2250
+b1011 ,
+0)
+1'
+#2300
+1+
 #2400
-1#
-0$
-0%
-b1100 &
+0+
+#2450
+b1100 ,
+1)
+#2500
+1+
 #2600
-1%
-b1101 &
+0+
+#2650
+b1101 ,
+0)
+0'
+1&
+#2700
+1+
 #2800
-1$
-0%
-b1110 &
+0+
+#2850
+b1110 ,
+1)
+#2900
+1+
 #3000
-0!
-1%
-b1111 &
+0+
+#3050
+b1111 ,
+0)
+1'
+#3100
+1+
 #3200
-b10000 &
+0+
+#3250
+0#
+0"
+0!
+b10000 ,
+0-
+1)
+#3300
+1+
+#3400
+0+
+#3450
+b11111111111111111111111111111111 .

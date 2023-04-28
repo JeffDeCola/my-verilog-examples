@@ -70,7 +70,7 @@ module NAND4_TB;
         $display("                                             GATE  DATA   BEH");
         $display("                 | TIME(ns) | A | B | C | D |  Y  |  Y  |  Y  |");
         $display("                 ----------------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, C, D, Y_gate, Y_data, Y_beh);
+        $monitor("%4d  %10s | %8d | %1d | %1d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, C, D, Y_gate, Y_data, Y_beh);
 
     end
 
@@ -100,7 +100,7 @@ module NAND4_TB;
 
     end
 
-    // CHECK TEST VECTORS ON NEG EGDE TICK
+    // CHECK TEST VECTORS ON POS EGDE TICK
     always @(posedge TICK) begin
 
         // WAIT A BIT

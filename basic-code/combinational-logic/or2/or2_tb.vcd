@@ -1,5 +1,5 @@
 $date
-	Mon Apr 10 20:44:27 2023
+	Fri Apr 28 02:55:16 2023
 $end
 $version
 	Icarus Verilog
@@ -8,37 +8,91 @@ $timescale
 	100ps
 $end
 $scope module OR2_TB $end
-$var wire 1 ! Y $end
-$var reg 1 " A $end
-$var reg 1 # B $end
-$var integer 32 $ i [31:0] $end
-$scope module UUT_or2 $end
-$var wire 1 " a $end
-$var wire 1 # b $end
+$var wire 1 ! Y_gate $end
+$var wire 1 " Y_data $end
+$var wire 1 # Y_beh $end
+$var parameter 32 $ TICKPERIOD $end
+$var reg 1 % A $end
+$var reg 1 & B $end
+$var reg 256 ' COMMENT [255:0] $end
+$var reg 32 ( ERRORS [31:0] $end
+$var reg 1 ) TICK $end
+$var reg 32 * VECTORCOUNT [31:0] $end
+$var reg 1 + YEXPECTED $end
+$var integer 32 , COUNT [31:0] $end
+$var integer 32 - FD [31:0] $end
+$scope module UUT_or2_behavioral $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var reg 1 # y $end
+$upscope $end
+$scope module UUT_or2_dataflow $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 " y $end
+$upscope $end
+$scope module UUT_or2_gate $end
+$var wire 1 % a $end
+$var wire 1 & b $end
 $var wire 1 ! y $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
 $dumpall
+b10100 $
 $end
 #0
 $dumpvars
-b0 $
+b10000000000000000000000000000011 -
+b100 ,
+0+
+b0 *
+0)
+b0 (
+b0 '
+0&
+0%
 0#
 0"
 0!
 $end
+#100
+1)
 #200
-1!
-1#
-b1 $
+0)
+#250
+b1 *
+b101101 '
+#300
+1)
 #400
-1"
-0#
-b10 $
-#600
+0)
+#450
 1#
-b11 $
+1"
+1!
+b10 *
+1+
+1&
+#500
+1)
+#600
+0)
+#650
+b11 *
+0&
+1%
+#700
+1)
 #800
-b100 $
+0)
+#850
+b100 *
+1&
+#900
+1)
+#1000
+0)
+#1050
+b11111111111111111111111111111111 ,

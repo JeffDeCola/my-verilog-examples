@@ -69,8 +69,8 @@ module NOT1_TB;
         $display();
         $display("                                     GATE  DATA   BEH");
         $display("                 | TIME(ns) | A |  Y  |  Y  |  Y  |");
-        $display("                 ---------------_------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
+        $display("                 ----------------------------------");
+        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, Y_gate, Y_data, Y_beh);
 
     end
 
@@ -100,7 +100,7 @@ module NOT1_TB;
 
     end
 
-    // CHECK TEST VECTORS ON NEG EGDE TICK
+    // CHECK TEST VECTORS ON POS EGDE TICK
     always @(posedge TICK) begin
 
         // WAIT A BIT
