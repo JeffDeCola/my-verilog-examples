@@ -1,85 +1,129 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in d-flip-flop.vh
+// include files are in d_flip_flop.vh
 
-module d_flip_flop_tb;
+module D_FLIP_FLOP_TB ();
 
-    // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg  CLK;
-    reg  D;
-    wire Q1, Q1_BAR;
-    wire Q2, Q2_BAR;
-    wire Q3, Q3_BAR;
+    // INPUT PROBES
+    reg             S, R;
 
-    // UNIT UNDER TEST
-    d_flip_flop UUT(
-        .clk(CLK),
-        .d(D),
-        .q1(Q1), .q1_bar(Q1_BAR),
-        .q2(Q2), .q2_bar(Q2_BAR),
-        .q3(Q3), .q3_bar(Q3_BAR)
+    // OUTPUT PROBES
+    wire            Q_gate, QBAR_gate;
+    wire            Q_data, QBAR_data;
+    wire            Q_beh, QBAR_beh;
+
+    // FOR TESTING  
+    reg             CLK;
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg             QEXPECTED;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
+
+    // UNIT UNDER TEST (gate)
+    d_flip_flop_gate UUT_d_flip_flop_gate(
+        .s(S), .r(R),
+        .q(Q_gate), .qbar(QBAR_gate)
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // UNIT UNDER TEST (dataflow)
+    d_flip_flop_dataflow UUT_d_flip_flop_dataflow(
+        .s(S), .r(R),
+        .q(Q_data), .qbar(QBAR_data)
+    );
+
+        // UNIT UNDER TEST (behavioral)
+    d_flip_flop_behavioral UUT_d_flip_flop_behavioral(
+        .s(S), .r(R),
+        .q(Q_beh), .qbar(QBAR_beh)
+    );
+
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("d_flip_flop_tb.vcd");
-        $dumpvars(0, d_flip_flop_tb);
+        $dumpvars(0, D_FLIP_FLOP_TB);
     end
 
-    // PERIOD
-    localparam CLKTICK = 20;  
+    // CLK PERIOD
+    localparam CLKPERIOD = 20;
 
-    // CLOCK
+    // CLK
     always begin
-        #10 CLK = ~CLK;
+        #(CLKPERIOD/2) CLK = ~CLK;
     end
 
-    // TESTCASE - CHANGE REG VALUES
+    // INITIALIZE TESTBENCH
     initial begin
-        $display("TEST START");
+
+        // OPEN VECTOR FILE - THROW AWAY FIRST LINE
+        FD=$fopen("d_flip_flop_tb.tv","r");
+        COUNT = $fscanf(FD, "%s", COMMENT);
+        // $display ("FIRST LINE IS: %s", COMMENT);
+
+        // INIT TESTBENCH
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+
         CLK = 0;
-        #5            // CLOCK OFFSET
-        
-        D = 0;        // STORE 0
-        #CLKTICK;    
-  
-        D = 1;        // STORE 1
-        #CLKTICK;
-          
-        D = 0;        // STORE 0 
-        #CLKTICK;
+        VECTORCOUNT = 0;
+        ERRORS = 0;
+        COMMENT ="";
 
-        // WHEN D = 0,  PULSE D WHEN CLOCK 1
-        #10;
-        D = 1;
-        #2;
-        D = 0;
-        #8;
-        
-        // WHEN D = 0, PULSE D WHEN CLOCK 0
-        D = 1;
-        #2;
-        D = 0;
-        #18;
+        // DISPAY OUTPUT AND MONITOR
+        $display();
+        $display("TEST START --------------------------------");
+        $display();
+        $display("                                     GATE  DATA   BEH");
+        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
+        $display("                 --------------------------------------");
+        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
 
-        // WHEN D = 1, PULSE D WHEN CLOCK 0
-        D=1;
-        #10;
-        D = 0;
-        #2;
-        D = 1;
-        #8;
-        
-        // WHEN D = 1, PULSE D WHEN CLOCK 0
-        D = 0;
-        #2;
-        D = 1;
-        #18;
-
-        #CLKTICK;
-
-        $display("TEST END");
-        $finish;
     end
+
+    // APPLY TEST VECTORS ON NEG EDGE CLK (ADD DELAY)
+    always @(negedge CLK) begin
+
+        // WAIT A BIT (AFTER CHECK)
+        #5;
+
+        // GET VECTORS FROM TB FILE
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+
+        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+        if (COUNT == -1) begin
+            $fclose(FD);
+            $display();
+            $display(" VECTORS: %4d", VECTORCOUNT);
+            $display("  ERRORS: %4d", ERRORS);
+            $display();
+            $display("TEST END ----------------------------------");
+            $display();
+            $finish;
+        end
+
+        // GET ANOTHER VECTOR
+        VECTORCOUNT = VECTORCOUNT + 1;
+
+    end
+
+    // CHECK TEST VECTORS ON NEG EGDE CLK
+    always @(posedge CLK) begin
+
+        // WAIT A BIT
+        #5;
+
+        // CHECK EACH VECTOR RESULT
+        if (Q_gate !== QEXPECTED) begin
+            $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Q_data !== QEXPECTED) begin
+            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Q_beh !== QEXPECTED) begin
+            $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+
+    end   
 
 endmodule

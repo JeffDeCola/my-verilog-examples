@@ -1,6 +1,6 @@
 # D FLIP-FLOP EXAMPLE
 
-_A d (data) flip-flop which stores data on clock level._
+_???._
 
 Table of Contents
 
@@ -9,19 +9,30 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
-I like to separate latches and flip-flops by using a clock.
-Other people separate them by purely level or edge sensitive devices.
+Latches and flip-flops are part of sequential logic
+digital system that stores data and outputs changes on input.
 
-* Flip-flops are basic storage elements
-* **Flip-flops are latches but controlled by a clock**
-* Flip-flops are mostly **edge-triggered**
-  but can be **level-triggered**
-* Flip-flops are useful for the design of the synchronous sequential circuits
+Latches are,
+
+* 1-bit storage
+* **No clk** (part of an asynchronous system)
+* Outputs **level-triggered** from inputs (asynchronous)
+
+Flip-flops are,
+
+* A latch that is controlled by a clock
+* **Uses clk** (part of synchronous system)
+* Outputs are **edge-triggered** from a clk
+* Outputs can also be **level-triggered** from an input
+
+A d flip-flop is,
+
+* ???
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -44,46 +55,47 @@ repo._
     align="middle"
 </p>
 
-A d flip-flop is built using a latch. A latch stores data but the output will change
-not based on clock edge, but based on the input.
-
-![latch-schematic.png](../../../docs/pics/latch-schematic.png)
-
-By combining two latches together we can make a d flip-flop in which the output
-changes on the **positive edge of the clock**,
-
-![d-flip-flop-schematic.png](../../../docs/pics/d-flip-flop-schematic.png)
-
 ## TRUTH TABLE
 
-| clk     | d     | q      |             |
-|:-------:|:-----:|:------:|:-----------:|
-| 0       |  X    | q      | No change   |
-| 1       |  0    | 0      | Stores 0    |
-| 1       |  1    | 1      | Stores 1    |
+???
 
 ## VERILOG CODE
 
 The
 [d_flip_flop.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-???
+    ???
+```
+
+Dataflow model,
+
+```verilog
+    ???
+```
+
+Behavioral model,
+
+```verilog
+    ???
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [d_flip_flop_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop_tb.v)
   the testbench
-* [d_flip_flop_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/sr_latch/d_flip_flop_tb.tv)
+* [d_flip_flop_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop_tb.tv)
   the test vectors and expected results
+
+with,
+
 * [d_flip_flop.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -99,7 +111,17 @@ and creates a waveform dump file *.vcd.
 vvp d_flip_flop_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+TEST START --------------------------------
+
+    ???
+
+TEST END --------------------------------
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file d_flip_flop_tb.vcd file with GTKWave,
 
@@ -109,7 +131,7 @@ gtkwave -f d_flip_flop_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -117,7 +139,7 @@ anytime you want,
 gtkwave -f d_flip_flop_tb.gtkw &
 ```
 
-![d_flip_flop-waveform.jpg](../../../docs/pics/d_flip_flop-waveform.jpg)
+![d_flip_flop-waveform.jpg](../../../docs/pics/basic-code/d_flip_flop-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
