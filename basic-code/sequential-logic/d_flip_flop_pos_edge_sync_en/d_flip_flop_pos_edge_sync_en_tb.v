@@ -103,7 +103,7 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
 
     end
 
-    // CHECK TEST VECTORS ON NEG EGDE CLK
+    // CHECK TEST VECTORS ON POS EGDE CLK
     always @(posedge CLK) begin
 
         // WAIT A BIT

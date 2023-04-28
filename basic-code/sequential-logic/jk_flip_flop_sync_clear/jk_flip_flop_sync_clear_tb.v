@@ -103,7 +103,7 @@ module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
 
     end
 
-    // CHECK TEST VECTORS ON NEG EGDE CLK
+    // CHECK TEST VECTORS ON POS EGDE CLK
     always @(posedge CLK) begin
 
         // WAIT A BIT

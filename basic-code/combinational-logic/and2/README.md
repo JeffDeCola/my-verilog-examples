@@ -52,7 +52,7 @@ The
 gate model,
 
 ```verilog
-    // GATE PRIMATIVE
+    // GATE PRIMITIVE
     and (y, a, b);
 ```
 

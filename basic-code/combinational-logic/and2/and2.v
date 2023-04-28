@@ -4,7 +4,7 @@ module and2_gate(
     input       a, b,     // 2-Input
     output      y);       // Output
 
-    // GATE PRIMATIVE
+    // GATE PRIMITIVE
     and (y, a, b);
 
 endmodule

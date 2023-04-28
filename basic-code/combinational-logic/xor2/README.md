@@ -3,8 +3,6 @@
 _2-input XOR gate used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
-
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2#overview)
@@ -54,19 +52,24 @@ The
 gate model,
 
 ```verilog
-    ???
+    // GATE PRIMITIVE
+    xor (y, a, b);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a ^ b;
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a ^ b;
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -104,9 +107,19 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                     GATE  DATA   BEH
+                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 --------------------------------------
+   0             |        0 | 0 | 0 |  0  |  0  |  0  |
+   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
+   2           - |       45 | 0 | 1 |  1  |  1  |  1  |
+   3           - |       65 | 1 | 0 |  1  |  1  |  1  |
+   4           - |       85 | 1 | 1 |  0  |  0  |  0  |
 
-TEST END --------------------------------
+ VECTORS:    4
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

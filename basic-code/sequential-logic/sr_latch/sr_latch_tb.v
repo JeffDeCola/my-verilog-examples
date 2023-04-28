@@ -103,7 +103,7 @@ module SR_LATCH_TB ();
 
     end
 
-    // CHECK TEST VECTORS ON NEG EGDE TICK
+    // CHECK TEST VECTORS ON POS EGDE TICK
     always @(posedge TICK) begin
 
         // WAIT A BIT

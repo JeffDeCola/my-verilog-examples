@@ -74,7 +74,7 @@ module NOR2_TB;
 
     end
 
-    // APPLY TEST VECTORS ON NEG EDGE TICK (ADD DELAY)
+    // APPLY TEST VECTORS ON POS EDGE TICK (ADD DELAY)
     always @(negedge TICK) begin
 
         // WAIT A BIT (AFTER CHECK)

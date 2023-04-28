@@ -3,8 +3,6 @@
 _4-input NAND gate used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
-
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/nand4#overview)
@@ -66,19 +64,24 @@ The
 gate model,
 
 ```verilog
-    ???
+    // GATE PRIMATIVE
+    nand (y, a, b, c, d);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = ~(a & b & c & d);
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b or c or d) begin
+        y <= ~(a & b & c & d);
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -116,9 +119,31 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                             GATE  DATA   BEH
+                 | TIME(ns) | A | B | C | D |  Y  |  Y  |  Y  |
+                 ----------------------------------------------
+   0             |        0 | 0 | 0 | 0 | 0 |  1  |  1  |  1  |
+   1           - |       25 | 0 | 0 | 0 | 0 |  1  |  1  |  1  |
+   2           - |       45 | 0 | 0 | 0 | 1 |  1  |  1  |  1  |
+   3           - |       65 | 0 | 0 | 1 | 0 |  1  |  1  |  1  |
+   4           - |       85 | 0 | 0 | 1 | 1 |  1  |  1  |  1  |
+   5           - |      105 | 0 | 1 | 0 | 0 |  1  |  1  |  1  |
+   6           - |      125 | 0 | 1 | 0 | 1 |  1  |  1  |  1  |
+   7           - |      145 | 0 | 1 | 1 | 0 |  1  |  1  |  1  |
+   8           - |      165 | 0 | 1 | 1 | 1 |  1  |  1  |  1  |
+   9           - |      185 | 1 | 0 | 0 | 0 |  1  |  1  |  1  |
+  10           - |      205 | 1 | 0 | 0 | 1 |  1  |  1  |  1  |
+  11           - |      225 | 1 | 0 | 1 | 0 |  1  |  1  |  1  |
+  12           - |      245 | 1 | 0 | 1 | 1 |  1  |  1  |  1  |
+  13           - |      265 | 1 | 1 | 0 | 0 |  1  |  1  |  1  |
+  14           - |      285 | 1 | 1 | 0 | 1 |  1  |  1  |  1  |
+  15           - |      305 | 1 | 1 | 1 | 0 |  1  |  1  |  1  |
+  16           - |      325 | 1 | 1 | 1 | 1 |  0  |  0  |  0  |
 
-TEST END --------------------------------
+ VECTORS:   16
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

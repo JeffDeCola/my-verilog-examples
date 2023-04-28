@@ -74,8 +74,7 @@ Who am I to argue.
     module NAME (
         input             a,     // Input A
         input       [7:0] b,     // Input B
-        output reg  [3:0] y      // Output Y
-    );
+        output reg  [3:0] y);    // Output Y
 ```
 
 Also, I would stay away from asynchronous design.  It can have problems
