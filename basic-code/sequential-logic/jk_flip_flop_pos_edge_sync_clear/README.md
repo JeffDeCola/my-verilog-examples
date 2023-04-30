@@ -1,6 +1,9 @@
-# JK FLIP-FLOP SYNC CLEAR EXAMPLE
+# JK FLIP-FLOP POS EDGE SYNC CLEAR EXAMPLE
 
-_???._
+_A **posedge-triggered** jk flip-flop
+with synchronous clear
+used in my
+[jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161)._
 
 Table of Contents
 
@@ -15,24 +18,39 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A jk flip-flop sync clear is,
+TRIGGER
 
-* ???
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+POSEDGE-TRIGGERED JK FLIP-FLIP WITH SYNC CLEAR
+
+* **USES CLOCK** - **posedge-triggered**
+* OPERATIONAL: on posedge clk
+* BUILT: with a sr-latch????????????????
+* UPDATED: a jk flip-flop that has been updated with toggle
+* CLEAR: clr=1 resets the output to 0
+* SET: j=1 sets the output to 1
+* RESET: k=1 resets the output to 0
+* TOGGLE: j=1 k=1 toggles output
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -57,7 +75,14 @@ repo._
 
 ## TRUTH TABLE
 
-???
+| clk       |  clr |  j  |  k  |  q  | comment     |
+|:---------:|:----:|:---:|:---:|:---:|:------------|
+|  other    |  X   |  X  |  X  |  q  | NO CHANGE   |
+|  posedge  |  1   |  X  |  X  |  1  | CLEAR       |
+|  posedge  |  0   |  0  |  0  |  q  | NO CHANGE   |
+|  posedge  |  0   |  0  |  1  |  0  | RESET       |
+|  posedge  |  0   |  1  |  0  |  1  | SET         |
+|  posedge  |  0   |  1  |  1  | ~q  | TOGGLE      |
 
 ## VERILOG CODE
 

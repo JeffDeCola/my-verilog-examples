@@ -1,7 +1,9 @@
 # SR LATCH EXAMPLE
 
-_A sr (set ready) latch is level-triggered and
-is the basic building block of other flip-flops._
+_A sr (set ready) latch which is **level-triggered**
+that can be set and reset.
+The latch forms the basic building block
+of other types of latches and flip-flops._
 
 Table of Contents
 
@@ -16,22 +18,30 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A sr latch is,
+TRIGGER
+
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+SR LATCH
 
 * **level-triggered**
 * The input s=0 sets the output to 1

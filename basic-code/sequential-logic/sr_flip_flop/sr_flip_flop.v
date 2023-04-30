@@ -1,5 +1,4 @@
-// A sr (set ready) flip-flop stores data on level of clock
-// but can have an unknown output.
+// A sr (set ready) flip-flop which is pulse-triggered can be set and reset.
 
 module sr_flip_flop_gate (
     input       clk,        // Clock
@@ -10,8 +9,6 @@ module sr_flip_flop_gate (
 
     // INTERNAL WIRES
     wire        s1, r1;
-
-    // JK FLIP-FLOP ----------------------------------
   
     // NAND3
     nand (s1, s, clk);
@@ -38,8 +35,6 @@ module sr_flip_flop_dataflow (
 
     // INTERNAL WIRES
     wire        s1, r1;
-
-    // JK FLIP-FLOP ----------------------------------
   
     // NAND3
     assign s1 = ~(s & clk);

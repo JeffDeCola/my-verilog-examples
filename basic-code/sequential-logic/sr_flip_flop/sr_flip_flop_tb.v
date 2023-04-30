@@ -21,18 +21,21 @@ module SR_FLIP_FLOP_TB ();
 
     // UNIT UNDER TEST (gate)
     sr_flip_flop_gate UUT_sr_flip_flop_gate(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
     sr_flip_flop_dataflow UUT_sr_flip_flop_dataflow(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
     sr_flip_flop_behavioral UUT_sr_flip_flop_behavioral(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_beh), .qbar(QBAR_beh)
     );

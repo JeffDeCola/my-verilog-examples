@@ -1,7 +1,6 @@
-// A jk flip-flop which is pulse-triggered can be set, reset and toggled.
-// This has a race condition when clock is high.
+// A pulse-triggered jk flip-flop (cascading) can be set, reset and toggled.
 
-module jk_flip_flop_gate (
+module jk_flip_flop_pulse_triggered_gate (
     input       clk,        // Clock
     input       j,          // Inputs
     input       k,          // 
@@ -27,7 +26,7 @@ module jk_flip_flop_gate (
 
 endmodule
 
-module jk_flip_flop_dataflow (
+module jk_flip_flop_pulse_triggered_dataflow (
     input       clk,        // Clock
     input       j,          // Inputs
     input       k,          // 
@@ -53,7 +52,7 @@ module jk_flip_flop_dataflow (
 
 endmodule
 
-module jk_flip_flop_behavioral (
+module jk_flip_flop_pulse_triggered_behavioral (
     input       clk,        // Clock
     input       j,          // Inputs
     input       k,          // 

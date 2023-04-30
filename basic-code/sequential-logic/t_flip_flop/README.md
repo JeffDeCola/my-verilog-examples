@@ -1,6 +1,7 @@
 # T FLIP-FLOP EXAMPLE
 
-_???._
+_A t flip-flop which is **pulse-triggered**
+can be toggled._
 
 Table of Contents
 
@@ -15,24 +16,37 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A t flip-flop is,
+TRIGGER
 
-* ???
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+T FLIP-FLOP
+
+* **USE CLOCK** - Called a **t flip-flop** which is **pulse-triggered**
+* **USE EN** - Called a **t latch with enable** which is **level-triggered**
+* OPERATIONAL: when clk/en is 1
+* BUILT: with a jk-flip-flop
+* TOGGLE: t=1 sets the output to 1
+* NO TOGGLE: t=0 resets the output to 0
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -57,7 +71,11 @@ repo._
 
 ## TRUTH TABLE
 
-???
+| clk/en |  t  |  q  | comment     |
+|:------:|:---:|:---:|:------------|
+|  0     |  X  |  q  | NO CHANGE   |
+|  1     |  0  |  q  | NO CHANGE   |
+|  1     |  1  | ~q  | TOGGLE      |
 
 ## VERILOG CODE
 

@@ -1,6 +1,9 @@
 # D FLIP-FLOP POS EDGE SYNC EN EXAMPLE
 
-_???._
+_A **posedge-triggered** d flip-flop
+with synchronous enable
+used in my
+[jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
 
 Table of Contents
 
@@ -15,24 +18,35 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A d flip-flop pos ege sync en is,
+TRIGGER
 
-* ???
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+POSITIVE EDGE-TRIGGERED D FLIP-FLOP WITH SYNCHRONOUS ENABLE
+
+* **USES CLOCK** - **posedge-triggered**
+* OPERATIONAL: on posedge clk
+* BUILT: with a ??????????
+* DATA: d output to q
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -57,7 +71,12 @@ repo._
 
 ## TRUTH TABLE
 
-???
+| clk       |  en  |  d  |  q  | comment     |
+|:---------:|:----:|:---:|:---:|:------------|
+|  other    |  X   |  X  |  q  | NO CHANGE   |
+|  posedge  |  0   |  X  |  q  | NO CHANGE   |
+|  posedge  |  0   |  0  |  0  | DATA_0      |
+|  posedge  |  0   |  1  |  1  | DATA_1      |
 
 ## VERILOG CODE
 

@@ -1,4 +1,5 @@
-// A d (data) flip-flop which stores data on clock level.
+// A d flip-flop which is pulse-triggered can save input data on output.
+// This has a race condition when clock is high.
 
 module d_flip_flop (
     input         clk,        // Clock
