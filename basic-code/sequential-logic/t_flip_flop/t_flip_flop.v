@@ -1,5 +1,4 @@
-// A t (toggle) flip-flop is a single input jk flip flop
-// which toggles output according to input.
+// A t flip-flop which is pulse-triggered can be toggled.
 
 module t_flip_flop (
     input       clk,        // Clock

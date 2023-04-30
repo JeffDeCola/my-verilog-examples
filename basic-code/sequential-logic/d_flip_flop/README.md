@@ -1,6 +1,8 @@
 # D FLIP-FLOP EXAMPLE
 
-_???._
+_A d flip-flop which is **pulse-triggered**
+can save input data on output.
+This has a race condition when clock is high._
 
 Table of Contents
 
@@ -15,24 +17,37 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A d flip-flop is,
+TRIGGER
 
-* ???
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+D FLIP-FLOP
+
+* **USE CLOCK** - Called a **d flip-flop** which is **pulse-triggered**
+* **USE EN** - Called a **d latch with enable** which is **level-triggered**
+* OPERATIONAL: when clk/en is 1
+* BUILT: with a sr-flip-flop
+* DATA: d output to q
+* There is a race condition problem that can be solved by cascading two d flip-flops
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -57,7 +72,11 @@ repo._
 
 ## TRUTH TABLE
 
-???
+| clk/en |  d  |  q  | comment     |
+|:------:|:---:|:---:|:------------|
+|  0     |  X  |  q  | NO CHANGE   |
+|  1     |  0  |  0  | DATA_0      |
+|  1     |  1  |  1  | DATA_1      |
 
 ## VERILOG CODE
 

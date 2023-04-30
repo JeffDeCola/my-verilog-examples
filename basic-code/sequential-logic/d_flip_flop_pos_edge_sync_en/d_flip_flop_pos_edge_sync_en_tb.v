@@ -21,18 +21,21 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
 
     // UNIT UNDER TEST (gate)
     d_flip_flop_pos_edge_sync_en_gate UUT_d_flip_flop_pos_edge_sync_en_gate(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
     d_flip_flop_pos_edge_sync_en_dataflow UUT_d_flip_flop_pos_edge_sync_en_dataflow(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
     d_flip_flop_pos_edge_sync_en_behavioral UUT_d_flip_flop_pos_edge_sync_en_behavioral(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_beh), .qbar(QBAR_beh)
     );

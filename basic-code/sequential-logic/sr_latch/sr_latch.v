@@ -1,4 +1,5 @@
-// A sr (set ready) latch stores data but output changes on input.
+// A sr (set ready) latch which is level-triggered that can be set and reset.
+// The latch forms the basic building block of other types of latches and flip-flops.
 
 module sr_latch_gate (
     input       s,          // Inputs

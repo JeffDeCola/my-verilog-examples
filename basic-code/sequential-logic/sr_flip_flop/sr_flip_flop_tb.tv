@@ -1,5 +1,5 @@
             S_R_QEXPECTED
-INIT        0 0            
+INIT        0 0 X           
 SET         1 0 1
 NO_CHANGE   0 0 1
 RESET       0 1 0

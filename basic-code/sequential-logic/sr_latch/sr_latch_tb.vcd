@@ -1,5 +1,5 @@
 $date
-	Thu Apr 27 21:17:35 2023
+	Sat Apr 29 21:57:30 2023
 $end
 $version
 	Icarus Verilog
@@ -7,7 +7,7 @@ $end
 $timescale
 	100ps
 $end
-$scope module SR_FLIP_FLOP_TB $end
+$scope module SR_LATCH_TB $end
 $var wire 1 ! QBAR_beh $end
 $var wire 1 " Q_gate $end
 $var wire 1 # Q_data $end
@@ -51,7 +51,7 @@ $end
 #0
 $dumpvars
 b10000000000000000000000000000011 0
-b11 /
+b100 /
 b0 .
 0-
 1,
@@ -77,7 +77,6 @@ $end
 0%
 1"
 b1 .
-b100 /
 1*
 0,
 b10100110100010101010100 (

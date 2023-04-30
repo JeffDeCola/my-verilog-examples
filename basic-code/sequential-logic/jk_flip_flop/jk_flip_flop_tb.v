@@ -5,7 +5,7 @@
 module JK_FLIP_FLOP_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             J, K;
 
     // OUTPUT PROBES
     wire            Q_gate, QBAR_gate;
@@ -21,19 +21,22 @@ module JK_FLIP_FLOP_TB ();
 
     // UNIT UNDER TEST (gate)
     jk_flip_flop_gate UUT_jk_flip_flop_gate(
-        .s(S), .r(R),
+        .clk(CLK),
+        .j(J), .k(K),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
     jk_flip_flop_dataflow UUT_jk_flip_flop_dataflow(
-        .s(S), .r(R),
+        .clk(CLK),
+        .j(J), .k(K),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
     jk_flip_flop_behavioral UUT_jk_flip_flop_behavioral(
-        .s(S), .r(R),
+        .clk(CLK),
+        .j(J), .k(K),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
@@ -60,20 +63,26 @@ module JK_FLIP_FLOP_TB ();
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, J, K, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
         COMMENT ="";
+        
+        // PUT OUTPUT IN KNOWN STATE
+        force Q_gate = 1'b0;
+        #1 release Q_gate;
+        force Q_data = 1'b0;
+        #1 release Q_data;
 
         // DISPAY OUTPUT AND MONITOR
         $display();
         $display("TEST START --------------------------------");
         $display();
         $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
+        $display("                 | TIME(ns) | J | K |  Q  |  Q  |  Q  |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, J, K, Q_gate, Q_data, Q_beh);
 
     end
 
@@ -84,7 +93,7 @@ module JK_FLIP_FLOP_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, J, K, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin

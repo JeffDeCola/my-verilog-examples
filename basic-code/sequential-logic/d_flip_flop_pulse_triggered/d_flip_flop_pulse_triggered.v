@@ -1,5 +1,4 @@
-// A d (data) flip-flop which stores data on posedge of clock
-// (Used to be called master-slave d flip-flop).
+// A pulse-triggered d flip-flop (cascading) can save input data on output.
 
 module d_flip_flop_pos_edge (
     input       clk,        // Clock

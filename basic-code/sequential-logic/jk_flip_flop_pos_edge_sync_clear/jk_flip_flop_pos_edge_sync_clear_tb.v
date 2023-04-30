@@ -1,8 +1,8 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files are in d_flip_flop_pos_edge.vh
+// include files are in jk_flip_flop_sync_clear.vh
 
-module D_FLIP_FLOP_POS_EDGE_TB ();
+module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
 
     // INPUT PROBES
     reg             S, R;
@@ -20,27 +20,30 @@ module D_FLIP_FLOP_POS_EDGE_TB ();
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST (gate)
-    d_flip_flop_pos_edge_gate UUT_d_flip_flop_pos_edge_gate(
+    jk_flip_flop_sync_clear_gate UUT_jk_flip_flop_sync_clear_gate(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
-    d_flip_flop_pos_edge_dataflow UUT_d_flip_flop_pos_edge_dataflow(
+    jk_flip_flop_sync_clear_dataflow UUT_jk_flip_flop_sync_clear_dataflow(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
-    d_flip_flop_pos_edge_behavioral UUT_d_flip_flop_pos_edge_behavioral(
+    jk_flip_flop_sync_clear_behavioral UUT_jk_flip_flop_sync_clear_behavioral(
+        .clk(CLK),
         .s(S), .r(R),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("d_flip_flop_pos_edge_tb.vcd");
-        $dumpvars(0, D_FLIP_FLOP_POS_EDGE_TB);
+        $dumpfile("jk_flip_flop_sync_clear_tb.vcd");
+        $dumpvars(0, JK_FLIP_FLOP_SYNC_CLEAR_TB);
     end
 
     // CLK PERIOD
@@ -55,7 +58,7 @@ module D_FLIP_FLOP_POS_EDGE_TB ();
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("d_flip_flop_pos_edge_tb.tv","r");
+        FD=$fopen("jk_flip_flop_sync_clear_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 

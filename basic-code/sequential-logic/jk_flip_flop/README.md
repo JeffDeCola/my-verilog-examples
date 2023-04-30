@@ -1,6 +1,8 @@
 # JK FLIP-FLOP EXAMPLE
 
-_???._
+_A jk flip-flop which is **pulse-triggered**
+can be set, reset and toggled.
+This has a race condition when clock is high._
 
 Table of Contents
 
@@ -15,24 +17,44 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A jk flip-flop is,
+TRIGGER
 
-* ???
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+JK FLIP-FLOP
+
+* **USE CLOCK** - Called a **jk flip-flop** which is **pulse-triggered**
+* **USE EN** - Called a **jk latch with enable** which is **level-triggered**
+* OPERATIONAL: when clk/en is 1
+* BUILT: with a sr-latch
+* UPDATED: a jk flip-flop that has been updated with toggle
+* SET: j=1 sets the output to 1
+* RESET: k=1 resets the output to 0
+* TOGGLED: j=1 k=1 state as a toggle
+* There is a race condition problem that can be solved by cascading two together
+
+There is a problem with this design, There is a race condition
+when clock is high and j,k changes. This is solved by using a
+cascading design.
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -57,7 +79,13 @@ repo._
 
 ## TRUTH TABLE
 
-???
+| clk/en |  j  |  k  |  q  | comment     |
+|:------:|:---:|:---:|:---:|:------------|
+|  0     |  X  |  X  |  q  | NO CHANGE   |
+|  1     |  0  |  0  |  q  | NO CHANGE   |
+|  1     |  0  |  1  |  0  | RESET       |
+|  1     |  1  |  0  |  1  | SET         |
+|  1     |  1  |  1  | ~q  | TOGGLE      |
 
 ## VERILOG CODE
 
@@ -66,19 +94,59 @@ The
 gate model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        s, r;
+  
+    // NAND3
+    nand (s, j, clk, qbar);
+
+    // NAND4
+    nand (r, k, clk, q);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s, qbar);
+
+    // NAND2
+    nand (qbar, r, q);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        s, r;
+  
+    // NAND3
+    assign s = ~(j & clk & qbar);
+
+    // NAND4
+    assign r = ~(k & clk & q);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    assign q = ~(s & qbar);
+
+    // NAND2
+    assign qbar = ~(r & q);
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({j,k})
+            2'b0_0 : q <= q;
+            2'b0_1 : q <= 1'b0;
+            2'b1_0 : q <= 1'b1;
+            2'b1_1 : q <= ~q;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)

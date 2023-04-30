@@ -1,4 +1,4 @@
-// A positive edge d flip-flop with synchronous enable used in my jeff-74x377.
+// A posedge-triggered d flip-flop with synchronous enable used in my jeff_74x377.
 
 module d_flip_flop_pos_edge_sync_en (
     input       clk,        // Clock

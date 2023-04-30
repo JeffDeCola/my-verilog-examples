@@ -1,6 +1,7 @@
 # SR FLIP-FLOP EXAMPLE
 
-_???._
+_A sr (set ready) flip-flop which is **pulse-triggered**
+can be set and reset._
 
 Table of Contents
 
@@ -15,24 +16,37 @@ Table of Contents
 ## OVERVIEW
 
 Latches and flip-flops are part of sequential logic
-digital system that stores data and outputs changes on input.
+digital system that stores data on the output.
 
-Latches are,
+LATCHES
 
 * 1-bit storage
-* **No clk** (part of an asynchronous system)
+* **NO CLOCK** (part of an asynchronous system)
 * Outputs **level-triggered** from inputs (asynchronous)
 
-Flip-flops are,
+FLIP-FLOPS
 
 * A latch that is controlled by a clock
-* **Uses clk** (part of synchronous system)
-* Outputs are **edge-triggered** from a clk
-* Outputs can also be **level-triggered** from an input
+* **USES CLOCK** (part of synchronous system)
+* Outputs can be **level-triggered (pulse)**
+  or **edge-triggered** from a clk (synchronous)
 
-A sr flip-flop is,
+TRIGGER
 
-* ???
+* NO CLOCK
+  * level-triggered
+* CLOCK
+  * pulse-triggered (level-triggered but using clock)
+  * edge-triggered
+
+SR FLIP-FLOP
+
+* **USE CLOCK** - Called a **sr flip-flop** which is **pulse-triggered**
+* **USE EN** - Called a **sr latch with enable** which is **level-triggered**
+* OPERATIONAL: when clk/en is 1
+* BUILT: with a sr-latch
+* SET: s=1 sets the output to 1
+* RESET: r=1 resets the output to 0
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -57,7 +71,13 @@ repo._
 
 ## TRUTH TABLE
 
-???
+| clk/en |  s  |  r  |  q  | comment     |
+|:------:|:---:|:---:|:---:|:------------|
+|  0     |  X  |  X  |  q  | NO CHANGE   |
+|  1     |  0  |  0  |  q  | NO CHANGE   |
+|  1     |  0  |  1  |  0  | RESET       |
+|  1     |  1  |  0  |  1  | SET         |
+|  1     |  1  |  1  |  X  | INVALID     |
 
 ## VERILOG CODE
 
@@ -66,19 +86,59 @@ The
 gate model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        s1, r1;
+  
+    // NAND3
+    nand (s1, s, clk);
+
+    // NAND4
+    nand (r1, r, clk);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s1, qbar);
+
+    // NAND2
+    nand (qbar, r1, q);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        s1, r1;
+  
+    // NAND3
+    assign s1 = ~(s & clk);
+
+    // NAND4
+    assign r1 = ~(r & clk);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    assign q = ~(s1 & qbar);
+
+    // NAND2
+    assign qbar = ~(r1 & q);
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({s,r})
+            2'b0_0 : q <= q;
+            2'b0_1 : q <= 1'b0;
+            2'b1_0 : q <= 1'b1;
+            2'b1_1 : q <= 1'bx;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -116,9 +176,27 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                     GATE  DATA   BEH
+                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |
+                 --------------------------------------
+   0             |        0 | 0 | 0 |  x  |  x  |  x  |
+   1         SET |       25 | 1 | 0 |  x  |  x  |  x  |
+   1         SET |       30 | 1 | 0 |  1  |  1  |  1  |
+   2   NO_CHANGE |       45 | 0 | 0 |  1  |  1  |  1  |
+   3       RESET |       65 | 0 | 1 |  1  |  1  |  1  |
+   3       RESET |       70 | 0 | 1 |  0  |  0  |  0  |
+   4   NO_CHANGE |       85 | 0 | 0 |  0  |  0  |  0  |
+   5         SET |      105 | 1 | 0 |  0  |  0  |  0  |
+   5         SET |      110 | 1 | 0 |  1  |  1  |  1  |
+   6   NO_CHANGE |      125 | 0 | 0 |  1  |  1  |  1  |
+   7       RESET |      145 | 0 | 1 |  1  |  1  |  1  |
+   7       RESET |      150 | 0 | 1 |  0  |  0  |  0  |
+   8   NO_CHANGE |      165 | 0 | 0 |  0  |  0  |  0  |
 
-TEST END --------------------------------
+ VECTORS:    8
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

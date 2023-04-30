@@ -1,4 +1,4 @@
-// A positive edge jk flip-flop with synchronous clear used in my jeff-74x161
+// A posedge-triggered jk flip-flop with synchronous clear used in my jeff_74x161.
 
 module jk_flip_flop_sync_clear (
     input       clk,        // Clock

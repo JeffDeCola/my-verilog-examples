@@ -1,11 +1,11 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files are in d_flip_flop.vh
+// include files are in jk_flip_flop_pulse_triggered.vh
 
-module D_FLIP_FLOP_TB ();
+module JK_FLIP_FLOP_PULSE_TRIGGERED_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             J, K;
 
     // OUTPUT PROBES
     wire            Q_gate, QBAR_gate;
@@ -20,30 +20,30 @@ module D_FLIP_FLOP_TB ();
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST (gate)
-    d_flip_flop_gate UUT_d_flip_flop_gate(
+    jk_flip_flop_pulse_triggered_gate UUT_jk_flip_flop_pulse_triggered_gate(
         .clk(CLK),
-        .s(S), .r(R),
+        .j(J), .k(K),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
-    d_flip_flop_dataflow UUT_d_flip_flop_dataflow(
+    jk_flip_flop_pulse_triggered_dataflow UUT_jk_flip_flop_pulse_triggered_dataflow(
         .clk(CLK),
-        .s(S), .r(R),
+        .j(J), .k(K),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
-    d_flip_flop_behavioral UUT_d_flip_flop_behavioral(
+    jk_flip_flop_pulse_triggered_behavioral UUT_jk_flip_flop_pulse_triggered_behavioral(
         .clk(CLK),
-        .s(S), .r(R),
+        .j(J), .k(K),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("d_flip_flop_tb.vcd");
-        $dumpvars(0, D_FLIP_FLOP_TB);
+        $dumpfile("jk_flip_flop_pulse_triggered_tb.vcd");
+        $dumpvars(0, JK_FLIP_FLOP_PULSE_TRIGGERED_TB);
     end
 
     // CLK PERIOD
@@ -58,26 +58,31 @@ module D_FLIP_FLOP_TB ();
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("d_flip_flop_tb.tv","r");
+        FD=$fopen("jk_flip_flop_pulse_triggered_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
-
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, J, K, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
         COMMENT ="";
+        
+        // PUT OUTPUT IN KNOWN STATE
+        force Q_gate = 1'b0;
+        #1 release Q_gate;
+        force Q_data = 1'b0;
+        #1 release Q_data;
 
         // DISPAY OUTPUT AND MONITOR
         $display();
         $display("TEST START --------------------------------");
         $display();
         $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
+        $display("                 | TIME(ns) | J | K |  Q  |  Q  |  Q  |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, J, K, Q_gate, Q_data, Q_beh);
 
     end
 
@@ -88,7 +93,7 @@ module D_FLIP_FLOP_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, J, K, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
