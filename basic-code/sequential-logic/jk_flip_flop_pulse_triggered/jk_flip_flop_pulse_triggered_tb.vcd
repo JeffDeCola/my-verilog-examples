@@ -1,5 +1,5 @@
 $date
-	Sun Apr 30 14:53:23 2023
+	Sun Apr 30 14:48:18 2023
 $end
 $version
 	Icarus Verilog
@@ -7,7 +7,7 @@ $end
 $timescale
 	100ps
 $end
-$scope module JK_FLIP_FLOP_TB $end
+$scope module JK_FLIP_FLOP_PULSE_TRIGGERED_TB $end
 $var wire 1 ! Q_gate $end
 $var wire 1 " Q_data $end
 $var wire 1 # Q_beh $end
@@ -24,30 +24,40 @@ $var reg 1 - QEXPECTED $end
 $var reg 32 . VECTORCOUNT [31:0] $end
 $var integer 32 / COUNT [31:0] $end
 $var integer 32 0 FD [31:0] $end
-$scope module UUT_jk_flip_flop_behavioral $end
+$scope module UUT_jk_flip_flop_pulse_triggered_behavioral $end
 $var wire 1 ( clk $end
 $var wire 1 + j $end
 $var wire 1 , k $end
 $var wire 1 & qbar $end
 $var reg 1 # q $end
 $upscope $end
-$scope module UUT_jk_flip_flop_dataflow $end
+$scope module UUT_jk_flip_flop_pulse_triggered_dataflow $end
 $var wire 1 ( clk $end
+$var wire 1 1 clk2 $end
 $var wire 1 + j $end
 $var wire 1 , k $end
 $var wire 1 " q $end
+$var wire 1 2 q1 $end
+$var wire 1 3 q1bar $end
 $var wire 1 % qbar $end
-$var wire 1 1 r $end
-$var wire 1 2 s $end
+$var wire 1 4 r1 $end
+$var wire 1 5 r2 $end
+$var wire 1 6 s1 $end
+$var wire 1 7 s2 $end
 $upscope $end
-$scope module UUT_jk_flip_flop_gate $end
+$scope module UUT_jk_flip_flop_pulse_triggered_gate $end
 $var wire 1 ( clk $end
+$var wire 1 8 clk2 $end
 $var wire 1 + j $end
 $var wire 1 , k $end
 $var wire 1 ! q $end
+$var wire 1 9 q1 $end
+$var wire 1 : q1bar $end
 $var wire 1 $ qbar $end
-$var wire 1 3 r $end
-$var wire 1 4 s $end
+$var wire 1 ; r1 $end
+$var wire 1 < r2 $end
+$var wire 1 = s1 $end
+$var wire 1 > s2 $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -57,9 +67,19 @@ b10100 '
 $end
 #0
 $dumpvars
+x>
+1=
+x<
+1;
+x:
+x9
+18
+x7
+16
+x5
 14
-13
-12
+x3
+x2
 11
 b10000000000000000000000000000011 0
 b100 /
@@ -79,15 +99,27 @@ x"
 $end
 #10
 1%
+x$
 0"
-0!
+x!
 #20
-0"
+x%
+x"
 #100
+15
+17
+1<
+1>
+01
+08
 1(
-#150
-b10 *
 #200
+x5
+x7
+x<
+x>
+11
+18
 0(
 #250
 b1 .
@@ -97,22 +129,48 @@ b10100110100010101010100 )
 #300
 0&
 1#
-0%
-1"
-12
-0$
-1!
-14
+x6
+15
+17
+1<
+1>
+01
+x=
+08
 1(
+#350
+b10 *
 #400
+16
+x5
+x7
+x<
+x>
+11
+1=
+18
 0(
 #450
 b10 .
 0+
 b10011100100111101011111010000110100100001000001010011100100011101000101 )
 #500
+15
+17
+1<
+1>
+01
+08
 1(
+#550
+b100 *
 #600
+x5
+x7
+x<
+x>
+11
+18
 0(
 #650
 b11 .
@@ -122,22 +180,48 @@ b101001001000101010100110100010101010100 )
 #700
 1&
 0#
-0"
-1%
-11
-0!
-1$
-13
+x4
+15
+17
+1<
+1>
+01
+x;
+08
 1(
+#750
+b110 *
 #800
+14
+x5
+x7
+x<
+x>
+11
+1;
+18
 0(
 #850
 b100 .
 0,
 b10011100100111101011111010000110100100001000001010011100100011101000101 )
 #900
+15
+17
+1<
+1>
+01
+08
 1(
+#950
+b1000 *
 #1000
+x5
+x7
+x<
+x>
+11
+18
 0(
 #1050
 b101 .
@@ -147,22 +231,48 @@ b10100110100010101010100 )
 #1100
 0&
 1#
-0%
-1"
-12
-0$
-1!
-14
+x6
+15
+17
+1<
+1>
+01
+x=
+08
 1(
+#1150
+b1010 *
 #1200
+16
+x5
+x7
+x<
+x>
+11
+1=
+18
 0(
 #1250
 b110 .
 0+
 b10011100100111101011111010000110100100001000001010011100100011101000101 )
 #1300
+15
+17
+1<
+1>
+01
+08
 1(
+#1350
+b1100 *
 #1400
+x5
+x7
+x<
+x>
+11
+18
 0(
 #1450
 b111 .
@@ -172,22 +282,48 @@ b101001001000101010100110100010101010100 )
 #1500
 1&
 0#
-0"
-1%
-11
-0!
-1$
-13
+x4
+15
+17
+1<
+1>
+01
+x;
+08
 1(
+#1550
+b1110 *
 #1600
+14
+x5
+x7
+x<
+x>
+11
+1;
+18
 0(
 #1650
 b1000 .
 0,
 b10011100100111101011111010000110100100001000001010011100100011101000101 )
 #1700
+15
+17
+1<
+1>
+01
+08
 1(
+#1750
+b10000 *
 #1800
+x5
+x7
+x<
+x>
+11
+18
 0(
 #1850
 b1001 .
@@ -196,3 +332,125 @@ b1001 .
 1+
 b10101000100111101000111010001110100110001000101 )
 #1900
+0&
+1#
+x6
+x4
+15
+17
+1<
+1>
+01
+x=
+x;
+08
+1(
+#1950
+b10010 *
+#2000
+16
+14
+x5
+x7
+x<
+x>
+11
+1=
+1;
+18
+0(
+#2050
+b1010 .
+0-
+#2100
+1&
+0#
+x6
+x4
+15
+17
+1<
+1>
+01
+x=
+x;
+08
+1(
+#2150
+b10100 *
+#2200
+16
+14
+x5
+x7
+x<
+x>
+11
+1=
+1;
+18
+0(
+#2250
+b1011 .
+1-
+#2300
+0&
+1#
+x6
+x4
+15
+17
+1<
+1>
+01
+x=
+x;
+08
+1(
+#2350
+b10110 *
+#2400
+16
+14
+x5
+x7
+x<
+x>
+11
+1=
+1;
+18
+0(
+#2450
+b1100 .
+0-
+#2500
+1&
+0#
+x6
+x4
+15
+17
+1<
+1>
+01
+x=
+x;
+08
+1(
+#2550
+b11000 *
+#2600
+16
+14
+x5
+x7
+x<
+x>
+11
+1=
+1;
+18
+0(
+#2650
+b11111111111111111111111111111111 /
