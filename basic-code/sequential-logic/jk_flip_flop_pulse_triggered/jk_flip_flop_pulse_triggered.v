@@ -8,21 +8,46 @@ module jk_flip_flop_pulse_triggered_gate (
     output      qbar);      //
 
     // INTERNAL WIRES
-    wire        s, r;
-  
-    // NAND3
-    nand (s, j, clk, qbar);
+    wire        clk2;
+    wire        s1, r1;
+    wire        s2, r2;
+    wire        q1, q1bar;
 
-    // NAND4
-    nand (r, k, clk, q);
+    // JK FLIP FLOP 1 -----------------------------------
 
-    // SR- LATCH -------------------------------------
-    
-    // NAND1
-    nand (q, s, qbar);
+        // NAND7
+        nand (s1, j, clk, qbar);
 
-    // NAND2
-    nand (qbar, r, q);
+        // NAND8
+        nand (r1, k, clk, q);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND6
+        nand (q1, s1, q1bar);
+
+        // NAND6
+        nand (q1bar, r1, q1);
+
+    // JK FLIP FLOP 2 -----------------------------------
+
+        // NAND3
+        nand (s2, q1, clk2);
+
+        // NAND4
+        nand (r2, q1bar, clk2);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND1
+        nand (q, s2, qbar);
+
+        // NAND2
+        nand (qbar, r2, q);
+
+    // CLOCK -------------------------------------------
+
+        not (clk2, clk);
 
 endmodule
 
@@ -33,22 +58,41 @@ module jk_flip_flop_pulse_triggered_dataflow (
     output      q,          // Output
     output      qbar);      //
 
-    // INTERNAL WIRES
-    wire        s, r;
-  
-    // NAND3
-    assign s = ~(j & clk & qbar);
+    // JK FLIP FLOP 1 -----------------------------------
 
-    // NAND4
-    assign r = ~(k & clk & q);
+        // NAND7
+        assign s1 = ~(j & clk & qbar);
 
-    // SR- LATCH -------------------------------------
-    
-    // NAND1
-    assign q = ~(s & qbar);
+        // NAND8
+        assign r1 = ~(k & clk & q);
 
-    // NAND2
-    assign qbar = ~(r & q);
+        // SR- LATCH -------------------------------------
+        
+        // NAND6
+        assign q1 = ~(s1 & q1bar);
+
+        // NAND6
+        assign q1bar = ~(r1 & q1);
+
+    // JK FLIP FLOP 2 -----------------------------------
+
+        // NAND3
+        assign s2 = ~(q1 & clk2);
+
+        // NAND4
+        assign r2 = ~(q1bar & clk2);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND1
+        assign q = ~(s2 & qbar);
+
+        // NAND2
+        assign qbar = ~(r2 & q);
+
+    // CLOCK -------------------------------------------
+
+        assign clk2 = ~(clk);
 
 endmodule
 

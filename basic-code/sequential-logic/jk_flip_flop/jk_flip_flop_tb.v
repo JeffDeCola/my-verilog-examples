@@ -70,10 +70,10 @@ module JK_FLIP_FLOP_TB ();
         COMMENT ="";
         
         // PUT OUTPUT IN KNOWN STATE
-        force Q_gate = 1'b0;
-        #1 release Q_gate;
-        force Q_data = 1'b0;
-        #1 release Q_data;
+        //force Q_gate = 1'b0;
+        //#1 release Q_gate;
+        //force Q_data = 1'b0;
+        //#1 release Q_data;
 
         // DISPAY OUTPUT AND MONITOR
         $display();
