@@ -101,31 +101,44 @@ The artifacts created are,
 
   * [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop)
 
-    _tbd._
+    _A jk flip-flop which is **pulse-triggered**
+    can be set, reset and toggled.
+    This has a race condition when clock is high._
 
   * [jk_flip_flop_pulse_triggered](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop_pulse_triggered)
 
-    _tbd._
+    _A pulse-triggered jk flip-flop (cascading)
+    can be set, reset and toggled._
 
   * [jk_flip_flop_pos_edge_sync_clear](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop_pos_edge_sync_clear)
 
-    _tbd._
+    _A **posedge-triggered** jk flip-flop
+    with synchronous clear
+    used in my
+    [jeff_74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161)._
 
   * [t_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop)
 
-    _tbd._
+    _A t flip-flop which is **pulse-triggered**
+    can be toggled._
 
   * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
 
-    _tbd._
+    _A d flip-flop which is **pulse-triggered**
+    can save input data on output.
+    This has a race condition when clock is high._
 
   * [d_flip_flop_pulse_triggered](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered)
 
-    _tbd._
+    _A pulse-triggered d flip-flop (cascading)
+    can save input data on output._
 
   * [d_flip_flop_pos_edge_sync_en](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en)
 
-    _tbd._
+    _A **posedge-triggered** d flip-flop
+    with synchronous enable
+    used in my
+    [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)._
 
 ## COMBINATIONAL LOGIC
 
