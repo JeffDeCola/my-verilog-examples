@@ -1,5 +1,11 @@
 # JK FLIP-FLOP EXAMPLE
 
+```text
+THIS IS FOR EXAMPLE ONLY SINCE THIS HAS A RACE CONDITION
+WHEN J =1 and K = 1.
+I DON'T EVEN KNOW WHY THIS IS IN TEXTBOOKS.
+```
+
 _A jk flip-flop which is **pulse-triggered**
 can be set, reset and toggled.
 This has a race condition when clock is high._
@@ -85,7 +91,7 @@ repo._
 |  1     |  0  |  0  |  q  | NO CHANGE   |
 |  1     |  0  |  1  |  0  | RESET       |
 |  1     |  1  |  0  |  1  | SET         |
-|  1     |  1  |  1  | ~q  | TOGGLE      |
+|  1     |  1  |  1  | ~q  | TOGGLE (RACE CONDITION)      |
 
 ## VERILOG CODE
 
@@ -133,7 +139,9 @@ Dataflow model,
     assign qbar = ~(r & q);
 ```
 
-Behavioral model,
+```text
+THIS IS A POSEDGE JK FLIP-FLOP
+```
 
 ```verilog
     // INTERNAL WIRES
@@ -165,6 +173,17 @@ with,
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/jk_flip_flop/run-simulation.sh)
   is a script containing the commands below
 
+In the testbench,I had to force the output for the gate and dataflow model
+to a known value at the start of the test,
+
+```verilog
+force Q_gate = 1'b0;
+force Q_data = 1'b0;
+```
+
+I also could not simulate when the clock was high and I was trying to toggle
+because of the race condition.
+
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
@@ -179,14 +198,34 @@ and creates a waveform dump file *.vcd.
 vvp jk_flip_flop_tb.vvp
 ```
 
-The output of the test,
+The output of the test (toggle could not be simulated),
 
 ```text
 TEST START --------------------------------
 
-    ???
+                                     GATE  DATA   BEH
+                 | TIME(ns) | J | K |  Q  |  Q  |  Q  |
+                 --------------------------------------
+   0             |        0 | 0 | 0 |  x  |  x  |  x  |
+   0             |       20 | 0 | 0 |  0  |  0  |  x  |
+   0             |       21 | 0 | 0 |  0  |  0  |  x  |
+   1         SET |       25 | 1 | 0 |  0  |  0  |  x  |
+   1         SET |       30 | 1 | 0 |  1  |  1  |  1  |
+   2   NO_CHANGE |       45 | 0 | 0 |  1  |  1  |  1  |
+   3       RESET |       65 | 0 | 1 |  1  |  1  |  1  |
+   3       RESET |       70 | 0 | 1 |  0  |  0  |  0  |
+   4   NO_CHANGE |       85 | 0 | 0 |  0  |  0  |  0  |
+   5         SET |      105 | 1 | 0 |  0  |  0  |  0  |
+   5         SET |      110 | 1 | 0 |  1  |  1  |  1  |
+   6   NO_CHANGE |      125 | 0 | 0 |  1  |  1  |  1  |
+   7       RESET |      145 | 0 | 1 |  1  |  1  |  1  |
+   7       RESET |      150 | 0 | 1 |  0  |  0  |  0  |
+   8   NO_CHANGE |      165 | 0 | 0 |  0  |  0  |  0  |
 
-TEST END --------------------------------
+ VECTORS:    8
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

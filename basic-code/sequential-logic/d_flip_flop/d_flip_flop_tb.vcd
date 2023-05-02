@@ -1,0 +1,182 @@
+$date
+	Tue May  2 14:54:32 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module D_FLIP_FLOP_TB $end
+$var wire 1 ! Q_gate $end
+$var wire 1 " Q_data $end
+$var wire 1 # Q_beh $end
+$var wire 1 $ QBAR_gate $end
+$var wire 1 % QBAR_data $end
+$var wire 1 & QBAR_beh $end
+$var parameter 32 ' CLKPERIOD $end
+$var reg 1 ( CLK $end
+$var reg 256 ) COMMENT [255:0] $end
+$var reg 1 * D $end
+$var reg 32 + ERRORS [31:0] $end
+$var reg 1 , QEXPECTED $end
+$var reg 32 - VECTORCOUNT [31:0] $end
+$var integer 32 . COUNT [31:0] $end
+$var integer 32 / FD [31:0] $end
+$scope module UUT_d_flip_flop_behavioral $end
+$var wire 1 ( clk $end
+$var wire 1 * d $end
+$var wire 1 & qbar $end
+$var parameter 1 0 DATA0 $end
+$var parameter 1 1 DATA1 $end
+$var reg 1 # q $end
+$upscope $end
+$scope module UUT_d_flip_flop_dataflow $end
+$var wire 1 ( clk $end
+$var wire 1 * d $end
+$var wire 1 " q $end
+$var wire 1 % qbar $end
+$var wire 1 2 r $end
+$var wire 1 3 r1 $end
+$var wire 1 4 s $end
+$var wire 1 5 s1 $end
+$upscope $end
+$scope module UUT_d_flip_flop_gate $end
+$var wire 1 ( clk $end
+$var wire 1 * d $end
+$var wire 1 ! q $end
+$var wire 1 $ qbar $end
+$var wire 1 6 r $end
+$var wire 1 7 r1 $end
+$var wire 1 8 s $end
+$var wire 1 9 s1 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+11
+00
+b10100 '
+$end
+#0
+$dumpvars
+19
+08
+17
+16
+15
+04
+13
+12
+b10000000000000000000000000000011 /
+b11 .
+b0 -
+0,
+b0 +
+0*
+b0 )
+0(
+x&
+x%
+x$
+x#
+x"
+x!
+$end
+#100
+1&
+0#
+0"
+1%
+0!
+03
+1$
+07
+1(
+#200
+13
+17
+0(
+#250
+b1 -
+b10001000100000101010100010000010101111100110000 )
+#300
+03
+07
+1(
+#400
+13
+17
+0(
+#450
+02
+06
+b10 -
+1,
+14
+18
+1*
+b10001000100000101010100010000010101111100110001 )
+#500
+0&
+1#
+0%
+1"
+0$
+05
+1!
+09
+1(
+#600
+15
+19
+0(
+#650
+12
+16
+b11 -
+0,
+04
+08
+0*
+b10001000100000101010100010000010101111100110000 )
+#700
+1&
+0#
+0"
+1%
+0!
+03
+1$
+07
+1(
+#800
+13
+17
+0(
+#850
+02
+06
+b100 -
+1,
+14
+18
+1*
+b10001000100000101010100010000010101111100110001 )
+#900
+0&
+1#
+0%
+1"
+0$
+05
+1!
+09
+1(
+#1000
+15
+19
+0(
+#1050
+b11111111111111111111111111111111 .

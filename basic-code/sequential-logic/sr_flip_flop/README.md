@@ -127,6 +127,10 @@ Dataflow model,
 
 Behavioral model,
 
+```text
+THIS IS A POSEDGE JK FLIP-FLOP
+```
+
 ```verilog
     // INTERNAL WIRES
     assign qbar = ~q;

@@ -1,8 +1,7 @@
 # D FLIP-FLOP EXAMPLE
 
 _A d flip-flop which is **pulse-triggered**
-can save input data on output.
-This has a race condition when clock is high._
+can save input data on output._
 
 Table of Contents
 
@@ -47,7 +46,6 @@ D FLIP-FLOP
 * OPERATIONAL: when clk/en is 1
 * BUILT: with a sr-flip-flop
 * DATA: d output to q
-* There is a race condition problem that can be solved by cascading two d flip-flops
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -85,19 +83,73 @@ The
 gate model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        s, r;
+    wire        s1, r1;
+  
+    assign s = d;
+  
+    // NOT1
+    not (r, s);
+
+    // SR FLIP-FLOP ---------------------------------
+
+    // NAND3
+    nand (s1, s, clk);
+
+    // NAND4
+    nand (r1, r, clk);
+
+    // SR-LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s1, qbar);
+
+    // NAND2
+    nand (qbar, r1, q);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    assign s = d;
+    assign r = ~d;
+
+    // SR FLIP-FLOP ---------------------------------
+
+    // INTERNAL WIRES
+    wire        s1, r1;
+  
+    // NAND3
+    assign s1 = ~(s & clk);
+
+    // NAND4
+    assign r1 = ~(r & clk);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    assign q = ~(s1 & qbar);
+
+    // NAND2
+    assign qbar = ~(r1 & q);
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    parameter    DATA0 = 1'b0,
+                 DATA1 = 1'b1;
+
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({d})
+            DATA0 : q <= 1'b0;
+            DATA1 : q <= 1'b1;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -135,9 +187,23 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                 GATE  DATA   BEH
+                 | TIME(ns) | S |  Q  |  Q  |  Q  |
+                 ----------------------------------
+   0             |        0 | 0 |  x  |  x  |  x  |
+   0             |       10 | 0 |  0  |  0  |  0  |
+   1      DATA_0 |       25 | 0 |  0  |  0  |  0  |
+   2      DATA_1 |       45 | 1 |  0  |  0  |  0  |
+   2      DATA_1 |       50 | 1 |  1  |  1  |  1  |
+   3      DATA_0 |       65 | 0 |  1  |  1  |  1  |
+   3      DATA_0 |       70 | 0 |  0  |  0  |  0  |
+   4      DATA_1 |       85 | 1 |  0  |  0  |  0  |
+   4      DATA_1 |       90 | 1 |  1  |  1  |  1  |
 
-TEST END --------------------------------
+ VECTORS:    4
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

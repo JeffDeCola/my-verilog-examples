@@ -1,11 +1,11 @@
-`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
+`timescale 1ns / 100ps // time-unit = 1 ns, pred_flip_flop_pulse_triggeredcision = 100 ps
 
-// include files are in d_flip_flop_pos_edge.vh
+// include files are in d_flip_flop_pulse_triggered.vh
 
-module D_FLIP_FLOP_POS_EDGE_TB ();
+module D_FLIP_FLOP_PULSE_TRIGGERED_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             D;
 
     // OUTPUT PROBES
     wire            Q_gate, QBAR_gate;
@@ -20,30 +20,30 @@ module D_FLIP_FLOP_POS_EDGE_TB ();
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST (gate)
-    d_flip_flop_pos_edge_gate UUT_d_flip_flop_pos_edge_gate(
+    d_flip_flop_pulse_triggered_gate UUT_d_flip_flop_pulse_triggered_gate(
         .clk(CLK),
-        .s(S), .r(R),
+        .d(D),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
-    d_flip_flop_pos_edge_dataflow UUT_d_flip_flop_pos_edge_dataflow(
+    d_flip_flop_pulse_triggered_dataflow UUT_d_flip_flop_pulse_triggered_dataflow(
         .clk(CLK),
-        .s(S), .r(R),
+        .d(D),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
-    d_flip_flop_pos_edge_behavioral UUT_d_flip_flop_pos_edge_behavioral(
+    d_flip_flop_pulse_triggered_behavioral UUT_d_flip_flop_pulse_triggered_behavioral(
         .clk(CLK),
-        .s(S), .r(R),
+        .d(D),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("d_flip_flop_pos_edge_tb.vcd");
-        $dumpvars(0, D_FLIP_FLOP_POS_EDGE_TB);
+        $dumpfile("d_flip_flop_pulse_triggered_tb.vcd");
+        $dumpvars(0, D_FLIP_FLOP_PULSE_TRIGGERED_TB);
     end
 
     // CLK PERIOD
@@ -58,12 +58,12 @@ module D_FLIP_FLOP_POS_EDGE_TB ();
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("d_flip_flop_pos_edge_tb.tv","r");
+        FD=$fopen("d_flip_flop_pulse_triggered_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -73,10 +73,10 @@ module D_FLIP_FLOP_POS_EDGE_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
-        $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $display("                                 GATE  DATA   BEH");
+        $display("                 | TIME(ns) | S |  Q  |  Q  |  Q  |");
+        $display("                 ----------------------------------");
+        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, D, Q_gate, Q_data, Q_beh);
 
     end
 
@@ -87,7 +87,7 @@ module D_FLIP_FLOP_POS_EDGE_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin

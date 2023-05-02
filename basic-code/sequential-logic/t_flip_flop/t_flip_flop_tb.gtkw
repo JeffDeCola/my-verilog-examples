@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Mon May  1 22:39:14 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/basic-code/sequential-logic/t_flip_flop/t_flip_flop_tb.vcd"
+[dumpfile_mtime] "Mon May  1 22:35:28 2023"
+[dumpfile_size] 1855
+[savefile] "/home/jeff/verilog/my-verilog-examples/basic-code/sequential-logic/t_flip_flop/t_flip_flop_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-15.761651 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] T_FLIP_FLOP_TB.
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+T_FLIP_FLOP_TB.CLK
+T_FLIP_FLOP_TB.T
+@29
+T_FLIP_FLOP_TB.Q_gate
+[pattern_trace] 1
+[pattern_trace] 0

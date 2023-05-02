@@ -5,13 +5,13 @@ can save input data on output._
 
 Table of Contents
 
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#run-simulate)
-* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#view-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#run-simulate)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#view-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -46,7 +46,6 @@ PULSE-TRIGGERED D FLIP-FLOP
 * PULSE TRIGGERED: Two cascading d flip-flops
 * BUILT: with sr-flip-flops
 * DATA: d output to q
-* There is no race condition problem
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -61,11 +60,11 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/d-flip-flop-pos-edge)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/d-flip-flop-pulse-triggered)
 repo._
 
 <p align="center">
-    <img src="svgs/d-flip-flop-pos-edge.svg"
+    <img src="svgs/d-flip-flop-pulse-triggered.svg"
     align="middle"
 </p>
 
@@ -80,53 +79,180 @@ repo._
 ## VERILOG CODE
 
 The
-[d_flip_flop_pos_edge.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/d_flip_flop_pos_edge.v)
+[d_flip_flop_pulse_triggered.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered/d_flip_flop_pulse_triggered.v)
 gate model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        clk1;
+
+    //NOT 3  
+    not (clk1, clk);
+
+    // D-FLIP FLOP (BOSS)
+
+        // INTERNAL WIRES
+        wire        s1, r1;
+        wire        s2, r2;
+      
+        assign s1 = d;
+      
+        // NOT2
+        not (r1, s1);
+
+        // SR FLIP-FLOP ---------------------------------
+
+        // NAND7
+        nand (s2, s1, clk1);
+
+        // NAND8
+        nand (r2, r1, clk1);
+
+        // SR-LATCH -------------------------------------
+        
+        // NAND5
+        nand (q1, s2, q1bar);
+
+        // NAND6
+        nand (q1bar, r2, q1);
+
+    // D-FLIP FLOP (WORKER)
+
+        // INTERNAL WIRES
+        wire        s3, r3;
+        wire        s4, r4;
+      
+        assign s3 = q1;
+      
+        // NOT1
+        not (r3, s3);
+
+        // SR FLIP-FLOP ---------------------------------
+
+        // NAND3
+        nand (s4, s3, clk1);
+
+        // NAND4
+        nand (r4, r3, clk1);
+
+        // SR-LATCH -------------------------------------
+        
+        // NAND1
+        nand (q, s4, qbar);
+
+        // NAND2
+        nand (qbar, r4, q);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        clk1;
+
+    // NOT3  
+    assign clk1 = ~clk;
+
+    // D-FLIP FLOP (BOSS)
+
+        // INTERNAL WIRES
+        wire        s1, r1;
+        wire        s2, r2;
+      
+        assign s1 = d;
+      
+        // NOT2
+        assign r1 = ~s1;
+
+        // SR FLIP-FLOP ---------------------------------
+
+        // NAND7
+        assign s2 = ~(s1 & clk1);
+
+        // NAND8
+        assign r2 = ~(r1 & clk1);
+
+        // SR-LATCH -------------------------------------
+        
+        // NAND5
+        assign q1 = ~( s2 & q1bar);
+
+        // NAND6
+        assign q1bar = ~(r2 & q1);
+
+    // D-FLIP FLOP (WORKER)
+
+        // INTERNAL WIRES
+        wire        s3, r3;
+        wire        s4, r4;
+      
+        assign s3 = q1;
+      
+        // NOT1
+        assign r3 = ~s3;
+
+        // SR FLIP-FLOP ---------------------------------
+
+        // NAND3
+        assign s4 = ~(s3 & clk1);
+
+        // NAND4
+        assign r4 = ~(r3 & clk1);
+
+        // SR-LATCH -------------------------------------
+        
+        // NAND1
+        assign q = ~(s4 & qbar);
+
+        // NAND2
+        assign qbar = ~(r4 & q);
 ```
 
 Behavioral model,
 
 ```verilog
-    ???
+    parameter    DATA0 = 1'b0,
+                 DATA1 = 1'b1;
+
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({d})
+            DATA0 : q <= 1'b0;
+            DATA1 : q <= 1'b1;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)
 
 The testbench uses two files,
 
-* [d_flip_flop_pos_edge_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/d_flip_flop_pos_edge_tb.v)
+* [d_flip_flop_pulse_triggered_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered/d_flip_flop_pulse_triggered_tb.v)
   the testbench
-* [d_flip_flop_pos_edge_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/d_flip_flop_pos_edge_tb.tv)
+* [d_flip_flop_pulse_triggered_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered/d_flip_flop_pulse_triggered_tb.tv)
   the test vectors and expected results
 
 with,
 
-* [d_flip_flop_pos_edge.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/d_flip_flop_pos_edge.vh)
+* [d_flip_flop_pulse_triggered.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered/d_flip_flop_pulse_triggered.vh)
   is the header file listing the verilog models
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered/run-simulation.sh)
   is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o d_flip_flop_pos_edge_tb.vvp d_flip_flop_pos_edge_tb.v d_flip_flop_pos_edge.vh
+iverilog -o d_flip_flop_pulse_triggered_tb.vvp d_flip_flop_pulse_triggered_tb.v d_flip_flop_pulse_triggered.vh
 ```
 
 Use **vvp** to run the simulation, which checks the UUT
 and creates a waveform dump file *.vcd.
 
 ```bash
-vvp d_flip_flop_pos_edge_tb.vvp
+vvp d_flip_flop_pulse_triggered_tb.vvp
 ```
 
 The output of the test,
@@ -134,17 +260,31 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                 GATE  DATA   BEH
+                 | TIME(ns) | S |  Q  |  Q  |  Q  |
+                 ----------------------------------
+   0             |        0 | 0 |  0  |  0  |  x  |
+   0             |       10 | 0 |  0  |  0  |  0  |
+   1      DATA_0 |       25 | 0 |  0  |  0  |  0  |
+   2      DATA_1 |       45 | 1 |  1  |  1  |  0  |
+   2      DATA_1 |       50 | 1 |  1  |  1  |  1  |
+   3      DATA_0 |       65 | 0 |  0  |  0  |  1  |
+   3      DATA_0 |       70 | 0 |  0  |  0  |  0  |
+   4      DATA_1 |       85 | 1 |  1  |  1  |  0  |
+   4      DATA_1 |       90 | 1 |  1  |  1  |  1  |
 
-TEST END --------------------------------
+ VECTORS:    4
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
 
-Open the waveform file d_flip_flop_pos_edge_tb.vcd file with GTKWave,
+Open the waveform file d_flip_flop_pulse_triggered_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f d_flip_flop_pos_edge_tb.vcd &
+gtkwave -f d_flip_flop_pulse_triggered_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -154,10 +294,10 @@ Now you can use the script
 anytime you want,
 
 ```bash
-gtkwave -f d_flip_flop_pos_edge_tb.gtkw &
+gtkwave -f d_flip_flop_pulse_triggered_tb.gtkw &
 ```
 
-![d_flip_flop_pos_edge-waveform.jpg](../../../docs/pics/basic-code/d_flip_flop_pos_edge-waveform.jpg)
+![d_flip_flop_pulse_triggered-waveform.jpg](../../../docs/pics/basic-code/d_flip_flop_pulse_triggered-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
