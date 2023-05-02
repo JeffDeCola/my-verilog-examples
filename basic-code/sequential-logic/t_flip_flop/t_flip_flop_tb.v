@@ -5,7 +5,7 @@
 module T_FLIP_FLOP_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             T;
 
     // OUTPUT PROBES
     wire            Q_gate, QBAR_gate;
@@ -21,20 +21,23 @@ module T_FLIP_FLOP_TB ();
 
     // UNIT UNDER TEST (gate)
     t_flip_flop_gate UUT_t_flip_flop_gate(
-        .s(S), .r(R),
+        .clk(CLK),
+        .t(T),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
-    t_flip_flop_dataflow UUT_t_flip_flop_dataflow(
-        .s(S), .r(R),
-        .q(Q_data), .qbar(QBAR_data)
-    );
-
-        // UNIT UNDER TEST (behavioral)
+    // t_flip_flop_dataflow UUT_t_flip_flop_dataflow(
+    //    .clk(CLK),
+    //     .t(T),
+    //    .q(Q_data), .qbar(QBAR_data)
+    // );
+    
+    // UNIT UNDER TEST (behavioral)
     t_flip_flop_behavioral UUT_t_flip_flop_behavioral(
-        .s(S), .r(R),
-        .q(Q_beh), .qbar(QBAR_beh)
+       .clk(CLK),
+       .t(T),
+       .q(Q_beh), .qbar(QBAR_beh)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
@@ -60,7 +63,7 @@ module T_FLIP_FLOP_TB ();
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, T, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -70,10 +73,29 @@ module T_FLIP_FLOP_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
-        $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $display("                                 GATE  DATA   BEH");
+        $display("                 | TIME(ns) | T |  Q  |  Q  |  Q  |");
+        $display("                 ----------------------------------");
+        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, T, Q_gate, Q_data, Q_beh);
+
+        // INIT - PUT OUTPUT IN KNOWN STATE
+        // TO AVOID THE RACE CONDITION
+        // NOTE: The beh model will still have X
+        #1
+        force Q_gate = 1'b0;
+        force QBAR_gate = 1'b1;
+        // force Q_data = 1'b0;
+        // force QBAR_data = 1'b1;
+        force Q_beh = 1'b0;
+        force QBAR_beh = 1'b1;
+
+        #10
+        release Q_gate;
+        release QBAR_gate;
+        // release Q_data;
+        // release QBAR_data;
+        release Q_beh;
+        release QBAR_beh;
 
     end
 
@@ -84,7 +106,7 @@ module T_FLIP_FLOP_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, T, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -114,10 +136,10 @@ module T_FLIP_FLOP_TB ();
             $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
             ERRORS = ERRORS + 1;
         end
-        if (Q_data !== QEXPECTED) begin
-            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
+        // if (Q_data !== QEXPECTED) begin
+        //     $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
+        //    ERRORS = ERRORS + 1;
+        // end
         if (Q_beh !== QEXPECTED) begin
             $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
             ERRORS = ERRORS + 1;

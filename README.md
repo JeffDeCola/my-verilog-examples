@@ -174,17 +174,17 @@ The artifacts created are,
   * [t_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/t_flip_flop)
 
     _A t flip-flop which is **pulse-triggered**
-    can be toggled._
+    can be toggled.
+    This has a race condition when clock is high._
 
   * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
 
     _A d flip-flop which is **pulse-triggered**
-    can save input data on output.
-    This has a race condition when clock is high._
+    can save input data on output._
 
   * [d_flip_flop_pulse_triggered](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pulse_triggered)
 
-    _A pulse-triggered d flip-flop (cascading)
+    _A **pulse-triggered** d flip-flop (cascading)
     can save input data on output._
 
   * [d_flip_flop_pos_edge_sync_en](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en)

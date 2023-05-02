@@ -68,12 +68,6 @@ module JK_FLIP_FLOP_PULSE_TRIGGERED_TB ();
         VECTORCOUNT = 0;
         ERRORS = 0;
         COMMENT ="";
-        
-        // PUT OUTPUT IN KNOWN STATE
-        force Q_gate = 1'b0;
-        #1 release Q_gate;
-        force Q_data = 1'b0;
-        #1 release Q_data;
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -83,6 +77,24 @@ module JK_FLIP_FLOP_PULSE_TRIGGERED_TB ();
         $display("                 | TIME(ns) | J | K |  Q  |  Q  |  Q  |");
         $display("                 --------------------------------------");
         $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, J, K, Q_gate, Q_data, Q_beh);
+
+        // INIT - PUT OUTPUT IN KNOWN STATE
+        // TO AVOID THE RACE CONDITION
+        // NOTE: The beh model will still have X
+        #5
+        force Q_gate = 1'b0;
+        force QBAR_gate = 1'b1;
+        force Q_data = 1'b0;
+        force QBAR_data = 1'b1;
+        force Q_beh = 1'b0;
+        force QBAR_beh = 1'b1;
+        #26
+        release Q_gate;
+        release QBAR_gate;
+        release Q_data;
+        release QBAR_data;
+        release Q_beh;
+        release QBAR_beh;
 
     end
 
@@ -114,9 +126,9 @@ module JK_FLIP_FLOP_PULSE_TRIGGERED_TB ();
 
     // CHECK TEST VECTORS ON POS EGDE CLK
     always @(posedge CLK) begin
-
-        // WAIT A BIT
-        #5;
+        
+        // WAIT A BIT FOR OUTPUT TO SETTLE
+        #12;
 
         // CHECK EACH VECTOR RESULT
         if (Q_gate !== QEXPECTED) begin

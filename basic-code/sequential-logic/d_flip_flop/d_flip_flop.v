@@ -1,32 +1,85 @@
 // A d flip-flop which is pulse-triggered can save input data on output.
-// This has a race condition when clock is high.
 
-module d_flip_flop (
-    input         clk,        // Clock
-    input         d,          // Data
-    output        q1,         // Output 1
-    output        q1_bar,     //
-    output reg    q2,         // Output 2
-    output        q2_bar,     //
-    output reg    q3,         // Output 3
-    output        q3_bar);    //
+module d_flip_flop_gate (
+    input       clk,        // Clock
+    input       d,          // Inputs
+    output      q,          // Output
+    output      qbar);      //
 
-    // D FLIP-FLOP USING GATE LEVEL MODELING
-    // THIS IS A LEVEL TRIGGERED FLIP FLIP, NOT A POSEDGE TRIGGERED FLIP FLOP
-    wire d_bar;   // not output
-    wire n1, n2;  // nand output
+    // INTERNAL WIRES
+    wire        s, r;
+    wire        s1, r1;
   
-    not  not1  (d_bar,  d);
-    nand nand1 (n1,     clk, d); 
-    nand nand2 (n2,     clk, d_bar); 
-    nand nand3 (q1,     n1,  q1_bar); 
-    nand nand4 (q1_bar, n2,  q1); 
+    assign s = d;
+  
+    // NOT1
+    not (r, s);
 
-    // D FLIP-FLOP USING DATA-FLOW LEVEL MODELING
+    // SR FLIP-FLOP ---------------------------------
 
+    // NAND3
+    nand (s1, s, clk);
 
-    // D FLIP-FLOP USING BEHAIVIORAL LEVEL MODELING
-    assign q3_bar = ~q3; 
-    always @ (posedge clk) begin
-        q3 <= d;
+    // NAND4
+    nand (r1, r, clk);
+
+    // SR-LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s1, qbar);
+
+    // NAND2
+    nand (qbar, r1, q);
+
+endmodule
+
+module d_flip_flop_dataflow (
+    input       clk,        // Clock
+    input       d,          // Inputs
+    output      q,          // Output
+    output      qbar);      //
+
+    assign s = d;
+    assign r = ~d;
+
+    // SR FLIP-FLOP ---------------------------------
+
+    // INTERNAL WIRES
+    wire        s1, r1;
+  
+    // NAND3
+    assign s1 = ~(s & clk);
+
+    // NAND4
+    assign r1 = ~(r & clk);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    assign q = ~(s1 & qbar);
+
+    // NAND2
+    assign qbar = ~(r1 & q);
+
+endmodule
+
+module d_flip_flop_behavioral (
+    input       clk,        // Clock
+    input       d,          // Inputs
+    output reg  q,          // Output
+    output      qbar);      //
+
+    parameter    DATA0 = 1'b0,
+                 DATA1 = 1'b1;
+
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({d})
+            DATA0 : q <= 1'b0;
+            DATA1 : q <= 1'b1;
+        endcase
     end
+
+endmodule

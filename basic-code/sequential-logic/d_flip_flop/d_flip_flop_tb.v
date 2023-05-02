@@ -5,7 +5,7 @@
 module D_FLIP_FLOP_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             D;
 
     // OUTPUT PROBES
     wire            Q_gate, QBAR_gate;
@@ -22,21 +22,21 @@ module D_FLIP_FLOP_TB ();
     // UNIT UNDER TEST (gate)
     d_flip_flop_gate UUT_d_flip_flop_gate(
         .clk(CLK),
-        .s(S), .r(R),
+        .d(D),
         .q(Q_gate), .qbar(QBAR_gate)
     );
 
     // UNIT UNDER TEST (dataflow)
     d_flip_flop_dataflow UUT_d_flip_flop_dataflow(
         .clk(CLK),
-        .s(S), .r(R),
+        .d(D),
         .q(Q_data), .qbar(QBAR_data)
     );
 
         // UNIT UNDER TEST (behavioral)
     d_flip_flop_behavioral UUT_d_flip_flop_behavioral(
         .clk(CLK),
-        .s(S), .r(R),
+        .d(D),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
@@ -63,8 +63,7 @@ module D_FLIP_FLOP_TB ();
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
-
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -74,10 +73,10 @@ module D_FLIP_FLOP_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
-        $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $display("                                 GATE  DATA   BEH");
+        $display("                 | TIME(ns) | S |  Q  |  Q  |  Q  |");
+        $display("                 ----------------------------------");
+        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, D, Q_gate, Q_data, Q_beh);
 
     end
 
@@ -88,7 +87,7 @@ module D_FLIP_FLOP_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin

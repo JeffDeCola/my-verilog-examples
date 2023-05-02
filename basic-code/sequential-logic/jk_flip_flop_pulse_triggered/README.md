@@ -89,19 +89,97 @@ The
 gate model,
 
 ```verilog
-???
+    // JK FLIP FLOP 1 -----------------------------------
+
+        // NAND7
+        nand (s1, j, clk, qbar);
+
+        // NAND8
+        nand (r1, k, clk, q);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND6
+        nand (q1, s1, q1bar);
+
+        // NAND6
+        nand (q1bar, r1, q1);
+
+    // JK FLIP FLOP 2 -----------------------------------
+
+        // NAND3
+        nand (s2, q1, clk2);
+
+        // NAND4
+        nand (r2, q1bar, clk2);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND1
+        nand (q, s2, qbar);
+
+        // NAND2
+        nand (qbar, r2, q);
+
+    // CLOCK -------------------------------------------
+
+        not (clk2, clk);
 ```
 
 Dataflow model,
 
 ```verilog
-???
+    // JK FLIP FLOP 1 -----------------------------------
+
+        // NAND7
+        assign s1 = ~(j & clk & qbar);
+
+        // NAND8
+        assign r1 = ~(k & clk & q);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND6
+        assign q1 = ~(s1 & q1bar);
+
+        // NAND6
+        assign q1bar = ~(r1 & q1);
+
+    // JK FLIP FLOP 2 -----------------------------------
+
+        // NAND3
+        assign s2 = ~(q1 & clk2);
+
+        // NAND4
+        assign r2 = ~(q1bar & clk2);
+
+        // SR- LATCH -------------------------------------
+        
+        // NAND1
+        assign q = ~(s2 & qbar);
+
+        // NAND2
+        assign qbar = ~(r2 & q);
+
+    // CLOCK -------------------------------------------
+
+        assign clk2 = ~(clk);
 ```
 
 Behavioral model,
 
 ```verilog
-??
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({j,k})
+            2'b0_0 : q <= q;
+            2'b0_1 : q <= 1'b0;
+            2'b1_0 : q <= 1'b1;
+            2'b1_1 : q <= ~q;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -139,9 +217,40 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                                     GATE  DATA   BEH
+                 | TIME(ns) | J | K |  Q  |  Q  |  Q  |
+                 --------------------------------------
+   0             |        0 | 0 | 0 |  x  |  x  |  x  |
+   0             |        5 | 0 | 0 |  0  |  0  |  0  |
+   0             |       10 | 0 | 0 |  0  |  0  |  0  |
+   1         SET |       25 | 1 | 0 |  0  |  0  |  0  |
+   1         SET |       31 | 1 | 0 |  0  |  0  |  1  |
+   1         SET |       40 | 1 | 0 |  1  |  1  |  1  |
+   2   NO_CHANGE |       45 | 0 | 0 |  1  |  1  |  1  |
+   3       RESET |       65 | 0 | 1 |  1  |  1  |  1  |
+   3       RESET |       70 | 0 | 1 |  1  |  1  |  0  |
+   3       RESET |       80 | 0 | 1 |  0  |  0  |  0  |
+   4   NO_CHANGE |       85 | 0 | 0 |  0  |  0  |  0  |
+   5         SET |      105 | 1 | 0 |  0  |  0  |  0  |
+   5         SET |      110 | 1 | 0 |  0  |  0  |  1  |
+   5         SET |      120 | 1 | 0 |  1  |  1  |  1  |
+   6   NO_CHANGE |      125 | 0 | 0 |  1  |  1  |  1  |
+   7       RESET |      145 | 0 | 1 |  1  |  1  |  1  |
+   7       RESET |      150 | 0 | 1 |  1  |  1  |  0  |
+   7       RESET |      160 | 0 | 1 |  0  |  0  |  0  |
+   8   NO_CHANGE |      165 | 0 | 0 |  0  |  0  |  0  |
+   9   NO_CHANGE |      185 | 0 | 0 |  0  |  0  |  0  |
+  10      TOGGLE |      205 | 1 | 1 |  0  |  0  |  0  |
+  10      TOGGLE |      210 | 1 | 1 |  0  |  0  |  1  |
+  10      TOGGLE |      220 | 1 | 1 |  1  |  1  |  1  |
+  11      TOGGLE |      225 | 1 | 1 |  1  |  1  |  1  |
+  11      TOGGLE |      230 | 1 | 1 |  1  |  1  |  0  |
+  11      TOGGLE |      240 | 1 | 1 |  0  |  0  |  0  |
 
-TEST END --------------------------------
+ VECTORS:   11
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

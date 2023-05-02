@@ -1,7 +1,14 @@
 # T FLIP-FLOP EXAMPLE
 
+```text
+THIS IS FOR EXAMPLE ONLY SINCE THIS T FLIP-FLOP IT BUILT FROM
+A JK FLIP-FLOP THAT HAS A RACE CONDITION WHEN J =1 and K = 1.
+I DON'T EVEN KNOW WHY THIS IS IN TEXTBOOKS.
+```
+
 _A t flip-flop which is **pulse-triggered**
-can be toggled._
+can be toggled.
+This has a race condition when clock is high._
 
 Table of Contents
 
@@ -84,19 +91,72 @@ The
 gate model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        j, k;
+    wire        s, r;
+
+    assign j = t;
+    assign k = t;
+
+    // JK FLIP-FLOP -----------------------------------
+
+    // NAND3
+    nand (s, j, clk, qbar);
+
+    // NAND4
+    nand (r, k, clk, q);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    nand (q, s, qbar);
+
+    // NAND2
+    nand (qbar, r, q);
 ```
 
 Dataflow model,
 
 ```verilog
-    ???
+    // INTERNAL WIRES
+    wire        s, r;
+
+    // JK FLIP-FLOP -----------------------------------
+  
+    // NAND3
+    assign s = ~(t & clk & qbar);
+
+    // NAND4
+    assign r = ~(t & clk & q);
+
+    // SR- LATCH -------------------------------------
+    
+    // NAND1
+    assign q = ~(s & qbar);
+
+    // NAND2
+    assign qbar = ~(r & q);
 ```
 
 Behavioral model,
 
-```verilog
-    ???
+```text
+THIS IS A POSEDGE T FLIP-FLOP
+```
+
+```text
+    parameter   HOLD   = 1'b0,
+                TOGGLE = 1'b1;
+
+    // INTERNAL WIRES
+    assign qbar = ~q;
+
+    always @(posedge clk) begin
+        case({t})
+            HOLD :    q <= q;
+            TOGGLE :  q <= ~q;
+        endcase
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -115,6 +175,12 @@ with,
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/t_flip_flop/run-simulation.sh)
   is a script containing the commands below
 
+```text
+NOTE: This design has issues and has a race condition.
+I could not even run the dataflow model.
+Still not usre why they use these examples in textbooks.
+```
+
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
@@ -129,14 +195,33 @@ and creates a waveform dump file *.vcd.
 vvp t_flip_flop_tb.vvp
 ```
 
-The output of the test,
+The output of the test (note the race condition),
 
 ```text
 TEST START --------------------------------
 
-    ???
+                                 GATE  DATA   BEH
+                 | TIME(ns) | T |  Q  |  Q  |  Q  |
+                 ----------------------------------
+   0             |        0 | 0 |  x  |  z  |  z  |
+   0             |        1 | 0 |  0  |  z  |  z  |
+   0             |       11 | 0 |  0  |  z  |  z  |
+   1   NO_CHANGE |       25 | 0 |  0  |  z  |  z  |
+   2      TOGGLE |       45 | 1 |  0  |  z  |  z  |
+   2      TOGGLE |       50 | 1 |  1  |  z  |  z  |
+   3   NO_CHANGE |       65 | 0 |  1  |  z  |  z  |
+   4      TOGGLE |       85 | 1 |  1  |  z  |  z  |
+***ERROR (gate) - Expected Q = 0
+   5   NO_CHANGE |      105 | 0 |  1  |  z  |  z  |
+***ERROR (gate) - Expected Q = 0
+   6      TOGGLE |      125 | 1 |  1  |  z  |  z  |
+   7   NO_CHANGE |      145 | 0 |  1  |  z  |  z  |
+   8   NO_CHANGE |      165 | 0 |  1  |  z  |  z  |
 
-TEST END --------------------------------
+ VECTORS:    8
+  ERRORS:    2
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
