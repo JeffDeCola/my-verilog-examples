@@ -98,7 +98,7 @@ gate model,
         nand (r1, k, clk, q);
 
         // SR- LATCH -------------------------------------
-        
+
         // NAND6
         nand (q1, s1, q1bar);
 
@@ -114,7 +114,7 @@ gate model,
         nand (r2, q1bar, clk2);
 
         // SR- LATCH -------------------------------------
-        
+
         // NAND1
         nand (q, s2, qbar);
 
@@ -138,7 +138,7 @@ Dataflow model,
         assign r1 = ~(k & clk & q);
 
         // SR- LATCH -------------------------------------
-        
+
         // NAND6
         assign q1 = ~(s1 & q1bar);
 
@@ -154,7 +154,7 @@ Dataflow model,
         assign r2 = ~(q1bar & clk2);
 
         // SR- LATCH -------------------------------------
-        
+
         // NAND1
         assign q = ~(s2 & qbar);
 

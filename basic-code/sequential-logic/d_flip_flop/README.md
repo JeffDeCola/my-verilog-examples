@@ -86,9 +86,9 @@ gate model,
     // INTERNAL WIRES
     wire        s, r;
     wire        s1, r1;
-  
+
     assign s = d;
-  
+
     // NOT1
     not (r, s);
 
@@ -101,7 +101,7 @@ gate model,
     nand (r1, r, clk);
 
     // SR-LATCH -------------------------------------
-    
+
     // NAND1
     nand (q, s1, qbar);
 
@@ -119,7 +119,7 @@ Dataflow model,
 
     // INTERNAL WIRES
     wire        s1, r1;
-  
+
     // NAND3
     assign s1 = ~(s & clk);
 
@@ -127,7 +127,7 @@ Dataflow model,
     assign r1 = ~(r & clk);
 
     // SR- LATCH -------------------------------------
-    
+
     // NAND1
     assign q = ~(s1 & qbar);
 

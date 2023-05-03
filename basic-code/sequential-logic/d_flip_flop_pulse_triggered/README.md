@@ -86,7 +86,7 @@ gate model,
     // INTERNAL WIRES
     wire        clk1;
 
-    //NOT 3  
+    //NOT 3
     not (clk1, clk);
 
     // D-FLIP FLOP (BOSS)
@@ -94,9 +94,9 @@ gate model,
         // INTERNAL WIRES
         wire        s1, r1;
         wire        s2, r2;
-      
+
         assign s1 = d;
-      
+
         // NOT2
         not (r1, s1);
 
@@ -109,7 +109,7 @@ gate model,
         nand (r2, r1, clk1);
 
         // SR-LATCH -------------------------------------
-        
+
         // NAND5
         nand (q1, s2, q1bar);
 
@@ -121,9 +121,9 @@ gate model,
         // INTERNAL WIRES
         wire        s3, r3;
         wire        s4, r4;
-      
+
         assign s3 = q1;
-      
+
         // NOT1
         not (r3, s3);
 
@@ -136,7 +136,7 @@ gate model,
         nand (r4, r3, clk1);
 
         // SR-LATCH -------------------------------------
-        
+
         // NAND1
         nand (q, s4, qbar);
 
@@ -150,7 +150,7 @@ Dataflow model,
     // INTERNAL WIRES
     wire        clk1;
 
-    // NOT3  
+    // NOT3
     assign clk1 = ~clk;
 
     // D-FLIP FLOP (BOSS)
@@ -158,9 +158,9 @@ Dataflow model,
         // INTERNAL WIRES
         wire        s1, r1;
         wire        s2, r2;
-      
+
         assign s1 = d;
-      
+
         // NOT2
         assign r1 = ~s1;
 
@@ -173,7 +173,7 @@ Dataflow model,
         assign r2 = ~(r1 & clk1);
 
         // SR-LATCH -------------------------------------
-        
+
         // NAND5
         assign q1 = ~( s2 & q1bar);
 
@@ -185,9 +185,9 @@ Dataflow model,
         // INTERNAL WIRES
         wire        s3, r3;
         wire        s4, r4;
-      
+
         assign s3 = q1;
-      
+
         // NOT1
         assign r3 = ~s3;
 
@@ -200,7 +200,7 @@ Dataflow model,
         assign r4 = ~(r3 & clk1);
 
         // SR-LATCH -------------------------------------
-        
+
         // NAND1
         assign q = ~(s4 & qbar);
 
