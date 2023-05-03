@@ -6,8 +6,7 @@ module input_section (
     input   s1,
     input   s0,
     output  out1,
-    output  out2
-);
+    output  out2);
 
 assign out1 = ~((b & s3 & a) | (a & s2 & ~b));
 assign out2 = ~((~b & s1) | (s0 & b) | (a));
