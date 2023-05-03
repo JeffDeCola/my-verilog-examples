@@ -45,7 +45,7 @@ POSITIVE EDGE-TRIGGERED D FLIP-FLOP WITH SYNCHRONOUS ENABLE
 
 * **USES CLOCK** - **posedge-triggered**
 * OPERATIONAL: on posedge clk
-* BUILT: with a ??????????
+* BUILT: using behavioral model
 * DATA: d output to q
 
 _I used
@@ -75,29 +75,26 @@ repo._
 |:---------:|:----:|:---:|:---:|:------------|
 |  other    |  X   |  X  |  q  | NO CHANGE   |
 |  posedge  |  0   |  X  |  q  | NO CHANGE   |
-|  posedge  |  0   |  0  |  0  | DATA_0      |
-|  posedge  |  0   |  1  |  1  | DATA_1      |
+|  posedge  |  1   |  0  |  0  | DATA_0      |
+|  posedge  |  1   |  1  |  1  | DATA_1      |
 
 ## VERILOG CODE
 
 The
 [d_flip_flop_pos_edge_sync_en.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en/d_flip_flop_pos_edge_sync_en.v)
-gate model,
+behavioral model,
 
 ```verilog
-    ???
-```
+    assign qbar = ~q;
 
-Dataflow model,
-
-```verilog
-    ???
-```
-
-Behavioral model,
-
-```verilog
-    ???
+    // D FLIP-FLOP WITH SYNC ENABLE
+    always @ (posedge clk) begin
+        if (en) begin
+            q <= d;
+        end else begin
+            q <= q;
+        end
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -135,9 +132,27 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-    ???
+                               
+                 | TIME(ns) | EN | D |  Q  |
+                 ---------------------------
+   0             |        0 | 1  | 0 |  x  |
+   0             |       10 | 1  | 0 |  0  |
+   1      DATA_0 |       25 | 1  | 0 |  0  |
+   2      DATA_1 |       45 | 1  | 1 |  0  |
+   2      DATA_1 |       50 | 1  | 1 |  1  |
+   3      DATA_0 |       65 | 1  | 0 |  1  |
+   3      DATA_0 |       70 | 1  | 0 |  0  |
+   4      DATA_1 |       85 | 1  | 1 |  0  |
+   4      DATA_1 |       90 | 1  | 1 |  1  |
+   5      DATA_0 |      105 | 0  | 0 |  1  |
+   6      DATA_1 |      125 | 0  | 1 |  1  |
+   7      DATA_0 |      145 | 0  | 0 |  1  |
+   8      DATA_1 |      165 | 0  | 1 |  1  |
 
-TEST END --------------------------------
+ VECTORS:    8
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

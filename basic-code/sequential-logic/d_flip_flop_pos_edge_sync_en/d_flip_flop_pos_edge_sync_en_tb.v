@@ -5,11 +5,10 @@
 module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             EN;
+    reg             D;
 
     // OUTPUT PROBES
-    wire            Q_gate, QBAR_gate;
-    wire            Q_data, QBAR_data;
     wire            Q_beh, QBAR_beh;
 
     // FOR TESTING  
@@ -19,24 +18,11 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (gate)
-    d_flip_flop_pos_edge_sync_en_gate UUT_d_flip_flop_pos_edge_sync_en_gate(
-        .clk(CLK),
-        .s(S), .r(R),
-        .q(Q_gate), .qbar(QBAR_gate)
-    );
-
-    // UNIT UNDER TEST (dataflow)
-    d_flip_flop_pos_edge_sync_en_dataflow UUT_d_flip_flop_pos_edge_sync_en_dataflow(
-        .clk(CLK),
-        .s(S), .r(R),
-        .q(Q_data), .qbar(QBAR_data)
-    );
-
-        // UNIT UNDER TEST (behavioral)
+    // UNIT UNDER TEST (behavioral)
     d_flip_flop_pos_edge_sync_en_behavioral UUT_d_flip_flop_pos_edge_sync_en_behavioral(
         .clk(CLK),
-        .s(S), .r(R),
+        .en(EN),
+        .d(D),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
@@ -63,7 +49,7 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b", COMMENT, S, R);
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, EN, D, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -73,10 +59,10 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
-        $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $display("                               ");
+        $display("                 | TIME(ns) | EN | D |  Q  |");
+        $display("                 ---------------------------");
+        $monitor("%4d  %10s | %8d | %d  | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, EN, D, Q_beh);
 
     end
 
@@ -87,7 +73,7 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b  %b", COMMENT, EN, D, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -113,14 +99,6 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if (Q_gate !== QEXPECTED) begin
-            $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Q_data !== QEXPECTED) begin
-            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
         if (Q_beh !== QEXPECTED) begin
             $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
             ERRORS = ERRORS + 1;

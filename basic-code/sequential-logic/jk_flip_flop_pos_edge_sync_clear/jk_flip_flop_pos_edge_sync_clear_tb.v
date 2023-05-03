@@ -1,15 +1,14 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files are in jk_flip_flop_sync_clear.vh
+// include files are in jk_flip_flop_pos_edge_sync_clear.vh
 
-module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
+module JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB ();
 
     // INPUT PROBES
-    reg             S, R;
+    reg             CLRBAR;
+    reg             J, K;
 
     // OUTPUT PROBES
-    wire            Q_gate, QBAR_gate;
-    wire            Q_data, QBAR_data;
     wire            Q_beh, QBAR_beh;
 
     // FOR TESTING  
@@ -19,31 +18,18 @@ module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (gate)
-    jk_flip_flop_sync_clear_gate UUT_jk_flip_flop_sync_clear_gate(
-        .clk(CLK),
-        .s(S), .r(R),
-        .q(Q_gate), .qbar(QBAR_gate)
-    );
-
-    // UNIT UNDER TEST (dataflow)
-    jk_flip_flop_sync_clear_dataflow UUT_jk_flip_flop_sync_clear_dataflow(
-        .clk(CLK),
-        .s(S), .r(R),
-        .q(Q_data), .qbar(QBAR_data)
-    );
-
         // UNIT UNDER TEST (behavioral)
-    jk_flip_flop_sync_clear_behavioral UUT_jk_flip_flop_sync_clear_behavioral(
+    jk_flip_flop_pos_edge_sync_clear_behavioral UUT_jk_flip_flop_pos_edge_sync_clear_behavioral(
         .clk(CLK),
-        .s(S), .r(R),
+        .clrbar(CLRBAR),
+        .j(J), .k(K),
         .q(Q_beh), .qbar(QBAR_beh)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("jk_flip_flop_sync_clear_tb.vcd");
-        $dumpvars(0, JK_FLIP_FLOP_SYNC_CLEAR_TB);
+        $dumpfile("jk_flip_flop_pos_edge_sync_clear_tb.vcd");
+        $dumpvars(0, JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB);
     end
 
     // CLK PERIOD
@@ -58,12 +44,12 @@ module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("jk_flip_flop_sync_clear_tb.tv","r");
+        FD=$fopen("jk_flip_flop_pos_edge_sync_clear_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, CLRBAR, J, K, QEXPECTED);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -73,10 +59,21 @@ module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
-        $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        $display("                                      ");
+        $display("                 | TIME(ns) | CLRBAR | J | K |  Q  |");
+        $display("                 -----------------------------------");
+        $monitor("%4d  %10s | %8d |   %1d    | %1d | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, CLRBAR, J, K, Q_beh);
+
+        // INIT - PUT OUTPUT IN KNOWN STATE
+        // TO AVOID THE RACE CONDITION
+        // NOTE: The beh model will still have X
+        //#5
+        //force Q_beh = 1'b0;
+        //force QBAR_beh = 1'b1;
+        //#26
+
+        //release Q_beh;
+        //release QBAR_beh;
 
     end
 
@@ -87,7 +84,7 @@ module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, CLRBAR, J, K, QEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -108,19 +105,11 @@ module JK_FLIP_FLOP_SYNC_CLEAR_TB ();
 
     // CHECK TEST VECTORS ON POS EGDE CLK
     always @(posedge CLK) begin
-
-        // WAIT A BIT
-        #5;
+        
+        // WAIT A BIT FOR OUTPUT TO SETTLE
+        #12;
 
         // CHECK EACH VECTOR RESULT
-        if (Q_gate !== QEXPECTED) begin
-            $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Q_data !== QEXPECTED) begin
-            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
         if (Q_beh !== QEXPECTED) begin
             $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
             ERRORS = ERRORS + 1;

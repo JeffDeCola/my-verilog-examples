@@ -74,7 +74,7 @@ module D_FLIP_FLOP_TB ();
         $display("TEST START --------------------------------");
         $display();
         $display("                                 GATE  DATA   BEH");
-        $display("                 | TIME(ns) | S |  Q  |  Q  |  Q  |");
+        $display("                 | TIME(ns) | D |  Q  |  Q  |  Q  |");
         $display("                 ----------------------------------");
         $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, D, Q_gate, Q_data, Q_beh);
 
