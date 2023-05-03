@@ -188,7 +188,7 @@ The output of the test,
 TEST START --------------------------------
 
                                  GATE  DATA   BEH
-                 | TIME(ns) | S |  Q  |  Q  |  Q  |
+                 | TIME(ns) | D |  Q  |  Q  |  Q  |
                  ----------------------------------
    0             |        0 | 0 |  x  |  x  |  x  |
    0             |       10 | 0 |  0  |  0  |  0  |

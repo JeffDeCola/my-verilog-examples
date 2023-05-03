@@ -1,0 +1,177 @@
+$date
+	Tue May  2 20:42:40 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB $end
+$var wire 1 ! Q_beh $end
+$var wire 1 " QBAR_beh $end
+$var parameter 32 # CLKPERIOD $end
+$var reg 1 $ CLK $end
+$var reg 1 % CLRBAR $end
+$var reg 256 & COMMENT [255:0] $end
+$var reg 32 ' ERRORS [31:0] $end
+$var reg 1 ( J $end
+$var reg 1 ) K $end
+$var reg 1 * QEXPECTED $end
+$var reg 32 + VECTORCOUNT [31:0] $end
+$var integer 32 , COUNT [31:0] $end
+$var integer 32 - FD [31:0] $end
+$scope module UUT_jk_flip_flop_pos_edge_sync_clear_behavioral $end
+$var wire 1 $ clk $end
+$var wire 1 % clrbar $end
+$var wire 1 ( j $end
+$var wire 1 ) k $end
+$var wire 1 " qbar $end
+$var parameter 2 . NOCHANGE $end
+$var parameter 2 / RESET $end
+$var parameter 2 0 SET $end
+$var parameter 2 1 TOGGLE $end
+$var reg 1 ! q $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11 1
+b10 0
+b1 /
+b0 .
+b10100 #
+$end
+#0
+$dumpvars
+b10000000000000000000000000000011 -
+b101 ,
+b0 +
+x*
+0)
+0(
+b0 '
+b0 &
+1%
+0$
+x"
+x!
+$end
+#100
+1$
+#200
+0$
+#250
+b1 +
+1*
+1(
+b10100110100010101010100 &
+#300
+0"
+1!
+1$
+#400
+0$
+#450
+b10 +
+0(
+b10011100100111101011111010000110100100001000001010011100100011101000101 &
+#500
+1$
+#600
+0$
+#650
+b11 +
+0*
+1)
+b101001001000101010100110100010101010100 &
+#700
+1"
+0!
+1$
+#800
+0$
+#850
+b100 +
+0)
+b10011100100111101011111010000110100100001000001010011100100011101000101 &
+#900
+1$
+#1000
+0$
+#1050
+b101 +
+1*
+1(
+b10100110100010101010100 &
+#1100
+0"
+1!
+1$
+#1200
+0$
+#1250
+b110 +
+0(
+b10011100100111101011111010000110100100001000001010011100100011101000101 &
+#1300
+1$
+#1400
+0$
+#1450
+b111 +
+0*
+1)
+b101001001000101010100110100010101010100 &
+#1500
+1"
+0!
+1$
+#1600
+0$
+#1650
+b1000 +
+0)
+b10011100100111101011111010000110100100001000001010011100100011101000101 &
+#1700
+1$
+#1800
+0$
+#1850
+b1001 +
+#1900
+1$
+#2000
+0$
+#2050
+b1010 +
+1*
+1)
+1(
+b10101000100111101000111010001110100110001000101 &
+#2100
+0"
+1!
+1$
+#2200
+0$
+#2250
+b1011 +
+0*
+#2300
+1"
+0!
+1$
+#2400
+0$
+#2450
+b1100 +
+0%
+b100001101001100010001010100000101010010 &
+#2500
+1$
+#2600
+0$
+#2650
+b11111111111111111111111111111111 ,

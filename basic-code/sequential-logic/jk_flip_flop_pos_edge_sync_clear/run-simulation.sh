@@ -10,20 +10,20 @@ echo "STEP 1 - COMPILE THE VERILOG CODE TO VVP FORMAT"
 echo "Use icarus iverilog to compile your verilog to *.vvp format."
 echo " "
 
-echo "'iverilog -o jk_flip_flop_sync_clear_tb.vvp jk_flip_flop_sync_clear_tb.v jk_flip_flop_sync_clear.vh'"
-iverilog -o jk_flip_flop_sync_clear_tb.vvp jk_flip_flop_sync_clear_tb.v jk_flip_flop_sync_clear.vh
+echo "'iverilog -o jk_flip_flop_pos_edge_sync_clear_tb.vvp jk_flip_flop_pos_edge_sync_clear_tb.v jk_flip_flop_pos_edge_sync_clear.vh'"
+iverilog -o jk_flip_flop_pos_edge_sync_clear_tb.vvp jk_flip_flop_pos_edge_sync_clear_tb.v jk_flip_flop_pos_edge_sync_clear.vh
 echo " "
 
 echo "STEP 2 - RUN THE SIMULATION USING VVP"
 echo "Use vpp, the icarus runtime simulation engine, to create the waveform dump file *.vcd."
 echo " "
 
-echo "'vpp jk_flip_flop_sync_clear_tb.vvp'"
-vvp jk_flip_flop_sync_clear_tb.vvp
+echo "'vpp jk_flip_flop_pos_edge_sync_clear_tb.vvp'"
+vvp jk_flip_flop_pos_edge_sync_clear_tb.vvp
 echo " "
 
-echo "Now you can open the waveform file jk_flip_flop_sync_clear_tb.vcd with GTKWave."
-echo "gtkwave -f jk_flip_flop_sync_clear_tb.vcd &"
+echo "Now you can open the waveform file jk_flip_flop_pos_edge_sync_clear_tb.vcd with GTKWave."
+echo "gtkwave -f jk_flip_flop_pos_edge_sync_clear_tb.vcd &"
 echo " "
 
 echo "**********************************************************************"

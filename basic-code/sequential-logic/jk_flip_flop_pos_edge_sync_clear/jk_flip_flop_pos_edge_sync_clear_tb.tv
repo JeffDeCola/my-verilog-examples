@@ -1,0 +1,14 @@
+            CLRBAR_J_K_QEXPECTED
+INIT        1      0 0 X
+SET         1      1 0 1
+NO_CHANGE   1      0 0 1
+RESET       1      0 1 0
+NO_CHANGE   1      0 0 0
+SET         1      1 0 1
+NO_CHANGE   1      0 0 1
+RESET       1      0 1 0
+NO_CHANGE   1      0 0 0
+NO_CHANGE   1      0 0 0
+TOGGLE      1      1 1 1
+TOGGLE      1      1 1 0
+CLEAR       0      1 1 0
