@@ -102,7 +102,7 @@ gate model,
 ```verilog
     // INTERNAL WIRES
     wire        s, r;
-  
+
     // NAND3
     nand (s, j, clk, qbar);
 
@@ -110,7 +110,7 @@ gate model,
     nand (r, k, clk, q);
 
     // SR- LATCH -------------------------------------
-    
+
     // NAND1
     nand (q, s, qbar);
 
@@ -123,7 +123,7 @@ Dataflow model,
 ```verilog
     // INTERNAL WIRES
     wire        s, r;
-  
+
     // NAND3
     assign s = ~(j & clk & qbar);
 
@@ -131,7 +131,7 @@ Dataflow model,
     assign r = ~(k & clk & q);
 
     // SR- LATCH -------------------------------------
-    
+
     // NAND1
     assign q = ~(s & qbar);
 

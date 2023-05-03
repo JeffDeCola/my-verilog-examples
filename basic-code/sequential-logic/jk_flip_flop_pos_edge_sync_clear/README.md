@@ -133,7 +133,8 @@ Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o jk_flip_flop_pos_edge_sync_clear_tb.vvp jk_flip_flop_pos_edge_sync_clear_tb.v jk_flip_flop_pos_edge_sync_clear.vh
+iverilog -o jk_flip_flop_pos_edge_sync_clear_tb.vvp \
+            jk_flip_flop_pos_edge_sync_clear_tb.v jk_flip_flop_pos_edge_sync_clear.vh
 ```
 
 Use **vvp** to run the simulation, which checks the UUT
@@ -148,7 +149,6 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                      
                  | TIME(ns) | CLRBAR | J | K |  Q  |
                  -----------------------------------
    0             |        0 |   1    | 0 | 0 |  x  |
