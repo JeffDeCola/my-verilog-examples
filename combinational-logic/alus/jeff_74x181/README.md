@@ -8,13 +8,13 @@ Based on the 7400-series integrated circuits used in my
 
 Table of Contents
 
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#run-simulate)
-* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#view-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/jeff_74x181#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#run-simulate)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#view-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181#tested-in-hardware---burned-to-a-fpga)
 
 Documentation and Reference
 
@@ -66,23 +66,21 @@ This is when the inputs/outputs are treated as active high.
 ## VERILOG CODE
 
 The
-[jeff_74x181.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/jeff_74x181/jeff_74x181.v)
+[jeff_74x181.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff_74x181/jeff_74x181.v)
 is a dataflow model.
 
 ## RUN (SIMULATE)
 
 The testbench uses two files,
 
-* [jeff_74x181_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/jeff_74x181/jeff_74x181_tb.v)
+* [jeff_74x181_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff_74x181/jeff_74x181_tb.v)
   the testbench
-* [jeff_74x181_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/jeff_74x181/jeff_74x181_tb.tv)
-  the test vectors and expected results
 
 with,
 
-* [jeff_74x181.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/jeff_74x181/jeff_74x181.vh)
+* [jeff_74x181.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff_74x181/jeff_74x181.vh)
   is the header file listing the verilog models
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/jeff_74x181/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/alus/jeff_74x181/run-simulation.sh)
   is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format

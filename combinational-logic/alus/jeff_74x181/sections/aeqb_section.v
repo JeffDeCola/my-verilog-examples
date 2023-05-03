@@ -3,8 +3,7 @@ module aeqb (
     input   f2,
     input   f1,
     input   f0,
-    output  aeqb
-);
+    output  aeqb);
 
 assign aeqb = (f3 & f2 & f1 & f0);
 

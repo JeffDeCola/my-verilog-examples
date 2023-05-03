@@ -1,7 +1,6 @@
 module invert_m (   
     input   a,
-    output  y
-);
+    output  y);
 
 assign y = ~a;
 
