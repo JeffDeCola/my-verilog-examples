@@ -1,8 +1,8 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
 // include files in jeff-74x181.vh
 
-module jeff_74x181_tb;
+module JEFF_74x181_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg  [3:0]  A, B, S;
@@ -10,8 +10,8 @@ module jeff_74x181_tb;
     wire [3:0]  F;
     wire        CO_BAR, AEQB, X, Y;
 
-    // UNIT UNDER TEST
-    jeff_74x181 uut(
+    // UNIT UNDER TEST (dataflow)
+    jeff_74x181 UUT_jeff_74x181(
         .a3(A[3]), .a2(A[2]), .a1(A[1]), .a0(A[0]),
         .b3(B[3]), .b2(B[2]), .b1(B[1]), .b0(B[0]),
         .s3(S[3]), .s2(S[2]), .s1(S[1]), .s0(S[0]),
@@ -20,10 +20,10 @@ module jeff_74x181_tb;
         .co_bar(CO_BAR), .aeqb(AEQB), .x(X), .y(Y)
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("jeff_74x181_tb.vcd");
-        $dumpvars(0, jeff_74x181_tb);
+        $dumpvars(0, JEFF_74x181_TB);
     end
 
     // TESTCASE - CHANGE REG VALUES
