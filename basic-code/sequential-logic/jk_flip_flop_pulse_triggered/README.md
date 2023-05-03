@@ -202,7 +202,8 @@ Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o jk_flip_flop_pulse_triggered_tb.vvp jk_flip_flop_pulse_triggered_tb.v jk_flip_flop_pulse_triggered.vh
+iverilog -o jk_flip_flop_pulse_triggered_tb.vvp \
+            jk_flip_flop_pulse_triggered_tb.v jk_flip_flop_pulse_triggered.vh
 ```
 
 Use **vvp** to run the simulation, which checks the UUT

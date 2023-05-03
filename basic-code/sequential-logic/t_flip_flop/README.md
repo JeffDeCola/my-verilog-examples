@@ -107,7 +107,7 @@ gate model,
     nand (r, k, clk, q);
 
     // SR- LATCH -------------------------------------
-    
+
     // NAND1
     nand (q, s, qbar);
 
@@ -122,7 +122,7 @@ Dataflow model,
     wire        s, r;
 
     // JK FLIP-FLOP -----------------------------------
-  
+
     // NAND3
     assign s = ~(t & clk & qbar);
 
@@ -130,7 +130,7 @@ Dataflow model,
     assign r = ~(t & clk & q);
 
     // SR- LATCH -------------------------------------
-    
+
     // NAND1
     assign q = ~(s & qbar);
 
