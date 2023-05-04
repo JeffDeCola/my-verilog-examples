@@ -9,6 +9,7 @@ module full_adder_gate(
 
     wire        w1, w2, w3;
 
+    // GATE PRIMITIVE
     xor         xor1(w1, a, b);
     xor         xor2(sum, w1, cin);
     and         and1(w2, w1, cin);
@@ -24,6 +25,7 @@ module full_adder_dataflow(
     output      sum,         // Sum of a + b
     output      cout);       // Carry out
 
+    // CONTINUOUS ASSIGNMENT STATEMENT
     assign sum  = a ^ b ^ cin;
     assign cout = (a & b) | (cin & (a ^ b));
 
@@ -36,6 +38,7 @@ module full_adder_behavioral(
     output reg  sum,         // Sum of a + b
     output reg  cout);       // Carry out
 
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( a or b or cin) begin
         {cout, sum} <= a + b + cin;
     end

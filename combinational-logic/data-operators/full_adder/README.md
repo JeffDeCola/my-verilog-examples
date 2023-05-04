@@ -27,11 +27,11 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/full_adder)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/full_adder.svg"
     align="middle"
 </p>
 
@@ -55,23 +55,31 @@ The
 gate model,
 
 ```verilog
+    wire        w1, w2, w3;
+
     // GATE PRIMITIVE
-    and (y, a, b);
+    xor         xor1(w1, a, b);
+    xor         xor2(sum, w1, cin);
+    and         and1(w2, w1, cin);
+    and         and2(w3, a, b);
+    or          or1(cout, w2, w3);
+
 ```
 
 Dataflow model,
 
 ```verilog
     // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
+    assign sum  = a ^ b ^ cin;
+    assign cout = (a & b) | (cin & (a ^ b));
 ```
 
 Behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( a or b or cin) begin
+        {cout, sum} <= a + b + cin;
     end
 ```
 
@@ -110,16 +118,20 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
-                 --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+                                            GATE -----   DATA -----   BEH ------  
+                 | TIME(ns) | A | B | CIN | SUM | COUT | SUM | COUT | SUM | COUT |
+                 -----------------------------------------------------------------
+   0        INIT |        0 |  0  | 0 | 0 |  0   |  0  |  0   |  0  |  0   |  0  |
+   1           - |       25 |  0  | 0 | 0 |  0   |  0  |  0   |  0  |  0   |  0  |
+   2           - |       45 |  0  | 0 | 1 |  1   |  0  |  1   |  0  |  1   |  1  |
+   3           - |       65 |  0  | 1 | 0 |  1   |  0  |  1   |  0  |  1   |  1  |
+   4           - |       85 |  0  | 1 | 1 |  0   |  1  |  0   |  1  |  0   |  0  |
+   5           - |      105 |  1  | 0 | 0 |  1   |  0  |  1   |  0  |  1   |  1  |
+   6           - |      125 |  1  | 0 | 1 |  0   |  1  |  0   |  1  |  0   |  0  |
+   7           - |      145 |  1  | 1 | 0 |  0   |  1  |  0   |  1  |  0   |  0  |
+   8           - |      165 |  1  | 1 | 1 |  1   |  1  |  1   |  1  |  1   |  1  |
 
- VECTORS:    4
+ VECTORS:    8
   ERRORS:    0
 
 TEST END ----------------------------------
@@ -143,7 +155,7 @@ anytime you want,
 gtkwave -f full_adder_tb.gtkw &
 ```
 
-![full_adder-waveform.jpg](../../../docs/pics/basic-code/full_adder-waveform.jpg)
+![full_adder-waveform.jpg](../../../docs/pics/combinational-logic/full_adder-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
