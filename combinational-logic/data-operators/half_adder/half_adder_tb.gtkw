@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Thu May  4 07:24:58 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/data-operators/half_adder/half_adder_tb.vcd"
+[dumpfile_mtime] "Thu May  4 07:22:57 2023"
+[dumpfile_size] 1525
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/data-operators/half_adder/half_adder_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-14.997470 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+HALF_ADDER_TB.A
+HALF_ADDER_TB.B
+HALF_ADDER_TB.SUM_gate
+HALF_ADDER_TB.SUM_data
+HALF_ADDER_TB.SUM_beh
+@29
+HALF_ADDER_TB.COUT_gate
+@28
+HALF_ADDER_TB.COUT_data
+HALF_ADDER_TB.COUT_beh
+[pattern_trace] 1
+[pattern_trace] 0

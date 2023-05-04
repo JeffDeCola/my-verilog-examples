@@ -1,6 +1,6 @@
-            A_B_YEXPECTED
-INIT        0 0 0 
--           0 0 0
--           0 1 0
--           1 0 0
--           1 1 1
+            A_B_SUMEXPECTED_COUTEXPECTED
+INIT        0 0 0           0
+-           0 0 0           0
+-           0 1 1           0
+-           1 0 1           0
+-           1 1 0           1
