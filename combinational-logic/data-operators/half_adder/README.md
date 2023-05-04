@@ -2,7 +2,6 @@
 
 _A 2-bit half adder._
 
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/data-operators/half_adder#overview)
@@ -28,22 +27,22 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/half_adder)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/half_adder.svg"
     align="middle"
 </p>
 
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| a     | b     | sum   | cout  |
+|:-----:|:-----:|:-----:|:-----:|
+| 0     | 0     | 0     | 0     |
+| 0     | 1     | 1     | 0     |
+| 1     | 0     | 1     | 0     |
+| 1     | 1     | 0     | 1     |
 
 ## VERILOG CODE
 
@@ -53,22 +52,24 @@ gate model,
 
 ```verilog
     // GATE PRIMITIVE
-    and (y, a, b);
+    xor         xor1(sum, a, b);
+    and         and1(cout, a, b);
 ```
 
 Dataflow model,
 
 ```verilog
     // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
+    assign sum  = a ^ b;
+    assign cout = a & b;
 ```
 
 Behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( a or b) begin
+        {cout, sum} <= a + b;
     end
 ```
 
@@ -107,14 +108,14 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
-                 --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+                                      GATE -----   DATA -----   BEH ------  
+                 | TIME(ns) | A | B | SUM | COUT | SUM | COUT | SUM | COUT |
+                 -----------------------------------------------------------
+   0        INIT |        0 | 0 | 0 |  0   |  0  |  0   |  0  |  0   |  0  |
+   1           - |       25 | 0 | 0 |  0   |  0  |  0   |  0  |  0   |  0  |
+   2           - |       45 | 0 | 1 |  1   |  0  |  1   |  0  |  1   |  1  |
+   3           - |       65 | 1 | 0 |  1   |  0  |  1   |  0  |  1   |  1  |
+   4           - |       85 | 1 | 1 |  0   |  1  |  0   |  1  |  0   |  0  |
 
  VECTORS:    4
   ERRORS:    0
@@ -140,7 +141,7 @@ anytime you want,
 gtkwave -f half_adder_tb.gtkw &
 ```
 
-![half_adder-waveform.jpg](../../../docs/pics/basic-code/half_adder-waveform.jpg)
+![half_adder-waveform.jpg](../../../docs/pics/combinational-logic/half_adder-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
