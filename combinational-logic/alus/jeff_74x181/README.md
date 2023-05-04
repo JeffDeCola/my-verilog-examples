@@ -35,7 +35,7 @@ FPGA development board._
 
 ## SCHEMATIC
 
-I designed this processor form the 1972 Texas Instruments spec sheet.
+I designed this alu from the 1972 Texas Instruments spec sheet.
 I love the care and thought put into this.
 
 ![IMAGE - ti-74x181-schematic.jpg - IMAGE](../../../docs/pics/combinational-logic/ti-74x181-schematic.jpg)

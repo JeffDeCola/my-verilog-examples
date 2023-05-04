@@ -1,1 +1,1 @@
-`include "full-adder.v"
+`include "full_adder.v"

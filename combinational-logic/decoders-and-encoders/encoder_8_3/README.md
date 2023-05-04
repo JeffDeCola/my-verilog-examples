@@ -2,13 +2,15 @@
 
 _Encoder - Eights inputs (1 hot) encodes to output._
 
+
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#overview)
 * [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -25,44 +27,70 @@ FPGA development board._
 
 ## SCHEMATIC
 
+_This figure was created using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+repo._
+
+<p align="center">
+    <img src="svgs/and.svg"
+    align="middle"
+</p>
+
 This may help,
 
 ![IMAGE - encoder-8-3.jpg - IMAGE](../../../docs/pics/encoder-8-3.jpg)
+
+## TRUTH TABLE
+
+| a     | b     | y     |
+|:-----:|:-----:|:-----:|
+| 0     | 0     | 0     |
+| 0     | 1     | 0     |
+| 1     | 0     | 0     |
+| 1     | 1     | 1     |
 
 ## VERILOG CODE
 
 The
 [encoder_8_3.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-    reg  [2:0] out;
+    // GATE PRIMITIVE
+    and (y, a, b);
+```
 
-    always @ ( * ) begin
-        case(in)
-            8'b00000001 : out <= 3'b000;
-            8'b00000010 : out <= 3'b001;
-            8'b00000100 : out <= 3'b010;
-            8'b00001000 : out <= 3'b011;
-            8'b00010000 : out <= 3'b100;
-            8'b00100000 : out <= 3'b101;
-            8'b01000000 : out <= 3'b110;
-            8'b10000000 : out <= 3'b111;
-            default     : out <= 3'b000;
-        endcase
+Dataflow model,
+
+```verilog
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a & b;
+```
+
+Behavioral model,
+
+```verilog
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a & b;
     end
- ```
+```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [encoder_8_3_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3_tb.v)
   the testbench
+* [encoder_8_3_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [encoder_8_3.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/encoder_8_3/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -71,13 +99,34 @@ which is used by the vvp runtime simulation engine,
 iverilog -o encoder_8_3_tb.vvp encoder_8_3_tb.v encoder_8_3.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp encoder_8_3_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+TEST START --------------------------------
+
+                                     GATE  DATA   BEH
+                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 --------------------------------------
+   0             |        0 | 0 | 0 |  0  |  0  |  0  |
+   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
+   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
+   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
+   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+
+ VECTORS:    4
+  ERRORS:    0
+
+TEST END ----------------------------------
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file encoder_8_3_tb.vcd file with GTKWave,
 
@@ -87,7 +136,7 @@ gtkwave -f encoder_8_3_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -95,7 +144,7 @@ anytime you want,
 gtkwave -f encoder_8_3_tb.gtkw &
 ```
 
-![encoder_8_3-waveform.jpg](../../../docs/pics/encoder_8_3-waveform.jpg)
+![encoder_8_3-waveform.jpg](../../../docs/pics/basic-code/encoder_8_3-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

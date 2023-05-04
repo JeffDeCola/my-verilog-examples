@@ -4,12 +4,15 @@ _Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
 Based on the 7400-series integrated circuits used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
+
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -24,38 +27,68 @@ to synthesize and program this example on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
 FPGA development board._
 
+## SCHEMATIC
+
+_This figure was created using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+repo._
+
+<p align="center">
+    <img src="svgs/and.svg"
+    align="middle"
+</p>
+
+## TRUTH TABLE
+
+| a     | b     | y     |
+|:-----:|:-----:|:-----:|
+| 0     | 0     | 0     |
+| 0     | 1     | 0     |
+| 1     | 0     | 0     |
+| 1     | 1     | 1     |
+
 ## VERILOG CODE
 
 The
 [jeff_74x157.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-    reg [3:0] y;
+    // GATE PRIMITIVE
+    and (y, a, b);
+```
 
-    // 2x1 multiplexer
-    always @ ( * ) begin
-        if (~en) begin
-            y <= 4'h0;
-        end else begin
-            case(s)
-                1'b0 : y <= a;
-                1'b1 : y <= b;
-            endcase
-        end
+Dataflow model,
+
+```verilog
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a & b;
+```
+
+Behavioral model,
+
+```verilog
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a & b;
     end
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [jeff_74x157_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157_tb.v)
   the testbench
+* [jeff_74x157_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [jeff_74x157.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -64,13 +97,34 @@ which is used by the vvp runtime simulation engine,
 iverilog -o jeff_74x157_tb.vvp jeff_74x157_tb.v jeff_74x157.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp jeff_74x157_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+TEST START --------------------------------
+
+                                     GATE  DATA   BEH
+                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 --------------------------------------
+   0             |        0 | 0 | 0 |  0  |  0  |  0  |
+   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
+   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
+   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
+   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+
+ VECTORS:    4
+  ERRORS:    0
+
+TEST END ----------------------------------
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file jeff_74x157_tb.vcd file with GTKWave,
 
@@ -80,7 +134,7 @@ gtkwave -f jeff_74x157_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -88,7 +142,7 @@ anytime you want,
 gtkwave -f jeff_74x157_tb.gtkw &
 ```
 
-![jeff_74x157-waveform.jpg](../../../docs/pics/jeff_74x157-waveform.jpg)
+![jeff_74x157-waveform.jpg](../../../docs/pics/basic-code/jeff_74x157-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

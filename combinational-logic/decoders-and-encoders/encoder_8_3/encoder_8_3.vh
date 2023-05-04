@@ -1,1 +1,1 @@
-`include "encoder-8-3.v"
+`include "encoder_8_3.v"

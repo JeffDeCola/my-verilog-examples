@@ -1,1 +1,1 @@
-`include "demux-1x4.v"
+`include "demux_1x4.v"
