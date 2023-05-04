@@ -1,4 +1,4 @@
-`include "decoder-to-encoder.v"
+`include "decoder_to_encoder.v"
 
-`include "../decoder-3-8/decoder-3-8.v"
-`include "../encoder-8-3/encoder-8-3.v"
+`include "../decoder_3_8/decoder_3_8.v"
+`include "../encoder_8_3/encoder_8_3.v"

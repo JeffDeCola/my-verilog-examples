@@ -1,4 +1,4 @@
-`include "mux-to-demux.v"
+`include "mux_to_demux.v"
 
-`include "../mux-4x1/mux-4x1.v"
-`include "../demux-1x4/demux-1x4.v"
+`include "../mux_4x1/mux_4x1.v"
+`include "../demux_1x4/demux_1x4.v"
