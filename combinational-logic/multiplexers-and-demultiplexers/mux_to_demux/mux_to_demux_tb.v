@@ -57,9 +57,9 @@ module MUX_TO_DEMUX_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | SEL1 | SEL2 | A1 | B1 | C1 | D1 | A2 | B2 | c2 | D2 |");
-        $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, SEL1, SEL2, A1, B1, C1, D1, A2, B2, C2, D2);
+        $display("                 | TIME(ns) | SEL1 | SEL2 | A1 | B1 | C1 | D1 | A2 | B2 | C2 | D2 |");
+        $display("                 ------------------------------------------------------------------");
+        $monitor("%4d  %10s | %8d |  %1b  |  %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  |", VECTORCOUNT, COMMENT, $time, SEL1, SEL2, A1, B1, C1, D1, A2, B2, C2, D2);
 
     end
 
