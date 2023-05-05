@@ -1,6 +1,10 @@
-            A_B_YEXPECTED
-INIT        0 0 0 
--           0 0 0
--           0 1 0
--           1 0 0
--           1 1 1
+            SEL_A_B_C_D_YEXPECTED
+INIT        00  0 x x x 0
+-           00  0 x x x 0
+-           00  1 x x x 1 
+-           01  x 0 x x 0
+-           01  x 1 x x 1
+-           10  x x 0 x 0
+-           10  x x 1 x 1
+-           11  x x x 0 0
+-           11  x x x 1 1

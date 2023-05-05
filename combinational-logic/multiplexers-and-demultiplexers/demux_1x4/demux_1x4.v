@@ -1,12 +1,11 @@
-// Demultiplexer - One input, four outputs (using a case statement).
+// Demultiplexer - One input, four outputs.
 
-module demux_1x4(
+module demux_1x4_behavioral(
     input       y,               // 1 Input
     input       [1:0] sel,       // Select
-    output reg  a, b, c, d       // 4 Outputs
-);
+    output reg  a, b, c, d);     // 4 Outputs
 
-    // DEMULTIPLEXER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( * ) begin
         case(sel)
             2'b00 : begin

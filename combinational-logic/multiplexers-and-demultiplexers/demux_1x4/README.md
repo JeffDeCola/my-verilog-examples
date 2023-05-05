@@ -1,7 +1,6 @@
 # DEMUX 1x4 EXAMPLE
 
-_Demultiplexer - One input, four outputs (using a case statement)._
-
+_Demultiplexer - One input, four outputs._
 
 Table of Contents
 
@@ -28,51 +27,50 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/demux-1x4)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/demux-1x4.svg"
     align="middle"
 </p>
 
-This may help,
-
-![IMAGE - demux-1x4.jpg - IMAGE](../../../docs/pics/demux-1x4.jpg)
-
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| sel   | y | a | b | c | d |
+|:-----:|:-:|:-:|:-:|:-:|:-:|
+| 00    | 0 | 0 | 0 | 0 | 0 |
+| 00    | 1 | 1 | 0 | 0 | 0 |
+| 01    | 0 | 0 | 0 | 0 | 0 |
+| 01    | 1 | 0 | 1 | 0 | 0 |
+| 10    | 0 | 0 | 0 | 0 | 0 |
+| 10    | 1 | 0 | 0 | 1 | 0 |
+| 11    | 0 | 0 | 0 | 0 | 0 |
+| 11    | 1 | 0 | 0 | 0 | 1 |
 
 ## VERILOG CODE
 
 The
 [demux_1x4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/demux_1x4/demux_1x4.v)
-gate model,
-
-```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
+behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( * ) begin
+        case(sel)
+            2'b00 : begin
+                a <= y; b <= 0; c <= 0; d <= 0;
+            end
+            2'b01 : begin
+                a <= 0; b <= y; c <= 0; d <= 0;
+            end
+            2'b10 : begin
+                a <= 0; b <= 0; c <= y; d <= 0;
+            end
+            2'b11 : begin
+                a <= 0; b <= 0; c <= 0; d <= y;
+            end
+        endcase
     end
 ```
 
@@ -111,16 +109,19 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 | TIME(ns) | SEL | Y | A | B | C | D |
                  --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+   0        INIT |        0 | 00  | 0 | 0 | 0 | 0 | 0 |
+   1           - |       25 | 00  | 0 | 0 | 0 | 0 | 0 |
+   2           - |       45 | 00  | 1 | 1 | 0 | 0 | 0 |
+   3           - |       65 | 01  | 0 | 0 | 0 | 0 | 0 |
+   4           - |       85 | 01  | 1 | 0 | 1 | 0 | 0 |
+   5           - |      105 | 10  | 0 | 0 | 0 | 0 | 0 |
+   6           - |      125 | 10  | 1 | 0 | 0 | 1 | 0 |
+   7           - |      145 | 11  | 0 | 0 | 0 | 0 | 0 |
+   8           - |      165 | 11  | 1 | 0 | 0 | 0 | 1 |
 
- VECTORS:    4
+ VECTORS:    8
   ERRORS:    0
 
 TEST END ----------------------------------

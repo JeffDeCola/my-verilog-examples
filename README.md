@@ -239,7 +239,7 @@ The artifacts created are,
 
   * [demux_1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux_1x4)
 
-    _Demultiplexer - One input, four outputs (using a case statement)._
+    _Demultiplexer - One input, four outputs._
 
   * [jeff_74x151](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151)
 
@@ -255,7 +255,7 @@ The artifacts created are,
 
   * [mux_4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux_4x1)
 
-    _Multiplexer - Four inputs, one output (using a case statement)._
+    _Multiplexer - Four inputs, one output._
 
   * [mux_to_demux](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux_to_demux)
 

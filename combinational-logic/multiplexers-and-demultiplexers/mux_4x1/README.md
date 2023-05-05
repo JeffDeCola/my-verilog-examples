@@ -1,7 +1,6 @@
 # MUX 4x1 EXAMPLE
 
-_Multiplexer - Four inputs, one output (using a case statement)._
-
+_Multiplexer - Four inputs, one output._
 
 Table of Contents
 
@@ -28,52 +27,42 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/mux-4x1)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/mux-4x1.svg"
     align="middle"
 </p>
 
-This may help,
-
-![IMAGE - mux-4x1.jpg - IMAGE](../../../docs/pics/mux-4x1.jpg)
-
-
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| sel   | a | b | c | d | y |
+|:-----:|:-:|:-:|:-:|:-:|:-:|
+| 00    | 0 | X | X | X | 0 |
+| 00    | 1 | X | X | X | 1 |
+| 01    | X | 0 | X | X | 0 |
+| 01    | X | 1 | X | X | 1 |
+| 10    | X | X | 0 | X | 0 |
+| 10    | X | X | 1 | X | 1 |
+| 11    | X | X | X | 0 | 0 |
+| 11    | X | X | X | 1 | 1 |
 
 ## VERILOG CODE
 
 The
 [mux_4x1.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/mux_4x1/mux_4x1.v)
-gate model,
-
-```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
+behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( * ) begin
+        case(sel)
+            2'b00 : y <= a;
+            2'b01 : y <= b;
+            2'b10 : y <= c;
+            2'b11 : y <= d;
+        endcase
     end
 ```
 
@@ -112,16 +101,19 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 | TIME(ns) | SEL | A | B | C | D | Y |
                  --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+   0        INIT |        0 | 00  | 0 | x | x | x | 0 |
+   1           - |       25 | 00  | 0 | x | x | x | 0 |
+   2           - |       45 | 00  | 1 | x | x | x | 1 |
+   3           - |       65 | 01  | x | 0 | x | x | 0 |
+   4           - |       85 | 01  | x | 1 | x | x | 1 |
+   5           - |      105 | 10  | x | x | 0 | x | 0 |
+   6           - |      125 | 10  | x | x | 1 | x | 1 |
+   7           - |      145 | 11  | x | x | x | 0 | 0 |
+   8           - |      165 | 11  | x | x | x | 1 | 1 |
 
- VECTORS:    4
+ VECTORS:    8
   ERRORS:    0
 
 TEST END ----------------------------------

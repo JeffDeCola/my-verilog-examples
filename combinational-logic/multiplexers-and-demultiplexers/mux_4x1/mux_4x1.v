@@ -1,12 +1,11 @@
-// Multiplexer - Four inputs, one output (using a case statement).
+// Multiplexer - Four inputs, one output.
 
-module mux_4x1(
+module mux_4x1_behavioral(
     input       a, b, c, d,      // 4 Inputs
     input       [1:0] sel,       // Select
-    output reg  y                // 1 Output
-);
+    output reg  y);              // 1 Output
 
-    // MULTIPLEXER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( * ) begin
         case(sel)
             2'b00 : y <= a;
