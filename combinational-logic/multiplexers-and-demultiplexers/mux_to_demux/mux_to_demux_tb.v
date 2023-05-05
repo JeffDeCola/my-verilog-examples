@@ -5,33 +5,24 @@
 module MUX_TO_DEMUX_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg             A, B;
-    wire            Y_gate, Y_data, Y_beh;
-    integer         i;
+    reg             A1, B1, C1, D1;
+    reg [1:0]       SEL1;
+    reg [1:0]       SEL2;
+    wire            A2, B2, C2, D2;
 
     // FOR TESTING  
     reg             TICK;
     reg [31:0]      VECTORCOUNT, ERRORS;
-    reg             YEXPECTED;
+    reg             A2EXP, B2EXP, C2EXP, D2EXP;
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (gate)
-    mux_to_demux_gate UUT_mux_to_demux_gate(
-        .a(A), .b(B),
-        .y(Y_gate)
-    );
-
-    // UNIT UNDER TEST (dataflow)
-    mux_to_demux_dataflow UUT_mux_to_demux_dataflow(
-        .a(A), .b(B),
-        .y(Y_data)
-    );
-
-    // UNIT UNDER TEST (behavioral)
-    mux_to_demux_behavioral UUT_mux_to_demux_behavioral(
-        .a(A), .b(B),
-        .y(Y_beh)
+    // UNIT UNDER TEST
+    mux_to_demux_structural UUT_mux_to_demux_structural(
+        .a1(A1), .b1(B1), .c1(C1), .d1(D1),
+        .sel1(SEL1),
+        .sel2(SEL2),
+        .a2(A2), .b2(B2), .c2(C2), .d2(D2)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
@@ -57,20 +48,18 @@ module MUX_TO_DEMUX_TB;
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b", COMMENT, SEL1, SEL2, A1, B1, C1, D1, A2EXP, B2EXP, C2EXP, D2EXP);
         TICK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |");
+        $display("                 | TIME(ns) | SEL1 | SEL2 | A1 | B1 | C1 | D1 | A2 | B2 | c2 | D2 |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
+        $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, SEL1, SEL2, A1, B1, C1, D1, A2, B2, C2, D2);
 
     end
 
@@ -81,7 +70,7 @@ module MUX_TO_DEMUX_TB;
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b", COMMENT, SEL1, SEL2, A1, B1, C1, D1, A2EXP, B2EXP, C2EXP, D2EXP);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -107,63 +96,11 @@ module MUX_TO_DEMUX_TB;
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if (Y_gate !== YEXPECTED) begin
-            $display("***ERROR (gate) - Expected Y = %b", YEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Y_data !== YEXPECTED) begin
-            $display("***ERROR (dataflow) - Expected Y = %b", YEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Y_beh !== YEXPECTED) begin
-            $display("***ERROR (behavioral) - Expected Y = %b", YEXPECTED);
+        if ((A2 !== A2EXP) | (B2 !== B2EXP) | (D2 !== D2EXP) | (D2 != D2EXP)) begin
+            $display("***ERROR (behavioral) - Expected A=%b, B=%b, C=%b, D=%b", A2EXP, B2EXP, C2EXP, D2EXP);
             ERRORS = ERRORS + 1;
         end
 
     end   
-
-endmodule
-
-
-
-`timescale 1ns / 1ns
-
-// include files in mux-to-demux.vh
-
-module mux_to_demux_tb;
-
-    // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg     A_IN, B_IN, C_IN, D_IN;
-    reg     [1:0] SEL;
-    wire    A_OUT, B_OUT, C_OUT, D_OUT;
-    integer i;
-
-    // UNIT UNDER TEST
-    mux_to_demux uut(
-        .a_in(A_IN), .b_in(B_IN), .c_in(C_IN), .d_in(D_IN),
-        .sel(SEL),
-        .a_out(A_OUT), .b_out(B_OUT), .c_out(C_OUT), .d_out(D_OUT)
-    );
-
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
-    initial begin
-        $dumpfile("mux_to_demux_tb.vcd");
-        $dumpvars(0, mux_to_demux_tb);
-    end
-
-    // TESTCASE - CHANGE REG VALUES
-    initial begin
-        $display("test start");
-        A_IN = 0; B_IN = 0; C_IN = 0; D_IN = 0;
-        SEL = 2'b00;
-
-        for (i = 0; i < 64; i = i + 1) begin
-            {SEL, D_IN, C_IN, B_IN, A_IN} = i;
-            #10;
-        end
-        
-        $display("test complete");
-        $finish;
-    end
 
 endmodule

@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri May  5 08:36:22 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/multiplexers-and-demultiplexers/mux_to_demux/mux_to_demux_tb.vcd"
+[dumpfile_mtime] "Fri May  5 08:33:01 2023"
+[dumpfile_size] 3677
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/multiplexers-and-demultiplexers/mux_to_demux/mux_to_demux_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-17.660423 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+MUX_TO_DEMUX_TB.SEL1[1:0]
+MUX_TO_DEMUX_TB.SEL2[1:0]
+@200
+-
+@28
+MUX_TO_DEMUX_TB.A1
+MUX_TO_DEMUX_TB.B1
+MUX_TO_DEMUX_TB.C1
+MUX_TO_DEMUX_TB.D1
+@200
+-
+@28
+MUX_TO_DEMUX_TB.A2
+MUX_TO_DEMUX_TB.B2
+MUX_TO_DEMUX_TB.C2
+@29
+MUX_TO_DEMUX_TB.D2
+[pattern_trace] 1
+[pattern_trace] 0

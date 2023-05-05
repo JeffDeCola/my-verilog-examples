@@ -1,9 +1,9 @@
 # MUX TO DEMUX EXAMPLE
 
 _Combining the
-[mux-4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux-4x1)
+[mux_4x1](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/mux_4x1)
 to the
-[demux-1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux-1x4)
+[demux_1x4](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/demux_1x4)
 to prove the input will equal
 the output (for the selected output)._
 
@@ -32,52 +32,74 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/mux-to-demux)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/mux-to-demux.svg"
     align="middle"
 </p>
 
-This may help,
-
-![IMAGE - mux-to-demux.jpg - IMAGE](../../../docs/pics/mux-to-demux.jpg)
-
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| sel1 | sel2 | a1 | b1 | c1 | d1 | a2 | b2 | c2 | d2 |
+|:----:|:----:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 00   | 00   | 0  | X  |  X |  X |  0 |  0 |  0 |  0 |
+| 00   | 00   | 0  | X  |  X |  X |  0 |  0 |  0 |  0 |
+| 00   | 00   | 1  | X  |  X |  X |  1 |  0 |  0 |  0 |
+| 00   | 01   | 0  | X  |  X |  X |  0 |  0 |  0 |  0 |
+| 00   | 01   | 1  | X  |  X |  X |  0 |  1 |  0 |  0 |
+| 00   | 10   | 0  | X  |  X |  X |  0 |  0 |  0 |  0 |
+| 00   | 10   | 1  | X  |  X |  X |  0 |  0 |  1 |  0 |
+| 00   | 11   | 0  | X  |  X |  X |  0 |  0 |  0 |  0 |
+| 00   | 11   | 1  | X  |  X |  X |  0 |  0 |  0 |  1 |
+| 01   | 00   | X  | 0  |  X |  X |  0 |  0 |  0 |  0 |
+| 01   | 00   | X  | 1  |  X |  X |  1 |  0 |  0 |  0 |
+| 01   | 01   | X  | 0  |  X |  X |  0 |  0 |  0 |  0 |
+| 01   | 01   | X  | 1  |  X |  X |  0 |  1 |  0 |  0 |
+| 01   | 10   | X  | 0  |  X |  X |  0 |  0 |  0 |  0 |
+| 01   | 10   | X  | 1  |  X |  X |  0 |  0 |  1 |  0 |
+| 01   | 11   | X  | 0  |  X |  X |  0 |  0 |  0 |  0 |
+| 01   | 11   | X  | 1  |  X |  X |  0 |  0 |  0 |  1 |
+| 10   | 00   | X  | X  |  0 |  X |  0 |  0 |  0 |  0 |
+| 10   | 00   | X  | X  |  1 |  X |  1 |  0 |  0 |  0 |
+| 10   | 01   | X  | X  |  0 |  X |  0 |  0 |  0 |  0 |
+| 10   | 01   | X  | X  |  1 |  X |  0 |  1 |  0 |  0 |
+| 10   | 10   | X  | X  |  0 |  X |  0 |  0 |  0 |  0 |
+| 10   | 10   | X  | X  |  1 |  X |  0 |  0 |  1 |  0 |
+| 10   | 11   | X  | X  |  0 |  X |  0 |  0 |  0 |  0 |
+| 10   | 11   | X  | X  |  1 |  X |  0 |  0 |  0 |  1 |
+| 11   | 00   | X  | X  |  X |  0 |  0 |  0 |  0 |  0 |
+| 11   | 00   | X  | X  |  X |  1 |  1 |  0 |  0 |  0 |
+| 11   | 01   | X  | X  |  X |  0 |  0 |  0 |  0 |  0 |
+| 11   | 01   | X  | X  |  X |  1 |  0 |  1 |  0 |  0 |
+| 11   | 10   | X  | X  |  X |  0 |  0 |  0 |  0 |  0 |
+| 11   | 10   | X  | X  |  X |  1 |  0 |  0 |  1 |  0 |
+| 11   | 11   | X  | X  |  X |  0 |  0 |  0 |  0 |  0 |
+| 11   | 11   | X  | X  |  X |  1 |  0 |  0 |  0 |  1 |
 
 ## VERILOG CODE
 
 The
 [mux_to_demux.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/mux_to_demux/mux_to_demux.v)
-gate model,
+structural model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
+    wire  y;
 
-Dataflow model,
+    // 4x1 MULTIPLEXER
+    mux_4x1 MUX_4X1 (
+        .a(a1), .b(b1), .c(c1), .d(d1),
+        .sel(sel1),
+        .y(y)
+    );
 
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
-    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
-    end
+    // 1x4 DEMULTIPLEXER
+    demux_1x4 DEMUX_1X4 (
+        .y(y),
+        .sel(sel2),
+        .a(a2), .b(b2), .c(c2), .d(d2)
+    );
 ```
 
 ## RUN (SIMULATE)
@@ -115,16 +137,43 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 | TIME(ns) | SEL1 | SEL2 | A1 | B1 | C1 | D1 | A2 | B2 | c2 | D2 |
                  --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+   0        INIT |        0 | 00 | 00 | 0 | x | x | x | 0 | 0 | 0 | 0 |
+   1      INPUTA |       25 | 00 | 00 | 0 | x | x | x | 0 | 0 | 0 | 0 |
+   2           - |       45 | 00 | 00 | 1 | x | x | x | 1 | 0 | 0 | 0 |
+   3           - |       65 | 00 | 01 | 0 | x | x | x | 0 | 0 | 0 | 0 |
+   4           - |       85 | 00 | 01 | 1 | x | x | x | 0 | 1 | 0 | 0 |
+   5           - |      105 | 00 | 10 | 0 | x | x | x | 0 | 0 | 0 | 0 |
+   6           - |      125 | 00 | 10 | 1 | x | x | x | 0 | 0 | 1 | 0 |
+   7           - |      145 | 00 | 11 | 0 | x | x | x | 0 | 0 | 0 | 0 |
+   8           - |      165 | 00 | 11 | 1 | x | x | x | 0 | 0 | 0 | 1 |
+   9      INPUTB |      185 | 01 | 00 | x | 0 | x | x | 0 | 0 | 0 | 0 |
+  10           - |      205 | 01 | 00 | x | 1 | x | x | 1 | 0 | 0 | 0 |
+  11           - |      225 | 01 | 01 | x | 0 | x | x | 0 | 0 | 0 | 0 |
+  12           - |      245 | 01 | 01 | x | 1 | x | x | 0 | 1 | 0 | 0 |
+  13           - |      265 | 01 | 10 | x | 0 | x | x | 0 | 0 | 0 | 0 |
+  14           - |      285 | 01 | 10 | x | 1 | x | x | 0 | 0 | 1 | 0 |
+  15           - |      305 | 01 | 11 | x | 0 | x | x | 0 | 0 | 0 | 0 |
+  16           - |      325 | 01 | 11 | x | 1 | x | x | 0 | 0 | 0 | 1 |
+  17      INPUTC |      345 | 10 | 00 | x | x | 0 | x | 0 | 0 | 0 | 0 |
+  18           - |      365 | 10 | 00 | x | x | 1 | x | 1 | 0 | 0 | 0 |
+  19           - |      385 | 10 | 01 | x | x | 0 | x | 0 | 0 | 0 | 0 |
+  20           - |      405 | 10 | 01 | x | x | 1 | x | 0 | 1 | 0 | 0 |
+  21           - |      425 | 10 | 10 | x | x | 0 | x | 0 | 0 | 0 | 0 |
+  22           - |      445 | 10 | 10 | x | x | 1 | x | 0 | 0 | 1 | 0 |
+  23           - |      465 | 10 | 11 | x | x | 0 | x | 0 | 0 | 0 | 0 |
+  24           - |      485 | 10 | 11 | x | x | 1 | x | 0 | 0 | 0 | 1 |
+  25      INPUTD |      505 | 11 | 00 | x | x | x | 0 | 0 | 0 | 0 | 0 |
+  26           - |      525 | 11 | 00 | x | x | x | 1 | 1 | 0 | 0 | 0 |
+  27           - |      545 | 11 | 01 | x | x | x | 0 | 0 | 0 | 0 | 0 |
+  28           - |      565 | 11 | 01 | x | x | x | 1 | 0 | 1 | 0 | 0 |
+  29           - |      585 | 11 | 10 | x | x | x | 0 | 0 | 0 | 0 | 0 |
+  30           - |      605 | 11 | 10 | x | x | x | 1 | 0 | 0 | 1 | 0 |
+  31           - |      625 | 11 | 11 | x | x | x | 0 | 0 | 0 | 0 | 0 |
+  32           - |      645 | 11 | 11 | x | x | x | 1 | 0 | 0 | 0 | 1 |
 
- VECTORS:    4
+ VECTORS:   32
   ERRORS:    0
 
 TEST END ----------------------------------
