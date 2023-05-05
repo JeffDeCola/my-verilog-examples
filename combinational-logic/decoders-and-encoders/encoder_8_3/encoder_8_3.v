@@ -1,11 +1,10 @@
 // Encoder - Eights inputs (1 hot) encodes to output.
 
-module encoder_8_3(
+module encoder_8_3_behavioral(
     input      [7:0] in,    // 8 Inputs
-    output reg [2:0] out    // 3 Output
-);
+    output reg [2:0] out);  // 3 Outputs
 
-    // ENCODER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( * ) begin
         case(in)
             8'b00000001 : out <= 3'b000;

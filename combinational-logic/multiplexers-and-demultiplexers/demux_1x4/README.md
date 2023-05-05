@@ -144,7 +144,7 @@ anytime you want,
 gtkwave -f demux_1x4_tb.gtkw &
 ```
 
-![demux_1x4-waveform.jpg](../../../docs/pics/basic-code/demux_1x4-waveform.jpg)
+![demux_1x4-waveform.jpg](../../../docs/pics/combinational-logic/demux_1x4-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
