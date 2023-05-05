@@ -1,0 +1,140 @@
+$date
+	Fri May  5 03:34:10 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module MUX_4x1_TB $end
+$var wire 1 ! Y $end
+$var parameter 32 " TICKPERIOD $end
+$var reg 1 # A $end
+$var reg 1 $ B $end
+$var reg 1 % C $end
+$var reg 256 & COMMENT [255:0] $end
+$var reg 1 ' D $end
+$var reg 32 ( ERRORS [31:0] $end
+$var reg 2 ) SEL [1:0] $end
+$var reg 1 * TICK $end
+$var reg 32 + VECTORCOUNT [31:0] $end
+$var reg 1 , YEXPECTED $end
+$var integer 32 - COUNT [31:0] $end
+$var integer 32 . FD [31:0] $end
+$scope module UUT_mux_4x1_behavioral $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 % c $end
+$var wire 1 ' d $end
+$var wire 2 / sel [1:0] $end
+$var reg 1 ! y $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10100 "
+$end
+#0
+$dumpvars
+b0 /
+b10000000000000000000000000000011 .
+b111 -
+0,
+b0 +
+0*
+b0 )
+b0 (
+x'
+b1001001010011100100100101010100 &
+x%
+x$
+0#
+0!
+$end
+#100
+1*
+#200
+0*
+#250
+b1 +
+b101101 &
+#300
+1*
+#400
+0*
+#450
+1!
+b10 +
+1,
+1#
+#500
+1*
+#600
+0*
+#650
+0!
+b11 +
+0,
+0$
+x#
+b1 )
+b1 /
+#700
+1*
+#800
+0*
+#850
+1!
+b100 +
+1,
+1$
+#900
+1*
+#1000
+0*
+#1050
+0!
+b101 +
+0,
+0%
+x$
+b10 )
+b10 /
+#1100
+1*
+#1200
+0*
+#1250
+1!
+b110 +
+1,
+1%
+#1300
+1*
+#1400
+0*
+#1450
+0!
+b111 +
+0,
+0'
+x%
+b11 )
+b11 /
+#1500
+1*
+#1600
+0*
+#1650
+1!
+b1000 +
+1,
+1'
+#1700
+1*
+#1800
+0*
+#1850
+b11111111111111111111111111111111 -

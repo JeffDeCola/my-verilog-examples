@@ -2,42 +2,31 @@
 
 // include files are in demux_1x4.vh
 
-module DEMUX_1x4_TB;
+module DEMUX_4x1_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg             A, B;
-    wire            Y_gate, Y_data, Y_beh;
-    integer         i;
+    reg             Y;
+    reg [1:0]       SEL;
+    wire            A, B, C, D;
 
     // FOR TESTING  
     reg             TICK;
     reg [31:0]      VECTORCOUNT, ERRORS;
-    reg             YEXPECTED;
+    reg             AEXP, BEXP, CEXP, DEXP;
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (gate)
-    demux_1x4_gate UUT_demux_1x4_gate(
-        .a(A), .b(B),
-        .y(Y_gate)
-    );
-
-    // UNIT UNDER TEST (dataflow)
-    demux_1x4_dataflow UUT_demux_1x4_dataflow(
-        .a(A), .b(B),
-        .y(Y_data)
-    );
-
     // UNIT UNDER TEST (behavioral)
     demux_1x4_behavioral UUT_demux_1x4_behavioral(
-        .a(A), .b(B),
-        .y(Y_beh)
+        .y(Y),
+        .sel(SEL),
+        .a(A), .b(B), .c(C), .d(D)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("demux_1x4_tb.vcd");
-        $dumpvars(0, DEMUX_1x4_TB);
+        $dumpvars(0, DEMUX_4x1_TB);
     end
 
     // TICK PERIOD
@@ -57,20 +46,18 @@ module DEMUX_1x4_TB;
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b", COMMENT, SEL, Y, AEXP, BEXP, CEXP, DEXP);
         TICK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                     GATE  DATA   BEH");
-        $display("                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |");
+        $display("                 | TIME(ns) | SEL | Y | A | B | C | D |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
+        $monitor("%4d  %10s | %8d | %1b  | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, SEL, Y, A, B, C, D);
 
     end
 
@@ -81,7 +68,7 @@ module DEMUX_1x4_TB;
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b", COMMENT, SEL, Y, AEXP, BEXP, CEXP, DEXP);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -107,65 +94,11 @@ module DEMUX_1x4_TB;
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if (Y_gate !== YEXPECTED) begin
-            $display("***ERROR (gate) - Expected Y = %b", YEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Y_data !== YEXPECTED) begin
-            $display("***ERROR (dataflow) - Expected Y = %b", YEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Y_beh !== YEXPECTED) begin
-            $display("***ERROR (behavioral) - Expected Y = %b", YEXPECTED);
+        if ((A !== AEXP) | (B !== BEXP) | (C !== CEXP) | (D !== DEXP)) begin
+            $display("***ERROR (behavioral) - Expected A=%b, B=%b, C=%b, D=%b", AEXP, BEXP, CEXP, DEXP);
             ERRORS = ERRORS + 1;
         end
 
     end   
-
-endmodule
-
-
-
-
-
-`timescale 1ns / 1ns
-
-// include files in demux-1x4.vh
-
-module demux_1x4_tb;
-
-    // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg     Y;
-    reg     [1:0] SEL;
-    wire    A, B, C, D;
-    integer i;
-
-    // UNIT UNDER TEST
-    demux_1x4 uut(
-        .y(Y),
-        .sel(SEL),
-        .a(A), .b(B), .c(C), .d(D)
-    );
-
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
-    initial begin
-        $dumpfile("demux_1x4_tb.vcd");
-        $dumpvars(0, demux_1x4_tb);
-    end
-
-    // TESTCASE - CHANGE REG VALUES
-    initial begin
-        $display("test start");
-        Y = 0;
-        SEL = 2'b00;
-
-        for (i = 0; i < 8; i = i + 1) begin
-            {SEL, Y} = i;
-            #10;
-        end
-        
-        $display("test complete");
-        $finish;
-    end
 
 endmodule
