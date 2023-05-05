@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri May  5 06:29:30 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/decoders-and-encoders/decoder_3_8/decoder_3_8_tb.vcd"
+[dumpfile_mtime] "Fri May  5 06:24:43 2023"
+[dumpfile_size] 1380
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/decoders-and-encoders/decoder_3_8/decoder_3_8_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -137 239
+*-15.796734 183800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+DECODER_3_8_TB.IN[2:0]
+@800022
+DECODER_3_8_TB.OUT[7:0]
+@28
+(0)DECODER_3_8_TB.OUT[7:0]
+(1)DECODER_3_8_TB.OUT[7:0]
+(2)DECODER_3_8_TB.OUT[7:0]
+(3)DECODER_3_8_TB.OUT[7:0]
+(4)DECODER_3_8_TB.OUT[7:0]
+(5)DECODER_3_8_TB.OUT[7:0]
+(6)DECODER_3_8_TB.OUT[7:0]
+(7)DECODER_3_8_TB.OUT[7:0]
+@1001200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

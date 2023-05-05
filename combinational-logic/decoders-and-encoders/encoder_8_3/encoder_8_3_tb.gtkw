@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri May  5 06:49:22 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3_tb.vcd"
+[dumpfile_mtime] "Fri May  5 06:46:50 2023"
+[dumpfile_size] 1362
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-15.796734 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@800022
+ENCODER_8_3_TB.IN[7:0]
+@28
+(0)ENCODER_8_3_TB.IN[7:0]
+(1)ENCODER_8_3_TB.IN[7:0]
+(2)ENCODER_8_3_TB.IN[7:0]
+(3)ENCODER_8_3_TB.IN[7:0]
+(4)ENCODER_8_3_TB.IN[7:0]
+(5)ENCODER_8_3_TB.IN[7:0]
+(6)ENCODER_8_3_TB.IN[7:0]
+(7)ENCODER_8_3_TB.IN[7:0]
+@1001200
+-group_end
+@c00029
+ENCODER_8_3_TB.OUT[2:0]
+@28
+(0)ENCODER_8_3_TB.OUT[2:0]
+(1)ENCODER_8_3_TB.OUT[2:0]
+(2)ENCODER_8_3_TB.OUT[2:0]
+@1401201
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

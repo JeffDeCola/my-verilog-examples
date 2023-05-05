@@ -148,7 +148,7 @@ anytime you want,
 gtkwave -f mux_to_demux_tb.gtkw &
 ```
 
-![mux_to_demux-waveform.jpg](../../../docs/pics/basic-code/mux_to_demux-waveform.jpg)
+![mux_to_demux-waveform.jpg](../../../docs/pics/combinational-logic/mux_to_demux-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

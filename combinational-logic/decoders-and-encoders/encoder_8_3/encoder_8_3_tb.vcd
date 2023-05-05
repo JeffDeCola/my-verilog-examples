@@ -1,0 +1,134 @@
+$date
+	Fri May  5 02:46:50 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module ENCODER_8_3_TB $end
+$var wire 3 ! OUT [2:0] $end
+$var parameter 32 " TICKPERIOD $end
+$var reg 256 # COMMENT [255:0] $end
+$var reg 32 $ ERRORS [31:0] $end
+$var reg 8 % IN [7:0] $end
+$var reg 3 & OUTEXPECTED [2:0] $end
+$var reg 1 ' TICK $end
+$var reg 32 ( VECTORCOUNT [31:0] $end
+$var integer 32 ) COUNT [31:0] $end
+$var integer 32 * FD [31:0] $end
+$scope module UUT_encoder_8_3_behavioral $end
+$var wire 8 + in [7:0] $end
+$var reg 3 , out [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10100 "
+$end
+#0
+$dumpvars
+b0 ,
+b1 +
+b10000000000000000000000000000011 *
+b11 )
+b0 (
+0'
+b0 &
+b1 %
+b0 $
+b1001001010011100100100101010100 #
+b0 !
+$end
+#100
+1'
+#200
+0'
+#250
+b1 (
+b101101 #
+#300
+1'
+#400
+0'
+#450
+b1 !
+b1 ,
+b10 (
+b1 &
+b10 %
+b10 +
+#500
+1'
+#600
+0'
+#650
+b10 !
+b10 ,
+b11 (
+b10 &
+b100 %
+b100 +
+#700
+1'
+#800
+0'
+#850
+b11 !
+b11 ,
+b100 (
+b11 &
+b1000 %
+b1000 +
+#900
+1'
+#1000
+0'
+#1050
+b100 !
+b100 ,
+b101 (
+b100 &
+b10000 %
+b10000 +
+#1100
+1'
+#1200
+0'
+#1250
+b101 !
+b101 ,
+b110 (
+b101 &
+b100000 %
+b100000 +
+#1300
+1'
+#1400
+0'
+#1450
+b110 !
+b110 ,
+b111 (
+b110 &
+b1000000 %
+b1000000 +
+#1500
+1'
+#1600
+0'
+#1650
+b111 !
+b111 ,
+b1000 (
+b111 &
+b10000000 %
+b10000000 +
+#1700
+1'
+#1800
+0'
+#1850
+b11111111111111111111111111111111 )

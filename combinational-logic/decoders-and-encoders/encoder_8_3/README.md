@@ -2,7 +2,6 @@
 
 _Encoder - Eights inputs (1 hot) encodes to output._
 
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3#overview)
@@ -28,51 +27,47 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/encoder-8-3)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/encoder-8-3.svg"
     align="middle"
 </p>
 
-This may help,
-
-![IMAGE - encoder-8-3.jpg - IMAGE](../../../docs/pics/encoder-8-3.jpg)
-
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| in       | out |
+|:--------:|:---:|
+| 00000001 | 000 |
+| 00000010 | 001 |
+| 00000100 | 010 |
+| 00001000 | 011 |
+| 00010000 | 100 |
+| 00100000 | 101 |
+| 01000000 | 110 |
+| 10000000 | 111 |
 
 ## VERILOG CODE
 
 The
 [encoder_8_3.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/encoder_8_3/encoder_8_3.v)
-gate model,
-
-```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
+behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( * ) begin
+        case(in)
+            8'b00000001 : out <= 3'b000;
+            8'b00000010 : out <= 3'b001;
+            8'b00000100 : out <= 3'b010;
+            8'b00001000 : out <= 3'b011;
+            8'b00010000 : out <= 3'b100;
+            8'b00100000 : out <= 3'b101;
+            8'b01000000 : out <= 3'b110;
+            8'b10000000 : out <= 3'b111;
+            default     : out <= 3'b000;
+        endcase
     end
 ```
 
@@ -111,16 +106,19 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
-                 --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+                 | TIME(ns) | IN  |   OUT    |
+                 -----------------------------
+   0        INIT |        0 | 00000001 | 000 |
+   1           - |       25 | 00000001 | 000 |
+   2           - |       45 | 00000010 | 001 |
+   3           - |       65 | 00000100 | 010 |
+   4           - |       85 | 00001000 | 011 |
+   5           - |      105 | 00010000 | 100 |
+   6           - |      125 | 00100000 | 101 |
+   7           - |      145 | 01000000 | 110 |
+   8           - |      165 | 10000000 | 111 |
 
- VECTORS:    4
+ VECTORS:    8
   ERRORS:    0
 
 TEST END ----------------------------------
@@ -144,7 +142,7 @@ anytime you want,
 gtkwave -f encoder_8_3_tb.gtkw &
 ```
 
-![encoder_8_3-waveform.jpg](../../../docs/pics/basic-code/encoder_8_3-waveform.jpg)
+![encoder_8_3-waveform.jpg](../../../docs/pics/combinational-logic/encoder_8_3-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

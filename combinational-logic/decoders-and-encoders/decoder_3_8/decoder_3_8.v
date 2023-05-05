@@ -1,11 +1,10 @@
 // Decoder - Three inputs decodes to 1 of 8 outputs (hot).
 
-module decoder_3_8(
+module decoder_3_8_behavioral(
     input       [2:0] in,       // 3 Input
-    output  reg [7:0] out       // 7 Outputs
-);
+    output  reg [7:0] out);     // 8 Outputs
 
-    // DECODER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( * ) begin
         case (in)
             3'b000 : out <= 8'b00000001;

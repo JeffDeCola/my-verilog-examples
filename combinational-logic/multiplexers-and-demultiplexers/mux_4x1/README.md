@@ -145,7 +145,7 @@ anytime you want,
 gtkwave -f mux_4x1_tb.gtkw &
 ```
 
-![mux_4x1-waveform.jpg](../../../docs/pics/basic-code/mux_4x1-waveform.jpg)
+![mux_4x1-waveform.jpg](../../../docs/pics/combinational-logic/mux_4x1-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

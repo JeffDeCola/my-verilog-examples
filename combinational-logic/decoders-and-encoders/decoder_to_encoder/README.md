@@ -1,12 +1,11 @@
 # DECODER TO ENCODER EXAMPLE
 
 _Combining the
-[decoder-3-8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder-3-8)
+[decoder_3_8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder_3_8)
 to the
-[encoder-8-3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder-8-3)
+[encoder_8_3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3)
 to prove the input will equal
 the output._
-
 
 Table of Contents
 
@@ -33,54 +32,47 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/decoder-to-encoder)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/decoder-to-encoder.svg"
     align="middle"
 </p>
 
-## SCHEMATIC
-
-This may help,
-
-![IMAGE - decoder-to-encoder.jpg - IMAGE](../../../docs/pics/decoder-to-encoder.jpg)
-
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| in  | out |
+|:---:|:---:|
+| 000 | 000 |
+| 001 | 001 |
+| 010 | 010 |
+| 011 | 011 |
+| 100 | 100 |
+| 101 | 101 |
+| 110 | 110 |
+| 111 | 111 |
 
 ## VERILOG CODE
 
 The
 [decoder_to_encoder.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/decoders-and-encoders/decoder_to_encoder/decoder_to_encoder.v)
-gate model,
+structural model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
+    wire [7:0] connect;
 
-Dataflow model,
+    // DECODER
+    decoder_3_8_behavioral decoder_3_8 (
+        .in(in),
+        .out(connect)
+    );
 
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
-    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
-    end
+    // ENCODER
+    encoder_8_3_behavioral encoder_8_3 (
+        .in(connect),
+        .out(out)
+    );
 ```
 
 ## RUN (SIMULATE)
@@ -118,16 +110,19 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
-                 --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+                 | TIME(ns) | IN  | OUT |
+                 ------------------------
+   0        INIT |        0 | 000 | 000 |
+   1           - |       25 | 000 | 000 |
+   2           - |       45 | 001 | 001 |
+   3           - |       65 | 010 | 010 |
+   4           - |       85 | 011 | 011 |
+   5           - |      105 | 100 | 100 |
+   6           - |      125 | 101 | 101 |
+   7           - |      145 | 110 | 110 |
+   8           - |      165 | 111 | 111 |
 
- VECTORS:    4
+ VECTORS:    8
   ERRORS:    0
 
 TEST END ----------------------------------
@@ -151,7 +146,7 @@ anytime you want,
 gtkwave -f decoder_to_encoder_tb.gtkw &
 ```
 
-![decoder_to_encoder-waveform.jpg](../../../docs/pics/basic-code/decoder_to_encoder-waveform.jpg)
+![decoder_to_encoder-waveform.jpg](../../../docs/pics/combinational-logic/decoder_to_encoder-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
