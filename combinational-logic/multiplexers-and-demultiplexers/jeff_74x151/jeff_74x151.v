@@ -1,7 +1,7 @@
 // 8-line to 1-line data selector/multiplexer.
 // Based on the 7400-series integrated circuits used in my programable-8-bit-microprocessor.
    
-module jeff_74x151(
+module jeff_74x151_behavioral(
     input                d0,                  // DATA IN
     input                d1,                  // 
     input                d2,                  // 
@@ -20,6 +20,7 @@ module jeff_74x151(
 
     assign w = ~y;
 
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( * ) begin
         if (en) begin
             case({c,b,a})

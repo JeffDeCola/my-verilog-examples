@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri May  5 22:31:56 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151/jeff_74x151_tb.vcd"
+[dumpfile_mtime] "Fri May  5 22:29:16 2023"
+[dumpfile_size] 2179
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151/jeff_74x151_tb.gtkw"
+[timestart] 0
+[size] 1155 598
+[pos] 33266 32949
+*-16.440159 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] JEFF_74x151_TB.
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+JEFF_74x151_TB.EN
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.a
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.b
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.c
+@201
+-
+@28
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d0
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d1
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d2
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d3
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d4
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d5
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d6
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.d7
+@200
+-
+@28
+JEFF_74x151_TB.UUT_jeff_74x151_behavioral.y
+[pattern_trace] 1
+[pattern_trace] 0

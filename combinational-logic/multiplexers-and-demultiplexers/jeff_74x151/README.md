@@ -4,7 +4,6 @@ _8-line to 1-line data selector/multiplexer.
 Based on the 7400-series integrated circuits used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151#overview)
@@ -30,47 +29,61 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/74x151-multiplexer)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/74x151-multiplexer.svg"
     align="middle"
 </p>
 
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| en  | cba | d[7:0]   |  y  |
+|:---:|:---:|:--------:|:---:|
+| 0   | xxx | xxxxxxx1 | 0   |
+| 1   | 000 | xxxxxxx0 | 0   |
+| 1   | 000 | xxxxxxx1 | 1   |
+| 1   | 001 | xxxxxx0x | 0   |
+| 1   | 001 | xxxxxx1x | 1   |
+| 1   | 010 | xxxxx0xx | 0   |
+| 1   | 010 | xxxxx1xx | 1   |
+| 1   | 011 | xxxx0xxx | 0   |
+| 1   | 011 | xxxx1xxx | 1   |
+| 1   | 100 | xxx0xxxx | 0   |
+| 1   | 100 | xxx1xxxx | 1   |
+| 1   | 101 | xx0xxxxx | 0   |
+| 1   | 101 | xx1xxxxx | 1   |
+| 1   | 110 | x0xxxxxx | 0   |
+| 1   | 110 | x1xxxxxx | 1   |
+| 1   | 111 | 0xxxxxxx | 0   |
+| 1   | 111 | 1xxxxxxx | 1   |
 
 ## VERILOG CODE
 
 The
 [jeff_74x151.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x151/jeff_74x151.v)
-gate model,
+behavioral model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
+    assign w = ~y;
 
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( * ) begin
+        if (en) begin
+            case({c,b,a})
+                3'b000 : y <= d0;
+                3'b001 : y <= d1;
+                3'b010 : y <= d2;
+                3'b011 : y <= d3;
+                3'b100 : y <= d4;
+                3'b101 : y <= d5;
+                3'b110 : y <= d6;
+                3'b111 : y <= d7;
+            endcase
+        end else begin
+            y <= 1'b1;
+        end
     end
 ```
 
@@ -109,16 +122,28 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
+                 | TIME(ns) | EN | SEL | D        | Y |
                  --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+   0        INIT |        0 | 0  | xxx | xxxxxxxx | 1 |
+   1           - |       25 | 0  | 000 | xxxxxxxx | 1 |
+   2           - |       45 | 1  | 000 | xxxxxxx0 | 0 |
+   3           - |       65 | 1  | 000 | xxxxxxx1 | 1 |
+   4           - |       85 | 1  | 001 | xxxxxx0x | 0 |
+   5           - |      105 | 1  | 001 | xxxxxx1x | 1 |
+   6           - |      125 | 1  | 010 | xxxxx0xx | 0 |
+   7           - |      145 | 1  | 010 | xxxxx1xx | 1 |
+   8           - |      165 | 1  | 011 | xxxx0xxx | 0 |
+   9           - |      185 | 1  | 011 | xxxx1xxx | 1 |
+  10           - |      205 | 1  | 100 | xxx0xxxx | 0 |
+  11           - |      225 | 1  | 100 | xxx1xxxx | 1 |
+  12           - |      245 | 1  | 101 | xx0xxxxx | 0 |
+  13           - |      265 | 1  | 101 | xx1xxxxx | 1 |
+  14           - |      285 | 1  | 110 | x0xxxxxx | 0 |
+  15           - |      305 | 1  | 110 | x1xxxxxx | 1 |
+  16           - |      325 | 1  | 111 | 0xxxxxxx | 0 |
+  17           - |      345 | 1  | 111 | 1xxxxxxx | 1 |
 
- VECTORS:    4
+ VECTORS:   17
   ERRORS:    0
 
 TEST END ----------------------------------
@@ -142,7 +167,7 @@ anytime you want,
 gtkwave -f jeff_74x151_tb.gtkw &
 ```
 
-![jeff_74x151-waveform.jpg](../../../docs/pics/basic-code/jeff_74x151-waveform.jpg)
+![jeff_74x151-waveform.jpg](../../../docs/pics/combinational-logic/jeff_74x151-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
