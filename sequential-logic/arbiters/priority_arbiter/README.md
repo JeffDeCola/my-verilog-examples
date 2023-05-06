@@ -1,6 +1,6 @@
 # PRIORITY ARBITER EXAMPLE
 
-_A three level Priority Arbiter with asynchronous reset
+_A three level priority arbiter with asynchronous reset
 (using if-then-else statements)._
 
 Table of Contents
@@ -10,7 +10,7 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -31,7 +31,7 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-renders/tree/master/mathematics/applied/electrical-engineering/sequential-logic/priority-arbiter)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/priority-arbiter)
 repo._
 
 <p align="center">
@@ -58,44 +58,44 @@ Note how `req_0` gets priority, hence the name.
 
 The
 [priority_arbiter.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-    always @ (posedge clk or posedge rst) begin
-        if (rst) begin
-            gnt_0 <= 0;
-            gnt_1 <= 0;
-            gnt_2 <= 0;
-        end else if (req_0) begin
-            gnt_0 <= 1;
-            gnt_1 <= 0;
-            gnt_2 <= 0;
-        end else if (req_1) begin
-            gnt_0 <= 0;
-            gnt_1 <= 1;
-            gnt_2 <= 0;
-        end else if (req_2) begin
-            gnt_0 <= 0;
-            gnt_1 <= 0;
-            gnt_2 <= 1;
-        end else begin
-            gnt_0 <= 0;
-            gnt_1 <= 0;
-            gnt_2 <= 0;
-        end
+    // GATE PRIMITIVE
+    and (y, a, b);
+```
+
+Dataflow model,
+
+```verilog
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a & b;
+```
+
+Behavioral model,
+
+```verilog
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a & b;
     end
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [priority_arbiter_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter_tb.v)
   the testbench
+* [priority_arbiter_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [priority_arbiter.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -104,13 +104,20 @@ which is used by the vvp runtime simulation engine,
 iverilog -o priority_arbiter_tb.vvp priority_arbiter_tb.v priority_arbiter.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp priority_arbiter_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+???
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file priority_arbiter_tb.vcd file with GTKWave,
 
@@ -120,7 +127,7 @@ gtkwave -f priority_arbiter_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -128,7 +135,7 @@ anytime you want,
 gtkwave -f priority_arbiter_tb.gtkw &
 ```
 
-![priority_arbiter-waveform.jpg](../../../docs/pics/priority_arbiter-waveform.jpg)
+![priority_arbiter-waveform.jpg](../../../docs/pics/basic-code/priority_arbiter-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

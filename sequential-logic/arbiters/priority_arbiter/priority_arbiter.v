@@ -11,7 +11,7 @@ module priority_arbiter(
     output reg  gnt_2         // Grant 2
 );
 
-    // ARBITER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk or posedge rst) begin
         if (rst) begin
             gnt_0 <= 0;

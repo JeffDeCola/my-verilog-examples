@@ -1,0 +1,22 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sat May  6 22:47:30 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/decoders-and-encoders/encoder_to_decoder/encoder_to_decoder_tb.vcd"
+[dumpfile_mtime] "Sat May  6 22:42:26 2023"
+[dumpfile_size] 1952
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/decoders-and-encoders/encoder_to_decoder/encoder_to_decoder_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-15.796734 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@22
+ENCODER_TO_DECODER_TB.IN[7:0]
+@23
+ENCODER_TO_DECODER_TB.OUT[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

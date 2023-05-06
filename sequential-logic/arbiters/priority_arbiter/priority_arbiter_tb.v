@@ -9,43 +9,134 @@ module priority_arbiter_tb;
     reg  REQ_0, REQ_1, REQ_2;
     wire GNT_0, GNT_1, GNT_2;
 
-    // UNIT UNDER TEST
-    priority_arbiter uut(
-        .clk(CLK), .rst(RST),
-        .req_0(REQ_0), .req_1(REQ_1), .req_2(REQ_2),
-        .gnt_0(GNT_0), .gnt_1(GNT_1), .gnt_2(GNT_2)
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
+
+// include files are in d_flip_flop.vh
+
+module D_FLIP_FLOP_TB ();
+
+    // INPUT PROBES
+    reg             D;
+
+    // OUTPUT PROBES
+    wire            Q_gate, QBAR_gate;
+    wire            Q_data, QBAR_data;
+    wire            Q_beh, QBAR_beh;
+
+    // FOR TESTING  
+    reg             CLK;
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg             QEXPECTED;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
+
+    // UNIT UNDER TEST (gate)
+    d_flip_flop_gate UUT_d_flip_flop_gate(
+        .clk(CLK),
+        .d(D),
+        .q(Q_gate), .qbar(QBAR_gate)
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // UNIT UNDER TEST (dataflow)
+    d_flip_flop_dataflow UUT_d_flip_flop_dataflow(
+        .clk(CLK),
+        .d(D),
+        .q(Q_data), .qbar(QBAR_data)
+    );
+
+        // UNIT UNDER TEST (behavioral)
+    d_flip_flop_behavioral UUT_d_flip_flop_behavioral(
+        .clk(CLK),
+        .d(D),
+        .q(Q_beh), .qbar(QBAR_beh)
+    );
+
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("priority_arbiter_tb.vcd");
-        $dumpvars(0, priority_arbiter_tb);
+        $dumpfile("d_flip_flop_tb.vcd");
+        $dumpvars(0, D_FLIP_FLOP_TB);
     end
 
-    // CLOCK
+    // CLK PERIOD
+    localparam CLKPERIOD = 20;
+
+    // CLK
     always begin
-        #10 CLK = ~CLK;
+        #(CLKPERIOD/2) CLK = ~CLK;
     end
 
-    // TESTCASE - CHANGE REG VALUES
+    // INITIALIZE TESTBENCH
     initial begin
-        $display("test start");
-        CLK = 0;
-        RST = 0;
-        {REQ_2, REQ_1, REQ_0} = 3'b000;
-        
-        #15; {REQ_2, REQ_1, REQ_0} = 3'b001;
-        #20; {REQ_2, REQ_1, REQ_0} = 3'b010;
-        #20; {REQ_2, REQ_1, REQ_0} = 3'b011;
-        #20; {REQ_2, REQ_1, REQ_0} = 3'b100;
-        #20; {REQ_2, REQ_1, REQ_0} = 3'b101;
-        #20; {REQ_2, REQ_1, REQ_0} = 3'b110;
-        #20; {REQ_2, REQ_1, REQ_0} = 3'b111;
-        #20  RST = 1;
-        #20
 
-        $display("test complete");
-        $finish;
+        // OPEN VECTOR FILE - THROW AWAY FIRST LINE
+        FD=$fopen("d_flip_flop_tb.tv","r");
+        COUNT = $fscanf(FD, "%s", COMMENT);
+        // $display ("FIRST LINE IS: %s", COMMENT);
+
+        // INIT TESTBENCH
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
+        CLK = 0;
+        VECTORCOUNT = 0;
+        ERRORS = 0;
+        COMMENT ="";
+
+        // DISPAY OUTPUT AND MONITOR
+        $display();
+        $display("TEST START --------------------------------");
+        $display();
+        $display("                                 GATE  DATA   BEH");
+        $display("                 | TIME(ns) | D |  Q  |  Q  |  Q  |");
+        $display("                 ----------------------------------");
+        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, D, Q_gate, Q_data, Q_beh);
+
     end
+
+    // APPLY TEST VECTORS ON NEG EDGE CLK (ADD DELAY)
+    always @(negedge CLK) begin
+
+        // WAIT A BIT (AFTER CHECK)
+        #5;
+
+        // GET VECTORS FROM TB FILE
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
+
+        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+        if (COUNT == -1) begin
+            $fclose(FD);
+            $display();
+            $display(" VECTORS: %4d", VECTORCOUNT);
+            $display("  ERRORS: %4d", ERRORS);
+            $display();
+            $display("TEST END ----------------------------------");
+            $display();
+            $finish;
+        end
+
+        // GET ANOTHER VECTOR
+        VECTORCOUNT = VECTORCOUNT + 1;
+
+    end
+
+    // CHECK TEST VECTORS ON POS EGDE CLK
+    always @(posedge CLK) begin
+
+        // WAIT A BIT
+        #5;
+
+        // CHECK EACH VECTOR RESULT
+        if (Q_gate !== QEXPECTED) begin
+            $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Q_data !== QEXPECTED) begin
+            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+        if (Q_beh !== QEXPECTED) begin
+            $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
+            ERRORS = ERRORS + 1;
+        end
+
+    end   
 
 endmodule

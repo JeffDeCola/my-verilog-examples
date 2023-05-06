@@ -5,9 +5,11 @@ _A 4-bit left shift register._
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -22,34 +24,63 @@ to synthesize and program this example on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
 FPGA development board._
 
+## SCHEMATIC
+
+_This figure was created using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
+repo._
+
+<p align="center">
+    <img src="svgs/and.svg"
+    align="middle"
+</p>
+
+## TRUTH TABLE
+
+???
+
 ## VERILOG CODE
 
 The
 [left_shift_register.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-reg [3:0] out;
+    // GATE PRIMITIVE
+    and (y, a, b);
+```
 
-always @ (posedge clk) begin
-    if (rst) begin
-        out <= 4'b0000;
-    end else begin
-        out <= {out[2:0], d};
+Dataflow model,
+
+```verilog
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a & b;
+```
+
+Behavioral model,
+
+```verilog
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a & b;
     end
-end
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [left_shift_register_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register_tb.v)
   the testbench
+* [left_shift_register_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [left_shift_register.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -58,13 +89,20 @@ which is used by the vvp runtime simulation engine,
 iverilog -o left_shift_register_tb.vvp left_shift_register_tb.v left_shift_register.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp left_shift_register_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+????
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file left_shift_register_tb.vcd file with GTKWave,
 
@@ -74,7 +112,7 @@ gtkwave -f left_shift_register_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -82,7 +120,7 @@ anytime you want,
 gtkwave -f left_shift_register_tb.gtkw &
 ```
 
-![left_shift_register-waveform.jpg](../../../docs/pics/left_shift_register-waveform.jpg)
+![left_shift_register-waveform.jpg](../../../docs/pics/basic-code/left_shift_register-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

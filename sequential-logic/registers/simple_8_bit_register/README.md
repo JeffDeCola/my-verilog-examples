@@ -9,7 +9,7 @@ Table of Contents
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/simple_8_bit_register#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
@@ -25,6 +25,15 @@ to synthesize and program this example on a
 FPGA development board._
 
 ## SCHEMATIC
+
+_This figure was created using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
+repo._
+
+<p align="center">
+    <img src="svgs/and.svg"
+    align="middle"
+</p>
 
 This may help,
 
@@ -43,28 +52,44 @@ This may help,
 
 The
 [simple_8_bit_register.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register.v)
-uses behavioral modeling,
+gate model,
 
 ```verilog
-    always @ (posedge clk) begin
-        if (~clr_bar) begin
-            data_out <= 0;
-        end else if (~ld_bar) begin
-            data_out <= data_in;
-        end
+    // GATE PRIMITIVE
+    and (y, a, b);
+```
+
+Dataflow model,
+
+```verilog
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a & b;
+```
+
+Behavioral model,
+
+```verilog
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a & b;
     end
 ```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [simple_8_bit_register_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register_tb.v)
   the testbench
+* [simple_8_bit_register_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [simple_8_bit_register.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -73,13 +98,20 @@ which is used by the vvp runtime simulation engine,
 iverilog -o simple_8_bit_register_tb.vvp simple_8_bit_register_tb.v simple_8_bit_register.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp simple_8_bit_register_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+???
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file simple_8_bit_register_tb.vcd file with GTKWave,
 
@@ -89,7 +121,7 @@ gtkwave -f simple_8_bit_register_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -97,7 +129,7 @@ anytime you want,
 gtkwave -f simple_8_bit_register_tb.gtkw &
 ```
 
-![simple_8_bit_register-waveform.jpg](../../../docs/pics/simple_8_bit_register-waveform.jpg)
+![simple_8_bit_register-waveform.jpg](../../../docs/pics/basic-code/simple_8_bit_register-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
