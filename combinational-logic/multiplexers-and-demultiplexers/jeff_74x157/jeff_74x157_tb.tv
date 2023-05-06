@@ -1,6 +1,11 @@
-            A_B_YEXPECTED
-INIT        0 0 0 
--           0 0 0
--           0 1 0
--           1 0 0
--           1 1 1
+            EN_S_A____B____YEXPECTED
+INIT        0  0 xxxx xxxx 0000
+-           0  0 xxxx xxxx 0000
+-           1  0 0000 xxxx 0000
+-           1  0 0101 xxxx 0101
+-           1  0 1010 xxxx 1010
+-           1  0 1111 xxxx 1111
+-           1  1 xxxx 0000 0000
+-           1  1 xxxx 0101 0101
+-           1  1 xxxx 1010 1010
+-           1  1 xxxx 1111 1111

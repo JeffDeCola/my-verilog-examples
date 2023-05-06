@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sat May  6 04:20:17 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157_tb.vcd"
+[dumpfile_mtime] "Sat May  6 04:17:59 2023"
+[dumpfile_size] 1560
+[savefile] "/home/jeff/verilog/my-verilog-examples/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -279 201
+*-15.909749 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+JEFF_74x157_TB.EN
+JEFF_74x157_TB.S
+@201
+-
+@22
+JEFF_74x157_TB.A[3:0]
+JEFF_74x157_TB.B[3:0]
+@200
+-
+@22
+JEFF_74x157_TB.Y[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
