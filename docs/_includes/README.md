@@ -164,22 +164,22 @@ The artifacts created are,
 
 * DECODERS & ENCODERS
 
+  * [encoder_8_3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3)
+
+    _Encoder - Eights inputs (1 hot) encodes to output._
+
   * [decoder_3_8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder_3_8)
 
     _Decoder - Three inputs decodes to 1 of 8 outputs (hot)._
 
-  * [decoder_to_encoder](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder_to_encoder)
+  * [encoder_to_decoder](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_to_decoder)
 
     _Combining the
-    [decoder_3_8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder_3_8)
-    to the
     [encoder_8_3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3)
+    to the
+    [decoder_3_8](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/decoder_3_8)
     to prove the input will equal
     the output._
-
-  * [encoder_8_3](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/decoders-and-encoders/encoder_8_3)
-
-    _Encoder - Eights inputs (1 hot) encodes to output._
 
 * MULTIPLEXERS & DEMULTIPLEXERS
 
@@ -226,7 +226,7 @@ The artifacts created are,
 
   * [priority_arbiter](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter)
 
-    _A three level Priority Arbiter with asynchronous reset
+    _A three level priority arbiter with asynchronous reset
     (using if-then-else statements)._
 
 * COUNTERS
