@@ -4,7 +4,6 @@ _Quad 2-line to 1-line data selector/multiplexer, non-inverting outputs.
 Based on the 7400-series integrated circuits used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157#overview)
@@ -30,48 +29,41 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/and)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/74x157-quad-multiplexer)
 repo._
 
 <p align="center">
-    <img src="svgs/and.svg"
+    <img src="svgs/74x157-quad-multiplexer.svg"
     align="middle"
 </p>
 
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| en | s  |  a   |  b   |  y   |
+|:--:|:--:|:----:|:----:|:----:|
+| 0  | 0  | xxxx | xxxx | 0000 |
+| 1  | 0  | a    | xxxx | a    |
+| 1  | 1  | xxxx | b    | b    |
 
 ## VERILOG CODE
 
 The
 [jeff_74x157.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/combinational-logic/multiplexers-and-demultiplexers/jeff_74x157/jeff_74x157.v)
-gate model,
-
-```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
+behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ ( * ) begin
+        if (~en) begin
+            y <= 4'h0;
+        end else begin
+            case(s)
+                1'b0 : y <= a;
+                1'b1 : y <= b;
+            endcase
+        end
     end
+
 ```
 
 ## RUN (SIMULATE)
@@ -109,16 +101,20 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                     GATE  DATA   BEH
-                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |
-                 --------------------------------------
-   0             |        0 | 0 | 0 |  0  |  0  |  0  |
-   1           - |       25 | 0 | 0 |  0  |  0  |  0  |
-   2           - |       45 | 0 | 1 |  0  |  0  |  0  |
-   3           - |       65 | 1 | 0 |  0  |  0  |  0  |
-   4           - |       85 | 1 | 1 |  1  |  1  |  1  |
+                 | TIME(ns) | EN | S |  A   |  B   |  Y   |
+                 ------------------------------------------
+   0        INIT |        0 | 0  | 0 | xxxx | xxxx | 0000 |
+   1           - |       25 | 0  | 0 | xxxx | xxxx | 0000 |
+   2           - |       45 | 1  | 0 | 0000 | xxxx | 0000 |
+   3           - |       65 | 1  | 0 | 0101 | xxxx | 0101 |
+   4           - |       85 | 1  | 0 | 1010 | xxxx | 1010 |
+   5           - |      105 | 1  | 0 | 1111 | xxxx | 1111 |
+   6           - |      125 | 1  | 1 | xxxx | 0000 | 0000 |
+   7           - |      145 | 1  | 1 | xxxx | 0101 | 0101 |
+   8           - |      165 | 1  | 1 | xxxx | 1010 | 1010 |
+   9           - |      185 | 1  | 1 | xxxx | 1111 | 1111 |
 
- VECTORS:    4
+ VECTORS:    9
   ERRORS:    0
 
 TEST END ----------------------------------
@@ -142,7 +138,7 @@ anytime you want,
 gtkwave -f jeff_74x157_tb.gtkw &
 ```
 
-![jeff_74x157-waveform.jpg](../../../docs/pics/basic-code/jeff_74x157-waveform.jpg)
+![jeff_74x157-waveform.jpg](../../../docs/pics/combinational-logic/jeff_74x157-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

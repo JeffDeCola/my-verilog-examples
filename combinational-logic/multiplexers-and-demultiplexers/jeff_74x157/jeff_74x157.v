@@ -2,7 +2,7 @@
 // Based on the 7400-series integrated circuits used in my
 // programable-8-bit-microprocessor.
     
-module jeff_74x157(
+module jeff_74x157_behavioral(
     input       [3:0] a,            // INPUT DATA A
     input       [3:0] b,            // INPUT DATA B
     input             s,            // SELECT
@@ -10,7 +10,7 @@ module jeff_74x157(
     output reg  [3:0] y             // OUTPUT DATA
 );
 
-    // 2x1 MULTIPLEXER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ ( * ) begin
         if (~en) begin
             y <= 4'h0;
