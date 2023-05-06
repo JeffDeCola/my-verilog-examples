@@ -226,8 +226,7 @@ The artifacts created are,
 
   * [priority_arbiter](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/arbiters/priority_arbiter)
 
-    _A three level priority arbiter with asynchronous reset
-    (using if-then-else statements)._
+    _A three level priority arbiter with asynchronous reset._
 
 * COUNTERS
 
