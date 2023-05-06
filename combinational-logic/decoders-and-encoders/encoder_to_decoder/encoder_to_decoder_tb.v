@@ -1,30 +1,30 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files are in decoder_to_encoder.vh
+// include files are in encoder_to_decoder.vh
 
-module DECODER_TO_ENCODER_TB;
+module ENCODER_TO_DECODER_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg  [2:0]      IN;
-    wire [2:0]      OUT;
+    reg  [7:0]      IN;
+    wire [7:0]      OUT;
 
     // FOR TESTING  
     reg             TICK;
     reg [31:0]      VECTORCOUNT, ERRORS;
-    reg [3:0]       OUTEXPECTED;
+    reg [7:0]       OUTEXPECTED;
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST
-    decoder_to_encoder_structural UUT_decoder_to_encoder_structural(
+    encoder_to_decoder_structural UUT_encoder_to_decoder_structural(
         .in(IN),
         .out(OUT)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("decoder_to_encoder_tb.vcd");
-        $dumpvars(0, DECODER_TO_ENCODER_TB);
+        $dumpfile("encoder_to_decoder_tb.vcd");
+        $dumpvars(0, ENCODER_TO_DECODER_TB);
     end
 
     // TICK PERIOD
@@ -39,7 +39,7 @@ module DECODER_TO_ENCODER_TB;
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("decoder_to_encoder_tb.tv","r");
+        FD=$fopen("encoder_to_decoder_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
@@ -53,8 +53,8 @@ module DECODER_TO_ENCODER_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | IN  | OUT |");
-        $display("                 ------------------------");
+        $display("                 | TIME(ns) |    IN    |    OUT   |");
+        $display("                 ----------------------------------");
         $monitor("%4d  %10s | %8d | %1b | %1b |", VECTORCOUNT, COMMENT, $time, IN, OUT);
 
     end
@@ -66,7 +66,7 @@ module DECODER_TO_ENCODER_TB;
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, IN, OUTEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b", COMMENT, IN, OUTEXPECTED);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin

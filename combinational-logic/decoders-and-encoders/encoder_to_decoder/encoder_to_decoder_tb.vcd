@@ -1,5 +1,5 @@
 $date
-	Fri May  5 02:55:46 2023
+	Sat May  6 18:42:26 2023
 $end
 $version
 	Icarus Verilog
@@ -7,20 +7,20 @@ $end
 $timescale
 	100ps
 $end
-$scope module DECODER_TO_ENCODER_TB $end
-$var wire 3 ! OUT [2:0] $end
+$scope module ENCODER_TO_DECODER_TB $end
+$var wire 8 ! OUT [7:0] $end
 $var parameter 32 " TICKPERIOD $end
 $var reg 256 # COMMENT [255:0] $end
 $var reg 32 $ ERRORS [31:0] $end
-$var reg 3 % IN [2:0] $end
-$var reg 4 & OUTEXPECTED [3:0] $end
+$var reg 8 % IN [7:0] $end
+$var reg 8 & OUTEXPECTED [7:0] $end
 $var reg 1 ' TICK $end
 $var reg 32 ( VECTORCOUNT [31:0] $end
 $var integer 32 ) COUNT [31:0] $end
 $var integer 32 * FD [31:0] $end
-$scope module UUT_decoder_to_encoder_structural $end
-$var wire 3 + in [2:0] $end
-$var wire 3 , out [2:0] $end
+$scope module UUT_encoder_to_decoder_structural $end
+$var wire 8 + in [7:0] $end
+$var wire 8 , out [7:0] $end
 $var wire 8 - connect [7:0] $end
 $scope module decoder_3_8 $end
 $var wire 3 . in [2:0] $end
@@ -43,18 +43,18 @@ b0 1
 b1 0
 b1 /
 b0 .
-b1 -
-b0 ,
-b0 +
+b0 -
+b1 ,
+b1 +
 b10000000000000000000000000000011 *
 b11 )
 b0 (
 0'
-b0 &
-b0 %
+b1 &
+b1 %
 b0 $
 b1001001010011100100100101010100 #
-b0 !
+b1 !
 $end
 #100
 1'
@@ -68,113 +68,113 @@ b101101 #
 #400
 0'
 #450
-b1 !
-b1 ,
-b1 1
-b10 -
+b10 !
+b10 ,
 b10 /
-b10 0
-b10 (
-b1 &
-b1 %
-b1 +
 b1 .
+b1 -
+b1 1
+b10 (
+b10 &
+b10 %
+b10 +
+b10 0
 #500
 1'
 #600
 0'
 #650
-b10 !
-b10 ,
-b10 1
-b100 -
+b100 !
+b100 ,
 b100 /
-b100 0
-b11 (
-b10 &
-b10 %
-b10 +
 b10 .
+b10 -
+b10 1
+b11 (
+b100 &
+b100 %
+b100 +
+b100 0
 #700
 1'
 #800
 0'
 #850
-b11 !
-b11 ,
-b11 1
-b1000 -
+b1000 !
+b1000 ,
 b1000 /
-b1000 0
-b100 (
-b11 &
-b11 %
-b11 +
 b11 .
+b11 -
+b11 1
+b100 (
+b1000 &
+b1000 %
+b1000 +
+b1000 0
 #900
 1'
 #1000
 0'
 #1050
-b100 !
-b100 ,
-b100 1
-b10000 -
+b10000 !
+b10000 ,
 b10000 /
-b10000 0
-b101 (
-b100 &
-b100 %
-b100 +
 b100 .
+b100 -
+b100 1
+b101 (
+b10000 &
+b10000 %
+b10000 +
+b10000 0
 #1100
 1'
 #1200
 0'
 #1250
-b101 !
-b101 ,
-b101 1
-b100000 -
+b100000 !
+b100000 ,
 b100000 /
-b100000 0
-b110 (
-b101 &
-b101 %
-b101 +
 b101 .
+b101 -
+b101 1
+b110 (
+b100000 &
+b100000 %
+b100000 +
+b100000 0
 #1300
 1'
 #1400
 0'
 #1450
-b110 !
-b110 ,
-b110 1
-b1000000 -
+b1000000 !
+b1000000 ,
 b1000000 /
-b1000000 0
-b111 (
-b110 &
-b110 %
-b110 +
 b110 .
+b110 -
+b110 1
+b111 (
+b1000000 &
+b1000000 %
+b1000000 +
+b1000000 0
 #1500
 1'
 #1600
 0'
 #1650
-b111 !
-b111 ,
-b111 1
-b10000000 -
+b10000000 !
+b10000000 ,
 b10000000 /
-b10000000 0
-b1000 (
-b111 &
-b111 %
-b111 +
 b111 .
+b111 -
+b111 1
+b1000 (
+b10000000 &
+b10000000 %
+b10000000 +
+b10000000 0
 #1700
 1'
 #1800

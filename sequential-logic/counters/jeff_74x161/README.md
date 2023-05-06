@@ -4,19 +4,20 @@ _Synchronous presettable 4-bit binary counter, asynchronous clear.
 Based on the 7400-series integrated circuits used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
 
-Table of Contents
-
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#schematic)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#check-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#tested-in-hardware---burned-to-a-fpga)
-
 Documentation and Reference
 
 * I'm using my
   [jk-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop)
+
+Table of Contents
+
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#run-simulate)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#view-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/counters/jeff_74x161#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -32,27 +33,71 @@ FPGA development board._
 
 ## SCHEMATIC
 
+_This figure was created using `LaTeX` in
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
+repo._
+
+<p align="center">
+    <img src="svgs/and.svg"
+    align="middle"
+</p>
+
 I designed this processor form the 1976 Texas Instruments spec sheet.
 The `clr_bar` is connected directly to the JK flip-flops.
 
 ![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/ti-74x161-schematic.jpg)
 
+## TRUTH TABLE
+
+| a     | b     | y     |
+|:-----:|:-----:|:-----:|
+| 0     | 0     | 0     |
+| 0     | 1     | 0     |
+| 1     | 0     | 0     |
+| 1     | 1     | 1     |
+
 ## VERILOG CODE
 
 The
 [jeff_74x161.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161.v)
-uses behavioral modeling.
+gate model,
+
+```verilog
+    // GATE PRIMITIVE
+    and (y, a, b);
+```
+
+Dataflow model,
+
+```verilog
+    // CONTINUOUS ASSIGNMENT STATEMENT
+    assign y = a & b;
+```
+
+Behavioral model,
+
+```verilog
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(a or b) begin
+        y <= a & b;
+    end
+```
 
 ## RUN (SIMULATE)
 
-I created,
+The testbench uses two files,
 
 * [jeff_74x161_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161_tb.v)
   the testbench
+* [jeff_74x161_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161_tb.tv)
+  the test vectors and expected results
+
+with,
+
 * [jeff_74x161.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161.vh)
-  the header file listing the verilog code
+  is the header file listing the verilog models
 * [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/run-simulation.sh)
-  a script containing the commands below
+  is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
@@ -61,13 +106,20 @@ which is used by the vvp runtime simulation engine,
 iverilog -o jeff_74x161_tb.vvp jeff_74x161_tb.v jeff_74x161.vh
 ```
 
-Use **vvp** to run the simulation, which creates a waveform dump file *.vcd.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
 ```bash
 vvp jeff_74x161_tb.vvp
 ```
 
-## CHECK WAVEFORM
+The output of the test,
+
+```text
+???
+```
+
+## VIEW WAVEFORM
 
 Open the waveform file jeff_74x161_tb.vcd file with GTKWave,
 
@@ -77,7 +129,7 @@ gtkwave -f jeff_74x161_tb.vcd &
 
 Save your waveform to a .gtkw file.
 
-Now you can
+Now you can use the script
 [launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
 anytime you want,
 
@@ -85,7 +137,7 @@ anytime you want,
 gtkwave -f jeff_74x161_tb.gtkw &
 ```
 
-![jeff_74x161-waveform.jpg](../../../docs/pics/jeff_74x161-waveform.jpg)
+![jeff_74x161-waveform.jpg](../../../docs/pics/basic-code/jeff_74x161-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
