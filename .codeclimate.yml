@@ -22,7 +22,10 @@ plugins:
     checks:
       # ... IGNORE INLINE HTML ...
       MD033:
-        enabled: false    
+        enabled: false
+      # ... IGNORE LINE LENGTH ...
+      MD013:
+        enabled: false
   shellcheck:
     enabled: true
 
