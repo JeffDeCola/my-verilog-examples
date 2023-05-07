@@ -250,8 +250,6 @@ The artifacts created are,
 
 * REGISTERS
 
-    _A bunch of flip-flops._
-
   * [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)
 
     _8-bit register, clock enable.
