@@ -1,6 +1,6 @@
 // A three level Priority Arbiter with asynchronous reset (using if-then-else statements).
 
-module priority_arbiter(
+module priority_arbiter_behavioral(
     input       clk,          // Clock  
     input       rst,          // Reset
     input       req_0,        // Request 0

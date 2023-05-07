@@ -1,7 +1,6 @@
 # PRIORITY ARBITER EXAMPLE
 
-_A three level priority arbiter with asynchronous reset
-(using if-then-else statements)._
+_A three level priority arbiter with asynchronous reset._
 
 Table of Contents
 
@@ -43,41 +42,48 @@ repo._
 
 Note how `req_0` gets priority, hence the name.
 
-| req_2 | req_1 | req_0 | gnt_2 | gnt_1 | gnt_0 |
-|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|   0   |   0   |   0   |   0   |   0   |   0   |
-|   0   |   0   |   1   |   0   |   0   |   1   |
-|   0   |   1   |   0   |   0   |   1   |   0   |
-|   0   |   1   |   1   |   0   |   0   |   1   |
-|   1   |   0   |   0   |   1   |   0   |   0   |
-|   1   |   0   |   1   |   0   |   0   |   1   |
-|   1   |   1   |   0   |   0   |   1   |   0   |
-|   1   |   1   |   1   |   0   |   0   |   1   |
+| rst | req_2 | req_1 | req_0 | gnt_2 | gnt_1 | gnt_0 |
+|:---:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+|  0  |   0   |   0   |   0   |   0   |   0   |   0   |
+|  0  |   0   |   0   |   1   |   0   |   0   |   1   |
+|  0  |   0   |   1   |   0   |   0   |   1   |   0   |
+|  0  |   0   |   1   |   1   |   0   |   0   |   1   |
+|  0  |   1   |   0   |   0   |   1   |   0   |   0   |
+|  0  |   1   |   0   |   1   |   0   |   0   |   1   |
+|  0  |   1   |   1   |   0   |   0   |   1   |   0   |
+|  0  |   1   |   1   |   1   |   0   |   0   |   1   |
+|  1  |   x   |   x   |   x   |   0   |   0   |   0   |
 
 ## VERILOG CODE
 
 The
 [priority_arbiter.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/arbiters/priority_arbiter/priority_arbiter.v)
-gate model,
-
-```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
+behavioral model,
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ (posedge clk or posedge rst) begin
+        if (rst) begin
+            gnt_0 <= 0;
+            gnt_1 <= 0;
+            gnt_2 <= 0;
+        end else if (req_0) begin
+            gnt_0 <= 1;
+            gnt_1 <= 0;
+            gnt_2 <= 0;
+        end else if (req_1) begin
+            gnt_0 <= 0;
+            gnt_1 <= 1;
+            gnt_2 <= 0;
+        end else if (req_2) begin
+            gnt_0 <= 0;
+            gnt_1 <= 0;
+            gnt_2 <= 1;
+        end else begin
+            gnt_0 <= 0;
+            gnt_1 <= 0;
+            gnt_2 <= 0;
+        end
     end
 ```
 
@@ -114,7 +120,33 @@ vvp priority_arbiter_tb.vvp
 The output of the test,
 
 ```text
-???
+TEST START --------------------------------
+
+                 | TIME(ns) | RST | REQ_2 | REQ_1 | REQ_0 | GNT_2EXP | GNT_1EXP | GNT_0EXP |
+                 ---------------------------------------------------------------------------
+   0             |        0 |  0  |   0   |   0   |   0   |    x     |    x     |    x     |
+   0             |       10 |  0  |   0   |   0   |   0   |    0     |    0     |    0     |
+   1     NOTHING |       25 |  0  |   0   |   0   |   0   |    0     |    0     |    0     |
+   2        GNT0 |       45 |  0  |   0   |   0   |   1   |    0     |    0     |    0     |
+   2        GNT0 |       50 |  0  |   0   |   0   |   1   |    0     |    0     |    1     |
+   3        GNT1 |       65 |  0  |   0   |   1   |   0   |    0     |    0     |    1     |
+   3        GNT1 |       70 |  0  |   0   |   1   |   0   |    0     |    1     |    0     |
+   4          -- |       85 |  0  |   0   |   1   |   1   |    0     |    1     |    0     |
+   4          -- |       90 |  0  |   0   |   1   |   1   |    0     |    0     |    1     |
+   5        GNT3 |      105 |  0  |   1   |   0   |   0   |    0     |    0     |    1     |
+   5        GNT3 |      110 |  0  |   1   |   0   |   0   |    1     |    0     |    0     |
+   6          -- |      125 |  0  |   1   |   0   |   1   |    1     |    0     |    0     |
+   6          -- |      130 |  0  |   1   |   0   |   1   |    0     |    0     |    1     |
+   7          -- |      145 |  0  |   1   |   1   |   0   |    0     |    0     |    1     |
+   7          -- |      150 |  0  |   1   |   1   |   0   |    0     |    1     |    0     |
+   8          -- |      165 |  0  |   1   |   1   |   1   |    0     |    1     |    0     |
+   8          -- |      170 |  0  |   1   |   1   |   1   |    0     |    0     |    1     |
+   9       RESET |      185 |  1  |   x   |   x   |   x   |    0     |    0     |    0     |
+
+ VECTORS:    9
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
@@ -135,7 +167,7 @@ anytime you want,
 gtkwave -f priority_arbiter_tb.gtkw &
 ```
 
-![priority_arbiter-waveform.jpg](../../../docs/pics/basic-code/priority_arbiter-waveform.jpg)
+![priority_arbiter-waveform.jpg](../../../docs/pics/sequential-logic/priority_arbiter-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
