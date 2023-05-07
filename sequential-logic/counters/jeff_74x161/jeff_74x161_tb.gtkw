@@ -1,0 +1,49 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sun May  7 08:01:34 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/counters/jeff_74x161/jeff_74x161_tb.vcd"
+[dumpfile_mtime] "Sun May  7 07:55:28 2023"
+[dumpfile_size] 6513
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/counters/jeff_74x161/jeff_74x161_tb.gtkw"
+[timestart] 0
+[size] 1908 1000
+[pos] -87 5
+*-15.535496 362300 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 115
+[sst_expanded] 1
+[sst_vpaned_height] 293
+@28
+JEFF_74x161_TB.CLK
+@200
+-
+@28
+[color] 3
+JEFF_74x161_TB.CLR_BAR
+[color] 3
+JEFF_74x161_TB.LD_BAR
+@200
+-
+@28
+[color] 2
+JEFF_74x161_TB.ENT
+[color] 2
+JEFF_74x161_TB.ENP
+@200
+-
+@28
+JEFF_74x161_TB.D
+JEFF_74x161_TB.C
+JEFF_74x161_TB.B
+JEFF_74x161_TB.A
+@200
+-
+@28
+JEFF_74x161_TB.QD
+JEFF_74x161_TB.QC
+JEFF_74x161_TB.QB
+JEFF_74x161_TB.QA
+JEFF_74x161_TB.RCO
+[pattern_trace] 1
+[pattern_trace] 0

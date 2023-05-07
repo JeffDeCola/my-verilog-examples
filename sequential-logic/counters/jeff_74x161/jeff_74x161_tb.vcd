@@ -1,0 +1,611 @@
+$date
+	Sun May  7 03:55:28 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module JEFF_74x161_TB $end
+$var wire 1 ! RCO $end
+$var wire 1 " QD $end
+$var wire 1 # QC $end
+$var wire 1 $ QB $end
+$var wire 1 % QA $end
+$var parameter 32 & CLKPERIOD $end
+$var reg 1 ' A $end
+$var reg 1 ( B $end
+$var reg 1 ) C $end
+$var reg 1 * CLK $end
+$var reg 1 + CLR_BAR $end
+$var reg 256 , COMMENT [255:0] $end
+$var reg 1 - D $end
+$var reg 1 . ENP $end
+$var reg 1 / ENT $end
+$var reg 32 0 ERRORS [31:0] $end
+$var reg 1 1 LD_BAR $end
+$var reg 1 2 QAEXP $end
+$var reg 1 3 QBEXP $end
+$var reg 1 4 QCEXP $end
+$var reg 1 5 QDEXP $end
+$var reg 1 6 RCOEXP $end
+$var reg 32 7 VECTORCOUNT [31:0] $end
+$var integer 32 8 COUNT [31:0] $end
+$var integer 32 9 FD [31:0] $end
+$scope module UUT_jeff_74x161 $end
+$var wire 1 ' a $end
+$var wire 1 ( b $end
+$var wire 1 ) c $end
+$var wire 1 * clk $end
+$var wire 1 + clr_bar $end
+$var wire 1 - d $end
+$var wire 1 . enp $end
+$var wire 1 / ent $end
+$var wire 1 : ent_and_enp $end
+$var wire 1 ; feedback_qa $end
+$var wire 1 < feedback_qb $end
+$var wire 1 = feedback_qc $end
+$var wire 1 > feedback_qd $end
+$var wire 1 ? ld $end
+$var wire 1 1 ld_bar $end
+$var wire 1 ! rco $end
+$var wire 1 " qd $end
+$var wire 1 # qc $end
+$var wire 1 $ qb $end
+$var wire 1 % qa $end
+$scope module OUTPUT_QA $end
+$var wire 1 * clk $end
+$var wire 1 + clr_bar $end
+$var wire 1 ' data $end
+$var wire 1 ; feedback $end
+$var wire 1 @ j $end
+$var wire 1 A k $end
+$var wire 1 ? ld $end
+$var wire 1 B to_j $end
+$var wire 1 C to_j_and_k $end
+$var wire 1 D to_k $end
+$var wire 1 % q $end
+$var wire 1 E NOTHING $end
+$scope module JK $end
+$var wire 1 * clk $end
+$var wire 1 + clrbar $end
+$var wire 1 @ j $end
+$var wire 1 A k $end
+$var wire 1 E qbar $end
+$var parameter 2 F NOCHANGE $end
+$var parameter 2 G RESET $end
+$var parameter 2 H SET $end
+$var parameter 2 I TOGGLE $end
+$var reg 1 % q $end
+$upscope $end
+$upscope $end
+$scope module OUTPUT_QB $end
+$var wire 1 * clk $end
+$var wire 1 + clr_bar $end
+$var wire 1 ( data $end
+$var wire 1 < feedback $end
+$var wire 1 J j $end
+$var wire 1 K k $end
+$var wire 1 ? ld $end
+$var wire 1 L to_j $end
+$var wire 1 M to_j_and_k $end
+$var wire 1 N to_k $end
+$var wire 1 $ q $end
+$var wire 1 O NOTHING $end
+$scope module JK $end
+$var wire 1 * clk $end
+$var wire 1 + clrbar $end
+$var wire 1 J j $end
+$var wire 1 K k $end
+$var wire 1 O qbar $end
+$var parameter 2 P NOCHANGE $end
+$var parameter 2 Q RESET $end
+$var parameter 2 R SET $end
+$var parameter 2 S TOGGLE $end
+$var reg 1 $ q $end
+$upscope $end
+$upscope $end
+$scope module OUTPUT_QC $end
+$var wire 1 * clk $end
+$var wire 1 + clr_bar $end
+$var wire 1 ) data $end
+$var wire 1 = feedback $end
+$var wire 1 T j $end
+$var wire 1 U k $end
+$var wire 1 ? ld $end
+$var wire 1 V to_j $end
+$var wire 1 W to_j_and_k $end
+$var wire 1 X to_k $end
+$var wire 1 # q $end
+$var wire 1 Y NOTHING $end
+$scope module JK $end
+$var wire 1 * clk $end
+$var wire 1 + clrbar $end
+$var wire 1 T j $end
+$var wire 1 U k $end
+$var wire 1 Y qbar $end
+$var parameter 2 Z NOCHANGE $end
+$var parameter 2 [ RESET $end
+$var parameter 2 \ SET $end
+$var parameter 2 ] TOGGLE $end
+$var reg 1 # q $end
+$upscope $end
+$upscope $end
+$scope module OUTPUT_QD $end
+$var wire 1 * clk $end
+$var wire 1 + clr_bar $end
+$var wire 1 - data $end
+$var wire 1 > feedback $end
+$var wire 1 ^ j $end
+$var wire 1 _ k $end
+$var wire 1 ? ld $end
+$var wire 1 ` to_j $end
+$var wire 1 a to_j_and_k $end
+$var wire 1 b to_k $end
+$var wire 1 " q $end
+$var wire 1 c NOTHING $end
+$scope module JK $end
+$var wire 1 * clk $end
+$var wire 1 + clrbar $end
+$var wire 1 ^ j $end
+$var wire 1 _ k $end
+$var wire 1 c qbar $end
+$var parameter 2 d NOCHANGE $end
+$var parameter 2 e RESET $end
+$var parameter 2 f SET $end
+$var parameter 2 g TOGGLE $end
+$var reg 1 " q $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11 g
+b10 f
+b1 e
+b0 d
+b11 ]
+b10 \
+b1 [
+b0 Z
+b11 S
+b10 R
+b1 Q
+b0 P
+b11 I
+b10 H
+b1 G
+b0 F
+b10100 &
+$end
+#0
+$dumpvars
+xc
+1b
+0a
+1`
+0_
+0^
+xY
+1X
+0W
+1V
+0U
+0T
+xO
+1N
+0M
+1L
+0K
+0J
+xE
+1D
+0C
+1B
+0A
+0@
+0?
+0>
+0=
+0<
+0;
+0:
+b10000000000000000000000000000011 9
+b1110 8
+b0 7
+06
+x5
+x4
+x3
+x2
+11
+b0 0
+0/
+0.
+x-
+b0 ,
+1+
+0*
+x)
+x(
+x'
+x%
+x$
+x#
+x"
+0!
+$end
+#100
+1*
+#200
+0*
+#250
+b1 7
+02
+03
+04
+05
+0+
+b100001101001100010001010100000101010010 ,
+#300
+1E
+1O
+1Y
+1c
+0%
+0$
+0#
+0"
+1*
+#400
+0*
+#450
+1@
+1^
+1B
+1K
+0L
+1U
+0V
+1`
+0D
+0b
+1C
+1M
+1W
+1a
+1?
+b10 7
+12
+15
+1'
+0(
+0)
+1-
+01
+1+
+b10011000100111101000001010001000010110100111001 ,
+#500
+0c
+0E
+1"
+1%
+1*
+#600
+0*
+#650
+0@
+0K
+1L
+0U
+1V
+0^
+1D
+1b
+0C
+0M
+0W
+0a
+0?
+b11 7
+x'
+x(
+x)
+x-
+11
+b10101110100000101001001010101000010110100110001 ,
+#700
+1*
+#800
+0*
+#850
+b100 7
+b10101110100000101001001010101000010110100110010 ,
+#900
+1*
+#1000
+0*
+#1050
+b101 7
+b10101110100000101001001010101000010110100110011 ,
+#1100
+1*
+#1200
+0*
+#1250
+1J
+1K
+1M
+1@
+1A
+1<
+1C
+1;
+1:
+b110 7
+02
+13
+1.
+1/
+b1000011010011110101010101001110010101000010110100111001 ,
+#1300
+0J
+0K
+0M
+0O
+1E
+0<
+1$
+0%
+1*
+#1400
+0*
+#1450
+b111 7
+12
+b100001101001111010101010100111001010100001011010011000100110000 ,
+#1500
+1J
+1K
+1T
+1U
+1M
+1W
+0E
+1<
+1=
+1%
+1*
+#1600
+0*
+#1650
+b1000 7
+02
+03
+14
+b100001101001111010101010100111001010100001011010011000100110001 ,
+#1700
+0J
+0K
+0T
+0U
+0M
+0W
+0Y
+1O
+1E
+0<
+0=
+1#
+0$
+0%
+1*
+#1800
+0*
+#1850
+0@
+0A
+0C
+0;
+0:
+b1001 7
+0.
+0/
+b10101110100000101001001010101000010110100110100 ,
+#1900
+1*
+#2000
+0*
+#2050
+b1010 7
+b10101110100000101001001010101000010110100110101 ,
+#2100
+1*
+#2200
+0*
+#2250
+1@
+1A
+1C
+1;
+1:
+b1011 7
+12
+1.
+1/
+b100001101001111010101010100111001010100001011010011000100110010 ,
+#2300
+1J
+1K
+1M
+0E
+1<
+1%
+1*
+#2400
+0*
+#2450
+b1100 7
+02
+13
+b100001101001111010101010100111001010100001011010011000100110011 ,
+#2500
+0J
+0K
+0M
+0O
+1E
+0<
+1$
+0%
+1*
+#2600
+0*
+#2650
+1^
+1@
+0A
+1B
+1K
+0L
+1U
+0V
+1`
+0D
+0b
+1M
+1W
+1a
+0;
+0:
+1?
+b1101 7
+12
+03
+04
+1'
+0(
+0)
+1-
+0.
+0/
+01
+b10011000100111101000001010001000010110100111001 ,
+#2700
+0E
+1O
+1Y
+1%
+0$
+0#
+1*
+#2800
+0*
+#2850
+1J
+1A
+1K
+1L
+0U
+1V
+0^
+1D
+1b
+1<
+1M
+0W
+0a
+1;
+1:
+0?
+b1110 7
+02
+13
+x'
+x(
+x)
+x-
+1.
+1/
+11
+b1000011010011110101010101001110010101000010110100111001 ,
+#2900
+0J
+0K
+0M
+0O
+1E
+0<
+1$
+0%
+1*
+#3000
+0*
+#3050
+b1111 7
+12
+b100001101001111010101010100111001010100001011010011000100110000 ,
+#3100
+1J
+1K
+1T
+1U
+1M
+1W
+0E
+1<
+1=
+1%
+1*
+#3200
+0*
+#3250
+b10000 7
+02
+03
+14
+b100001101001111010101010100111001010100001011010011000100110001 ,
+#3300
+0J
+0K
+0T
+0U
+0M
+0W
+0Y
+1O
+1E
+0<
+0=
+1#
+0$
+0%
+1*
+#3400
+0*
+#3450
+0@
+0A
+0C
+0;
+0:
+b10001 7
+04
+05
+0.
+0/
+0+
+b100001101001100010001010100000101010010 ,
+#3500
+1Y
+1c
+0#
+0"
+1*
+#3600
+0*
+#3650
+b11111111111111111111111111111111 8

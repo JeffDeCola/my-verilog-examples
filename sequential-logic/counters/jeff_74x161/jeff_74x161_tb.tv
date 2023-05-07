@@ -1,0 +1,19 @@
+            CLR_BAR_LD_BAR_ENT_ENP_D_C_B_A_QDEXP_QCEXP_QBEXP_QAEXP_RCOEXP
+INIT        1       1      0   0   x x x x x     x     x     x     0
+CLEAR       0       1      0   0   x x x x 0     0     0     0     0
+LOAD-9      1       0      0   0   1 0 0 1 1     0     0     1     0
+WAIT-1      1       1      0   0   x x x x 1     0     0     1     0
+WAIT-2      1       1      0   0   x x x x 1     0     0     1     0
+WAIT-3      1       1      0   0   x x x x 1     0     0     1     0
+COUNT-9     1       1      1   1   x x x x 1     0     1     0     0
+COUNT-10    1       1      1   1   x x x x 1     0     1     1     0
+COUNT-11    1       1      1   1   x x x x 1     1     0     0     0
+WAIT-4      1       1      0   0   x x x x 1     1     0     0     0
+WAIT-5      1       1      0   0   x x x x 1     1     0     0     0
+COUNT-12    1       1      1   1   x x x x 1     1     0     1     0
+COUNT-13    1       1      1   1   x x x x 1     1     1     0     0
+LOAD-9      1       0      0   0   1 0 0 1 1     0     0     1     0
+COUNT-9     1       1      1   1   x x x x 1     0     1     0     0
+COUNT-10    1       1      1   1   x x x x 1     0     1     1     0
+COUNT-11    1       1      1   1   x x x x 1     1     0     0     0
+CLEAR       0       1      0   0   x x x x 0     0     0     0     0
