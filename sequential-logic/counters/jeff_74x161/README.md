@@ -7,7 +7,7 @@ Based on the 7400-series integrated circuits used in my
 Documentation and Reference
 
 * I'm using my
-  [jk-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop)
+  [jk_flip_flop_pos_edge_sync_clear](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop_pos_edge_sync_clear)
 
 Table of Contents
 
@@ -33,54 +33,78 @@ FPGA development board._
 
 ## SCHEMATIC
 
-_This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
-repo._
-
-<p align="center">
-    <img src="svgs/and.svg"
-    align="middle"
-</p>
-
 I designed this processor form the 1976 Texas Instruments spec sheet.
 The `clr_bar` is connected directly to the JK flip-flops.
 
-![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/ti-74x161-schematic.jpg)
+![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/sequential-logic/ti-74x161-schematic.jpg)
 
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| clr_bar | ld_bar | ent | enp | d | c | b | a | qd | qc  | qb  | qa  | rco | COMMENT |
+|:-------:|:------:|:---:|:---:|:-:|:-:|:-:|:-:|:--:|:---:|:---:|:---:|:---:|:-------:|
+|    1    |    1   |  0  |  0  | x | x | x | x | qd | qc  | qb  | qa  | rco | WAIT   :|
+|    0    |    1   |  0  |  0  | x | x | x | x | 0  | 0   | 0   | 0   |  0  | CLEAR  :|
+|    1    |    0   |  0  |  0  | d | c | b | a | d  | c   | b   | a   |  0  | LOAD   :|
+|    1    |    1   |  1  |  1  | x | x | x | x | +  | +   | +   | +   |  0  | COUNT  :|
 
 ## VERILOG CODE
 
 The
 [jeff_74x161.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/counters/jeff_74x161/jeff_74x161.v)
-gate model,
+dataflow and structural model.
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
+    wire ld;
+    wire ent_and_enp;
 
-Dataflow model,
+    assign rco = ent & qd & qc & qb & qa;
 
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
+    assign ld = ~ld_bar;
+    assign ent_and_enp = ent & enp;
 
-Behavioral model,
+    assign feedback_qd = ent_and_enp & qc & qb & qa;
 
-```verilog
-    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
-    end
+    output_section OUTPUT_QD (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qd),
+        .clk(clk),
+        .data(d),
+        .q(qd)
+    );
+
+    assign feedback_qc =  ent_and_enp & qb & qa;
+
+    output_section OUTPUT_QC (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qc),
+        .clk(clk),
+        .data(c),
+        .q(qc)
+    );
+
+    assign feedback_qb = ent_and_enp & qa;
+
+    output_section OUTPUT_QB (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qb),
+        .clk(clk),
+        .data(b),
+        .q(qb)
+    );
+
+    assign feedback_qa = ent_and_enp;
+
+    output_section OUTPUT_QA (
+        .clr_bar(clr_bar),
+        .ld(ld),
+        .feedback(feedback_qa),
+        .clk(clk),
+        .data(a),
+        .q(qa)
+    );
 ```
 
 ## RUN (SIMULATE)
@@ -116,7 +140,40 @@ vvp jeff_74x161_tb.vvp
 The output of the test,
 
 ```text
-???
+TEST START --------------------------------
+
+                 | TIME(ns) | CLR_BAR | LD_BAR | ENT | ENP | D | C | B | A | QD | QC | QB | QA | RCO |
+                 -------------------------------------------------------------------------------------
+   0             |        0 |    1    |   1    |  0  | 0  | x  | x | x | x | x  | x  | x  | x  | 0   |
+   1       CLEAR |       25 |    0    |   1    |  0  | 0  | x  | x | x | x | x  | x  | x  | x  | 0   |
+   1       CLEAR |       30 |    0    |   1    |  0  | 0  | x  | x | x | x | 0  | 0  | 0  | 0  | 0   |
+   2      LOAD-9 |       45 |    1    |   0    |  0  | 0  | 1  | 0 | 0 | 1 | 0  | 0  | 0  | 0  | 0   |
+   2      LOAD-9 |       50 |    1    |   0    |  0  | 0  | 1  | 0 | 0 | 1 | 1  | 0  | 0  | 1  | 0   |
+   3      WAIT-1 |       65 |    1    |   1    |  0  | 0  | x  | x | x | x | 1  | 0  | 0  | 1  | 0   |
+   4      WAIT-2 |       85 |    1    |   1    |  0  | 0  | x  | x | x | x | 1  | 0  | 0  | 1  | 0   |
+   5      WAIT-3 |      105 |    1    |   1    |  0  | 0  | x  | x | x | x | 1  | 0  | 0  | 1  | 0   |
+   6     COUNT-9 |      125 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 0  | 1  | 0   |
+   6     COUNT-9 |      130 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 0  | 0   |
+   7    COUNT-10 |      145 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 0  | 0   |
+   7    COUNT-10 |      150 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 1  | 0   |
+   8    COUNT-11 |      165 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 1  | 0   |
+   8    COUNT-11 |      170 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 1  | 0  | 0  | 0   |
+   9      WAIT-4 |      185 |    1    |   1    |  0  | 0  | x  | x | x | x | 1  | 1  | 0  | 0  | 0   |
+  10      WAIT-5 |      205 |    1    |   1    |  0  | 0  | x  | x | x | x | 1  | 1  | 0  | 0  | 0   |
+  11    COUNT-12 |      225 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 1  | 0  | 0  | 0   |
+  11    COUNT-12 |      230 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 1  | 0  | 1  | 0   |
+  12    COUNT-13 |      245 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 1  | 0  | 1  | 0   |
+  12    COUNT-13 |      250 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 1  | 1  | 0  | 0   |
+  13      LOAD-9 |      265 |    1    |   0    |  0  | 0  | 1  | 0 | 0 | 1 | 1  | 1  | 1  | 0  | 0   |
+  13      LOAD-9 |      270 |    1    |   0    |  0  | 0  | 1  | 0 | 0 | 1 | 1  | 0  | 0  | 1  | 0   |
+  14     COUNT-9 |      285 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 0  | 1  | 0   |
+  14     COUNT-9 |      290 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 0  | 0   |
+  15    COUNT-10 |      305 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 0  | 0   |
+  15    COUNT-10 |      310 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 1  | 0   |
+  16    COUNT-11 |      325 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 0  | 1  | 1  | 0   |
+  16    COUNT-11 |      330 |    1    |   1    |  1  | 1  | x  | x | x | x | 1  | 1  | 0  | 0  | 0   |
+  17       CLEAR |      345 |    0    |   1    |  0  | 0  | x  | x | x | x | 1  | 1  | 0  | 0  | 0   |
+  17       CLEAR |      350 |    0    |   1    |  0  | 0  | x  | x | x | x | 0  | 0  | 0  | 0  | 0   |
 ```
 
 ## VIEW WAVEFORM
@@ -137,7 +194,7 @@ anytime you want,
 gtkwave -f jeff_74x161_tb.gtkw &
 ```
 
-![jeff_74x161-waveform.jpg](../../../docs/pics/basic-code/jeff_74x161-waveform.jpg)
+![jeff_74x161-waveform.jpg](../../../docs/pics/sequential-logic/jeff_74x161-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

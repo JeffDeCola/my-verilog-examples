@@ -12,8 +12,7 @@ module jeff_74x161(
     input           clk,                 // CLK
     input           a, b, c, d,          // DATA IN
     output          qa, qb, qc, qd,      // DATA OUT
-    output          rco                  // RIPPLE CARRY OUTPUT
-);
+    output          rco);                // RIPPLE CARRY OUTPUT
 
     wire ld;
     wire ent_and_enp;

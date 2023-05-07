@@ -1,8 +1,8 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
 // include files in jeff-74x161.vh
 
-module jeff_74x161_tb;
+module JEFF_74x161_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg        CLR_BAR, LD_BAR;
@@ -12,8 +12,14 @@ module jeff_74x161_tb;
     wire       QA, QB, QC, QD;
     wire       RCO;
 
+    // FOR TESTING  
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg             QAEXP, QBEXP, QCEXP, QDEXP, RCOEXP;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
+
     // UNIT UNDER TEST
-    jeff_74x161 uut(
+    jeff_74x161 UUT_jeff_74x161(
         .clr_bar(CLR_BAR), .ld_bar(LD_BAR),
         .ent(ENT), .enp(ENP),
         .clk(CLK),
@@ -22,58 +28,83 @@ module jeff_74x161_tb;
         .rco(RCO)
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("jeff_74x161_tb.vcd");
-        $dumpvars(0, jeff_74x161_tb);
+        $dumpvars(0, JEFF_74x161_TB);
     end
 
-    // CLOCK
+    // CLK PERIOD
+    localparam CLKPERIOD = 20;
+
+    // CLK
     always begin
-        #10 CLK = ~CLK;
+        #(CLKPERIOD/2) CLK = ~CLK;
     end
 
-    // TESTCASE - CHANGE REG VALUES
+    // INITIALIZE TESTBENCH
     initial begin
-        $display("test start");
-        CLR_BAR = 1; LD_BAR = 1;
-        ENT = 0; ENP = 0;
+
+        // OPEN VECTOR FILE - THROW AWAY FIRST LINE
+        FD=$fopen("jeff_74x161_tb.tv","r");
+        COUNT = $fscanf(FD, "%s", COMMENT);
+        // $display ("FIRST LINE IS: %s", COMMENT);
+
+        // INIT TESTBENCH
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b %b %b %b", COMMENT, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QDEXP, QCEXP, QBEXP, QAEXP, RCOEXP);
         CLK = 0;
-        D = 0; C = 0; B = 0; A = 0;
+        VECTORCOUNT = 0;
+        ERRORS = 0;
+        COMMENT ="";
 
-        // ASYNC CLEAR
-        #15; CLR_BAR = 0;
+        // DISPAY OUTPUT AND MONITOR
+        $display();
+        $display("TEST START --------------------------------");
+        $display();
+        $display("                 | TIME(ns) | CLR_BAR | LD_BAR | ENT | ENP | D | C | B | A | QD | QC | QB | QA | RCO |");
+        $display("                 -------------------------------------------------------------------------------------");
+        $monitor("%4d  %10s | %8d |    %1d    |   %1d    |  %1d  | %1d  | %1d  | %1d | %1d | %1d | %1d  | %1d  | %1d  | %1d  | %1d   |", VECTORCOUNT, COMMENT, $time, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QD, QC, QB, QA, RCO);
 
-        // LOAD - PRESET TO 12
-        #20; CLR_BAR = 1; LD_BAR = 0;
-            D = 1; C = 1; B = 0; A = 0;
-        #20 LD_BAR = 1;     
-
-        // WAIT
-        #100
-
-        // COUNT - 13, 14, 15, 0, 1, 2, 3, 4....
-        ENT = 1; ENP = 1;
-        #300
-
-        // STOP IT INHIBIT
-        ENT = 0; ENP = 0;
-        #100
-
-        // LET IT CONTINUE
-        ENT = 1; ENP = 1;
-        #300
-
-        // LOAD - PRESET TO 05
-        #20; CLR_BAR = 1; LD_BAR = 0;
-            D = 0; C = 1; B = 0; A = 1;
-        #20 LD_BAR = 1;     
-
-        // COUNT
-        #100
-
-        $display("test complete");
-        $finish;
     end
+
+    // APPLY TEST VECTORS ON NEG EDGE CLK (ADD DELAY)
+    always @(negedge CLK) begin
+
+        // WAIT A BIT (AFTER CHECK)
+        #5;
+
+        // GET VECTORS FROM TB FILE
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b %b %b %b", COMMENT, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QDEXP, QCEXP, QBEXP, QAEXP, RCOEXP);
+
+        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+        if (COUNT == -1) begin
+            $fclose(FD);
+            $display();
+            $display(" VECTORS: %4d", VECTORCOUNT);
+            $display("  ERRORS: %4d", ERRORS);
+            $display();
+            $display("TEST END ----------------------------------");
+            $display();
+            $finish;
+        end
+
+        // GET ANOTHER VECTOR
+        VECTORCOUNT = VECTORCOUNT + 1;
+
+    end
+
+    // CHECK TEST VECTORS ON POS EGDE CLK
+    always @(posedge CLK) begin
+
+        // WAIT A BIT
+        #5;
+
+        // CHECK EACH VECTOR RESULT
+        if ((QDEXP !== QD) | (QCEXP !== QC) | (QBEXP !== QB) | (QAEXP !== QA) | (RCOEXP !== RCO)) begin
+            $display("***ERROR (behavioral) - Expected QD=%b QC=%b QB=%b QA=%b RCO=%b", QDEXP, QCEXP, QBEXP, QAEXP, RCOEXP);
+            ERRORS = ERRORS + 1;
+        end
+
+    end   
 
 endmodule
