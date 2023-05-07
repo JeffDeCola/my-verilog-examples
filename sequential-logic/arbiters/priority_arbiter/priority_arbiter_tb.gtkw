@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sun May  7 00:11:54 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/arbiters/priority_arbiter/priority_arbiter_tb.vcd"
+[dumpfile_mtime] "Sun May  7 00:08:53 2023"
+[dumpfile_size] 1752
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/arbiters/priority_arbiter/priority_arbiter_tb.gtkw"
+[timestart] 0
+[size] 1077 600
+[pos] -78 -1
+*-5.793139 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+PRIORITY_ARBITER_TB.REQ_2
+PRIORITY_ARBITER_TB.REQ_1
+PRIORITY_ARBITER_TB.REQ_0
+@200
+-
+@28
+PRIORITY_ARBITER_TB.GNT_2
+PRIORITY_ARBITER_TB.GNT_1
+PRIORITY_ARBITER_TB.GNT_0
+@200
+-
+@29
+PRIORITY_ARBITER_TB.RST
+[pattern_trace] 1
+[pattern_trace] 0

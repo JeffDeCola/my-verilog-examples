@@ -108,7 +108,7 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                      GATE -----   DATA -----   BEH ------  
+                                      GATE -----   DATA -----   BEH ------
                  | TIME(ns) | A | B | SUM | COUT | SUM | COUT | SUM | COUT |
                  -----------------------------------------------------------
    0        INIT |        0 | 0 | 0 |  0   |  0  |  0   |  0  |  0   |  0  |

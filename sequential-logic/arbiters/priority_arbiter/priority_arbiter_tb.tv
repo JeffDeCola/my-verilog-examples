@@ -1,0 +1,11 @@
+            RST_REG_2_REG_1_REG_0__GNT_2EXP_GNT_1EXP_GNT0_EXP
+INIT        0   0     0     0      0        0        0
+NOTHING     0   0     0     0      0        0        0
+GNT0        0   0     0     1      0        0        1
+GNT1        0   0     1     0      0        1        0
+--          0   0     1     1      0        0        1
+GNT3        0   1     0     0      1        0        0
+--          0   1     0     1      0        0        1
+--          0   1     1     0      0        1        0
+--          0   1     1     1      0        0        1
+RESET       1   x     x     x      0        0        0

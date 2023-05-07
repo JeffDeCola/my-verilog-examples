@@ -69,7 +69,7 @@ module HALF_ADDER_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                      GATE -----   DATA -----   BEH ------  ");
+        $display("                                      GATE -----   DATA -----   BEH ------");
         $display("                 | TIME(ns) | A | B | SUM | COUT | SUM | COUT | SUM | COUT |");
         $display("                 -----------------------------------------------------------");
         $monitor("%4d  %10s | %8d | %1d | %1d |  %1d   |  %1d  |  %1d   |  %1d  |  %1d   |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, SUM_gate, COUT_gate, SUM_data, COUT_data, SUM_beh, SUM_beh);

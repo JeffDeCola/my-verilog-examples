@@ -2,59 +2,36 @@
 
 // include files in priority-arbiter.vh
 
-module priority_arbiter_tb;
+module PRIORITY_ARBITER_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg  CLK, RST;
-    reg  REQ_0, REQ_1, REQ_2;
-    wire GNT_0, GNT_1, GNT_2;
-
-`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
-
-// include files are in d_flip_flop.vh
-
-module D_FLIP_FLOP_TB ();
-
-    // INPUT PROBES
-    reg             D;
-
-    // OUTPUT PROBES
-    wire            Q_gate, QBAR_gate;
-    wire            Q_data, QBAR_data;
-    wire            Q_beh, QBAR_beh;
+    reg             CLK, RST;
+    reg             REQ_0, REQ_1, REQ_2;
+    wire            GNT_0, GNT_1, GNT_2;
 
     // FOR TESTING  
-    reg             CLK;
     reg [31:0]      VECTORCOUNT, ERRORS;
-    reg             QEXPECTED;
+    reg             GNT_2EXP, GNT_1EXP, GNT_0EXP;
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (gate)
-    d_flip_flop_gate UUT_d_flip_flop_gate(
-        .clk(CLK),
-        .d(D),
-        .q(Q_gate), .qbar(QBAR_gate)
-    );
-
-    // UNIT UNDER TEST (dataflow)
-    d_flip_flop_dataflow UUT_d_flip_flop_dataflow(
-        .clk(CLK),
-        .d(D),
-        .q(Q_data), .qbar(QBAR_data)
-    );
 
         // UNIT UNDER TEST (behavioral)
-    d_flip_flop_behavioral UUT_d_flip_flop_behavioral(
+    priority_arbiter_behavioral UUT_priority_arbiter_behavioral(
         .clk(CLK),
-        .d(D),
-        .q(Q_beh), .qbar(QBAR_beh)
+        .rst(RST),
+        .req_0(REQ_0),
+        .req_1(REQ_1),
+        .req_2(REQ_2),
+        .gnt_0(GNT_0),
+        .gnt_1(GNT_1),
+        .gnt_2(GNT_2)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("d_flip_flop_tb.vcd");
-        $dumpvars(0, D_FLIP_FLOP_TB);
+        $dumpfile("priority_arbiter_tb.vcd");
+        $dumpvars(0, PRIORITY_ARBITER_TB);
     end
 
     // CLK PERIOD
@@ -69,12 +46,12 @@ module D_FLIP_FLOP_TB ();
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("d_flip_flop_tb.tv","r");
+        FD=$fopen("priority_arbiter_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, REQ_2, REQ_1, REQ_0, GNT_2EXP, GNT_1EXP, GNT_0EXP);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -84,10 +61,9 @@ module D_FLIP_FLOP_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                 GATE  DATA   BEH");
-        $display("                 | TIME(ns) | D |  Q  |  Q  |  Q  |");
-        $display("                 ----------------------------------");
-        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, D, Q_gate, Q_data, Q_beh);
+        $display("                 | TIME(ns) | RST | REQ_2 | REQ_1 | REQ_0 | GNT_2EXP | GNT_1EXP | GNT_0EXP |");
+        $display("                 ---------------------------------------------------------------------------");
+        $monitor("%4d  %10s | %8d |  %1d  |   %1d   |   %1d   |   %1d   |    %1d     |    %1d     |    %1d     |", VECTORCOUNT, COMMENT, $time, RST, REQ_2, REQ_1, REQ_0, GNT_2, GNT_1, GNT_0);
 
     end
 
@@ -98,7 +74,7 @@ module D_FLIP_FLOP_TB ();
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b", COMMENT, D, QEXPECTED);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, REQ_2, REQ_1, REQ_0, GNT_2EXP, GNT_1EXP, GNT_0EXP);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -124,16 +100,8 @@ module D_FLIP_FLOP_TB ();
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if (Q_gate !== QEXPECTED) begin
-            $display("***ERROR (gate) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Q_data !== QEXPECTED) begin
-            $display("***ERROR (dataflow) - Expected Q = %b", QEXPECTED);
-            ERRORS = ERRORS + 1;
-        end
-        if (Q_beh !== QEXPECTED) begin
-            $display("***ERROR (behavioral) - Expected Q = %b", QEXPECTED);
+        if ((GNT_2 !== GNT_2EXP) | (GNT_1 !== GNT_1EXP) | (GNT_0 !== GNT_0EXP)) begin
+            $display("***ERROR (behavioral) - Expected GNT_2=%1b, GNT_1=%1b, GNT_0=%1b", GNT_2EXP, GNT_1EXP, GNT_0EXP);
             ERRORS = ERRORS + 1;
         end
 
