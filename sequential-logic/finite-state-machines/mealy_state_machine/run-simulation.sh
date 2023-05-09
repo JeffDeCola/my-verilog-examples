@@ -10,20 +10,20 @@ echo "STEP 1 - COMPILE THE VERILOG CODE TO VVP FORMAT"
 echo "Use icarus iverilog to compile your verilog to *.vvp format."
 echo " "
 
-echo "'iverilog -o pattern_recognition_tb.vvp pattern_recognition_tb.v pattern_recognition.vh'"
-iverilog -o pattern_recognition_tb.vvp pattern_recognition_tb.v pattern_recognition.vh
+echo "'iverilog -o mealy_state_machine_tb.vvp mealy_state_machine_tb.v mealy_state_machine.vh'"
+iverilog -o mealy_state_machine_tb.vvp mealy_state_machine_tb.v mealy_state_machine.vh
 echo " "
 
 echo "STEP 2 - RUN THE SIMULATION USING VVP"
 echo "Use vpp, the icarus runtime simulation engine, to create the waveform dump file *.vcd."
 echo " "
 
-echo "'vpp pattern_recognition_tb.vvp'"
-vvp pattern_recognition_tb.vvp
+echo "'vpp mealy_state_machine_tb.vvp'"
+vvp mealy_state_machine_tb.vvp
 echo " "
 
-echo "Now you can open the waveform file pattern_recognition_tb.vcd with GTKWave."
-echo "gtkwave -f pattern_recognition_tb.vcd &"
+echo "Now you can open the waveform file mealy_state_machine_tb.vcd with GTKWave."
+echo "gtkwave -f mealy_state_machine_tb.vcd &"
 echo " "
 
 echo "**********************************************************************"
