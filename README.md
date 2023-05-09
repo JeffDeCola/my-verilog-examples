@@ -292,9 +292,15 @@ The artifacts created are,
 
 * FINITE STATE MACHINES
 
-  * [pattern_recognition](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/pattern_recognition)
+  * [mealy_state_machine](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/mealy_state_machine)
 
-    _Recognize the pattern 00110 in a serial stream._
+    _Recognize the pattern 00110 in a serial stream.
+    Output depends on current state and current inputs._
+
+  * [moore_state_machine](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/moore_state_machine)
+
+    _Recognize the pattern 00110 in a serial stream.
+    Output depends on current state only._
 
 * MEMORY
 

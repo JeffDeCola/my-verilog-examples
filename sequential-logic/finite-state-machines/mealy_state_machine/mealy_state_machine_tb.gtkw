@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Tue May  9 06:34:23 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/finite-state-machines/mealy_state_machine/mealy_state_machine_tb.vcd"
+[dumpfile_mtime] "Tue May  9 06:32:29 2023"
+[dumpfile_size] 2697
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/finite-state-machines/mealy_state_machine/mealy_state_machine_tb.gtkw"
+[timestart] 0
+[size] 1203 600
+[pos] -1 -1
+*-17.042665 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] MEALY_STATE_MACHINE_TB.
+[sst_width] 204
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+MEALY_STATE_MACHINE_TB.CLK
+MEALY_STATE_MACHINE_TB.RST
+MEALY_STATE_MACHINE_TB.IN
+@200
+-
+@28
+MEALY_STATE_MACHINE_TB.UUT_mealy_state_machine_behavioral.state[2:0]
+@200
+-
+@28
+MEALY_STATE_MACHINE_TB.FOUND
+[pattern_trace] 1
+[pattern_trace] 0
