@@ -26,52 +26,38 @@ FPGA development board._
 
 ## SCHEMATIC
 
-_This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
-repo._
-
-<p align="center">
-    <img src="svgs/and.svg"
-    align="middle"
-</p>
-
 This may help,
 
-![IMAGE - simple-memory-using-1d-array.jpg - IMAGE](../../../docs/pics/simple-memory-using-1d-array.jpg)
+![IMAGE - simple-memory-using-1d-array.jpg - IMAGE](../../../docs/pics/sequential-logic/simple-memory-using-1d-array.jpg)
 
 ## TRUTH TABLE
 
-| a     | b     | y     |
-|:-----:|:-----:|:-----:|
-| 0     | 0     | 0     |
-| 0     | 1     | 0     |
-| 1     | 0     | 0     |
-| 1     | 1     | 1     |
+| write | addr | wdata    |  rdata   | comment     |
+|:-----:|:----:|:--------:|:--------:|:-----------:|
+| 1     | 0000 | 00111100 | 00111100 | WRITE 0000  |
+| 1     | 1100 | 11110000 | 11110000 | WRITE 1100  |
+| 0     | 0000 | xxxxxxxx | 00111100 | READ  0000  |
+| 0     | 1100 | xxxxxxxx | 11110000 | READ  1100  |
 
 ## VERILOG CODE
 
 The
 [simple_memory_using_1d_array.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/simple_memory_using_1d_array/simple_memory_using_1d_array.v)
-gate model,
+behavioral model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
+    // DATA TYPES
+    reg [7:0] mem [0:15];
 
-Dataflow model,
+    assign rdata = mem[addr];
 
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
+    // MEMORY
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @(posedge clk) begin
+        if (write) begin
+            // WRITE DATA TO ADDR
+            mem[addr] <= wdata;
+        end
     end
 ```
 
@@ -108,7 +94,26 @@ vvp simple_memory_using_1d_array_tb.vvp
 The output of the test,
 
 ```text
-???
+TEST START --------------------------------
+
+                 | TIME(ns) | WRITE | ADDR |  WDATA   |  RDATA   |
+                 -------------------------------------------------
+   0        INIT |        0 |   1   | 0000 | 00000000 | xxxxxxxx |
+   0        INIT |       10 |   1   | 0000 | 00000000 | 00000000 |
+   1       WRITE |       25 |   1   | 0000 | 11110000 | 00000000 |
+   1       WRITE |       30 |   1   | 0000 | 11110000 | 11110000 |
+   2       WRITE |       45 |   1   | 0001 | 00001111 | xxxxxxxx |
+   2       WRITE |       50 |   1   | 0001 | 00001111 | 00001111 |
+   3       WRITE |       65 |   1   | 1110 | 10101010 | xxxxxxxx |
+   3       WRITE |       70 |   1   | 1110 | 10101010 | 10101010 |
+   4        READ |       85 |   0   | 0000 | xxxxxxxx | 11110000 |
+   5        READ |      105 |   0   | 0001 | xxxxxxxx | 00001111 |
+   6        READ |      125 |   0   | 1110 | xxxxxxxx | 10101010 |
+
+ VECTORS:    6
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
@@ -129,7 +134,7 @@ anytime you want,
 gtkwave -f simple_memory_using_1d_array_tb.gtkw &
 ```
 
-![simple_memory_using_1d_array-waveform.jpg](../../../docs/pics/basic-code/simple_memory_using_1d_array-waveform.jpg)
+![simple_memory_using_1d_array-waveform.jpg](../../../docs/pics/sequential-logic/simple_memory_using_1d_array-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

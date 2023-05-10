@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Wed May 10 06:57:23 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/simple_memory_using_1d_array/simple_memory_using_1d_array_tb.vcd"
+[dumpfile_mtime] "Wed May 10 06:54:18 2023"
+[dumpfile_size] 1652
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/simple_memory_using_1d_array/simple_memory_using_1d_array_tb.gtkw"
+[timestart] 0
+[size] 1238 600
+[pos] 361 -103
+*-15.021376 143100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] SIMPLE_MEMORY_USING_1D_ARRAY_TB.
+[sst_width] 204
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+SIMPLE_MEMORY_USING_1D_ARRAY_TB.CLK
+SIMPLE_MEMORY_USING_1D_ARRAY_TB.WRITE
+@22
+SIMPLE_MEMORY_USING_1D_ARRAY_TB.ADDR[3:0]
+SIMPLE_MEMORY_USING_1D_ARRAY_TB.WDATA[7:0]
+@23
+SIMPLE_MEMORY_USING_1D_ARRAY_TB.RDATA[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
