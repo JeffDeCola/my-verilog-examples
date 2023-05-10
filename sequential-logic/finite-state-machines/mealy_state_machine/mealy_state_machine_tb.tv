@@ -30,3 +30,5 @@ S1          0   1  0
 S2          0   1  0
 S3          0   0  0
 START       0   1  1
+START       0   1  0
+START       0   1  0

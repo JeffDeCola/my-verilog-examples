@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Wed May 10 05:17:24 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/finite-state-machines/moore_state_machine/moore_state_machine_tb.vcd"
+[dumpfile_mtime] "Wed May 10 05:14:56 2023"
+[dumpfile_size] 3145
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/finite-state-machines/moore_state_machine/moore_state_machine_tb.gtkw"
+[timestart] 0
+[size] 1463 600
+[pos] -1 -1
+*-16.930256 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] MOORE_STATE_MACHINE_TB.
+[sst_width] 204
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+MOORE_STATE_MACHINE_TB.CLK
+MOORE_STATE_MACHINE_TB.RST
+MOORE_STATE_MACHINE_TB.IN
+@200
+-
+@28
+MOORE_STATE_MACHINE_TB.UUT_moore_state_machine_behavioral.state[2:0]
+@201
+-
+@28
+MOORE_STATE_MACHINE_TB.FOUND
+[pattern_trace] 1
+[pattern_trace] 0

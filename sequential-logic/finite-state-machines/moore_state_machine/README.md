@@ -42,7 +42,64 @@ The
 behavioral model,
 
 ```verilog
-???
+    // DATA TYPES
+    reg [2:0] state;
+
+    // STATES - BINARY ENCODED STYLE - USE ANY STYLE YOU WANT
+    parameter [2:0] START     = 3'b000;
+    parameter [2:0] ZERO      = 3'b001;
+    parameter [2:0] WAIT      = 3'b010;
+    parameter [2:0] S1        = 3'b011;
+    parameter [2:0] S2        = 3'b100;
+    parameter [2:0] S3        = 3'b101;
+    parameter [2:0] FOUND     = 3'b110;
+
+    // MOORE STATE MACHINE
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @ (posedge clk) begin
+        if (rst) begin
+            state <= START;
+            found <= 1'b0;
+        end else begin
+            case (state)
+                START: begin
+                    found <= 1'b0;
+                    if (in==0)  begin state <= ZERO;   end
+                    else        begin state <= START;  end
+                end
+                ZERO: begin
+                    found <= 1'b0;
+                    if (in==0)  begin state <= WAIT;   end
+                    else        begin state <= START;  end
+                end
+                WAIT: begin
+                    found <= 1'b0;
+                    if (in==1)  begin state <= S1;     end
+                    else        begin state <= WAIT;   end
+                end
+                S1: begin
+                    found <= 1'b0;
+                    if (in==1)  begin state <= S2;     end
+                    else        begin state <= ZERO;   end
+                end
+                S2:begin
+                    found <= 1'b0;
+                    if (in==0)  begin state <= S3;     end
+                    else        begin state <= START;  end
+                end
+                S3:begin
+                    found <= 1'b0;
+                    if (in==1)  begin state <= FOUND;  end // Found pattern
+                    else        begin state <= WAIT;   end
+                end
+                FOUND:begin
+                    found <= 1'b1;
+                    if (in==1)  begin state <= START;  end
+                    else        begin state <= ZERO;   end
+                end
+            endcase
+        end
+    end
 ```
 
 ## RUN (SIMULATE)
@@ -78,7 +135,54 @@ vvp moore_state_machine_tb.vvp
 The output of the test,
 
 ```text
-???
+TEST START --------------------------------
+
+                 | TIME(ns) | RST | IN | FOUND |
+                 -------------------------------
+   0             |        0 |  0  | x  |   x   |
+   1       RESET |       25 |  1  | 0  |   x   |
+   1       RESET |       30 |  1  | 0  |   0   |
+   2       START |       45 |  0  | 1  |   0   |
+   3       START |       65 |  0  | 1  |   0   |
+   4        ZERO |       85 |  0  | 0  |   0   |
+   5        WAIT |      105 |  0  | 0  |   0   |
+   6        WAIT |      125 |  0  | 0  |   0   |
+   7        WAIT |      145 |  0  | 0  |   0   |
+   8        WAIT |      165 |  0  | 0  |   0   |
+   9          S1 |      185 |  0  | 1  |   0   |
+  10          S2 |      205 |  0  | 1  |   0   |
+  11          S3 |      225 |  0  | 0  |   0   |
+  12       FOUND |      245 |  0  | 1  |   0   |
+  13       START |      265 |  0  | 1  |   0   |
+  13       START |      270 |  0  | 1  |   1   |
+  14        ZERO |      285 |  0  | 0  |   1   |
+  14        ZERO |      290 |  0  | 0  |   0   |
+  15        WAIT |      305 |  0  | 0  |   0   |
+  16        WAIT |      325 |  0  | 0  |   0   |
+  17        WAIT |      345 |  0  | 0  |   0   |
+  18        WAIT |      365 |  0  | 0  |   0   |
+  19          S1 |      385 |  0  | 1  |   0   |
+  20        ZERO |      405 |  0  | 0  |   0   |
+  21        WAIT |      425 |  0  | 0  |   0   |
+  22          S1 |      445 |  0  | 1  |   0   |
+  23          S2 |      465 |  0  | 1  |   0   |
+  24          S3 |      485 |  0  | 0  |   0   |
+  25        WAIT |      505 |  0  | 0  |   0   |
+  26        WAIT |      525 |  0  | 0  |   0   |
+  27          S1 |      545 |  0  | 1  |   0   |
+  28          S2 |      565 |  0  | 1  |   0   |
+  29          S3 |      585 |  0  | 0  |   0   |
+  30       FOUND |      605 |  0  | 1  |   0   |
+  31        ZERO |      625 |  0  | 0  |   0   |
+  31        ZERO |      630 |  0  | 0  |   1   |
+  32        WAIT |      645 |  0  | 0  |   1   |
+  32        WAIT |      650 |  0  | 0  |   0   |
+  33        WAIT |      665 |  0  | 0  |   0   |
+
+ VECTORS:   33
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
@@ -99,7 +203,7 @@ anytime you want,
 gtkwave -f moore_state_machine_tb.gtkw &
 ```
 
-![moore_state_machine-waveform.jpg](../../../docs/pics/basic-code/moore_state_machine-waveform.jpg)
+![moore_state_machine-waveform.jpg](../../../docs/pics/sequential-logic/moore_state_machine-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
