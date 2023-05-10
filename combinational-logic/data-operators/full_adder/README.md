@@ -27,11 +27,11 @@ FPGA development board._
 ## SCHEMATIC
 
 _This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/full_adder)
+[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/combinational-logic/full-adder)
 repo._
 
 <p align="center">
-    <img src="svgs/full_adder.svg"
+    <img src="svgs/full-adder.svg"
     align="middle"
 </p>
 

@@ -18,7 +18,7 @@ module moore_state_machine_behavioral (
     parameter [2:0] S3        = 3'b101;
     parameter [2:0] FOUND     = 3'b110;
 
-    // MEALY STATE MACHINE
+    // MOORE STATE MACHINE
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
         if (rst) begin
