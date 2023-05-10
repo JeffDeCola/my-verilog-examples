@@ -17,7 +17,8 @@ Table of Contents
 Documentation and Reference
 
 * I'm using my
-  [d-flip-flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
+  [d_flip_flop_pos_edge_sync_en](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en)
+  in this model
 
 ## OVERVIEW
 
@@ -33,54 +34,48 @@ FPGA development board._
 
 ## SCHEMATIC
 
-_This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
-repo._
-
-<p align="center">
-    <img src="svgs/and.svg"
-    align="middle"
-</p>
-
 I designed this register form the 1976 Texas Instruments spec sheet.
-I kind of wish it had it clear but this is ok.
 
-![IMAGE - ti-74x377-schematic.jpg - IMAGE](../../../docs/pics/ti-74x377-schematic.jpg)
+![IMAGE - ti-74x377-schematic.jpg - IMAGE](../../../docs/pics/sequential-logic/ti-74x377-schematic.jpg)
 
 ## TRUTH TABLE
 
-| clk     | en_bar | d     | q      |
-|:-------:|:------:|:-----:|:------:|
-| x       |  1     |  X    | q      |
-| tick    |  0     |  1    | 1      |
-| tick    |  0     |  0    | 0      |
-| 0       |  X     |  X    | q      |
+| en_bar | clk | d  | q |
+|:------:|:---:|:--:|:-:|
+|  1     | x   | x  | q |
+|  0     | pos | 1  | 1 |
+|  0     | pos | 0  | 0 |
+|  x     |  0  | x  | q |
 
 ## VERILOG CODE
 
 The
 [jeff_74x377.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/jeff_74x377/jeff_74x377.v)
-gate model,
+behavioral model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
+    wire  NOTHING;
 
-Dataflow model,
+    // EN AND FEEDBACK
+    assign clk_feedback = (clk & ~en_feedback);
+    assign en_feedback = (~en_bar & ~clk_feedback);
 
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
-    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
-    end
+    d_flip_flop_pos_edge_sync_en_behavioral DFF7
+        (.clk(clk), .en(en_feedback), .d(d7), .q(q7), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF6
+        (.clk(clk), .en(en_feedback), .d(d6), .q(q6), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF5
+        (.clk(clk), .en(en_feedback), .d(d5), .q(q5), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF4
+        (.clk(clk), .en(en_feedback), .d(d4), .q(q4), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF3
+        (.clk(clk), .en(en_feedback), .d(d3), .q(q3), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF2
+        (.clk(clk), .en(en_feedback), .d(d2), .q(q2), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF1
+        (.clk(clk), .en(en_feedback), .d(d1), .q(q1), .qbar(NOTHING));
+    d_flip_flop_pos_edge_sync_en_behavioral DFF0
+        (.clk(clk), .en(en_feedback), .d(d0), .q(q0), .qbar(NOTHING));
 ```
 
 ## RUN (SIMULATE)
@@ -116,7 +111,28 @@ vvp jeff_74x377_tb.vvp
 The output of the test,
 
 ```text
-???
+TEST START --------------------------------
+
+                 | TIME(ns) | EN_BAR | D7 D6 D5 D4 D3 D2 D1 D0 | Q7 Q6 Q5 Q4 Q3 Q2 Q1 Q0 |
+                 -------------------------------------------------------------------------
+   0        INIT |        0 |   1    | x  x  x  x  x  x  x  x  | x  x  x  x  x  x  x  x  |
+   1           - |       25 |   1    | x  x  x  x  x  x  x  x  | x  x  x  x  x  x  x  x  |
+   2      ENABLE |       45 |   0    | 1  1  1  1  0  0  0  0  | x  x  x  x  x  x  x  x  |
+   2      ENABLE |       50 |   0    | 1  1  1  1  0  0  0  0  | 1  1  1  1  0  0  0  0  |
+   3      ENABLE |       65 |   0    | 0  0  0  0  1  1  1  1  | 1  1  1  1  0  0  0  0  |
+   3      ENABLE |       70 |   0    | 0  0  0  0  1  1  1  1  | 0  0  0  0  1  1  1  1  |
+   4      ENABLE |       85 |   0    | 1  0  1  0  1  0  1  0  | 0  0  0  0  1  1  1  1  |
+   4      ENABLE |       90 |   0    | 1  0  1  0  1  0  1  0  | 1  0  1  0  1  0  1  0  |
+   5           - |      105 |   1    | x  x  x  x  x  x  x  x  | 1  0  1  0  1  0  1  0  |
+   6           - |      125 |   1    | x  x  x  x  x  x  x  x  | 1  0  1  0  1  0  1  0  |
+   7      ENABLE |      145 |   0    | 1  1  1  1  0  0  0  0  | 1  0  1  0  1  0  1  0  |
+   7      ENABLE |      150 |   0    | 1  1  1  1  0  0  0  0  | 1  1  1  1  0  0  0  0  |
+   8      ENABLE |      165 |   0    | 1  1  1  1  0  0  0  0  | 1  1  1  1  0  0  0  0  |
+
+ VECTORS:    8
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
@@ -137,7 +153,7 @@ anytime you want,
 gtkwave -f jeff_74x377_tb.gtkw &
 ```
 
-![jeff_74x377-waveform.jpg](../../../docs/pics/basic-code/jeff_74x377-waveform.jpg)
+![jeff_74x377-waveform.jpg](../../../docs/pics/sequential-logic/jeff_74x377-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

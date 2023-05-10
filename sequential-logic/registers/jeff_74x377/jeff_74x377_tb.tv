@@ -1,0 +1,9 @@
+            en_bar_D7_D6_D5_D4_D3_D2_D1_D0_Q7EXP_Q6EXP_Q5EXP_Q4EXP_Q3EXP_Q2EXP_Q1EXP_Q0EXP
+INIT        1      x  x  x  x  x  x  x  x  x     x     x     x     x     x     x     x
+-           1      x  x  x  x  x  x  x  x  x     x     x     x     x     x     x     x
+ENABLE      0      1  1  1  1  0  0  0  0  1     1     1     1     0     0     0     0
+ENABLE      0      0  0  0  0  1  1  1  1  0     0     0     0     1     1     1     1
+ENABLE      0      1  0  1  0  1  0  1  0  1     0     1     0     1     0     1     0
+-           1      x  x  x  x  x  x  x  x  1     0     1     0     1     0     1     0
+-           1      x  x  x  x  x  x  x  x  1     0     1     0     1     0     1     0
+ENABLE      0      1  1  1  1  0  0  0  0  1     1     1     1     0     0     0     0
