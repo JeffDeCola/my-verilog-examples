@@ -3,17 +3,6 @@
 _A programable 8-bit microprocessor. Originally designed in VHDL for part of
 [my Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
-_I designed this processor in VHDL for my part of my
-[Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis).
-I translated it into verilog here. As of today I have programmed this
-microprocessor to ADD, SUBTRACT, MULTIPLY and DIVIDE. I also used
-[Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-to synthesize and program these verilog examples on a
-[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
-FPGA development board._
-
-Table of Contents
-
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#overview)
@@ -37,7 +26,7 @@ Table of Contents
 * [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#check-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#tested-in-hardware---burned-to-a-fpga)
 
-Logic parts used. All can be synthesized,
+Logic Used
 
 * [and2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/and2)
   2-input AND gate
@@ -67,6 +56,9 @@ Logic parts used. All can be synthesized,
   8-bit register, clock enable
 
 ## OVERVIEW
+
+As of today I have programmed this microprocessor
+to ADD, SUBTRACT, MULTIPLY and DIVIDE.
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -114,7 +106,7 @@ and spits out the result. That's about it.**
 
 This may help,
 
-![programable_8_bit_microprocessor.jpg](../../../docs/pics/programable_8_bit_microprocessor.jpg)
+![programable-8-bit-microprocessor.jpg](../../../docs/pics/systems/programable-8-bit-microprocessor.jpg)
 
 MAIN INPUTS,
 
@@ -146,10 +138,7 @@ This design is broken into two main sections,
     ([processor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/processor/processor.v))
     * Crunches the data controlled by the control section
 
-A little more top level detail from my
-[Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis),
-
-![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
+![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/systems/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
 
 ## OPCODE (THE USER INSTRUCTION SET)
 
@@ -182,7 +171,7 @@ Hence, there are 16 sections equally divided.
 
 This may help,
 
-![control-store-structure.jpg](../../../docs/pics/control-store-structure.jpg)
+![control-store-structure.jpg](../../../docs/pics/systems/control-store-structure.jpg)
 
 ### MICROWORD
 
@@ -337,7 +326,7 @@ The microcode is,
 
 This may help,
 
-![multiply-opcode-1100.jpg](../../../docs/pics/multiply-opcode-1100.jpg)
+![multiply-opcode-1100.jpg](../../../docs/pics/systems/multiply-opcode-1100.jpg)
 
 ### DIVIDE (opcode 1110)
 
@@ -402,9 +391,9 @@ The microcode is,
 
 These diagrams may help,
 
-![how-to-divide-using-logic.jpg](../../../docs/pics/how-to-divide-using-logic.jpg)
+![how-to-divide-using-logic.jpg](../../../docs/pics/systems/how-to-divide-using-logic.jpg)
 
-![divide-opcode-1110.jpg](../../../docs/pics/divide-opcode-1110.jpg)
+![divide-opcode-1110.jpg](../../../docs/pics/systems/divide-opcode-1110.jpg)
 
 ### JAM
 
@@ -476,7 +465,7 @@ The control section has five main parts,
     ([xor2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.v))
     _replaced xor2_
 
-![Control-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/Control-Block-of-the-8-bit-Microprocessor.jpg)
+![Control-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/systems/Control-Block-of-the-8-bit-Microprocessor.jpg)
 
 ### PROCESSOR SECTION
 
@@ -538,100 +527,164 @@ The processor is a collection of registers, muxes and an alu,
     * U5 ([nand4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nand4/nand4.v))
       _Replaced nand4_
 
-![Processor-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/Processor-Block-of-the-8-bit-Microprocessor.jpg)
+![Processor-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/systems/Processor-Block-of-the-8-bit-Microprocessor.jpg)
+
+## VERILOG CODE
+
+The
+[programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v)
+top level code is,
+
+```verilog
+    // CONTROL_SECTION
+    control CONTROL_SECTION (
+        .OPCODE(OPCODE),
+        .GO_BAR(GO_BAR),
+        .RESET(RESET),
+        .JAM(JAM),
+        .SYSTEM_CLK(SYSTEM_CLK),
+        .STATUS_BITS(STATUS_BITS),
+        .MW(MW),
+        .MICROADDRESS(MICROADDRESS),
+        .CONTROL_BITS(CONTROL_BITS),        // ORDER DIFFERENT FROM THESIS
+        .EIL_BAR(EIL_BAR)
+    );
+
+    // PROCESSOR SECTION
+    processor PROCESSOR_SECTION (
+        .DATA_IN_A(DATA_IN_A),
+        .DATA_IN_B(DATA_IN_B),
+        .SYSTEM_CLK(SYSTEM_CLK),
+        .EIL_BAR(EIL_BAR),
+        .CONTROL_BITS(CONTROL_BITS),
+        .STATUS_BITS(STATUS_BITS),
+        .DATA_OUT(DATA_OUT)
+    );
+```
 
 ## RUN (SIMULATE)
 
-I used my testbench
-[programable_8_bit_microprocessor_tb.v](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor_tb.v) with
-[iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
-to simulate and create a `.vcd` file.
+The testbench uses two files,
+
+* [programable-8-bit-microprocessor_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor_tb.v)
+  the testbench
+* [programable-8-bit-microprocessor_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor_tb.tv)
+  the test vectors and expected results
+
+with,
+
+* [programable-8-bit-microprocessor.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor.vh)
+  is the header file listing the verilog models
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/run-simulation.sh)
+  is a script containing the commands below
+
+Use **iverilog** to compile the verilog to a vvp format
+which is used by the vvp runtime simulation engine,
 
 ```bash
-sh run-test.sh
+iverilog -o programable-8-bit-microprocessor_tb.vvp programable-8-bit-microprocessor_tb.v programable-8-bit-microprocessor.vh
 ```
 
-This simulation will send a few opcodes to the processor.
+Use **vvp** to run the simulation, which checks the UUT
+and creates a waveform dump file *.vcd.
 
-```verilog
-    // RESET THE COUNTER - WILL SET MICROADDRESS TO 0
-    #15; RESET = 0;
-    #20; RESET = 1;
-    #100;
-
-    // ******************************************************
-    // TEST 1 - ADD - 8'h31 PLUS 8'h05 = 8'h36 (49 + 5 = 54)
-    OPCODE = 4'b0011;
-    GO_BAR = 0;
-    DATA_IN_A = 8'h31;
-    DATA_IN_B = 8'h05;
-
-    #100
-    #20; GO_BAR = 1;
-    #120;
-
-    // ******************************************************
-    // TEST 2 - SUBTRACT - 8'h31 MINUS 8'h05 = 8'h2C (49 - 5 = 44)
-    OPCODE = 4'b0111;
-    GO_BAR = 0;
-    DATA_IN_A = 8'h31;
-    DATA_IN_B = 8'h05;
-
-    #100
-    #20; GO_BAR = 1;
-    #120;
-
-    // ******************************************************
-    // TEST 3 - MULTIPLY - 8'h31 x 8'h05 = 8'hF5 (49 x 5 = 245)
-    OPCODE = 4'b1100;
-    GO_BAR = 0;
-    DATA_IN_A = 8'h31;
-    DATA_IN_B = 8'h05;
-
-    #500
-    #20; GO_BAR = 1;
-    #120;
-
-    // ******************************************************
-    // TEST 4 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02 (49 / 13 = 6 with 2 remainder)
-    // THE OUTPUT WILL BE 8'b00010 110 or 8'h16
-    OPCODE = 4'b1110;
-    GO_BAR = 0;
-    DATA_IN_A = 8'h50;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
-    DATA_IN_B = 8'h68;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1101 becomes 1101000
-
-    #300
-    #20; GO_BAR = 1;
-    #120;
+```bash
+vvp programable-8-bit-microprocessor_tb.vvp
 ```
 
-## CHECK WAVEFORM
+For this test I will ????? (LIST TESTS IN TEST VECTOR FILE)
 
-Check you waveform using your `.vcd` file with a waveform viewer.
+```text
+        // ******************************************************
+        // TEST 1 - ADD - 8'h31 PLUS 8'h05 = 8'h36 (49 + 5 = 54)
+        OPCODE = 4'b0011;
+        GO_BAR = 0;
+        DATA_IN_A = 8'h31;
+        DATA_IN_B = 8'h05;
 
-I used [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
-and launch it using
-[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh).
+        // ******************************************************
+        // TEST 2 - SUBTRACT - 8'h31 MINUS 8'h05 = 8'h2C (49 - 5 = 44)
+        OPCODE = 4'b0111;
+        GO_BAR = 0;
+        DATA_IN_A = 8'h31;
+        DATA_IN_B = 8'h05;
+
+        // ******************************************************
+        // TEST 3 - MULTIPLY - 8'h31 x 8'h05 = 8'hF5 (49 x 5 = 245)
+        OPCODE = 4'b1100;
+        GO_BAR = 0;
+        DATA_IN_A = 8'h31;
+        DATA_IN_B = 8'h05;
+
+        // ******************************************************
+        // TEST 4 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02
+        // (49 / 13 = 6 with 2 remainder)
+        // THE OUTPUT WILL BE 8'b00010 110 or 8'h16
+        OPCODE = 4'b1110;
+        GO_BAR = 0;
+        DATA_IN_A = 8'h50;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
+        DATA_IN_B = 8'h68;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1101 becomes 1101000
+
+        // ******************************************************
+        // TEST 5 - DIVIDE - 8'h2D / 8'h0B = 8'h0B with remainder 8'b01
+        // (45 / 11 = 4 with 1 remainder)
+        // THE OUTPUT WILL BE 8'b00001 100 or 8'h0C
+        OPCODE = 4'b1110;
+        GO_BAR = 0;
+        DATA_IN_A = 8'h2D;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
+        DATA_IN_B = 8'h58;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1011 becomes 01011000
+
+        // ******************************************************
+        // TEST 6 - DIVIDE - 8'h4E / 8'h0F = 8'h05 with remainder 8'b03
+        // (78 / 15 = 5 with 3 remainder)
+        // THE OUTPUT WILL BE 8'b00011 101 or 8'h1D
+        OPCODE = 4'b1110;
+        GO_BAR = 0;
+        DATA_IN_A = 8'h4E;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
+        DATA_IN_B = 8'h78;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1111 becomes 01111000
+```
+
+The output of the test,
+
+```text
+???
+```
+
+## VIEW WAVEFORM
+
+Open the waveform file programable-8-bit-microprocessor_tb.vcd file with GTKWave,
+
+```bash
+gtkwave -f programable-8-bit-microprocessor_tb.vcd &
+```
+
+Save your waveform to a .gtkw file.
+
+Now you can use the script
+[launch-gtkwave.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/launch-GTKWave-script/launch-gtkwave.sh)
+anytime you want,
+
+```bash
+gtkwave -f programable-8-bit-microprocessor_tb.gtkw &
+```
 
 Focus on DATA_IN_A, DATA_IN_B and DATA_OUT. You can see the RESET where the
 output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
 
-![programable_8_bit_microprocessor-waveform.jpg](../../../docs/pics/programable_8_bit_microprocessor-waveform.jpg)
+![programable_8_bit_microprocessor-waveform.jpg](../../../docs/pics/systems/programable_8_bit_microprocessor-waveform.jpg)
 
 A little more detail,
 
-![programable_8_bit_microprocessor-waveform-more-detail.jpg](../../../docs/pics/programable_8_bit_microprocessor-waveform-more-detail.jpg)
+![programable_8_bit_microprocessor-waveform-more-detail.jpg](../../../docs/pics/systems/programable_8_bit_microprocessor-waveform-more-detail.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
-To test my design in real hardware, the above code was synthesized using the
+The above code was synthesized using the
 [Xilinx Vivado](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/synthesis/xilinx-vivado-cheat-sheet)
-IDE software suite and burned to a
-[Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
-FPGA development board.
+IDE software suite and burned to a FPGA development board.
 
 The ARTY-S7 uses the Xilinx Spartan-7 FPGA (XC7S50) that has
 52,160 logic cells and 250 pins. I used about 7% of the total real estate,
 that light blue area at the bottom of the die,
 
-![programable_8_bit_microprocessor-fpga_layout.jpg](../../../docs/pics/programable_8_bit_microprocessor-fpga_layout.jpg)
+![programable-8-bit-microprocessor-fpga-layout.jpg](../../../docs/pics/systems/programable-8-bit-microprocessor-fpga-layout.jpg)

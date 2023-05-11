@@ -1,8 +1,8 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
 // include files in programable-8-bit-microprocessor.vh
 
-module programable_8_bit_microprocessor_tb;
+module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg     [3:0]   OPCODE;
@@ -16,8 +16,14 @@ module programable_8_bit_microprocessor_tb;
     wire    [7:0]   MICROADDRESS;
     wire    [7:0]   DATA_OUT;
 
+    // FOR TESTING  
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg [7:0]       DATA_OUTEXP;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
+
     // UNIT UNDER TEST
-    programable_8_bit_microprocessor uut (
+    programable_8_bit_microprocessor UUT_programable_8_bit_microprocessor (
         .OPCODE(OPCODE),
         .DATA_IN_A(DATA_IN_A),
         .DATA_IN_B(DATA_IN_B),
@@ -36,106 +42,84 @@ module programable_8_bit_microprocessor_tb;
         .microword(MW) 
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("programable_8_bit_microprocessor_tb.vcd");
-        $dumpvars(0, programable_8_bit_microprocessor_tb);
+        $dumpvars(0, PROGRAMABLE_8_BIT_MICROPROCESSOR_TB);
     end
 
-    // CLOCK
+    // CLK PERIOD
+    localparam CLKPERIOD = 20;
+
+    // CLK
     always begin
-        #10 SYSTEM_CLK = ~SYSTEM_CLK;
+        #(CLKPERIOD/2) CLK = ~CLK;
     end
 
-    // TESTCASE - CHANGE REG VALUES
+    // INITIALIZE TESTBENCH
     initial begin
-        $display("test start");
-        OPCODE = 4'b0000;
-        DATA_IN_A = 8'h00;
-        DATA_IN_B = 8'h00;
-        GO_BAR = 1;             // ACTIVE LOW
-        RESET = 1;              // ACTIVE LOW
-        JAM = 0;                // ACTIVE HIGH CAUSE MICROADDRESS TO BE 8'h11
-        SYSTEM_CLK = 0;
 
-        // RESET THE COUNTER - WILL SET MICROADDRESS TO 0
-        #15; RESET = 0;
-        #20; RESET = 1;
-        #100;
+        // OPEN VECTOR FILE - THROW AWAY FIRST LINE
+        FD=$fopen("programable_8_bit_microprocessor_tb.tv","r");
+        COUNT = $fscanf(FD, "%s", COMMENT);
+        // $display ("FIRST LINE IS: %s", COMMENT);
 
-        // ******************************************************
-        // TEST 1 - ADD - 8'h31 PLUS 8'h05 = 8'h36 (49 + 5 = 54)
-        OPCODE = 4'b0011;
-        GO_BAR = 0;
-        DATA_IN_A = 8'h31;
-        DATA_IN_B = 8'h05;
+        // INIT TESTBENCH
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUTEXP);
+        CLK = 0;
+        VECTORCOUNT = 0;
+        ERRORS = 0;
 
-        #100
-        #20; GO_BAR = 1;
-        #120;
+        // DISPAY OUTPUT AND MONITOR
+        $display();
+        $display("TEST START --------------------------------");
+        $display();
+        $display(" ");
+        $display("                 | TIME(ns) | GO_BAR | RESET | JAM | OPCODE | DATA_IN_A | DATA_IN_B | DATA_OUT |");
+        $display("                 ------------------------------------------------------------------------------");
+        $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
 
-        // ******************************************************
-        // TEST 2 - SUBTRACT - 8'h31 MINUS 8'h05 = 8'h2C (49 - 5 = 44)
-        OPCODE = 4'b0111;
-        GO_BAR = 0;
-        DATA_IN_A = 8'h31;
-        DATA_IN_B = 8'h05;
-
-        #100
-        #20; GO_BAR = 1;
-        #120;
-
-        // ******************************************************
-        // TEST 3 - MULTIPLY - 8'h31 x 8'h05 = 8'hF5 (49 x 5 = 245)
-        OPCODE = 4'b1100;
-        GO_BAR = 0;
-        DATA_IN_A = 8'h31;
-        DATA_IN_B = 8'h05;
-
-        #500
-        #20; GO_BAR = 1;
-        #120;
-
-        // ******************************************************
-        // TEST 4 - DIVIDE - 8'h50 / 8'h0D = 8'h06 with remainder 8'h02 (49 / 13 = 6 with 2 remainder)
-        // THE OUTPUT WILL BE 8'b00010 110 or 8'h16
-        OPCODE = 4'b1110;
-        GO_BAR = 0;
-        DATA_IN_A = 8'h50;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
-        DATA_IN_B = 8'h68;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1101 becomes 1101000
-
-        #300
-        #20; GO_BAR = 1;
-        #120;
-
-        /*
-        // ******************************************************
-        // TEST 5 - DIVIDE - 8'h2D / 8'h0B = 8'h0B with remainder 8'b01 (45 / 11 = 4 with 1 remainder)
-        // THE OUTPUT WILL BE 8'b00001 100 or 8'h0C
-        OPCODE = 4'b1110;
-        GO_BAR = 0;
-        DATA_IN_A = 8'h2D;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
-        DATA_IN_B = 8'h58;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1011 becomes 01011000
-
-        #300
-        #20; GO_BAR = 1;
-        #120;
-
-        // ******************************************************
-        // TEST 6 - DIVIDE - 8'h4E / 8'h0F = 8'h05 with remainder 8'b03 (78 / 15 = 5 with 3 remainder)
-        // THE OUTPUT WILL BE 8'b00011 101 or 8'h1D
-        OPCODE = 4'b1110;
-        GO_BAR = 0;
-        DATA_IN_A = 8'h4E;      // DIVIDEND (MUST BE LOWER THAN DIVISOR)
-        DATA_IN_B = 8'h78;      // DIVISOR (MUST ADD 3 LEADING ZEROS) 1111 becomes 01111000
-
-        #300
-        #20; GO_BAR = 1;
-        #120;
-        */
-
-        $display("test complete");
-        $finish;
     end
+
+    // APPLY TEST VECTORS ON NEG EDGE CLK (ADD DELAY)
+    always @(negedge CLK) begin
+
+        // WAIT A BIT (AFTER CHECK)
+        #5;
+
+        // GET VECTORS FROM TB FILE
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUTEXP);
+
+        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+        if (COUNT == -1) begin
+            $fclose(FD);
+            $display();
+            $display(" VECTORS: %4d", VECTORCOUNT);
+            $display("  ERRORS: %4d", ERRORS);
+            $display();
+            $display("TEST END ----------------------------------");
+            $display();
+            $finish;
+        end
+
+        // GET ANOTHER VECTOR
+        VECTORCOUNT = VECTORCOUNT + 1;
+
+    end
+
+    // CHECK TEST VECTORS ON POS EGDE CLK
+    always @(posedge CLK) begin
+
+        // WAIT A BIT
+        #5;
+
+        // CHECK EACH VECTOR RESULT
+        if (DAT_OUT !== DATA_OUTEXP) begin
+            $display("***ERROR (behavioral) - Expected DATA_OUT = %b", DATA_OUTEXP);
+            ERRORS = ERRORS + 1;
+        end
+
+    end   
 
 endmodule
+

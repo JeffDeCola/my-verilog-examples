@@ -1,4 +1,4 @@
-`include "programable-8-bit-microprocessor.v"
+`include "programable_8_bit_microprocessor.v"
 `include "control-store/control-store.v"
 
 // CONTROL SECTION - IN ORDER WHEN FIRST USED
