@@ -1,0 +1,185 @@
+$date
+	Thu May 11 04:54:37 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module SIMPLE_PIPELINE_TB $end
+$var wire 8 ! F [7:0] $end
+$var parameter 32 " CLKPERIOD $end
+$var reg 8 # A [7:0] $end
+$var reg 8 $ B [7:0] $end
+$var reg 8 % C [7:0] $end
+$var reg 1 & CLK $end
+$var reg 256 ' COMMENT [255:0] $end
+$var reg 8 ( D [7:0] $end
+$var reg 32 ) ERRORS [31:0] $end
+$var reg 8 * FEXP [7:0] $end
+$var reg 32 + VECTORCOUNT [31:0] $end
+$var integer 32 , COUNT [31:0] $end
+$var integer 32 - FD [31:0] $end
+$scope module UUT_simple_pipeline_behavioral $end
+$var wire 8 . a [7:0] $end
+$var wire 8 / b [7:0] $end
+$var wire 8 0 c [7:0] $end
+$var wire 1 & clk $end
+$var wire 8 1 d [7:0] $end
+$var reg 8 2 d1 [7:0] $end
+$var reg 8 3 d2 [7:0] $end
+$var reg 8 4 f [7:0] $end
+$var reg 8 5 y1 [7:0] $end
+$var reg 8 6 y2 [7:0] $end
+$var reg 8 7 y3 [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10100 "
+$end
+#0
+$dumpvars
+bx 7
+bx 6
+bx 5
+bx 4
+bx 3
+bx 2
+b0 1
+b0 0
+b0 /
+b0 .
+b10000000000000000000000000000011 -
+b110 ,
+b0 +
+bx *
+b0 )
+b0 (
+b1001001010011100100100101010100 '
+0&
+b0 %
+b0 $
+b0 #
+bx !
+$end
+#100
+b0 2
+b0 6
+b0 5
+1&
+#200
+0&
+#250
+b1 +
+b100 (
+b100 1
+b101 %
+b101 0
+b10 $
+b10 /
+b1 #
+b1 .
+b100001101000001010011000100001100110001001011010011000100110110 '
+#300
+b0 3
+b0 7
+b100 2
+b1 6
+b11 5
+1&
+#400
+0&
+#450
+b10 +
+b0 *
+b1 (
+b1 1
+b1100010 %
+b1100010 0
+b10110 $
+b10110 /
+b10110 #
+b10110 .
+b10000110100000101001100010000110011001000101101001100010011010000110001 '
+#500
+b1 2
+b1100001 6
+b101100 5
+b100 3
+b100 7
+b0 !
+b0 4
+1&
+#600
+0&
+#650
+b11 +
+b10000 *
+b1000 (
+b1000 1
+b1001 %
+b1001 0
+b11 $
+b11 /
+b11 #
+b11 .
+b100001101000001010011000100001100110011001011010011010100110110 '
+#700
+b10000 !
+b10000 4
+b1 3
+b10001101 7
+b1000 2
+b1 6
+b110 5
+1&
+#800
+0&
+#850
+b100 +
+b10001101 *
+b0 (
+b0 1
+b0 %
+b0 0
+b0 $
+b0 /
+b0 #
+b0 .
+b101101 '
+#900
+b0 2
+b0 6
+b0 5
+b1000 3
+b111 7
+b10001101 !
+b10001101 4
+1&
+#1000
+0&
+#1050
+b101 +
+b111000 *
+#1100
+b111000 !
+b111000 4
+b0 3
+b0 7
+1&
+#1200
+0&
+#1250
+b110 +
+b0 *
+#1300
+b0 !
+b0 4
+1&
+#1400
+0&
+#1450
+b11111111111111111111111111111111 ,

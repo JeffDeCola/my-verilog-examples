@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Thu May 11 08:58:22 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/systems/pipelines/simple_pipeline/simple_pipeline_tb.vcd"
+[dumpfile_mtime] "Thu May 11 08:54:37 2023"
+[dumpfile_size] 2110
+[savefile] "/home/jeff/verilog/my-verilog-examples/systems/pipelines/simple_pipeline/simple_pipeline_tb.gtkw"
+[timestart] 0
+[size] 1153 600
+[pos] -215 68
+*-15.111840 143900 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@22
+SIMPLE_PIPELINE_TB.A[7:0]
+SIMPLE_PIPELINE_TB.B[7:0]
+SIMPLE_PIPELINE_TB.C[7:0]
+SIMPLE_PIPELINE_TB.D[7:0]
+@200
+-
+@23
+[color] 2
+SIMPLE_PIPELINE_TB.F[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
