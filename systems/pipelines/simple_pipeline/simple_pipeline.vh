@@ -1,1 +1,1 @@
-`include "simple-pipeline.v"
+`include "simple_pipeline.v"
