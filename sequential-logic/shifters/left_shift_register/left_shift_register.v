@@ -1,13 +1,13 @@
 // A 4-bit left shift register.
 
-module left_shift_register(
+module left_shift_register_behavioral (
     input            clk,           // clk
     input            rst,           // Reset
     input            d,             // d
-    output reg [3:0] out            // out
-);
+    output reg [3:0] out);          // out
 
-    // SHIFT REGISTER
+    // LEFT SHIFT REGISTER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
         if (rst) begin
             out <= 4'b0000;      

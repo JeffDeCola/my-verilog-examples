@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Thu May 11 06:37:52 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/shifters/left_shift_register/left_shift_register_tb.vcd"
+[dumpfile_mtime] "Thu May 11 06:35:27 2023"
+[dumpfile_size] 1504
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/shifters/left_shift_register/left_shift_register_tb.gtkw"
+[timestart] 0
+[size] 1237 600
+[pos] 182 48
+*-15.348240 183500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+LEFT_SHIFT_REGISTER_TB.CLK
+LEFT_SHIFT_REGISTER_TB.RST
+LEFT_SHIFT_REGISTER_TB.D
+@200
+-
+@800023
+LEFT_SHIFT_REGISTER_TB.OUT[3:0]
+@29
+(0)LEFT_SHIFT_REGISTER_TB.OUT[3:0]
+(1)LEFT_SHIFT_REGISTER_TB.OUT[3:0]
+(2)LEFT_SHIFT_REGISTER_TB.OUT[3:0]
+(3)LEFT_SHIFT_REGISTER_TB.OUT[3:0]
+@1001201
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0
