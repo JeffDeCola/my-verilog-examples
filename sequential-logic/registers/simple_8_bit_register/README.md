@@ -26,52 +26,34 @@ FPGA development board._
 
 ## SCHEMATIC
 
-_This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
-repo._
-
-<p align="center">
-    <img src="svgs/and.svg"
-    align="middle"
-</p>
-
 This may help,
 
-![IMAGE - simple-8-bit-register.jpg - IMAGE](../../../docs/pics/simple-8-bit-register.jpg)
+![IMAGE - simple-8-bit-register.jpg - IMAGE](../../../docs/pics/sequential-logic/simple-8-bit-register.jpg)
 
 ## TRUTH TABLE
 
 | clk       | clr_bar | ld_bar | IN    | OUT    |
 |:---------:|:-------:|:------:|:-----:|:-------|
-| pos tick  | 0       | X      | X     | 0      |
-| pos tick  | 1       | 0      | 0     | 0      |
-| pos tick  | 1       | 0      | 1     | 1      |
-| pos tick  | 1       | 1      | X     | OUT    |
+| posedge   | 0       | x      | x     | 0      |
+| posedge   | 1       | 0      | 0     | 0      |
+| posedge   | 1       | 0      | 1     | 1      |
+| posedge   | 1       | 1      | x     | OUT    |
 
 ## VERILOG CODE
 
 The
 [simple_8_bit_register.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register.v)
-gate model,
+behavioral model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
+    // 8-BIT REGISTER
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ (posedge clk) begin
+        if (~clr_bar) begin
+            data_out <= 0;
+        end else if (~ld_bar) begin
+            data_out <= data_in;
+        end
     end
 ```
 
@@ -108,7 +90,30 @@ vvp simple_8_bit_register_tb.vvp
 The output of the test,
 
 ```text
-???
+TEST START --------------------------------
+
+                 | TIME(ns) | LD_BAR | CLR_BAR | DATA_IN  | DATA_OUT |
+                 -----------------------------------------------------
+   0        INIT |        0 |   1    |    1    | xxxxxxxx | xxxxxxxx |
+   1           - |       25 |   1    |    1    | xxxxxxxx | xxxxxxxx |
+   2      ENABLE |       45 |   0    |    1    | 11110000 | xxxxxxxx |
+   2      ENABLE |       50 |   0    |    1    | 11110000 | 11110000 |
+   3      ENABLE |       65 |   0    |    1    | 00001111 | 11110000 |
+   3      ENABLE |       70 |   0    |    1    | 00001111 | 00001111 |
+   4      ENABLE |       85 |   0    |    1    | 10101010 | 00001111 |
+   4      ENABLE |       90 |   0    |    1    | 10101010 | 10101010 |
+   5           - |      105 |   1    |    1    | xxxxxxxx | 10101010 |
+   6           - |      125 |   1    |    1    | xxxxxxxx | 10101010 |
+   7      ENABLE |      145 |   0    |    1    | 11110000 | 10101010 |
+   7      ENABLE |      150 |   0    |    1    | 11110000 | 11110000 |
+   8       CLEAR |      165 |   1    |    0    | xxxxxxxx | 11110000 |
+   8       CLEAR |      170 |   1    |    0    | xxxxxxxx | 00000000 |
+   9           - |      185 |   1    |    1    | xxxxxxxx | 00000000 |
+
+ VECTORS:    9
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
@@ -129,7 +134,7 @@ anytime you want,
 gtkwave -f simple_8_bit_register_tb.gtkw &
 ```
 
-![simple_8_bit_register-waveform.jpg](../../../docs/pics/basic-code/simple_8_bit_register-waveform.jpg)
+![simple_8_bit_register-waveform.jpg](../../../docs/pics/sequential-logic/simple_8_bit_register-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

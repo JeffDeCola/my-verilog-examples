@@ -1,1 +1,1 @@
-`include "simple-8-bit-register.v"
+`include "simple_8_bit_register.v"

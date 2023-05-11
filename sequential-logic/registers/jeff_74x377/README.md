@@ -40,12 +40,12 @@ I designed this register form the 1976 Texas Instruments spec sheet.
 
 ## TRUTH TABLE
 
-| en_bar | clk | d  | q |
-|:------:|:---:|:--:|:-:|
-|  1     | x   | x  | q |
-|  0     | pos | 1  | 1 |
-|  0     | pos | 0  | 0 |
-|  x     |  0  | x  | q |
+| en_bar | clk     | d  | q |
+|:------:|:-------:|:--:|:-:|
+|  1     | x       | x  | q |
+|  0     | posedge | 1  | 1 |
+|  0     | posedge | 0  | 0 |
+|  x     |  0      | x  | q |
 
 ## VERILOG CODE
 

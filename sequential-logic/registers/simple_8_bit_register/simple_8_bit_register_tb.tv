@@ -1,0 +1,11 @@
+            LD_BAR_CLR_BAR_DATA_IN__DATA_OUTEXP
+INIT        1      1       xxxxxxxx xxxxxxxx
+-           1      1       xxxxxxxx xxxxxxxx
+ENABLE      0      1       11110000 11110000
+ENABLE      0      1       00001111 00001111
+ENABLE      0      1       10101010 10101010
+-           1      1       xxxxxxxx 10101010
+-           1      1       xxxxxxxx 10101010
+ENABLE      0      1       11110000 11110000
+CLEAR       1      0       xxxxxxxx 00000000
+-           1      1       xxxxxxxx 00000000
