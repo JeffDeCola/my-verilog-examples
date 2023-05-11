@@ -1,0 +1,138 @@
+$date
+	Thu May 11 02:35:27 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module LEFT_SHIFT_REGISTER_TB $end
+$var wire 4 ! OUT [3:0] $end
+$var parameter 32 " CLKPERIOD $end
+$var reg 1 # CLK $end
+$var reg 256 $ COMMENT [255:0] $end
+$var reg 1 % D $end
+$var reg 32 & ERRORS [31:0] $end
+$var reg 4 ' OUTEXP [3:0] $end
+$var reg 1 ( RST $end
+$var reg 32 ) VECTORCOUNT [31:0] $end
+$var integer 32 * COUNT [31:0] $end
+$var integer 32 + FD [31:0] $end
+$scope module UUT_left_shift_register_behavioral $end
+$var wire 1 # clk $end
+$var wire 1 % d $end
+$var wire 1 ( rst $end
+$var reg 4 , out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10100 "
+$end
+#0
+$dumpvars
+bx ,
+b10000000000000000000000000000011 +
+b100 *
+b0 )
+0(
+bx0 '
+b0 &
+0%
+b0 $
+0#
+bx !
+$end
+#100
+bx0 !
+bx0 ,
+1#
+#200
+0#
+#250
+b1 )
+b0 '
+1(
+b101001001000101010100110100010101010100 $
+#300
+b0 !
+b0 ,
+1#
+#400
+0#
+#450
+b10 )
+b1 '
+1%
+0(
+b1000100010000010101010001000001 $
+#500
+b1 !
+b1 ,
+1#
+#600
+0#
+#650
+b11 )
+b10 '
+0%
+b101001101001000010010010100011001010100 $
+#700
+b10 !
+b10 ,
+1#
+#800
+0#
+#850
+b100 )
+b101 '
+1%
+b1000100010000010101010001000001 $
+#900
+b101 !
+b101 ,
+1#
+#1000
+0#
+#1050
+b101 )
+b1010 '
+0%
+b101001101001000010010010100011001010100 $
+#1100
+b1010 !
+b1010 ,
+1#
+#1200
+0#
+#1250
+b110 )
+b100 '
+#1300
+b100 !
+b100 ,
+1#
+#1400
+0#
+#1450
+b111 )
+b1000 '
+#1500
+b1000 !
+b1000 ,
+1#
+#1600
+0#
+#1650
+b1000 )
+b0 '
+#1700
+b0 !
+b0 ,
+1#
+#1800
+0#
+#1850
+b11111111111111111111111111111111 *

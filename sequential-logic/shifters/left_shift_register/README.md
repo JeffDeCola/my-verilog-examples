@@ -5,7 +5,6 @@ _A 4-bit left shift register._
 Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#schematic)
 * [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#truth-table)
 * [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/shifters/left_shift_register#run-simulate)
@@ -24,45 +23,29 @@ to synthesize and program this example on a
 [Digilent ARTY-S7](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/fpga-development-boards/digilent-arty-s7-cheat-sheet)
 FPGA development board._
 
-## SCHEMATIC
-
-_This figure was created using `LaTeX` in
-[my-latex-graphs](https://github.com/JeffDeCola/my-latex-graphs/tree/master/mathematics/applied/electrical-engineering/sequential-logic/and)
-repo._
-
-<p align="center">
-    <img src="svgs/and.svg"
-    align="middle"
-</p>
-
 ## TRUTH TABLE
 
-???
+| rst | d | out     |
+|:---:|:-:|:-------:|
+|  1  | 0 | 0000    |
+|  0  | 0 | {out,0} |
+|  0  | 1 | {out,1} |
 
 ## VERILOG CODE
 
 The
 [left_shift_register.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/shifters/left_shift_register/left_shift_register.v)
-gate model,
+behavioral model,
 
 ```verilog
-    // GATE PRIMITIVE
-    and (y, a, b);
-```
-
-Dataflow model,
-
-```verilog
-    // CONTINUOUS ASSIGNMENT STATEMENT
-    assign y = a & b;
-```
-
-Behavioral model,
-
-```verilog
+    // LEFT SHIFT REGISTER
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(a or b) begin
-        y <= a & b;
+    always @ (posedge clk) begin
+        if (rst) begin
+            out <= 4'b0000;      
+        end else begin
+            out <= {out[2:0], d};
+        end
     end
 ```
 
@@ -99,7 +82,34 @@ vvp left_shift_register_tb.vvp
 The output of the test,
 
 ```text
-????
+TEST START --------------------------------
+
+                               
+                 | TIME(ns) | RST | D | OUT  |
+                 -----------------------------
+   0             |        0 | 0   | 0 | xxxx |
+   0             |       10 | 0   | 0 | xxx0 |
+   1       RESET |       25 | 1   | 0 | xxx0 |
+   1       RESET |       30 | 1   | 0 | 0000 |
+   2        DATA |       45 | 0   | 1 | 0000 |
+   2        DATA |       50 | 0   | 1 | 0001 |
+   3       SHIFT |       65 | 0   | 0 | 0001 |
+   3       SHIFT |       70 | 0   | 0 | 0010 |
+   4        DATA |       85 | 0   | 1 | 0010 |
+   4        DATA |       90 | 0   | 1 | 0101 |
+   5       SHIFT |      105 | 0   | 0 | 0101 |
+   5       SHIFT |      110 | 0   | 0 | 1010 |
+   6       SHIFT |      125 | 0   | 0 | 1010 |
+   6       SHIFT |      130 | 0   | 0 | 0100 |
+   7       SHIFT |      145 | 0   | 0 | 0100 |
+   7       SHIFT |      150 | 0   | 0 | 1000 |
+   8       SHIFT |      165 | 0   | 0 | 1000 |
+   8       SHIFT |      170 | 0   | 0 | 0000 |
+
+ VECTORS:    8
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM
@@ -120,7 +130,7 @@ anytime you want,
 gtkwave -f left_shift_register_tb.gtkw &
 ```
 
-![left_shift_register-waveform.jpg](../../../docs/pics/basic-code/left_shift_register-waveform.jpg)
+![left_shift_register-waveform.jpg](../../../docs/pics/sequential-logic/left_shift_register-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

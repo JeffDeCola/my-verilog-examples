@@ -1,0 +1,10 @@
+            RST_D_OUTEXP
+INIT        0   0 xxx0
+RESET       1   0 0000
+DATA        0   1 0001
+SHIFT       0   0 0010
+DATA        0   1 0101
+SHIFT       0   0 1010
+SHIFT       0   0 0100
+SHIFT       0   0 1000
+SHIFT       0   0 0000

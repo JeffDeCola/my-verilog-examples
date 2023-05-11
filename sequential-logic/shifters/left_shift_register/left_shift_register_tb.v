@@ -1,60 +1,107 @@
-`timescale 1ns / 1ns
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in left-shift-register.vh
+// include files in left_shift_register.vh
 
-module left_shift_register_tb;
+module LEFT_SHIFT_REGISTER_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg        CLK, RST;
-    reg        D;
-    wire [3:0] OUT;
-    integer    i;
-    integer    seed=1;
+    reg             CLK;
+    reg             RST;
+    reg             D;
+    wire [3:0]      OUT;
 
-    // UNIT UNDER TEST
-    left_shift_register uut(
-        .clk(CLK), .rst(RST),
+    // FOR TESTING  
+    reg [31:0]      VECTORCOUNT, ERRORS;
+    reg [3:0]       OUTEXP;
+    integer         FD, COUNT;
+    reg [8*32-1:0]  COMMENT;
+
+    // UNIT UNDER TEST (behavioral)
+    left_shift_register_behavioral UUT_left_shift_register_behavioral(
+        .clk(CLK),
+        .rst(RST),
         .d(D),
         .out(OUT)
     );
 
-    // SAVE EVERYTHING FROM TOP MODULE IN A DUMP FILE
+    // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
         $dumpfile("left_shift_register_tb.vcd");
-        $dumpvars(0, left_shift_register_tb);
+        $dumpvars(0, LEFT_SHIFT_REGISTER_TB);
     end
 
-    // CLOCK
+    // CLK PERIOD
+    localparam CLKPERIOD = 20;
+
+    // CLK
     always begin
-        #10 CLK = ~CLK;
+        #(CLKPERIOD/2) CLK = ~CLK;
     end
 
-    // TESTCASE - CHANGE REG VALUES
+    // INITIALIZE TESTBENCH
     initial begin
-        $display("test start");
+
+        // OPEN VECTOR FILE - THROW AWAY FIRST LINE
+        FD=$fopen("left_shift_register_tb.tv","r");
+        COUNT = $fscanf(FD, "%s", COMMENT);
+        // $display ("FIRST LINE IS: %s", COMMENT);
+
+        // INIT TESTBENCH
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, RST, D, OUTEXP);
         CLK = 0;
-        RST = 0;
-        D = 0;
+        VECTORCOUNT = 0;
+        ERRORS = 0;
+        COMMENT ="";
 
-        // RESET
-        #15
-        RST = 1;
-        #20
-        RST = 0;
-        #20
+        // DISPAY OUTPUT AND MONITOR
+        $display();
+        $display("TEST START --------------------------------");
+        $display();
+        $display("                               ");
+        $display("                 | TIME(ns) | RST | D | OUT  |");
+        $display("                 -----------------------------");
+        $monitor("%4d  %10s | %8d | %b   | %1b | %1b |", VECTORCOUNT, COMMENT, $time, RST, D, OUT);
 
-        // PUMP IN RANDOM NUMBERS
-        for (i = 0; i < 30; i = i + 1) begin
-            @ (posedge CLK) begin
-                D <= $random(seed);
-            end
-        end
-        
-        // DONE
-        #20
-
-        $display("test complete");
-        $finish;
     end
+
+    // APPLY TEST VECTORS ON NEG EDGE CLK (ADD DELAY)
+    always @(negedge CLK) begin
+
+        // WAIT A BIT (AFTER CHECK)
+        #5;
+
+        // GET VECTORS FROM TB FILE
+        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, RST, D, OUTEXP);
+
+        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+        if (COUNT == -1) begin
+            $fclose(FD);
+            $display();
+            $display(" VECTORS: %4d", VECTORCOUNT);
+            $display("  ERRORS: %4d", ERRORS);
+            $display();
+            $display("TEST END ----------------------------------");
+            $display();
+            $finish;
+        end
+
+        // GET ANOTHER VECTOR
+        VECTORCOUNT = VECTORCOUNT + 1;
+
+    end
+
+    // CHECK TEST VECTORS ON POS EGDE CLK
+    always @(posedge CLK) begin
+
+        // WAIT A BIT
+        #5;
+
+        // CHECK EACH VECTOR RESULT
+        if (OUT !== OUTEXP) begin
+            $display("***ERROR (behavioral) - Expected OUT = %b", OUTEXP);
+            ERRORS = ERRORS + 1;
+        end
+
+    end   
 
 endmodule
