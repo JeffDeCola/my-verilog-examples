@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Thu May 11 02:37:17 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register_tb.vcd"
+[dumpfile_mtime] "Thu May 11 02:35:42 2023"
+[dumpfile_size] 1710
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/registers/simple_8_bit_register/simple_8_bit_register_tb.gtkw"
+[timestart] 0
+[size] 1396 600
+[pos] 0 190
+*-15.314713 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+SIMPLE_8_BIT_REGISTER_TB.CLK
+SIMPLE_8_BIT_REGISTER_TB.LD_BAR
+SIMPLE_8_BIT_REGISTER_TB.CLR_BAR
+@200
+-
+@22
+SIMPLE_8_BIT_REGISTER_TB.DATA_IN[7:0]
+SIMPLE_8_BIT_REGISTER_TB.DATA_OUT[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -4,7 +4,7 @@
 // MUST PUT includes IN TESTBENCH SINCE MY 8-bit PROCESSOR IS CALLING THESE FILES
 // `include "../../../basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en/d_flip_flop_pos_edge_sync_en.v"
 
-module jeff_74x377_behavioral (
+module jeff_74x377_structural (
     input           en_bar,             // ENABLE
     input           clk,                // CLOCK
     input           d0,                 // DATA IN 

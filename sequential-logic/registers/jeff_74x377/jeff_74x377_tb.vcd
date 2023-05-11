@@ -1,5 +1,5 @@
 $date
-	Wed May 10 19:13:16 2023
+	Wed May 10 22:26:37 2023
 $end
 $version
 	Icarus Verilog
@@ -40,7 +40,7 @@ $var reg 1 = Q7EXP $end
 $var reg 32 > VECTORCOUNT [31:0] $end
 $var integer 32 ? COUNT [31:0] $end
 $var integer 32 @ FD [31:0] $end
-$scope module UUT_jeff_74x377_behavioral $end
+$scope module UUT_jeff_74x377_structural $end
 $var wire 1 A NOTHING $end
 $var wire 1 * clk $end
 $var wire 1 B clk_feedback $end

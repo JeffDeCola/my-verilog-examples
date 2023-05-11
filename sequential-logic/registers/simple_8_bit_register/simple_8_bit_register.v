@@ -1,6 +1,6 @@
 // A simple 8-bit register with synchronous load and clear.
 
-module simple_8_bit_register (
+module simple_8_bit_register_behavioral (
     input       [7:0]   data_in,    // Data to load
     input               clk,        // Clock
     input               ld_bar,     // Load
@@ -9,6 +9,7 @@ module simple_8_bit_register (
 );
 
     // 8-BIT REGISTER
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
         if (~clr_bar) begin
             data_out <= 0;

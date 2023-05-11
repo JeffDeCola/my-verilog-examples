@@ -17,7 +17,7 @@ module JEFF_74x377_TB;
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST
-    jeff_74x377_behavioral UUT_jeff_74x377_behavioral(
+    jeff_74x377_structural UUT_jeff_74x377_structural(
         .clk(CLK),
         .en_bar(EN_BAR),
         .d7(D7), .d6(D6), .d5(D5), .d4(D4), .d3(D3), .d2(D2), .d1(D1), .d0(D0),   
