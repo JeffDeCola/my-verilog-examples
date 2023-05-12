@@ -17,7 +17,7 @@ module ta157_8(
 assign EN = ~EN_BAR;
 
 // Lower 4 bits - Quad 2x1 multiplexers
-jeff_74x157 MUX0 (
+jeff_74x157_behavioral MUX0 (
     .a(A8[3:0]),
     .b(B8[3:0]),
     .s(S),
@@ -26,7 +26,7 @@ jeff_74x157 MUX0 (
 );
 
 // Upper 4 bits - Quad 2x1 multiplexers
-jeff_74x157 MUX1 (
+jeff_74x157_behavioral MUX1 (
     .a(A8[7:4]),
     .b(B8[7:4]),
     .s(S),

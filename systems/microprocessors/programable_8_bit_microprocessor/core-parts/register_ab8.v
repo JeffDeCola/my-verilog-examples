@@ -18,7 +18,7 @@ assign LOW              = 1'b0;
 
 // OR GATE
 //   Replaced or2 in THESIS with jeff's or2
-or2 OR1 (
+or2_behavioral OR1 (
     .a(SYSTEM_CLK),
     .b(ENABLE_CLK),
     .y(W1)

@@ -29,7 +29,7 @@ ta157_4 U1 (
 
 // FOUR INPUT NAND GATE
 // Replaced nand4 in THESIS with jeff's nand4
-nand4 U2 (
+nand4_behavioral U2 (
     .a(MW_BOP[9]),
     .b(MW_BOP[10]),
     .c(MW_BOP[11]),

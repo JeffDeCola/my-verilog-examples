@@ -25,7 +25,7 @@ assign EN = ~EN_BAR;
 
 // 8-line to 1-line data selector/multiplexer
 // Replaced ta151 in THESIS with jeff_74x151
-jeff_74x151 U1 (
+jeff_74x151_behavioral U1 (
     .d0(D0),
     .d1(D1),
     .d2(D2),
