@@ -1,0 +1,81 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri May 12 03:57:24 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor_tb.vcd"
+[dumpfile_mtime] "Fri May 12 03:56:59 2023"
+[dumpfile_size] 45595
+[savefile] "/home/jeff/verilog/my-verilog-examples/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor_tb.gtkw"
+[timestart] 0
+[size] 1908 1000
+[pos] -1 -1
+*-15.716559 19700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.
+[treeopen] PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.
+[treeopen] PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.
+[treeopen] PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COND_SELECT.
+[sst_width] 204
+[signals_width] 222
+[sst_expanded] 1
+[sst_vpaned_height] 293
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.CLK
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.RESET
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.JAM
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.GO_BAR
+@200
+-
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.OPCODE[3:0]
+@200
+-
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.DATA_IN_A[7:0]
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.DATA_IN_B[7:0]
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.DATA_OUT[7:0]
+@200
+-
+-
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.BUFFER_IN[7:0]
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.MICROADDRESS[7:0]
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.MW[23:0]
+@200
+-
+-
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.EIL_BAR
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.STATUS_BITS[3:0]
+@200
+-
+-
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.MICRO_AD_HIGH[7:4]
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.MICRO_AD_LOW[3:0]
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COUNT
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.BOP[12:9]
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.PROCESSOR_SECTION.A_SOURCE
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.PROCESSOR_SECTION.B_SOURCE
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.PROCESSOR_SECTION.ALU_FUNC[19:15]
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.PROCESSOR_SECTION.CIN
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.PROCESSOR_SECTION.ALU_DEST[23:21]
+@200
+-
+-
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COUNT
+@22
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COUNTER_IN_HIGH_SIG[7:4]
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COUNTER_8.COUNTER_IN_LOW[3:0]
+@28
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COUNTER_8.MPC_LOAD_BAR
+@23
+PROGRAMABLE_8_BIT_MICROPROCESSOR_TB.UUT_programable_8_bit_microprocessor.CONTROL_SECTION.COUNTER_8.COUNTER_OUT[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

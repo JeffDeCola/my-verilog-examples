@@ -90,7 +90,7 @@ ta151_bar COND_SELECT (
 );
 
 //   Replaced xor2 in THESIS with jeff's xor2
-xor2 XOR_2 (
+xor2_behavioral XOR_2 (
     .a(BOP[12]),
     .b(COND_OUT),
     .y(MPC_LOAD_BAR)

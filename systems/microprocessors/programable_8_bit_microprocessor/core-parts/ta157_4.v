@@ -16,7 +16,7 @@ module ta157_4(
 assign EN = ~EN_BAR;
 
 // Quad 2x1 multiplexers
-jeff_74x157 MUX0 (
+jeff_74x157_behavioral MUX0 (
     .a(A4),
     .b(B4),
     .s(S),

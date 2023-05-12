@@ -11,7 +11,7 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
     reg             GO_BAR;
     reg             RESET;
     reg             JAM;
-    reg             SYSTEM_CLK;
+    reg             CLK;
     wire    [23:0]  MW;
     wire    [7:0]   MICROADDRESS;
     wire    [7:0]   DATA_OUT;
@@ -30,7 +30,7 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
         .GO_BAR(GO_BAR),
         .RESET(RESET),
         .JAM(JAM),
-        .SYSTEM_CLK(SYSTEM_CLK),
+        .SYSTEM_CLK(CLK),
         .MW(MW),
         .MICROADDRESS(MICROADDRESS),
         .DATA_OUT(DATA_OUT)
@@ -76,8 +76,8 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
         $display();
         $display(" ");
         $display("                 | TIME(ns) | GO_BAR | RESET | JAM | OPCODE | DATA_IN_A | DATA_IN_B | DATA_OUT |");
-        $display("                 ------------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
+        $display("                 -------------------------------------------------------------------------------");
+        $monitor("%4d  %10s | %8d |   %1b    |   %1b   |  %1b  |  %1b  | %1b  | %1b  | %1b |", VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
 
     end
 
@@ -114,7 +114,7 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if (DAT_OUT !== DATA_OUTEXP) begin
+        if (DATA_OUT !== DATA_OUTEXP) begin
             $display("***ERROR (behavioral) - Expected DATA_OUT = %b", DATA_OUTEXP);
             ERRORS = ERRORS + 1;
         end

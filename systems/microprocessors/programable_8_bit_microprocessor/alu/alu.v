@@ -70,7 +70,7 @@ ta181_bar U2 (
     .G_BAR(NOTHING4)
 );
 
-and2 AND1 (
+and2_behavioral AND1 (
     .a(AEQB1),
     .b(AEQB2),
     .y(Z)
