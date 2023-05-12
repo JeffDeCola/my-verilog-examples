@@ -74,7 +74,6 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display(" ");
         $display("                 | TIME(ns) | GO_BAR | RESET | JAM | OPCODE | DATA_IN_A | DATA_IN_B | DATA_OUT |");
         $display("                 -------------------------------------------------------------------------------");
         $monitor("%4d  %10s | %8d |   %1b    |   %1b   |  %1b  |  %1b  | %1b  | %1b  | %1b |", VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
