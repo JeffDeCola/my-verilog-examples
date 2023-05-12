@@ -22,8 +22,9 @@ Table of Contents
 * [MORE DETAIL (UNDER THE HOOD)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#more-detail-under-the-hood)
   * [CONTROL SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#control-section)
   * [PROCESSOR SECTION](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#processor-section)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#verilog-code)
 * [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#run-simulate)
-* [CHECK WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#check-waveform)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor#tested-in-hardware---burned-to-a-fpga)
 
 Logic Used
@@ -40,9 +41,9 @@ Logic Used
   2-input OR gate
 * [xor2](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/combinational-logic/xor2)
   2-input XOR gate
-* [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop)
+* [d_flip_flop_pos_edge_sync_en](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en)
   A positive edge d flip-flop with synchronous enable (Used in jeff_74x377)
-* [jk_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop)
+* [jk_flip_flop_pos_edge_sync_clear](https://github.com/JeffDeCola/my-verilog-examples/tree/master/basic-code/sequential-logic/jk_flip_flop_pos_edge_sync_clear)
   A positive edge jk flip-flop with synchronous clear (Used in jeff_74x161)
 * [jeff_74x181](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181)
   4-bit alu (arithmetic logic unit) and function generator
@@ -72,7 +73,7 @@ FPGA development board._
 
 ## STATS
 
-* Build around the
+* Built around the
   [74x161](https://github.com/JeffDeCola/my-verilog-examples/tree/master/combinational-logic/alus/jeff_74x181)
   ALU
   * 16 binary arithmetic operations
@@ -269,7 +270,7 @@ The bits do the following actions,
 |               | 0        | Counter will not count                          | NO_COUNT            |
 
 The microcode is located in
-[control-store.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/control-store/control-store.v).
+[control-store.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/control-store/control_store.v).
 
 ### RESET
 
@@ -482,7 +483,7 @@ The processor is a collection of registers, muxes and an alu,
       ([ta377_bar.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/ta377_bar.v))
       * [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/registers/jeff_74x377/jeff_74x377.v)
         _replaced ta377_
-        * [d_flip_flop](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop/d_flip_flop.v)
+        * [d_flip_flop_pos_edge_sync_en.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/sequential-logic/d_flip_flop_pos_edge_sync_en/d_flip_flop_pos_edge_sync_en.v)
   * **REGISTERB**
     ([register_ab8.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/core-parts/register_ab8.v))
     _See above_
@@ -532,7 +533,7 @@ The processor is a collection of registers, muxes and an alu,
 ## VERILOG CODE
 
 The
-[programable-8-bit-microprocessor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor.v)
+[programable_8_bit_microprocessor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor.v)
 top level code is,
 
 ```verilog
@@ -566,30 +567,30 @@ top level code is,
 
 The testbench uses two files,
 
-* [programable-8-bit-microprocessor_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor_tb.v)
+* [programable_8_bit_microprocessor_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor_tb.v)
   the testbench
-* [programable-8-bit-microprocessor_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor_tb.tv)
+* [programable_8_bit_microprocessor_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor_tb.tv)
   the test vectors and expected results
 
 with,
 
-* [programable-8-bit-microprocessor.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/programable-8-bit-microprocessor.vh)
+* [programable_8_bit_microprocessor.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/programable_8_bit_microprocessor.vh)
   is the header file listing the verilog models
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/pipelines/programable-8-bit-microprocessor/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/run-simulation.sh)
   is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o programable-8-bit-microprocessor_tb.vvp programable-8-bit-microprocessor_tb.v programable-8-bit-microprocessor.vh
+iverilog -o programable_8_bit_microprocessor_tb.vvp programable_8_bit_microprocessor_tb.v programable_8_bit_microprocessor.vh
 ```
 
 Use **vvp** to run the simulation, which checks the UUT
 and creates a waveform dump file *.vcd.
 
 ```bash
-vvp programable-8-bit-microprocessor_tb.vvp
+vvp programable_8_bit_microprocessor_tb.vvp
 ```
 
 For this test I will ????? (LIST TESTS IN TEST VECTOR FILE)
@@ -652,10 +653,10 @@ The output of the test,
 
 ## VIEW WAVEFORM
 
-Open the waveform file programable-8-bit-microprocessor_tb.vcd file with GTKWave,
+Open the waveform file programable_8_bit_microprocessor_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f programable-8-bit-microprocessor_tb.vcd &
+gtkwave -f programable_8_bit_microprocessor_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -665,17 +666,17 @@ Now you can use the script
 anytime you want,
 
 ```bash
-gtkwave -f programable-8-bit-microprocessor_tb.gtkw &
+gtkwave -f programable_8_bit_microprocessor_tb.gtkw &
 ```
 
 Focus on DATA_IN_A, DATA_IN_B and DATA_OUT. You can see the RESET where the
 output flashes 00. You can also see the ADD, SUBTRACT AND MULTIPLY operations,
 
-![programable_8_bit_microprocessor-waveform.jpg](../../../docs/pics/systems/programable_8_bit_microprocessor-waveform.jpg)
+![programable-8-bit-microprocessor-waveform.jpg](../../../docs/pics/systems/programable-8-bit-microprocessor-waveform.jpg)
 
 A little more detail,
 
-![programable_8_bit_microprocessor-waveform-more-detail.jpg](../../../docs/pics/systems/programable_8_bit_microprocessor-waveform-more-detail.jpg)
+![programable-8-bit-microprocessor-waveform-more-detail.jpg](../../../docs/pics/systems/programable-8-bit-microprocessor-waveform-more-detail.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
