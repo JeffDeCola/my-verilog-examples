@@ -1,0 +1,448 @@
+#! /usr/local/bin/vvp
+:ivl_version "13.0 (devel)" "(a049abb)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 10;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+S_0x55dcac3f6260 .scope module, "BUTTONS_TB" "BUTTONS_TB" 2 5;
+ .timescale -9 -10;
+P_0x55dcac3f63f0 .param/l "CLKPERIOD" 1 2 64, +C4<00000000000000000000000000010100>;
+v0x55dcac427280_0 .net "BUTTON1_SYNC_PUSH_RELEASE", 0 0, v0x55dcac4269b0_0;  1 drivers
+v0x55dcac427320_0 .net "BUTTON2_SYNC_CLOCK_PULSE_OUT", 0 0, v0x55dcac4264b0_0;  1 drivers
+v0x55dcac4273c0_0 .net "BUTTON3_SYNC_TWO_PRESSES_OUT", 0 0, L_0x55dcac3e33d0;  1 drivers
+v0x55dcac4274c0_0 .net "BUTTON4_ASYNC_CLOCK_PULSE_OUT", 0 0, L_0x55dcac3dd5f0;  1 drivers
+v0x55dcac427590_0 .net "BUTTON5_ASYNC_TWO_PRESSES_OUT", 0 0, L_0x55dcac3db790;  1 drivers
+v0x55dcac427630_0 .var "CLK", 0 0;
+v0x55dcac4276d0_0 .var "COMMENT", 255 0;
+v0x55dcac427770_0 .var/i "COUNT", 31 0;
+v0x55dcac427810_0 .var "ERRORS", 31 0;
+v0x55dcac427940_0 .var/i "FD", 31 0;
+v0x55dcac427a20_0 .var "OUT1EXP", 0 0;
+v0x55dcac427ae0_0 .var "OUT2EXP", 0 0;
+v0x55dcac427ba0_0 .var "OUT3EXP", 0 0;
+v0x55dcac427c60_0 .var "OUT4EXP", 0 0;
+v0x55dcac427d20_0 .var "OUT5EXP", 0 0;
+v0x55dcac427de0_0 .var "PRESSED", 0 0;
+v0x55dcac427e80_0 .var "VECTORCOUNT", 31 0;
+E_0x55dcac3eaf60 .event negedge, v0x55dcac3fbc80_0;
+S_0x55dcac3f6490 .scope module, "ASYNC_CLOCK_PULSE" "button4_async_clock_pulse_behavioral" 2 44, 3 75 0, S_0x55dcac3f6260;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "pressed";
+    .port_info 2 /OUTPUT 1 "out";
+L_0x55dcac3dd5f0 .functor BUFZ 1, v0x55dcac3db8a0_0, C4<0>, C4<0>, C4<0>;
+v0x55dcac3fbc80_0 .net "clk", 0 0, v0x55dcac427630_0;  1 drivers
+v0x55dcac3e35e0_0 .var "lock", 0 0;
+v0x55dcac3dd700_0 .net "out", 0 0, L_0x55dcac3dd5f0;  alias, 1 drivers
+v0x55dcac3db8a0_0 .var "pre_out", 0 0;
+v0x55dcac3e0440_0 .net "pressed", 0 0, v0x55dcac427de0_0;  1 drivers
+v0x55dcac3e0540_0 .var "was_pressed", 0 0;
+E_0x55dcac3b24e0 .event posedge, v0x55dcac3e0440_0, v0x55dcac3fbc80_0;
+S_0x55dcac425990 .scope module, "ASYNC_TWO_PRESSES" "button5_async_two_presses_behavioral" 2 51, 3 106 0, S_0x55dcac3f6260;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "pressed";
+    .port_info 2 /OUTPUT 1 "out";
+L_0x55dcac3db790 .functor BUFZ 1, v0x55dcac425e60_0, C4<0>, C4<0>, C4<0>;
+v0x55dcac425bc0_0 .net "clk", 0 0, v0x55dcac427630_0;  alias, 1 drivers
+v0x55dcac425c80_0 .var "lock", 0 0;
+v0x55dcac425d20_0 .net "out", 0 0, L_0x55dcac3db790;  alias, 1 drivers
+v0x55dcac425dc0_0 .net "pressed", 0 0, v0x55dcac427de0_0;  alias, 1 drivers
+v0x55dcac425e60_0 .var "toggle", 0 0;
+v0x55dcac425f50_0 .var "was_pressed", 0 0;
+S_0x55dcac426090 .scope module, "SYNC_CLOCK_PULSE" "button2_sync_clock_pulse_behavioral" 2 30, 3 23 0, S_0x55dcac3f6260;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "pressed";
+    .port_info 2 /OUTPUT 1 "out";
+v0x55dcac4262e0_0 .net "clk", 0 0, v0x55dcac427630_0;  alias, 1 drivers
+v0x55dcac4263f0_0 .var "lock", 0 0;
+v0x55dcac4264b0_0 .var "out", 0 0;
+v0x55dcac426550_0 .net "pressed", 0 0, v0x55dcac427de0_0;  alias, 1 drivers
+E_0x55dcac3ea4d0 .event posedge, v0x55dcac3fbc80_0;
+S_0x55dcac4266c0 .scope module, "SYNC_PUSH_RELEASE" "button1_sync_push_release_behavioral" 2 23, 3 5 0, S_0x55dcac3f6260;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "pressed";
+    .port_info 2 /OUTPUT 1 "out";
+v0x55dcac4268f0_0 .net "clk", 0 0, v0x55dcac427630_0;  alias, 1 drivers
+v0x55dcac4269b0_0 .var "out", 0 0;
+v0x55dcac426a70_0 .net "pressed", 0 0, v0x55dcac427de0_0;  alias, 1 drivers
+S_0x55dcac426b70 .scope module, "SYNC_TWO_PRESSES" "button3_sync_two_presses_behavioral" 2 37, 3 47 0, S_0x55dcac3f6260;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "pressed";
+    .port_info 2 /OUTPUT 1 "out";
+L_0x55dcac3e33d0 .functor BUFZ 1, v0x55dcac427140_0, C4<0>, C4<0>, C4<0>;
+v0x55dcac426df0_0 .net "clk", 0 0, v0x55dcac427630_0;  alias, 1 drivers
+v0x55dcac426eb0_0 .var "lock", 0 0;
+v0x55dcac426f70_0 .net "out", 0 0, L_0x55dcac3e33d0;  alias, 1 drivers
+v0x55dcac427010_0 .net "pressed", 0 0, v0x55dcac427de0_0;  alias, 1 drivers
+v0x55dcac427140_0 .var "toggle", 0 0;
+    .scope S_0x55dcac4266c0;
+T_0 ;
+    %wait E_0x55dcac3ea4d0;
+    %load/vec4 v0x55dcac426a70_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac4269b0_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac4269b0_0, 0;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x55dcac426090;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac4263f0_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x55dcac426090;
+T_2 ;
+    %wait E_0x55dcac3ea4d0;
+    %load/vec4 v0x55dcac426550_0;
+    %load/vec4 v0x55dcac4263f0_0;
+    %inv;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.0, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac4263f0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac4264b0_0, 0;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/vec4 v0x55dcac426550_0;
+    %inv;
+    %load/vec4 v0x55dcac4263f0_0;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.2, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac4263f0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac4264b0_0, 0;
+    %jmp T_2.3;
+T_2.2 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac4264b0_0, 0;
+T_2.3 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x55dcac426b70;
+T_3 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac426eb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac427140_0, 0, 1;
+    %end;
+    .thread T_3;
+    .scope S_0x55dcac426b70;
+T_4 ;
+    %wait E_0x55dcac3ea4d0;
+    %load/vec4 v0x55dcac427010_0;
+    %load/vec4 v0x55dcac426eb0_0;
+    %inv;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_4.0, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac426eb0_0, 0;
+    %load/vec4 v0x55dcac427140_0;
+    %inv;
+    %assign/vec4 v0x55dcac427140_0, 0;
+    %jmp T_4.1;
+T_4.0 ;
+    %load/vec4 v0x55dcac427010_0;
+    %inv;
+    %load/vec4 v0x55dcac426eb0_0;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_4.2, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac426eb0_0, 0;
+T_4.2 ;
+T_4.1 ;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0x55dcac3f6490;
+T_5 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac3e0540_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac3e35e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac3db8a0_0, 0, 1;
+    %end;
+    .thread T_5;
+    .scope S_0x55dcac3f6490;
+T_6 ;
+    %wait E_0x55dcac3b24e0;
+    %load/vec4 v0x55dcac3e0440_0;
+    %load/vec4 v0x55dcac3e0540_0;
+    %inv;
+    %and;
+    %load/vec4 v0x55dcac3e35e0_0;
+    %inv;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_6.0, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac3e0540_0, 0;
+    %jmp T_6.1;
+T_6.0 ;
+    %load/vec4 v0x55dcac3e0540_0;
+    %load/vec4 v0x55dcac3e35e0_0;
+    %inv;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_6.2, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac3e35e0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac3e0540_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac3db8a0_0, 0;
+    %jmp T_6.3;
+T_6.2 ;
+    %load/vec4 v0x55dcac3e35e0_0;
+    %load/vec4 v0x55dcac3dd700_0;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_6.4, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac3db8a0_0, 0;
+    %jmp T_6.5;
+T_6.4 ;
+    %load/vec4 v0x55dcac3e0440_0;
+    %inv;
+    %load/vec4 v0x55dcac3e35e0_0;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_6.6, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac3e35e0_0, 0;
+T_6.6 ;
+T_6.5 ;
+T_6.3 ;
+T_6.1 ;
+    %jmp T_6;
+    .thread T_6;
+    .scope S_0x55dcac425990;
+T_7 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac425f50_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac425c80_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac425e60_0, 0, 1;
+    %end;
+    .thread T_7;
+    .scope S_0x55dcac425990;
+T_8 ;
+    %wait E_0x55dcac3b24e0;
+    %load/vec4 v0x55dcac425dc0_0;
+    %load/vec4 v0x55dcac425f50_0;
+    %inv;
+    %and;
+    %load/vec4 v0x55dcac425c80_0;
+    %inv;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_8.0, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac425f50_0, 0;
+    %jmp T_8.1;
+T_8.0 ;
+    %load/vec4 v0x55dcac425f50_0;
+    %load/vec4 v0x55dcac425c80_0;
+    %inv;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_8.2, 8;
+    %load/vec4 v0x55dcac425e60_0;
+    %inv;
+    %assign/vec4 v0x55dcac425e60_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac425f50_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55dcac425c80_0, 0;
+    %jmp T_8.3;
+T_8.2 ;
+    %load/vec4 v0x55dcac425dc0_0;
+    %inv;
+    %load/vec4 v0x55dcac425c80_0;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_8.4, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55dcac425c80_0, 0;
+T_8.4 ;
+T_8.3 ;
+T_8.1 ;
+    %jmp T_8;
+    .thread T_8;
+    .scope S_0x55dcac3f6260;
+T_9 ;
+    %vpi_call 2 59 "$dumpfile", "buttons_tb.vcd" {0 0 0};
+    %vpi_call 2 60 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55dcac3f6260 {0 0 0};
+    %end;
+    .thread T_9;
+    .scope S_0x55dcac3f6260;
+T_10 ;
+    %delay 100, 0;
+    %load/vec4 v0x55dcac427630_0;
+    %inv;
+    %store/vec4 v0x55dcac427630_0, 0, 1;
+    %jmp T_10;
+    .thread T_10;
+    .scope S_0x55dcac3f6260;
+T_11 ;
+    %vpi_func 2 75 "$fopen" 32, "buttons_tb.tv", "r" {0 0 0};
+    %store/vec4 v0x55dcac427940_0, 0, 32;
+    %vpi_func 2 76 "$fscanf" 32, v0x55dcac427940_0, "%s", v0x55dcac4276d0_0 {0 0 0};
+    %store/vec4 v0x55dcac427770_0, 0, 32;
+    %vpi_func 2 80 "$fscanf" 32, v0x55dcac427940_0, "%s %b %b %b %b %b %b", v0x55dcac4276d0_0, v0x55dcac427de0_0, v0x55dcac427a20_0, v0x55dcac427ae0_0, v0x55dcac427ba0_0, v0x55dcac427c60_0, v0x55dcac427d20_0 {0 0 0};
+    %store/vec4 v0x55dcac427770_0, 0, 32;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac427630_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x55dcac427e80_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x55dcac427810_0, 0, 32;
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %store/vec4 v0x55dcac4276d0_0, 0, 256;
+    %vpi_call 2 87 "$display" {0 0 0};
+    %vpi_call 2 88 "$display", "TEST START --------------------------------" {0 0 0};
+    %vpi_call 2 89 "$display" {0 0 0};
+    %vpi_call 2 90 "$display", "                                         1     2     3     4     5" {0 0 0};
+    %vpi_call 2 91 "$display", "                 | TIME(ns) | PRESSED | OUT | OUT | OUT | OUT | OUT |" {0 0 0};
+    %vpi_call 2 92 "$display", "                 ----------------------------------------------------" {0 0 0};
+    %vpi_call 2 93 "$monitor", "%4d  %10s | %8d |    %1d    |  %1d  |  %1d  |  %1d  |  %1d  |  %1d  |", v0x55dcac427e80_0, v0x55dcac4276d0_0, $time, v0x55dcac427de0_0, v0x55dcac427280_0, v0x55dcac427320_0, v0x55dcac4273c0_0, v0x55dcac4274c0_0, v0x55dcac427590_0 {0 0 0};
+    %end;
+    .thread T_11;
+    .scope S_0x55dcac3f6260;
+T_12 ;
+    %wait E_0x55dcac3eaf60;
+    %delay 50, 0;
+    %vpi_func 2 105 "$fscanf" 32, v0x55dcac427940_0, "%s %b %b %b %b %b %b", v0x55dcac4276d0_0, v0x55dcac427de0_0, v0x55dcac427a20_0, v0x55dcac427ae0_0, v0x55dcac427ba0_0, v0x55dcac427c60_0, v0x55dcac427d20_0 {0 0 0};
+    %store/vec4 v0x55dcac427770_0, 0, 32;
+    %load/vec4 v0x55dcac4276d0_0;
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 65, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1398361667, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %cmp/e;
+    %jmp/0xz  T_12.0, 4;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55dcac427de0_0, 0, 1;
+    %delay 50, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55dcac427de0_0, 0, 1;
+T_12.0 ;
+    %load/vec4 v0x55dcac427770_0;
+    %cmpi/e 4294967295, 0, 32;
+    %jmp/0xz  T_12.2, 4;
+    %vpi_call 2 118 "$fclose", v0x55dcac427940_0 {0 0 0};
+    %vpi_call 2 119 "$display" {0 0 0};
+    %vpi_call 2 120 "$display", " VECTORS: %4d", v0x55dcac427e80_0 {0 0 0};
+    %vpi_call 2 121 "$display", "  ERRORS: %4d", v0x55dcac427810_0 {0 0 0};
+    %vpi_call 2 122 "$display" {0 0 0};
+    %vpi_call 2 123 "$display", "TEST END ----------------------------------" {0 0 0};
+    %vpi_call 2 124 "$display" {0 0 0};
+    %vpi_call 2 125 "$finish" {0 0 0};
+T_12.2 ;
+    %load/vec4 v0x55dcac427e80_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x55dcac427e80_0, 0, 32;
+    %jmp T_12;
+    .thread T_12;
+    .scope S_0x55dcac3f6260;
+T_13 ;
+    %wait E_0x55dcac3ea4d0;
+    %delay 50, 0;
+    %load/vec4 v0x55dcac427280_0;
+    %load/vec4 v0x55dcac427a20_0;
+    %cmp/ne;
+    %jmp/0xz  T_13.0, 6;
+    %vpi_call 2 141 "$display", "***ERROR - Expected BUTTON1 = %b", v0x55dcac427a20_0 {0 0 0};
+    %load/vec4 v0x55dcac427810_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x55dcac427810_0, 0, 32;
+T_13.0 ;
+    %load/vec4 v0x55dcac427320_0;
+    %load/vec4 v0x55dcac427ae0_0;
+    %cmp/ne;
+    %jmp/0xz  T_13.2, 6;
+    %vpi_call 2 145 "$display", "***ERROR - Expected BUTTON2 = %b", v0x55dcac427ae0_0 {0 0 0};
+    %load/vec4 v0x55dcac427810_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x55dcac427810_0, 0, 32;
+T_13.2 ;
+    %load/vec4 v0x55dcac4273c0_0;
+    %load/vec4 v0x55dcac427ba0_0;
+    %cmp/ne;
+    %jmp/0xz  T_13.4, 6;
+    %vpi_call 2 149 "$display", "***ERROR - Expected BUTTON3 = %b", v0x55dcac427ba0_0 {0 0 0};
+    %load/vec4 v0x55dcac427810_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x55dcac427810_0, 0, 32;
+T_13.4 ;
+    %load/vec4 v0x55dcac4274c0_0;
+    %load/vec4 v0x55dcac427c60_0;
+    %cmp/ne;
+    %jmp/0xz  T_13.6, 6;
+    %vpi_call 2 153 "$display", "***ERROR - Expected BUTTON4 = %b", v0x55dcac427c60_0 {0 0 0};
+    %load/vec4 v0x55dcac427810_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x55dcac427810_0, 0, 32;
+T_13.6 ;
+    %load/vec4 v0x55dcac427590_0;
+    %load/vec4 v0x55dcac427d20_0;
+    %cmp/ne;
+    %jmp/0xz  T_13.8, 6;
+    %vpi_call 2 157 "$display", "***ERROR - Expected BUTTON5 = %b", v0x55dcac427d20_0 {0 0 0};
+    %load/vec4 v0x55dcac427810_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x55dcac427810_0, 0, 32;
+T_13.8 ;
+    %jmp T_13;
+    .thread T_13;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "buttons_tb.v";
+    "./buttons.v";

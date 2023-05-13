@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sat May 13 04:26:38 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/fpga-development-boards/buttons/buttons/buttons_tb.vcd"
+[dumpfile_mtime] "Sat May 13 04:19:35 2023"
+[dumpfile_size] 4099
+[savefile] "/home/jeff/verilog/my-verilog-examples/fpga-development-boards/buttons/buttons/buttons_tb.gtkw"
+[timestart] 0
+[size] 1360 600
+[pos] -363 21
+*-17.614773 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 262
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+BUTTONS_TB.CLK
+BUTTONS_TB.PRESSED
+@200
+-
+@28
+BUTTONS_TB.BUTTON1_SYNC_PUSH_RELEASE
+BUTTONS_TB.BUTTON2_SYNC_CLOCK_PULSE_OUT
+BUTTONS_TB.BUTTON3_SYNC_TWO_PRESSES_OUT
+BUTTONS_TB.BUTTON4_ASYNC_CLOCK_PULSE_OUT
+@29
+BUTTONS_TB.BUTTON5_ASYNC_TWO_PRESSES_OUT
+[pattern_trace] 1
+[pattern_trace] 0

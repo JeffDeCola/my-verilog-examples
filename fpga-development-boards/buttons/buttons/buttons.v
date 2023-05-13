@@ -1,13 +1,14 @@
 // A few different ways to use buttons on a FPGA development board.
 
+// BUTTON 1 --------------------------------------------------------
 // PRESS AND RELEASE OF THE BUTTON SYNCHRONOUSLY (SYNCHRONOUS PRESS AND RELEASE)
-module button_sync_push_release (
+module button1_sync_push_release_behavioral (
     input           clk,            // CLOCK
     input           pressed,        // BUTTON IN
-    output reg      out             // PULSE FOR 1 CLOCK CYCLE
-);
+    output reg      out);           // PULSE FOR 1 CLOCK CYCLE
 
-    always @ (posedge clk) begin
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(posedge clk) begin
             if (pressed) begin          // BUTTON PRESSED
                 out <= 1'b1;                      
             end else begin              //  BUTTON NOT PRESSED
@@ -17,16 +18,17 @@ module button_sync_push_release (
 
 endmodule
 
+// BUTTON 2 --------------------------------------------------------
 // PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (SYNCHRONOUS PRESS)
-module button_sync_clock_pulse (
+module button2_sync_clock_pulse_behavioral (
     input           clk,            // CLOCK
     input           pressed,        // BUTTON IN (YOU CAN HOLD AND RELEASE WHENEVER)
-    output reg      out             // PULSE FOR 1 CLOCK CYCLE
-);
+    output reg      out);           // PULSE FOR 1 CLOCK CYCLE
 
     reg lock = 0;
 
-    always @ (posedge clk) begin
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(posedge clk) begin
             if (pressed & ~lock) begin              // BUTTON PRESSED
                 lock <= 1'b1;                       // - Lock
                 out <= 1'b1;                        // - Pulse
@@ -40,18 +42,19 @@ module button_sync_clock_pulse (
 
 endmodule
 
+// BUTTON 3 --------------------------------------------------------
 // TWO PRESSES - FIRST PRESS HIGH, SECOND PRESS LOW (SYNCHRONOUS PRESSES)
-module button_sync_two_presses (
+module button3_sync_two_presses_behavioral (
     input           clk,            // CLOCK
     input           pressed,        // BUTTON IN (YOU CAN HOLD AND RELEASE WHENEVER)
-    output          out             // TWO PRESSES
-);
+    output          out);           // TWO PRESSES
 
     reg lock = 0;
     reg toggle = 0;
 
     assign out = toggle;
 
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
         if (pressed & ~lock) begin              // BUTTON PRESSED
             lock <= 1'b1;                       // - Lock
@@ -66,13 +69,13 @@ endmodule
 //************************************************************************************************
 // DON'T USE THESE, THE SYNTHSIS TOOL WILL YELL AT YOU. I DESIGNED THEM FOR FUN
 
-// PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (AYNCHRONOUS PRESS)
+// BUTTON 4 --------------------------------------------------------
+// PULSE HIGH FOR 1 CLOCK CYCLE WHEN BUTTON PRESSED (ASYNCHRONOUS PRESS)
 // DON'T USE - HERE FOR FUN
-module button_async_clock_pulse (
+module button4_async_clock_pulse_behavioral (
     input           clk,            // CLOCK
     input           pressed,        // BUTTON IN (YOU CAN HOLD AND RELEASE WHENEVER)
-    output          out             // PULSE FOR 1 CLOCK CYCLE
-);
+    output          out);           // PULSE FOR 1 CLOCK CYCLE
 
     reg was_pressed = 0;
     reg lock = 0;
@@ -80,7 +83,8 @@ module button_async_clock_pulse (
 
     assign out = pre_out;
 
-    always @ (posedge clk or posedge pressed) begin
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(posedge clk or posedge pressed) begin
         if (pressed & ~was_pressed & ~lock) begin       // BUTTON PRESSED - Then forget about it until later
             was_pressed <= 1'b1;
         end else if (was_pressed & ~lock) begin         // OUT HIGH
@@ -96,13 +100,13 @@ module button_async_clock_pulse (
 
 endmodule
 
+// BUTTON 5 --------------------------------------------------------
 // TWO PRESSES - FIRST PRESS HIGH, SECOND PRESS LOW (ASYNCHRONOUS PRESSES)
 // DON'T USE - HERE FOR FUN
-module button_async_two_presses (
+module button5_async_two_presses_behavioral (
     input           clk,            // CLOCK
     input           pressed,        // BUTTON IN (YOU CAN HOLD AND RELEASE WHENEVER)
-    output          out             // PULSE FOR 1 CLOCK CYCLE
-);
+    output          out);           // PULSE FOR 1 CLOCK CYCLE
 
     reg was_pressed = 0;
     reg lock = 0;
@@ -110,7 +114,8 @@ module button_async_two_presses (
 
     assign out = toggle;
 
-    always @ (posedge clk or posedge pressed) begin
+    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
+    always @(posedge clk or posedge pressed) begin
         if (pressed & ~was_pressed & ~lock) begin       // BUTTON PRESSED - Then forget about it for now
             was_pressed <= 1'b1;
         end else if (was_pressed & ~lock) begin         // OUT HIGH
