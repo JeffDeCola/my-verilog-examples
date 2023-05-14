@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sun May 14 05:06:34 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/dual_port_ram_synchronous/dual_port_ram_synchronous_tb.vcd"
+[dumpfile_mtime] "Sun May 14 05:00:57 2023"
+[dumpfile_size] 3415
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/dual_port_ram_synchronous/dual_port_ram_synchronous_tb.gtkw"
+[timestart] 0
+[size] 1266 600
+[pos] -281 88
+*-16.016272 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 204
+[signals_width] 150
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+DUAL_PORT_RAM_SYNCHRONOUS_TB.CLK
+DUAL_PORT_RAM_SYNCHRONOUS_TB.WE_A
+@200
+-
+@22
+DUAL_PORT_RAM_SYNCHRONOUS_TB.ADDR_A[3:0]
+DUAL_PORT_RAM_SYNCHRONOUS_TB.DATA_IN_A[7:0]
+DUAL_PORT_RAM_SYNCHRONOUS_TB.DATA_OUT_A[7:0]
+@200
+-
+@22
+DUAL_PORT_RAM_SYNCHRONOUS_TB.ADDR_B[3:0]
+DUAL_PORT_RAM_SYNCHRONOUS_TB.DATA_IN_B[7:0]
+@23
+DUAL_PORT_RAM_SYNCHRONOUS_TB.DATA_OUT_B[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

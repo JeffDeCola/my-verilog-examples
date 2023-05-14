@@ -1,6 +1,6 @@
-// A simple 16 Byte memory modeled using a 1D array.
+// A synchronous fifo.
 
-module simple_memory_using_1d_array_behavioral(
+module fifo_synchronous_behavioral(
     input  clk,             // Clock
     input  write,           // Write data
     input  [3:0] addr,      // Address
@@ -9,16 +9,13 @@ module simple_memory_using_1d_array_behavioral(
 
     // DATA TYPES
     reg [7:0] mem [0:15];
-
-    assign rdata = mem[addr];
-
-    // MEMORY
+    
+    // RAM
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk) begin
-        if (write) begin
-            // WRITE DATA TO ADDR
-            mem[addr] <= wdata;
-        end
+
+        // tbd
+
     end
 
 endmodule

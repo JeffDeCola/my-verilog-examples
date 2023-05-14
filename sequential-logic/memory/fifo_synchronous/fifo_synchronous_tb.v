@@ -1,8 +1,8 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in simple_memory_using_1d_array.vh
+// include files in fifo_synchronous.vh
 
-module SIMPLE_MEMORY_USING_1D_ARRAY_TB;
+module FIFO_SYNCHRONOUS_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg        CLK;
@@ -18,7 +18,7 @@ module SIMPLE_MEMORY_USING_1D_ARRAY_TB;
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST
-    simple_memory_using_1d_array_behavioral UUT_simple_memory_using_1d_array_behavioral(
+    fifo_synchronous_behavioral UUT_fifo_synchronous_behavioral(
         .clk   (CLK),
         .write (WRITE),
         .addr  (ADDR),
@@ -28,8 +28,8 @@ module SIMPLE_MEMORY_USING_1D_ARRAY_TB;
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("simple_memory_using_1d_array_tb.vcd");
-        $dumpvars(0, SIMPLE_MEMORY_USING_1D_ARRAY_TB);
+        $dumpfile("fifo_synchronous_tb.vcd");
+        $dumpvars(0, FIFO_SYNCHRONOUS_TB);
     end
 
     // CLK PERIOD
@@ -44,7 +44,7 @@ module SIMPLE_MEMORY_USING_1D_ARRAY_TB;
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("simple_memory_using_1d_array_tb.tv","r");
+        FD=$fopen("fifo_synchronous_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
