@@ -1,0 +1,199 @@
+$date
+	Sun May 14 00:23:06 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module SINGLE_PORT_RAM_SYNCHRONOUS_TB $end
+$var wire 8 ! DATA_OUT [7:0] $end
+$var parameter 32 " CLKPERIOD $end
+$var reg 4 # ADDR [3:0] $end
+$var reg 1 $ CLK $end
+$var reg 256 % COMMENT [255:0] $end
+$var reg 8 & DATA_IN [7:0] $end
+$var reg 8 ' DATA_OUTEXP [7:0] $end
+$var reg 32 ( ERRORS [31:0] $end
+$var reg 32 ) VECTORCOUNT [31:0] $end
+$var reg 1 * WE $end
+$var integer 32 + COUNT [31:0] $end
+$var integer 32 , FD [31:0] $end
+$scope module UUT_single_port_ram_synchronous_behavioral $end
+$var wire 4 - addr [3:0] $end
+$var wire 1 $ clk $end
+$var wire 8 . data_in [7:0] $end
+$var wire 8 / data_out [7:0] $end
+$var wire 1 * we $end
+$var reg 4 0 address_register [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10100 "
+$end
+#0
+$dumpvars
+bx 0
+bx /
+b0 .
+b0 -
+b10000000000000000000000000000011 ,
+b101 +
+1*
+b0 )
+b0 (
+bx '
+b0 &
+b1001001010011100100100101010100 %
+0$
+b0 #
+bx !
+$end
+#100
+1$
+#200
+0$
+#250
+b1 )
+b11110000 &
+b11110000 .
+b101011101010010010010010101010001000101 %
+#300
+1$
+#400
+0$
+#450
+b10 )
+b1111 &
+b1111 .
+b1 #
+b1 -
+#500
+1$
+#600
+0$
+#650
+b11 )
+b10101010 &
+b10101010 .
+b1110 #
+b1110 -
+#700
+1$
+#800
+0$
+#850
+b100 )
+b11110000 '
+bx &
+bx .
+b0 #
+b0 -
+0*
+b1010010010001010100000101000100 %
+#900
+b11110000 !
+b11110000 /
+b0 0
+1$
+#1000
+0$
+#1050
+b101 )
+b1111 '
+b1 #
+b1 -
+#1100
+b1111 !
+b1111 /
+b1 0
+1$
+#1200
+0$
+#1250
+b110 )
+b10101010 '
+b1110 #
+b1110 -
+#1300
+b10101010 !
+b10101010 /
+b1110 0
+1$
+#1400
+0$
+#1450
+b111 )
+b111 &
+b111 .
+b1001 #
+b1001 -
+1*
+b101011101010010010010010101010001000101 %
+#1500
+1$
+#1600
+0$
+#1650
+b1000 )
+b11111010 &
+b11111010 .
+b1111 #
+b1111 -
+#1700
+1$
+#1800
+0$
+#1850
+b1001 )
+b11 &
+b11 .
+b1100 #
+b1100 -
+#1900
+1$
+#2000
+0$
+#2050
+b1010 )
+b1111 &
+b1111 .
+b10 #
+b10 -
+#2100
+1$
+#2200
+0$
+#2250
+b1011 )
+b1111 '
+bx &
+bx .
+b1 #
+b1 -
+0*
+b1010010010001010100000101000100 %
+#2300
+b1111 !
+b1111 /
+b1 0
+1$
+#2400
+0$
+#2450
+b1100 )
+b11111010 '
+b1111 #
+b1111 -
+#2500
+b11111010 !
+b11111010 /
+b1111 0
+1$
+#2600
+0$
+#2650
+b11111111111111111111111111111111 +

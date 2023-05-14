@@ -304,9 +304,17 @@ The artifacts created are,
 
 * MEMORY
 
-  * [simple_memory_using_1d_array](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/simple_memory_using_1d_array)
+  * [fifo_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous)
 
-    _A simple 16 Byte memory modeled using a 1D array._
+    _A synchronous fifo._
+
+  * [dual_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous)
+
+    _Dual-port synchronous RAM._
+
+  * [single_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/single_port_ram_synchronous)
+
+    _Single-port synchronous RAM._
 
 * REGISTERS
 
