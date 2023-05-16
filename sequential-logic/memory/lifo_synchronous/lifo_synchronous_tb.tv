@@ -1,0 +1,8 @@
+            write_addr_wdata_____rdata
+INIT        1     0000 00000000  00000000
+WRITE       1     0000 11110000  11110000
+WRITE       1     0001 00001111  00001111
+WRITE       1     1110 10101010  10101010
+READ        0     0000 xxxxxxxx  11110000
+READ        0     0001 xxxxxxxx  00001111
+READ        0     1110 xxxxxxxx  10101010

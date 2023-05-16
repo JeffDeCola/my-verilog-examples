@@ -1,35 +1,35 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in dual_port_ram_synchronous.vh
+// include files in fifo_synchronous.vh
 
-module DUAL_PORT_RAM_SYNCHRONOUS_TB;
+module FIFO_SYNCHRONOUS_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
-    reg             CLK;
-    reg             WE_A, WE_B;
-    reg  [3:0]      ADDR_A, ADDR_B;
-    reg  [7:0]      DATA_IN_A, DATA_IN_B;
-    wire [7:0]      DATA_OUT_A, DATA_OUT_B;
+    reg        CLK;
+    reg        WRITE;
+    reg  [3:0] ADDR;
+    reg  [7:0] WDATA;
+    wire [7:0] RDATA;
   
     // FOR TESTING  
     reg [31:0]      VECTORCOUNT, ERRORS;
-    reg [7:0]       DATA_OUTEXP_A, DATA_OUTEXP_B;
+    reg [7:0]       RDATAEXP;
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
     // UNIT UNDER TEST
-    dual_port_ram_synchronous_behavioral UUT_dual_port_ram_synchronous_behavioral(
-        .clk (CLK),
-        .we_A (WE_A), .we_B (WE_B),
-        .addr_A (ADDR_A), .addr_B (ADDR_B),
-        .data_in_A (DATA_IN_A), .data_in_B (DATA_IN_B),
-        .data_out_A (DATA_OUT_A), .data_out_B (DATA_OUT_B)
+    fifo_synchronous_behavioral UUT_fifo_synchronous_behavioral(
+        .clk   (CLK),
+        .write (WRITE),
+        .addr  (ADDR),
+        .wdata (WDATA),
+        .rdata (RDATA)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("dual_port_ram_synchronous_tb.vcd");
-        $dumpvars(0, DUAL_PORT_RAM_SYNCHRONOUS_TB);
+        $dumpfile("fifo_synchronous_tb.vcd");
+        $dumpvars(0, FIFO_SYNCHRONOUS_TB);
     end
 
     // CLK PERIOD
@@ -44,12 +44,12 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("dual_port_ram_synchronous_tb.tv","r");
+        FD=$fopen("fifo_synchronous_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b", COMMENT, WE_A, ADDR_A, DATA_IN_A, DATA_OUTEXP_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUTEXP_B);
+        COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, WRITE, ADDR, WDATA, RDATAEXP);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
@@ -58,10 +58,9 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |");
-        $display("                 ----------------------------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |  %1b   |  %1b  | %1b  |  %1b  |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT, COMMENT, $time,
-                  WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
+        $display("                 | TIME(ns) | WRITE | ADDR |  WDATA   |  RDATA   |");
+        $display("                 -------------------------------------------------");
+        $monitor("%4d  %10s | %8d |   %1b   | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, WRITE, ADDR, WDATA, RDATA);
 
     end
 
@@ -72,7 +71,7 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b", COMMENT, WE_A, ADDR_A, DATA_IN_A, DATA_OUTEXP_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUTEXP_B);
+        COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, WRITE, ADDR, WDATA, RDATAEXP);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -98,8 +97,8 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if ((DATA_OUTEXP_A !== DATA_OUT_A) | (DATA_OUTEXP_B !== DATA_OUT_B)) begin
-            $display("***ERROR - Expected DATA_OUT_A=%b DATA_OUT_B=%b", DATA_OUTEXP_A, DATA_OUTEXP_B);
+        if (RDATAEXP !== RDATA) begin
+            $display("***ERROR (behavioral) - Expected RDATA=%b", RDATAEXP);
             ERRORS = ERRORS + 1;
         end
 

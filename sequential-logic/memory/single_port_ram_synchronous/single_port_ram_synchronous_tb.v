@@ -58,9 +58,9 @@ module SINGLE_PORT_RAM_SYNCHRONOUS_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | WE | ADDR | DATA_IN | DATA_OUT |");
-        $display("                 ---------------------------------------------");
-        $monitor("%4d  %10s | %8d | %1b | %1b |   %1b   |   %1b   |", VECTORCOUNT, COMMENT, $time, WE, ADDR, DATA_IN, DATA_OUT);
+        $display("                 | TIME(ns) | WE | ADDR | DATA_IN  | DATA_OUT |");
+        $display("                 ----------------------------------------------");
+        $monitor("%4d  %10s | %8d | %1b | %1b  | %1b | %1b |", VECTORCOUNT, COMMENT, $time, WE, ADDR, DATA_IN, DATA_OUT);
 
     end
 

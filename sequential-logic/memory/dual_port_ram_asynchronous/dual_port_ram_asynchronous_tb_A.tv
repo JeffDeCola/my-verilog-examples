@@ -1,0 +1,15 @@
+            WE_A_ADDR_A_DATA_IN_A__DATA_OUTEXP_A
+INIT        1    0000   00000000   xxxxxxxx
+WR_A        1    0000   11110000   xxxxxxxx
+WR_A        1    0001   00001111   xxxxxxxx
+WR_A        1    1110   10101010   xxxxxxxx
+RD_A        0    0000   xxxxxxxx   11110000
+RD_A        0    0001   xxxxxxxx   00001111
+RD_A        0    1110   xxxxxxxx   10101010
+WR_A        1    1001   00000111   10101010
+WR_A        1    1111   11111010   10101010
+WR_A        1    1100   00000011   10101010
+WR_A        1    0010   00001111   10101010
+RD_A        0    0001   xxxxxxxx   00011000
+RD_A        0    1111   xxxxxxxx   00000000
+RD_A        0    0001   xxxxxxxx   00011000

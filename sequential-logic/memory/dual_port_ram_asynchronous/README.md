@@ -1,16 +1,16 @@
 # DUAL-PORT RAM SYNCHRONOUS EXAMPLE
 
-_Dual-port synchronous RAM._
+_Dual-port asynchronous RAM using two different clocks._
 
 Table of Contents
 
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#verilog-code)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#run-simulate)
-* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#view-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#verilog-code)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#run-simulate)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#view-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous#tested-in-hardware---burned-to-a-fpga)
 
 ## OVERVIEW
 
@@ -32,7 +32,7 @@ FPGA development board._
 
 This may help,
 
-![IMAGE - dual_port_ram_synchronous.jpg - IMAGE](../../../docs/pics/sequential-logic/dual_port_ram_synchronous.jpg)
+![IMAGE - dual_port_ram_asynchronous.jpg - IMAGE](../../../docs/pics/sequential-logic/dual_port_ram_asynchronous.jpg)
 
 ## TRUTH TABLE
 
@@ -44,7 +44,7 @@ This may help,
 ## VERILOG CODE
 
 The
-[dual_port_ram_synchronous.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_synchronous/dual_port_ram_synchronous.v)
+[dual_port_ram_asynchronous.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous.v)
 behavioral model,
 
 ```verilog
@@ -81,30 +81,30 @@ behavioral model,
 
 The testbench uses two files,
 
-* [dual_port_ram_synchronous_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_synchronous/dual_port_ram_synchronous_tb.v)
+* [dual_port_ram_asynchronous_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb.v)
   the testbench
-* [dual_port_ram_synchronous_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_synchronous/dual_port_ram_synchronous_tb.tv)
+* [dual_port_ram_asynchronous_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb.tv)
   the test vectors and expected results
 
 with,
 
-* [dual_port_ram_synchronous.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_synchronous/dual_port_ram_synchronous.vh)
+* [dual_port_ram_asynchronous.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous.vh)
   is the header file listing the verilog models
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_synchronous/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/run-simulation.sh)
   is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o dual_port_ram_synchronous_tb.vvp dual_port_ram_synchronous_tb.v dual_port_ram_synchronous.vh
+iverilog -o dual_port_ram_asynchronous_tb.vvp dual_port_ram_asynchronous_tb.v dual_port_ram_asynchronous.vh
 ```
 
 Use **vvp** to run the simulation, which checks the UUT
 and creates a waveform dump file *.vcd.
 
 ```bash
-vvp dual_port_ram_synchronous_tb.vvp
+vvp dual_port_ram_asynchronous_tb.vvp
 ```
 
 The output of the test,
@@ -147,10 +147,10 @@ TEST END ----------------------------------
 
 ## VIEW WAVEFORM
 
-Open the waveform file dual_port_ram_synchronous_tb.vcd file with GTKWave,
+Open the waveform file dual_port_ram_asynchronous_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f dual_port_ram_synchronous_tb.vcd &
+gtkwave -f dual_port_ram_asynchronous_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -160,10 +160,10 @@ Now you can use the script
 anytime you want,
 
 ```bash
-gtkwave -f dual_port_ram_synchronous_tb.gtkw &
+gtkwave -f dual_port_ram_asynchronous_tb.gtkw &
 ```
 
-![dual_port_ram_synchronous-waveform.jpg](../../../docs/pics/sequential-logic/dual_port_ram_synchronous-waveform.jpg)
+![dual_port_ram_asynchronous-waveform.jpg](../../../docs/pics/sequential-logic/dual_port_ram_asynchronous-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 
