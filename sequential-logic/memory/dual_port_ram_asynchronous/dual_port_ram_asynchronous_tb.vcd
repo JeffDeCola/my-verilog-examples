@@ -1,0 +1,356 @@
+$date
+	Sun May 14 18:30:57 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module DUAL_PORT_RAM_ASYNCHRONOUS_TB $end
+$var wire 8 ! DATA_OUT_B [7:0] $end
+$var wire 8 " DATA_OUT_A [7:0] $end
+$var parameter 32 # CLKPERIOD_A $end
+$var parameter 32 $ CLKPERIOD_B $end
+$var reg 4 % ADDR_A [3:0] $end
+$var reg 4 & ADDR_B [3:0] $end
+$var reg 1 ' CLK_A $end
+$var reg 1 ( CLK_B $end
+$var reg 256 ) COMMENT_A [255:0] $end
+$var reg 256 * COMMENT_B [255:0] $end
+$var reg 8 + DATA_IN_A [7:0] $end
+$var reg 8 , DATA_IN_B [7:0] $end
+$var reg 8 - DATA_OUTEXP_A [7:0] $end
+$var reg 8 . DATA_OUTEXP_B [7:0] $end
+$var reg 32 / ERRORS_A [31:0] $end
+$var reg 32 0 ERRORS_B [31:0] $end
+$var reg 32 1 VECTORCOUNT_A [31:0] $end
+$var reg 32 2 VECTORCOUNT_B [31:0] $end
+$var reg 1 3 WE_A $end
+$var reg 1 4 WE_B $end
+$var integer 32 5 COUNT_A [31:0] $end
+$var integer 32 6 COUNT_B [31:0] $end
+$var integer 32 7 FD_A [31:0] $end
+$var integer 32 8 FD_B [31:0] $end
+$scope module UUT_dual_port_ram_asynchronous_behavioral $end
+$var wire 4 9 addr_A [3:0] $end
+$var wire 4 : addr_B [3:0] $end
+$var wire 1 ' clk_A $end
+$var wire 1 ( clk_B $end
+$var wire 8 ; data_in_A [7:0] $end
+$var wire 8 < data_in_B [7:0] $end
+$var wire 8 = data_out_A [7:0] $end
+$var wire 8 > data_out_B [7:0] $end
+$var wire 1 3 we_A $end
+$var wire 1 4 we_B $end
+$var reg 4 ? address_register_A [3:0] $end
+$var reg 4 @ address_register_B [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1111 $
+b10100 #
+$end
+#0
+$dumpvars
+bx @
+bx ?
+bx >
+bx =
+b0 <
+b0 ;
+b0 :
+b0 9
+b10000000000000000000000000000100 8
+b10000000000000000000000000000011 7
+b101 6
+b101 5
+14
+13
+b0 2
+b0 1
+b0 0
+b0 /
+bx .
+bx -
+b0 ,
+b0 +
+b1001001010011100100100101010100 *
+b1001001010011100100100101010100 )
+0(
+0'
+b0 &
+b0 %
+bx "
+bx !
+$end
+#70
+1(
+#100
+1'
+#140
+0(
+#190
+b1 2
+b11110011 ,
+b11110011 <
+b1 &
+b1 :
+b1010111010100100101111101000010 *
+#200
+0'
+#210
+1(
+#250
+b1 1
+b11110000 +
+b11110000 ;
+b1010111010100100101111101000001 )
+#280
+0(
+#300
+1'
+#330
+b10 2
+b11001111 ,
+b11001111 <
+b11 &
+b11 :
+#350
+1(
+#400
+0'
+#420
+0(
+#450
+b10 1
+b1111 +
+b1111 ;
+b1 %
+b1 9
+#470
+b11 2
+b11101010 ,
+b11101010 <
+b1111 &
+b1111 :
+#490
+1(
+#500
+1'
+#560
+0(
+#600
+0'
+#610
+b100 2
+b1111 .
+bx ,
+bx <
+b1 &
+b1 :
+04
+b1010010010001000101111101000010 *
+#630
+b1111 !
+b1111 >
+b1 @
+1(
+#650
+b11 1
+b10101010 +
+b10101010 ;
+b1110 %
+b1110 9
+#700
+0(
+1'
+#750
+b101 2
+b11001111 .
+b11 &
+b11 :
+#770
+b11001111 !
+b11001111 >
+b11 @
+1(
+#800
+0'
+#840
+0(
+#850
+b100 1
+b11110000 -
+bx +
+bx ;
+b0 %
+b0 9
+03
+b1010010010001000101111101000001 )
+#890
+b110 2
+b11101010 .
+b1111 &
+b1111 :
+#900
+b11110000 "
+b11110000 =
+b0 ?
+1'
+#910
+b11101010 !
+b11101010 >
+b1111 @
+1(
+#980
+0(
+#1000
+0'
+#1030
+b111 2
+b10101010 .
+b1110 &
+b1110 :
+#1050
+b10101010 !
+b10101010 >
+b1110 @
+b101 1
+b1111 -
+b1 %
+b1 9
+1(
+#1100
+b1111 "
+b1111 =
+b1 ?
+1'
+#1120
+0(
+#1170
+b1000 2
+b111 .
+b1001 &
+b1001 :
+#1190
+bx !
+bx >
+b1001 @
+1(
+#1200
+0'
+#1240
+b1 0
+#1250
+b110 1
+b10101010 -
+b1110 %
+b1110 9
+#1260
+0(
+#1300
+b10101010 "
+b10101010 =
+b1110 ?
+1'
+#1310
+b1001 2
+b11111010 .
+b1111 &
+b1111 :
+#1330
+b11101010 !
+b11101010 >
+b1111 @
+1(
+#1380
+b10 0
+#1400
+0(
+0'
+#1450
+b1010 2
+b0 .
+b0 ,
+b0 <
+14
+b1010111010100100101111101000010 *
+b111 1
+b111 +
+b111 ;
+b1001 %
+b1001 9
+13
+b1010111010100100101111101000001 )
+#1470
+b0 !
+b0 >
+1(
+#1500
+1'
+#1540
+0(
+#1590
+b1011 2
+b11000 ,
+b11000 <
+b1 &
+b1 :
+#1600
+0'
+#1610
+1(
+#1650
+b1000 1
+b11111010 +
+b11111010 ;
+b1111 %
+b1111 9
+#1680
+0(
+#1700
+b11111010 !
+b11111010 >
+1'
+#1730
+b1100 2
+bx ,
+bx <
+b1111 &
+b1111 :
+04
+b1010010010001000101111101000010 *
+#1750
+1(
+#1800
+b11 0
+0'
+#1820
+0(
+#1850
+b1001 1
+b11 +
+b11 ;
+b1100 %
+b1100 9
+#1870
+b1101 2
+b11000 .
+b1 &
+b1 :
+#1890
+b11000 !
+b11000 >
+b1 @
+1(
+#1900
+1'
+#1960
+0(
+#2000
+0'
+#2010
+b11111111111111111111111111111111 6

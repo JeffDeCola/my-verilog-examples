@@ -304,17 +304,29 @@ The artifacts created are,
 
 * MEMORY
 
-  * [fifo_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous)
+  * [single_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/single_port_ram_synchronous)
 
-    _A synchronous fifo._
+    _Single-port synchronous RAM._
+
+  * [dual_port_ram_asynchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous)
+
+    _Dual-port asynchronous RAM using two different clocks._
 
   * [dual_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous)
 
     _Dual-port synchronous RAM._
 
-  * [single_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/single_port_ram_synchronous)
+  * [fifo_asynchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous)
 
-    _Single-port synchronous RAM._
+    _An asynchronous fifo using dual-port asynchronous RAM._
+
+  * [fifo_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous)
+
+    _A synchronous fifo using dual-port synchronous RAM._
+
+  * [lifo_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/lifo_synchronous)
+
+    _A synchronous lifo._
 
 * REGISTERS
 

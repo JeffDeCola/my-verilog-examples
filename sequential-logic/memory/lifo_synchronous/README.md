@@ -12,17 +12,7 @@ Table of Contents
 * [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#tested-in-hardware---burned-to-a-fpga)
 
-Documentation and Reference
-
-* Using my
-  [dual_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous)
-
 ## OVERVIEW
-
-A FIFO is a special type of buffer. The name FIFO stands for first in first out
-and means that the data written into the buffer first comes out of it first.
-A synchronous FIFO is a FIFO where the same clock is used for both reading and
-writing.
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
