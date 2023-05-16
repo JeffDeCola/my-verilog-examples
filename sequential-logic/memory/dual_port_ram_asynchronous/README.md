@@ -1,4 +1,4 @@
-# DUAL-PORT RAM SYNCHRONOUS EXAMPLE
+# DUAL-PORT RAM ASYNCHRONOUS EXAMPLE
 
 _Dual-port asynchronous RAM using two different clocks._
 
