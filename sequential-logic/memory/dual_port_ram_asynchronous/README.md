@@ -85,8 +85,10 @@ The testbench uses two files,
 
 * [dual_port_ram_asynchronous_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb.v)
   the testbench
-* [dual_port_ram_asynchronous_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb.tv)
-  the test vectors and expected results
+* [dual_port_ram_asynchronous_tb_A.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb_A.tv)
+  the test vectors for clk_A and expected results
+* [dual_port_ram_asynchronous_tb_B.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb_B.tv)
+  the test vectors for clk_B and expected results
 
 with,
 
@@ -109,7 +111,7 @@ and creates a waveform dump file *.vcd.
 vvp dual_port_ram_asynchronous_tb.vvp
 ```
 
-The output of the test,
+The test uses two different clocks (CLK_A and CLK_B). The output of the test,
 
 ```text
 TEST START --------------------------------
