@@ -16,6 +16,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
     reg [7:0]       DATA_OUTEXP_A, DATA_OUTEXP_B;
     integer         FD_A, FD_B, COUNT_A, COUNT_B;
     reg [8*32-1:0]  COMMENT_A, COMMENT_B;
+    integer         END_A, END_B;
 
     // UNIT UNDER TEST
     dual_port_ram_asynchronous_behavioral UUT_dual_port_ram_asynchronous_behavioral(
@@ -63,99 +64,121 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
         VECTORCOUNT_B = 0;
         ERRORS_A = 0;
         ERRORS_B = 0;
+        END_A = 0;
+        END_B = 0;
 
         // DISPAY OUTPUT AND MONITOR
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |");
-        $display("                 ----------------------------------------------------------------------------------------------");
+        $display("                     | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |");
+        $display("                     ----------------------------------------------------------------------------------------------");
 
-        $monitor("%4d  %4s_%4s  | %8d |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_A, COMMENT_A, COMMENT_A, $time,
-                  WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A);
+        //$monitor("%4d  %4s_%4s  | %8d |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_A, COMMENT_A, COMMENT_A, $time,
+        //          WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A);
     end
 
     initial begin
-       // $monitor("%4d  %4s_%4s  | %8d |                                        |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_B, COMMENT_B, COMMENT_B, $time,
-        //          WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
+        // WAIT FOR TEST TO FINISH
+        @(END_B);
+        @(END_A);
+        $display();
+        $display(" VECTORS_A: %4d", VECTORCOUNT_A);
+        $display("  ERRORS_A: %4d", ERRORS_A);
+        $display(" VECTORS_B: %4d", VECTORCOUNT_B);
+        $display("  ERRORS_B: %4d", ERRORS_B);
+        $display();
+        $display("TEST END ----------------------------------");
+        $display();
+        $finish;
     end
 
     // APPLY TEST VECTORS ON NEG EDGE CLK_A (ADD DELAY)
     always @(negedge CLK_A) begin
 
-        // WAIT A BIT (AFTER CHECK)
-        #5;
+        if (!END_A) begin
 
-        // GET VECTORS FROM TB FILE
-        COUNT_A = $fscanf(FD_A, "%s %b %b %b %b", COMMENT_A, WE_A, ADDR_A, DATA_IN_A, DATA_OUTEXP_A);
+            // WAIT A BIT (AFTER CHECK)
+            #5;
 
-        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
-        if (COUNT_A == -1) begin
-            $fclose(FD_A);
-            $display();
-            $display(" VECTORS_A: %4d", VECTORCOUNT_A);
-            $display("  ERRORS_A: %4d", ERRORS_A);
-            $display();
-            $display("TEST END ----------------------------------");
-            $display();
-            $finish;
+            // GET VECTORS FROM TB FILE
+            COUNT_A = $fscanf(FD_A, "%s %b %b %b %b", COMMENT_A, WE_A, ADDR_A, DATA_IN_A, DATA_OUTEXP_A);
+
+            // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+            if (COUNT_A == -1) begin
+                $fclose(FD_A);
+                END_A = 1;
+            end
+
+            // GET ANOTHER VECTOR
+            VECTORCOUNT_A = VECTORCOUNT_A + 1;
+
         end
-
-        // GET ANOTHER VECTOR
-        VECTORCOUNT_A = VECTORCOUNT_A + 1;
 
     end
 
     // APPLY TEST VECTORS ON NEG EDGE CLK_B (ADD DELAY)
     always @(negedge CLK_B) begin
 
-        // WAIT A BIT (AFTER CHECK)
-        #5;
+        if (!END_B) begin
 
-        // GET VECTORS FROM TB FILE
-        COUNT_B = $fscanf(FD_B, "%s %b %b %b %b", COMMENT_B, WE_B, ADDR_B, DATA_IN_B, DATA_OUTEXP_B);
+            // WAIT A BIT (AFTER CHECK)
+            #5;
 
-        // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
-        if (COUNT_B == -1) begin
-            $fclose(FD_B);
-            $display();
-            $display(" VECTORS_B: %4d", VECTORCOUNT_B);
-            $display("  ERRORS_B: %4d", ERRORS_B);
-            $display();
-            $display("TEST END ----------------------------------");
-            $display();
-            $finish;
+            // GET VECTORS FROM TB FILE
+            COUNT_B = $fscanf(FD_B, "%s %b %b %b %b", COMMENT_B, WE_B, ADDR_B, DATA_IN_B, DATA_OUTEXP_B);
+
+            // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
+            if (COUNT_B == -1) begin
+                $fclose(FD_B);
+                END_B = 1;
+            end
+
+            // GET ANOTHER VECTOR
+            VECTORCOUNT_B = VECTORCOUNT_B + 1;
+        
         end
-
-        // GET ANOTHER VECTOR
-        VECTORCOUNT_B = VECTORCOUNT_B + 1;
 
     end
 
     // CHECK TEST VECTORS ON POS EGDE CLK_A
     always @(posedge CLK_A) begin
 
-        // WAIT A BIT
-        #5;
+        if (!END_A) begin
 
-        // CHECK EACH VECTOR RESULT
-        if (DATA_OUTEXP_A !== DATA_OUT_A) begin
-            $display("***ERROR - Expected DATA_OUT_A=%b", DATA_OUTEXP_A);
-            ERRORS_A = ERRORS_A + 1;
+            // WAIT A BIT
+            #5;
+
+            $display ("%4d        %8s | %8d |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_A, COMMENT_A, $time,
+                        WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A);
+
+            // CHECK EACH VECTOR RESULT
+            if (DATA_OUTEXP_A !== DATA_OUT_A) begin
+                $display("***ERROR - Expected DATA_OUT_A=%b for ADDR_A=%b", DATA_OUTEXP_A, ADDR_A);
+                ERRORS_A = ERRORS_A + 1;
+            end
+        
         end
 
     end   
 
     // CHECK TEST VECTORS ON POS EGDE CLK_B
     always @(posedge CLK_B) begin
+      
+        if (!END_B) begin
 
-        // WAIT A BIT
-        #5;
+            // WAIT A BIT
+            #5;
 
-        // CHECK EACH VECTOR RESULT
-        if (DATA_OUTEXP_B !== DATA_OUT_B) begin
-            $display("***ERROR - Expected DATA_OUT_B=%b", DATA_OUTEXP_B);
-            ERRORS_B = ERRORS_B + 1;
+            $display("    %4d    %8s | %8d |                                        |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_B, COMMENT_B, $time,
+                      WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
+
+            // CHECK EACH VECTOR RESULT
+            if (DATA_OUTEXP_B !== DATA_OUT_B) begin
+                $display("***ERROR - Expected DATA_OUT_B=%b for ADDR_B=%b", DATA_OUTEXP_B, ADDR_B);
+                ERRORS_B = ERRORS_B + 1;
+            end
+
         end
 
     end   
