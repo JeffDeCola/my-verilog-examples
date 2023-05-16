@@ -36,6 +36,8 @@ This may help,
 
 ## TRUTH TABLE
 
+Each clk has it's own write enable (we) address (addr) and data,
+
 | we    | addr | data_in  | data_out | comment     |
 |:-----:|:----:|:--------:|:--------:|:-----------:|
 | 0     | 0000 | xxxxxxxx | 00111100 | READ 0000   |
@@ -58,7 +60,7 @@ behavioral model,
 
     // RAM
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(posedge clk) begin
+    always @(posedge clk_A) begin
         if (we_A) begin
             mem[addr_A] <= data_in_A;
         end else begin
@@ -68,7 +70,7 @@ behavioral model,
 
     // RAM
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @(posedge clk) begin
+    always @(posedge clk_B) begin
         if (we_B) begin
             mem[addr_B] <= data_in_B;
         end else begin
@@ -112,35 +114,41 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                 | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |
-                 ----------------------------------------------------------------------------------------------
-   0        INIT |        0 |  1   |  0000  | 00000000  |  xxxxxxxx  |  1   |  0000  | 00000000  |  xxxxxxxx  |
-   1   WR_A_WR_B |       25 |  1   |  0000  | 11110000  |  xxxxxxxx  |  1   |  0001  | 11110011  |  xxxxxxxx  |
-   2   WR_A_WR_B |       45 |  1   |  0001  | 00001111  |  xxxxxxxx  |  1   |  0011  | 11001111  |  xxxxxxxx  |
-   3   WR_A_WR_B |       65 |  1   |  1110  | 10101010  |  xxxxxxxx  |  1   |  1111  | 11101010  |  xxxxxxxx  |
-   4   RD_A_RD_B |       85 |  0   |  0000  | xxxxxxxx  |  xxxxxxxx  |  0   |  0001  | xxxxxxxx  |  xxxxxxxx  |
-   4   RD_A_RD_B |       90 |  0   |  0000  | xxxxxxxx  |  11110000  |  0   |  0001  | xxxxxxxx  |  00001111  |
-   5   RD_A_RD_B |      105 |  0   |  0001  | xxxxxxxx  |  11110000  |  0   |  0011  | xxxxxxxx  |  00001111  |
-   5   RD_A_RD_B |      110 |  0   |  0001  | xxxxxxxx  |  00001111  |  0   |  0011  | xxxxxxxx  |  11001111  |
-   6   RD_A_RD_B |      125 |  0   |  1110  | xxxxxxxx  |  00001111  |  0   |  1111  | xxxxxxxx  |  11001111  |
-   6   RD_A_RD_B |      130 |  0   |  1110  | xxxxxxxx  |  10101010  |  0   |  1111  | xxxxxxxx  |  11101010  |
-   7   WR_A_RD_B |      145 |  1   |  1001  | 00000111  |  10101010  |  0   |  1110  | xxxxxxxx  |  11101010  |
-   7   WR_A_RD_B |      150 |  1   |  1001  | 00000111  |  10101010  |  0   |  1110  | xxxxxxxx  |  10101010  |
-   8   WR_A_RD_B |      165 |  1   |  1111  | 11111010  |  10101010  |  0   |  1001  | xxxxxxxx  |  10101010  |
-   8   WR_A_RD_B |      170 |  1   |  1111  | 11111010  |  10101010  |  0   |  1001  | xxxxxxxx  |  00000111  |
-   9   WR_A_RD_B |      185 |  1   |  1100  | 00000011  |  10101010  |  0   |  1111  | xxxxxxxx  |  00000111  |
-   9   WR_A_RD_B |      190 |  1   |  1100  | 00000011  |  10101010  |  0   |  1111  | xxxxxxxx  |  11111010  |
-  10   WR_A_WR_B |      205 |  1   |  0010  | 00001111  |  10101010  |  1   |  1111  | 00000000  |  11111010  |
-  10   WR_A_WR_B |      210 |  1   |  0010  | 00001111  |  10101010  |  1   |  1111  | 00000000  |  00000000  |
-  11   RD_A_WR_B |      225 |  0   |  0001  | xxxxxxxx  |  10101010  |  1   |  0001  | 00011000  |  00000000  |
-  11   RD_A_WR_B |      230 |  0   |  0001  | xxxxxxxx  |  00011000  |  1   |  0001  | 00011000  |  00000000  |
-  12   RD_A_RD_B |      245 |  0   |  1111  | xxxxxxxx  |  00011000  |  0   |  1111  | xxxxxxxx  |  00000000  |
-  12   RD_A_RD_B |      250 |  0   |  1111  | xxxxxxxx  |  00000000  |  0   |  1111  | xxxxxxxx  |  00000000  |
-  13   RD_A_RD_B |      265 |  0   |  0001  | xxxxxxxx  |  00000000  |  0   |  0001  | xxxxxxxx  |  00000000  |
-  13   RD_A_RD_B |      270 |  0   |  0001  | xxxxxxxx  |  00011000  |  0   |  0001  | xxxxxxxx  |  00011000  |
+                     | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |
+                     ----------------------------------------------------------------------------------------------
+       0        INIT |       12 |                                        |  1   |  0000  | 00000000  |  xxxxxxxx  |
+   0            INIT |       15 |  1   |  0000  | 00000000  |  xxxxxxxx  |
+       1        WR_B |       26 |                                        |  1   |  0001  | 11110011  |  xxxxxxxx  |
+   1            WR_A |       35 |  1   |  0000  | 11110000  |  xxxxxxxx  |
+       2        WR_B |       40 |                                        |  1   |  0011  | 11001111  |  xxxxxxxx  |
+       3        WR_B |       54 |                                        |  1   |  1111  | 11101010  |  xxxxxxxx  |
+   2            WR_A |       55 |  1   |  0001  | 00001111  |  xxxxxxxx  |
+       4        RD_B |       68 |                                        |  0   |  0001  | xxxxxxxx  |  00001111  |
+   3            WR_A |       75 |  1   |  1110  | 10101010  |  xxxxxxxx  |
+       5        RD_B |       82 |                                        |  0   |  0011  | xxxxxxxx  |  11001111  |
+   4            RD_A |       95 |  0   |  0000  | xxxxxxxx  |  11110000  |
+       6        RD_B |       96 |                                        |  0   |  1111  | xxxxxxxx  |  11101010  |
+       7        RD_B |      110 |                                        |  0   |  1110  | xxxxxxxx  |  10101010  |
+   5            RD_A |      115 |  0   |  0001  | xxxxxxxx  |  00001111  |
+       8        RD_B |      124 |                                        |  0   |  1001  | xxxxxxxx  |  xxxxxxxx  |
+   6            RD_A |      135 |  0   |  1110  | xxxxxxxx  |  10101010  |
+       9        RD_B |      138 |                                        |  0   |  1111  | xxxxxxxx  |  11101010  |
+      10        WR_B |      152 |                                        |  1   |  1111  | 00000000  |  00000000  |
+   7            WR_A |      155 |  1   |  1001  | 00000111  |  10101010  |
+      11        WR_B |      166 |                                        |  1   |  0001  | 00011000  |  00000000  |
+   8            WR_A |      175 |  1   |  1111  | 11111010  |  10101010  |
+      12        RD_B |      180 |                                        |  0   |  1111  | xxxxxxxx  |  11111010  |
+      13        RD_B |      194 |                                        |  0   |  0001  | xxxxxxxx  |  00011000  |
+   9            WR_A |      195 |  1   |  1100  | 00000011  |  10101010  |
+  10            WR_A |      215 |  1   |  0010  | 00001111  |  10101010  |
+  11            RD_A |      235 |  0   |  0001  | xxxxxxxx  |  00011000  |
+  12            RD_A |      255 |  0   |  1111  | xxxxxxxx  |  11111010  |
+  13            RD_A |      275 |  0   |  0001  | xxxxxxxx  |  00011000  |
 
- VECTORS:   13
-  ERRORS:    0
+ VECTORS_A:   14
+  ERRORS_A:    0
+ VECTORS_B:   14
+  ERRORS_B:    0
 
 TEST END ----------------------------------
 ```
