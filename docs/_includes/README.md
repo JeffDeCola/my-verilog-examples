@@ -254,7 +254,7 @@ The artifacts created are,
 
     _Single-port synchronous RAM._
 
-  * [dual_port_ram_asynchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous)
+  * [dual_port_ram_asynchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous)
 
     _Dual-port asynchronous RAM using two different clocks._
 
