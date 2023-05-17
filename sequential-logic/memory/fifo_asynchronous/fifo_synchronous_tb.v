@@ -1,33 +1,43 @@
 `timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 
-// include files in left_shift_register.vh
+// include files in fifo_synchronous.vh
 
-module LEFT_SHIFT_REGISTER_TB;
+module FIFO_SYNCHRONOUS_TB;
 
     // DATA TYPES - DECLARE REGISTERS AND WIRES (PROBES)
     reg             CLK;
     reg             RST;
-    reg             D;
-    wire [3:0]      OUT;
-
+    reg  [7:0]      DATA_IN;
+    reg             WE;
+    wire            FULL;
+    wire [7:0]      DATA_OUT;
+    reg             RE;
+    wire            EMPTY;
+  
     // FOR TESTING  
     reg [31:0]      VECTORCOUNT, ERRORS;
-    reg [3:0]       OUTEXP;
+    reg             FULLEXP;
+    reg [7:0]       DATA_OUTEXP;
+    reg             EMPTYEXP;
     integer         FD, COUNT;
     reg [8*32-1:0]  COMMENT;
 
-    // UNIT UNDER TEST (behavioral)
-    left_shift_register_behavioral UUT_left_shift_register_behavioral(
+    // UNIT UNDER TEST
+    fifo_synchronous_structural UUT_fifo_synchronous_structural(
         .clk(CLK),
         .rst(RST),
-        .d(D),
-        .out(OUT)
+        .data_in(DATA_IN),
+        .we(WE),
+        .full(FULL),
+        .data_out(DATA_OUT),
+        .re(RE),
+        .empty(EMPTY)
     );
 
     // SAVE EVERYTHING FROM TOP TB MODULE IN A DUMP FILE
     initial begin
-        $dumpfile("left_shift_register_tb.vcd");
-        $dumpvars(0, LEFT_SHIFT_REGISTER_TB);
+        $dumpfile("fifo_synchronous_tb.vcd");
+        $dumpvars(0, FIFO_SYNCHRONOUS_TB);
     end
 
     // CLK PERIOD
@@ -42,24 +52,24 @@ module LEFT_SHIFT_REGISTER_TB;
     initial begin
 
         // OPEN VECTOR FILE - THROW AWAY FIRST LINE
-        FD=$fopen("left_shift_register_tb.tv","r");
+        FD=$fopen("fifo_synchronous_tb.tv","r");
         COUNT = $fscanf(FD, "%s", COMMENT);
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, RST, D, OUTEXP);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, WE, FULLEXP, DATA_IN, RE, EMPTYEXP, DATA_OUTEXP);
         CLK = 0;
         VECTORCOUNT = 0;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | RST | D | OUT  |");
-        $display("                 -----------------------------");
-        $monitor("%4d  %10s | %8d | %b   | %1b | %1b |", VECTORCOUNT, COMMENT, $time, RST, D, OUT);
+        $display("                 | TIME(ns) | RST | WE | FULL | DATA_IN  | RE | EMPTY | DATA_OUT |");
+        $display("                 ----------------------------------------------------------------");
+        $monitor("%4d  %10s | %8d |  %1b  | %1b  |  %1b   | %1b | %1b  |   %1b   | %1b |",
+                 VECTORCOUNT, COMMENT, $time, RST, WE, FULL, DATA_IN, RE, EMPTY, DATA_OUT);
 
     end
 
@@ -70,7 +80,7 @@ module LEFT_SHIFT_REGISTER_TB;
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, RST, D, OUTEXP);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, WE, FULLEXP, DATA_IN, RE, EMPTYEXP, DATA_OUTEXP);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -96,8 +106,8 @@ module LEFT_SHIFT_REGISTER_TB;
         #5;
 
         // CHECK EACH VECTOR RESULT
-        if (OUT !== OUTEXP) begin
-            $display("***ERROR (behavioral) - Expected OUT = %b", OUTEXP);
+        if ((FULL !== FULLEXP) | (DATA_OUT !== DATA_OUTEXP) |(EMPTY !== EMPTYEXP)) begin
+            $display("***ERROR - Expected FULL=%b, DATA_OUT=%b, EMPTY=%b", FULLEXP, DATA_OUTEXP, EMPTYEXP);
             ERRORS = ERRORS + 1;
         end
 

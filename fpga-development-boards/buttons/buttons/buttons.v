@@ -10,7 +10,7 @@ module button1_sync_push_release_behavioral (
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk) begin
             if (pressed) begin          // BUTTON PRESSED
-                out <= 1'b1;                      
+                out <= 1'b1;
             end else begin              //  BUTTON NOT PRESSED
                 out <= 1'b0;
             end
@@ -32,8 +32,8 @@ module button2_sync_clock_pulse_behavioral (
             if (pressed & ~lock) begin              // BUTTON PRESSED
                 lock <= 1'b1;                       // - Lock
                 out <= 1'b1;                        // - Pulse
-            end else if (~pressed & lock) begin     // RELEASE LOCK  
-                lock <= 1'b0;            
+            end else if (~pressed & lock) begin     // RELEASE LOCK
+                lock <= 1'b0;
                 out <= 1'b0;
             end else begin
                 out <= 1'b0;
@@ -95,7 +95,7 @@ module button4_async_clock_pulse_behavioral (
             pre_out <= 1'b0;
         end else if (~pressed & lock) begin             // WAIT TILL BUTTON RELEASED
             lock <= 1'b0;
-        end 
+        end
     end
 
 endmodule
