@@ -10,7 +10,7 @@ module left_shift_register_behavioral (
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
         if (rst) begin
-            out <= 4'b0000;      
+            out <= 4'b0000;
         end else begin
             out <= {out[2:0], d};
         end

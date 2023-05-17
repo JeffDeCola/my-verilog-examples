@@ -57,7 +57,6 @@ module SIMPLE_PIPELINE_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                               ");
         $display("                 | TIME(ns) |    A     |    B     |    C     |    D     |    F     |");
         $display("                 -------------------------------------------------------------------");
         $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, A, B, C, D, F);
