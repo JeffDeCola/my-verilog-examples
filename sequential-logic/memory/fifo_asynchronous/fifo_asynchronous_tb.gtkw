@@ -1,0 +1,50 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Thu May 18 08:28:17 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous_tb.vcd"
+[dumpfile_mtime] "Thu May 18 08:17:40 2023"
+[dumpfile_size] 10204
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous_tb.gtkw"
+[timestart] 0
+[size] 1335 682
+[pos] -1 -1
+*-17.183514 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] FIFO_ASYNCHRONOUS_TB.
+[sst_width] 204
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 181
+@28
+FIFO_ASYNCHRONOUS_TB.WCLK
+FIFO_ASYNCHRONOUS_TB.WRST
+FIFO_ASYNCHRONOUS_TB.RCLK
+FIFO_ASYNCHRONOUS_TB.RRST
+@200
+-
+@28
+FIFO_ASYNCHRONOUS_TB.WE
+FIFO_ASYNCHRONOUS_TB.FULL
+@22
+FIFO_ASYNCHRONOUS_TB.DATA_IN[7:0]
+@200
+-
+@28
+FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.w_next
+@22
+FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.w_ptr[3:0]
+@200
+-
+@28
+FIFO_ASYNCHRONOUS_TB.RE
+FIFO_ASYNCHRONOUS_TB.EMPTY
+@22
+FIFO_ASYNCHRONOUS_TB.DATA_OUT[7:0]
+@200
+-
+@28
+FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.r_next
+@23
+FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.r_ptr[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

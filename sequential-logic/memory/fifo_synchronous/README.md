@@ -1,6 +1,6 @@
 # FIFO SYNCHRONOUS EXAMPLE
 
-_A synchronous fifo._
+_A synchronous fifo using dual-port synchronous RAM._
 
 Table of Contents
 
@@ -39,7 +39,7 @@ FPGA development board._
 
 ## SCHEMATIC
 
-This fifo is made up with mt dual port synchronous RAM.
+This fifo uses my dual port synchronous RAM.
 
 The structure is,
 

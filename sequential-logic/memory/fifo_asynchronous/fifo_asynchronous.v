@@ -1,8 +1,10 @@
 // A synchronous fifo.
 
-module fifo_synchronous_structural(
-    input  clk,             // Clock
-    input  rst,             // Reset
+module fifo_asynchronous_structural(
+    input  wclk,            // Write Clock
+    input  rclk,            // Read Clock
+    input  wrst,            // Write Reset
+    input  rrst,            // Read Reset
     input  [7:0] data_in,   // DATA In
     input  we,              // Write enable
     output full,            // Full
@@ -24,8 +26,9 @@ module fifo_synchronous_structural(
     parameter  zero =   1'b0;
 
     // 16x8 dual port RAM
-    dual_port_ram_synchronous_behavioral dual_port_ram_synchronous(
-        .clk(clk),           
+    dual_port_ram_asynchronous_behavioral dual_port_ram_asynchronous(
+        .clk_A(wclk),
+        .clk_B(rclk),           
         .we_A(we),
         .we_B(zero),
         .addr_A(w_ptr),
@@ -49,15 +52,15 @@ module fifo_synchronous_structural(
     );
 
     write_ptr write_ptr(
-        .clk(clk),
-        .rst(rst),
+        .clk(wclk),
+        .rst(wrst),
         .w_next(w_next),
         .w_ptr(w_ptr)
     );
 
     read_ptr read_ptr(
-        .clk(clk),
-        .rst(rst),
+        .clk(rclk),
+        .rst(rrst),
         .r_next(r_next),
         .r_ptr(r_ptr)
     );
