@@ -80,6 +80,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
 
     initial begin
         // WAIT FOR TEST TO FINISH
+        // THIS IS NOT PERFECT - I PROBABLY NEED TO FIX THIS FOR DIFFERENT CLOCK SPEEDS
         @(END_B);
         @(END_A);
         $display();

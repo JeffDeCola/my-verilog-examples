@@ -1,24 +1,24 @@
 # FIFO SYNCHRONOUS EXAMPLE
 
-_A synchronous fifo._
+_An asynchronous fifo using dual-port asynchronous RAM._
 
 Table of Contents
 
-* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#overview)
-* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#schematic)
-* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#truth-table)
-* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#verilog-code)
-  * [WRITE AND READ LOGIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#write-and-read-logic)
-  * [WRITE AND READ PTRS](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#write-and-read-ptrs)
-  * [COMPARE AND STATUS LOGIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#compare-and-status-logic)
-* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#run-simulate)
-* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#view-waveform)
-* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_synchronous#tested-in-hardware---burned-to-a-fpga)
+* [OVERVIEW](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#overview)
+* [SCHEMATIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#schematic)
+* [TRUTH TABLE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#truth-table)
+* [VERILOG CODE](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#verilog-code)
+  * [WRITE AND READ LOGIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#write-and-read-logic)
+  * [WRITE AND READ PTRS](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#write-and-read-ptrs)
+  * [COMPARE AND STATUS LOGIC](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#compare-and-status-logic)
+* [RUN (SIMULATE)](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#run-simulate)
+* [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#view-waveform)
+* [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/fifo_asynchronous#tested-in-hardware---burned-to-a-fpga)
 
 Documentation and Reference
 
 * Using my
-  [dual_port_ram_synchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_synchronous)
+  [dual_port_ram_asynchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/dual_port_ram_asynchronous)
 
 ## OVERVIEW
 
@@ -43,7 +43,7 @@ This fifo is made up with mt dual port synchronous RAM.
 
 The structure is,
 
-![IMAGE - fifo_synchronous.jpg - IMAGE](../../../docs/pics/sequential-logic/fifo_synchronous.jpg)
+![IMAGE - fifo_asynchronous.jpg - IMAGE](../../../docs/pics/sequential-logic/fifo_asynchronous.jpg)
 
 The full and empy logic is,
 
@@ -79,7 +79,7 @@ off the FIFO.
 ## VERILOG CODE
 
 The
-[fifo_synchronous.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_synchronous/fifo_synchronous.v)
+[fifo_asynchronous.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous.v)
 behavioral model,
 
 ### WRITE AND READ LOGIC
@@ -175,30 +175,30 @@ behavioral model,
 
 The testbench uses two files,
 
-* [fifo_synchronous_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_synchronous/fifo_synchronous_tb.v)
+* [fifo_asynchronous_tb.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous_tb.v)
   the testbench
-* [fifo_synchronous_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_synchronous/fifo_synchronous_tb.tv)
+* [fifo_asynchronous_tb.tv](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous_tb.tv)
   the test vectors and expected results
 
 with,
 
-* [fifo_synchronous.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_synchronous/fifo_synchronous.vh)
+* [fifo_asynchronous.vh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous.vh)
   is the header file listing the verilog models
-* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_synchronous/run-simulation.sh)
+* [run-simulation.sh](https://github.com/JeffDeCola/my-verilog-examples/blob/master/sequential-logic/memory/fifo_asynchronous/run-simulation.sh)
   is a script containing the commands below
 
 Use **iverilog** to compile the verilog to a vvp format
 which is used by the vvp runtime simulation engine,
 
 ```bash
-iverilog -o fifo_synchronous_tb.vvp fifo_synchronous_tb.v fifo_synchronous.vh
+iverilog -o fifo_asynchronous_tb.vvp fifo_asynchronous_tb.v fifo_asynchronous.vh
 ```
 
 Use **vvp** to run the simulation, which checks the UUT
 and creates a waveform dump file *.vcd.
 
 ```bash
-vvp fifo_synchronous_tb.vvp
+vvp fifo_asynchronous_tb.vvp
 ```
 
 The output of the test,
@@ -269,10 +269,10 @@ TEST END ----------------------------------
 
 ## VIEW WAVEFORM
 
-Open the waveform file fifo_synchronous_tb.vcd file with GTKWave,
+Open the waveform file fifo_asynchronous_tb.vcd file with GTKWave,
 
 ```bash
-gtkwave -f fifo_synchronous_tb.vcd &
+gtkwave -f fifo_asynchronous_tb.vcd &
 ```
 
 Save your waveform to a .gtkw file.
@@ -282,10 +282,10 @@ Now you can use the script
 anytime you want,
 
 ```bash
-gtkwave -f fifo_synchronous_tb.gtkw &
+gtkwave -f fifo_asynchronous_tb.gtkw &
 ```
 
-![fifo_synchronous-waveform.jpg](../../../docs/pics/sequential-logic/fifo_synchronous-waveform.jpg)
+![fifo_asynchronous-waveform.jpg](../../../docs/pics/sequential-logic/fifo_asynchronous-waveform.jpg)
 
 ## TESTED IN HARDWARE - BURNED TO A FPGA
 

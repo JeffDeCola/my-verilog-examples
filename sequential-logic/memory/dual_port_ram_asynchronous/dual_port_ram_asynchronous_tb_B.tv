@@ -1,4 +1,3 @@
-
             WE_B_ADDR_B_DATA_IN_B__DATA_OUTEXP_B
 INIT        1    0000   00000000   xxxxxxxx
 WR_B        1    0001   11110011   xxxxxxxx
