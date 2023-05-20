@@ -52,7 +52,7 @@ module JEFF_74x181_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %4b %4b %4b %4b", COMMENT, M, CI_BAR, S, A, B, FEXPECTED);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -61,7 +61,7 @@ module JEFF_74x181_TB;
         $display();
         $display("                       | TIME(ns) | M | CI_BAR |  S   |  A   |  B   |  F   |");
         $display("                       -----------------------------------------------------");
-        $monitor("%4d  %16s | %8d | %1b |   %1b    | %4b | %4b | %4b | %4b |", VECTORCOUNT, COMMENT, $time, M, CI_BAR, S, A, B, F);
+        // $monitor("%4d  %16s | %8d | %1b |   %1b    | %4b | %4b | %4b | %4b |", VECTORCOUNT, COMMENT, $time, M, CI_BAR, S, A, B, F);
 
     end
 
@@ -96,6 +96,9 @@ module JEFF_74x181_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE TICK
+        $display("%4d  %16s | %8d | %1b |   %1b    | %4b | %4b | %4b | %4b |", VECTORCOUNT, COMMENT, $time, M, CI_BAR, S, A, B, F);
 
         // CHECK EACH VECTOR RESULT
         if (F !== FEXPECTED) begin

@@ -46,7 +46,7 @@ module ENCODER_TO_DECODER_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b", COMMENT, IN, OUTEXPECTED);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -55,7 +55,7 @@ module ENCODER_TO_DECODER_TB;
         $display();
         $display("                 | TIME(ns) |    IN    |    OUT   |");
         $display("                 ----------------------------------");
-        $monitor("%4d  %10s | %8d | %1b | %1b |", VECTORCOUNT, COMMENT, $time, IN, OUT);
+        // $monitor("%4d  %10s | %8d | %1b | %1b |", VECTORCOUNT, COMMENT, $time, IN, OUT);
 
     end
 
@@ -90,6 +90,9 @@ module ENCODER_TO_DECODER_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE TICK
+        $display("%4d  %10s | %8d | %1b | %1b |", VECTORCOUNT, COMMENT, $time, IN, OUT);
 
         // CHECK EACH VECTOR RESULT
         if (OUT !== OUTEXPECTED) begin
