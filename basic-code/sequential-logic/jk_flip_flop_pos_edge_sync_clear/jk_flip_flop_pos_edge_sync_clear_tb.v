@@ -51,9 +51,8 @@ module JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB ();
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, CLRBAR, J, K, QEXPECTED);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -62,7 +61,7 @@ module JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB ();
         $display("                                      ");
         $display("                 | TIME(ns) | CLRBAR | J | K |  Q  |");
         $display("                 -----------------------------------");
-        $monitor("%4d  %10s | %8d |   %1d    | %1d | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, CLRBAR, J, K, Q_beh);
+        // $monitor("%4d  %10s | %8d |   %1d    | %1d | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, CLRBAR, J, K, Q_beh);
 
         // INIT - PUT OUTPUT IN KNOWN STATE
         // TO AVOID THE RACE CONDITION
@@ -108,6 +107,9 @@ module JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB ();
         
         // WAIT A BIT FOR OUTPUT TO SETTLE
         #12;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |   %1d    | %1d | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, CLRBAR, J, K, Q_beh);
 
         // CHECK EACH VECTOR RESULT
         if (Q_beh !== QEXPECTED) begin

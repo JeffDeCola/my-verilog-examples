@@ -7,90 +7,90 @@
 :vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
 :vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
 :vpi_module "/usr/local/lib/ivl/va_math.vpi";
-S_0x55c74dfbda30 .scope module, "NOR2_TB" "NOR2_TB" 2 5;
+S_0x55c6fb6c7a30 .scope module, "NOR2_TB" "NOR2_TB" 2 5;
  .timescale -9 -10;
-P_0x55c74df8e900 .param/l "TICKPERIOD" 1 2 44, +C4<00000000000000000000000000010100>;
-v0x55c74dfeaf40_0 .var "A", 0 0;
-v0x55c74dfeafe0_0 .var "B", 0 0;
-v0x55c74dfeb0a0_0 .var "COMMENT", 255 0;
-v0x55c74dfeb140_0 .var/i "COUNT", 31 0;
-v0x55c74dfeb220_0 .var "ERRORS", 31 0;
-v0x55c74dfeb350_0 .var/i "FD", 31 0;
-v0x55c74dfeb430_0 .var "TICK", 0 0;
-v0x55c74dfeb4f0_0 .var "VECTORCOUNT", 31 0;
-v0x55c74dfeb5d0_0 .var "YEXPECTED", 0 0;
-v0x55c74dfeb690_0 .net "Y_beh", 0 0, v0x55c74dfea2b0_0;  1 drivers
-v0x55c74dfeb730_0 .net "Y_data", 0 0, L_0x55c74dfeba60;  1 drivers
-v0x55c74dfeb800_0 .net "Y_gate", 0 0, L_0x55c74dfbb850;  1 drivers
-E_0x55c74df8e7a0 .event posedge, v0x55c74dfeb430_0;
-E_0x55c74df8e640 .event negedge, v0x55c74dfeb430_0;
-S_0x55c74dfd0f10 .scope module, "UUT_nor2_behavioral" "nor2_behavioral" 2 32, 3 21 0, S_0x55c74dfbda30;
- .timescale -9 -10;
-    .port_info 0 /INPUT 1 "a";
-    .port_info 1 /INPUT 1 "b";
-    .port_info 2 /OUTPUT 1 "y";
-v0x55c74dfd1140_0 .net "a", 0 0, v0x55c74dfeaf40_0;  1 drivers
-v0x55c74dfea1f0_0 .net "b", 0 0, v0x55c74dfeafe0_0;  1 drivers
-v0x55c74dfea2b0_0 .var "y", 0 0;
-E_0x55c74dfc5e90 .event anyedge, v0x55c74dfea1f0_0, v0x55c74dfd1140_0;
-S_0x55c74dfea400 .scope module, "UUT_nor2_dataflow" "nor2_dataflow" 2 26, 3 12 0, S_0x55c74dfbda30;
+P_0x55c6fb698900 .param/l "TICKPERIOD" 1 2 44, +C4<00000000000000000000000000010100>;
+v0x55c6fb6f4f40_0 .var "A", 0 0;
+v0x55c6fb6f4fe0_0 .var "B", 0 0;
+v0x55c6fb6f50a0_0 .var "COMMENT", 255 0;
+v0x55c6fb6f5140_0 .var/i "COUNT", 31 0;
+v0x55c6fb6f5220_0 .var "ERRORS", 31 0;
+v0x55c6fb6f5350_0 .var/i "FD", 31 0;
+v0x55c6fb6f5430_0 .var "TICK", 0 0;
+v0x55c6fb6f54f0_0 .var "VECTORCOUNT", 31 0;
+v0x55c6fb6f55d0_0 .var "YEXPECTED", 0 0;
+v0x55c6fb6f5690_0 .net "Y_beh", 0 0, v0x55c6fb6f42b0_0;  1 drivers
+v0x55c6fb6f5730_0 .net "Y_data", 0 0, L_0x55c6fb6f5a60;  1 drivers
+v0x55c6fb6f5800_0 .net "Y_gate", 0 0, L_0x55c6fb6c5850;  1 drivers
+E_0x55c6fb6987a0 .event posedge, v0x55c6fb6f5430_0;
+E_0x55c6fb698640 .event negedge, v0x55c6fb6f5430_0;
+S_0x55c6fb6daf10 .scope module, "UUT_nor2_behavioral" "nor2_behavioral" 2 32, 3 21 0, S_0x55c6fb6c7a30;
  .timescale -9 -10;
     .port_info 0 /INPUT 1 "a";
     .port_info 1 /INPUT 1 "b";
     .port_info 2 /OUTPUT 1 "y";
-L_0x55c74dfeb9f0 .functor OR 1, v0x55c74dfeaf40_0, v0x55c74dfeafe0_0, C4<0>, C4<0>;
-L_0x55c74dfeba60 .functor NOT 1, L_0x55c74dfeb9f0, C4<0>, C4<0>, C4<0>;
-v0x55c74dfea630_0 .net *"_ivl_0", 0 0, L_0x55c74dfeb9f0;  1 drivers
-v0x55c74dfea730_0 .net "a", 0 0, v0x55c74dfeaf40_0;  alias, 1 drivers
-v0x55c74dfea820_0 .net "b", 0 0, v0x55c74dfeafe0_0;  alias, 1 drivers
-v0x55c74dfea920_0 .net "y", 0 0, L_0x55c74dfeba60;  alias, 1 drivers
-S_0x55c74dfea9e0 .scope module, "UUT_nor2_gate" "nor2_gate" 2 20, 3 3 0, S_0x55c74dfbda30;
+v0x55c6fb6db140_0 .net "a", 0 0, v0x55c6fb6f4f40_0;  1 drivers
+v0x55c6fb6f41f0_0 .net "b", 0 0, v0x55c6fb6f4fe0_0;  1 drivers
+v0x55c6fb6f42b0_0 .var "y", 0 0;
+E_0x55c6fb6cfe90 .event anyedge, v0x55c6fb6f41f0_0, v0x55c6fb6db140_0;
+S_0x55c6fb6f4400 .scope module, "UUT_nor2_dataflow" "nor2_dataflow" 2 26, 3 12 0, S_0x55c6fb6c7a30;
  .timescale -9 -10;
     .port_info 0 /INPUT 1 "a";
     .port_info 1 /INPUT 1 "b";
     .port_info 2 /OUTPUT 1 "y";
-L_0x55c74dfbb850 .functor NOR 1, v0x55c74dfeaf40_0, v0x55c74dfeafe0_0, C4<0>, C4<0>;
-v0x55c74dfeac40_0 .net "a", 0 0, v0x55c74dfeaf40_0;  alias, 1 drivers
-v0x55c74dfead30_0 .net "b", 0 0, v0x55c74dfeafe0_0;  alias, 1 drivers
-v0x55c74dfeae40_0 .net "y", 0 0, L_0x55c74dfbb850;  alias, 1 drivers
-    .scope S_0x55c74dfd0f10;
+L_0x55c6fb6f59f0 .functor OR 1, v0x55c6fb6f4f40_0, v0x55c6fb6f4fe0_0, C4<0>, C4<0>;
+L_0x55c6fb6f5a60 .functor NOT 1, L_0x55c6fb6f59f0, C4<0>, C4<0>, C4<0>;
+v0x55c6fb6f4630_0 .net *"_ivl_0", 0 0, L_0x55c6fb6f59f0;  1 drivers
+v0x55c6fb6f4730_0 .net "a", 0 0, v0x55c6fb6f4f40_0;  alias, 1 drivers
+v0x55c6fb6f4820_0 .net "b", 0 0, v0x55c6fb6f4fe0_0;  alias, 1 drivers
+v0x55c6fb6f4920_0 .net "y", 0 0, L_0x55c6fb6f5a60;  alias, 1 drivers
+S_0x55c6fb6f49e0 .scope module, "UUT_nor2_gate" "nor2_gate" 2 20, 3 3 0, S_0x55c6fb6c7a30;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_0x55c6fb6c5850 .functor NOR 1, v0x55c6fb6f4f40_0, v0x55c6fb6f4fe0_0, C4<0>, C4<0>;
+v0x55c6fb6f4c40_0 .net "a", 0 0, v0x55c6fb6f4f40_0;  alias, 1 drivers
+v0x55c6fb6f4d30_0 .net "b", 0 0, v0x55c6fb6f4fe0_0;  alias, 1 drivers
+v0x55c6fb6f4e40_0 .net "y", 0 0, L_0x55c6fb6c5850;  alias, 1 drivers
+    .scope S_0x55c6fb6daf10;
 T_0 ;
-    %wait E_0x55c74dfc5e90;
-    %load/vec4 v0x55c74dfd1140_0;
-    %load/vec4 v0x55c74dfea1f0_0;
+    %wait E_0x55c6fb6cfe90;
+    %load/vec4 v0x55c6fb6db140_0;
+    %load/vec4 v0x55c6fb6f41f0_0;
     %or;
     %inv;
-    %assign/vec4 v0x55c74dfea2b0_0, 0;
+    %assign/vec4 v0x55c6fb6f42b0_0, 0;
     %jmp T_0;
     .thread T_0, $push;
-    .scope S_0x55c74dfbda30;
+    .scope S_0x55c6fb6c7a30;
 T_1 ;
     %vpi_call 2 39 "$dumpfile", "nor2_tb.vcd" {0 0 0};
-    %vpi_call 2 40 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55c74dfbda30 {0 0 0};
+    %vpi_call 2 40 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55c6fb6c7a30 {0 0 0};
     %end;
     .thread T_1;
-    .scope S_0x55c74dfbda30;
+    .scope S_0x55c6fb6c7a30;
 T_2 ;
     %delay 100, 0;
-    %load/vec4 v0x55c74dfeb430_0;
+    %load/vec4 v0x55c6fb6f5430_0;
     %inv;
-    %store/vec4 v0x55c74dfeb430_0, 0, 1;
+    %store/vec4 v0x55c6fb6f5430_0, 0, 1;
     %jmp T_2;
     .thread T_2;
-    .scope S_0x55c74dfbda30;
+    .scope S_0x55c6fb6c7a30;
 T_3 ;
     %vpi_func 2 55 "$fopen" 32, "nor2_tb.tv", "r" {0 0 0};
-    %store/vec4 v0x55c74dfeb350_0, 0, 32;
-    %vpi_func 2 56 "$fscanf" 32, v0x55c74dfeb350_0, "%s", v0x55c74dfeb0a0_0 {0 0 0};
-    %store/vec4 v0x55c74dfeb140_0, 0, 32;
-    %vpi_func 2 60 "$fscanf" 32, v0x55c74dfeb350_0, "%s %b %b %b", v0x55c74dfeb0a0_0, v0x55c74dfeaf40_0, v0x55c74dfeafe0_0, v0x55c74dfeb5d0_0 {0 0 0};
-    %store/vec4 v0x55c74dfeb140_0, 0, 32;
+    %store/vec4 v0x55c6fb6f5350_0, 0, 32;
+    %vpi_func 2 56 "$fscanf" 32, v0x55c6fb6f5350_0, "%s", v0x55c6fb6f50a0_0 {0 0 0};
+    %store/vec4 v0x55c6fb6f5140_0, 0, 32;
+    %vpi_func 2 60 "$fscanf" 32, v0x55c6fb6f5350_0, "%s %b %b %b", v0x55c6fb6f50a0_0, v0x55c6fb6f4f40_0, v0x55c6fb6f4fe0_0, v0x55c6fb6f55d0_0 {0 0 0};
+    %store/vec4 v0x55c6fb6f5140_0, 0, 32;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x55c74dfeb430_0, 0, 1;
+    %store/vec4 v0x55c6fb6f5430_0, 0, 1;
     %pushi/vec4 1, 0, 32;
-    %store/vec4 v0x55c74dfeb4f0_0, 0, 32;
+    %store/vec4 v0x55c6fb6f54f0_0, 0, 32;
     %pushi/vec4 0, 0, 32;
-    %store/vec4 v0x55c74dfeb220_0, 0, 32;
+    %store/vec4 v0x55c6fb6f5220_0, 0, 32;
     %vpi_call 2 66 "$display" {0 0 0};
     %vpi_call 2 67 "$display", "TEST START --------------------------------" {0 0 0};
     %vpi_call 2 68 "$display" {0 0 0};
@@ -99,60 +99,60 @@ T_3 ;
     %vpi_call 2 71 "$display", "                 --------------------------------------" {0 0 0};
     %end;
     .thread T_3;
-    .scope S_0x55c74dfbda30;
+    .scope S_0x55c6fb6c7a30;
 T_4 ;
-    %wait E_0x55c74df8e640;
+    %wait E_0x55c6fb698640;
     %delay 50, 0;
-    %vpi_func 2 83 "$fscanf" 32, v0x55c74dfeb350_0, "%s %b %b %b", v0x55c74dfeb0a0_0, v0x55c74dfeaf40_0, v0x55c74dfeafe0_0, v0x55c74dfeb5d0_0 {0 0 0};
-    %store/vec4 v0x55c74dfeb140_0, 0, 32;
-    %load/vec4 v0x55c74dfeb140_0;
+    %vpi_func 2 83 "$fscanf" 32, v0x55c6fb6f5350_0, "%s %b %b %b", v0x55c6fb6f50a0_0, v0x55c6fb6f4f40_0, v0x55c6fb6f4fe0_0, v0x55c6fb6f55d0_0 {0 0 0};
+    %store/vec4 v0x55c6fb6f5140_0, 0, 32;
+    %load/vec4 v0x55c6fb6f5140_0;
     %cmpi/e 4294967295, 0, 32;
     %jmp/0xz  T_4.0, 4;
-    %vpi_call 2 87 "$fclose", v0x55c74dfeb350_0 {0 0 0};
+    %vpi_call 2 87 "$fclose", v0x55c6fb6f5350_0 {0 0 0};
     %vpi_call 2 88 "$display" {0 0 0};
-    %vpi_call 2 89 "$display", " VECTORS: %4d", v0x55c74dfeb4f0_0 {0 0 0};
-    %vpi_call 2 90 "$display", "  ERRORS: %4d", v0x55c74dfeb220_0 {0 0 0};
+    %vpi_call 2 89 "$display", " VECTORS: %4d", v0x55c6fb6f54f0_0 {0 0 0};
+    %vpi_call 2 90 "$display", "  ERRORS: %4d", v0x55c6fb6f5220_0 {0 0 0};
     %vpi_call 2 91 "$display" {0 0 0};
     %vpi_call 2 92 "$display", "TEST END ----------------------------------" {0 0 0};
     %vpi_call 2 93 "$display" {0 0 0};
     %vpi_call 2 94 "$finish" {0 0 0};
 T_4.0 ;
-    %load/vec4 v0x55c74dfeb4f0_0;
+    %load/vec4 v0x55c6fb6f54f0_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x55c74dfeb4f0_0, 0, 32;
+    %store/vec4 v0x55c6fb6f54f0_0, 0, 32;
     %jmp T_4;
     .thread T_4;
-    .scope S_0x55c74dfbda30;
+    .scope S_0x55c6fb6c7a30;
 T_5 ;
-    %wait E_0x55c74df8e7a0;
-    %vpi_call 2 106 "$display", "%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", v0x55c74dfeb4f0_0, v0x55c74dfeb0a0_0, $time, v0x55c74dfeaf40_0, v0x55c74dfeafe0_0, v0x55c74dfeb800_0, v0x55c74dfeb730_0, v0x55c74dfeb690_0 {0 0 0};
+    %wait E_0x55c6fb6987a0;
     %delay 50, 0;
-    %load/vec4 v0x55c74dfeb800_0;
-    %load/vec4 v0x55c74dfeb5d0_0;
+    %vpi_call 2 109 "$display", "%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", v0x55c6fb6f54f0_0, v0x55c6fb6f50a0_0, $time, v0x55c6fb6f4f40_0, v0x55c6fb6f4fe0_0, v0x55c6fb6f5800_0, v0x55c6fb6f5730_0, v0x55c6fb6f5690_0 {0 0 0};
+    %load/vec4 v0x55c6fb6f5800_0;
+    %load/vec4 v0x55c6fb6f55d0_0;
     %cmp/ne;
     %jmp/0xz  T_5.0, 6;
-    %vpi_call 2 113 "$display", "***ERROR (gate) - Expected Y = %b", v0x55c74dfeb5d0_0 {0 0 0};
-    %load/vec4 v0x55c74dfeb220_0;
+    %vpi_call 2 113 "$display", "***ERROR (gate) - Expected Y = %b", v0x55c6fb6f55d0_0 {0 0 0};
+    %load/vec4 v0x55c6fb6f5220_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x55c74dfeb220_0, 0, 32;
+    %store/vec4 v0x55c6fb6f5220_0, 0, 32;
 T_5.0 ;
-    %load/vec4 v0x55c74dfeb730_0;
-    %load/vec4 v0x55c74dfeb5d0_0;
+    %load/vec4 v0x55c6fb6f5730_0;
+    %load/vec4 v0x55c6fb6f55d0_0;
     %cmp/ne;
     %jmp/0xz  T_5.2, 6;
-    %vpi_call 2 117 "$display", "***ERROR (dataflow) - Expected Y = %b", v0x55c74dfeb5d0_0 {0 0 0};
-    %load/vec4 v0x55c74dfeb220_0;
+    %vpi_call 2 117 "$display", "***ERROR (dataflow) - Expected Y = %b", v0x55c6fb6f55d0_0 {0 0 0};
+    %load/vec4 v0x55c6fb6f5220_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x55c74dfeb220_0, 0, 32;
+    %store/vec4 v0x55c6fb6f5220_0, 0, 32;
 T_5.2 ;
-    %load/vec4 v0x55c74dfeb690_0;
-    %load/vec4 v0x55c74dfeb5d0_0;
+    %load/vec4 v0x55c6fb6f5690_0;
+    %load/vec4 v0x55c6fb6f55d0_0;
     %cmp/ne;
     %jmp/0xz  T_5.4, 6;
-    %vpi_call 2 121 "$display", "***ERROR (behavioral) - Expected Y = %b", v0x55c74dfeb5d0_0 {0 0 0};
-    %load/vec4 v0x55c74dfeb220_0;
+    %vpi_call 2 121 "$display", "***ERROR (behavioral) - Expected Y = %b", v0x55c6fb6f55d0_0 {0 0 0};
+    %load/vec4 v0x55c6fb6f5220_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x55c74dfeb220_0, 0, 32;
+    %store/vec4 v0x55c6fb6f5220_0, 0, 32;
 T_5.4 ;
     %jmp T_5;
     .thread T_5;

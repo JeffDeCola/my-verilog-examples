@@ -8,6 +8,7 @@ module T_FLIP_FLOP_TB ();
     reg             T;
 
     // OUTPUT PROBES
+
     wire            Q_gate, QBAR_gate;
     wire            Q_data, QBAR_data;
     wire            Q_beh, QBAR_beh;
@@ -65,9 +66,8 @@ module T_FLIP_FLOP_TB ();
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, T, QEXPECTED);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -76,7 +76,7 @@ module T_FLIP_FLOP_TB ();
         $display("                                 GATE  DATA   BEH");
         $display("                 | TIME(ns) | T |  Q  |  Q  |  Q  |");
         $display("                 ----------------------------------");
-        $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, T, Q_gate, Q_data, Q_beh);
+        // $monitor("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, T, Q_gate, Q_data, Q_beh);
 
         // INIT - PUT OUTPUT IN KNOWN STATE
         // TO AVOID THE RACE CONDITION
@@ -130,6 +130,9 @@ module T_FLIP_FLOP_TB ();
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, T, Q_gate, Q_data, Q_beh);
 
         // CHECK EACH VECTOR RESULT
         if (Q_gate !== QEXPECTED) begin

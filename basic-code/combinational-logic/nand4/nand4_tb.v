@@ -102,11 +102,11 @@ module NAND4_TB;
     // CHECK TEST VECTORS ON POS EGDE TICK
     always @(posedge TICK) begin
 
-        // DISPLAY TEST VECTORS ON POS EDGE TICK
-        $display("%4d  %10s | %8d | %1d | %1d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, C, D, Y_gate, Y_data, Y_beh);
-
         // WAIT A BIT
         #5;
+
+        // DISPLAY TEST VECTORS ON POS EDGE TICK
+        $display("%4d  %10s | %8d | %1d | %1d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, C, D, Y_gate, Y_data, Y_beh);
 
         // CHECK EACH VECTOR RESULT
         if (Y_gate !== YEXPECTED) begin
