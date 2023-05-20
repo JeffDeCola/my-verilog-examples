@@ -1,7 +1,6 @@
 `include "lifo_synchronous.v"
 `include "source/write_logic.v"
 `include "source/read_logic.v"
-`include "source/write_ptr.v"
-`include "source/read_ptr.v"
+`include "source/stack_ptr_control.v"
 `include "source/compare_and_status_logic.v"
 `include "../dual_port_ram_synchronous/dual_port_ram_synchronous.v"

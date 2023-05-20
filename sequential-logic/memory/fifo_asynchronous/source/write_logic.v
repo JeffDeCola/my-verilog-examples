@@ -1,4 +1,4 @@
-// A synchronous fifo write logic
+// A asynchronous fifo write logic
 
 module write_logic (
     input       we,              // Write enable
