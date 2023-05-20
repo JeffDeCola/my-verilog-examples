@@ -7,165 +7,149 @@
 :vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
 :vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
 :vpi_module "/usr/local/lib/ivl/va_math.vpi";
-S_0x564760110020 .scope module, "OR2_TB" "OR2_TB" 2 5;
+S_0x561f8146c760 .scope module, "OR2_TB" "OR2_TB" 2 5;
  .timescale -9 -10;
-P_0x5647600cd900 .param/l "TICKPERIOD" 1 2 44, +C4<00000000000000000000000000010100>;
-v0x56476012ae90_0 .var "A", 0 0;
-v0x56476012af30_0 .var "B", 0 0;
-v0x56476012aff0_0 .var "COMMENT", 255 0;
-v0x56476012b090_0 .var/i "COUNT", 31 0;
-v0x56476012b170_0 .var "ERRORS", 31 0;
-v0x56476012b2a0_0 .var/i "FD", 31 0;
-v0x56476012b380_0 .var "TICK", 0 0;
-v0x56476012b440_0 .var "VECTORCOUNT", 31 0;
-v0x56476012b520_0 .var "YEXPECTED", 0 0;
-v0x56476012b5e0_0 .net "Y_beh", 0 0, v0x56476012a2e0_0;  1 drivers
-v0x56476012b680_0 .net "Y_data", 0 0, L_0x56476012b9b0;  1 drivers
-v0x56476012b750_0 .net "Y_gate", 0 0, L_0x56476012b820;  1 drivers
-E_0x5647600cd7a0 .event posedge, v0x56476012b380_0;
-E_0x5647600cd640 .event negedge, v0x56476012b380_0;
-S_0x564760110200 .scope module, "UUT_or2_behavioral" "or2_behavioral" 2 32, 3 21 0, S_0x564760110020;
- .timescale -9 -10;
-    .port_info 0 /INPUT 1 "a";
-    .port_info 1 /INPUT 1 "b";
-    .port_info 2 /OUTPUT 1 "y";
-v0x564760110430_0 .net "a", 0 0, v0x56476012ae90_0;  1 drivers
-v0x56476012a220_0 .net "b", 0 0, v0x56476012af30_0;  1 drivers
-v0x56476012a2e0_0 .var "y", 0 0;
-E_0x564760104e90 .event anyedge, v0x56476012a220_0, v0x564760110430_0;
-S_0x56476012a430 .scope module, "UUT_or2_dataflow" "or2_dataflow" 2 26, 3 12 0, S_0x564760110020;
+P_0x561f8143d900 .param/l "TICKPERIOD" 1 2 44, +C4<00000000000000000000000000010100>;
+v0x561f81499b00_0 .var "A", 0 0;
+v0x561f81499ba0_0 .var "B", 0 0;
+v0x561f81499c60_0 .var "COMMENT", 255 0;
+v0x561f81499d00_0 .var/i "COUNT", 31 0;
+v0x561f81499de0_0 .var "ERRORS", 31 0;
+v0x561f81499f10_0 .var/i "FD", 31 0;
+v0x561f81499ff0_0 .var "TICK", 0 0;
+v0x561f8149a0b0_0 .var "VECTORCOUNT", 31 0;
+v0x561f8149a190_0 .var "YEXPECTED", 0 0;
+v0x561f8149a250_0 .net "Y_beh", 0 0, v0x561f81498f50_0;  1 drivers
+v0x561f8149a2f0_0 .net "Y_data", 0 0, L_0x561f8149a5b0;  1 drivers
+v0x561f8149a3c0_0 .net "Y_gate", 0 0, L_0x561f8146a580;  1 drivers
+E_0x561f8143d7a0 .event posedge, v0x561f81499ff0_0;
+E_0x561f8143d640 .event negedge, v0x561f81499ff0_0;
+S_0x561f8147fed0 .scope module, "UUT_or2_behavioral" "or2_behavioral" 2 32, 3 21 0, S_0x561f8146c760;
  .timescale -9 -10;
     .port_info 0 /INPUT 1 "a";
     .port_info 1 /INPUT 1 "b";
     .port_info 2 /OUTPUT 1 "y";
-L_0x56476012b9b0 .functor OR 1, v0x56476012ae90_0, v0x56476012af30_0, C4<0>, C4<0>;
-v0x56476012a660_0 .net "a", 0 0, v0x56476012ae90_0;  alias, 1 drivers
-v0x56476012a750_0 .net "b", 0 0, v0x56476012af30_0;  alias, 1 drivers
-v0x56476012a820_0 .net "y", 0 0, L_0x56476012b9b0;  alias, 1 drivers
-S_0x56476012a930 .scope module, "UUT_or2_gate" "or2_gate" 2 20, 3 3 0, S_0x564760110020;
+v0x561f81480100_0 .net "a", 0 0, v0x561f81499b00_0;  1 drivers
+v0x561f81498e90_0 .net "b", 0 0, v0x561f81499ba0_0;  1 drivers
+v0x561f81498f50_0 .var "y", 0 0;
+E_0x561f81474e90 .event anyedge, v0x561f81498e90_0, v0x561f81480100_0;
+S_0x561f814990a0 .scope module, "UUT_or2_dataflow" "or2_dataflow" 2 26, 3 12 0, S_0x561f8146c760;
  .timescale -9 -10;
     .port_info 0 /INPUT 1 "a";
     .port_info 1 /INPUT 1 "b";
     .port_info 2 /OUTPUT 1 "y";
-L_0x56476012b820 .functor OR 1, v0x56476012ae90_0, v0x56476012af30_0, C4<0>, C4<0>;
-v0x56476012ab90_0 .net "a", 0 0, v0x56476012ae90_0;  alias, 1 drivers
-v0x56476012ac80_0 .net "b", 0 0, v0x56476012af30_0;  alias, 1 drivers
-v0x56476012ad90_0 .net "y", 0 0, L_0x56476012b820;  alias, 1 drivers
-    .scope S_0x564760110200;
+L_0x561f8149a5b0 .functor OR 1, v0x561f81499b00_0, v0x561f81499ba0_0, C4<0>, C4<0>;
+v0x561f814992d0_0 .net "a", 0 0, v0x561f81499b00_0;  alias, 1 drivers
+v0x561f814993c0_0 .net "b", 0 0, v0x561f81499ba0_0;  alias, 1 drivers
+v0x561f81499490_0 .net "y", 0 0, L_0x561f8149a5b0;  alias, 1 drivers
+S_0x561f814995a0 .scope module, "UUT_or2_gate" "or2_gate" 2 20, 3 3 0, S_0x561f8146c760;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_0x561f8146a580 .functor OR 1, v0x561f81499b00_0, v0x561f81499ba0_0, C4<0>, C4<0>;
+v0x561f81499800_0 .net "a", 0 0, v0x561f81499b00_0;  alias, 1 drivers
+v0x561f814998f0_0 .net "b", 0 0, v0x561f81499ba0_0;  alias, 1 drivers
+v0x561f81499a00_0 .net "y", 0 0, L_0x561f8146a580;  alias, 1 drivers
+    .scope S_0x561f8147fed0;
 T_0 ;
-    %wait E_0x564760104e90;
-    %load/vec4 v0x564760110430_0;
-    %load/vec4 v0x56476012a220_0;
+    %wait E_0x561f81474e90;
+    %load/vec4 v0x561f81480100_0;
+    %load/vec4 v0x561f81498e90_0;
     %or;
-    %assign/vec4 v0x56476012a2e0_0, 0;
+    %assign/vec4 v0x561f81498f50_0, 0;
     %jmp T_0;
     .thread T_0, $push;
-    .scope S_0x564760110020;
+    .scope S_0x561f8146c760;
 T_1 ;
     %vpi_call 2 39 "$dumpfile", "or2_tb.vcd" {0 0 0};
-    %vpi_call 2 40 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x564760110020 {0 0 0};
+    %vpi_call 2 40 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x561f8146c760 {0 0 0};
     %end;
     .thread T_1;
-    .scope S_0x564760110020;
+    .scope S_0x561f8146c760;
 T_2 ;
     %delay 100, 0;
-    %load/vec4 v0x56476012b380_0;
+    %load/vec4 v0x561f81499ff0_0;
     %inv;
-    %store/vec4 v0x56476012b380_0, 0, 1;
+    %store/vec4 v0x561f81499ff0_0, 0, 1;
     %jmp T_2;
     .thread T_2;
-    .scope S_0x564760110020;
+    .scope S_0x561f8146c760;
 T_3 ;
     %vpi_func 2 55 "$fopen" 32, "or2_tb.tv", "r" {0 0 0};
-    %store/vec4 v0x56476012b2a0_0, 0, 32;
-    %vpi_func 2 56 "$fscanf" 32, v0x56476012b2a0_0, "%s", v0x56476012aff0_0 {0 0 0};
-    %store/vec4 v0x56476012b090_0, 0, 32;
-    %vpi_func 2 60 "$fscanf" 32, v0x56476012b2a0_0, "%s %b %b %b", v0x56476012aff0_0, v0x56476012ae90_0, v0x56476012af30_0, v0x56476012b520_0 {0 0 0};
-    %store/vec4 v0x56476012b090_0, 0, 32;
+    %store/vec4 v0x561f81499f10_0, 0, 32;
+    %vpi_func 2 56 "$fscanf" 32, v0x561f81499f10_0, "%s", v0x561f81499c60_0 {0 0 0};
+    %store/vec4 v0x561f81499d00_0, 0, 32;
+    %vpi_func 2 60 "$fscanf" 32, v0x561f81499f10_0, "%s %b %b %b", v0x561f81499c60_0, v0x561f81499b00_0, v0x561f81499ba0_0, v0x561f8149a190_0 {0 0 0};
+    %store/vec4 v0x561f81499d00_0, 0, 32;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x56476012b380_0, 0, 1;
+    %store/vec4 v0x561f81499ff0_0, 0, 1;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v0x561f8149a0b0_0, 0, 32;
     %pushi/vec4 0, 0, 32;
-    %store/vec4 v0x56476012b440_0, 0, 32;
-    %pushi/vec4 0, 0, 32;
-    %store/vec4 v0x56476012b170_0, 0, 32;
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %pushi/vec4 0, 0, 32; draw_string_vec4
-    %concat/vec4; draw_string_vec4
-    %store/vec4 v0x56476012aff0_0, 0, 256;
-    %vpi_call 2 67 "$display" {0 0 0};
-    %vpi_call 2 68 "$display", "TEST START --------------------------------" {0 0 0};
-    %vpi_call 2 69 "$display" {0 0 0};
-    %vpi_call 2 70 "$display", "                                     GATE  DATA   BEH" {0 0 0};
-    %vpi_call 2 71 "$display", "                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |" {0 0 0};
-    %vpi_call 2 72 "$display", "                 --------------------------------------" {0 0 0};
-    %vpi_call 2 73 "$monitor", "%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", v0x56476012b440_0, v0x56476012aff0_0, $time, v0x56476012ae90_0, v0x56476012af30_0, v0x56476012b750_0, v0x56476012b680_0, v0x56476012b5e0_0 {0 0 0};
+    %store/vec4 v0x561f81499de0_0, 0, 32;
+    %vpi_call 2 66 "$display" {0 0 0};
+    %vpi_call 2 67 "$display", "TEST START --------------------------------" {0 0 0};
+    %vpi_call 2 68 "$display" {0 0 0};
+    %vpi_call 2 69 "$display", "                                     GATE  DATA   BEH" {0 0 0};
+    %vpi_call 2 70 "$display", "                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |" {0 0 0};
+    %vpi_call 2 71 "$display", "                 --------------------------------------" {0 0 0};
     %end;
     .thread T_3;
-    .scope S_0x564760110020;
+    .scope S_0x561f8146c760;
 T_4 ;
-    %wait E_0x5647600cd640;
+    %wait E_0x561f8143d640;
     %delay 50, 0;
-    %vpi_func 2 84 "$fscanf" 32, v0x56476012b2a0_0, "%s %b %b %b", v0x56476012aff0_0, v0x56476012ae90_0, v0x56476012af30_0, v0x56476012b520_0 {0 0 0};
-    %store/vec4 v0x56476012b090_0, 0, 32;
-    %load/vec4 v0x56476012b090_0;
+    %vpi_func 2 83 "$fscanf" 32, v0x561f81499f10_0, "%s %b %b %b", v0x561f81499c60_0, v0x561f81499b00_0, v0x561f81499ba0_0, v0x561f8149a190_0 {0 0 0};
+    %store/vec4 v0x561f81499d00_0, 0, 32;
+    %load/vec4 v0x561f81499d00_0;
     %cmpi/e 4294967295, 0, 32;
     %jmp/0xz  T_4.0, 4;
-    %vpi_call 2 88 "$fclose", v0x56476012b2a0_0 {0 0 0};
-    %vpi_call 2 89 "$display" {0 0 0};
-    %vpi_call 2 90 "$display", " VECTORS: %4d", v0x56476012b440_0 {0 0 0};
-    %vpi_call 2 91 "$display", "  ERRORS: %4d", v0x56476012b170_0 {0 0 0};
-    %vpi_call 2 92 "$display" {0 0 0};
-    %vpi_call 2 93 "$display", "TEST END ----------------------------------" {0 0 0};
-    %vpi_call 2 94 "$display" {0 0 0};
-    %vpi_call 2 95 "$finish" {0 0 0};
+    %vpi_call 2 87 "$fclose", v0x561f81499f10_0 {0 0 0};
+    %vpi_call 2 88 "$display" {0 0 0};
+    %vpi_call 2 89 "$display", " VECTORS: %4d", v0x561f8149a0b0_0 {0 0 0};
+    %vpi_call 2 90 "$display", "  ERRORS: %4d", v0x561f81499de0_0 {0 0 0};
+    %vpi_call 2 91 "$display" {0 0 0};
+    %vpi_call 2 92 "$display", "TEST END ----------------------------------" {0 0 0};
+    %vpi_call 2 93 "$display" {0 0 0};
+    %vpi_call 2 94 "$finish" {0 0 0};
 T_4.0 ;
-    %load/vec4 v0x56476012b440_0;
+    %load/vec4 v0x561f8149a0b0_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x56476012b440_0, 0, 32;
+    %store/vec4 v0x561f8149a0b0_0, 0, 32;
     %jmp T_4;
     .thread T_4;
-    .scope S_0x564760110020;
+    .scope S_0x561f8146c760;
 T_5 ;
-    %wait E_0x5647600cd7a0;
+    %wait E_0x561f8143d7a0;
+    %vpi_call 2 106 "$display", "%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", v0x561f8149a0b0_0, v0x561f81499c60_0, $time, v0x561f81499b00_0, v0x561f81499ba0_0, v0x561f8149a3c0_0, v0x561f8149a2f0_0, v0x561f8149a250_0 {0 0 0};
     %delay 50, 0;
-    %load/vec4 v0x56476012b750_0;
-    %load/vec4 v0x56476012b520_0;
+    %load/vec4 v0x561f8149a3c0_0;
+    %load/vec4 v0x561f8149a190_0;
     %cmp/ne;
     %jmp/0xz  T_5.0, 6;
-    %vpi_call 2 111 "$display", "***ERROR (gate) - Expected Y = %b", v0x56476012b520_0 {0 0 0};
-    %load/vec4 v0x56476012b170_0;
+    %vpi_call 2 113 "$display", "***ERROR (gate) - Expected Y = %b", v0x561f8149a190_0 {0 0 0};
+    %load/vec4 v0x561f81499de0_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x56476012b170_0, 0, 32;
+    %store/vec4 v0x561f81499de0_0, 0, 32;
 T_5.0 ;
-    %load/vec4 v0x56476012b680_0;
-    %load/vec4 v0x56476012b520_0;
+    %load/vec4 v0x561f8149a2f0_0;
+    %load/vec4 v0x561f8149a190_0;
     %cmp/ne;
     %jmp/0xz  T_5.2, 6;
-    %vpi_call 2 115 "$display", "***ERROR (dataflow) - Expected Y = %b", v0x56476012b520_0 {0 0 0};
-    %load/vec4 v0x56476012b170_0;
+    %vpi_call 2 117 "$display", "***ERROR (dataflow) - Expected Y = %b", v0x561f8149a190_0 {0 0 0};
+    %load/vec4 v0x561f81499de0_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x56476012b170_0, 0, 32;
+    %store/vec4 v0x561f81499de0_0, 0, 32;
 T_5.2 ;
-    %load/vec4 v0x56476012b5e0_0;
-    %load/vec4 v0x56476012b520_0;
+    %load/vec4 v0x561f8149a250_0;
+    %load/vec4 v0x561f8149a190_0;
     %cmp/ne;
     %jmp/0xz  T_5.4, 6;
-    %vpi_call 2 119 "$display", "***ERROR (behavioral) - Expected Y = %b", v0x56476012b520_0 {0 0 0};
-    %load/vec4 v0x56476012b170_0;
+    %vpi_call 2 121 "$display", "***ERROR (behavioral) - Expected Y = %b", v0x561f8149a190_0 {0 0 0};
+    %load/vec4 v0x561f81499de0_0;
     %addi 1, 0, 32;
-    %store/vec4 v0x56476012b170_0, 0, 32;
+    %store/vec4 v0x561f81499de0_0, 0, 32;
 T_5.4 ;
     %jmp T_5;
     .thread T_5;

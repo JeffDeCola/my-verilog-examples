@@ -59,9 +59,8 @@ module AND2_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, A, B, YEXPECTED);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -70,7 +69,7 @@ module AND2_TB;
         $display("                                     GATE  DATA   BEH");
         $display("                 | TIME(ns) | A | B |  Y  |  Y  |  Y  |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
+        // $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
 
     end
 
@@ -102,6 +101,9 @@ module AND2_TB;
 
     // CHECK TEST VECTORS ON POS EGDE TICK
     always @(posedge TICK) begin
+
+        // DISPLAY OUTPUT ON POS EDGE TICK
+        $display("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, Y_gate, Y_data, Y_beh);
 
         // WAIT A BIT
         #5;
