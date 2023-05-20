@@ -51,9 +51,8 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, EN, D, QEXPECTED);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -62,7 +61,7 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         $display("                               ");
         $display("                 | TIME(ns) | EN | D |  Q  |");
         $display("                 ---------------------------");
-        $monitor("%4d  %10s | %8d | %d  | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, EN, D, Q_beh);
+        // $monitor("%4d  %10s | %8d | %d  | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, EN, D, Q_beh);
 
     end
 
@@ -97,6 +96,9 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d | %d  | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, EN, D, Q_beh);
 
         // CHECK EACH VECTOR RESULT
         if (Q_beh !== QEXPECTED) begin

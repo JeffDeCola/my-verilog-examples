@@ -62,9 +62,8 @@ module SR_LATCH_TB ();
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, S, R, QEXPECTED);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -73,7 +72,7 @@ module SR_LATCH_TB ();
         $display("                                     GATE  DATA   BEH");
         $display("                 | TIME(ns) | S | R |  Q  |  Q  |  Q  |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
+        // $monitor("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
 
     end
 
@@ -108,6 +107,9 @@ module SR_LATCH_TB ();
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d | %1d | %1d |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, S, R, Q_gate, Q_data, Q_beh);
 
         // CHECK EACH VECTOR RESULT
         if (Q_gate !== QEXPECTED) begin

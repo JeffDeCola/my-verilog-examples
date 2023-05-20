@@ -203,22 +203,19 @@ TEST START --------------------------------
                                  GATE  DATA   BEH
                  | TIME(ns) | T |  Q  |  Q  |  Q  |
                  ----------------------------------
-   0             |        0 | 0 |  x  |  z  |  z  |
-   0             |        1 | 0 |  0  |  z  |  z  |
-   0             |       11 | 0 |  0  |  z  |  z  |
-   1   NO_CHANGE |       25 | 0 |  0  |  z  |  z  |
-   2      TOGGLE |       45 | 1 |  0  |  z  |  z  |
-   2      TOGGLE |       50 | 1 |  1  |  z  |  z  |
-   3   NO_CHANGE |       65 | 0 |  1  |  z  |  z  |
-   4      TOGGLE |       85 | 1 |  1  |  z  |  z  |
+   1        INIT |       15 | 0 |  0  |  z  |  0  |
+   2   NO_CHANGE |       35 | 0 |  0  |  z  |  0  |
+   3      TOGGLE |       55 | 1 |  1  |  z  |  1  |
+   4   NO_CHANGE |       75 | 0 |  1  |  z  |  1  |
+   5      TOGGLE |       95 | 1 |  1  |  z  |  0  |
 ***ERROR (gate) - Expected Q = 0
-   5   NO_CHANGE |      105 | 0 |  1  |  z  |  z  |
+   6   NO_CHANGE |      115 | 0 |  1  |  z  |  0  |
 ***ERROR (gate) - Expected Q = 0
-   6      TOGGLE |      125 | 1 |  1  |  z  |  z  |
-   7   NO_CHANGE |      145 | 0 |  1  |  z  |  z  |
-   8   NO_CHANGE |      165 | 0 |  1  |  z  |  z  |
+   7      TOGGLE |      135 | 1 |  1  |  z  |  1  |
+   8   NO_CHANGE |      155 | 0 |  1  |  z  |  1  |
+   9   NO_CHANGE |      175 | 0 |  1  |  z  |  1  |
 
- VECTORS:    8
+ VECTORS:    9
   ERRORS:    2
 
 TEST END ----------------------------------

@@ -105,6 +105,10 @@ The artifacts created are,
 * `*_tb.vcd` - The dump of the waveform data
 * `*_tb.gtkw` - The GTKWave saved waveform
 
+Where the testbench structure is,
+
+![testbench-structure.jpg](docs/pics/testbench-structure.jpg)
+
 ## BASIC CODE
 
 * COMBINATIONAL LOGIC
