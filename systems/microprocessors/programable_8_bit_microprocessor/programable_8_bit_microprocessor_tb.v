@@ -67,7 +67,7 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUTEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -76,7 +76,8 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
         $display();
         $display("                 | TIME(ns) | GO_BAR | RESET | JAM | OPCODE | DATA_IN_A | DATA_IN_B | DATA_OUT |");
         $display("                 -------------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |   %1b    |   %1b   |  %1b  |  %1b  | %1b  | %1b  | %1b |", VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
+        // $monitor("%4d  %10s | %8d |   %1b    |   %1b   |  %1b  |  %1b  | %1b  | %1b  | %1b |",
+        //           VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
 
     end
 
@@ -111,6 +112,10 @@ module PROGRAMABLE_8_BIT_MICROPROCESSOR_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |   %1b    |   %1b   |  %1b  |  %1b  | %1b  | %1b  | %1b |",
+                  VECTORCOUNT, COMMENT, $time, GO_BAR, RESET, JAM, OPCODE, DATA_IN_A, DATA_IN_B, DATA_OUT);
 
         // CHECK EACH VECTOR RESULT
         if (DATA_OUT !== DATA_OUTEXP) begin
