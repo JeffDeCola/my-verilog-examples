@@ -50,7 +50,7 @@ module MUX_TO_DEMUX_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b", COMMENT, SEL1, SEL2, A1, B1, C1, D1, A2EXP, B2EXP, C2EXP, D2EXP);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -59,7 +59,7 @@ module MUX_TO_DEMUX_TB;
         $display();
         $display("                 | TIME(ns) | SEL1 | SEL2 | A1 | B1 | C1 | D1 | A2 | B2 | C2 | D2 |");
         $display("                 ------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |  %1b  |  %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  |", VECTORCOUNT, COMMENT, $time, SEL1, SEL2, A1, B1, C1, D1, A2, B2, C2, D2);
+        // $monitor("%4d  %10s | %8d |  %1b  |  %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  |", VECTORCOUNT, COMMENT, $time, SEL1, SEL2, A1, B1, C1, D1, A2, B2, C2, D2);
 
     end
 
@@ -94,6 +94,9 @@ module MUX_TO_DEMUX_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE TICK
+        $display("%4d  %10s | %8d |  %1b  |  %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  | %1b  |", VECTORCOUNT, COMMENT, $time, SEL1, SEL2, A1, B1, C1, D1, A2, B2, C2, D2);
 
         // CHECK EACH VECTOR RESULT
         if ((A2 !== A2EXP) | (B2 !== B2EXP) | (D2 !== D2EXP) | (D2 != D2EXP)) begin

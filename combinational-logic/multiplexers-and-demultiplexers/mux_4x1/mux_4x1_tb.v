@@ -48,7 +48,7 @@ module MUX_4x1_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b", COMMENT, SEL, A, B, C, D, YEXPECTED);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -57,7 +57,7 @@ module MUX_4x1_TB;
         $display();
         $display("                 | TIME(ns) | SEL | A | B | C | D | Y |");
         $display("                 --------------------------------------");
-        $monitor("%4d  %10s | %8d | %1b  | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, SEL, A, B, C, D, Y);
+        // $monitor("%4d  %10s | %8d | %1b  | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, SEL, A, B, C, D, Y);
 
     end
 
@@ -92,6 +92,9 @@ module MUX_4x1_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE TICK
+        $display("%4d  %10s | %8d | %1b  | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, SEL, A, B, C, D, Y);
 
         // CHECK EACH VECTOR RESULT
         if (Y !== YEXPECTED) begin

@@ -62,7 +62,7 @@ module HALF_ADDER_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, A, B, SUMEXPECTED, COUTEXPECTED);
         TICK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -72,7 +72,7 @@ module HALF_ADDER_TB;
         $display("                                      GATE -----   DATA -----   BEH ------");
         $display("                 | TIME(ns) | A | B | SUM | COUT | SUM | COUT | SUM | COUT |");
         $display("                 -----------------------------------------------------------");
-        $monitor("%4d  %10s | %8d | %1d | %1d |  %1d   |  %1d  |  %1d   |  %1d  |  %1d   |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, SUM_gate, COUT_gate, SUM_data, COUT_data, SUM_beh, SUM_beh);
+        // $monitor("%4d  %10s | %8d | %1d | %1d |  %1d   |  %1d  |  %1d   |  %1d  |  %1d   |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, SUM_gate, COUT_gate, SUM_data, COUT_data, SUM_beh, SUM_beh);
 
     end
 
@@ -107,6 +107,9 @@ module HALF_ADDER_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE TICK
+        $display("%4d  %10s | %8d | %1d | %1d |  %1d   |  %1d  |  %1d   |  %1d  |  %1d   |  %1d  |", VECTORCOUNT, COMMENT, $time, A, B, SUM_gate, COUT_gate, SUM_data, COUT_data, SUM_beh, SUM_beh);
 
         // CHECK EACH VECTOR RESULT
         if ((SUM_gate !== SUMEXPECTED) | (COUT_gate !== COUTEXPECTED)) begin
