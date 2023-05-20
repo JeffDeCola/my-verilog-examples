@@ -1,4 +1,4 @@
-// A synchronous fifo read logic
+// A asynchronous fifo read logic
 
 module read_logic (
     input       re,              // Read enable

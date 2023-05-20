@@ -1,4 +1,4 @@
-// A synchronous fifo read pointer
+// A asynchronous fifo read pointer
 
 module read_ptr (
     input             clk,              // Clock

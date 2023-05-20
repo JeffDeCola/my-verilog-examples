@@ -16,8 +16,7 @@ module lifo_synchronous_structural(
     // parameter RAM_DEPTH = (1 << ADDR_WIDTH);
 
     // DATA TYPES
-    wire [3:0] w_ptr;
-    wire [3:0] r_ptr;
+    wire [3:0] stack_ptr;
     wire       w_next;
     wire       r_next;
     parameter  zeros = 8'h00;
@@ -28,8 +27,8 @@ module lifo_synchronous_structural(
         .clk(clk),           
         .we_A(we),
         .we_B(zero),
-        .addr_A(w_ptr),
-        .addr_B(r_ptr),
+        .addr_A(stack_ptr),
+        .addr_B(stack_ptr),
         .data_in_A(data_in),
         .data_in_B(zeros),
         .data_out_A(),
@@ -48,24 +47,17 @@ module lifo_synchronous_structural(
         .r_next(r_next)
     );
 
-    write_ptr write_ptr(
+    stack_ptr_control stack_ptr_control(
         .clk(clk),
         .rst(rst),
         .w_next(w_next),
-        .w_ptr(w_ptr)
-    );
-
-    read_ptr read_ptr(
-        .clk(clk),
-        .rst(rst),
         .r_next(r_next),
-        .r_ptr(r_ptr)
+        .stack_ptr(stack_ptr)
     );
 
     compare_and_status_logic compare_and_status_logic(
-        .w_ptr(w_ptr),
+        .stack_ptr(stack_ptr),
         .full(full),
-        .r_ptr(r_ptr),
         .empty(empty)
     );
 

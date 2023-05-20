@@ -1,4 +1,4 @@
-// A synchronous fifo write pointer
+// A asynchronous fifo write pointer
 
 module write_ptr (
     input             clk,              // Clock
