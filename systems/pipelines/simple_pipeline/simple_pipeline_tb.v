@@ -50,7 +50,7 @@ module SIMPLE_PIPELINE_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b", COMMENT, A, B, C, D, FEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -59,7 +59,7 @@ module SIMPLE_PIPELINE_TB;
         $display();
         $display("                 | TIME(ns) |    A     |    B     |    C     |    D     |    F     |");
         $display("                 -------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, A, B, C, D, F);
+        // $monitor("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, A, B, C, D, F);
 
     end
 
@@ -94,6 +94,9 @@ module SIMPLE_PIPELINE_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d | %1b | %1b | %1b | %1b | %1b |", VECTORCOUNT, COMMENT, $time, A, B, C, D, F);
 
         // CHECK EACH VECTOR RESULT
         if (F !== FEXP) begin
