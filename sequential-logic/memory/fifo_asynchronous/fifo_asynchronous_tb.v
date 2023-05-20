@@ -70,8 +70,8 @@ module FIFO_ASYNCHRONOUS_TB;
         RCOUNT = $fscanf(RFD, "%s %b %b %b %b", RCOMMENT, RRST, RE, EMPTYEXP, DATA_OUTEXP);
         WCLK = 0;
         RCLK = 0;
-        WVECTORCOUNT = 0;
-        RVECTORCOUNT = 0;
+        WVECTORCOUNT = 1;
+        RVECTORCOUNT = 1;
         WERRORS = 0;
         RERRORS = 0;
         WEND = 0;
@@ -118,10 +118,10 @@ module FIFO_ASYNCHRONOUS_TB;
             if (WCOUNT == -1) begin
                 $fclose(WFD);
                 WEND = 1;
+            end else begin
+                // GET ANOTHER VECTOR
+                WVECTORCOUNT = WVECTORCOUNT + 1;
             end
-
-            // GET ANOTHER VECTOR
-            WVECTORCOUNT = WVECTORCOUNT + 1;
 
         end
 
@@ -142,10 +142,10 @@ module FIFO_ASYNCHRONOUS_TB;
             if (RCOUNT == -1) begin
                 $fclose(RFD);
                 REND = 1;
+            end else begin
+                // GET ANOTHER VECTOR
+                RVECTORCOUNT = RVECTORCOUNT + 1;
             end
-
-            // GET ANOTHER VECTOR
-            RVECTORCOUNT = RVECTORCOUNT + 1;
         
         end
 
@@ -159,6 +159,7 @@ module FIFO_ASYNCHRONOUS_TB;
             // WAIT A BIT
             #5;
 
+            // DISPLAY OUTPUT ON POS EDGE WCLK
             $display ("%4d        %8s | %8d |  %1b   |      | %1b  |  %1b   | %1b |", WVECTORCOUNT, WCOMMENT, $time,
                         WRST, WE, FULL, DATA_IN);
 
@@ -180,6 +181,7 @@ module FIFO_ASYNCHRONOUS_TB;
             // WAIT A BIT
             #5;
 
+            // DISPLAY OUTPUT ON POS EDGE RCLK
             $display("    %4d    %8s | %8d |      |  %1b   |                      |  %1b |   %1b   | %1b |", RVECTORCOUNT, RCOMMENT, $time,
                       RRST, RE, EMPTY, DATA_OUT);
 

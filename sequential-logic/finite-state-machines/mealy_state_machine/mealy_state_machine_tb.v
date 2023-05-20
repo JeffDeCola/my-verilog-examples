@@ -49,9 +49,8 @@ module MEALY_STATE_MACHINE_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, RST, IN, FOUNDEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -59,7 +58,7 @@ module MEALY_STATE_MACHINE_TB;
         $display();
         $display("                 | TIME(ns) | RST | IN | FOUND |");
         $display("                 -------------------------------");
-        $monitor("%4d  %10s | %8d |  %1d  | %1d  |   %1d   |", VECTORCOUNT, COMMENT, $time, RST, IN, FOUND);
+        // $monitor("%4d  %10s | %8d |  %1d  | %1d  |   %1d   |", VECTORCOUNT, COMMENT, $time, RST, IN, FOUND);
 
     end
 
@@ -94,6 +93,9 @@ module MEALY_STATE_MACHINE_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |  %1d  | %1d  |   %1d   |", VECTORCOUNT, COMMENT, $time, RST, IN, FOUND);
 
         // CHECK EACH VECTOR RESULT
         if (FOUNDEXP !== FOUND) begin

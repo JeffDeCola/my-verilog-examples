@@ -52,7 +52,7 @@ module SIMPLE_8_BIT_REGISTER_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, LD_BAR, CLR_BAR, DATA_IN, DATA_OUTEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -61,7 +61,7 @@ module SIMPLE_8_BIT_REGISTER_TB;
         $display();
         $display("                 | TIME(ns) | LD_BAR | CLR_BAR | DATA_IN  | DATA_OUT |");
         $display("                 -----------------------------------------------------");
-        $monitor("%4d  %10s | %8d |   %1b    |    %1b    | %1b | %1b |", VECTORCOUNT, COMMENT, $time, LD_BAR, CLR_BAR, DATA_IN, DATA_OUT);
+        // $monitor("%4d  %10s | %8d |   %1b    |    %1b    | %1b | %1b |", VECTORCOUNT, COMMENT, $time, LD_BAR, CLR_BAR, DATA_IN, DATA_OUT);
 
     end
 
@@ -96,6 +96,9 @@ module SIMPLE_8_BIT_REGISTER_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |   %1b    |    %1b    | %1b | %1b |", VECTORCOUNT, COMMENT, $time, LD_BAR, CLR_BAR, DATA_IN, DATA_OUT);
 
         // CHECK EACH VECTOR RESULT
         if (DATA_OUTEXP !== DATA_OUT) begin

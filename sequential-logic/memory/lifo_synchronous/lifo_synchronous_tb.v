@@ -59,7 +59,7 @@ module LIFO_SYNCHRONOUS_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, WE, FULLEXP, DATA_IN, RE, EMPTYEXP, DATA_OUTEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -68,8 +68,8 @@ module LIFO_SYNCHRONOUS_TB;
         $display();
         $display("                 | TIME(ns) | RST | WE | FULL | DATA_IN  | RE | EMPTY | DATA_OUT |");
         $display("                 ----------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |  %1b  | %1b  |  %1b   | %1b | %1b  |   %1b   | %1b |",
-                 VECTORCOUNT, COMMENT, $time, RST, WE, FULL, DATA_IN, RE, EMPTY, DATA_OUT);
+        // $monitor("%4d  %10s | %8d |  %1b  | %1b  |  %1b   | %1b | %1b  |   %1b   | %1b |",
+        //           VECTORCOUNT, COMMENT, $time, RST, WE, FULL, DATA_IN, RE, EMPTY, DATA_OUT);
 
     end
 
@@ -104,6 +104,10 @@ module LIFO_SYNCHRONOUS_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |  %1b  | %1b  |  %1b   | %1b | %1b  |   %1b   | %1b |",
+                  VECTORCOUNT, COMMENT, $time, RST, WE, FULL, DATA_IN, RE, EMPTY, DATA_OUT);
 
         // CHECK EACH VECTOR RESULT
         if ((FULL !== FULLEXP) | (DATA_OUT !== DATA_OUTEXP) |(EMPTY !== EMPTYEXP)) begin

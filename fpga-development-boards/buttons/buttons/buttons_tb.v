@@ -79,9 +79,8 @@ module BUTTONS_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b", COMMENT, PRESSED, OUT1EXP, OUT2EXP, OUT3EXP, OUT4EXP, OUT5EXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -90,8 +89,8 @@ module BUTTONS_TB;
         $display("                                         1     2     3     4     5");
         $display("                 | TIME(ns) | PRESSED | OUT | OUT | OUT | OUT | OUT |");
         $display("                 ----------------------------------------------------");
-        $monitor("%4d  %10s | %8d |    %1d    |  %1d  |  %1d  |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, PRESSED,
-                  BUTTON1_SYNC_PUSH_RELEASE, BUTTON2_SYNC_CLOCK_PULSE_OUT, BUTTON3_SYNC_TWO_PRESSES_OUT, BUTTON4_ASYNC_CLOCK_PULSE_OUT, BUTTON5_ASYNC_TWO_PRESSES_OUT);
+        // $monitor("%4d  %10s | %8d |    %1d    |  %1d  |  %1d  |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, PRESSED,
+        //           BUTTON1_SYNC_PUSH_RELEASE, BUTTON2_SYNC_CLOCK_PULSE_OUT, BUTTON3_SYNC_TWO_PRESSES_OUT, BUTTON4_ASYNC_CLOCK_PULSE_OUT, BUTTON5_ASYNC_TWO_PRESSES_OUT);
 
     end
 
@@ -135,6 +134,10 @@ module BUTTONS_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |    %1d    |  %1d  |  %1d  |  %1d  |  %1d  |  %1d  |", VECTORCOUNT, COMMENT, $time, PRESSED,
+                  BUTTON1_SYNC_PUSH_RELEASE, BUTTON2_SYNC_CLOCK_PULSE_OUT, BUTTON3_SYNC_TWO_PRESSES_OUT, BUTTON4_ASYNC_CLOCK_PULSE_OUT, BUTTON5_ASYNC_TWO_PRESSES_OUT);
 
         // CHECK EACH VECTOR RESULT
         if (BUTTON1_SYNC_PUSH_RELEASE !== OUT1EXP) begin

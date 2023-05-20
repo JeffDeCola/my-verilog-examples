@@ -53,9 +53,8 @@ module PRIORITY_ARBITER_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, REQ_2, REQ_1, REQ_0, GNT_2EXP, GNT_1EXP, GNT_0EXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -63,7 +62,8 @@ module PRIORITY_ARBITER_TB;
         $display();
         $display("                 | TIME(ns) | RST | REQ_2 | REQ_1 | REQ_0 | GNT_2EXP | GNT_1EXP | GNT_0EXP |");
         $display("                 ---------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |  %1d  |   %1d   |   %1d   |   %1d   |    %1d     |    %1d     |    %1d     |", VECTORCOUNT, COMMENT, $time, RST, REQ_2, REQ_1, REQ_0, GNT_2, GNT_1, GNT_0);
+        // $monitor("%4d  %10s | %8d |  %1d  |   %1d   |   %1d   |   %1d   |    %1d     |    %1d     |    %1d     |",
+        //           VECTORCOUNT, COMMENT, $time, RST, REQ_2, REQ_1, REQ_0, GNT_2, GNT_1, GNT_0);
 
     end
 
@@ -98,6 +98,10 @@ module PRIORITY_ARBITER_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |  %1d  |   %1d   |   %1d   |   %1d   |    %1d     |    %1d     |    %1d     |",
+                  VECTORCOUNT, COMMENT, $time, RST, REQ_2, REQ_1, REQ_0, GNT_2, GNT_1, GNT_0);
 
         // CHECK EACH VECTOR RESULT
         if ((GNT_2 !== GNT_2EXP) | (GNT_1 !== GNT_1EXP) | (GNT_0 !== GNT_0EXP)) begin
