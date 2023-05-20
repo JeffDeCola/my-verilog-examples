@@ -50,7 +50,7 @@ module JEFF_74x377_TB;
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b",
                         COMMENT, EN_BAR, D7, D6, D5, D4, D3, D2, D1, D0, Q7EXP, Q6EXP, Q5EXP, Q4EXP, Q3EXP, Q2EXP, Q1EXP, Q0EXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -59,8 +59,8 @@ module JEFF_74x377_TB;
         $display();
         $display("                 | TIME(ns) | EN_BAR | D7 D6 D5 D4 D3 D2 D1 D0 | Q7 Q6 Q5 Q4 Q3 Q2 Q1 Q0 |");
         $display("                 -------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |   %1b    | %1b  %1b  %1b  %1b  %1b  %1b  %1b  %1b  | %1b  %1b  %1b  %1b  %1b  %1b  %1b  %1b  |",
-                 VECTORCOUNT, COMMENT, $time, EN_BAR, D7, D6, D5, D4, D3, D2, D1, D0, Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0);
+        // $monitor("%4d  %10s | %8d |   %1b    | %1b  %1b  %1b  %1b  %1b  %1b  %1b  %1b  | %1b  %1b  %1b  %1b  %1b  %1b  %1b  %1b  |",
+        //           VECTORCOUNT, COMMENT, $time, EN_BAR, D7, D6, D5, D4, D3, D2, D1, D0, Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0);
 
     end
 
@@ -96,6 +96,10 @@ module JEFF_74x377_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |   %1b    | %1b  %1b  %1b  %1b  %1b  %1b  %1b  %1b  | %1b  %1b  %1b  %1b  %1b  %1b  %1b  %1b  |",
+                  VECTORCOUNT, COMMENT, $time, EN_BAR, D7, D6, D5, D4, D3, D2, D1, D0, Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0);
 
         // CHECK EACH VECTOR RESULT
         if ((Q7EXP !== Q7) | (Q6EXP !== Q6) | (Q5EXP !== Q5) | (Q4EXP !== Q4) | (Q3EXP !== Q3) | (Q2EXP !== Q2) | (Q1EXP !== Q1) | (Q0EXP !== Q0)) begin

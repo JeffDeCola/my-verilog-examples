@@ -49,9 +49,8 @@ module LEFT_SHIFT_REGISTER_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b", COMMENT, RST, D, OUTEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -59,7 +58,7 @@ module LEFT_SHIFT_REGISTER_TB;
         $display();
         $display("                 | TIME(ns) | RST | D | OUT  |");
         $display("                 -----------------------------");
-        $monitor("%4d  %10s | %8d | %b   | %1b | %1b |", VECTORCOUNT, COMMENT, $time, RST, D, OUT);
+        // $monitor("%4d  %10s | %8d | %b   | %1b | %1b |", VECTORCOUNT, COMMENT, $time, RST, D, OUT);
 
     end
 
@@ -94,6 +93,9 @@ module LEFT_SHIFT_REGISTER_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d | %b   | %1b | %1b |", VECTORCOUNT, COMMENT, $time, RST, D, OUT);
 
         // CHECK EACH VECTOR RESULT
         if (OUT !== OUTEXP) begin

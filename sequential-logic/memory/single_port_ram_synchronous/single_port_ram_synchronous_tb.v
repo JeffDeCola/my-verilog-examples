@@ -51,7 +51,7 @@ module SINGLE_PORT_RAM_SYNCHRONOUS_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b", COMMENT, WE, ADDR, DATA_IN, DATA_OUTEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -60,7 +60,7 @@ module SINGLE_PORT_RAM_SYNCHRONOUS_TB;
         $display();
         $display("                 | TIME(ns) | WE | ADDR | DATA_IN  | DATA_OUT |");
         $display("                 ----------------------------------------------");
-        $monitor("%4d  %10s | %8d | %1b | %1b  | %1b | %1b |", VECTORCOUNT, COMMENT, $time, WE, ADDR, DATA_IN, DATA_OUT);
+        // $monitor("%4d  %10s | %8d | %1b | %1b  | %1b | %1b |", VECTORCOUNT, COMMENT, $time, WE, ADDR, DATA_IN, DATA_OUT);
 
     end
 
@@ -95,6 +95,9 @@ module SINGLE_PORT_RAM_SYNCHRONOUS_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d | %1b | %1b  | %1b | %1b |", VECTORCOUNT, COMMENT, $time, WE, ADDR, DATA_IN, DATA_OUT);
 
         // CHECK EACH VECTOR RESULT
         if (DATA_OUTEXP !== DATA_OUT) begin

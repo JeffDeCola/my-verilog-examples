@@ -53,9 +53,8 @@ module JEFF_74x161_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b %b %b %b %b %b", COMMENT, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QDEXP, QCEXP, QBEXP, QAEXP, RCOEXP);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
-        COMMENT ="";
 
         // DISPAY OUTPUT AND MONITOR
         $display();
@@ -63,7 +62,8 @@ module JEFF_74x161_TB;
         $display();
         $display("                 | TIME(ns) | CLR_BAR | LD_BAR | ENT | ENP | D | C | B | A | QD | QC | QB | QA | RCO |");
         $display("                 -------------------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |    %1d    |   %1d    |  %1d  | %1d  | %1d  | %1d | %1d | %1d | %1d  | %1d  | %1d  | %1d  | %1d   |", VECTORCOUNT, COMMENT, $time, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QD, QC, QB, QA, RCO);
+        // $monitor("%4d  %10s | %8d |    %1d    |   %1d    |  %1d  | %1d  | %1d  | %1d | %1d | %1d | %1d  | %1d  | %1d  | %1d  | %1d   |",
+        //          VECTORCOUNT, COMMENT, $time, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QD, QC, QB, QA, RCO);
 
     end
 
@@ -98,6 +98,10 @@ module JEFF_74x161_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |    %1d    |   %1d    |  %1d  | %1d  | %1d  | %1d | %1d | %1d | %1d  | %1d  | %1d  | %1d  | %1d   |",
+                  VECTORCOUNT, COMMENT, $time, CLR_BAR, LD_BAR, ENT, ENP, D, C, B, A, QD, QC, QB, QA, RCO);
 
         // CHECK EACH VECTOR RESULT
         if ((QDEXP !== QD) | (QCEXP !== QC) | (QBEXP !== QB) | (QAEXP !== QA) | (RCOEXP !== RCO)) begin

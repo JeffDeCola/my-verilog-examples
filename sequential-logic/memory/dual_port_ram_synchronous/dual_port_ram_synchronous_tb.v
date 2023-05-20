@@ -51,7 +51,7 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
         // INIT TESTBENCH
         COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b %b", COMMENT, WE_A, ADDR_A, DATA_IN_A, DATA_OUTEXP_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUTEXP_B);
         CLK = 0;
-        VECTORCOUNT = 0;
+        VECTORCOUNT = 1;
         ERRORS = 0;
 
         // DISPAY OUTPUT AND MONITOR
@@ -60,8 +60,8 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
         $display();
         $display("                 | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |");
         $display("                 ----------------------------------------------------------------------------------------------");
-        $monitor("%4d  %10s | %8d |  %1b   |  %1b  | %1b  |  %1b  |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT, COMMENT, $time,
-                  WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
+        // $monitor("%4d  %10s | %8d |  %1b   |  %1b  | %1b  |  %1b  |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT, COMMENT, $time,
+        //          WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
 
     end
 
@@ -96,6 +96,10 @@ module DUAL_PORT_RAM_SYNCHRONOUS_TB;
 
         // WAIT A BIT
         #5;
+
+        // DISPLAY OUTPUT ON POS EDGE CLK
+        $display("%4d  %10s | %8d |  %1b   |  %1b  | %1b  |  %1b  |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT, COMMENT, $time,
+                  WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A, WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
 
         // CHECK EACH VECTOR RESULT
         if ((DATA_OUTEXP_A !== DATA_OUT_A) | (DATA_OUTEXP_B !== DATA_OUT_B)) begin

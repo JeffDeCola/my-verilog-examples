@@ -60,8 +60,8 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
         COUNT_B = $fscanf(FD_B, "%s %b %b %b %b", COMMENT_B, WE_B, ADDR_B, DATA_IN_B, DATA_OUTEXP_B);
         CLK_A = 0;
         CLK_B = 0;
-        VECTORCOUNT_A = 0;
-        VECTORCOUNT_B = 0;
+        VECTORCOUNT_A = 1;
+        VECTORCOUNT_B = 1;
         ERRORS_A = 0;
         ERRORS_B = 0;
         END_A = 0;
@@ -109,10 +109,10 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
             if (COUNT_A == -1) begin
                 $fclose(FD_A);
                 END_A = 1;
+            end else begin
+                // GET ANOTHER VECTOR
+                VECTORCOUNT_A = VECTORCOUNT_A + 1;
             end
-
-            // GET ANOTHER VECTOR
-            VECTORCOUNT_A = VECTORCOUNT_A + 1;
 
         end
 
@@ -133,10 +133,10 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
             if (COUNT_B == -1) begin
                 $fclose(FD_B);
                 END_B = 1;
+            end else begin
+                // GET ANOTHER VECTOR
+                VECTORCOUNT_B = VECTORCOUNT_B + 1;
             end
-
-            // GET ANOTHER VECTOR
-            VECTORCOUNT_B = VECTORCOUNT_B + 1;
         
         end
 
@@ -150,6 +150,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
             // WAIT A BIT
             #5;
 
+            // DISPLAY OUTPUT ON POS EDGE CLK_A
             $display ("%4d        %8s | %8d |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_A, COMMENT_A, $time,
                         WE_A, ADDR_A, DATA_IN_A, DATA_OUT_A);
 
@@ -171,6 +172,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
             // WAIT A BIT
             #5;
 
+            // DISPLAY OUTPUT ON POS EDGE CLK_B
             $display("    %4d    %8s | %8d |                                        |  %1b   |  %1b  | %1b  |  %1b  |", VECTORCOUNT_B, COMMENT_B, $time,
                       WE_B, ADDR_B, DATA_IN_B, DATA_OUT_B);
 
