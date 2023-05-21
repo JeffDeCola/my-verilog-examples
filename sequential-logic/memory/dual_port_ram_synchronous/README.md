@@ -18,6 +18,8 @@ Dual-port RAM is a type of computer memory that allows
 two separate devices to read and write data simultaneously.
 This is achieved by having two separate access ports, one for each device.
 
+The B port will have precedence if data is written to both ports at the same time.
+
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and
@@ -48,31 +50,37 @@ The
 behavioral model,
 
 ```verilog
+    // PARAMETERS
+    parameter DATA_WIDTH = 8;
+    parameter ADDR_WIDTH = 4;
+    parameter MEM_DEPTH = 16;
+
     // DATA TYPES
-    reg [7:0] mem [0:15];
-    reg [3:0] address_register_A, address_register_B;
+    reg [DATA_WIDTH-1:0] mem [0:MEM_DEPTH-1];           // RAM (16x8)
 
-    // OUTPUT (THIS MAKES IT SYNCHRONOUS)
-    assign data_out_A = mem[address_register_A];
-    assign data_out_B = mem[address_register_B];
-
-    // RAM
+    // PORT A
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk) begin
+        // WRITE (DATA PASS)
         if (we_A) begin
             mem[addr_A] <= data_in_A;
+            data_out_A <= data_in_A;
+        // READ    
         end else begin
-            address_register_A <= addr_A;
+            data_out_A <= mem[addr_A];
         end
     end
 
-    // RAM
+    // PORT B - HAS PRECEDENCE FOR WRITE
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk) begin
+        //WRITE (DATA PASS)
         if (we_B) begin
             mem[addr_B] <= data_in_B;
+            data_out_B <= data_in_B;
+        //READ
         end else begin
-            address_register_B <= addr_B;
+            data_out_B <= mem[addr_B];
         end
     end
 ```
@@ -114,19 +122,19 @@ TEST START --------------------------------
 
                  | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |
                  ----------------------------------------------------------------------------------------------
-   1        INIT |       15 |  1   |  0000  | 00000000  |  xxxxxxxx  |  1   |  0000  | 00000000  |  xxxxxxxx  |
-   2   WR_A_WR_B |       35 |  1   |  0000  | 11110000  |  xxxxxxxx  |  1   |  0001  | 11110011  |  xxxxxxxx  |
-   3   WR_A_WR_B |       55 |  1   |  0001  | 00001111  |  xxxxxxxx  |  1   |  0011  | 11001111  |  xxxxxxxx  |
-   4   WR_A_WR_B |       75 |  1   |  1110  | 10101010  |  xxxxxxxx  |  1   |  1111  | 11101010  |  xxxxxxxx  |
-   5   RD_A_RD_B |       95 |  0   |  0000  | xxxxxxxx  |  11110000  |  0   |  0001  | xxxxxxxx  |  00001111  |
+   1        INIT |       15 |  1   |  0000  | 00000000  |  00000000  |  1   |  0000  | 00000000  |  00000000  |
+   2   WR_A_WR_B |       35 |  1   |  0000  | 11110000  |  11110000  |  1   |  0001  | 11110011  |  11110011  |
+   3   WR_A_WR_B |       55 |  1   |  0001  | 00001111  |  00001111  |  1   |  0011  | 11001111  |  11001111  |
+   4  BOTH_WRITE |       75 |  1   |  1110  | 10101010  |  10101010  |  1   |  1110  | 11101010  |  11101010  |
+   5   BOTH_READ |       95 |  0   |  1110  | xxxxxxxx  |  11101010  |  0   |  1110  | xxxxxxxx  |  11101010  |
    6   RD_A_RD_B |      115 |  0   |  0001  | xxxxxxxx  |  00001111  |  0   |  0011  | xxxxxxxx  |  11001111  |
-   7   RD_A_RD_B |      135 |  0   |  1110  | xxxxxxxx  |  10101010  |  0   |  1111  | xxxxxxxx  |  11101010  |
-   8   WR_A_RD_B |      155 |  1   |  1001  | 00000111  |  10101010  |  0   |  1110  | xxxxxxxx  |  10101010  |
-   9   WR_A_RD_B |      175 |  1   |  1111  | 11111010  |  10101010  |  0   |  1001  | xxxxxxxx  |  00000111  |
-  10   WR_A_RD_B |      195 |  1   |  1100  | 00000011  |  10101010  |  0   |  1111  | xxxxxxxx  |  11111010  |
-  11   WR_A_WR_B |      215 |  1   |  0010  | 00001111  |  10101010  |  1   |  1111  | 00000000  |  00000000  |
-  12   RD_A_WR_B |      235 |  0   |  0001  | xxxxxxxx  |  00011000  |  1   |  0001  | 00011000  |  00000000  |
-  13   RD_A_RD_B |      255 |  0   |  1111  | xxxxxxxx  |  00000000  |  0   |  1111  | xxxxxxxx  |  00000000  |
+   7   RD_A_RD_B |      135 |  0   |  0011  | xxxxxxxx  |  11001111  |  0   |  1111  | xxxxxxxx  |  xxxxxxxx  |
+   8   WR_A_RD_B |      155 |  1   |  1001  | 00000111  |  00000111  |  0   |  0011  | xxxxxxxx  |  11001111  |
+   9   WR_A_RD_B |      175 |  1   |  1111  | 11111010  |  11111010  |  0   |  1001  | xxxxxxxx  |  00000111  |
+  10   WR_A_RD_B |      195 |  1   |  1100  | 00000011  |  00000011  |  0   |  1111  | xxxxxxxx  |  11111010  |
+  11   WR_A_WR_B |      215 |  1   |  0010  | 00001111  |  00001111  |  1   |  1111  | 01000000  |  01000000  |
+  12  BOTH_RD_WR |      235 |  0   |  0001  | xxxxxxxx  |  00001111  |  1   |  0001  | 00011000  |  00011000  |
+  13   BOTH_READ |      255 |  0   |  0001  | xxxxxxxx  |  00011000  |  0   |  0001  | xxxxxxxx  |  00011000  |
   14   RD_A_RD_B |      275 |  0   |  0001  | xxxxxxxx  |  00011000  |  0   |  0001  | xxxxxxxx  |  00011000  |
 
  VECTORS:   14

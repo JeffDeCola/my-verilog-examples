@@ -49,20 +49,23 @@ The
 behavioral model,
 
 ```verilog
+    // PARAMETERS
+    parameter DATA_WIDTH = 8;
+    parameter ADDR_WIDTH = 4;
+    parameter MEM_DEPTH = 16;
+
     // DATA TYPES
-    reg [7:0] mem [0:15];         //RAM
-    reg [3:0] address_register;
+    reg [DATA_WIDTH-1:0] mem [0:MEM_DEPTH-1];           // RAM (16x8)
 
-    // OUTPUT (THIS MAKES IT SYNCHRONOUS)
-    assign data_out = mem[address_register];
-
-    // RAM
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk) begin
+        // WRITE (DATA PASS)
         if (we) begin
             mem[addr] <= data_in;
+            data_out <= data_in;
+        // READ    
         end else begin
-            address_register <= addr;
+            data_out <= mem[addr];
         end
     end
 ```
@@ -104,17 +107,17 @@ TEST START --------------------------------
 
                  | TIME(ns) | WE | ADDR | DATA_IN  | DATA_OUT |
                  ----------------------------------------------
-   1        INIT |       15 | 1 | 0000  | 00000000 | xxxxxxxx |
-   2       WRITE |       35 | 1 | 0000  | 11110000 | xxxxxxxx |
-   3       WRITE |       55 | 1 | 0001  | 00001111 | xxxxxxxx |
-   4       WRITE |       75 | 1 | 1110  | 10101010 | xxxxxxxx |
+   1        INIT |       15 | 1 | 0000  | 00000000 | 00000000 |
+   2       WRITE |       35 | 1 | 0000  | 11110000 | 11110000 |
+   3       WRITE |       55 | 1 | 0001  | 00001111 | 00001111 |
+   4       WRITE |       75 | 1 | 1110  | 10101010 | 10101010 |
    5        READ |       95 | 0 | 0000  | xxxxxxxx | 11110000 |
    6        READ |      115 | 0 | 0001  | xxxxxxxx | 00001111 |
    7        READ |      135 | 0 | 1110  | xxxxxxxx | 10101010 |
-   8       WRITE |      155 | 1 | 1001  | 00000111 | 10101010 |
-   9       WRITE |      175 | 1 | 1111  | 11111010 | 10101010 |
-  10       WRITE |      195 | 1 | 1100  | 00000011 | 10101010 |
-  11       WRITE |      215 | 1 | 0010  | 00001111 | 10101010 |
+   8       WRITE |      155 | 1 | 1001  | 00000111 | 00000111 |
+   9       WRITE |      175 | 1 | 1111  | 11111010 | 11111010 |
+  10       WRITE |      195 | 1 | 1100  | 00000011 | 00000011 |
+  11       WRITE |      215 | 1 | 0010  | 00001111 | 00001111 |
   12        READ |      235 | 0 | 0001  | xxxxxxxx | 00001111 |
   13        READ |      255 | 0 | 1111  | xxxxxxxx | 11111010 |
 

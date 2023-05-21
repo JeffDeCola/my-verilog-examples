@@ -1,11 +1,11 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Sun May 14 04:25:59 2023
+[*] Sun May 21 16:55:54 2023
 [*]
 [dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/single_port_ram_synchronous/single_port_ram_synchronous_tb.vcd"
-[dumpfile_mtime] "Sun May 14 04:23:06 2023"
-[dumpfile_size] 2105
-[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/single_port_ram_synchronous/single_port_ram_synchronous.gtkw"
+[dumpfile_mtime] "Sun May 21 16:54:11 2023"
+[dumpfile_size] 2342
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/single_port_ram_synchronous/single_port_ram_synchronous_tb.gtkw"
 [timestart] 0
 [size] 1535 600
 [pos] -1 -1
@@ -17,15 +17,12 @@
 [sst_vpaned_height] 152
 @28
 SINGLE_PORT_RAM_SYNCHRONOUS_TB.CLK
-SINGLE_PORT_RAM_SYNCHRONOUS_TB.WE
 @200
 -
+@28
+SINGLE_PORT_RAM_SYNCHRONOUS_TB.WE
 @22
 SINGLE_PORT_RAM_SYNCHRONOUS_TB.ADDR[3:0]
-SINGLE_PORT_RAM_SYNCHRONOUS_TB.UUT_single_port_ram_synchronous_behavioral.address_register[3:0]
-@200
--
-@22
 SINGLE_PORT_RAM_SYNCHRONOUS_TB.DATA_IN[7:0]
 SINGLE_PORT_RAM_SYNCHRONOUS_TB.DATA_OUT[7:0]
 [pattern_trace] 1
