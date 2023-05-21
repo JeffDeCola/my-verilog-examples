@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Tue May 16 01:20:39 2023
+[*] Sun May 21 18:37:39 2023
 [*]
 [dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb.vcd"
-[dumpfile_mtime] "Tue May 16 01:15:44 2023"
-[dumpfile_size] 4303
+[dumpfile_mtime] "Sun May 21 18:34:00 2023"
+[dumpfile_size] 4339
 [savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/dual_port_ram_asynchronous/dual_port_ram_asynchronous_tb.gtkw"
 [timestart] 0
 [size] 1319 600
 [pos] 33266 32949
-*-15.929993 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-15.929993 68000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] DUAL_PORT_RAM_ASYNCHRONOUS_TB.
 [sst_width] 204
 [signals_width] 150
@@ -17,16 +17,21 @@
 [sst_vpaned_height] 152
 @28
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.CLK_A
+@200
+-
+@28
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.WE_A
-@23
-DUAL_PORT_RAM_ASYNCHRONOUS_TB.ADDR_A[3:0]
 @22
+DUAL_PORT_RAM_ASYNCHRONOUS_TB.ADDR_A[3:0]
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.DATA_IN_A[7:0]
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.DATA_OUT_A[7:0]
 @200
 -
 @28
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.CLK_B
+@201
+-
+@28
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.WE_B
 @22
 DUAL_PORT_RAM_ASYNCHRONOUS_TB.ADDR_B[3:0]

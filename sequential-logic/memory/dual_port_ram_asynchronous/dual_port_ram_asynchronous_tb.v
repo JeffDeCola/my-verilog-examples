@@ -80,9 +80,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
 
     initial begin
         // WAIT FOR TEST TO FINISH
-        // THIS IS NOT PERFECT - I PROBABLY NEED TO FIX THIS FOR DIFFERENT CLOCK SPEEDS
-        @(END_B);
-        @(END_A);
+        wait (END_A == 1'b1 && END_B == 1'b1);
         $display();
         $display(" VECTORS_A: %4d", VECTORCOUNT_A);
         $display("  ERRORS_A: %4d", ERRORS_A);
@@ -115,6 +113,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
             end
 
         end
+        // $display("Waiting for b to finish");
 
     end
 
@@ -139,6 +138,7 @@ module DUAL_PORT_RAM_ASYNCHRONOUS_TB;
             end
         
         end
+        // $display("Waiting for a to finish");
 
     end
 

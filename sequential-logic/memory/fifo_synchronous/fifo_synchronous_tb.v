@@ -8,10 +8,10 @@ module FIFO_SYNCHRONOUS_TB;
     reg             CLK;
     reg             RST;
     reg  [7:0]      DATA_IN;
-    reg             WE;
+    reg             PUSH;
     wire            FULL;
     wire [7:0]      DATA_OUT;
-    reg             RE;
+    reg             POP;
     wire            EMPTY;
   
     // FOR TESTING  
@@ -27,10 +27,10 @@ module FIFO_SYNCHRONOUS_TB;
         .clk(CLK),
         .rst(RST),
         .data_in(DATA_IN),
-        .we(WE),
+        .push(PUSH),
         .full(FULL),
         .data_out(DATA_OUT),
-        .re(RE),
+        .pop(POP),
         .empty(EMPTY)
     );
 
@@ -57,7 +57,7 @@ module FIFO_SYNCHRONOUS_TB;
         // $display ("FIRST LINE IS: %s", COMMENT);
 
         // INIT TESTBENCH
-        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, WE, FULLEXP, DATA_IN, RE, EMPTYEXP, DATA_OUTEXP);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, PUSH, FULLEXP, DATA_IN, POP, EMPTYEXP, DATA_OUTEXP);
         CLK = 0;
         VECTORCOUNT = 1;
         ERRORS = 0;
@@ -66,9 +66,9 @@ module FIFO_SYNCHRONOUS_TB;
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                 | TIME(ns) | RST | WE | FULL | DATA_IN  | RE | EMPTY | DATA_OUT |");
+        $display("                 | TIME(ns) | RST | PUSH | FULL | DATA_IN  | POP | EMPTY | DATA_OUT |");
         $display("                 ----------------------------------------------------------------");
-        // $monitor("%4d  %10s | %8d |  %1b  | %1b  |  %1b   | %1b | %1b  |   %1b   | %1b |",
+        // $monitor("%4d  %10s | %8d |  %1b  |  %1b   |  %1b   | %1b |  %1b  |   %1b   | %1b |",
         //           VECTORCOUNT, COMMENT, $time, RST, WE, FULL, DATA_IN, RE, EMPTY, DATA_OUT);
 
     end
@@ -80,7 +80,7 @@ module FIFO_SYNCHRONOUS_TB;
         #5;
 
         // GET VECTORS FROM TB FILE
-        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, WE, FULLEXP, DATA_IN, RE, EMPTYEXP, DATA_OUTEXP);
+        COUNT = $fscanf(FD, "%s %b %b %b %b %b %b %b", COMMENT, RST, PUSH, FULLEXP, DATA_IN, POP, EMPTYEXP, DATA_OUTEXP);
 
         // CHECK IF EOF - PRINT SUMMARY, CLOSE VECTOR FILE AND FINISH TB
         if (COUNT == -1) begin
@@ -106,8 +106,8 @@ module FIFO_SYNCHRONOUS_TB;
         #5;
 
         // DISPLAY OUTPUT ON POS EDGE CLK
-        $display("%4d  %10s | %8d |  %1b  | %1b  |  %1b   | %1b | %1b  |   %1b   | %1b |",
-                  VECTORCOUNT, COMMENT, $time, RST, WE, FULL, DATA_IN, RE, EMPTY, DATA_OUT);
+        $display("%4d  %10s | %8d |  %1b  |  %1b   |  %1b   | %1b |  %1b  |   %1b   | %1b |",
+                  VECTORCOUNT, COMMENT, $time, RST, PUSH, FULL, DATA_IN, POP, EMPTY, DATA_OUT);
 
         // CHECK EACH VECTOR RESULT
         if ((FULL !== FULLEXP) | (DATA_OUT !== DATA_OUTEXP) |(EMPTY !== EMPTYEXP)) begin
