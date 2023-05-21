@@ -1,15 +1,15 @@
             WE_A_ADDR_A_DATA_IN_A__DATA_OUTEXP_A_WE_B_ADDR_B_DATA_IN_B__DATA_OUTEXP_B
-INIT        1    0000   00000000   xxxxxxxx      1    0000   00000000   xxxxxxxx
-WR_A_WR_B   1    0000   11110000   xxxxxxxx      1    0001   11110011   xxxxxxxx
-WR_A_WR_B   1    0001   00001111   xxxxxxxx      1    0011   11001111   xxxxxxxx
-WR_A_WR_B   1    1110   10101010   xxxxxxxx      1    1111   11101010   xxxxxxxx
-RD_A_RD_B   0    0000   xxxxxxxx   11110000      0    0001   xxxxxxxx   00001111
+INIT        1    0000   00000000   00000000      1    0000   00000000   00000000
+WR_A_WR_B   1    0000   11110000   11110000      1    0001   11110011   11110011
+WR_A_WR_B   1    0001   00001111   00001111      1    0011   11001111   11001111
+BOTH_WRITE  1    1110   10101010   10101010      1    1110   11101010   11101010
+BOTH_READ   0    1110   xxxxxxxx   11101010      0    1110   xxxxxxxx   11101010
 RD_A_RD_B   0    0001   xxxxxxxx   00001111      0    0011   xxxxxxxx   11001111
-RD_A_RD_B   0    1110   xxxxxxxx   10101010      0    1111   xxxxxxxx   11101010
-WR_A_RD_B   1    1001   00000111   10101010      0    1110   xxxxxxxx   10101010
-WR_A_RD_B   1    1111   11111010   10101010      0    1001   xxxxxxxx   00000111
-WR_A_RD_B   1    1100   00000011   10101010      0    1111   xxxxxxxx   11111010
-WR_A_WR_B   1    0010   00001111   10101010      1    1111   00000000   00000000
-RD_A_WR_B   0    0001   xxxxxxxx   00011000      1    0001   00011000   00000000
-RD_A_RD_B   0    1111   xxxxxxxx   00000000      0    1111   xxxxxxxx   00000000
+RD_A_RD_B   0    0011   xxxxxxxx   11001111      0    1111   xxxxxxxx   xxxxxxxx
+WR_A_RD_B   1    1001   00000111   00000111      0    0011   xxxxxxxx   11001111
+WR_A_RD_B   1    1111   11111010   11111010      0    1001   xxxxxxxx   00000111
+WR_A_RD_B   1    1100   00000011   00000011      0    1111   xxxxxxxx   11111010
+WR_A_WR_B   1    0010   00001111   00001111      1    1111   01000000   01000000
+BOTH_RD_WR  0    0001   xxxxxxxx   00001111      1    0001   00011000   00011000
+BOTH_READ   0    0001   xxxxxxxx   00011000      0    0001   xxxxxxxx   00011000
 RD_A_RD_B   0    0001   xxxxxxxx   00011000      0    0001   xxxxxxxx   00011000
