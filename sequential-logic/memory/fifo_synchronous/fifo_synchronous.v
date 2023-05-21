@@ -3,11 +3,13 @@
 module fifo_synchronous_structural(
     input  clk,             // Clock
     input  rst,             // Reset
+    // PUSH
     input  [7:0] data_in,   // DATA In
-    input  we,              // Write enable
+    input  push,            // Push/Write enable
     output full,            // Full
+    // POP
     output [7:0] data_out,  // DATA Out
-    input  re,              // Read enable
+    input  pop,             // Pop/Read enable
     output empty);          // Empty
 
     //FIFO
@@ -26,7 +28,7 @@ module fifo_synchronous_structural(
     // 16x8 dual port RAM
     dual_port_ram_synchronous_behavioral dual_port_ram_synchronous(
         .clk(clk),           
-        .we_A(we),
+        .we_A(push),
         .we_B(zero),
         .addr_A(w_ptr),
         .addr_B(r_ptr),
@@ -37,13 +39,13 @@ module fifo_synchronous_structural(
     );
 
     write_logic write_logic(
-        .we(we),
+        .we(push),
         .full(full),
         .w_next(w_next)
     );
 
     read_logic read_logic(
-        .re(re),
+        .re(pop),
         .empty(empty),
         .r_next(r_next)
     );

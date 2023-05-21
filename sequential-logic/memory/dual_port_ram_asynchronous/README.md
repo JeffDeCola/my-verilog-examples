@@ -18,6 +18,8 @@ Dual-port RAM is a type of computer memory that allows
 two separate devices to read and write data simultaneously.
 This is achieved by having two separate access ports, one for each device.
 
+The B port will have precedence if data is written to both ports at the same time.
+
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
 to simulate and
@@ -50,33 +52,41 @@ The
 behavioral model,
 
 ```verilog
+    // PARAMETERS
+    parameter DATA_WIDTH = 8;
+    parameter ADDR_WIDTH = 4;
+    parameter MEM_DEPTH = 16;
+
     // DATA TYPES
-    reg [7:0] mem [0:15];
-    reg [3:0] address_register_A, address_register_B;
+    reg [DATA_WIDTH-1:0] mem [0:MEM_DEPTH-1];           // RAM (16x8)
 
-    // OUTPUT (THIS MAKES IT SYNCHRONOUS)
-    assign data_out_A = mem[address_register_A];
-    assign data_out_B = mem[address_register_B];
-
-    // RAM
+    // PORT A
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk_A) begin
+        // WRITE (DATA PASS)
         if (we_A) begin
             mem[addr_A] <= data_in_A;
+            data_out_A <= data_in_A;
+        // READ    
         end else begin
-            address_register_A <= addr_A;
+            data_out_A <= mem[addr_A];
         end
     end
 
-    // RAM
+    // PORT B - HAS PRECEDENCE FOR WRITE
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(posedge clk_B) begin
+        //WRITE (DATA PASS)
         if (we_B) begin
             mem[addr_B] <= data_in_B;
+            data_out_B <= data_in_B;
+        //READ
         end else begin
-            address_register_B <= addr_B;
+            data_out_B <= mem[addr_B];
         end
     end
+
+endmodule
 ```
 
 ## RUN (SIMULATE)
@@ -118,34 +128,34 @@ TEST START --------------------------------
 
                      | TIME(ns) | WE_A | ADDR_A | DATA_IN_A | DATA_OUT_A | WE_B | ADDR_B | DATA_IN_B | DATA_OUT_B |
                      ----------------------------------------------------------------------------------------------
-       1        INIT |       12 |                                        |  1   |  0000  | 00000000  |  xxxxxxxx  |
-   1            INIT |       15 |  1   |  0000  | 00000000  |  xxxxxxxx  |
-       2        WR_B |       26 |                                        |  1   |  0001  | 11110011  |  xxxxxxxx  |
-   2            WR_A |       35 |  1   |  0000  | 11110000  |  xxxxxxxx  |
-       3        WR_B |       40 |                                        |  1   |  0011  | 11001111  |  xxxxxxxx  |
-       4        WR_B |       54 |                                        |  1   |  1111  | 11101010  |  xxxxxxxx  |
-   3            WR_A |       55 |  1   |  0001  | 00001111  |  xxxxxxxx  |
-       5        RD_B |       68 |                                        |  0   |  0001  | xxxxxxxx  |  00001111  |
-   4            WR_A |       75 |  1   |  1110  | 10101010  |  xxxxxxxx  |
+       1        INIT |       12 |                                        |  1   |  0000  | 00000000  |  00000000  |
+   1           INIT_ |       15 |  1   |  0000  | 00000000  |  00000000  |
+       2        WR_B |       26 |                                        |  1   |  0001  | 11110011  |  11110011  |
+   2           WR_A_ |       35 |  1   |  0000  | 11110000  |  11110000  |
+       3        WR_B |       40 |                                        |  1   |  0011  | 11001111  |  11001111  |
+       4        WR_B |       54 |                                        |  1   |  1110  | 11101010  |  11101010  |
+   3           WR_A_ |       55 |  1   |  0001  | 00001111  |  00001111  |
+       5        RD_B |       68 |                                        |  0   |  1110  | xxxxxxxx  |  11101010  |
+   4           WR_A_ |       75 |  1   |  1110  | 10101010  |  10101010  |
        6        RD_B |       82 |                                        |  0   |  0011  | xxxxxxxx  |  11001111  |
-   5            RD_A |       95 |  0   |  0000  | xxxxxxxx  |  11110000  |
-       7        RD_B |       96 |                                        |  0   |  1111  | xxxxxxxx  |  11101010  |
-       8        RD_B |      110 |                                        |  0   |  1110  | xxxxxxxx  |  10101010  |
-   6            RD_A |      115 |  0   |  0001  | xxxxxxxx  |  00001111  |
+   5           RD_A_ |       95 |  0   |  1110  | xxxxxxxx  |  10101010  |
+       7        RD_B |       96 |                                        |  0   |  1111  | xxxxxxxx  |  xxxxxxxx  |
+       8        RD_B |      110 |                                        |  0   |  0011  | xxxxxxxx  |  11001111  |
+   6           RD_A_ |      115 |  0   |  0001  | xxxxxxxx  |  00001111  |
        9        RD_B |      124 |                                        |  0   |  1001  | xxxxxxxx  |  xxxxxxxx  |
-   7            RD_A |      135 |  0   |  1110  | xxxxxxxx  |  10101010  |
-      10        RD_B |      138 |                                        |  0   |  1111  | xxxxxxxx  |  11101010  |
-      11        WR_B |      152 |                                        |  1   |  1111  | 00000000  |  00000000  |
-   8            WR_A |      155 |  1   |  1001  | 00000111  |  10101010  |
-      12        WR_B |      166 |                                        |  1   |  0001  | 00011000  |  00000000  |
-   9            WR_A |      175 |  1   |  1111  | 11111010  |  10101010  |
-      13        RD_B |      180 |                                        |  0   |  1111  | xxxxxxxx  |  11111010  |
+   7           RD_A_ |      135 |  0   |  0011  | xxxxxxxx  |  11001111  |
+      10        RD_B |      138 |                                        |  0   |  1111  | xxxxxxxx  |  xxxxxxxx  |
+      11        WR_B |      152 |                                        |  1   |  1111  | 01000000  |  01000000  |
+   8           WR_A_ |      155 |  1   |  1001  | 00000111  |  00000111  |
+      12        WR_B |      166 |                                        |  1   |  0001  | 00011000  |  00011000  |
+   9           WR_A_ |      175 |  1   |  1111  | 11111010  |  11111010  |
+      13        RD_B |      180 |                                        |  0   |  0001  | xxxxxxxx  |  00011000  |
       14        RD_B |      194 |                                        |  0   |  0001  | xxxxxxxx  |  00011000  |
-  10            WR_A |      195 |  1   |  1100  | 00000011  |  10101010  |
-  11            WR_A |      215 |  1   |  0010  | 00001111  |  10101010  |
-  12            RD_A |      235 |  0   |  0001  | xxxxxxxx  |  00011000  |
-  13            RD_A |      255 |  0   |  1111  | xxxxxxxx  |  11111010  |
-  14            RD_A |      275 |  0   |  0001  | xxxxxxxx  |  00011000  |
+  10           WR_A_ |      195 |  1   |  1100  | 00000011  |  00000011  |
+  11           WR_A_ |      215 |  1   |  0010  | 00001111  |  00001111  |
+  12           RD_A_ |      235 |  0   |  0001  | xxxxxxxx  |  00011000  |
+  13           RD_A_ |      255 |  0   |  0001  | xxxxxxxx  |  00011000  |
+  14           RD_A_ |      275 |  0   |  0001  | xxxxxxxx  |  00011000  |
 
  VECTORS_A:   14
   ERRORS_A:    0

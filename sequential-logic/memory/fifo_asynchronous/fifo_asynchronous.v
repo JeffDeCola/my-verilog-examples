@@ -1,21 +1,18 @@
 // A synchronous fifo.
 
 module fifo_asynchronous_structural(
+    // PUSH
     input  wclk,            // Write Clock
-    input  rclk,            // Read Clock
     input  wrst,            // Write Reset
-    input  rrst,            // Read Reset
     input  [7:0] data_in,   // DATA In
-    input  we,              // Write enable
+    input  push,            // Write enable
     output full,            // Full
+    // POP
+    input  rclk,            // Read Clock
+    input  rrst,            // Read Reset
     output [7:0] data_out,  // DATA Out
-    input  re,              // Read enable
+    input  pop,             // Read enable
     output empty);          // Empty
-
-    //FIFO
-    // parameter DATA_WIDTH = 8;
-    // parameter ADDR_WIDTH = 4;
-    // parameter RAM_DEPTH = (1 << ADDR_WIDTH);
 
     // DATA TYPES
     wire [3:0] w_ptr;
@@ -29,7 +26,7 @@ module fifo_asynchronous_structural(
     dual_port_ram_asynchronous_behavioral dual_port_ram_asynchronous(
         .clk_A(wclk),
         .clk_B(rclk),           
-        .we_A(we),
+        .we_A(push),
         .we_B(zero),
         .addr_A(w_ptr),
         .addr_B(r_ptr),
@@ -40,13 +37,13 @@ module fifo_asynchronous_structural(
     );
 
     write_logic write_logic(
-        .we(we),
+        .we(push),
         .full(full),
         .w_next(w_next)
     );
 
     read_logic read_logic(
-        .re(re),
+        .re(pop),
         .empty(empty),
         .r_next(r_next)
     );

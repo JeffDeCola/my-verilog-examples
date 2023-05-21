@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Wed May 17 16:32:43 2023
+[*] Sun May 21 19:27:58 2023
 [*]
 [dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/fifo_synchronous/fifo_synchronous_tb.vcd"
-[dumpfile_mtime] "Wed May 17 16:32:12 2023"
-[dumpfile_size] 7771
+[dumpfile_mtime] "Sun May 21 19:21:47 2023"
+[dumpfile_size] 7737
 [savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/fifo_synchronous/fifo_synchronous_tb.gtkw"
 [timestart] 0
 [size] 1652 853
-[pos] 2043 100
-*-16.261902 70000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 180 82
+*-16.943726 70000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] FIFO_SYNCHRONOUS_TB.
 [treeopen] FIFO_SYNCHRONOUS_TB.UUT_fifo_synchronous_structural.
 [sst_width] 204
@@ -22,7 +22,6 @@ FIFO_SYNCHRONOUS_TB.RST
 @200
 -
 @28
-FIFO_SYNCHRONOUS_TB.WE
 FIFO_SYNCHRONOUS_TB.FULL
 @22
 FIFO_SYNCHRONOUS_TB.DATA_IN[7:0]
@@ -35,7 +34,6 @@ FIFO_SYNCHRONOUS_TB.UUT_fifo_synchronous_structural.w_ptr[3:0]
 @200
 -
 @28
-FIFO_SYNCHRONOUS_TB.RE
 FIFO_SYNCHRONOUS_TB.EMPTY
 @22
 FIFO_SYNCHRONOUS_TB.DATA_OUT[7:0]

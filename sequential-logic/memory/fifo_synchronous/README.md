@@ -45,7 +45,7 @@ The structure is,
 
 ![IMAGE - fifo_synchronous.jpg - IMAGE](../../../docs/pics/sequential-logic/fifo_synchronous.jpg)
 
-The full and empy logic is,
+The full and empty logic is,
 
 ![IMAGE - fifo_compare_and_status.jpg - IMAGE](../../../docs/pics/sequential-logic/fifo_compare_and_status.jpg)
 
@@ -54,27 +54,27 @@ The full and empy logic is,
 I made this more complicated then it should be,
 but I wanted to show all the cases.
 It's really just pushing and popping data
-off the FIFO.
+on and off the FIFO.
 
-| rst | we | full | data_in  | re | empty | data_out | comment          |
-|:---:|:--:|:----:|:--------:|:--:|:-----:|:--------:|:----------------:|
-|  1  | 0  | 0    | xxxxxxxx | 0  | 0     | xxxxxxxx | RESETS PTRS      |
-|  0  | 0  | 0    | xxxxxxxx | 0  | 0     | data_out | -                |
-|  0  | 0  | 0    | xxxxxxxx | 0  | 1     | data_out | EMPTY            |
-|  0  | 0  | 0    | xxxxxxxx | 1  | 0     | POP      | POP              |
-|  0  | 0  | 0    | xxxxxxxx | 1  | 1     | data_out | NO POP - EMPTY   |
-|  0  | 0  | 1    | xxxxxxxx | 0  | 0     | data_out | FULL             |
-|  0  | 0  | 1    | xxxxxxxx | 0  | 1     | -        | N/A              |
-|  0  | 0  | 1    | xxxxxxxx | 1  | 0     | POP      | FULL - POP       |
-|  0  | 0  | 1    | xxxxxxxx | 1  | 1     | -        | N/A              |
-|  0  | 1  | 0    | data     | 0  | 0     | data_out | PUSH             |
-|  0  | 1  | 0    | data     | 0  | 1     | data_out | PUSH - EMPTY     |
-|  0  | 1  | 0    | data     | 1  | 0     | POP      | PUSH - POP       |
-|  0  | 1  | 0    | data     | 1  | 1     | data_out | N/A              |
-|  0  | 1  | 1    | xxxxxxxx | 0  | 0     | data_out | NO PUSH - FULL   |
-|  0  | 1  | 1    | xxxxxxxx | 0  | 1     | data_out | N/A              |
-|  0  | 1  | 1    | xxxxxxxx | 1  | 0     | POP      | N/A              |
-|  0  | 1  | 1    | xxxxxxxx | 1  | 1     | data_out | N/A              |
+| rst | push | full | data_in  | pop | empty | data_out | comment          |
+|:---:|:----:|:----:|:--------:|:---:|:-----:|:--------:|:----------------:|
+|  1  |  0   | 0    | xxxxxxxx | 0   | 0     | xxxxxxxx | RESETS PTRS      |
+|  0  |  0   | 0    | xxxxxxxx | 0   | 0     | data_out | -                |
+|  0  |  0   | 0    | xxxxxxxx | 0   | 1     | data_out | EMPTY            |
+|  0  |  0   | 0    | xxxxxxxx | 1   | 0     | POP      | POP              |
+|  0  |  0   | 0    | xxxxxxxx | 1   | 1     | data_out | NO POP - EMPTY   |
+|  0  |  0   | 1    | xxxxxxxx | 0   | 0     | data_out | FULL             |
+|  0  |  0   | 1    | xxxxxxxx | 0   | 1     | -        | N/A              |
+|  0  |  0   | 1    | xxxxxxxx | 1   | 0     | POP      | FULL - POP       |
+|  0  |  0   | 1    | xxxxxxxx | 1   | 1     | -        | N/A              |
+|  0  |  1   | 0    | data     | 0   | 0     | data_out | PUSH             |
+|  0  |  1   | 0    | data     | 0   | 1     | data_out | PUSH - EMPTY     |
+|  0  |  1   | 0    | data     | 1   | 0     | POP      | PUSH - POP       |
+|  0  |  1   | 0    | data     | 1   | 1     | data_out | N/A              |
+|  0  |  1   | 1    | xxxxxxxx | 0   | 0     | data_out | NO PUSH - FULL   |
+|  0  |  1   | 1    | xxxxxxxx | 0   | 1     | data_out | N/A              |
+|  0  |  1   | 1    | xxxxxxxx | 1   | 0     | POP      | N/A              |
+|  0  |  1   | 1    | xxxxxxxx | 1   | 1     | data_out | N/A              |
 
 ## VERILOG CODE
 
@@ -206,48 +206,47 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                 | TIME(ns) | RST | WE | FULL | DATA_IN  | RE | EMPTY | DATA_OUT |
+                 | TIME(ns) | RST | PUSH | FULL | DATA_IN  | POP | EMPTY | DATA_OUT |
                  ----------------------------------------------------------------
-   1        INIT |       15 |  0  | 0  |  x   | xxxxxxxx | 0  |   x   | xxxxxxxx |
-   2       RESET |       35 |  1  | 0  |  0   | xxxxxxxx | 0  |   1   | xxxxxxxx |
-   3      PUSH-1 |       55 |  0  | 1  |  0   | 00001111 | 0  |   0   | 00001111 |
-   4      PUSH-2 |       75 |  0  | 1  |  0   | 11110000 | 0  |   0   | 00001111 |
-   5      PUSH-3 |       95 |  0  | 1  |  0   | 10101010 | 0  |   0   | 00001111 |
-   6  PUSH4-POP1 |      115 |  0  | 1  |  0   | 11111111 | 1  |   0   | 00001111 |
-   7       POP-2 |      135 |  0  | 0  |  0   | xxxxxxxx | 1  |   0   | 11110000 |
-   8       POP-3 |      155 |  0  | 0  |  0   | xxxxxxxx | 1  |   0   | 10101010 |
-   9  PUSH5-POP4 |      175 |  0  | 1  |  0   | 01010101 | 1  |   0   | 11111111 |
-  10       POP-5 |      195 |  0  | 0  |  0   | xxxxxxxx | 1  |   1   | 01010101 |
-  11           - |      215 |  0  | 0  |  0   | xxxxxxxx | 0  |   1   | xxxxxxxx |
-  12           - |      235 |  0  | 0  |  0   | xxxxxxxx | 0  |   1   | xxxxxxxx |
-  13           - |      255 |  0  | 0  |  0   | xxxxxxxx | 0  |   1   | xxxxxxxx |
-  14      PUSH-6 |      275 |  0  | 1  |  0   | 10001111 | 0  |   0   | 10001111 |
-  15      PUSH-7 |      295 |  0  | 1  |  0   | 00001110 | 0  |   0   | 10001111 |
-  16      PUSH-8 |      315 |  0  | 1  |  0   | 00110011 | 0  |   0   | 10001111 |
-  17  PUSH9-POP6 |      335 |  0  | 1  |  0   | 01111100 | 1  |   0   | 10001111 |
-  18     PUSH-10 |      355 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  19     PUSH-11 |      375 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  20     PUSH-12 |      395 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  21     PUSH-13 |      415 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  22     PUSH-14 |      435 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  23     PUSH-15 |      455 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  24     PUSH-16 |      475 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  25     PUSH-17 |      495 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  26     PUSH-18 |      515 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  27     PUSH-19 |      535 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  28     PUSH-20 |      555 |  0  | 1  |  0   | 01010101 | 0  |   0   | 00001110 |
-  29     PUSH-21 |      575 |  0  | 1  |  1   | 01010101 | 0  |   0   | 00001110 |
-  30     PUSH-22 |      595 |  0  | 1  |  1   | 01010101 | 0  |   0   | 00001110 |
-  31     PUSH-23 |      615 |  0  | 1  |  1   | 01010101 | 0  |   0   | 00001110 |
-  32       POP-7 |      635 |  0  | 0  |  0   | xxxxxxxx | 1  |   0   | 00001110 |
-  33       POP-8 |      655 |  0  | 0  |  0   | xxxxxxxx | 1  |   0   | 00110011 |
-  34       POP-9 |      675 |  0  | 0  |  0   | xxxxxxxx | 1  |   0   | 01111100 |
-  35      POP-10 |      695 |  0  | 0  |  0   | xxxxxxxx | 1  |   0   | 01010101 |
-  36           - |      715 |  0  | 0  |  0   | xxxxxxxx | 0  |   0   | 01010101 |
-  37           - |      735 |  0  | 0  |  0   | xxxxxxxx | 0  |   0   | 01010101 |
-  38           - |      755 |  0  | 0  |  0   | xxxxxxxx | 0  |   0   | 01010101 |
+   1        INIT |       15 |  0  |  0   |  x   | xxxxxxxx |  0  |   x   | xxxxxxxx |
+   2       RESET |       35 |  1  |  0   |  0   | xxxxxxxx |  0  |   1   | xxxxxxxx |
+   3      PUSH-1 |       55 |  0  |  1   |  0   | 00001111 |  0  |   0   | xxxxxxxx |
+   4      PUSH-2 |       75 |  0  |  1   |  0   | 11110000 |  0  |   0   | 00001111 |
+   5      PUSH-3 |       95 |  0  |  1   |  0   | 10101010 |  0  |   0   | 00001111 |
+   6  PUSH4-POP1 |      115 |  0  |  1   |  0   | 11111111 |  1  |   0   | 00001111 |
+   7       POP-2 |      135 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 11110000 |
+   8       POP-3 |      155 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 10101010 |
+   9  PUSH5-POP4 |      175 |  0  |  1   |  0   | 01010101 |  1  |   0   | 11111111 |
+  10       POP-5 |      195 |  0  |  0   |  0   | xxxxxxxx |  1  |   1   | 01010101 |
+  11           - |      215 |  0  |  0   |  0   | xxxxxxxx |  0  |   1   | xxxxxxxx |
+  12           - |      235 |  0  |  0   |  0   | xxxxxxxx |  0  |   1   | xxxxxxxx |
+  13           - |      255 |  0  |  0   |  0   | xxxxxxxx |  0  |   1   | xxxxxxxx |
+  14      PUSH-6 |      275 |  0  |  1   |  0   | 10001111 |  0  |   0   | xxxxxxxx |
+  15      PUSH-7 |      295 |  0  |  1   |  0   | 00001110 |  0  |   0   | 10001111 |
+  16      PUSH-8 |      315 |  0  |  1   |  0   | 00110011 |  0  |   0   | 10001111 |
+  17  PUSH9-POP6 |      335 |  0  |  1   |  0   | 01111100 |  1  |   0   | 10001111 |
+  18     PUSH-10 |      355 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  19     PUSH-11 |      375 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  20     PUSH-12 |      395 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  21     PUSH-13 |      415 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  22     PUSH-14 |      435 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  23     PUSH-15 |      455 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  24     PUSH-16 |      475 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  25     PUSH-17 |      495 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  26     PUSH-18 |      515 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  27     PUSH-19 |      535 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  28     PUSH-20 |      555 |  0  |  1   |  0   | 01010101 |  0  |   0   | 00001110 |
+  29     PUSH-21 |      575 |  0  |  1   |  1   | 01010101 |  0  |   0   | 00001110 |
+  30     PUSH-22 |      595 |  0  |  1   |  1   | 01010101 |  0  |   0   | 00001110 |
+  31     PUSH-23 |      615 |  0  |  1   |  1   | 01010101 |  0  |   0   | 00001110 |
+  32       POP-7 |      635 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 00001110 |
+  33       POP-8 |      655 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 00110011 |
+  34       POP-9 |      675 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 01111100 |
+  35      POP-10 |      695 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 01010101 |
+  36           - |      715 |  0  |  0   |  0   | xxxxxxxx |  0  |   0   | 01010101 |
+  37           - |      735 |  0  |  0   |  0   | xxxxxxxx |  0  |   0   | 01010101 |
 
- VECTORS:   38
+ VECTORS:   37
   ERRORS:    0
 
 TEST END ----------------------------------
