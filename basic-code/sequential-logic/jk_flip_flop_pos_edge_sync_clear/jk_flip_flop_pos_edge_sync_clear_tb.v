@@ -58,7 +58,6 @@ module JK_FLIP_FLOP_POS_EDGE_SYNC_CLEAR_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                                      ");
         $display("                 | TIME(ns) | CLRBAR | J | K |  Q  |");
         $display("                 -----------------------------------");
         // $monitor("%4d  %10s | %8d |   %1d    | %1d | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, CLRBAR, J, K, Q_beh);

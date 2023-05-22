@@ -133,7 +133,6 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                               
                  | TIME(ns) | EN | D |  Q  |
                  ---------------------------
    1        INIT |       15 | 1  | 0 |  0  |
