@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Mon May 22 03:15:06 2023
+[*]
+[dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/lifo_synchronous/lifo_synchronous_tb.vcd"
+[dumpfile_mtime] "Mon May 22 03:03:01 2023"
+[dumpfile_size] 9245
+[savefile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/lifo_synchronous/lifo_synchronous_tb.gtkw"
+[timestart] 0
+[size] 1560 600
+[pos] 171 178
+*-17.270658 688300 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] LIFO_SYNCHRONOUS_TB.
+[sst_width] 204
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+LIFO_SYNCHRONOUS_TB.CLK
+LIFO_SYNCHRONOUS_TB.RST
+@200
+-
+@28
+LIFO_SYNCHRONOUS_TB.PUSH
+@22
+LIFO_SYNCHRONOUS_TB.DATA_IN[7:0]
+@28
+LIFO_SYNCHRONOUS_TB.POP
+LIFO_SYNCHRONOUS_TB.FULL
+@200
+-
+@28
+LIFO_SYNCHRONOUS_TB.UUT_lifo_synchronous_structural.w_next
+@22
+LIFO_SYNCHRONOUS_TB.UUT_lifo_synchronous_structural.wrt_ptr[3:0]
+@200
+-
+@28
+LIFO_SYNCHRONOUS_TB.UUT_lifo_synchronous_structural.r_next
+@23
+LIFO_SYNCHRONOUS_TB.UUT_lifo_synchronous_structural.rd_ptr[3:0]
+@200
+-
+@28
+LIFO_SYNCHRONOUS_TB.POP
+@22
+LIFO_SYNCHRONOUS_TB.DATA_OUT[7:0]
+@28
+LIFO_SYNCHRONOUS_TB.EMPTY
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,6 +1,6 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Sun May 21 22:01:02 2023
+[*] Sun May 21 22:22:11 2023
 [*]
 [dumpfile] "/home/jeff/verilog/my-verilog-examples/sequential-logic/memory/fifo_asynchronous/fifo_asynchronous_tb.vcd"
 [dumpfile_mtime] "Sun May 21 22:00:22 2023"
@@ -23,9 +23,11 @@ FIFO_ASYNCHRONOUS_TB.RRST
 @200
 -
 @28
-FIFO_ASYNCHRONOUS_TB.FULL
+FIFO_ASYNCHRONOUS_TB.POP
 @22
 FIFO_ASYNCHRONOUS_TB.DATA_IN[7:0]
+@29
+FIFO_ASYNCHRONOUS_TB.FULL
 @200
 -
 @28
@@ -35,14 +37,16 @@ FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.w_ptr[3:0]
 @200
 -
 @28
-FIFO_ASYNCHRONOUS_TB.EMPTY
+FIFO_ASYNCHRONOUS_TB.PUSH
 @22
 FIFO_ASYNCHRONOUS_TB.DATA_OUT[7:0]
+@28
+FIFO_ASYNCHRONOUS_TB.EMPTY
 @200
 -
 @28
 FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.r_next
-@23
+@22
 FIFO_ASYNCHRONOUS_TB.UUT_fifo_asynchronous_structural.r_ptr[3:0]
 [pattern_trace] 1
 [pattern_trace] 0
