@@ -14,7 +14,7 @@ module stack_ptr_control (
         if (rst) begin
             wrt_ptr <= 4'b0000;
             rd_ptr <= 4'b0000;
-        // BOTTOM - PUSH    
+        // BOTTOM - PUSH
         end else if ((wrt_ptr == 4'b0000) & (w_next)) begin
             wrt_ptr <= wrt_ptr + 1;
         // BOTTOM - POP
@@ -24,7 +24,7 @@ module stack_ptr_control (
         end else if (w_next) begin
             wrt_ptr <= wrt_ptr + 1;
             rd_ptr <= rd_ptr + 1;
-        // POP    
+        // POP
         end else if (r_next) begin
             wrt_ptr <= wrt_ptr - 1;
             rd_ptr <= rd_ptr - 1;

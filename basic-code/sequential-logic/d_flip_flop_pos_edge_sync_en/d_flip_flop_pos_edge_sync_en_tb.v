@@ -58,7 +58,6 @@ module D_FLIP_FLOP_POS_EDGE_SYNC_EN_TB ();
         $display();
         $display("TEST START --------------------------------");
         $display();
-        $display("                               ");
         $display("                 | TIME(ns) | EN | D |  Q  |");
         $display("                 ---------------------------");
         // $monitor("%4d  %10s | %8d | %d  | %1d |  %1d  |", VECTORCOUNT, COMMENT, $time, EN, D, Q_beh);

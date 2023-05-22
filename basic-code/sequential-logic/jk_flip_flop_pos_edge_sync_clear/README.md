@@ -149,7 +149,6 @@ The output of the test,
 ```text
 TEST START --------------------------------
 
-                                      
                  | TIME(ns) | CLRBAR | J | K |  Q  |
                  -----------------------------------
    1        INIT |       22 |   1    | 0 | 0 |  x  |

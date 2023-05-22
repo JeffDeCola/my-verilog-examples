@@ -65,7 +65,7 @@ behavioral model,
         if (we_A) begin
             mem[addr_A] <= data_in_A;
             data_out_A <= data_in_A;
-        // READ    
+        // READ
         end else begin
             data_out_A <= mem[addr_A];
         end
