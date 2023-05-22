@@ -22,9 +22,9 @@ Documentation and Reference
 
 ## OVERVIEW
 
-A FIFO is a special type of buffer. The name FIFO stands for first in first out
-and means that the data written into the buffer first comes out of it first.
-A synchronous FIFO is a FIFO where the same clock is used for both reading and
+A FIFO is a special type of buffer. The name LIFO stands for lst in first out
+and means that the data written into the buffer last comes out of it first.
+A synchronous LIFO is a LIFO where the same clock is used for both reading and
 writing.
 
 _I used
@@ -47,7 +47,7 @@ The structure is,
 
 The full and empy logic is,
 
-![IMAGE - fifo_compare_and_status.jpg - IMAGE](../../../docs/pics/sequential-logic/fifo_compare_and_status.jpg)
+![IMAGE - fifo_compare_and_status.jpg - IMAGE](../../../docs/pics/sequential-logic/lifo_compare_and_status.jpg)
 
 ## TRUTH TABLE
 
@@ -56,25 +56,25 @@ but I wanted to show all the cases.
 It's really just pushing and popping data
 off the FIFO.
 
-| rst | we | full | data_in  | re | empty | data_out | comment          |
-|:---:|:--:|:----:|:--------:|:--:|:-----:|:--------:|:----------------:|
-|  1  | 0  | 0    | xxxxxxxx | 0  | 0     | xxxxxxxx | RESETS PTRS      |
-|  0  | 0  | 0    | xxxxxxxx | 0  | 0     | data_out | -                |
-|  0  | 0  | 0    | xxxxxxxx | 0  | 1     | data_out | EMPTY            |
-|  0  | 0  | 0    | xxxxxxxx | 1  | 0     | POP      | POP              |
-|  0  | 0  | 0    | xxxxxxxx | 1  | 1     | data_out | NO POP - EMPTY   |
-|  0  | 0  | 1    | xxxxxxxx | 0  | 0     | data_out | FULL             |
-|  0  | 0  | 1    | xxxxxxxx | 0  | 1     | -        | N/A              |
-|  0  | 0  | 1    | xxxxxxxx | 1  | 0     | POP      | FULL - POP       |
-|  0  | 0  | 1    | xxxxxxxx | 1  | 1     | -        | N/A              |
-|  0  | 1  | 0    | data     | 0  | 0     | data_out | PUSH             |
-|  0  | 1  | 0    | data     | 0  | 1     | data_out | PUSH - EMPTY     |
-|  0  | 1  | 0    | data     | 1  | 0     | POP      | PUSH - POP       |
-|  0  | 1  | 0    | data     | 1  | 1     | data_out | N/A              |
-|  0  | 1  | 1    | xxxxxxxx | 0  | 0     | data_out | NO PUSH - FULL   |
-|  0  | 1  | 1    | xxxxxxxx | 0  | 1     | data_out | N/A              |
-|  0  | 1  | 1    | xxxxxxxx | 1  | 0     | POP      | N/A              |
-|  0  | 1  | 1    | xxxxxxxx | 1  | 1     | data_out | N/A              |
+| rst | push | full | data_in  | pop | empty | data_out | comment          |
+|:---:|:----:|:----:|:--------:|:---:|:-----:|:--------:|:----------------:|
+|  1  |  0   | 0    | xxxxxxxx | 0   | 0     | xxxxxxxx | RESETS PTR       |
+|  0  |  0   | 0    | xxxxxxxx | 0   | 0     | data_out | -                |
+|  0  |  0   | 0    | xxxxxxxx | 0   | 1     | data_out | EMPTY            |
+|  0  |  0   | 0    | xxxxxxxx | 1   | 0     | POP      | POP              |
+|  0  |  0   | 0    | xxxxxxxx | 1   | 1     | data_out | NO POP - EMPTY   |
+|  0  |  0   | 1    | xxxxxxxx | 0   | 0     | data_out | FULL             |
+|  0  |  0   | 1    | xxxxxxxx | 0   | 1     | -        | N/A              |
+|  0  |  0   | 1    | xxxxxxxx | 1   | 0     | POP      | FULL - POP       |
+|  0  |  0   | 1    | xxxxxxxx | 1   | 1     | -        | N/A              |
+|  0  |  1   | 0    | data     | 0   | 0     | data_out | PUSH             |
+|  0  |  1   | 0    | data     | 0   | 1     | data_out | PUSH - EMPTY     |
+|  0  |  1   | 0    | data     | 1   | 0     | POP      | PUSH - POP       |
+|  0  |  1   | 0    | data     | 1   | 1     | data_out | N/A              |
+|  0  |  1   | 1    | xxxxxxxx | 0   | 0     | data_out | NO PUSH - FULL   |
+|  0  |  1   | 1    | xxxxxxxx | 0   | 1     | data_out | N/A              |
+|  0  |  1   | 1    | xxxxxxxx | 1   | 0     | POP      | N/A              |
+|  0  |  1   | 1    | xxxxxxxx | 1   | 1     | data_out | N/A              |
 
 ## VERILOG CODE
 
@@ -104,30 +104,32 @@ behavioral model,
     end
 ```
 
-### WRITE AND READ PTRS
+### STACK PTRS
+
+The top memory location is unused since the logic required to utilize that location
+would take up more real estate than it's worth.
 
 ```verilog
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
+        //RESET
         if (rst) begin
-            w_ptr <= 3'b000;
+            wrt_ptr <= 4'b0000;
+            rd_ptr <= 4'b0000;
+        // BOTTOM - PUSH    
+        end else if ((wrt_ptr == 4'b0000) & (w_next)) begin
+            wrt_ptr <= wrt_ptr + 1;
+        // BOTTOM - POP
+        end else if ((rd_ptr == 4'b0000) & (r_next)) begin
+            wrt_ptr <= 4'b0000;
+        // PUSH
         end else if (w_next) begin
-            w_ptr <= w_ptr + 1;
-        end else begin
-            w_ptr <= w_ptr;
-        end
-    end
-```
-
-```verilog
-    // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
-    always @ (posedge clk) begin
-        if (rst) begin
-            r_ptr <= 3'b000;
+            wrt_ptr <= wrt_ptr + 1;
+            rd_ptr <= rd_ptr + 1;
+        // POP    
         end else if (r_next) begin
-            r_ptr <= r_ptr + 1;
-        end else begin
-            r_ptr <= r_ptr;
+            wrt_ptr <= wrt_ptr - 1;
+            rd_ptr <= rd_ptr - 1;
         end
     end
 ```
@@ -135,38 +137,20 @@ behavioral model,
 ### COMPARE AND STATUS LOGIC
 
 ```verilog
-    parameter depth = 4'b1111;  // Depth of the FIFO
-
-    // DATA TYPES
-    reg [3:0] ptr_diff;
-
-    // FULL STATUS
-    always @(*) begin
-        if (ptr_diff == depth) begin
-          full = 1'b1;
-        end else begin
-          full = 1'b0;
-        end
-    end
-
-    // EMPTY STATUS
-    always @(*) begin
-        if (ptr_diff == 0) begin
-          empty = 1'b1;
-        end else begin
-          empty = 1'b0;
-        end
-    end
+    parameter depth = 4'b1111;    // Depth of the FIFO
 
     // HOW MUCH MEMORY USED
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @(*) begin
-        if (w_ptr > r_ptr) begin
-            ptr_diff <= w_ptr - r_ptr + 1;
-        end else if (w_ptr < r_ptr) begin
-            ptr_diff <= (depth - r_ptr) + w_ptr + 1;
-        end else if (w_ptr == r_ptr) begin
-            ptr_diff <= 0;
+        if (wrt_ptr == 0) begin
+            full <= 1'b0;
+            empty <= 1'b1;
+        end else if (wrt_ptr < depth) begin
+            full <= 1'b0;
+            empty <= 1'b0;
+        end else if (wrt_ptr == depth) begin
+            full <= 1'b1;
+            empty <= 1'b0;
         end
     end
 ```
@@ -204,7 +188,61 @@ vvp lifo_synchronous_tb.vvp
 The output of the test,
 
 ```text
-??????
+TEST START --------------------------------
+
+                 | TIME(ns) | RST | PUSH | FULL | DATA_IN  | POP | EMPTY | DATA_OUT |
+                 ----------------------------------------------------------------
+   1        INIT |       15 |  0  |  0   |  x   | xxxxxxxx |  0  |   x   | xxxxxxxx |
+   2       RESET |       35 |  1  |  0   |  0   | xxxxxxxx |  0  |   1   | xxxxxxxx |
+   3      PUSH-1 |       55 |  0  |  1   |  0   | 00001111 |  0  |   0   | xxxxxxxx |
+   4      PUSH-2 |       75 |  0  |  1   |  0   | 11110000 |  0  |   0   | 00001111 |
+   5      PUSH-3 |       95 |  0  |  1   |  0   | 10101010 |  0  |   0   | 11110000 |
+   6           - |      115 |  0  |  0   |  0   | xxxxxxxx |  0  |   0   | 10101010 |
+   7           - |      135 |  0  |  0   |  0   | xxxxxxxx |  0  |   0   | 10101010 |
+   8           - |      155 |  0  |  0   |  0   | xxxxxxxx |  0  |   0   | 10101010 |
+   9       POP-3 |      175 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 10101010 |
+  10       POP-2 |      195 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 11110000 |
+  11       POP-1 |      215 |  0  |  0   |  0   | xxxxxxxx |  1  |   1   | 00001111 |
+  12    POP-NULL |      235 |  0  |  0   |  0   | xxxxxxxx |  1  |   1   | 00001111 |
+  13    POP-NULL |      255 |  0  |  0   |  0   | xxxxxxxx |  1  |   1   | 00001111 |
+  14    POP-NULL |      275 |  0  |  0   |  0   | xxxxxxxx |  1  |   1   | 00001111 |
+  15           - |      295 |  0  |  0   |  0   | xxxxxxxx |  0  |   1   | 00001111 |
+  16           - |      315 |  0  |  0   |  0   | xxxxxxxx |  0  |   1   | 00001111 |
+  17           - |      335 |  0  |  0   |  0   | xxxxxxxx |  0  |   1   | 00001111 |
+  18      PUSH-1 |      355 |  0  |  1   |  0   | 00001111 |  0  |   0   | 00001111 |
+  19      PUSH-2 |      375 |  0  |  1   |  0   | 11110000 |  0  |   0   | 00001111 |
+  20      PUSH-3 |      395 |  0  |  1   |  0   | 10101010 |  0  |   0   | 11110000 |
+  21      PUSH-4 |      415 |  0  |  1   |  0   | 01001111 |  0  |   0   | 10101010 |
+  22      PUSH-5 |      435 |  0  |  1   |  0   | 11110000 |  0  |   0   | 01001111 |
+  23       POP-5 |      455 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 11110000 |
+  24       POP-4 |      475 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 01001111 |
+  25      PUSH-4 |      495 |  0  |  1   |  0   | 10101011 |  0  |   0   | 10101010 |
+  26      PUSH-5 |      515 |  0  |  1   |  0   | 00001110 |  0  |   0   | 10101011 |
+  27      PUSH-6 |      535 |  0  |  1   |  0   | 11110001 |  0  |   0   | 00001110 |
+  28      PUSH-7 |      555 |  0  |  1   |  0   | 10101000 |  0  |   0   | 11110001 |
+  29      PUSH-8 |      575 |  0  |  1   |  0   | 10111000 |  0  |   0   | 10101000 |
+  30      PUSH-9 |      595 |  0  |  1   |  0   | 10111000 |  0  |   0   | 10111000 |
+  31     PUSH-10 |      615 |  0  |  1   |  0   | 10111000 |  0  |   0   | 10111000 |
+  32     PUSH-11 |      635 |  0  |  1   |  0   | 10111000 |  0  |   0   | 10111000 |
+  33     PUSH-12 |      655 |  0  |  1   |  0   | 10111001 |  0  |   0   | 10111000 |
+  34     PUSH-13 |      675 |  0  |  1   |  0   | 10111010 |  0  |   0   | 10111001 |
+  35     PUSH-14 |      695 |  0  |  1   |  0   | 10111100 |  0  |   0   | 10111010 |
+  36     PUSH-15 |      715 |  0  |  1   |  1   | 00110000 |  0  |   0   | 10111100 |
+  37   PUSH-NULL |      735 |  0  |  1   |  1   | 01011000 |  0  |   0   | 00110000 |
+  38   PUSH-NULL |      755 |  0  |  1   |  1   | 00001011 |  0  |   0   | 00110000 |
+  39   PUSH-NULL |      775 |  0  |  1   |  1   | 00011111 |  0  |   0   | 00110000 |
+  40           - |      795 |  0  |  0   |  1   | xxxxxxxx |  0  |   0   | 00110000 |
+  41           - |      815 |  0  |  0   |  1   | xxxxxxxx |  0  |   0   | 00110000 |
+  42           - |      835 |  0  |  0   |  1   | xxxxxxxx |  0  |   0   | 00110000 |
+  43      POP-15 |      855 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 00110000 |
+  44      POP-14 |      875 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 10111100 |
+  45      POP-13 |      895 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 10111010 |
+  46      POP-12 |      915 |  0  |  0   |  0   | xxxxxxxx |  1  |   0   | 10111001 |
+
+ VECTORS:   46
+  ERRORS:    0
+
+TEST END ----------------------------------
 ```
 
 ## VIEW WAVEFORM

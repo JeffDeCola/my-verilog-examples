@@ -4,10 +4,10 @@ module lifo_synchronous_structural(
     input  clk,             // Clock
     input  rst,             // Reset
     input  [7:0] data_in,   // DATA In
-    input  we,              // Write enable
+    input  push,            // Write enable
     output full,            // Full
     output [7:0] data_out,  // DATA Out
-    input  re,              // Read enable
+    input  pop,             // Read enable
     output empty);          // Empty
 
     //FIFO
@@ -16,7 +16,7 @@ module lifo_synchronous_structural(
     // parameter RAM_DEPTH = (1 << ADDR_WIDTH);
 
     // DATA TYPES
-    wire [3:0] stack_ptr;
+    wire [3:0] wrt_ptr, rd_ptr;
     wire       w_next;
     wire       r_next;
     parameter  zeros = 8'h00;
@@ -25,10 +25,10 @@ module lifo_synchronous_structural(
     // 16x8 dual port RAM
     dual_port_ram_synchronous_behavioral dual_port_ram_synchronous(
         .clk(clk),           
-        .we_A(we),
+        .we_A(push),
         .we_B(zero),
-        .addr_A(stack_ptr),
-        .addr_B(stack_ptr),
+        .addr_A(wrt_ptr),
+        .addr_B(rd_ptr),
         .data_in_A(data_in),
         .data_in_B(zeros),
         .data_out_A(),
@@ -36,13 +36,13 @@ module lifo_synchronous_structural(
     );
 
     write_logic write_logic(
-        .we(we),
+        .we(push),
         .full(full),
         .w_next(w_next)
     );
 
     read_logic read_logic(
-        .re(re),
+        .re(pop),
         .empty(empty),
         .r_next(r_next)
     );
@@ -52,11 +52,12 @@ module lifo_synchronous_structural(
         .rst(rst),
         .w_next(w_next),
         .r_next(r_next),
-        .stack_ptr(stack_ptr)
+        .wrt_ptr(wrt_ptr),
+        .rd_ptr(rd_ptr)
     );
 
     compare_and_status_logic compare_and_status_logic(
-        .stack_ptr(stack_ptr),
+        .wrt_ptr(wrt_ptr),
         .full(full),
         .empty(empty)
     );

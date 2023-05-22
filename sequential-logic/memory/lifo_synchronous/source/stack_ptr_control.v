@@ -5,18 +5,29 @@ module stack_ptr_control (
     input             rst,              // Reset
     input             w_next,           // Write next
     input             r_next,           // Read next
-    output reg [3:0]  stack_ptr);       // Stack pointer
+    output reg [3:0]  wrt_ptr,          // Write pointer
+    output reg [3:0]  rd_ptr);          // Read pointer
 
     // ALWAYS BLOCK with NON-BLOCKING PROCEDURAL ASSIGNMENT STATEMENT
     always @ (posedge clk) begin
+        //RESET
         if (rst) begin
-            stack_ptr <= 3'b000;
-        end else if (w_next & r_next) begin
-            stack_ptr <= stack_ptr;
+            wrt_ptr <= 4'b0000;
+            rd_ptr <= 4'b0000;
+        // BOTTOM - PUSH    
+        end else if ((wrt_ptr == 4'b0000) & (w_next)) begin
+            wrt_ptr <= wrt_ptr + 1;
+        // BOTTOM - POP
+        end else if ((rd_ptr == 4'b0000) & (r_next)) begin
+            wrt_ptr <= 4'b0000;
+        // PUSH
         end else if (w_next) begin
-            stack_ptr <= stack_ptr + 1;
+            wrt_ptr <= wrt_ptr + 1;
+            rd_ptr <= rd_ptr + 1;
+        // POP    
         end else if (r_next) begin
-            stack_ptr <= stack_ptr - 1;
+            wrt_ptr <= wrt_ptr - 1;
+            rd_ptr <= rd_ptr - 1;
         end
     end
 
