@@ -278,10 +278,6 @@ Where the testbench structure is,
 
     _A synchronous lifo using dual-port synchronous RAM._
 
-  * [lifo_asynchronous](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/memory/lifo_asynchronous)
-
-    _An asynchronous lifo using dual-port asynchronous RAM._
-
 * REGISTERS
 
   * [jeff_74x377](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/registers/jeff_74x377)
