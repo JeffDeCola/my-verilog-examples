@@ -1,18 +1,10 @@
-# CONCOURSE
+# repo-generic-.gitignore
+
+# CONCOURSE SECRETS
 .credentials.yml
-
-# VSCODE
-.vscode/
-
-# GO
-coverage.out
 
 # macOS
 .DS_Store
 
 # WINDOWS
 *.jpg:Zone.Identifier
-
-
-# SFTP VS CODE EXTENTION
-sftp.json
