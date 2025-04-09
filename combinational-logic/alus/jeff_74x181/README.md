@@ -1,5 +1,8 @@
 # JEFF 74x181 EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _4-bit alu (arithmetic logic unit) and function generator.
 Provides 16 binary logic operations and 16 arithmetic operations
 on two 4-bit words.
