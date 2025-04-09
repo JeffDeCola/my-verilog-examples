@@ -1,5 +1,8 @@
 # MEALY STATE MACHINE EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _Recognize the pattern 00110 in a serial stream.
 Output depends on current state and current inputs._
 
@@ -12,7 +15,16 @@ Table of Contents
 * [VIEW WAVEFORM](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/mealy_state_machine#view-waveform)
 * [TESTED IN HARDWARE - BURNED TO A FPGA](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/mealy_state_machine#tested-in-hardware---burned-to-a-fpga)
 
+Documentation and Reference
+
+* [moore_state_machine](https://github.com/JeffDeCola/my-verilog-examples/tree/master/sequential-logic/finite-state-machines/moore_state_machine)
+
 ## OVERVIEW
+
+I like mealy state machines because they are more intuitive.
+I'm not a fan of moore state machines.
+
+![IMAGE - mealy-moore-state-machines.svg - IMAGE](../../../docs/pics/sequential-logic/mealy-moore-state-machines.svg)
 
 _I used
 [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
@@ -28,7 +40,7 @@ FPGA development board._
 
 This may help,
 
-![IMAGE - mealy_state_machine.jpg - IMAGE](../../../docs/pics/sequential-logic/mealy_state_machine.jpg)
+![IMAGE - mealy_state_machine.svg - IMAGE](../../../docs/pics/sequential-logic/mealy_state_machine.svg)
 
 ## VERILOG CODE
 
