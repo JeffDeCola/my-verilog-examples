@@ -1,5 +1,8 @@
 # PROGRAMABLE 8-BIT MICROPROCESSOR EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _A programable 8-bit microprocessor. Originally designed in VHDL for part of
 [my Master's Thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
@@ -107,7 +110,7 @@ and spits out the result. That's about it.**
 
 This may help,
 
-![programable-8-bit-microprocessor.jpg](../../../docs/pics/systems/programable-8-bit-microprocessor.jpg)
+![programable-8-bit-microprocessor.svg](../../../docs/pics/systems/programable-8-bit-microprocessor.svg)
 
 MAIN INPUTS,
 
@@ -139,7 +142,7 @@ This design is broken into two main sections,
     ([processor.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/systems/microprocessors/programable_8_bit_microprocessor/processor/processor.v))
     * Crunches the data controlled by the control section
 
-![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/systems/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.jpg)
+![Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.svg](../../../docs/pics/systems/Top-Level-Block-Diagram-of-the-8-bit-Microprocessor.svg)
 
 ## OPCODE (THE USER INSTRUCTION SET)
 
@@ -172,7 +175,7 @@ Hence, there are 16 sections equally divided.
 
 This may help,
 
-![control-store-structure.jpg](../../../docs/pics/systems/control-store-structure.jpg)
+![control-store-structure.svg](../../../docs/pics/systems/control-store-structure.svg)
 
 ### MICROWORD
 
@@ -254,7 +257,7 @@ The bits do the following actions,
 |               | 0 010    | Branch if C4                                    | C4                  |
 |               | 0 011    | Branch if C8                                    | C8                  |
 |               | 0 100    | Branch if G0_BAR                                | GO_BAR              |
-|               | 0 101    | Branch if ZP | ZP (all 0's from F)              | ZP (all O's from F) |
+|               | 0 101    | Branch if ZP / ZP (all 0's from F)              | ZP (all O's from F) |
 |               | 0 110    | COUNT - low - **(DEFAULT)**                     | COUNT (DEFAULT)     |
 |               | 0 111    | COUNT - low                                     | COUNT               |
 |               | 1 000    | Branch if !Z (all 1's from ALU)                 | !Z (all 1s from alu)|
@@ -262,7 +265,7 @@ The bits do the following actions,
 |               | 1 010    | Branch if !C4                                   | !C4                 |
 |               | 1 011    | Branch if !C8                                   | !C8                 |
 |               | 1 100    | Branch if !G0_BAR                               | !GO_BAR             |
-|               | 1 101    | Branch if !ZP | !ZP (all 0's from F)            | !ZP (all O's from F)|
+|               | 1 101    | Branch if !ZP / !ZP (all 0's from F)            | !ZP (all O's from F)|
 |               | 1 110    | Branch Always - low                             | BRANCH              |
 |               | 1 111    | Branch on OPCODE (This also loads input Reg)    | OPCODE (LOADS A,B)  |
 |               |          |                                                 |                     |
@@ -327,7 +330,7 @@ The microcode is,
 
 This may help,
 
-![multiply-opcode-1100.jpg](../../../docs/pics/systems/multiply-opcode-1100.jpg)
+![multiply-opcode-1100.svg](../../../docs/pics/systems/multiply-opcode-1100.svg)
 
 ### DIVIDE (opcode 1110)
 
@@ -392,9 +395,9 @@ The microcode is,
 
 These diagrams may help,
 
-![how-to-divide-using-logic.jpg](../../../docs/pics/systems/how-to-divide-using-logic.jpg)
+![how-to-divide-using-logic.svg](../../../docs/pics/systems/how-to-divide-using-logic.svg)
 
-![divide-opcode-1110.jpg](../../../docs/pics/systems/divide-opcode-1110.jpg)
+![divide-opcode-1110.svg](../../../docs/pics/systems/divide-opcode-1110.svg)
 
 ### JAM
 
@@ -466,7 +469,7 @@ The control section has five main parts,
     ([xor2.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/xor2/xor2.v))
     _replaced xor2_
 
-![Control-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/systems/Control-Block-of-the-8-bit-Microprocessor.jpg)
+![Control-Block-of-the-8-bit-Microprocessor.svg](../../../docs/pics/systems/Control-Block-of-the-8-bit-Microprocessor.svg)
 
 ### PROCESSOR SECTION
 
@@ -528,7 +531,7 @@ The processor is a collection of registers, muxes and an alu,
     * U5 ([nand4.v](https://github.com/JeffDeCola/my-verilog-examples/blob/master/basic-code/combinational-logic/nand4/nand4.v))
       _Replaced nand4_
 
-![Processor-Block-of-the-8-bit-Microprocessor.jpg](../../../docs/pics/systems/Processor-Block-of-the-8-bit-Microprocessor.jpg)
+![Processor-Block-of-the-8-bit-Microprocessor.svg](../../../docs/pics/systems/Processor-Block-of-the-8-bit-Microprocessor.svg)
 
 ## VERILOG CODE
 
