@@ -1,5 +1,8 @@
 # SIMPLE 8-BIT REGISTER EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _A simple 8-bit register with synchronous load and clear._
 
 Table of Contents
@@ -28,7 +31,7 @@ FPGA development board._
 
 This may help,
 
-![IMAGE - simple-8-bit-register.jpg - IMAGE](../../../docs/pics/sequential-logic/simple-8-bit-register.jpg)
+![IMAGE - simple-8-bit-register.svg - IMAGE](../../../docs/pics/sequential-logic/simple-8-bit-register.svg)
 
 ## TRUTH TABLE
 
