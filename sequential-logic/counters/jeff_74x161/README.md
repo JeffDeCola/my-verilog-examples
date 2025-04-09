@@ -1,5 +1,8 @@
 # JEFF 74x161 EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _Synchronous presettable 4-bit binary counter, asynchronous clear.
 Based on the 7400-series integrated circuits used in my
 [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)._
@@ -36,7 +39,7 @@ FPGA development board._
 I designed this processor form the 1976 Texas Instruments spec sheet.
 The `clr_bar` is connected directly to the JK flip-flops.
 
-![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/sequential-logic/ti-74x161-schematic.jpg)
+![IMAGE - ti-74x161-schematic.jpg - IMAGE](../../../docs/pics/sequential-logic/ti-74x161-schematic.svg)
 
 ## TRUTH TABLE
 
