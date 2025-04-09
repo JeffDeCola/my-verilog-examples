@@ -1,5 +1,8 @@
 # SR LATCH EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _A sr (set ready) latch which is **level-triggered**
 that can be set and reset.
 The latch forms the basic building block

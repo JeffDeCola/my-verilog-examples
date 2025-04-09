@@ -1,5 +1,8 @@
 # D FLIP-FLOP PULSE-TRIGGERED EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 _A pulse-triggered d flip-flop (cascading)
 can save input data on output._
 
