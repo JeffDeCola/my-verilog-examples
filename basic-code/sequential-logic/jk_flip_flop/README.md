@@ -1,5 +1,8 @@
 # JK FLIP-FLOP EXAMPLE
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 ```text
 THIS IS FOR EXAMPLE ONLY SINCE THIS HAS A RACE CONDITION
 WHEN J =1 and K = 1.

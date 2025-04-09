@@ -1,9 +1,8 @@
 # MY VERILOG EXAMPLES
 
 [![Tag Latest](https://img.shields.io/github/v/tag/jeffdecola/my-verilog-examples)](https://github.com/JeffDeCola/my-verilog-examples/tags)
-[![codeclimate Issue Count](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-verilog-examples/issues)
-[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 
 _A place to keep my synthesizable verilog examples._
 
@@ -34,7 +33,6 @@ Table of Contents
 Documentation and Reference
 
 * [verilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/development/languages/verilog-cheat-sheet)
-  cheat sheet
 * [iverilog](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/iverilog-cheat-sheet)
   is a free tool for simulation and synthesis
 * [GTKWave](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/hardware/tools/simulation/gtkwave-cheat-sheet)
@@ -357,7 +355,7 @@ Where the testbench structure is,
   * [programable_8_bit_microprocessor](https://github.com/JeffDeCola/my-verilog-examples/tree/master/systems/microprocessors/programable_8_bit_microprocessor)
 
     _A programable 8-bit microprocessor. Originally designed in VHDL for part of
-    [my master's thesis](https://github.com/JeffDeCola/my_masters_thesis)._
+    [my master's thesis](https://github.com/JeffDeCola/my-masters-thesis)._
 
 * PIPELINES
 

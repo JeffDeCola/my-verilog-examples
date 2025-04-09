@@ -1,4 +1,4 @@
-# FIFO SYNCHRONOUS EXAMPLE
+# FIFO ASYNCHRONOUS EXAMPLE
 
 _An asynchronous fifo using dual-port asynchronous RAM._
 

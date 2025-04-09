@@ -38,7 +38,7 @@ FPGA development board._
 I designed this alu from the 1972 Texas Instruments spec sheet.
 I love the care and thought put into this.
 
-![IMAGE - ti-74x181-schematic.jpg - IMAGE](../../../docs/pics/combinational-logic/ti-74x181-schematic.jpg)
+![IMAGE - ti-74x181-schematic.jpg - IMAGE](../../../docs/pics/combinational-logic/ti-74x181-schematic.svg)
 
 ## TRUTH TABLE
 
