@@ -105,7 +105,7 @@ The artifacts created are,
 
 Where the testbench structure is,
 
-![testbench-structure.jpg](docs/pics/testbench-structure.jpg)
+![testbench-structure.svg](docs/pics/testbench-structure.svg)
 
 ## BASIC CODE
 
